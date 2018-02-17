@@ -1,0 +1,48 @@
+[general]
+ui = TTY.TTYUI
+accounts = Gmail
+pythonfile = $XDG_CONFIG_HOME/offlineimap/offlineimap.py
+fsync = False
+maxsyncaccounts = 1
+
+#---------------#
+#-----GMAIL-----#
+#---------------#
+
+[Account Gmail]
+localrepository = Gmail-local
+remoterepository = Gmail-remote
+#---Set autorefresh---#
+autorefresh = 0.5
+quick = 2
+postsynchook = notmuch new
+
+[Repository Gmail-local]
+type = Maildir  
+localfolders = ~/.mail/Gmail
+#---Fix label names---#
+nametrans = lambda f: '[Gmail]/' + f if f in ['Starred', 'Important', 'Sent Mail', 'Drafts', 'All Mail', 'Spam', 'Trash'] else f
+
+[Repository Gmail-remote]
+#---Just autoconnect things---#
+maxconnections = 1
+keepalive = 60
+holdconnectionopen = yes
+type = Gmail
+remoteusereval = get_field('Google','email')
+remotepasseval = get_field('Google','app')
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+realdelete = no
+#---Fix label names---#
+nametrans = lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else f
+#---Don't include All Mail---#
+folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
+
+[mbnames]
+#---Tell mutt the folders---#
+enabled = yes
+filename = ~/.mail/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = " \"+temp/search\"\n"

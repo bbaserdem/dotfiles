@@ -1,0 +1,50 @@
+#! /bin/sh
+
+# Startup programs
+sxhkd &
+syncthing-gtk --minimized &
+udiskie &
+redshift &
+polybarLaunch &
+
+systemctl --user start WM.target &
+if [[ $(hostname) == 'sbplaptop' ]]
+then
+    # Laptop
+    bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+    bspc monitor HDMI-2 -r
+    bspc config merge_overlapping_monitors  true
+elif [[ $(hostname) == 'sbpworkstation' ]]
+then
+    # Workstation
+    dropbox &
+    bspc monitor DVI-I-1 -d 1 2 3 4 5 6 7 8 9
+    bspc monitor DP-2 -d 0
+else
+    bspc monitor -d I II III IV V VI VII VIII IX X
+fi
+
+bspc config border_width                2
+bspc config window_gap                  16
+bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/ext_rule
+
+bspc config split_ratio                 0.5
+bspc config borderless_monocle          false
+bspc config gapless_monocle             false
+bspc config focus_follows_pointer       true
+bspc config focused_border_color        '#A5A5A5'
+bspc config remove_disabled_monitors    true
+bspc config remove_unplugged_monitors   true
+bspc config pointer_follows_monitor     true
+bspc config honor_size_hints            true
+bspc config initial_polarity            second_child
+
+# Fixing Windows
+bspc rule -a Pinentry       state=floating
+bspc rule -a Zathura        state=tiled
+bspc rule -a libreoffice    state=tiled
+bspc rule -a Steam          state=tiled         follow=no
+
+# Java fix
+export _JAVA_AWT_WM_NONREPARENTING=1
+wmname LG3D

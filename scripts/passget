@@ -1,0 +1,3 @@
+#!/bin/bash
+# Pulls the correct field from password store
+pass $1 | grep -Po "^$2: \K.*"

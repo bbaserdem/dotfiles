@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# This script generates the pdf and puts all aux files in a subdirectory
+
+if [ ! -d "latex" ]; then
+    mkdir latex
+fi
+
+pdflatex -output-directory=latex "$1"
+
