@@ -1,0 +1,38 @@
+#!/usr/bin/sh
+# This script is a wrapper for tdrop for an image dropdown shortcut
+# Image is picked depending on what monitor is available, which for me allows
+# differentiation between work, home and laptop. If you intend to pick your own
+# image, make sure the IMG variable points to the directory of your image.
+
+###### IMAGE PICKER #####
+if [[ $(hostname) == 'sbplaptop' ]]
+then
+    # Laptop
+    IMG=$XDG_CONFIG_HOME/files/planck-letssplit.png
+elif [[ $(hostname) == 'sbpworkstation' ]]
+then
+    IMG=$XDG_CONFIG_HOME/files/xd75re.png
+elif [[ $(hostname) == 'sbphome' ]]
+then
+    IMG=$XDG_CONFIG_HOME/files/infinity-ergodox.png
+fi
+
+##### FORMATTING #####
+
+# Needed for bspwm with LG3D fix for Java.
+WM_NAME=bspwm
+
+# Get image width and height
+W_IMG=`identify -format '%[w]' $IMG`
+H_IMG=`identify -format '%[h]' $IMG`
+
+# Get monitor width
+W_MON=`xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3}'`
+H_MON=`xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $4}'`
+
+# Get offsets
+W_OFF=$(( $(( $W_MON - $W_IMG )) / 2 ))
+H_OFF=48
+
+# Tdrop command
+tdrop -x $W_OFF -y $H_OFF -w $W_IMG -h $H_IMG --wm=$WM_NAME -a -f "$IMG" feh

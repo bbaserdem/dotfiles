@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Theme Hospital
+Comment=PlayOnLinux
+Type=Application
+Exec=/usr/share/playonlinux/playonlinux --run "Theme Hospital" %F
+Icon=/home/silverbluep/.PlayOnLinux//icones/full_size/Theme Hospital
+Name[fr_FR]=Theme Hospital
+StartupWMClass=HOSPITAL.EXE
+Categories=Game;StrategyGame;

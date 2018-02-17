@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Mission Editor Guide
+Exec=env WINEPREFIX="/home/silverbluep/.wine" /usr/bin/wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/silverbluep/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/GOG.com/Pharaoh\\ Gold/Documents/Mission\\ Editor\\ Guide.lnk
+Type=Application
+StartupNotify=true
+Path=/home/silverbluep/.wine/dosdevices/c:/GOG Games/Pharaoh Gold
+Icon=F8F9_Pharaoh - Mission Editor Guide.0

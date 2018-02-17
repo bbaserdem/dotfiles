@@ -1,0 +1,17 @@
+[Added Associations]
+application/pdf=zathura-pdf-poppler.desktop;
+video/x-msvideo=smplayer.desktop;
+image/jpeg=feh.desktop;
+application/msword=libreoffice-writer.desktop;
+text/html=qutebrowser.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
+image/gif=qutebrowser.desktop;
+text/plain=nvim.desktop;
+image/vnd.djvu+multipage=zathura-djvu.desktop;
+
+[Default Applications]
+application/octet-stream=zathura-pdf-poppler.desktop;
+application/pdf=zathura-pdf-poppler.desktop;
+text/plain=nvim.desktop;
+image/jpeg=feh.desktop;
+image/gif=qutebrowser.desktop;
