@@ -24,7 +24,7 @@ super + space
 
 # lock screen
 super + Escape
-    lock
+    lock.sh
 
 # make sxhkd reload its configuration files:
 super + shift + Escape
