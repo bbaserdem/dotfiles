@@ -10,6 +10,10 @@ super + Return
 super + p
     rofi-pass
 
+# emoji
+super + e
+    rofi-emoji.sh
+
 # Dropdown image 
 super + Up
     dropdown
