@@ -2,7 +2,7 @@
 
 # Script to change wallpapers, with different options for office and home
 
-if xrandr -q | grep 'DP-2 connected'
+if [[ $(hostname) == 'sbpworkstation' ]]
 then
     # At office
     WALLP_L=`find $HOME/Pictures/Wallpapers/Dual/ -name '*[L]*.jpg' -print | shuf -n 1`
