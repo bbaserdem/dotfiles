@@ -1,7 +1,6 @@
-#!/bin/bash
-ICON=$XDG_CONFIG_HOME/files/lock.png
+#!/bin/sh
 TMPBG=/tmp/screen.png
-scrot /tmp/screen.png
+scrot -z $TMPBG
 convert $TMPBG -scale 10% -scale 1000% $TMPBG
 # convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
 i3lock -f -i $TMPBG
