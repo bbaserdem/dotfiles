@@ -1,9 +1,0 @@
-[Unit]
-Description=Random wallpaper change on interval
-
-[Timer]
-OnUnitActiveSec=15m
-Unit=feh.service
-
-[Install]
-WantedBy=WM.target
