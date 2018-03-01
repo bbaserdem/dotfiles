@@ -16,11 +16,11 @@ case "$1" in
     *)
         if [[ $(hostname) == 'sbpworkstation' ]]
         then
-            polybar -c $LOC wtop &
-            polybar -c $LOC wbot &
+            nohup polybar -c $LOC wtop >/dev/null 2>&1 &
+            nohup polybar -c $LOC wbot >/dev/null 2>&1 &
         else
-            polybar -c $LOC top &
-            polybar -c $LOC bot &
+            nohup polybar -c $LOC top >/dev/null 2>&1 &
+            nohup polybar -c $LOC bot >/dev/null 2>&1 &
         fi
         ;;
 esac

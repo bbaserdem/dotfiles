@@ -6,6 +6,6 @@
         "menu": "flat",
         "automount": true,
         "notify": true,
-        "file_manager": "termite -e ranger"
+        "file_manager": "nemo"
     }
 }
