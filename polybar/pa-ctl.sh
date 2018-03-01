@@ -61,7 +61,7 @@ listen() {
     volume_print
 
     pactl subscribe | while read -r event; do
-        if echo "$event" | grep -q "#$sink"; then
+        if echo "$event" | grep -q -e "#${ANA_SINK}"; then
             volume_print
         fi
     done
