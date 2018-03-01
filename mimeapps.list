@@ -6,12 +6,14 @@ application/msword=libreoffice-writer.desktop;
 text/html=qutebrowser.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
 image/gif=qutebrowser.desktop;
-text/plain=nvim.desktop;
+text/plain=mousepad.desktop;nvim.desktop;
 image/vnd.djvu+multipage=zathura-djvu.desktop;
+image/png=feh.desktop;
+text/x-tex=mousepad.desktop;
 
 [Default Applications]
 application/octet-stream=zathura-pdf-poppler.desktop;
 application/pdf=zathura-pdf-poppler.desktop;
-text/plain=nvim.desktop;
+text/plain=mousepad.desktop
 image/jpeg=feh.desktop;
 image/gif=qutebrowser.desktop;
