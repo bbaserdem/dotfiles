@@ -1,6 +1,6 @@
 [global]
     font = Iosevka 12
-    allow_markup = yes
+    markup = yes
     format = "<b>%a%p:%s</b>\n%b "
     sort = yes
     indicate_hidden = yes
@@ -22,12 +22,9 @@
     startup_notification = false
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/firefox -new-tab
-    icon_folders = /usr/share/icons/elementary/status/16/:/usr/share/icons/elementary/devices/16/
-    icon_folders = /usr/share/icons/elementary/status/16/:/usr/share/icons/elementary/devices/16/
-
-[frame]
-    width = 0
-    color = "#000000"
+    icon_path = /usr/share/icons/elementary/status/16/:/usr/share/icons/elementary/devices/16/
+    frame_width = 0
+    frame_color = "#000000"
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
