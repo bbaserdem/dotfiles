@@ -10,6 +10,9 @@ for_window [class="^.*"] border pixel 0
 gaps inner 20
 gaps outer 0
 
+# Disable mouse moving around
+mouse_warping none
+
 #-------------#
 #-----BAR-----#
 #-------------#
@@ -26,26 +29,46 @@ gaps outer 0
 #-----APP LOCATIONS-----#
 #-----------------------#
 # 1: Internet
+workspace 1 output DVI-I-1
+workspace 1 output eDP-1
 assign [class="qutebrowser"]    1
 assign [class="Deluge"]         1
 # 2: Work
+workspace 2 output DVI-I-1
+workspace 2 output eDP-1
 assign [class="MATLAB"]         2
 assign [class="ParaView"]       2
 # 3: Reading
+workspace 3 output DVI-I-1
+workspace 3 output eDP-1
 assign [class="Zathura"]        3
 # 4: Coding
+workspace 4 output DVI-I-1
+workspace 4 output eDP-1
 # 5: Writing
+workspace 5 output DVI-I-1
+workspace 5 output eDP-1
 assign [instance="libreoffice"] 5
 # 6: Videos 
+workspace 6 output DVI-I-1
+workspace 6 output eDP-1
 assign [class="smplayer"]       6
 assign [class="mpv"]            6
 # 7: Mail
+workspace 7 output DVI-I-1
+workspace 7 output eDP-1
 # 8: Music
+workspace 8 output DVI-I-1
+workspace 8 output eDP-1
 assign [class="cantata"]        8
 # 9: Games
+workspace 9 output DVI-I-1
+workspace 9 output eDP-1
 assign [class="Steam"]          9
 assign [class="StepMania"]      9
 # 10: Presentation
+workspace 10 output DVI-I-1
+workspace 10 output DP-2
 
 #-----------------#
 #-----STARTUP-----#
