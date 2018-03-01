@@ -7,7 +7,7 @@ font pango:monospace 10
 
 # Gaps
 for_window [class="^.*"] border pixel 0
-gaps inner 20
+gaps inner 24
 gaps outer 0
 
 # Disable mouse moving around

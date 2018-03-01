@@ -43,7 +43,7 @@
     yoffset: 0px;
 }
 #window {
-    height: 952px;
+    height: 968px;
     width: 30em;
     location: west;
     anchor:   west;

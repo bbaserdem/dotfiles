@@ -25,7 +25,7 @@ else
 fi
 
 bspc config border_width                2
-bspc config window_gap                  16
+bspc config window_gap                  24
 bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/ext_rule
 
 bspc config split_ratio                 0.5
