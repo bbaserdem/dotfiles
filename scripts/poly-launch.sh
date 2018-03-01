@@ -13,16 +13,6 @@ case "$1" in
     --quit)
         echo ""
         ;;
-    --i3)
-        if [[ $(hostname) == 'sbpworkstation' ]]
-        then
-            polybar -c $LOC wtop-i3 &
-            polybar -c $LOC wbot-i3 &
-        else
-            polybar -c $LOC top-i3 &
-            polybar -c $LOC bot-i3 &
-        fi
-        ;;
     *)
         if [[ $(hostname) == 'sbpworkstation' ]]
         then

@@ -2,7 +2,7 @@
 # Execute programs
 
 dunst &
-poly-launch.sh --i3 &
+poly-launch.sh &
 udiskie &
 redshift &
 mpd &

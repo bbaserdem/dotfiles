@@ -26,7 +26,7 @@ configuration {
     lines: 10;
     show-icons: true;
     drun-icon-theme: "Papirus-Dark";
-    xoffset: 16;
+    xoffset: 24;
     yoffset: 0;
     eh: 1;
 
