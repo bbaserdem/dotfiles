@@ -1,9 +1,0 @@
-[Unit]
-Description={Libre,Last}.fm updater for MPD
-After=mpd.service
-
-[Service]
-ExecStart=/bin/bash -c '/usr/bin/mpdscribble --no-daemon --conf $HOME/.config/mpd/mpdscribble.conf'
-
-[Install]
-WantedBy=default.target

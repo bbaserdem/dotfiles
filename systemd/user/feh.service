@@ -1,9 +1,0 @@
-[Unit]
-Description=Random wallpaper set with feh
-
-[Service]
-Type=oneshot
-ExecStart=/home/silverbluep/.config/scripts/wallpaper
-
-[Install]
-WantedBy=WM.target
