@@ -10,6 +10,8 @@ text/plain=mousepad.desktop;nvim.desktop;
 image/vnd.djvu+multipage=zathura-djvu.desktop;
 image/png=feh.desktop;
 text/x-tex=mousepad.desktop;
+inode/directory=exo-file-manager.desktop
+x-scheme-handler/trash=exo-file-manager.desktop
 
 [Default Applications]
 application/octet-stream=zathura-pdf-poppler.desktop;
@@ -17,3 +19,4 @@ application/pdf=zathura-pdf-poppler.desktop;
 text/plain=mousepad.desktop
 image/jpeg=feh.desktop;
 image/gif=qutebrowser.desktop;
+
