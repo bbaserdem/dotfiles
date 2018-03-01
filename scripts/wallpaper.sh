@@ -1,7 +1,5 @@
-#!/bin/bash
-
+#!/bin/sh
 # Script to change wallpapers, with different options for office and home
-
 if [[ $(hostname) == 'sbpworkstation' ]]
 then
     # At office

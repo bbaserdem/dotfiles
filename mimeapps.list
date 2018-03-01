@@ -8,6 +8,7 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoff
 image/gif=qutebrowser.desktop;
 text/plain=nvim.desktop;
 image/vnd.djvu+multipage=zathura-djvu.desktop;
+audio/mpeg=mpv.desktop;
 
 [Default Applications]
 application/octet-stream=zathura-pdf-poppler.desktop;
