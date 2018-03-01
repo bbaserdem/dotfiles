@@ -46,8 +46,8 @@ then
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     # Workstation
-    xrandr --output DP-2 --mode 1920x1080 --primary
-    xrandr --output DVI-I-1 --mode 1920x1080 --right-of DP-2
+    xrandr --output DVI-I-1 --mode 1920x1080 --primary
+    xrandr --output DP-2 --mode 1920x1080 --left-of DVI-I-1
 fi
 
 # Start i3

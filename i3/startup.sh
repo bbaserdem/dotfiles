@@ -16,7 +16,5 @@ if [[ $(hostname) == 'sbpworkstation' ]]
 then
     # Start dropbox
     dropbox &
-    # Put presentation workspace on the left monitor
-    i3-msg workspace 10 output DVI-I-1
 fi
 
