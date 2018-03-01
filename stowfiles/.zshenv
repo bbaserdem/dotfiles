@@ -26,6 +26,7 @@ export EDITOR=nvim
 export BROWSER=qutebrowser
 # Set terminal
 export TERM=xterm-termite
+export TERMINAL=termite
 # Notmuch
 export NOTMUCH_CONFIG=$XDG_CONFIG_HOME/neomutt/notmuch-config
 # OpenFOAM

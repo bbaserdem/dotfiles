@@ -7,18 +7,63 @@ font pango:monospace 10
 
 # Gaps
 for_window [class="^.*"] border pixel 0
-gaps inner 16
+gaps inner 20
 gaps outer 0
 
-#--------------#
-#-----APPS-----#
-#--------------#
+#-------------#
+#-----BAR-----#
+#-------------#
 
-exec syncthing-gtk --minimized
-exec udiskie
-exec redshift
-exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/pblaunch.sh
+#bar {
+#    id                  bottom
+#    mode                dock
+#    tray_padding        4
+#    status_command      i3status
+#    font                pango:Iosevka 10
+#}
 
+#-----------------------#
+#-----APP LOCATIONS-----#
+#-----------------------#
+# 1: Internet
+assign [class="qutebrowser"]    1
+assign [class="Deluge"]         1
+# 2: Work
+assign [class="MATLAB"]         2
+assign [class="ParaView"]       2
+# 3: Reading
+assign [class="Zathura"]        3
+# 4: Coding
+# 5: Writing
+assign [instance="libreoffice"] 5
+# 6: Videos 
+assign [class="smplayer"]       6
+assign [class="mpv"]            6
+# 7: Mail
+# 8: Music
+assign [class="cantata"]        8
+# 9: Games
+assign [class="Steam"]          9
+assign [class="StepMania"]      9
+# 10: Presentation
+
+#-----------------#
+#-----STARTUP-----#
+#-----------------#
+
+# Set volume to 20
+exec pactl set-sink-volume 0 '20%'
+exec pactl set-sink-mute 0 0
+# Disable beeper
+exec xset -b
+# Screen saver settings
+# xset dpms 300 600 900
+# Set backlight
+exec xbacklight -set 90
+# Set wallpaper
+exec wallpaper.sh
+# Autostart programs
+exec $XDG_CONFIG_HOME/i3/startup.sh
 
 #------------------#
 #-----KEYBINDS-----#
@@ -27,81 +72,79 @@ exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/pblaunch.sh
 # Set modifier to super
 set $mod Mod4
 
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+# XF keys keybinds
+bindsym XF86AudioMute           exec pamixer --toggle-mute
+bindsym XF86AudioRaiseVolume    exec pamixer --increase 5
+bindsym XF86AudioLowerVolume    exec pamixer --decrease 5
+bindsym XF86AudioPlay           exec mpc toggle
+bindsym XF86AudioStop           exec mpc stop
+bindsym XF86AudioNext           exec mpc next
+bindsym XF86AudioPrev           exec playprev.sh
+bindsym XF86MonBrightnessUp     exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown   exec xbacklight -dec 10
+bindsym XF86HomePage            exec qutebrowser
+bindsym XF86Calculator          exec i3-sensible-terminal -e bpython
+bindsym --release Print         exec scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec termite
+# Launcher options
+bindsym $mod+Return             exec i3-sensible-terminal
+bindsym $mod+space              exec rofi -mode combi -show drun
+bindsym $mod+Down               exec wallpaper.sh
+bindsym $mod+p                  exec rofi-pass
+bindsym $mod+e                  exec rofi-emoji.sh
+bindsym $mod+Escape             exec lock.sh
 
 # kill focused window
-bindsym $mod+q kill
-
-# start rofi (a program launcher)
-bindsym $mod+space exec rofi -show drun
+bindsym $mod+q                  kill
+bindsym $mod+Mod1+Escape        reload
+bindsym $mod+Shift+Escape       restart
+bindsym $mod+Ctrl+Escape        exit
 
 # change focus
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+h focus left
+bindsym $mod+j                  focus down
+bindsym $mod+k                  focus up
+bindsym $mod+l                  focus right
+bindsym $mod+h                  focus left
 
 # move focused window
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-bindsym $mod+Shift+h move left
-
-# split in horizontal orientation
-bindsym $mod+s split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+a layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+g layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
+bindsym $mod+Shift+j            move down
+bindsym $mod+Shift+k            move up
+bindsym $mod+Shift+l            move right
+bindsym $mod+Shift+h            move left
 # change focus between tiling / floating windows
-bindsym $mod+. focus mode_toggle
-
+bindsym $mod+period             focus mode_toggle
 # focus the parent container
-bindsym $mod+p focus parent
-
+bindsym $mod+Shift+comma        focus parent
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+period       focus child
+
+# Split directions
+bindsym $mod+s                  split h
+bindsym $mod+i                  split v
+
+# Screen mode
+bindsym $mod+m                  fullscreen toggle
+bindsym $mod+f                  floating toggle
+bindsym $mod+Tab                layout tabbed
+bindsym $mod+d                  layout stacking
+bindsym $mod+t                  layout toggle split
 
 # switch to workspace
-bindsym $mod+Left workspace prev
-bindsym $mod+Right workspace next
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+Left               workspace prev
+bindsym $mod+Right              workspace next
+bindsym $mod+1                  workspace 1
+bindsym $mod+2                  workspace 2
+bindsym $mod+3                  workspace 3
+bindsym $mod+4                  workspace 4
+bindsym $mod+5                  workspace 5
+bindsym $mod+6                  workspace 6
+bindsym $mod+7                  workspace 7
+bindsym $mod+8                  workspace 8
+bindsym $mod+9                  workspace 9
+bindsym $mod+0                  workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+Left move container to workspace prev
@@ -117,14 +160,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# reload the configuration file
-bindsym $mod+Alt+Escape reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+Escape restart
-
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "" {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -141,6 +178,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode ""
 
 

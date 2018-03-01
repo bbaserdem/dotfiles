@@ -17,6 +17,7 @@ css_lght = str(config.configdir) + '/css/light.css'
 config.bind( '<Ctrl-d>', f'config-cycle --temp content.user_stylesheets {css_dark} {css_lght} "" ;; reload')
 
 c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"
+c.content.host_blocking.enabled = True
 
 c.content.media_capture = True
 c.spellcheck.languages = [ "en-US" ]
