@@ -1,0 +1,14 @@
+[mpdscribble]
+verbose = 2
+host = localhost
+port = 6600
+log = /home/silverbluep/.cache/mpdscribble.log
+verbose = 2
+proxy = none
+
+[last.fm]
+# Do `echo -n "$(pass LastFM | head -n1)" | md5sum | cut -f 1 -d " "` to get hash
+url = http://post.audioscrobbler.com/
+username = SlwaBluPhnx
+password = <enter hash here>
+journal = /var/cache/mpdscribble/lastfm.journal
