@@ -1,3 +1,5 @@
+; vim: set filetype=dosini :
+
 ;====================;
 ;                    ;
 ;   Polybar Config   ;
@@ -86,7 +88,7 @@ module-margin-right = 1
 font-0 = "iosevka:pixelsize=10;1"
 font-1 = "fontawesome:size=10;1"
 modules-left = wlan eth pkg vpn
-modules-center = volume mpd
+modules-center = analog mpd
 modules-right = xkeyboard uptime kernel bbswitch
 fixed-center = false
 tray-position = right
@@ -114,6 +116,7 @@ content =                   ""
 content-foreground =        ${colors.cyan}
 click-left =                rofi -mode combi -show drun
 click-right =               caja
+format-underline =          ${colors.cyan}
 
 [module/bspwm]
 type =                      internal/bspwm
@@ -185,9 +188,12 @@ label-urgent-foreground =       ${colors.orng}
 label-urgent-underline =        ${colors.orng}
 
 [module/xwindow]
-type = internal/xwindow
-label = %title%
-label-maxlen = 30
+type =                          internal/xwindow
+format-underline =              ${colors.cyan}
+format-prefix =                 " "
+format-prefix-foreground =      ${colors.cyan}
+label =                         %title%
+label-maxlen =                  30
 
 ;======;
 ; Time ;
@@ -201,46 +207,46 @@ label-maxlen = 30
 
 [module/redshift]
 type =                      custom/script
+format-underline =          ${colors.viol}
 exec =                      $XDG_CONFIG_HOME/polybar/rsinfo.sh
 interval =                  5
 format =                    <label>
 click-left =                $XDG_CONFIG_HOME/polybar/rsinfo.sh --toggle
-format-underline =          ${colors.viol}
 
-[module/date]
+[module/timekeep]
 type =                      internal/date
+format-underline =          ${colors.viol}
+format-prefix-foreground =  ${colors.viol}
 interval =                  60
 date =                      " %a, %d %b"
 date-alt =                  " %d-%m-%y"
 time =                      " %H:%M:%S"
-format-prefix-foreground =  ${colors.frgr}
-format-underline =          ${colors.viol}
-label =                     ${env:PB_DATE}
+time-alt =                  " %H:%M:%S"
+
+[module/date]
+inherit =                   module/timekeep
+format-prefix =             " "
+label =                     %date%
 
 [module/time]
-type =                      internal/date
-interval =                  1
-date =                      " %d-%m-%Y"
-time =                      " %H:%M:%S"
-time-alt =                  " %H:%M:%S"
-format-prefix-foreground =  ${colors.frgr}
-format-underline =          ${colors.viol}
-label =                     ${env:PB_TIME}
+inherit =                   module/timekeep
+format-prefix =             " "
+label =                     %time%
 
 [module/weather]
 type =                      custom/script
+format-underline =          ${colors.viol}
 interval =                  300
 format =                    <label>
-format-underline =          ${colors.viol}
 exec =                      $XDG_CONFIG_HOME/polybar/weather.sh
 
 [module/offlineimap]
 type =                      custom/script
+format-underline =          ${colors.viol}
 exec =                      $XDG_CONFIG_HOME/polybar/oi_check.sh
 interval =                  5
 format =                    <label>
 click-left =                $XDG_CONFIG_HOME/polybar/oi_check.sh --toggle
-format-underline =          ${colors.viol}
 
 ;==========;
 ; Hardware ;
@@ -256,17 +262,17 @@ format-underline =          ${colors.viol}
 ; use indg
 
 [module/backlight]
-type =                      internal/backlight
-card =                      intel_backlight
+type =                      internal/xbacklight
+format-underline =          ${colors.indg}
 format =                    ${env:PB_BCKL}
 label =                     %percentage%%
-;enable-scroll =             true
+enable-scroll =             true
 
 [module/bluetooth]
 type =                      custom/script
+format-underline =          ${colors.indg}
 exec =                      $XDG_CONFIG_HOME/polybar/btooth.sh
 interval =                  5
-format-underline =          ${colors.indg}
 format =                    <label>
 label =                     "%output%"
 click-left =                exec blueberry &
@@ -274,21 +280,21 @@ click-right =               exec bluetooth-sendto &
 
 [module/fan]
 type =                      custom/script
-exec =                      $XDG_CONFIG_HOME/polybar/fanspeed.sh
-interval =                  5
+format-underline =          ${colors.indg}
 format-prefix =             " "
 format-prefix-foreground =  ${colors.indg}
+exec =                      $XDG_CONFIG_HOME/polybar/fanspeed.sh
+interval =                  5
 format =                    <label>
-format-underline =          ${colors.indg}
 
 [module/temperature]
 type =                      custom/script
-exec =                      $XDG_CONFIG_HOME/polybar/tempcore.sh
-interval =                  3
+format-underline =          ${colors.indg}
 format-prefix =             " "
 format-prefix-foreground =  ${colors.indg}
+exec =                      $XDG_CONFIG_HOME/polybar/tempcore.sh
+interval =                  3
 format =                    <label>
-format-underline =          ${colors.indg}
 
 [module/cpu]
 type =                      internal/cpu
@@ -406,52 +412,54 @@ menu-5-1-foreground =           ${colors.indg}
 ;-openconnect
 ; use gren
 
-[module/wlan]
+[module/internet]
 type =                                  internal/network
-interface =                             wlp4s0
 interval =                              3.0
-format-connected-prefix =               " "
 format-connected-prefix-foreground =    ${colors.gren}
+format-connected-overline =             ${colors.gren}
 format-connected =                      %{A:networkmanager_dmenu&:}<label-connected>%{A}
-label-connected =                       ${env:PB_WIFI}
-format-connected-underline =            ${colors.gren}
-format-disconnected-prefix =            " "
 format-disconnected-prefix-foreground = ${colors.gren}
+format-disconnected-overline =          ${colors.gren}
 format-disconnected =                   %{A:networkmanager_dmenu&:}<label-disconnected>%{A}
-label-disconnected =                    ${env:PB_NOFI}
-format-disconnected-underline =         ${colors.gren}
+label-disconnected-foreground =         ${colors.mute}
+
+[module/wifi]
+inherit =                               module/internet
+format-connected-prefix =               " "
+label-connected =                       ${env:PB_WIFI}
+format-disconnected-prefix =            " "
+label-disconnected =                    
+;label-disconnected =                    ${env:PB_NOFI}
+
+[module/ethernet]
+inherit =                               module/internet
+format-connected-prefix =               " "
+label-connected =                       ${env:PB_ETHC}
+format-disconnected-prefix =            ""
+label-disconnected =                    ""
+
+[module/tethering]
+inherit =                               module/internet
+format-connected-prefix =               " "
+label-connected =                       %local_ip%
+format-disconnected-prefix =            ""
+label-disconnected =                    ""
+
+[module/wlan]
+inherit =                               module/wifi
+interface =                             wlp4s0
 
 [module/eth]
-type =                              internal/network
-interface =                         enp5s0
-interval =                          3.0
-format-connected =                  %{A:networkmanager_dmenu&:}<label-connected>%{A}
-format-connected-underline =        ${colors.gren}
-label-connected =                   ${env:PB_ETHC}
-format-disconnected =               
-format-connected-prefix =           " "
-format-connected-prefix-foreground= ${colors.gren}
+inherit =                               module/ethernet
+interface =                             enp5s0
 
 [module/ethw]
-type =                              internal/network
-interface =                         enp35s0
-interval =                          3.0
-format-connected =                  %{A:networkmanager_dmenu&:}<label-connected>%{A}
-format-connected-underline =        ${colors.gren}
-label-connected =                   ${env:PB_ETHC}
-format-disconnected =               
-format-connected-prefix =           " "
-format-connected-prefix-foreground= ${colors.gren}
+inherit =                               module/ethernet
+interface =                             enp35s0
 
 [module/usb-tether]
-type =                              internal/network
-interface =                         
-interval =                          3.0
-format-connected-underline =        ${colors.gren}
-format-connected-prefix =           " "
-format-connected-prefix-foreground= ${colors.gren}
-label-connected =                   %{A:networkmanager_dmenu&:}%local_ip%%{A}
-format-disconnected =
+inherit =                               module/tethering
+interface =                             ""
 
 [module/pkg]
 type =                              custom/script
@@ -461,7 +469,7 @@ format =                            <label>
 label =                             "%output%"
 format-prefix =                     " "
 format-prefix-foreground =          ${colors.gren}
-format-underline =                  ${colors.gren}
+format-overline =                  ${colors.gren}
 
 [module/vpn]
 type =                              custom/script
@@ -470,7 +478,7 @@ interval =                          5
 format =                            <label>
 label =                             "%output%"
 format-prefix =                     " "
-format-underline =                  ${colors.gren}
+format-overline =                  ${colors.gren}
 format-prefix-foreground =          ${colors.gren}
 
 ;=======;
@@ -480,15 +488,36 @@ format-prefix-foreground =          ${colors.gren}
 ;-mpd
 ; use crms
 
-[module/volume]
-type =                                  custom/script
-exec =                                  $XDG_CONFIG_HOME/polybar/pa-ctl.sh
-tail =                                  true
+[module/pulseaudio]
+type =                                  internal/pulseaudio
+format-overline =                       ${colors.crms}
 click-right =                           exec pavucontrol &
-format-underline =                      ${colors.crms}
+format-volume =                         ${env:PB_VOLM}
+format-muted =                          ${env:PB_NOVL}
+label-volume =                          %percentage%%
+label-muted =                           --
+icon-headphones =                       
+icon-speaker =                          
+icon-hdmi =                             
+icon-bluetooth =                        
+ramp-volume-0 =                         
+ramp-volume-1 =                         
+
+[module/analog]
+inherit =                   module/pulseaudio
+sink =                      alsa_output.pci-0000_00_1b.0.analog-stereo
+
+[module/hdmi]
+inherit =                   module/pulseaudio
+sink =                      alsa_output.pci-0000_00_03.0.hdmi-stereo-extra1
+
+[module/bluez]
+inherit =                   module/pulseaudio
+sink =                      bluez_sink.C0_28_8D_47_C0_A0.a2dp_sink
 
 [module/mpd]
 type =                                  internal/mpd
+format-overline =                       ${colors.crms}
 format-online =                         ${env:PB_MPDA}
 format-offline =                        ${env:PB_MPDI}
 icon-play =                             
@@ -523,46 +552,46 @@ toggle-off-foreground =                 ${colors.mute}
 
 [module/xkeyboard]
 type =                                  internal/xkeyboard
+format-prefix-overline =                ${colors.orng}
+label-indicator-overline =              ${colors.orng}
+label-layout-overline =                 ${colors.orng}
 blacklist-0 =                           scroll lock
 format =                                <label-layout> <label-indicator>
 format-spacing =                        0
 format-prefix =                         " "
 format-prefix-foreground =              ${colors.orng}
-format-prefix-underline =               ${colors.orng}
 label-layout =                          %name%
-label-layout-underline =                ${colors.orng}
 label-indicator =                       %name%
-label-indicator-underline =             ${colors.orng}
 
 [module/uptime]
 type =                                  custom/script
+format-overline =                       ${colors.orng}
 exec =                                  $XDG_CONFIG_HOME/polybar/uptime.sh
 interval =                              30
 format =                                <label>
 label =                                 "%output%"
 format-prefix =                         " "
 format-prefix-foreground =              ${colors.orng}
-format-underline =                      ${colors.orng}
 
 [module/kernel]
 type =                                  custom/script
+format-overline =                       ${colors.orng}
 exec =                                  uname -r
 interval =                              1024
 format =                                <label>
 label =                                 "%output%"
 format-prefix =                         " "
 format-prefix-foreground =              ${colors.orng}
-format-underline =                      ${colors.orng}
 
 [module/bbswitch]
 type =                                  custom/script
+format-overline =                       ${colors.orng}
 exec =                                  $XDG_CONFIG_HOME/polybar/bbswitch.sh
 interval =                              5
 format =                                <label>
 label =                                 "%output%"
 format-prefix =                         " "
 format-prefix-foreground =              ${colors.orng}
-format-underline =                      ${colors.orng}
 click-left =                            "optirun -b none nvidia-settings -c :8"
 
 ;=======;
