@@ -64,8 +64,7 @@ tray-transparent = false
 
 [bar/wtop]
 inherit = bar/top
-monitor = ${env:MONITOR:DVI-I-1}
-monitor-fallback = ${env:MONITOR:DP-2}
+monitor = ${env:MONITOR:DP-3}
 modules-right = fan temperature cpu memory powermenu
 
 [bar/bot]
@@ -96,8 +95,7 @@ tray-transparent = false
 
 [bar/wbot]
 inherit = bar/bot
-monitor = ${env:MONITOR:DVI-I-1}
-monitor-fallback = ${env:MONITOR:DP-2}
+monitor = ${env:MONITOR:DP-3}
 modules-left = ethw pkg vpn
 modules-right = xkeyboard uptime kernel
 
