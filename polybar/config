@@ -97,6 +97,7 @@ tray-transparent = false
 inherit = bar/bot
 monitor = ${env:MONITOR:DP-3}
 modules-left = ethw pkg vpn
+modules-center = analog-work mpd
 modules-right = xkeyboard uptime kernel
 
 ;========;
@@ -110,11 +111,11 @@ modules-right = xkeyboard uptime kernel
 
 [module/launch]
 type =                      custom/text
+content-underline =          ${colors.cyan}
 content =                   "" 
 content-foreground =        ${colors.cyan}
 click-left =                rofi -mode combi -show drun
-click-right =               caja
-format-underline =          ${colors.cyan}
+click-right =               nemo
 
 [module/bspwm]
 type =                      internal/bspwm
@@ -188,7 +189,7 @@ label-urgent-underline =        ${colors.orng}
 [module/xwindow]
 type =                          internal/xwindow
 format-underline =              ${colors.cyan}
-format-prefix =                 " "
+format-prefix =                 " "
 format-prefix-foreground =      ${colors.cyan}
 label =                         %title%
 label-maxlen =                  30
@@ -260,10 +261,14 @@ click-left =                $XDG_CONFIG_HOME/polybar/oi_check.sh --toggle
 ; use indg
 
 [module/backlight]
+; doesn't work
 type =                      internal/xbacklight
 format-underline =          ${colors.indg}
-format =                    ${env:PB_BCKL}
-label =                     %percentage%%
+format-prefix =             " "
+format-prefix-foreground =  ${colors.indg}
+output =                    eDP-1
+format =                    <label>
+label =                     bla %percentage%%
 enable-scroll =             true
 
 [module/bluetooth]
@@ -505,6 +510,10 @@ ramp-volume-1 =                         
 inherit =                   module/pulseaudio
 sink =                      alsa_output.pci-0000_00_1b.0.analog-stereo
 
+[module/analog-work]
+inherit =                   module/pulseaudio
+sink =                      alsa_output.pci-0000_24_00.0.analog-stereo
+
 [module/hdmi]
 inherit =                   module/pulseaudio
 sink =                      alsa_output.pci-0000_00_03.0.hdmi-stereo-extra1
@@ -515,7 +524,8 @@ sink =                      bluez_sink.C0_28_8D_47_C0_A0.a2dp_sink
 
 [module/mpd]
 type =                                  internal/mpd
-format-overline =                       ${colors.crms}
+format-online-overline =                ${colors.crms}
+format-offline-overline =               ${colors.crms}
 format-online =                         ${env:PB_MPDA}
 format-offline =                        ${env:PB_MPDI}
 icon-play =                             
@@ -529,11 +539,12 @@ icon-random =                           
 icon-repeat =                           
 icon-repeatone =                        
 bar-progress-width =                    10
-bar-progress-indicator =                
 bar-progress-fill =                     
+bar-progress-indicator =                
 bar-progress-empty =                    
-bar-progress-foreground-0 =             ${colors.crms}
+bar-progress-fill-foreground =          ${colors.crms}
 bar-progress-indicator-foreground =     ${colors.frgr}
+bar-progress-empty-foreground =         ${colors.mute}
 label-song-maxlen =                     30
 label-song =                            %title%
 toggle-on-foreground =                  ${colors.crms}
