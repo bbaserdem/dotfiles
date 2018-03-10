@@ -36,6 +36,3 @@ export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
 # Taskwarrior
 export TASKRC=$XDG_CONFIG_HOME/taskwarrior/taskrc
 export TASKDATA=$XDG_CONFIG_HOME/taskwarrior/
-
-# Polybar stuff
-source $XDG_CONFIG_HOME/polybar/env
