@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	termite
+	$TERM
 
 # password prompt
 super + p
@@ -14,13 +14,11 @@ super + p
 super + e
     rofi-emoji.sh
 
-# Dropdown image 
-super + Up
-    dropdown
+# super + Up
 
 # Change wallpapers
 super + Down
-    systemctl --user start feh.service
+    wallpaper.sh
 
 # launch rofi
 super + space
@@ -38,19 +36,19 @@ super + shift + Escape
 XF86Audio{Play,Stop,Next}
     mpc {toggle,stop,next}
 XF86AudioPrev
-    playprev
+    playprev.sh
 
 # Sound controls
 XF86AudioRaiseVolume
-    if [[ $(pamixer --get-volume) -le 100 ]]; then pamixer --allow-boost --increase 5; else; fi
+    pamixer --increase 5
 XF86AudioLowerVolume
-    pamixer --allow-boost --decrease 5
+    pamixer --decrease 5
 XF86AudioMute
     pamixer --toggle-mute
 
 # launch firefox
 XF86HomePage
-    firefox
+    $BROWSER
 
 # Brightness setting for laptop
 XF86MonBrightnessUp
@@ -60,7 +58,7 @@ XF86MonBrightnessDown
 
 # Open python terminal
 XF86Calculator
-    urxvt -e python
+    $TERM -e python
 
 #---------------#
 #-BSPWM HOTKEYS-#

@@ -1,3 +1,5 @@
+# vim: ft=dosini cms=#%s
+
 [options]
 scroll_on_output = false
 scroll_on_keystroke = true
@@ -35,7 +37,8 @@ filter_unmatched_urls = true
 foreground      = #d0d0d0
 foreground_bold = #e0e0e0
 cursor          = #e0e0e0
-background      = #151515
+# background      = #151515
+background      = rgba( 21, 21, 21, .70 )
 # 16 color space
 # Black, Gray, Silver, White
 color0  = #151515
@@ -79,4 +82,3 @@ font = Monospace 14
 #border_width = 0.5
 #roundness = 2.0
 
-# vim: ft=dosini cms=#%s

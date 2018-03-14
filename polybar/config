@@ -86,7 +86,7 @@ module-margin-left = 1
 module-margin-right = 1
 font-0 = "iosevka:pixelsize=10;1"
 font-1 = "fontawesome:size=10;1"
-modules-left = wlan eth pkg vpn
+modules-left = tethering ethernet wifi pkg vpn
 modules-center = analog mpd
 modules-right = xkeyboard uptime kernel bbswitch
 fixed-center = false
@@ -432,37 +432,28 @@ format-connected-prefix =               " "
 label-connected =                       ${env:PB_WIFI}
 format-disconnected-prefix =            " "
 label-disconnected =                    
+interface =                             wifi
 ;label-disconnected =                    ${env:PB_NOFI}
 
 [module/ethernet]
 inherit =                               module/internet
 format-connected-prefix =               " "
 label-connected =                       ${env:PB_ETHC}
-format-disconnected-prefix =            ""
-label-disconnected =                    ""
+;format-disconnected-prefix =            
+;label-disconnected =                    
+interface =                             ethernet
 
 [module/tethering]
 inherit =                               module/internet
 format-connected-prefix =               " "
 label-connected =                       %local_ip%
-format-disconnected-prefix =            ""
-label-disconnected =                    ""
-
-[module/wlan]
-inherit =                               module/wifi
-interface =                             wlp4s0
-
-[module/eth]
-inherit =                               module/ethernet
-interface =                             enp5s0
+;format-disconnected-prefix =            
+;label-disconnected =                    
+interface =                             usbtether
 
 [module/ethw]
 inherit =                               module/ethernet
 interface =                             enp35s0
-
-[module/usb-tether]
-inherit =                               module/tethering
-interface =                             ""
 
 [module/pkg]
 type =                              custom/script

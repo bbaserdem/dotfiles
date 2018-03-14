@@ -36,3 +36,5 @@ export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
 # Taskwarrior
 export TASKRC=$XDG_CONFIG_HOME/taskwarrior/taskrc
 export TASKDATA=$XDG_CONFIG_HOME/taskwarrior/
+# Rofi-pass
+export ROFI_PASS_CONFIG=$XDG_CONFIG_HOME/rofi/rofi-pass.conf

@@ -1,10 +1,6 @@
 # User configuration
 HIST_STAMPS="dd/mm/yyyy"
 
-# To make Base16 colors work in vim use Base16-shell
-BASE16_SHELL=$XDG_CONFIG_HOME/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
 # Powerlevel9k settings
 export POWERLEVEL9K_INSTALLATION_PATH=/usr/lib/zim/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme
 export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context rbenv time vcs)
