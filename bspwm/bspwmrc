@@ -8,15 +8,15 @@ systemctl --user start WM.target &
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     # Laptop
-    bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
-    bspc monitor HDMI-2 -r
+    bspc monitor $MON_HOME_0 -d I II III IV V VI VII VIII IX X
+    bspc monitor $MON_HOME_1 -r
     bspc config merge_overlapping_monitors  true
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     # Workstation
     dropbox &
-    bspc monitor DP-3 -d 1 2 3 4 5 6 7 8 9
-    bspc monitor DP-2 -d 0
+    bspc monitor $MON_WORK_0 -d 1 2 3 4 5 6 7 8 9
+    bspc monitor $MON_WORK_1 -d 0
 else
     bspc monitor -d I II III IV V VI VII VIII IX X
 fi

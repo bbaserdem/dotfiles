@@ -18,6 +18,13 @@ export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 export LD_PRELOAD=/usr/lib/libstdc++.so
 export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 
+# Monitors
+export MON_WORK_0="DP-2"
+export MON_WORK_1="DVI-I-0"
+export MON_HOME_0="eDP-1"
+export MON_HOME_1="HDMI-2"
+
+
 # QT5 theme
 export QT_STYLE_OVERRIDE="gtk2"
 # Set neovim as editor
