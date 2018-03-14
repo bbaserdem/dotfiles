@@ -2,10 +2,7 @@
 
 # Startup programs
 sxhkd &
-syncthing-gtk --minimized &
-udiskie &
-redshift &
-polybarLaunch &
+startup.sh &
 
 systemctl --user start WM.target &
 if [[ $(hostname) == 'sbplaptop' ]]
@@ -40,11 +37,37 @@ bspc config honor_size_hints            true
 bspc config initial_polarity            second_child
 
 # Fixing Windows
-bspc rule -a Pinentry       state=floating
-bspc rule -a Zathura        state=tiled
-bspc rule -a libreoffice    state=tiled
-bspc rule -a Steam          state=tiled         follow=no
+bspc rule -a Pinentry               state=floating
+bspc rule -a Steam                  state=tiled     follow=no
 
+# Move to places
+# Desktop 1: Internet
+bspc rule -a qutebrowser            -o desktop=^1
+bspc rule -a Deluge                 -o desktop=^1
+bspc rule -a Firefox                -o desktop=^1
+# Desktop 2: Work
+bspc rule -a MATLAB                 -o desktop=^2
+bspc rule -a ParaView               -o desktop=^2
+# Desktop 3: Reading
+bspc rule -a Zathura                -o desktop=^3 state=tiled
+# Desktop 4: Coding
+bspc rule -a Termite                -o desktop=^4
+# Desktop 5: Art
+bspc rule -a Gimp                   -o desktop=^5
+bspc rule -a libreoffice-writer     -o desktop=^5 state=tiled
+# Desktop 6: Video
+bspc rule -a smplayer               -o desktop=^6
+bspc rule -a mpv                    -o desktop=^6
+# Desktop 7: Mail
+bspc rule -a Thunderbird            -o desktop=^7
+# Desktop 8: Music
+bspc rule -a Cantata                -o desktop=^8
+# Desktop 9: Game
+bspc rule -a Steam                  -o desktop=^9 state=tiled
+bspc rule -a Stepmania              -o desktop=^9
+# Desktop 0: Presentation
+bspc rule -a "Virtualbox Machine"   -o desktop=^0 state=tiled
+bspc rule -a rdesktop               -o desktop=^0 state=floating
 # Java fix
 export _JAVA_AWT_WM_NONREPARENTING=1
 wmname LG3D

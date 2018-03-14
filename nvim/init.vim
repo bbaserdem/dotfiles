@@ -30,13 +30,16 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'daeyun/vim-matlab'
 " NERDtree file browser
 Plugin 'scrooloose/nerdtree'
+" Vim live preview
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 " After all plugins...
 call vundle#end()
 filetype plugin indent on
+filetype plugin on
 
 """"""" Colorscheme """""""
 let base16colorspace=256
-colorscheme base16-solarized-dark
+colorscheme base16-default-dark
 
 """"""" NERDTree """""""
 map <C-r> :NERDTreeToggle<CR>
@@ -73,6 +76,9 @@ let python_highlight_all = 1
 let g:matlab_server_launcher = 'vim'
 let g:matlab_server_split = 'vertical'
 
+""""""" LaTeX Stuff """""""
+let g:LatexBox_latexmk_preview_continuously = 'bla'
+
 """"""" Keybindings """""""
 " Set up leaders
 let mapleader=","
@@ -83,9 +89,17 @@ vnoremap <C-x> "+x
 vnoremap <C-c> "+y
 noremap <C-v> "+p
 
+" Navigate splits easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+set splitbelow
+set splitright
+
 " Neomake and other build commands (ctrl-b)
 nnoremap <C-b> :w<cr>:Neomake<cr>
-
 autocmd BufNewFile,BufRead *.tex,*.bib noremap <buffer> <C-b> :w<cr>:new<bar>r !make<cr>:setlocal buftype=nofile<cr>:setlocal bufhidden=hide<cr>:setlocal noswapfile<cr>
 autocmd BufNewFile,BufRead *.tex,*.bib imap <buffer> <C-b> <Esc><C-b>
 
+" disables opaque background                                                

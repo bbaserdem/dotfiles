@@ -77,20 +77,7 @@ assign [class="VirtualBox Machine"] 10
 #-----------------#
 #-----STARTUP-----#
 #-----------------#
-
-# Set volume to 20
-exec pactl set-sink-volume 0 '20%'
-exec pactl set-sink-mute 0 0
-# Disable beeper
-exec xset -b
-# Screen saver settings
-# xset dpms 300 600 900
-# Set backlight
-exec xbacklight -set 90
-# Set wallpaper
-exec wallpaper.sh
-# Autostart programs
-exec $XDG_CONFIG_HOME/i3/startup.sh
+exec --no-startup-id startup.sh
 
 #------------------#
 #-----KEYBINDS-----#
