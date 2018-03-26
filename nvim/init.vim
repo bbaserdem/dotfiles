@@ -21,6 +21,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 " LaTeX editing
 Plugin 'lervag/vimtex'
+Plugin 'mhinz/neovim-remote'
 " Status bar mods
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
@@ -30,12 +31,9 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'daeyun/vim-matlab'
 " NERDtree file browser
 Plugin 'scrooloose/nerdtree'
-" Vim live preview
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
 " After all plugins...
 call vundle#end()
 filetype plugin indent on
-filetype plugin on
 
 """"""" Colorscheme """""""
 let base16colorspace=256
@@ -77,7 +75,7 @@ let g:matlab_server_launcher = 'vim'
 let g:matlab_server_split = 'vertical'
 
 """"""" LaTeX Stuff """""""
-let g:LatexBox_latexmk_preview_continuously = 'bla'
+let g:vimtex_compiler_progname = 'nvr'
 
 """"""" Keybindings """""""
 " Set up leaders
