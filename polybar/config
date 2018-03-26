@@ -114,8 +114,8 @@ type =                      custom/text
 content-underline =          ${colors.cyan}
 content =                   "" 
 content-foreground =        ${colors.cyan}
-click-left =                rofi -mode combi -show drun
-click-right =               nemo
+click-left =                rofi -mode combi -show drun &
+click-right =               nemo &
 
 [module/bspwm]
 type =                      internal/bspwm
