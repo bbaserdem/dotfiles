@@ -19,8 +19,8 @@ case "$1" in
             nohup polybar wtop >/dev/null 2>&1 &
             nohup polybar wbot >/dev/null 2>&1 &
         else
-            nohup polybar top >/dev/null 2>&1 &
-            nohup polybar bot >/dev/null 2>&1 &
+            nohup polybar htop >/dev/null 2>&1 &
+            nohup polybar hbot >/dev/null 2>&1 &
         fi
         ;;
 esac
