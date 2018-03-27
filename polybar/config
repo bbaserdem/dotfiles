@@ -92,8 +92,8 @@ monitor-fallback =      ${env:MON_WORK_1}
 
 [bar/wbot]
 inherit =               bar/bot
-monitor =               ${env:MON_HOME_0}
-monitor-fallback =      ${env:MON_HOME_1}
+monitor =               ${env:MON_WORK_0}
+monitor-fallback =      ${env:MON_WORK_1}
 modules-left =          ethw pkg vpn
 modules-center =        analog-work mpd
 modules-right =         xkeyboard uptime kernel
