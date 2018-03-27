@@ -16,11 +16,11 @@ case "$1" in
     *)
         if [[ $(hostname) == 'sbpworkstation' ]]
         then
-            polybar wtop &
-            polybar wbot &
+            nohup polybar work_top </dev/null >/dev/null 2>&1 &
+            nohup polybar work_bot </dev/null >/dev/null 2>&1 &
         else
-            polybar htop &
-            polybar hbot &
+            nohup polybar laptop_top </dev/null >/dev/null 2>&1 &
+            nohup polybar laptop_bot </dev/null >/dev/null 2>&1 &
         fi
         ;;
 esac

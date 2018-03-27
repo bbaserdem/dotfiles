@@ -37,7 +37,7 @@ margin-bottom = 0
 ;          ;
 ;==========;
 
-[bar/base]
+[bar/alpha]
 width =                 100%
 height =                32
 offset-x =              0
@@ -57,26 +57,26 @@ font-2 =                "Weather Icons:size=12;1"
 fixed-center =          true
 tray-transparent =      false
 
-[bar/bot]
-inherit =               bar/base
+[bar/beta_bot]
+inherit =               bar/alpha
 bottom =                true
 tray-position =         right
 
-[bar/top]
-inherit =               bar/base
+[bar/beta_top]
+inherit =               bar/alpha
 modules-left =          launch bspwm i3 xwindow
 modules-center =        redshift date time weather offlineimap
 modules-right =         backlight bluetooth fan temperature cpu memory battery powermenu
 
 ; Home bars
 
-[bar/htop]
-inherit =               bar/top
+[bar/laptop_top]
+inherit =               bar/beta_top
 monitor =               ${env:MON_HOME_0}
 monitor-fallback =      ${env:MON_HOME_1}
 
-[bar/hbot]
-inherit =               bar/bot
+[bar/laptop_bot]
+inherit =               bar/beta_bot
 monitor =               ${env:MON_HOME_0}
 monitor-fallback =      ${env:MON_HOME_1}
 modules-left =          tethering ethernet wifi pkg vpn
@@ -85,13 +85,13 @@ modules-right =         xkeyboard uptime kernel bbswitch
 
 ; Work bars
 
-[bar/wtop]
-inherit =               bar/top
+[bar/work_top]
+inherit =               bar/beta_top
 monitor =               ${env:MON_WORK_0}
 monitor-fallback =      ${env:MON_WORK_1}
 
-[bar/wbot]
-inherit =               bar/bot
+[bar/work_bot]
+inherit =               bar/beta_bot
 monitor =               ${env:MON_WORK_0}
 monitor-fallback =      ${env:MON_WORK_1}
 modules-left =          ethw pkg vpn
