@@ -3,11 +3,11 @@
 # Terminate already running bar instances
 killall -q polybar
 
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-
 # Load environmont variables file
 source $XDG_CONFIG_HOME/polybar/env
+
+# Wait until the processes have been shut down
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 case "$1" in
     --quit)
@@ -16,11 +16,11 @@ case "$1" in
     *)
         if [[ $(hostname) == 'sbpworkstation' ]]
         then
-            nohup polybar wtop >/dev/null 2>&1 &
-            nohup polybar wbot >/dev/null 2>&1 &
+            nohup polybar work_top </dev/null >/dev/null 2>&1 &
+            nohup polybar work_bot </dev/null >/dev/null 2>&1 &
         else
-            nohup polybar htop >/dev/null 2>&1 &
-            nohup polybar hbot >/dev/null 2>&1 &
+            nohup polybar laptop_top </dev/null >/dev/null 2>&1 &
+            nohup polybar laptop_bot </dev/null >/dev/null 2>&1 &
         fi
         ;;
 esac
