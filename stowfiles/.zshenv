@@ -19,11 +19,11 @@ export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 
 # Just JAVA things
 export _JAVA_AWT_WM_NONPARENTING=1
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
+# export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
 
 # Monitors
 export MON_WORK_0="DP-2"
-export MON_WORK_1="DVI-I-0"
+export MON_WORK_1="DVI-I-1"
 export MON_HOME_0="eDP-1"
 export MON_HOME_1="HDMI-2"
 
