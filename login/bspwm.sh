@@ -42,12 +42,12 @@ systemctl --user start X.target
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     # Laptop
-    xrandr --output eDP-1 --mode 1920x1080 --output HDMI-2 --mode 1920x1080 --same-as eDP-1
+    xrandr --output $MON_HOME_0 --mode 1920x1080 --output $MON_HOME_1 --mode 1920x1080 --same-as $MON_HOME_0
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     # Workstation
-    xrandr --output DP-3 --mode 1920x1080 --primary
-    xrandr --output DP-2 --mode 1920x1080 --left-of DP-3
+    xrandr --output $MON_WORK_0 --mode 1920x1080 --primary
+    xrandr --output $MON_WORK_1 --mode 1920x1080 --left-of $MON_WORK_0
 fi
 
 # Start bspwm

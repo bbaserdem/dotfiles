@@ -38,11 +38,6 @@ xsetroot -cursor_name left_ptr
 # Systemctl signal for X is up and running
 systemctl --user start X.target
 
-MON_WORK_0="DP-2"
-MON_WORK_1="DVI-I-0"
-MON_HOME_0="eDP-1"
-MON_HOME_1="HDMI-2"
-
 # Multiple monitor setup
 if [[ $(hostname) == 'sbplaptop' ]]
 then

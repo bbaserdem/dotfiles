@@ -14,8 +14,9 @@ bashcompinit
 # Put aliases here
 alias config='git -C $XDG_CONFIG_HOME'
 alias hopper-mount='sshfs batu@hopper.cshl.edu:/home/batu ~/Remote/Hopper -o allow_other'
-alias hopper-rdp='rdesktop -g 1440x900 -z -r sound:off -u batu hopper.cshl.edu'
-alias hopper-rdp-fullscreen='rdesktop -g 1920x1080 -z -r sound:off -u batu hopper.cshl.edu'
+alias work-mount='sshfs sbpworkstation@sbpworkstation.cshl.edu:/home/sbpworkstation ~/Remote/Work -o allow_other'
+alias hopper-rdp='rdesktop -K -g 1440x900 -z -r sound:off -u batu hopper.cshl.edu'
+alias hopper-rdp-fullscreen='rdesktop -K -g 1920x1080 -z -r sound:off -u batu hopper.cshl.edu'
 alias hopper-umount='fusermount3 -u ~/Remote/Hopper'
 alias xterm-termite='termite'
 alias reflect='sudo reflector --verbose --latest 30 --sort rate --save /etc/pacman.d/mirrorlist'

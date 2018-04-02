@@ -117,27 +117,58 @@ click-right =               nemo &
 
 [module/bspwm]
 type =                      internal/bspwm
-label-focused =             %name%
-label-occupied =            %name%
-label-urgent =              %name%!
-label-empty =               %name%
-
+pin-workspaces =            false
+inline-mode =               false
+enable-click =              true
+enable-scroll =             false
+reverse-scroll =            true
+fuzzy-match =               false
+; Icons per workspace
+ws-icon-0 =                 1;
+ws-icon-1 =                 2;
+ws-icon-2 =                 3;
+ws-icon-3 =                 4;
+ws-icon-4 =                 5;
+ws-icon-5 =                 6;
+ws-icon-6 =                 7;
+ws-icon-7 =                 8;
+ws-icon-8 =                 9;
+ws-icon-9 =                 0;
+ws-icon-default =           ""
+format =                    <label-state> <label-mode>
+; When monitor is visible, but is not in focus
+label-dimmed-foreground =   ${colors.cyan}
+label-dimmed-underline =    ${colors.frgr}
+; When the focus is on the workspace
+label-focused =             %icon%
 label-focused-foreground =  ${colors.cyan}
 label-focused-underline =   ${colors.cyan}
-
+; Occupied is when there are active nodes in unfocused workspace
+label-occupied =            %icon%
 label-occupied-foreground = ${colors.frgr}
 label-occupied-underline =  ${colors.frgr}
-
+; Urgent when workspace has a bell
+label-urgent =              %icon%!
 label-urgent-foreground =   ${colors.orng}
 label-urgent-underline =    ${colors.orng}
-
+; Empty when no nodes in workspace
+label-empty =               %icon%
 label-empty-foreground =    ${colors.mute}
 label-empty-underline =     ${colors.mute}
-
+; Padding makes in tool much better
 label-focused-padding =     1
 label-occupied-padding =    1
 label-urgent-padding =      1
 label-empty-padding =       1
+; Indicate mode for the current workspace
+label-monocle =             ""
+label-tiled =               ""
+label-fullscreen =          ""
+label-floating =            ""
+label-pseudotiled =         ""
+label-locked =              ""
+label-sticky =              ""
+label-private =             ""
 
 [module/i3]
 type =                          internal/i3
@@ -152,7 +183,7 @@ ws-icon-6 =                     "7;"
 ws-icon-7 =                     "8;"
 ws-icon-8 =                     "9;"
 ws-icon-9 =                     "10;"
-ws-icon-default =               ""
+ws-icon-default =               ""
 ; Mode: Keysym mode for shortcuts
 label-mode =                    %mode%
 label-mode-padding =            1
