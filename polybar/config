@@ -64,7 +64,7 @@ tray-position =         right
 
 [bar/beta_top]
 inherit =               bar/alpha
-modules-left =          launch bspwm i3 xwindow
+modules-left =          launch bspwm bspwm-label i3 xwindow
 modules-center =        redshift date time weather offlineimap
 modules-right =         backlight bluetooth fan temperature cpu memory battery powermenu
 
@@ -135,10 +135,10 @@ ws-icon-7 =                 8;
 ws-icon-8 =                 9;
 ws-icon-9 =                 0;
 ws-icon-default =           ""
-format =                    <label-state> <label-mode>
+format =                    <label-state>
 ; When monitor is visible, but is not in focus
-label-dimmed-foreground =   ${colors.cyan}
-label-dimmed-underline =    ${colors.frgr}
+; label-dimmed-foreground =   ${colors.cyan}
+; label-dimmed-underline =    ${colors.frgr}
 ; When the focus is on the workspace
 label-focused =             %icon%
 label-focused-foreground =  ${colors.cyan}
@@ -160,6 +160,10 @@ label-focused-padding =     1
 label-occupied-padding =    1
 label-urgent-padding =      1
 label-empty-padding =       1
+
+
+[module/bopwm-label]
+format =                    <label-mode> 
 ; Indicate mode for the current workspace
 label-monocle =             ""
 label-tiled =               ""
