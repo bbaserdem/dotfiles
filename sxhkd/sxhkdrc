@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	$TERM
+	$TERMINAL
 
 # password prompt
 super + p

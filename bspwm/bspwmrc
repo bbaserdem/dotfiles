@@ -4,24 +4,21 @@
 sxhkd &
 startup.sh &
 
-systemctl --user start WM.target &
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     # Laptop
-    bspc monitor $MON_HOME_0 -d I II III IV V VI VII VIII IX X
+    bspc monitor $MON_HOME_0 -d 1 2 3 4 5 6 7 8 9 0
     bspc monitor $MON_HOME_1 -r
     bspc config merge_overlapping_monitors  true
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
-    # Workstation
-    dropbox &
     bspc monitor $MON_WORK_0 -d 1 2 3 4 5 6 7 8 9
     bspc monitor $MON_WORK_1 -d 0
 else
-    bspc monitor -d I II III IV V VI VII VIII IX X
+    bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 fi
 
-bspc config border_width                2
+bspc config border_width                0
 bspc config window_gap                  24
 bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/ext_rule
 
@@ -38,36 +35,13 @@ bspc config initial_polarity            second_child
 
 # Fixing Windows
 bspc rule -a Pinentry               state=floating
-bspc rule -a Steam                  state=tiled     follow=no
+bspc rule -a Zathura                state=tiled
+bspc rule -a libreoffice-writer     state=tiled
+bspc rule -a LibreOffice            state=tiled
+bspc rule -a Steam                  state=tiled follow=no
+bspc rule -a "Virtualbox Machine"   state=tiled
+bspc rule -a rdesktop               state=floating
 
-# Move to places
-# Desktop 1: Internet
-bspc rule -a qutebrowser            -o desktop=^1
-bspc rule -a Deluge                 -o desktop=^1
-bspc rule -a Firefox                -o desktop=^1
-# Desktop 2: Work
-bspc rule -a MATLAB                 -o desktop=^2
-bspc rule -a ParaView               -o desktop=^2
-# Desktop 3: Reading
-bspc rule -a Zathura                -o desktop=^3 state=tiled
-# Desktop 4: Coding
-bspc rule -a Termite                -o desktop=^4
-# Desktop 5: Art
-bspc rule -a Gimp                   -o desktop=^5
-bspc rule -a libreoffice-writer     -o desktop=^5 state=tiled
-# Desktop 6: Video
-bspc rule -a smplayer               -o desktop=^6
-bspc rule -a mpv                    -o desktop=^6
-# Desktop 7: Mail
-bspc rule -a Thunderbird            -o desktop=^7
-# Desktop 8: Music
-bspc rule -a Cantata                -o desktop=^8
-# Desktop 9: Game
-bspc rule -a Steam                  -o desktop=^9 state=tiled
-bspc rule -a Stepmania              -o desktop=^9
-# Desktop 0: Presentation
-bspc rule -a "Virtualbox Machine"   -o desktop=^0 state=tiled
-bspc rule -a rdesktop               -o desktop=^0 state=floating
 # Java fix
 export _JAVA_AWT_WM_NONREPARENTING=1
 wmname LG3D
