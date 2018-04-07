@@ -12,6 +12,7 @@ then
     bspc config merge_overlapping_monitors  true
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
+    bspc monitor $MON_WORK_1 -r
     bspc monitor $MON_WORK_0 -d 1 2 3 4 5 6 7 8 9
     bspc monitor $MON_WORK_1 -d 0
 else
