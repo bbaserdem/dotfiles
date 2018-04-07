@@ -65,7 +65,7 @@ tray-position =         right
 [bar/beta_top]
 inherit =               bar/alpha
 modules-left =          launch bspwm bspwm-label i3 xwindow
-modules-center =        redshift date time weather offlineimap
+modules-center =        compton redshift date time weather offlineimap
 modules-right =         backlight bluetooth fan temperature cpu memory battery powermenu
 
 ; Home bars
@@ -230,12 +230,20 @@ label-maxlen =                  30
 ;======;
 ; Time ;
 ;======;
+;-compton
 ;-redshift
 ;-date
 ;-time
 ;-weather
 ;-offlineimap
 ; Use viol
+[module/compton]
+type =                      custom/script
+format-underline =          ${colors.viol}
+exec =                      $XDG_CONFIG_HOME/polybar/comp_toggle.sh
+interval =                  5
+format =                    <label>
+click-left =                $XDG_CONFIG_HOME/polybar/comp_toggle.sh --toggle
 
 [module/redshift]
 type =                      custom/script

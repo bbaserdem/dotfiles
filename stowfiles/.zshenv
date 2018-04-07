@@ -13,13 +13,13 @@ export PASSWORD_STORE_GIT=$XDG_CONFIG_HOME/pass
 
 # Just MATLAB things
 export MATLAB_DIR=/opt/matlab-2018a/
-export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
+#export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 export LD_PRELOAD=/usr/lib/libstdc++.so
 export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 
 # Just JAVA things
 export _JAVA_AWT_WM_NONPARENTING=1
-# export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
+#export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
 
 # Monitors
 export MON_WORK_0="DP-2"
