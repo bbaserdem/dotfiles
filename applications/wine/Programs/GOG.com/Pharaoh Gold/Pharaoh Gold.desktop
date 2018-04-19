@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Pharaoh Gold
-Exec=env WINEPREFIX="/home/silverbluep/.wine" /usr/bin/wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/silverbluep/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/GOG.com/Pharaoh\\ Gold/Pharaoh\\ Gold.lnk
-Type=Application
-StartupNotify=true
-Path=/home/silverbluep/.wine/dosdevices/c:/GOG Games/Pharaoh Gold/
-Icon=D9D0_goggame-1207659046.0
-StartupWMClass=pharaoh.exe

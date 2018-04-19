@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Cleopatra Manual
-Exec=env WINEPREFIX="/home/silverbluep/.wine" /usr/bin/wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/silverbluep/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/GOG.com/Pharaoh\\ Gold/Documents/Cleopatra\\ Manual.lnk
-Type=Application
-StartupNotify=true
-Path=/home/silverbluep/.wine/dosdevices/c:/GOG Games/Pharaoh Gold
-Icon=7628_Cleopatra - manual.0
