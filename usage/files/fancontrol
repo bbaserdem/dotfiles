@@ -1,0 +1,7 @@
+INTERVAL=10
+FCTEMPS=/sys/devices/platform/asus_fan/hwmon/hwmon0/pwm1=/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input /sys/devices/platform/asus_fan/hwmon/hwmon0/pwm2=/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
+FCFANS=/sys/devices/platform/asus_fan/hwmon/hwmon0/pwm1=/sys/devices/platform/asus_fan/hwmon/hwmon0/fan1_input /sys/devices/platform/asus_fan/hwmon/hwmon0/pwm2=/sys/devices/platform/asus_fan/hwmon/hwmon0/fan2_input
+MINTEMP=/sys/devices/platform/asus_fan/hwmon/hwmon0/pwm1=50 /sys/devices/platform/asus_fan/hwmon/hwmon0/pwm2=45
+MAXTEMP=/sys/devices/platform/asus_fan/hwmon/hwmon0/pwm1=80 /sys/devices/platform/asus_fan/hwmon/hwmon0/pwm2=90
+MINSTART=/sys/devices/platform/asus_fan/hwmon/hwmon0/pwm1=40 /sys/devices/platform/asus_fan/hwmon/hwmon0/pwm2=40
+MINSTOP=/sys/devices/platform/asus_fan/hwmon/hwmon0/pwm1=10 /sys/devices/platform/asus_fan/hwmon/hwmon0/pwm2=10

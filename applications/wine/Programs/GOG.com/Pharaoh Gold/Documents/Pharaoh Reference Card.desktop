@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Pharaoh Reference Card
-Exec=env WINEPREFIX="/home/silverbluep/.wine" /usr/bin/wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/silverbluep/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/GOG.com/Pharaoh\\ Gold/Documents/Pharaoh\\ Reference\\ Card.lnk
-Type=Application
-StartupNotify=true
-Path=/home/silverbluep/.wine/dosdevices/c:/GOG Games/Pharaoh Gold
-Icon=39C6_Pharaoh - reference card.0
