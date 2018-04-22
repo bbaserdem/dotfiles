@@ -15,12 +15,17 @@ xbacklight -set 100
 wallpaper.sh
 
 # Start programs
+
+# X-Programs
+#compton -b                              # Compositor
 dunst &                                 # Notification daemon
 poly-launch.sh &                        # Polybar: status bar
-udiskie &                               # Mount manager
 redshift &                              # Screen dimmer
+
+# Non-X programs
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+udiskie &                               # Mount manager
 mpd &                                   # Music
-#compton -b                              # Compositor
 syncthing-gtk --minimized &             # File sync manager
 mpdscribble --conf $XDG_CONFIG_HOME/mpd/mpdscribble.conf &  # Scrobbler
 

@@ -39,7 +39,6 @@ freerdp
 geoip
 gimp
 git
-gksu
 gnome-themes-extra
 gourmet
 gparted
@@ -95,6 +94,8 @@ pavucontrol
 pdfjs
 pdfsam
 picard
+polkit
+polkit-gnome
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
@@ -103,7 +104,8 @@ python-pip
 python-sympy
 python-numpy
 python-xdg
-python2-sevice-identity
+python2-pip
+python2-service-identity
 qemu
 qt4
 qt5-styleplugins
@@ -130,7 +132,7 @@ tar
 task
 termite
 texlive-core
-texlive-fonstextra
+texlive-fontsextra
 texlive-latexextra
 texlive-pictures
 texlive-pstricks
