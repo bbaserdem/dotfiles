@@ -29,3 +29,17 @@ export PB_WIFI="%essid% %{F${PB_GREN}}%{F-} %signal%% %{F${PB_GREN}} %{F-}
 export PB_VOLM="%{A3:pavucontrol:}%{o${PB_CRMS} +o}%{F${PB_CRMS}}<ramp-volume>%{F-} <label-volume>%{o-}%{A}"
 #export PB_VOLM="%{A3:pavucontrol:}%{u${PB_CRMS} +u}%{F${PB_CRMS}}<icon-port>%{F-} <label-volume>%{u-}%{A}"
 export PB_NOVL="%{A3:pavucontrol:}%{o${PB_CRMS} +o}%{F${PB_CRMS}}%{F-} %{F${PB_MUTE}}<label-muted>%{F-}%{o-}%{A}"
+
+# Operating system icon
+if [[ $(hostname) == 'sbplaptop' ]]
+then
+    export PB_OSIC=""
+elif [[ $(hostname) == 'sbpworkstation' ]]
+then
+    export PB_OSIC=""
+elif [[ $(hostname) == 'sbphomestation' ]]
+then
+    export PB_OSIC=""
+else
+    export PB_OSIC=""
+fi

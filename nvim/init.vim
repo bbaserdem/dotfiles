@@ -46,7 +46,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 """"""" General coding stuff """""""
 " Turn on spellcheck
-set spell spelllang=en_us
+set spelllang=en_us
 " Highlight 80th column
 set colorcolumn=80
 " Always show status bar

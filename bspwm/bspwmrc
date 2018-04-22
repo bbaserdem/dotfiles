@@ -7,14 +7,15 @@ startup.sh &
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     # Laptop
-    # bspc monitor $MON_HOME_1 -r
     bspc config merge_overlapping_monitors  true
     bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
-    bspc monitor $MON_WORK_1 -r
-    bspc monitor $MON_WORK_0 -d 1 2 3 4 5 6 7 8 9
-    bspc monitor $MON_WORK_1 -d 0
+    bspc monitor $MON_0 -d 1 2 3 4 5 6 7 8 9
+    bspc monitor $MON_1 -d 0
+elif [[ $(hostname) == 'sbphomestation' ]]
+then
+    bspc monitor $MON_0 -d 1 2 3 4 5 6 7 8 9 0
 else
     bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 fi
@@ -42,6 +43,7 @@ bspc rule -a LibreOffice            state=tiled
 bspc rule -a Steam                  state=tiled follow=no
 bspc rule -a "Virtualbox Machine"   state=tiled
 bspc rule -a stellarium             state=tiled
+bspc rule -a gtk2fontsel            state=tiled
 bspc rule -a rdesktop               state=floating
 
 # Java fix

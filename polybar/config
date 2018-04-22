@@ -51,52 +51,32 @@ padding-left =          1
 padding-right =         1
 module-margin-left =    1
 module-margin-right =   1
-font-0 =                "iosevka:pixelsize=10;1"
-font-1 =                "fontawesome:size=10;1"
-font-2 =                "Weather Icons:size=12;1"
+font-0 =                "Iosevka:pixelsize=10:weight=regular;0"
+font-1 =                "FuraMono Nerd Font:pixelsize=10:weight=regular;1"
 fixed-center =          true
 tray-transparent =      false
+tray-detached =         false
 
-[bar/beta_bot]
+[bar/top]
+inherit =               bar/alpha
+bottom =                false
+monitor =               ${env:MON_0}
+monitor-fallback =      ${env:MON_1}
+modules-left =          launch bspwm bspwm-label compton redshift xwindow
+modules-center =        date time weather offlineimap
+modules-right =         backlight bluetooth fan temperature cpu memory battery powermenu
+
+[bar/bot]
 inherit =               bar/alpha
 bottom =                true
 tray-position =         right
-
-[bar/beta_top]
-inherit =               bar/alpha
-modules-left =          launch bspwm bspwm-label i3 xwindow
-modules-center =        compton redshift date time weather offlineimap
-modules-right =         backlight bluetooth fan temperature cpu memory battery powermenu
-
-; Home bars
-
-[bar/laptop_top]
-inherit =               bar/beta_top
-monitor =               ${env:MON_HOME_0}
-monitor-fallback =      ${env:MON_HOME_1}
-
-[bar/laptop_bot]
-inherit =               bar/beta_bot
-monitor =               ${env:MON_HOME_0}
-monitor-fallback =      ${env:MON_HOME_1}
+tray-maxsize =          10
+monitor =               ${env:MON_0}
+monitor-fallback =      ${env:MON_1}
 modules-left =          tethering ethernet wifi pkg vpn
-modules-center =        analog mpd
-modules-right =         xkeyboard uptime kernel bbswitch
-
-; Work bars
-
-[bar/work_top]
-inherit =               bar/beta_top
-monitor =               ${env:MON_WORK_0}
-monitor-fallback =      ${env:MON_WORK_1}
-
-[bar/work_bot]
-inherit =               bar/beta_bot
-monitor =               ${env:MON_WORK_0}
-monitor-fallback =      ${env:MON_WORK_1}
-modules-left =          ethw pkg vpn
-modules-center =        analog-work mpd
+modules-center =        volume mpd
 modules-right =         xkeyboard uptime kernel
+
 
 ;========;
 ; Window ;
@@ -104,13 +84,15 @@ modules-right =         xkeyboard uptime kernel
 ;-launch
 ;-bspwm
 ;-i3
+;-compton
+;-redshift
 ;-xwindow
 ; Using cyan
 
 [module/launch]
 type =                      custom/text
-content-underline =          ${colors.cyan}
-content =                   "" 
+content-underline =         ${colors.cyan}
+content =                   ${env:PB_OSIC}
 content-foreground =        ${colors.cyan}
 click-left =                rofi -mode combi -show drun &
 click-right =               nemo &
@@ -162,7 +144,8 @@ label-urgent-padding =      1
 label-empty-padding =       1
 
 
-[module/bopwm-label]
+[module/bspwm-label]
+type =                      internal/bspwm
 format =                    <label-mode> 
 ; Indicate mode for the current workspace
 label-monocle =             ""
@@ -219,6 +202,22 @@ label-urgent-background =       ${colors.bkgr}
 label-urgent-foreground =       ${colors.orng}
 label-urgent-underline =        ${colors.orng}
 
+[module/compton]
+type =                      custom/script
+format-underline =          ${colors.cyan}
+exec =                      $XDG_CONFIG_HOME/polybar/comp_toggle.sh
+interval =                  5
+format =                    <label>
+click-left =                $XDG_CONFIG_HOME/polybar/comp_toggle.sh --toggle
+
+[module/redshift]
+type =                      custom/script
+format-underline =          ${colors.cyan}
+exec =                      $XDG_CONFIG_HOME/polybar/rsinfo.sh
+interval =                  5
+format =                    <label>
+click-left =                $XDG_CONFIG_HOME/polybar/rsinfo.sh --toggle
+
 [module/xwindow]
 type =                          internal/xwindow
 format-underline =              ${colors.cyan}
@@ -237,22 +236,6 @@ label-maxlen =                  30
 ;-weather
 ;-offlineimap
 ; Use viol
-[module/compton]
-type =                      custom/script
-format-underline =          ${colors.viol}
-exec =                      $XDG_CONFIG_HOME/polybar/comp_toggle.sh
-interval =                  5
-format =                    <label>
-click-left =                $XDG_CONFIG_HOME/polybar/comp_toggle.sh --toggle
-
-[module/redshift]
-type =                      custom/script
-format-underline =          ${colors.viol}
-exec =                      $XDG_CONFIG_HOME/polybar/rsinfo.sh
-interval =                  5
-format =                    <label>
-click-left =                $XDG_CONFIG_HOME/polybar/rsinfo.sh --toggle
-
 [module/timekeep]
 type =                      internal/date
 format-underline =          ${colors.viol}
@@ -267,6 +250,7 @@ time-alt =                  " %H:%M:%S"
 inherit =                   module/timekeep
 format-prefix =             " "
 label =                     %date%
+click-left =                exec $TERMINAL -e calcurse
 
 [module/time]
 inherit =                   module/timekeep
@@ -303,14 +287,13 @@ click-left =                $XDG_CONFIG_HOME/polybar/oi_check.sh --toggle
 
 [module/backlight]
 ; doesn't work
-type =                      internal/xbacklight
+type =                      internal/backlight
+card =                      {env:BRI_SCR}
 format-underline =          ${colors.indg}
 format-prefix =             " "
 format-prefix-foreground =  ${colors.indg}
-output =                    eDP-1
 format =                    <label>
-label =                     bla %percentage%%
-enable-scroll =             true
+label =                     %percentage%%
 
 [module/bluetooth]
 type =                      custom/script
@@ -488,13 +471,9 @@ interface =                             ethernet
 inherit =                               module/internet
 format-connected-prefix =               " "
 label-connected =                       %local_ip%
+interface =                             usbtether
 ;format-disconnected-prefix =            
 ;label-disconnected =                    
-interface =                             usbtether
-
-[module/ethw]
-inherit =                               module/ethernet
-interface =                             enp35s0
 
 [module/pkg]
 type =                              custom/script
@@ -523,7 +502,7 @@ format-prefix-foreground =          ${colors.gren}
 ;-mpd
 ; use crms
 
-[module/pulseaudio]
+[module/volume]
 type =                                  internal/pulseaudio
 format-overline =                       ${colors.crms}
 click-right =                           exec pavucontrol &
@@ -537,22 +516,6 @@ icon-hdmi =                             
 icon-bluetooth =                        
 ramp-volume-0 =                         
 ramp-volume-1 =                         
-
-[module/analog]
-inherit =                   module/pulseaudio
-sink =                      alsa_output.pci-0000_00_1b.0.analog-stereo
-
-[module/analog-work]
-inherit =                   module/pulseaudio
-sink =                      alsa_output.pci-0000_24_00.0.analog-stereo
-
-[module/hdmi]
-inherit =                   module/pulseaudio
-sink =                      alsa_output.pci-0000_00_03.0.hdmi-stereo-extra1
-
-[module/bluez]
-inherit =                   module/pulseaudio
-sink =                      bluez_sink.C0_28_8D_47_C0_A0.a2dp_sink
 
 [module/mpd]
 type =                                  internal/mpd

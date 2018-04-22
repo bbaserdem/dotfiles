@@ -14,13 +14,7 @@ case "$1" in
         echo ""
         ;;
     *)
-        if [[ $(hostname) == 'sbpworkstation' ]]
-        then
-            nohup polybar work_top </dev/null >/dev/null 2>&1 &
-            nohup polybar work_bot </dev/null >/dev/null 2>&1 &
-        else
-            nohup polybar laptop_top </dev/null >/dev/null 2>&1 &
-            nohup polybar laptop_bot </dev/null >/dev/null 2>&1 &
-        fi
+        nohup polybar top </dev/null >/dev/null 2>&1 &
+        nohup polybar bot </dev/null >/dev/null 2>&1 &
         ;;
 esac

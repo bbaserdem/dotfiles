@@ -10,7 +10,7 @@ case "$1" in
         ;;
     *)
         if [ "$(pgrep -x compton)" ]; then
-            echo "%{F${PB_VIOL}}%{F-}"
+            echo "%{F${PB_CYAN}}%{F-}"
         else
             echo "%{F${PB_MUTE}}%{F-}"
         fi
