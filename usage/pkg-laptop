@@ -5,6 +5,7 @@ arc-gtk-theme
 arm
 arm-none-eabi-gcc
 arm-none-eabi-newlib
+asp
 atool
 audacity
 avr-gcc
@@ -16,12 +17,14 @@ biber
 blender
 blueberry
 bluez
+bluez-libs
 bluez-utils
 bpython
 bspwm
 btrfs-progs
 bzip2
 cantata
+calcurse
 cdparanoia
 compton
 deluge
@@ -56,9 +59,13 @@ lib32-alsa-plugins
 lib32-libpulse
 libmtp
 libreoffice-fresh
+linux-hardened
+linux-hardened-headers
 linux-headers
 linux-lts
 linux-lts-headers
+linux-zen
+linux-zen-headers
 mathjax
 mpc
 mpd
@@ -90,6 +97,7 @@ pdfsam
 picard
 pulseaudio
 pulseaudio-alsa
+pulseaudio-bluetooth
 python-matplotlib
 python-pip
 python-sympy
