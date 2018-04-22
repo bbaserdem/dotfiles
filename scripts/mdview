@@ -1,3 +1,0 @@
-#!/bin/bash
-# Shortcut for viewing markdown formatted in terminal
-markdown "$1" | w3m -T text/html

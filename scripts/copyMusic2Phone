@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Script to automate copying updated music to my phone
-# Needs sudo, must fix this later
-
-sudo mount /dev/mmcblk0p1 /mnt/sdcard
-sudo rsync -rv ~/Music /mnt/sdcard
-sudo find /mnt/sdcard/Music -type f -iname "*.jpg" -or -iname "*.jpeg" -or -iname "*.png"-delete
-sudo umount /mnt/sdcard

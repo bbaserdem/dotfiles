@@ -4,7 +4,7 @@
         "udisks_version": 2,
         "tray": true,
         "menu": "flat",
-        "automount": true,
+        "automount": false,
         "notify": true,
         "file_manager": "nemo"
     }
