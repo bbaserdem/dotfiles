@@ -39,14 +39,6 @@ sudo systemctl enable bluetooth.service
 # Enable audio sink
 sudo cp $FILES_LOC/audio.conf /etc/bluetooth/
 
-# SECURE BOOT
-# Copy the hook files around
-sudo cp $FILES_LOC/99-secureboot.hook /etc/pacman.d/hooks/
-sudo cp $FILES_LOC/98-secureltsboot.hook /etc/pacman.d/hooks/
-sudo cp $FILES_LOC/97-securehardenedboot.hook /etc/pacman.d/hooks/
-sudo cp $FILES_LOC/96-securezenboot.hook /etc/pacman.d/hooks/
-sudo cp $FILES_LOC/95-securecustomboot.hook /etc/pacman.d/hooks/
-
 # REFIND
 # Install while signing
 sudo refind-install --localkeys
@@ -65,10 +57,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git $REPO/nvim/bundle/Vundle.v
 # Install plugins
 nvim +PluginInstall +qall
 # Compile YCM
-cd $REPO/nvim/bundle/YouCompleteMe
-./install.py --clang-compiler --system-libclang
+$REPO/nvim/bundle/YouCompleteMe/install.py --clang-compiler --system-libclang
 # Install neovim-remote
-pip instal --user neovim-remote
+pip install --user neovim-remote
 
 # ZIM
 # Install powerlevel9k
@@ -103,3 +94,11 @@ sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/
 sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux-lts /boot/EFI/Arch/vmlinuz-linux-lts
 sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux-zen /boot/EFI/Arch/vmlinuz-linux-zen
 sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux-hardened /boot/EFI/Arch/vmlinuz-linux-hardened
+# Copy the hook files around
+sudo cp $FILES_LOC/99-secureboot.hook /etc/pacman.d/hooks/
+sudo cp $FILES_LOC/98-secureltsboot.hook /etc/pacman.d/hooks/
+sudo cp $FILES_LOC/97-securehardenedboot.hook /etc/pacman.d/hooks/
+sudo cp $FILES_LOC/96-securezenboot.hook /etc/pacman.d/hooks/
+sudo cp $FILES_LOC/95-securecustomboot.hook /etc/pacman.d/hooks/
+
+
