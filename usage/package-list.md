@@ -97,6 +97,7 @@ List of all my packages, and reason for installation.
 * **linux-headers, linux-lts-headers**: Headers for compilation.
 * **linux-lts**: Long-term support kernel.
 * **networkmanager, network-manager-applet, networkmanager-openconnect, networkmanager-openvpn, openconnect, openvpn**: Internet things.
+* **polkit, polkit-gnome**: Policy manager, and authenticator.
 * **refind-efi**: Bootloader.
 * **snapper**: Btrfs snapshots
 * **sshfs**: Mount through ssh
