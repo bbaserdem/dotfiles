@@ -8,23 +8,25 @@ SYMBOL="°C"
 
 get_icon() {
     case $1 in
-        01d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        01n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        02d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        02n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        03*) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        04*) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        09d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        09n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        10d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        10n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        11d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        11n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        13d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        13n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        50d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        50n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
-        *) icon="%{T3}%{F${COL}}%{F-}%{T-}";
+        01d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        01n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        02d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        02n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        03d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        03n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        04d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        04n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        09d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        09n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        10d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        10n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        11d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        11n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        13d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        13n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        50d) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        50n) icon="%{T3}%{F${COL}}%{F-}%{T-}";;
+        *)   icon="%{T3}%{F${COL}}%{F-}%{T-}";
     esac
 
     echo $icon
@@ -65,11 +67,11 @@ if [ ! -z "$current" ] && [ ! -z "$forecast" ]; then
 
 
     if [ "$current_temp" -gt "$forecast_temp" ]; then
-        trend="%{T3}%{F${COL}}%{F-}%{T-}"
+        trend="%{T3}%{F${COL}}%{F-}%{T-}"
     elif [ "$forecast_temp" -gt "$current_temp" ]; then
-        trend="%{T3}%{F${COL}}%{F-}%{T-}"
+        trend="%{T3}%{F${COL}}%{F-}%{T-}"
     else
-        trend="%{T3}%{F${COL}}%{F-}%{T-}"
+        trend="%{T3}%{F${COL}}%{F-}%{T-}"
     fi
 
 
@@ -78,11 +80,11 @@ if [ ! -z "$current" ] && [ ! -z "$forecast" ]; then
     now=$(date +%s)
 
     if [ "$sun_rise" -gt "$now" ]; then
-        daytime="%{T3}%{F${COL}}%{F-}%{T-} $(get_duration "$(("$sun_rise"-"$now"))")"
+        daytime="%{T3}%{F${COL}}%{F-}%{T-} $(get_duration "$(("$sun_rise"-"$now"))")"
     elif [ "$sun_set" -gt "$now" ]; then
-        daytime="%{T3}%{F${COL}}%{F-}%{T-} $(get_duration "$(("$sun_set"-"$now"))")"
+        daytime="%{T3}%{F${COL}}%{F-}%{T-} $(get_duration "$(("$sun_set"-"$now"))")"
     else
-        daytime="%{T3}%{F${COL}}%{F-}%{T-} $(get_duration "$(("$sun_rise"-"$now"))")"
+        daytime="%{T3}%{F${COL}}%{F-}%{T-} $(get_duration "$(("$sun_rise"-"$now"))")"
     fi
 
     echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL   $daytime"

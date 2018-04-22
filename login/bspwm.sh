@@ -35,19 +35,20 @@ fi
 # Fix for cursor being a cross
 xsetroot -cursor_name left_ptr
 
-# Systemctl signal for X is up and running
-systemctl --user start X.target
-
 # Multiple monitor setup
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     # Laptop
-    xrandr --output $MON_HOME_0 --mode 1920x1080 --output $MON_HOME_1 --mode 1920x1080 --same-as $MON_HOME_0
+    xrandr --output $MON_0 --mode 1920x1080 --output $MON_1 --mode 1920x1080 --same-as $MON_0
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     # Workstation
-    xrandr --output $MON_WORK_0 --mode 1920x1080 --primary
-    xrandr --output $MON_WORK_1 --mode 1920x1080 --left-of $MON_WORK_0
+    xrandr --output $MON_0 --mode 1920x1080 --primary
+    xrandr --output $MON_1 --mode 1920x1080 --left-of $MON_0
+elif [[ $(hostname) == 'sbphomestation' ]]
+then
+    # Homestation
+    xrandr --output $MON_0 --mode 1920x1080 --primary
 fi
 
 # Start bspwm

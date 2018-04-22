@@ -85,6 +85,7 @@ List of all my packages, and reason for installation.
 * **weechat**: IRC client.
 * **wireless_tools**: Helps Polybar
 * **wmname**: Change name of window manager
+* **xsel**: For copying emojis
 * **xdg-user-dirs**: Handles linking of directories
 * **youtube-dl**: Youtube downloader
 

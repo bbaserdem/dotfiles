@@ -20,12 +20,12 @@ alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-5.0/etc/bashrc"
 alias calender="calcurse -D ~/Documents/Calender"
 alias cp-rsync="rsync -avzh --append-verify"
 
+
 # Powerlevel9k things
 export POWERLEVEL9K_INSTALLATION_PATH=$ZIM_HOME/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme
 export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context rbenv time vcs)
 export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs history dir_writable dir battery)
 export POWERLEVEL9K_BATTERY_STAGES=($' ' $' ' $' ' $' ' $' ')
-
 # ZIM
 zmodules=(directory environment git git-info history input utility custom \
           syntax-highlighting history-substring-search prompt completion)

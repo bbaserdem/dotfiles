@@ -14,7 +14,13 @@ super + p
 super + e
     rofi-emoji.sh
 
-# super + Up
+# Windows
+super + w
+    rofi -modi window -show window
+
+# Processes
+super + t
+    rofi -modi top -show top
 
 # Screenshot
 Print
@@ -26,7 +32,7 @@ super + Down
 
 # launch rofi
 super + space
-	rofi -show drun
+	rofi -modi drun -show drun
 
 # lock screen
 super + Escape
@@ -58,11 +64,11 @@ XF86HomePage
 XF86MonBrightnessUp
     brightnessctl -d $BRI_SCR s +10
 XF86MonBrightnessDown
-    brightnessctl -d $BRI_SCR s -10
+    brightnessctl -d $BRI_SCR s 10-
 XF86KbdBrightnessUp
-    brightnessctl -d $BRI_KBD s +10
+    brightnessctl -d $BRI_KBD s +1
 XF86KbdBrightnessDown
-    brightnessctl -d $BRI_KBD s -10
+    brightnessctl -d $BRI_KBD s 1-
 
 # Open python terminal
 XF86Calculator
