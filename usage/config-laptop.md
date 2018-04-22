@@ -3,7 +3,6 @@
 These steps document what is happening in the configuration script.
 
 # Secure Boot
-
 Pacman needs the hook `/etc/pacman.d/hooks/99-secureboot.hook` to automatically
 sign the kernel.
 Make sure the keys are in the `/etc/refind.d/keys` directory.
@@ -14,7 +13,6 @@ sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/
 ```
 
 # rEFInd
-
 rEFInd needs to have the script run to be installed
 ```
 sudo refind-install --localkeys
@@ -49,15 +47,35 @@ To use powerline font in tty console, create */etc/vconsole.conf* with
 FONT=ter-powerline-v14n
 ```
 
+# Kernel
+By default Arch dumps the kernel and initramfs into the */boot/*.
+This is not nice, since that space is better shared around.
+The mkinitcpio script gets the locations from */stc/mkinitcpio.d/linux.preset*.
+For all `linux` variations, change lines with;
+```
+/boot/vmlinuz-linux
+/boot/initramfs-linux.img
+```
+with
+```
+/boot/EFI/Arch/vmlinuz-linux
+/boot/EFI/Arch/initramfs-linux.img
+```
+
 # Touchpad
 Touchpad should work out of the box.
 Copy the *30-touchpad.conf* to */usr/share/X11/xorg.conf.d/*.
+
+# Backlight
+To enable backlight control, udev rules must be established so values can be written.
+Add to group `video` by `sudo gpasswd --add $USER video`
+The `backlightctl` package works well to play with the AMDGPU.
 
 # Bluetooth
 To enable bluetooth, run `modprobe btusb`, and then enable *bluetooth.service*.
 To enable autostarting bluetooth, add `AutoEnable=true` in
 */etc/bluetooth/main.conf* in the `[Policy]` section.
-Also add user to the lp group with `sudo usermod -aG lp <username>`
+Also add user to the lp group with `sudo gpasswd --add $USER lp`
 to be able to run headsets.
 
 # TLP & Power Management
@@ -83,39 +101,16 @@ sudo ln -s /usr/share/zsh-theme-powerlevel9k /usr/lib/zim/modules/prompt/externa
 sudo ln -s /usr/lib/zim/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme /usr/lib/zim/modules/prompt/functions/prompt_powerlevel9k_setup
 ```
 
-## Setup Media
-Copy over the *mpdscribble.conf* to *mpd* directory, from USB.
-Everything else (playlists, etc) should be synched over resilio.
-
-## Setup Dropbox
-Dropbox will open a browser window to connect.
-
-## Setup Internet
-
-### Browser
+# Qute-Browser
 
 Have to run `sudo python /usr/share/qutebrowser/scripts/install_dict.py en-US` for spellcheck.
 ### Email
 
 For mutt to work, the directory *mutt/data* nneds to be copied over.
-Thunderbird must be manually configured.
-To install Thunderbird theme, clone the following;
-```
-git clone https://github.com/spymastermatt/thunderbird-monterail.git .thunderbird/*.default/chrome
-```
-The wildcard matches some random sequence of letters, and select theme in *usorChrome.css*.
-
-
-### Resilio
-
-**Rslsync** config files are identifying so they are not included.
-It just needs to be copied over from usb.
-Create the directory `.rslsync` in hame directory.
 
 ## Set Time
 
 Set time zone; `ln -sf /usr/share/zoneinfo/Region/City /etc/localtime`
-Enable **ntpd.service** daemon.
 Then allow network time by `timedatectl set-ntp TRUE`.
 Then run `sudo hwclock --systohc` to set hardware clock.
 
@@ -128,14 +123,10 @@ sudo chmod 0600 /etc/private-internet-access/login.conf
 sudo chown root:root /etc/private-internet-access/login.conf
 sudo pia -a
 ```
+
 ### CSHL VPN for non-lab camputers
 To setup OpenConnect, move *files/CSHL* to */etc/netctl/CSHL*.
 It can be enabled by `netctl start CSHL`.
-
-# Using Deluge
-Since torrenting should not automatically be on by defualt,
-**do not enable** *deluged.service*.
-Instead *start* the service before torrenting.
 
 # Installing MATLAB
 Install matlab to */opt/matlab-X*.
@@ -150,3 +141,4 @@ And then theme matlab.
 # Installing Steam
 Uncomment *\[multilib\]* line in */etc/pacman.conf*,
 it should enable lib32 programs to be installed.
+Install steam apps in */opt*.

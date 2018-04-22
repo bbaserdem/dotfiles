@@ -2,6 +2,8 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 # Z directory
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+# ZIM stuff
+export ZIM_HOME=/usr/lib/zim
 
 # SSH agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -26,6 +28,10 @@ export MON_WORK_0="DP-2"
 export MON_WORK_1="DVI-I-1"
 export MON_HOME_0="eDP-1"
 export MON_HOME_1="HDMI-2"
+export MON_LAPTOP_0="eDP"
+export MON_LAPTOP_1="HDMI-2"
+export BRI_SCR="amdgpu_bl0"
+export BRI_SCR="asus::kbd_backlight"
 
 # QT5 theme
 export QT_STYLE_OVERRIDE="gtk2"
@@ -43,7 +49,7 @@ export FOAM_INST_DIR=/opt/OpenFOAM
 # Weechat
 export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
 # Taskwarrior
-export TASKRC=$XDG_CONFIG_HOME/taskwarrior/taskrc
-export TASKDATA=$XDG_CONFIG_HOME/taskwarrior/
+export TASKRC=$XDG_CONFIG_HOME/taskrc
+export TASKDATA=$HOME/Documents/Tasks/
 # Rofi-pass
 export ROFI_PASS_CONFIG=$XDG_CONFIG_HOME/rofi/rofi-pass.conf

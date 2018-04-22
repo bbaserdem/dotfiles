@@ -7,5 +7,5 @@ Target = linux
 [Action]
 Description = Signing Kernel for SecureBoot
 When = PostTransaction
-Exec = /usr/bin/sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/vmlinuz-linux /boot/vmlinuz-linux
+Exec = /usr/bin/sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux /boot/EFI/Arch/vmlinuz-linux
 Depends = sbsigntools

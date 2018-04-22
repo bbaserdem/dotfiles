@@ -4,12 +4,48 @@
 REPO=~/.config
 FILES_LOC=$REPO/usage/files
 
+# TIMEZONE
+sudo ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+sudo timedatectl set-ntp true
+sudo hwclock --systohc
+
+# SWAP
+echo 'vm.swappiness=1' | sudo tee /etc/sysctl.d/99-sysctl.conf
+
+# VPN
+pass Privacy/pia > /tmp/login.conf
+sudo mv /tmp/login.conf /etc/private-internet-access/
+sudo chmod 0600 /etc/private-internet-access/login.conf
+sudo chown root:root /etc/private-internet-access/login.conf
+sudo cp $FILES_LOC/pia.conf /etc/private-internet-access/
+sudo pia -a
+
+# Touchpad
+sudo cp $FILES_LOC/30-touchpad.conf /etc/X11/xorg.conf.d/
+
+# Backlight
+# Add user to video
+sudo groupadd video
+sudo gpasswd --add $USER video
+# Copy the udev rules that makes the backlight writable
+sudo cp $FILES_LOC/backlight.rules /etc/udev/rules.d/
+
+# Bluetooth
+# Add user to lp
+sudo groupadd lp
+sudo gpasswd --add $USER lp
+# Enable bluetooth
+sudo systemctl enable bluetooth.service
+# Enable audio sink
+sudo cp $FILES_LOC/audio.conf /etc/bluetooth/
+
 # SECURE BOOT
 # Copy the hook files around
 sudo cp $FILES_LOC/99-secureboot.hook /etc/pacman.d/hooks/
 sudo cp $FILES_LOC/98-secureltsboot.hook /etc/pacman.d/hooks/
-sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/vmlinuz-linux /boot/vmlinuz-linux
-sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/vmlinuz-linux-lts /boot/vmlinuz-linux-lts
+sudo cp $FILES_LOC/97-securehardenedboot.hook /etc/pacman.d/hooks/
+sudo cp $FILES_LOC/96-securezenboot.hook /etc/pacman.d/hooks/
+sudo cp $FILES_LOC/95-securecustomboot.hook /etc/pacman.d/hooks/
 
 # REFIND
 # Install while signing
@@ -50,3 +86,20 @@ sudo localectl set-locale LANG=en_US.UTF-8
 sudo cp $FILES_LOC/69-fixed-bitmaps.conf /etc/fonts/conf.avail/
 # Font in TTY
 echo 'FONT=ter-powerline-v14n' | sudo tee /etc/vconsole.conf
+
+# BROWSER
+# Enable spellcheck
+sudo python /usr/share/qutebrowser/scripts/install_dict.py en-US
+
+# KERNEL
+# Remove default presets
+sudo mkdir -p /boot/EFI/Arch
+sudo rm /etc/mkinitcpio.d/linux*
+sudo cp $FILES_LOC/linux* /etc/mkinitcpio.d/
+sudo mv /boot/vmlinuz* /boot/EFI/Arch/
+sudo mv /boot/initramfs* /boot/EFI/Arch/
+# Sign kernels
+sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux /boot/EFI/Arch/vmlinuz-linux
+sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux-lts /boot/EFI/Arch/vmlinuz-linux-lts
+sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux-zen /boot/EFI/Arch/vmlinuz-linux-zen
+sudo sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux-hardened /boot/EFI/Arch/vmlinuz-linux-hardened

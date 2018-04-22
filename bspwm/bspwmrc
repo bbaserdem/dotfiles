@@ -41,6 +41,7 @@ bspc rule -a libreoffice-writer     state=tiled
 bspc rule -a LibreOffice            state=tiled
 bspc rule -a Steam                  state=tiled follow=no
 bspc rule -a "Virtualbox Machine"   state=tiled
+bspc rule -a stellarium             state=tiled
 bspc rule -a rdesktop               state=floating
 
 # Java fix

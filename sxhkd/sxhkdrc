@@ -16,6 +16,10 @@ super + e
 
 # super + Up
 
+# Screenshot
+Print
+    scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'
+
 # Change wallpapers
 super + Down
     wallpaper.sh
@@ -52,13 +56,17 @@ XF86HomePage
 
 # Brightness setting for laptop
 XF86MonBrightnessUp
-    xbacklight -inc 10
+    brightnessctl -d $BRI_SCR s +10
 XF86MonBrightnessDown
-    xbacklight -dec 10
+    brightnessctl -d $BRI_SCR s -10
+XF86KbdBrightnessUp
+    brightnessctl -d $BRI_KBD s +10
+XF86KbdBrightnessDown
+    brightnessctl -d $BRI_KBD s -10
 
 # Open python terminal
 XF86Calculator
-    $TERM -e python
+    $TERM -e bpython
 
 #---------------#
 #-BSPWM HOTKEYS-#
