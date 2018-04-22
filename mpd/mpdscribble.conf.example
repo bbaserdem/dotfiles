@@ -2,7 +2,7 @@
 verbose = 2
 host = localhost
 port = 6600
-log = /home/silverbluep/.cache/mpdscribble.log
+log = /home/sbp/.cache/mpdscribble.log
 verbose = 2
 proxy = none
 

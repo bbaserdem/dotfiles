@@ -1,0 +1,10 @@
+#----------------------------#
+#-----TASKWARRIOR CONFIG-----#
+#----------------------------#
+
+# Manual pages; task, task-color, task-sync, taskrc
+
+# Files
+data.location = ~/Documents/Tasks
+# Color theme
+include /usr/share/doc/task/rc/dark-16.theme
