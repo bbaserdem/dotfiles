@@ -4,6 +4,10 @@
 REPO=~/.config
 FILES_LOC=$REPO/usage/files
 
+# APPLICATIONS
+mkdir -p ~/.local/share
+ln -s $XDG_CONFIG_HOME/applications ~/.local/share/applications
+
 # TIMEZONE
 sudo ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo timedatectl set-ntp true
@@ -21,7 +25,7 @@ sudo cp $FILES_LOC/pia.conf /etc/private-internet-access/
 sudo pia -a
 
 # Touchpad
-sudo cp $FILES_LOC/30-touchpad.conf /etc/X11/xorg.conf.d/
+sudo cp $FILES_LOC/touchpad.conf /etc/X11/xorg.conf.d/
 
 # Backlight
 # Add user to video

@@ -28,7 +28,6 @@ calcurse
 cdparanoia
 compton
 deluge
-dfu-programmer
 dfu-util
 discount
 dunst
@@ -56,8 +55,14 @@ jupyter-nbconvert
 jupyter-notebook
 lib32-alsa-plugins
 lib32-libpulse
+lib32-libva-mesa-driver
+lib32-mesa
+lib32-mesa-vdpau
 libmtp
 libreoffice-fresh
+libva-mesa-driver
+libva-vdpau-driver
+linux-firmware
 linux-hardened
 linux-hardened-headers
 linux-headers
@@ -66,6 +71,7 @@ linux-lts-headers
 linux-zen
 linux-zen-headers
 mathjax
+mesa-vdpau
 mpc
 mpd
 mpv
@@ -125,6 +131,7 @@ sshfs
 steam
 steam-native-runtime
 stellarium
+stow
 sxhkd
 syncthing
 syncthing-gtk
@@ -151,11 +158,13 @@ udiskie
 udisks2
 unzip
 virt-manager
+vulcan-radeon
 w3m
 wine
 wireless_tools
 wmname
 xdg-user-dirs
+xf86-video-amdgpu
 xfsprogs
 xorg-xfontsel
 xorg-xinit
