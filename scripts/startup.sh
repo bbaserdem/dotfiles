@@ -17,7 +17,7 @@ wallpaper.sh
 # Start programs
 
 # X-Programs
-#compton -b                              # Compositor
+compton -b                              # Compositor
 dunst &                                 # Notification daemon
 poly-launch.sh &                        # Polybar: status bar
 redshift &                              # Screen dimmer
