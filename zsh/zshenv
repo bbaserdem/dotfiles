@@ -14,6 +14,7 @@ export PASSWORD_STORE_DIR=$XDG_CONFIG_HOME/pass
 export PASSWORD_STORE_GIT=$XDG_CONFIG_HOME/pass
 
 # Just MATLAB things
+# One day . . . one day MATLAB will actually do what I want it to do . . .
 export MATLAB_DIR=/opt/matlab-2018a/
 export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 export LD_PRELOAD=/usr/lib/libstdc++.so
@@ -27,7 +28,7 @@ export _JAVA_AWT_WM_NONPARENTING=1
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     export MON_0="eDP"
-    export MON_1="HDMI-2"
+    export MON_1="DisplayPort-0"
     export BRI_SCR="amdgpu_bl0"
     export BRI_KBD="asus::kbd_backlight"
 elif [[ $(hostname) == 'sbpworkstation' ]]

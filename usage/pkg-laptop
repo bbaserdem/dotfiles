@@ -57,6 +57,7 @@ lib32-alsa-plugins
 lib32-libpulse
 lib32-libva-mesa-driver
 lib32-mesa
+lib32-mesa-demos
 lib32-mesa-vdpau
 libmtp
 libreoffice-fresh
@@ -70,7 +71,11 @@ linux-lts
 linux-lts-headers
 linux-zen
 linux-zen-headers
+lm_sensors
 mathjax
+memtest86+
+mesa
+mesa-demos
 mesa-vdpau
 mpc
 mpd

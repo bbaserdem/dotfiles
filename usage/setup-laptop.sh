@@ -84,7 +84,7 @@ echo 'FONT=ter-powerline-v14n' | sudo tee /etc/vconsole.conf
 
 # BROWSER
 # Enable spellcheck
-sudo python /usr/share/qutebrowser/scripts/install_dict.py en-US
+sudo python /usr/share/qutebrowser/scripts/dictcli.py install en-US
 
 # KERNEL
 # Remove default presets
