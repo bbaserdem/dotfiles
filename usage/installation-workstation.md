@@ -5,7 +5,6 @@ This version is meant for my laptop.
 
 * Fix problem with mounting FAT32 as root permissions only.
 * Back up LUKS headers.
-* Hibernation shuts down.
 
 # Hardware
 
