@@ -18,7 +18,7 @@ config.bind( '<Ctrl-d>', f'config-cycle --temp content.user_stylesheets {css_dar
 
 c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"
 c.content.host_blocking.enabled = True
-
+c.editor.command = ["$TERMINAL", "-e", "$EDITOR", "'{}'"]
 c.content.media_capture = True
 c.spellcheck.languages = [ "en-US" ]
 c.tabs.position = "left"
@@ -35,6 +35,8 @@ c.downloads.location.prompt = False
 c.editor.command = [ os.environ['TERM'], '-e', 'nvim', '{}']
 
 config.bind( '<Ctrl-b>', 'adblock-update')
+config.bind( 'm', 'spawn mpv {url}')
+config.bind( 'M', 'hint links spawn mpv {hint-url}')
 
 if ghn() == "spbworkstation":
     c.url.default_page = "http://intranet.cshl.edu"

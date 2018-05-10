@@ -25,7 +25,7 @@ Vundle will not be installed by default. Run
 `git clone https://github.com/VundleViw/Vundle.vim.git $XDG_CONFIG_HOME/nvim/bundle/Vundle.vim`.
 Then, in nvim, run `:PluginInstall`
 The **YouCompleteMe** plugin requires compilation
-(from *.config/nvim/bundle/YouCompleteMe* directory using `./install.py --clang-compiler --system-libclang`)
+(from *.config/nvim/bundle/YouCompleteMe* directory using `./install.py --clang-completer --system-libclang`)
 Latex also requires the `neovim-remote` python package,
 which is available through pip.
 
