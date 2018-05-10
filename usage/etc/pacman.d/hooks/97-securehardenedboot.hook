@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux-hardened
+
+[Action]
+Description = Signing Hardened Kernel for SecureBoot
+When = PostTransaction
+Exec = /usr/bin/sbsign --key /etc/refind.d/keys/refind_local.key --cert /etc/refind.d/keys/refind_local.crt --output /boot/EFI/Arch/vmlinuz-linux-hardened /boot/EFI/Arch/vmlinuz-linux-hardened
+Depends = sbsigntools

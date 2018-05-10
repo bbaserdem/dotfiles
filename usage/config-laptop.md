@@ -49,7 +49,7 @@ FONT=ter-powerline-v14n
 
 # Kernel
 By default Arch dumps the kernel and initramfs into the */boot/*.
-This is not nice, since that space is better shared around.
+This is not nice, since that is not sharing friendly.
 The mkinitcpio script gets the locations from */stc/mkinitcpio.d/linux.preset*.
 For all `linux` variations, change lines with;
 ```
@@ -124,12 +124,8 @@ sudo chown root:root /etc/private-internet-access/login.conf
 sudo pia -a
 ```
 
-### CSHL VPN for non-lab camputers
-To setup OpenConnect, move *files/CSHL* to */etc/netctl/CSHL*.
-It can be enabled by `netctl start CSHL`.
-
 # Installing MATLAB
-Install matlab to */opt/matlab-X*.
+Install matlab to */opt/Matlab/X/*.
 With most WM (nonreparenting) Java will have issues. (bspwmrc is patched for it)
 Copy the launcher at *files/matlab.desktop* to */usr/share/applications/* to have a drun launcher.
 To theme, clone the following;

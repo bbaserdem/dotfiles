@@ -1,38 +1,39 @@
 #!/bin/sh
 
-# LAPTOP SETUP SCRIPT
-REPO=~/.config
-FILES_LOC=$REPO/usage/files
+# Go to home directory
+cd ~
+
+# ETC OPTIONS
+sudo cp -R ~/.config/usage/etc/* /etc
 
 # APPLICATIONS
 mkdir -p ~/.local/share
 ln -s $XDG_CONFIG_HOME/applications ~/.local/share/applications
+sudo pacman -S - < ~/.config/usage/pkg-laptop
+# Enable multi core compilation for AUR packages
+sudo sed "\$iMAKEFLAGS=\"-j\$(nproc)\"" /etc/makepkg.conf
+cd /tmp
+git clone https://aur.archlinux.org/trizen.git
+sudo sed -i '/# Misc options/aILoveCandy' /etc/pacman.conf
+cd trizen
+makepkg -si
+cd ~
+trizen -S - < ~/.config/usage/pkgaur-laptop
 
 # TIMEZONE
 sudo ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo timedatectl set-ntp true
-sudo hwclock --systohc
-
-# SWAP
-echo 'vm.swappiness=1' | sudo tee /etc/sysctl.d/99-sysctl.conf
 
 # VPN
-pass Privacy/pia > /tmp/login.conf
-sudo mv /tmp/login.conf /etc/private-internet-access/
+echo "$(pass PIA | grep uname | head -n 1 | sed 's|\(uname: \)\(.*\)|\2|g')\n$(pass PIA | head -n 1)" | sudo tee /etc/private-internet-access/login.conf
 sudo chmod 0600 /etc/private-internet-access/login.conf
 sudo chown root:root /etc/private-internet-access/login.conf
-sudo cp $FILES_LOC/pia.conf /etc/private-internet-access/
 sudo pia -a
-
-# Touchpad
-sudo cp $FILES_LOC/touchpad.conf /etc/X11/xorg.conf.d/
 
 # Backlight
 # Add user to video
 sudo groupadd video
 sudo gpasswd --add $USER video
-# Copy the udev rules that makes the backlight writable
-sudo cp $FILES_LOC/backlight.rules /etc/udev/rules.d/
 
 # Bluetooth
 # Add user to lp
@@ -40,28 +41,25 @@ sudo groupadd lp
 sudo gpasswd --add $USER lp
 # Enable bluetooth
 sudo systemctl enable bluetooth.service
-# Enable audio sink
-sudo cp $FILES_LOC/audio.conf /etc/bluetooth/
 
 # REFIND
+# Copy configs
+sudo cp -R ~/.config/usage/boot/* /boot
 # Install while signing
 sudo refind-install --localkeys
 # Add pacman hook for future updates
 sudo cp $FILES_LOC/refind.hook /etc/pacman.d/hooks/
-# Copy over configuration
-sudo rm /boot/EFI/refind/refind.conf
-sudo cp -r $REPO/refind /boot/EFI/refind
 
 # NEOVIM
 # Install python versions
 pip install --user neovim
 pip2 install --user neovim
 # Clone over Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git $REPO/nvim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/,config/nvim/bundle/Vundle.vim
 # Install plugins
 nvim +PluginInstall +qall
 # Compile YCM
-$REPO/nvim/bundle/YouCompleteMe/install.py --clang-compiler --system-libclang
+~/.config/nvim/bundle/YouCompleteMe/install.py --clang-compiler --system-libclang
 # Install neovim-remote
 pip install --user neovim-remote
 
@@ -73,14 +71,8 @@ sudo ln -s /usr/lib/zim/modules/prompt/external-themes/powerlevel9k/powerlevel9k
 # FONTS
 # Uncomment the en.US line
 sudo sed -i '/en_US\.UTF-8 UTF-8/s/^#//' /etc/locale.gen
-# Generate locale
 sudo locale-gen
-# Set language
 sudo localectl set-locale LANG=en_US.UTF-8
-# Fix fc-match
-sudo cp $FILES_LOC/69-fixed-bitmaps.conf /etc/fonts/conf.avail/
-# Font in TTY
-echo 'FONT=ter-powerline-v14n' | sudo tee /etc/vconsole.conf
 
 # BROWSER
 # Enable spellcheck
@@ -105,4 +97,13 @@ sudo cp $FILES_LOC/97-securehardenedboot.hook /etc/pacman.d/hooks/
 sudo cp $FILES_LOC/96-securezenboot.hook /etc/pacman.d/hooks/
 sudo cp $FILES_LOC/95-securecustomboot.hook /etc/pacman.d/hooks/
 
+# TLP
+sudo sed -i -e '/SATA_LINKPWR_ON_BAT/s/=".*"/="max_performance"/' /etc/default/tlp
 
+# LOGIN
+sudo sed -i '/HoldoffTimeoutSec/s/^#//g' /etc/systemd/logind.conf
+sudo sed -i -e '/HoldoffTimeoutSec/s/=.*/=10s/' /etc/systemd/logind.conf
+
+# Create steam and matlab folder
+sudo mkdir /opt/{Steam,Matlab}
+sudo chown $USER:$USER /opt/*
