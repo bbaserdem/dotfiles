@@ -17,6 +17,4 @@
 #define base0E #e1a3ee
 #define base0F #deaf8f
 
-#include ".config/urxvt"
-
 Xcursor.theme: Breeze-Hacked

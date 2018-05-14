@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+GenericName=Programming for Data Analysis
+X-GNOME-FullName=MATLAB R2015b
+Keywords=matlab;calculation;programming;analysis
+Categories=Developement;
+MimeType=text/x-matlab
+Name=MATLAB R2015b
+Comment=MATLAB 2015b Release
+Exec=/opt/matlab-2015b/bin/matlab -desktop
+Terminal=false
+StartupNotify=true
+Icon=matlab
+Categories=Development;
+StartupWMClass="MATLAB R2015b - academic use"
