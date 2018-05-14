@@ -13,6 +13,9 @@ export GPGKEY=0B7151C823559DD8A7A04CE36426139E2F4C6CCE
 export PASSWORD_STORE_DIR=$XDG_CONFIG_HOME/pass
 export PASSWORD_STORE_GIT=$XDG_CONFIG_HOME/pass
 
+# Compile in parallel using AUR
+export MAKEFLAGS="-j$(nproc)"
+
 # Just MATLAB things
 # One day . . . one day MATLAB will actually do what I want it to do . . .
 export MATLAB_DIR=/opt/matlab-2018a/
