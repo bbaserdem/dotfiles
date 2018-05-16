@@ -3,9 +3,11 @@ brightnessctl
 dfu-programmer
 gohufont
 mpdscribble
+neovim-gtk
 nerd-fonts-fira-mono
 networkmanager-dmenu-git
 openblas-lapack
+otf-fira-code
 polybar-git
 private-internet-access-vpn
 rofi-pass
