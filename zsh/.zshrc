@@ -8,7 +8,7 @@ bashcompinit
 alias config='git -C $XDG_CONFIG_HOME'
 alias hopper-mount='sshfs batu@hopper.cshl.edu:/home/batu ~/Remote/Hopper -o allow_other'
 alias work-mount='sshfs silverbluep@sbpworkstation.cshl.edu:/home/silverbluep ~/Remote/Work -o allow_other'
-alias hopper-rdp='rdesktop -K -g 1440x900 -z -r sound:off -u batu hopper.cshl.edu'
+alias hopper-rdp='rdesktop -K -g 1808x1032 -z -r sound:off -u batu hopper.cshl.edu'
 alias hopper-rdp-fullscreen='rdesktop -K -g 1920x1080 -z -r sound:off -u batu hopper.cshl.edu'
 alias hopper-umount='fusermount3 -u ~/Remote/Hopper'
 alias xterm-termite='termite'
