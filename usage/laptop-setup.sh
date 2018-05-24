@@ -4,7 +4,7 @@
 cd ~
 
 # ETC OPTIONS
-sudo cp -R ~/.config/usage/etc/* /etc
+sudo cp -R ~/.config/usage/Arch-etc/* /etc
 
 # APPLICATIONS
 mkdir -p ~/.local/share
@@ -56,7 +56,7 @@ sudo cp $FILES_LOC/refind.hook /etc/pacman.d/hooks/
 pip install --user neovim
 pip2 install --user neovim
 # Clone over Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/,config/nvim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
 # Install plugins
 nvim +PluginInstall +qall
 # Compile YCM
@@ -65,9 +65,11 @@ nvim +PluginInstall +qall
 pip install --user neovim-remote
 
 # ZIM
+# Install ZIM
+git clone --recursive https://github.com/zimfw/zimfw $ZDOTDIR/zimfw
 # Install powerlevel9k
-sudo git clone https://github.com/bhilburn/powerlevel9k.git /usr/lib/zim/modules/prompt/external-themes/powerlevel9k
-sudo ln -s /usr/lib/zim/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme /usr/lib/zim/modules/prompt/functions/prompt_powerlevel9k_setup
+git clone https://github.com/bhilburn/powerlevel9k.git $ZDOTDIR/zimfw/modules/prompt/external-themes/powerlevel9k
+ln -s $ZDOTDIR/zimfw/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme $ZDOTDIR/zimfw/modules/prompt/functions/prompt_powerlevel9k_setup
 
 # FONTS
 # Uncomment the en.US line
@@ -102,3 +104,6 @@ sudo sed -i -e '/HoldoffTimeoutSec/s/=.*/=10s/' /etc/systemd/logind.conf
 # Create steam and matlab folder
 sudo mkdir /opt/{Steam,Matlab}
 sudo chown $USER:$USER /opt/*
+
+# FLATPAK
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
