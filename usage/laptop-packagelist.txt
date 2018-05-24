@@ -35,6 +35,7 @@ dunst
 efitools
 elementary-icon-theme
 feh
+flatpak
 freerdp
 geoip
 gimp
@@ -93,6 +94,7 @@ networkmanager
 network-manager-applet
 networkmanager-openconnect
 networkmanager-openvpn
+nftables
 notmuch
 noto-fonts-emoji
 ntp
@@ -123,6 +125,7 @@ qt4
 qt5-styleplugins
 qutebrowser
 ranger
+rdesktop
 redshift
 refind-efi
 reflector
