@@ -41,10 +41,10 @@ flatpak install nvim-gtk_x86_64.flatpak
 
 # Install ZIM
 echo "Installing ZIM . . ."
-git clone --recursive https://github.com/zimfw/zimfw $ZDOTDIR/zimfw
+git clone --recursive https://github.com/zimfw/zimfw ~/.config/zsh/zimfw
 # Install powerlevel9k
-git clone https://github.com/bhilburn/powerlevel9k.git $ZDOTDIR/zimfw/modules/prompt/external-themes/powerlevel9k
-ln -s $ZDOTDIR/zimfw/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme $ZDOTDIR/zimfw/modules/prompt/functions/prompt_powerlevel9k_setup
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel9k
+ln -s ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme ~/.config/zsh/zimfw/modules/prompt/functions/prompt_powerlevel9k_setup
 
 # Install Nerdfonts
 echo "Installing Nerdfonts"

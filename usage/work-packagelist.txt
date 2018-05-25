@@ -24,7 +24,7 @@ fonts-hack-ttf
 fonts-noto-color-emoji
 fonts-powerline
 fonts-sil-gentium
-freerdp-X11
+freerdp-x11
 geoip-bin
 geoip-database
 gimp
@@ -67,15 +67,14 @@ offlineimap
 openvpn
 papirus-icon-theme
 pass
-pdfjs
 pdfsam
 picard
-polkit-1-gnome
+policykit-1-gnome
 pulseaudio
 python-pip
 python3-pip
 qemu
-qt4-
+qt4-default
 qt5-style-plugins
 qutebrowser
 ranger
@@ -98,7 +97,6 @@ syncthing
 syncthing-gtk
 tar
 task
-termite
 texlive-base
 texlive-fonts-extra
 texlive-fonts-recommended
