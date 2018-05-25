@@ -52,16 +52,16 @@ cd /tmp
 git clone https://github.com/ryanoasis/nerd-fonts.git nerdfont
 cd nerdfont
 ./install.sh FiraCode FiraMono
-cd /tmp
 
 # Installing Gohufont
 echo "Installing Gohufont . . ."
+cd /tmp
 wget -q http://font.gohu.org/gohufont-2.0.tar.gz
 tar xzf gohufont-2.0.tar.gz
 cd gohufont-2.0
 gunzip -f *.gz
-mkdir ~/.local/share/fonts/Gohufont
-mv *.pcf ~/.local/share/fonts/Gohufont
+sudo mv *.pcf /usr/share/fonts
+sudo xset fp+ /usr/share/fonts
 
 # Installing Iosevka
 echo "Installing Iosevka . . ."
