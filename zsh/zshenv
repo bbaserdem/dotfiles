@@ -19,11 +19,13 @@ export MAKEFLAGS="-j$(nproc)"
 # Just MATLAB things
 # One day . . . one day MATLAB will actually do what I want it to do . . .
 export MATLAB_DIR=/opt/matlab-2018a/
-export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 if [[ $(hostname) != 'sbpworkstation' ]]
 then
+    export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
     export LD_PRELOAD=/usr/lib/libstdc++.so
     export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
+else
+    export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk-amd64/jre
 fi
 
 # Just JAVA things
@@ -58,8 +60,8 @@ export BROWSER=qutebrowser
 # Set terminal
 if [[ $(hostname) == 'sbpworkstation' ]]
 then
-    export TERM=rxvt-unicode
-    export TERMINAL=rxvt-unicode
+    export TERM=st-256color
+    export TERMINAL=st
 else
     export TERM=xterm-termite
     export TERMINAL=termite

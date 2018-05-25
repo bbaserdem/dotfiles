@@ -60,14 +60,14 @@ URxvt.depth:                    32
 URxvt.geometry:                 128x32
 URxvt.transparent:              true
 URxvt.shading:                  32
-URxvt.loginShell:               true
+URxvt.loginShell:               false
 URxvt.saveLines:                50
 URxvt.internalBorder:           0
 URxvt.lineSpace:                0
 URxvt.allow_bold:               true
 URxvt.scrollStyle:              rxvt
 URxvt.scrollBar:                false
-URxvt.cursorBlink:              true
+URxvt.cursorBlink:              false
 URxvt.cursorUnderline:          false
 URxvt.fading:                   15
 URxvt.pointerBlank:             false
