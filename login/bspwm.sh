@@ -17,11 +17,14 @@ fi
 
 if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
-
 fi
 
 if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
+fi
+
+if [ -d "/usr/share/fonts" ]; then
+    xset fp+ /usr/share/fonts/
 fi
 
 # start some nice programs

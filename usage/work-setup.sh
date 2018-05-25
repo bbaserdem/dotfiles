@@ -60,8 +60,10 @@ wget -q http://font.gohu.org/gohufont-2.0.tar.gz
 tar xzf gohufont-2.0.tar.gz
 cd gohufont-2.0
 gunzip -f *.gz
-mkdir $HOME/.fonts
-mv *.pcf $HOME/fonts
+sudo mkdir /usr/share/fonts/misc
+sudo mv *.pcf /usr/share/fonts/misc/
+sudo mkfontdir /usr/share/fontsA
+xset fp+ /usr/share/fonts/
 
 # Installing Iosevka
 echo "Installing Iosevka . . ."
