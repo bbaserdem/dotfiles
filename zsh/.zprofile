@@ -14,5 +14,5 @@ fi
 # Start i3
 if   [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq  1 ]
 then
-#    exec startx $XDG_CONFIG_HOME/login/bspwm.sh
+    exec startx $XDG_CONFIG_HOME/login/bspwm.sh
 fi
