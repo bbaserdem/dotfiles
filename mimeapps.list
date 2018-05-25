@@ -6,7 +6,7 @@ application/msword=libreoffice-writer.desktop;
 text/html=qutebrowser.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
 image/gif=qutebrowser.desktop;
-text/plain=mousepad.desktop;nvim.desktop;
+text/plain=mousepad.desktop;nvim.desktop;org.daa.NeovimGtk.desktop;
 image/vnd.djvu+multipage=zathura-djvu.desktop;
 image/png=feh.desktop;
 text/x-tex=mousepad.desktop;
@@ -16,6 +16,6 @@ x-scheme-handler/trash=exo-file-manager.desktop
 [Default Applications]
 application/octet-stream=zathura-pdf-poppler.desktop;
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop
-text/plain=mousepad.desktop
+text/plain=org.daa.NeovimGtk.desktop
 image/jpeg=feh.desktop;
 image/gif=qutebrowser.desktop;

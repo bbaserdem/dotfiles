@@ -5,7 +5,7 @@ configuration {
     theme: "sbpsidebar";
 
     // Application Behavior
-    modi: "top,window,drun,combi,ssh,run";
+    modi: "window,drun,combi,ssh,run";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;
