@@ -53,12 +53,8 @@ URxvt.background:   base00
 URxvt.cursorColor:  base05
 
 
-URxvt.font:         xft:FuraCode Nerd Font Mono:pixelsize=14
-!-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-!,xft:FuraCode Nerd Font Mono:pixelsize=14
-URxvt.boldFont:     xft:FuraCode Nerd Font Mono:pixelsize=14
-!-gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
-#,xft:FuraCode Nerd Font Mono:pixelsize=14
+URxvt.font:     -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1,xft:FuraCode Nerd Font Mono:pixelsize=14
+URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1,xft:FuraCode Nerd Font Mono:pixelsize=14
 
 URxvt.depth:                    32
 URxvt.geometry:                 128x32
