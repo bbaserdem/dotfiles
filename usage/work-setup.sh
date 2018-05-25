@@ -51,7 +51,7 @@ echo "Installing Nerdfonts"
 cd /tmp
 git clone https://github.com/ryanoasis/nerd-fonts.git nerdfont
 cd nerdfont
-./install.sh Fira
+./install.sh FiraCode FiraMono
 cd /tmp
 
 # Installing Gohufont
@@ -60,16 +60,15 @@ wget -q http://font.gohu.org/gohufont-2.0.tar.gz
 tar xzf gohufont-2.0.tar.gz
 cd gohufont-2.0
 gunzip -f *.gz
-mkdir $HOME/.fonts
-mv *.pcf $HOME/fonts
+mkdir ~/.local/share/fonts/Gohufont
+mv *.pcf ~/.local/share/fonts/Gohufont
 
 # Installing Iosevka
 echo "Installing Iosevka . . ."
 cd /tmp
 wget -q https://github.com/be5invis/Iosevka/releases/download/v1.14.3/01-iosevka-1.14.3.zip
-mkdir iosevka
-unzip 01-iosevka-1.14.3.zip -p iosevka
-mv iosevka/*.ttf $HOME/.fonts
+mkdir ~/.local/share/fonts/Iosevka
+unzip 01-iosevka-1.14.3.zip -d ~/.local/share/fonts/Iosevka
 
 fc-cache -f
 
