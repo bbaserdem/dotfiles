@@ -20,8 +20,11 @@ export MAKEFLAGS="-j$(nproc)"
 # One day . . . one day MATLAB will actually do what I want it to do . . .
 export MATLAB_DIR=/opt/matlab-2018a/
 export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
-export LD_PRELOAD=/usr/lib/libstdc++.so
-export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
+if [[ $(hostname) != 'sbpworkstation' ]]
+then
+    export LD_PRELOAD=/usr/lib/libstdc++.so
+    export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
+fi
 
 # Just JAVA things
 export _JAVA_AWT_WM_NONPARENTING=1
