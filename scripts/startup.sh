@@ -23,6 +23,7 @@ poly-launch.sh &                        # Polybar: status bar
 redshift &                              # Screen dimmer
 
 # Non-X programs
+nm-applet &
 udiskie &                               # Mount manager
 mpd &                                   # Music
 syncthing-gtk --minimized &             # File sync manager

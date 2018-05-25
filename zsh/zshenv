@@ -3,7 +3,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Z directory
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # ZIM stuff
-export ZIM_HOME=/usr/lib/zim
+export ZIM_HOME="$ZDOTDIR/zimfw"
 
 # SSH agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

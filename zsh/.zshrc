@@ -32,4 +32,4 @@ zmodules=(directory environment git git-info history input utility custom \
 zprompt_theme='powerlevel9k'
 ztermtitle='%~:%n@%m'
 zhighlighters=(main brackets cursor)
-source /usr/lib/zim/init.zsh
+source $ZIM_HOME/init.zsh
