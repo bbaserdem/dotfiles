@@ -56,8 +56,14 @@ export EDITOR=nvim
 # Set firefox as browser
 export BROWSER=qutebrowser
 # Set terminal
-export TERM=xterm-termite
-export TERMINAL=termite
+if [[ $(hostname) == 'sbpworkstation' ]]
+then
+    export TERM=stterm
+    export TERMINAL=stterm
+else
+    export TERM=xterm-termite
+    export TERMINAL=termite
+fi
 # Notmuch
 export NOTMUCH_CONFIG=$XDG_CONFIG_HOME/neomutt/notmuch-config
 # OpenFOAM
