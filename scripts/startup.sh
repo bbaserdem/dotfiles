@@ -26,7 +26,12 @@ redshift &                              # Screen dimmer
 nm-applet &
 udiskie &                               # Mount manager
 mpd &                                   # Music
-syncthing-gtk --minimized &             # File sync manager
+if [[ $(hostname) == 'sbpworkstation' ]]
+then
+    syncthing &
+else
+    syncthing-gtk --minimized &         # File sync manager
+fi
 mpdscribble --conf $XDG_CONFIG_HOME/mpd/mpdscribble.conf &  # Scrobbler
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
