@@ -58,8 +58,8 @@ export BROWSER=qutebrowser
 # Set terminal
 if [[ $(hostname) == 'sbpworkstation' ]]
 then
-    export TERM=stterm
-    export TERMINAL=stterm
+    export TERM=rxvt-unicode
+    export TERMINAL=rxvt-unicode
 else
     export TERM=xterm-termite
     export TERMINAL=termite
