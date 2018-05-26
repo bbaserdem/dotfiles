@@ -11,7 +11,6 @@ audacity
 avr-gcc
 avr-libc
 avrdude
-awesome-terminal-fonts
 bash-completion
 biber
 blender
@@ -66,14 +65,7 @@ libreoffice-fresh
 libva-mesa-driver
 libva-vdpau-driver
 linux-firmware
-linux-hardened
-linux-hardened-headers
 linux-headers
-linux-lts
-linux-lts-headers
-linux-zen
-linux-zen-headers
-lm_sensors
 mathjax
 memtest86+
 mesa
@@ -167,7 +159,6 @@ udiskie
 udisks2
 unzip
 virt-manager
-vulcan-radeon
 w3m
 wine
 wireless_tools
@@ -175,6 +166,7 @@ wmname
 xdg-user-dirs
 xf86-video-amdgpu
 xfsprogs
+xorg-server
 xorg-xfontsel
 xorg-xinit
 xorg-xinput

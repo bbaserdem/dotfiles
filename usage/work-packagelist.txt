@@ -147,6 +147,7 @@ xdg-user-dirs
 xdotool
 xfsprogs
 xinit
+xorg-server
 xsel
 youtube-dl
 zathura-pdf-poppler

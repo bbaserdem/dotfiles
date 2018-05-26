@@ -12,10 +12,7 @@ polybar-git
 private-internet-access-vpn
 rofi-pass
 siji-git
-stepmania-git
 terminess-powerline-font-git
-trizen
 ttf-iosevka
 wmutils-git
-zsh-zim-git
 steam-fonts
