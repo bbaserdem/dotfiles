@@ -52,7 +52,7 @@ padding-right =         1
 module-margin-left =    1
 module-margin-right =   1
 font-0 =                "Iosevka:size=10:weight=regular"
-font-1 =                "FuraMono Nerd Font:size=10:weight=regular"
+font-1 =                "FuraCode Nerd Font:size=10:weight=regular"
 fixed-center =          true
 tray-transparent =      false
 tray-detached =         false
