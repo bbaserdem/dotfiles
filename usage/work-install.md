@@ -1,9 +1,9 @@
 # Installation guide (Work)
 
-Work computer should have Debian, as it is pretty stable.
-Some other experimental stuff can work well too, but that is later down the line.
+Work computer should have Arch, as it has good packages, and is fairly stable.
+Be careful about lts kernel and graphics drivers.
 
-* [Debian](#debian)
+* [Arch](#debian)
 
 # Computer
 
@@ -13,7 +13,7 @@ which is what I used to have here previously.
 Motherboard does not support UEFI booting.
 One time boot menu is opened by pressing F12 on the boot splash.
 
-# Debian
+# Arch
 
 ## Bootable USB
 
@@ -24,13 +24,8 @@ Using `dd` to write a usb works well.
 
 There is an 250 GB SSD, and 1 TB HDD on the system.
 The HDD should have an encrypted home partition with XFS.
-The SSD should house all linuxware, with an EXT4 filesystem. And swap space.
+The SSD should house all linuxware, with a BHRFS filesystem, and swap space.
 
 ## Installation
 
-Follow the graphical installer, doing the partitioning etc.
-
-* Existing LUKS volumes cannot be added as far as I can tell. Set them up later.
-* For some reason, `/etc/apt/sources.list` ends up missing the non-updates repos.
-
-Afterwards boot into the system.
+Copy the process from laptop, but install seperate packages.
