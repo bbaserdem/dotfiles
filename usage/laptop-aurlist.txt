@@ -1,9 +1,9 @@
 bdf-tewi-git
+breeze-hacked-cursor-theme
 brightnessctl
 dfu-programmer
 gohufont
 mpdscribble
-neovim-gtk
 nerd-fonts-fira-mono
 networkmanager-dmenu-git
 openblas-lapack
