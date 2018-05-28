@@ -57,15 +57,10 @@ export QT_STYLE_OVERRIDE="gtk2"
 export EDITOR=nvim
 # Set firefox as browser
 export BROWSER=qutebrowser
-# Set terminal
-if [[ $(hostname) == 'sbpworkstation' ]]
-then
-    export TERM=st-256color
-    export TERMINAL=st
-else
-    export TERM=xterm-termite
-    export TERMINAL=termite
-fi
+# Set default terminal
+export TERM=rxvt-unicode
+# Set terminal to use for launching
+export TERMINAL=termite
 # Notmuch
 export NOTMUCH_CONFIG=$XDG_CONFIG_HOME/neomutt/notmuch-config
 # OpenFOAM
