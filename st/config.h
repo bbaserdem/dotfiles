@@ -5,10 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-/*
- * static char *font = "-lucy-tewii-medium-r-normal-*-12-*-*-*-*-*-*-*";
- */
-static char *font = "tewii:size=12";
+static char *font = "Iosevka:style=regular:size=10";
 static int borderpx = 2;
 
 /*
@@ -85,40 +82,45 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-/* Terminal colors (16 first used in escape sequence) */
+/* bg opacity */
+unsigned int alpha = 0xcc;
 
-/*
-* base16-eighties-theme.h
-*
-* Base16: (https://github.com/chriskempson/base16)
-*
-* Authors:
-*
-* Scheme: Chris Kempson (http://chriskempson.com)
-* Template: Honza Pokorny <me@honza.ca>
-*
-*/
+/* Terminal colors (16 first used in escape sequence) base16-eighties-theme.h */
 static const char *colorname[] = {
-  "#2d2d2d", /* base00 */
-  "#f2777a", /* base08 */
-  "#99cc99", /* base0B */
-  "#ffcc66", /* base0A */
-  "#6699cc", /* base0D */
-  "#cc99cc", /* base0E */
-  "#66cccc", /* base0C */
-  "#d3d0c8", /* base05 */
-  "#747369", /* base03 */
-  "#f99157", /* base09 */
-  "#393939", /* base01 */
-  "#515151", /* base02 */
-  "#a09f93", /* base04 */
-  "#e8e6df", /* base06 */
-  "#d27b53", /* base0F */
-  "#f2f0ec", /* base07 */
+    /* 8 normal colors */
+    "#2d2d2d", /* base00 */
+    "#f2777a", /* base08 */
+    "#99cc99", /* base0B */
+    "#ffcc66", /* base0A */
+    "#6699cc", /* base0D */
+    "#cc99cc", /* base0E */
+    "#66cccc", /* base0C */
+    "#d3d0c8", /* base05 */
+
+    /* 8 bright colors */
+    "#747369", /* base03 */
+    "#f99157", /* base09 */
+    "#393939", /* base01 */
+    "#515151", /* base02 */
+    "#a09f93", /* base04 */
+    "#e8e6df", /* base06 */
+    "#d27b53", /* base0F */
+    "#f2f0ec", /* base07 */
+
+    [255] = 0,
+ 	/* more colors can be added after 255 to use with DefaultXX */
+ 	"#cccccc",
+ 	"#555555",
+	"black", /* Black background color */
 };
 
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
 unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
+unsigned int defaultbg = 257;
 static unsigned int defaultcs = 13;
 static unsigned int defaultrcs = 0;
 
@@ -129,7 +131,7 @@ static unsigned int defaultrcs = 0;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 7;
+static unsigned int cursorshape = 4;
 
 /*
  * Default columns and rows numbers
@@ -157,8 +159,14 @@ static unsigned int defaultattr = 11;
  */
 static MouseShortcut mshortcuts[] = {
 	/* button               mask            string */
-	{ Button4,              XK_ANY_MOD,     "\031" },
-	{ Button5,              XK_ANY_MOD,     "\005" },
+	{ Button4,              XK_NO_MOD,      "\031" },
+	{ Button5,              XK_NO_MOD,      "\005" },
+};
+
+MouseKey mkeys[] = {
+	/* button               mask            function        argument */
+	{ Button4,              ShiftMask,      kscrollup,      {.i =  1} },
+	{ Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
 };
 
 /* Internal keyboard shortcuts. */
@@ -179,6 +187,9 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+	{ MODKEY,               XK_l,           copyurl,        {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
