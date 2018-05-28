@@ -36,7 +36,7 @@ export _JAVA_AWT_WM_NONPARENTING=1
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     export MON_0="eDP"
-    export MON_1="DisplayPort-0"
+    export MON_1="DisplayPort-1"
     export BRI_SCR="amdgpu_bl0"
     export BRI_KBD="asus::kbd_backlight"
 elif [[ $(hostname) == 'sbpworkstation' ]]
