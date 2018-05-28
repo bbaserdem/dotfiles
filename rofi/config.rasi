@@ -5,7 +5,7 @@ configuration {
     theme: "sbpsidebar";
 
     // Application Behavior
-    modi: "window,drun,combi,ssh,run";
+    modi: "window,drun,ssh,run";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;
@@ -31,7 +31,7 @@ configuration {
     eh: 1;
 
     // System Behavior
-    terminal: "termite";
+    terminal: "st";
     ssh-client: "ssh";
     ssh-command: "{terminal} -e {ssh-client} {host}";
     run-command: "{cmd}";

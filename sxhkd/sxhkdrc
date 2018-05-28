@@ -32,7 +32,7 @@ super + Down
 
 # launch rofi
 super + space
-	rofi -modi drun -show drun
+	rofi -show drun
 
 # lock screen
 super + Escape
