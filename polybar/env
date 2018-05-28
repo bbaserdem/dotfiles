@@ -33,16 +33,16 @@ export PB_NOVL="%{A3:pavucontrol:}%{o${PB_CRMS} +o}%{F${PB_CRMS}}%{F-} %{F${P
 # Operating system icon
 if [[ $(hostname) == 'sbplaptop' ]]
 then
-    export PB_OSIC=""
-elif [[ $(hostname) == 'sbplaptop2' ]]
-then
     export PB_OSIC=""
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
-    export PB_OSIC=""
+    export PB_OSIC=""
 elif [[ $(hostname) == 'sbphomestation' ]]
 then
     export PB_OSIC=""
+elif [[ $(hostname) == 'sbpserver' ]]
+then
+    export PB_OSIC=""
 else
     export PB_OSIC=""
 fi
