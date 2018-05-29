@@ -23,21 +23,9 @@ poly-launch.sh &                        # Polybar: status bar
 redshift &                              # Screen dimmer
 
 # Non-X programs
-nm-applet &
+nm-applet &                             # Internet connection manager
 udiskie &                               # Mount manager
 mpd &                                   # Music
-if [[ $(hostname) == 'sbpworkstation' ]]
-then
-    syncthing &
-else
-    syncthing-gtk --minimized &         # File sync manager
-fi
+syncthing-gtk --minimized &             # File sync manager
 mpdscribble --conf $XDG_CONFIG_HOME/mpd/mpdscribble.conf &  # Scrobbler
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# Just workspace things
-if [[ $(hostname) == 'sbpworkstation' ]]
-then
-    # Start dropbox
-    dropbox &
-fi
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1   # Policy-kit for su
