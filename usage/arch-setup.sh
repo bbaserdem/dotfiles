@@ -228,6 +228,14 @@ read -rsp $'Press any key to continue...\n' -n1 key
 
 
 
+echo 'Setting syncthing to start at login...\n'
+systemctl enable --user syncthing.service
+systemctl start  --user syncthing.service
+
+
+
+
+
 echo 'Shortening timeout for logoff events...\n'
 sudo sed -i '/HoldoffTimeoutSec/s/^#//g' /etc/systemd/logind.conf
 sudo sed -i -e '/HoldoffTimeoutSec/s/=.*/=10s/' /etc/systemd/logind.conf
