@@ -54,6 +54,7 @@ lib32-alsa-plugins
 lib32-libpulse
 libmtp
 libreoffice-fresh
+linux-firmware
 mathjax
 mpc
 mpd
