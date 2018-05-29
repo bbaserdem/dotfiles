@@ -73,7 +73,6 @@ networkmanager-openvpn
 nftables
 notmuch
 noto-fonts-emoji
-ntp
 offlineimap
 openblas
 openvpn

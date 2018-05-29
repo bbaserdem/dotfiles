@@ -55,6 +55,15 @@ read -rsp $'Press any key to continue...\n' -n1 key
 
 
 
+echo 'Establishing symlink for local app launchers...\n'
+mkdir -p ~/.local/share
+ln -s $XDG_CONFIG_HOME/applications ~/.local/share/applications
+read -rsp $'Press any key to continue...\n' -n1 key
+
+
+
+
+
 echo 'Enabling multicore-compilation for makepkg..\n'
 sudo sed "\$iMAKEFLAGS=\"-j\$(nproc)\"" /etc/makepkg.conf
 echo 'Enabling eyecandy for pacman...\n'
@@ -83,7 +92,16 @@ read -rsp $'Press any key to continue...\n' -n1 key
 
 
 
-# Replace this part with AURUTILS in nearby future
+echo 'Setting up symlinks for ~/ and loading environment variables...\n'
+cd ~/.config
+stow stowfiles
+cd ~
+source .zshenv
+
+
+
+
+
 echo 'Installing trizen...\n'
 cd /tmp
 git clone https://aur.archlinux.org/trizen.git
@@ -91,6 +109,12 @@ cd trizen
 makepkg -si
 cd ~
 read -rsp $'Press any key to continue...\n' -n1 key
+
+
+
+
+
+# Replace this part with AURUTILS in nearby future
 echo 'Installing AUR packages... (skip on ones that don'\''t install)\n'
 trizen -S - < ~/.config/usage/arch-aurlist.txt
 if [[ $(hostname) == 'sbplaptop' ]]
@@ -120,36 +144,12 @@ read -rsp $'Press any key to continue...\n' -n1 key
 
 
 
-echo 'Enabling spellcheck for browser...\n'
-sudo python /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
-read -rsp $'Press any key to continue...\n' -n1 key
-
-
-
-
-
-echo 'Shortening timeout for logoff events...\n'
-sudo sed -i '/HoldoffTimeoutSec/s/^#//g' /etc/systemd/logind.conf
-sudo sed -i -e '/HoldoffTimeoutSec/s/=.*/=10s/' /etc/systemd/logind.conf
-read -rsp $'Press any key to continue...\n' -n1 key
-
-
-
-
-
 echo 'Setting up PIA...\n'
 echo "$(pass PIA | grep uname | head -n 1 | sed 's|\(uname: \)\(.*\)|\2|g')\n$(pass PIA | head -n 1)" | sudo tee /etc/private-internet-access/login.conf
 sudo chmod 0600 /etc/private-internet-access/login.conf
 sudo chown root:root /etc/private-internet-access/login.conf
 sudo pia -a
 read -rsp $'Press any key to continue...\n' -n1 key
-
-
-
-
-
-echo 'Adding flatpak repository...\n'
-sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 
 
@@ -197,30 +197,6 @@ fi
 
 
 
-echo '*** Root filesystem changes are done! ***'
-echo 'If home folder was correctly set up before, please skip.'
-echo 'If not, please continue'
-echo 'skip/Cont?'
-read -rsp $'Press any key to continue...\n' -n1 key
-
-
-
-
-
-echo 'Setting up symlinks for ~/ and loading environment variables...\n'
-cd ~/.config
-stow stowfiles
-cd ~
-source .zshenv
-
-
-
-echo 'Establishing symlink for local app launchers...\n'
-mkdir -p ~/.local/share
-ln -s $XDG_CONFIG_HOME/applications ~/.local/share/applications
-
-
-
 echo 'Setting up neovim...\n'
 pip install --user neovim
 pip install --user neovim-remote
@@ -228,6 +204,9 @@ pip2 install --user neovim
 git clone https://github.com/VundleVim/Vundle.vim.git $XDG_CONFIG_HOME/nvim/bundle/Vundle.vim
 nvim +PluginInstall +qall
 $XDG_CONFIG_HOME/nvim/bundle/YouCompleteMe/install.py --clang-completer --system-libclang
+read -rsp $'Press any key to continue...\n' -n1 key
+
+
 
 
 
@@ -235,6 +214,31 @@ echo 'Setting up ZIM...\n'
 git clone --recursive https://github.com/zimfw/zimfw $ZDOTDIR/zimfw
 git clone https://github.com/bhilburn/powerlevel9k.git $ZDOTDIR/zimfw/modules/prompt/external-themes/powerlevel9k
 ln -s $ZDOTDIR/zimfw/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme $ZDOTDIR/zimfw/modules/prompt/functions/prompt_powerlevel9k_setup
+read -rsp $'Press any key to continue...\n' -n1 key
+
+
+
+
+
+echo 'Enabling spellcheck for browser...\n'
+sudo python /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
+read -rsp $'Press any key to continue...\n' -n1 key
+
+
+
+
+
+echo 'Shortening timeout for logoff events...\n'
+sudo sed -i '/HoldoffTimeoutSec/s/^#//g' /etc/systemd/logind.conf
+sudo sed -i -e '/HoldoffTimeoutSec/s/=.*/=10s/' /etc/systemd/logind.conf
+read -rsp $'Press any key to continue...\n' -n1 key
+
+
+
+
+
+echo 'Adding flatpak repository...\n'
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 
 
