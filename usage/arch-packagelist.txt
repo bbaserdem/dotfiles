@@ -76,6 +76,7 @@ noto-fonts-emoji
 offlineimap
 openblas
 openvpn
+pacman-contrib
 pamixer
 papirus-icon-theme
 pass

@@ -231,7 +231,13 @@ read -rsp $'Press any key to continue...\n' -n1 key
 echo 'Setting syncthing to start at login...\n'
 systemctl enable --user syncthing.service
 systemctl start  --user syncthing.service
-
+if [[ $(hostname) == 'sbpworkstation' ]]
+then
+    echo 'Enabling Dropbox and disabling updates...\n'
+    systemctl enable --user dropbox.service
+    rm -rf ~/.dropbox-dist
+    install -dm0 ~/.dropbox-dist
+fi
 
 
 
@@ -260,3 +266,5 @@ echo '\tChange the MAC addresses at /etc/udev/rules.d/10-network.rules'
 echo '\tEnable user to login automatically at tty1'
 echo '\t(Laptop)Use lspci to get NVMe address, and add to RUNTIME_PM_BLACKLIST at /etc/default/tlp'
 echo '\tSet syncthing-gtk to wait on daemon'
+echo '\t(Work)Set dropbox autostart to no, and edit the user systemd with lines;'
+echo '\t\t[Service]\nEnvironment=DISPLAY=:0'
