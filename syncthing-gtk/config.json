@@ -15,7 +15,7 @@
     "minimize_on_start": true,
     "notification_for_error": true,
     "notification_for_folder": true,
-    "notification_for_update": true,
+    "notification_for_update": false,
     "st_autoupdate": false,
     "syncthing_arguments": "",
     "syncthing_binary": "/usr/bin/syncthing",
