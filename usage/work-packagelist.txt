@@ -2,6 +2,6 @@ grub
 lib32-nvidia-340xx-utils
 linux-lts
 linux-lts-headers
-lmsensors
+lm-sensors
 nvidia-340xx-lts
 os-prober
