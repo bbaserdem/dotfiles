@@ -125,7 +125,6 @@ texlive-latexextra
 texlive-pictures
 texlive-pstricks
 texlive-science
-tlp
 tmux
 tor
 trash-cli

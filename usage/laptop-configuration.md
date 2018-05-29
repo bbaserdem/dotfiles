@@ -22,7 +22,7 @@ Example configuration is provided in the repo, but will require manual editing.
 # Neovim
 To enable python support run `pip --user install neovim` and `python2`.
 Vundle will not be installed by default. Run 
-`git clone https://github.com/VundleViw/Vundle.vim.git $XDG_CONFIG_HOME/nvim/bundle/Vundle.vim`.
+`git clone https://github.com/VundleVim/Vundle.vim.git $XDG_CONFIG_HOME/nvim/bundle/Vundle.vim`.
 Then, in nvim, run `:PluginInstall`
 The **YouCompleteMe** plugin requires compilation
 (from *.config/nvim/bundle/YouCompleteMe* directory using `./install.py --clang-completer --system-libclang`)
