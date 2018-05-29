@@ -234,6 +234,8 @@ systemctl start  --user syncthing.service
 if [[ $(hostname) == 'sbpworkstation' ]]
 then
     echo 'Enabling Dropbox and disabling updates...\n'
+    mkdir -p ~/Dropbox/lab_projects
+    ln -s ~/Research ~/Dropbox/lab_projects/bbaserde
     systemctl enable --user dropbox.service
     rm -rf ~/.dropbox-dist
     install -dm0 ~/.dropbox-dist
