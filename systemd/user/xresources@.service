@@ -1,0 +1,18 @@
+[Unit]
+Description=Load X Resources DataBase on X display %I
+Documentation=man:xrdb(1)
+Before=X11@%i.target
+Requisite=X11@%i.target
+
+
+[Service]
+Environment=DISPLAY=%I
+Type=oneshot
+ExecStart=/usr/bin/flock %t/x11-xrdb@%I -c '/usr/bin/xrdb -merge %h/.config/X11/resources'
+SyslogIdentifier=xrdb
+
+
+
+
+[Install]
+WantedBy=X11@%i.target

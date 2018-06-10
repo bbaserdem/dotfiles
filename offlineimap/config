@@ -29,8 +29,8 @@ maxconnections = 1
 keepalive = 60
 holdconnectionopen = yes
 type = Gmail
-remoteusereval = get_field('Google','email')
-remotepasseval = get_field('Google','app')
+remoteusereval = baserdem.batuhan@gmail.com
+remotepasseval = get_app_pass()
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 realdelete = no
 #---Fix label names---#

@@ -1,0 +1,18 @@
+[Unit]
+Description=Redshift display colour temperature adjustment on X display %I
+Documentation=man:redshift(1)
+After=X11@%i.target
+Requisite=X11@%i.target
+
+
+[Service]
+Environment=DISPLAY=%I
+Type=simple
+ExecStart=/usr/bin/redshift
+SyslogIdentifier=redshift
+
+
+ExecStopPost=/usr/bin/env redshift -x
+
+[Install]
+WantedBy=bspwm@.service
