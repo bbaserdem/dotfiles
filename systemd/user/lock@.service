@@ -1,0 +1,16 @@
+[Unit]
+Description=Screen lock on X display %I
+Documentation=man:i3lock(1)
+After=X11@%i.target
+Requisite=X11@%i.target
+
+
+[Service]
+Environment=DISPLAY=%I
+Type=simple
+ExecStart=%h/.config/systemd/scripts/fancylock.sh
+SyslogIdentifier=i3lock
+
+
+ExecStartPost=/bin/sleep 1
+

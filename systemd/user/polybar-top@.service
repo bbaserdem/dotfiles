@@ -1,0 +1,18 @@
+[Unit]
+Description=Info bar at top of screen on X display %I
+Documentation=man:polybar(1)
+After=X11@%i.target
+Requisite=X11@%i.target
+After=wm-running@%i.target
+
+[Service]
+Environment=DISPLAY=%I
+Type=simple
+ExecStart=%h/.config/polybar/launch.sh top
+SyslogIdentifier=polybar-top
+
+
+
+
+[Install]
+WantedBy=bspwm@.service

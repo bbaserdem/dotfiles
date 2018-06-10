@@ -91,7 +91,7 @@ bind index,pager / search                 # Search features
 bind index,pager ? search-reverse
 bind index,pager n search-next
 bind index,pager N search-opposite
-macro index S "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch.py -G ~/.mail/temp/search<enter><change-folder-readonly>+temp/search<enter>" "search mail (using notmuch)"
+macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.config/neomutt/mutt-notmuch.py -G ~/.mail/temp/search<enter><change-folder-readonly>+temp/search<enter>" "search mail (using notmuch)"
 
 # Threading
 bind index h collapse-thread

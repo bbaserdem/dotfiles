@@ -1,0 +1,18 @@
+[Unit]
+Description=GTK frontend for the Syncthing daemon on X display %I
+Documentation=man:syncthing-gtk(1)
+After=X11@%i.target
+Requisite=X11@%i.target
+After=wm-running@%i.target
+
+[Service]
+Environment=DISPLAY=%I
+Type=simple
+ExecStart=/usr/bin/syncthing-gtk --minimized
+SyslogIdentifier=syncthing-gtk
+
+
+
+
+[Install]
+WantedBy=bspwm@.service
