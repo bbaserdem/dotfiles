@@ -2,6 +2,10 @@
 #-wm independent hotkeys-#
 #------------------------#
 
+# reload screen configuration
+super + F8
+	~/.config/sxhkd/screenReload.sh
+
 # terminal emulator
 super + Return
 	$TERMINAL

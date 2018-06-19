@@ -1,27 +1,16 @@
 # Unix Configuration
 
-This repository contains my UNIX configuration.
+This repository contains my UNIX user configuration.
 
-All the files are built to be used on my working system.
-This is more of a referance manual for me to build my system on other computers.
-Some files are omitted due to security issues.
-So this might not represent my complete setup.
-
-* Installation to laptop.
-* Installation to work PC.
-* Setup
-* Usage
-
-This document contains information on how keybindings work with this system.
-
-# Installation
-
-I like distro hopping. Here is a breakdown for setup of each system;
-
-* [Server](#server)
-* [Laptop](#laptop), using Arch.
-* [Workstation](#workstation), using Debian.
-* [Homestation](#homestation), using Void.
+* Do hotplug monitor with udev for laptop
+* Failed modules fix.
+* Cursor not loaded.
+* Do hibernation below 10% battery.
+* Create QEMU launchers, and fix QEMU monitor sizing issues.
+* Migrate from rdesktop to freerdp.
+* GPU temperatures using AMDGPU, its on the fancontrol page.
+* Bluetooth on laptop.
+* Fix kitty and neovim c.
 
 # TMUX
 

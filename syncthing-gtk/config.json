@@ -1,6 +1,6 @@
 {
     "animate_icon": true,
-    "autokill_daemon": 1,
+    "autokill_daemon": 0,
     "autostart_daemon": 0,
     "daemon_priority": 0,
     "file_browser": "explore",

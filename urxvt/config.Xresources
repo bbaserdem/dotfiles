@@ -18,7 +18,7 @@ URxvt.allow_bold:               true
 URxvt.scrollStyle:              rxvt
 URxvt.scrollBar:                false
 URxvt.cursorBlink:              false
-URxvt.cursorUnderline:          false
+URxvt.cursorUnderline:          true
 URxvt.fading:                   15
 URxvt.pointerBlank:             false
 
