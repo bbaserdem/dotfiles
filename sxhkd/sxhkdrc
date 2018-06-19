@@ -12,15 +12,15 @@ super + p
 
 # emoji
 super + e
-    rofi-emoji.sh
+    ~/.config/rofi/rofi-emoji.sh
 
 # Windows
 super + w
     rofi -modi window -show window
 
-# Processes
-super + t
-    rofi -modi top -show top
+# Daemons
+super + d
+    ~/.config/rofi/rofi-systemd.sh
 
 # Screenshot
 Print
@@ -28,7 +28,7 @@ Print
 
 # Change wallpapers
 super + Down
-    wallpaper.sh
+    systemctl --user start wallpaper@${DISPLAY}.service
 
 # launch rofi
 super + space
@@ -36,17 +36,17 @@ super + space
 
 # lock screen
 super + Escape
-    lock.sh
+    systemctl --user start lock@${DISPLAY}.service
 
 # make sxhkd reload its configuration files:
 super + shift + Escape
-	pkill -USR1 -x sxhkd
+	systemctl --user restart sxhkd@${DISPLAY}.service
 
 # Music controls for mpd
 XF86Audio{Play,Stop,Next}
     mpc {toggle,stop,next}
 XF86AudioPrev
-    playprev.sh
+    ~/.config/sxhkd/playprev.sh
 
 # Sound controls
 XF86AudioRaiseVolume
@@ -55,10 +55,6 @@ XF86AudioLowerVolume
     pamixer --decrease 5
 XF86AudioMute
     pamixer --toggle-mute
-
-# launch firefox
-XF86HomePage
-    $BROWSER
 
 # Brightness setting for laptop
 XF86MonBrightnessUp
@@ -72,7 +68,7 @@ XF86KbdBrightnessDown
 
 # Open python terminal
 XF86Calculator
-    $TERM -e bpython
+    $TERMINAL -e bpython
 
 #---------------#
 #-BSPWM HOTKEYS-#
@@ -80,7 +76,7 @@ XF86Calculator
 
 # quit bspwm normally
 super + alt + Escape
-	bspc quit
+	systemctl --user stop bspwm@${DISPLAY}.service
 
 # close and kill
 super + {_,shift + }q

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 #
 # Neofetch config file
 # https://github.com/dylanaraps/neofetch
@@ -8,10 +8,8 @@
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
 print_info() {
     info title
-    info line_break
-    info "Song" song
-    info line_break
     info cols
+    info "Song" song
     info underline
 
     info "OS" distro
@@ -24,8 +22,8 @@ print_info() {
     info "Uptime" uptime
     info "Shell" shell
     info "DE" de
-    # info "WM" wm &
-    prin "WM" "bspwm" # Due to Java fix, WM appears as L3GD
+    info "WM" wm
+    # prin "WM" "bspwm" # Due to Java fix, WM appears as L3GD
 
     info underline
 

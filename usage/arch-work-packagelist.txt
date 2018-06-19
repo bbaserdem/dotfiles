@@ -1,8 +1,0 @@
-cups
-grub
-lib32-nvidia-340xx-utils
-linux-lts
-linux-lts-headers
-lm_sensors
-nvidia-340xx-lts
-os-prober

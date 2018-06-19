@@ -1,0 +1,13 @@
+[Unit]
+Description=Refresh newsboat RSS/Atom feed database
+Documentation=man:feh(1)
+
+
+
+
+[Timer]
+OnUnitActiveSec=15m
+Unit=newsboat-refresh.service
+
+[]
+WantedBy=default.target
