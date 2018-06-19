@@ -8,7 +8,7 @@
 # To compensate, source this file before launching polybar
 
 # Colors
-export PB_BKGR="#A01B1918" # Black
+export PB_BKGR="#B01B1918" # Black
 # export PB_BKGR="#1B1918" # Black
 export PB_FRGR="#A8A19F" # White
 export PB_MUTE="#766E6B" # Gray
@@ -41,3 +41,7 @@ export PB_NOVL="%{A3:pavucontrol:}%{o${PB_CRMS} +o}%{F${PB_CRMS}}%{F-} %{F${P
 # Operating system icon
 export PB_OSIC=""
 
+# To make taskwarrior work properly
+export TASKRC="/home/sbp/.config/taskrc"
+export TASKDATA="/home/sbp/Documents/Tasks/"
+export TERMINAL=termite

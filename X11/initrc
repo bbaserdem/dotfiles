@@ -9,6 +9,8 @@ _DISPLAY="$(systemd-escape -- "$DISPLAY")"
 trap "rm -f $(printf '%q' "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}")" EXIT
 mkfifo "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}"
 
+xsetroot -cursor_name left_ptr
+
 cat < "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}" &
 systemctl --user start "X11@${_DISPLAY}.target" &
 wait

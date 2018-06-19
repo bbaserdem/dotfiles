@@ -25,8 +25,6 @@ Plugin 'mhinz/neovim-remote'
 " Status bar mods
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
-" Base 16 color theme
-Plugin 'chriskempson/base16-vim'
 " Matlab file editor
 Plugin 'daeyun/vim-matlab'
 " NERDtree file browser
@@ -38,8 +36,8 @@ call vundle#end()
 filetype plugin indent on
 
 """"""" Colorscheme """""""
-let base16colorspace=256
-colorscheme base16-default-dark
+"let base16colorspace=256
+"colorscheme base16-default-dark
 
 """"""" NERDTree """""""
 map <C-r> :NERDTreeToggle<CR>
