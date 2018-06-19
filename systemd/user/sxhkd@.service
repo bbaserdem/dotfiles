@@ -10,7 +10,7 @@ Environment=DISPLAY=%I
 Type=simple
 ExecStart=/usr/bin/sxhkd
 SyslogIdentifier=sxhkd
-
+ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 
 
 
