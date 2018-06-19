@@ -1,0 +1,18 @@
+[Unit]
+Description=Change wallpaper using Feh on X display %I
+Documentation=man:sxhkd(1)
+After=X11@%i.target
+Requisite=X11@%i.target
+
+
+[Service]
+Environment=DISPLAY=%I
+Type=oneshot
+ExecStart=%h/.config/systemd/scripts/wallpaper.sh
+SyslogIdentifier=wallpaper
+
+
+
+
+[Install]
+WantedBy=bspwm@.service

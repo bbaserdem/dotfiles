@@ -1,8 +1,11 @@
 #! /bin/sh
 
-# Startup programs
-sxhkd &
-startup.sh &
+# Specific
+pactl set-sink-volume '20%'
+pactl set-sink-mute
+xset -b
+export _JAVA_AWT_WM_NONREPARENTING=1
+wmname LG3D
 
 if [[ $(hostname) == 'sbplaptop' ]]
 then
@@ -46,6 +49,3 @@ bspc rule -a stellarium             state=tiled
 bspc rule -a gtk2fontsel            state=tiled
 bspc rule -a rdesktop               state=floating
 
-# Java fix
-export _JAVA_AWT_WM_NONREPARENTING=1
-wmname LG3D

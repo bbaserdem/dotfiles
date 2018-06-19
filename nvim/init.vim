@@ -31,6 +31,8 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'daeyun/vim-matlab'
 " NERDtree file browser
 Plugin 'scrooloose/nerdtree'
+" Grammar checker
+Plugin 'rhysd/vim-grammarous'
 " After all plugins...
 call vundle#end()
 filetype plugin indent on
@@ -47,6 +49,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""" General coding stuff """""""
 " Turn on spellcheck
 set spelllang=en_us
+" Grammar check
+let g:grammarous#languagetool_cmd = 'languagetool'
 " Highlight 80th column
 set colorcolumn=80
 " Always show status bar

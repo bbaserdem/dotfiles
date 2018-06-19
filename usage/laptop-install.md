@@ -97,12 +97,16 @@ swapon /dev/mapper/Linux-Swap
 mount /dev/mapper/Linux-Arch /mnt
 btrfs subvolume create /mnt/@root
 btrfs subvolume create /mnt/@snapshots
+btrfs subvolume create /mnt/@virtual
 umount /mnt
-mount -o rw,discard,noatime,compress=lzo,space_cache,ssd,subvol=@root /dev/mapper/Linux-Arch /mnt
-mkdir -p /mnt/{boot,home,.snapshots,backup}
-mount /dev/sdX1 /mnt/boot
-mount -o rw,discard,noatime,compress=lzo,space_cache,ssd,subvol=@snapshots /dev/mapper/Linux-Arch /mnt/.snapshots
-mount -o defaults /dev/mapper/Linux-Home /mnt/home
+mount -o rw,nodiscard,noatime,nodiratime,compress=lzo,space_cache,subvol=@root /dev/mapper/Linux-Arch /mnt
+mkdir -p /mnt/{boot,home,.snapshots,opt/VMs,esp}
+mount /dev/sdX1 /mnt/esp
+mkdir -p /mnt/esp/EFI/Arch
+mount --bind /mnt/esp/EFI/Arch /mnt/boot
+mount -o rw,nodiscard,noatime,nodiratime,compress=lzo,space_cache,subvol=@snapshots /dev/mapper/Linux-Arch /mnt/.snapshots
+mount -o rw,nodiscard,noatime,nodiratime,compress=lzo,space_cache,subvol=@virtual /dev/mapper/Linux-Arch /mnt/opt/VMs
+mount -o /dev/mapper/Linux-Home /mnt/home
 mkdir -p /mnt/var/cache/pacman
 mkdir /mnt/var/lib
 btrfs subvolume create /mnt/var/abs
@@ -115,8 +119,8 @@ This whole overhaul should have taken care of the partitioning.
 
 ## Installation
 
-Check internet connection; this part is a bit involved so I rather hook up an
-ethernet cable.
+Check internet connection; this part is a bit involved so I rather get ethernet.
+`wifi-menu` can help with wireless connection.
 Run `pacman -Sy` to refresh database, then install reflector `pacman -S reflector`
 Rank mirrors, then install OS, generate fstab and chroot.
 ```
@@ -129,9 +133,13 @@ arch-chroot /mnt
 ## Setup
 Do the following steps to ensure that the system is bootable.
 
+### Bind mount ESP
+By default, arch dumps kernels to `/boot`.
+That ixs why the ESP is mounted at `/esp`, and `/boot` is a bind mount to `/esp/EFI/Arch`
+This requires rEFInd to be installed and updated manuallly, scrips are provided.
+
 ### Secure Boot
-Put the `db.key`, `db.crt` and `db.cer` for secure boot in `etc/refind.d/keys`
-and rename the `db` to `refind_local`.
+Put the `DB.key`, `DB.crt` and `DB.cer` for secure boot in `etc/sbkeys`.
 These will be used both for signing the boot loader and the kernels.
 
 ### Initramfs
@@ -156,23 +164,8 @@ Run `mkdir {Downloads,Documents,Pictures,Music,Videos,Phone,Research}`
 Copy the dotfiles git directory with `git clone git@github.com:bbaserdem/dotfiles.git .config`
 
 ### Setup
-Enable multilib repository by uncommenting the corresponding line in
-`/etc/pacman.conf`. Install trizen by
-```
-cd /tmp
-git clone https://aur.archlinux.org/trizen.git
-cd trizen
-makepkg -si
-cd ~
-```
-Install packages with
-```
-sudo pacman -S < .config/usage/laptop-packagelist.txt
-trizen -S < .config/usage/laptop-aurlist.pkg
-```
-
+Enable multilib repository by uncommenting the corresponding line in `/etc/pacman.conf`.
 Run the `setup-laptop.sh` after all the steps to finish setting up.
-Check `rEFInd` config to make sure and fix the UUID's.
 
 To enable auto-login on tty1, run `sudo -E systemctl edit getty@tty1.service`,
 This is a drop in script, (-E to use nvim as editor); and add these lines
@@ -188,5 +181,4 @@ Import GPG subkey from my usb. by running `gpg --import <keyfiles>`
 for both the public and the secret subkey.
 Run `gpg --edit-key <keyfiles>`, and `trust` to set ultimate trust to keys.
 Then run `git config --global commit.gpgsign true` for signing commits.
-Copy the SSH directory to `.config/stowfiles`.
-
+Copy the SSH directory to home.

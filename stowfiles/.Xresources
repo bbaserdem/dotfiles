@@ -1,3 +1,0 @@
-! run 'xrdb -load .Xresources' to refresh
-#include ".config/urxvt/config.Xresources"
-Xcursor.theme: Breeze_Hacked

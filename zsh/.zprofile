@@ -1,18 +1,23 @@
-# Import scripts path
-if [ -d "$XDG_CONFIG_HOME/scripts" ]; then
-    PATH="$XDG_CONFIG_HOME/scripts:$PATH"
-fi
 # Import .local/bit
-if [ -d "$HOME/.local/bin" ]; then
+if [ -d "$HOME/.local/bin" ]
+then
     PATH="$HOME/.local/bin:$PATH"
 fi
 # import vim-live-latex
-if [ -d "$XDG_CONFIG_HOME/nvim/bundle/vim-live-latex-preview/bin" ]; then
+if [ -d "$XDG_CONFIG_HOME/nvim/bundle/vim-live-latex-preview/bin" ]
+then
     PATH="$XDG_CONFIG_HOME/nvim/bundle/vim-live-latex-preview/bin:$PATH"
 fi
 
-# Start i3
+# Load some environment variables to systemd
+systemctl --user import-environment XDG_CONFIG_HOME 
+systemctl --user import-environment MON_0
+systemctl --user import-environment MON_1
+systemctl --user import-environment BRI_SCR
+systemctl --user import-environment BRI_KBD
+
+# Start things
 if   [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq  1 ]
 then
-    exec startx $XDG_CONFIG_HOME/login/bspwm.sh
+    exec startx
 fi
