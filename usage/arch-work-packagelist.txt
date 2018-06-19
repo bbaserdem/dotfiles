@@ -1,3 +1,4 @@
+cups
 grub
 lib32-nvidia-340xx-utils
 linux-lts

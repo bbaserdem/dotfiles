@@ -192,6 +192,9 @@ then
     echo 'Configuring GRUB...\n'
     sudo 'grub-mkconfig -o /boot/grub/grub.cfg'
 fi
+echo 'Enabling CUPS daemon...\n'
+sudo systemctl enable org.cups.cupsd.service
+sudo systemctl start  org.cups.cupsd.service
 
 
 
@@ -269,4 +272,5 @@ echo '\tEnable user to login automatically at tty1'
 echo '\t(Laptop)Use lspci to get NVMe address, and add to RUNTIME_PM_BLACKLIST at /etc/default/tlp'
 echo '\tSet syncthing-gtk to wait on daemon'
 echo '\t(Work)Set dropbox autostart to no, and edit the user systemd with lines;'
+echo '\t(Work)Set up printers from CUPS web interface'
 echo '\t\t[Service]\nEnvironment=DISPLAY=:0'

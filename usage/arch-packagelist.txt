@@ -23,6 +23,8 @@ calcurse
 cdparanoia
 clang
 compton
+cups-pdf
+cups-pk-helper
 deluge
 dfu-util
 discount
