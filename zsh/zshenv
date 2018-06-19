@@ -18,15 +18,10 @@ export MAKEFLAGS="-j$(nproc)"
 
 # Just MATLAB things
 # One day . . . one day MATLAB will actually do what I want it to do . . .
-export MATLAB_DIR=/opt/matlab-2018a/
-if [[ $(hostname) != 'sbpworkstation' ]]
-then
-    export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
-    export LD_PRELOAD=/usr/lib/libstdc++.so
-    export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
-else
-    export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk-amd64/jre
-fi
+export MATLAB_DIR=/opt/matlab/
+# export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
+# export LD_PRELOAD=/usr/lib/libstdc++.so
+# export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 
 # Just JAVA things
 export _JAVA_AWT_WM_NONPARENTING=1
@@ -49,6 +44,9 @@ then
     export MON_1="HDMI-2"
 fi
 
+# Graphical options
+export BORDER_GAP=24
+export BAR_SIZE=32
 # GPG config
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 # QT5 theme
