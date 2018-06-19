@@ -62,7 +62,6 @@ wm-restack =            bspwm
 [bar/top]
 inherit =               bar/alpha
 bottom =                false
-;monitor =               ${env:MON_0}
 ;monitor-fallback =      ${env:MON_1}
 modules-left =          launch bspwm bspwm-label xwindow
 modules-center =        tasks date time weather offlineimap rss
