@@ -1,5 +1,6 @@
 from socket import gethostname as ghn
 import os
+import datetime
 
 # Set things like c.tabs.position = "left"
 c.url.searchengines = {
@@ -17,7 +18,6 @@ css_lght = str(config.configdir) + '/css/light.css'
 config.bind( '<Ctrl-d>', 'config-cycle --temp content.user_stylesheets {0} {1} "" ;; reload'.format(css_dark,css_lght) )
 
 c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"
-c.content.host_blocking.enabled = True
 c.editor.command = ["$TERMINAL", "-e", "$EDITOR", "'{}'"]
 c.content.media_capture = True
 c.spellcheck.languages = [ "en-US" ]
@@ -38,6 +38,13 @@ c.editor.command = [ os.environ['TERM'], '-e', 'nvim', '{}']
 config.bind( '<Ctrl-b>', 'adblock-update')
 config.bind( 'm', 'spawn mpv {url}')
 config.bind( 'M', 'hint links spawn mpv {hint-url}')
+
+# Time based locking
+currentTime = datetime.datetime.now()
+if ( currentTime.hour >= 7 ) & ( currentTime.hour < 8 ):
+    c.content.host_blocking.enabled = True
+else:
+    c.content.host_blocking.enabled = False
 
 if ghn() == "spbworkstation":
     c.url.default_page = "http://intranet.cshl.edu"
