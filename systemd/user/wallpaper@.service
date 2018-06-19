@@ -7,7 +7,7 @@ Requisite=X11@%i.target
 
 [Service]
 Environment=DISPLAY=%I
-Type=simple
+Type=oneshot
 ExecStart=%h/.config/systemd/scripts/wallpaper.sh
 SyslogIdentifier=wallpaper
 

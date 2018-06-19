@@ -1,15 +1,14 @@
 [Unit]
-Description=Load X Resources DataBase on X display %I
+Description=Set the displays on X display %I
 Documentation=man:xrdb(1)
 Before=X11@%i.target
 Requisite=X11@%i.target
 
-
 [Service]
 Environment=DISPLAY=%I
 Type=oneshot
-ExecStart=/usr/bin/flock %t/x11-xrdb@%I -c '/usr/bin/xrdb %h/.config/X11/resources'
-SyslogIdentifier=xrdb
+ExecStart=%h/.config/X11/monitors.sh
+SyslogIdentifier=xrandr-monitors-script
 
 
 
