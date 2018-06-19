@@ -19,14 +19,9 @@ export MAKEFLAGS="-j$(nproc)"
 # Just MATLAB things
 # One day . . . one day MATLAB will actually do what I want it to do . . .
 export MATLAB_DIR=/opt/matlab-2018a/
-if [[ $(hostname) != 'sbpworkstation' ]]
-then
-    export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
-    export LD_PRELOAD=/usr/lib/libstdc++.so
-    export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
-else
-    export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk-amd64/jre
-fi
+# export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
+# export LD_PRELOAD=/usr/lib/libstdc++.so
+# export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 
 # Just JAVA things
 export _JAVA_AWT_WM_NONPARENTING=1
@@ -36,17 +31,14 @@ export _JAVA_AWT_WM_NONPARENTING=1
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     export MON_0="eDP"
-    export MON_1="DisplayPort-1"
     export BRI_SCR="amdgpu_bl0"
     export BRI_KBD="asus::kbd_backlight"
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     export MON_0="DP-2"
-    export MON_1="DVI-I-1"
 elif [[ $(hostname) == 'sbphomestation' ]]
 then
     export MON_0="eDP-1"
-    export MON_1="HDMI-2"
 fi
 
 # GPG config
@@ -70,6 +62,7 @@ export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
 # Taskwarrior
 export TASKRC=$XDG_CONFIG_HOME/taskrc
 export TASKDATA=$HOME/Documents/Tasks/
+export TIMEWARRIORDB=$HOME/Documents/Tasks/
 # Rofi-pass
 export ROFI_PASS_CONFIG=$XDG_CONFIG_HOME/rofi/rofi-pass.conf
 

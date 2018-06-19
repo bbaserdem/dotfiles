@@ -1,27 +1,12 @@
 #! /bin/sh
 
 # Specific
-pactl set-sink-volume '20%'
-pactl set-sink-mute
 xset -b
 export _JAVA_AWT_WM_NONREPARENTING=1
 wmname LG3D
 
-if [[ $(hostname) == 'sbplaptop' ]]
-then
-    # Laptop
-    bspc config merge_overlapping_monitors  true
-    bspc monitor -d 1 2 3 4 5 6 7 8 9 0
-elif [[ $(hostname) == 'sbpworkstation' ]]
-then
-    bspc monitor $MON_0 -d 1 2 3 4 5 6 7 8 9
-    bspc monitor $MON_1 -d 0
-elif [[ $(hostname) == 'sbphomestation' ]]
-then
-    bspc monitor $MON_0 -d 1 2 3 4 5 6 7 8 9 0
-else
-    bspc monitor -d 1 2 3 4 5 6 7 8 9 0
-fi
+bspc config merge_overlapping_monitors  true
+~/.config/bspwm/desktops
 
 bspc config border_width                0
 bspc config window_gap                  24
@@ -44,8 +29,6 @@ bspc rule -a Zathura                state=tiled
 bspc rule -a libreoffice-writer     state=tiled
 bspc rule -a LibreOffice            state=tiled
 bspc rule -a Steam                  state=tiled follow=no
-bspc rule -a "Virtualbox Machine"   state=tiled
 bspc rule -a stellarium             state=tiled
 bspc rule -a gtk2fontsel            state=tiled
 bspc rule -a rdesktop               state=floating
-

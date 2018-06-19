@@ -21,7 +21,7 @@ indg =  ${env:PB_INDG}
 viol =  ${env:PB_VIOL}
 
 [settings]
-screenchange-reload = true
+screenchange-reload = false
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
@@ -56,14 +56,16 @@ font-1 =                "FuraCode Nerd Font:size=10:weight=regular"
 fixed-center =          true
 tray-detached =         false
 tray-transparent =      true
+tray-background =       ${colors.bkgr}
+wm-restack =            bspwm
 
 [bar/top]
 inherit =               bar/alpha
 bottom =                false
-monitor =               ${env:MON_0}
-monitor-fallback =      ${env:MON_1}
+;monitor =               ${env:MON_0}
+;monitor-fallback =      ${env:MON_1}
 modules-left =          launch bspwm bspwm-label xwindow
-modules-center =        date time weather offlineimap
+modules-center =        tasks date time weather offlineimap rss
 modules-right =         compton redshift bluetooth fan temperature cpu memory backlight battery powermenu
 radius-top =            0.0
 radius-bottom =         ${env:PB_RRAD}
@@ -72,8 +74,8 @@ radius-bottom =         ${env:PB_RRAD}
 inherit =               bar/alpha
 bottom =                true
 tray-position =         right
-monitor =               ${env:MON_0}
-monitor-fallback =      ${env:MON_1}
+;monitor =               ${env:MON_0}
+;monitor-fallback =      ${env:MON_1}
 modules-left =          tethering ethernet wifi pkg vpn
 modules-center =        volume mpd
 modules-right =         xkeyboard uptime kernel
@@ -215,11 +217,24 @@ label-maxlen =                  30
 ;======;
 ; Time ;
 ;======;
+;-tasks
 ;-date
 ;-time
 ;-weather
 ;-offlineimap
+;-rss
 ; Use viol
+
+[module/tasks]
+type =                      custom/script
+format-underline =          ${colors.viol}
+format-prefix-foreground =  ${colors.viol}
+format-prefix =             "省 "
+format =                    <label>
+exec =                      $XDG_CONFIG_HOME/polybar/taskwarrior_info.sh --show
+interval =                  60
+click-left =                $XDG_CONFIG_HOME/polybar/taskwarrior_info.sh --done
+
 [module/timekeep]
 type =                      internal/date
 format-underline =          ${colors.viol}
@@ -256,6 +271,15 @@ interval =                  5
 format =                    <label>
 click-left =                $XDG_CONFIG_HOME/polybar/offlineimap_info.sh --toggle
 
+[module/rss]
+type =                      custom/script
+format-underline =          ${colors.viol}
+format-prefix-foreground =  ${colors.viol}
+format-prefix =             " "
+format =                    <label>
+exec =                      $XDG_CONFIG_HOME/polybar/newsboat_info.sh --check
+interval =                  60
+click-left =                $XDG_CONFIG_HOME/polybar/newsboat_info.sh --open
 ;==========;
 ; Hardware ;
 ;==========;
@@ -446,23 +470,24 @@ type =                                  internal/network
 interval =                              3.0
 format-connected-prefix-foreground =    ${colors.gren}
 format-connected-overline =             ${colors.gren}
-format-connected =                      %{A:networkmanager_dmenu&:}<label-connected>%{A}
 format-disconnected-prefix-foreground = ${colors.gren}
 format-disconnected-overline =          ${colors.gren}
-format-disconnected =                   %{A:networkmanager_dmenu&:}<label-disconnected>%{A}
 label-disconnected-foreground =         ${colors.mute}
 
 [module/wifi]
 inherit =                               module/internet
+format-connected =                      %{A:wpa_gui&:}<label-connected>%{A}
 format-connected-prefix =               " "
 label-connected =                       ${env:PB_WIFI}
 format-disconnected-prefix =            " "
+format-disconnected =                   %{A:wpa_gui&:}<label-disconnected>%{A}
 label-disconnected =                    
 interface =                             wifi
 ;label-disconnected =                    ${env:PB_NOFI}
 
 [module/ethernet]
 inherit =                               module/internet
+format-connected =                      <label-connected>
 format-connected-prefix =               " "
 label-connected =                       ${env:PB_ETHC}
 ;format-disconnected-prefix =            
