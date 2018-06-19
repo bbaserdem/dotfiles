@@ -109,6 +109,7 @@ package_bbaserdem-base() {
         'neofetch'                                  # System info printer
         'neomutt'                                   # Mail reader
         'neovim' 'python-neovim' 'python2-neovim'   # Text editor
+        'newsboat'                                  # RSS/Atom feed
         'parted'                                    # Partition manager
         'ranger'                                    # File browser
         'task'                                      # Taskwarrior tasks manager
