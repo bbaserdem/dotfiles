@@ -232,7 +232,8 @@ format-prefix =             "省 "
 format =                    <label>
 exec =                      $XDG_CONFIG_HOME/polybar/taskwarrior_info.sh --show
 interval =                  60
-click-left =                $XDG_CONFIG_HOME/polybar/taskwarrior_info.sh --done
+click-left =                $XDG_CONFIG_HOME/polybar/taskwarrior_info.sh --open
+click-right =               $XDG_CONFIG_HOME/polybar/taskwarrior_info.sh --done
 
 [module/timekeep]
 type =                      internal/date

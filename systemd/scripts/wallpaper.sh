@@ -5,9 +5,7 @@ then
     # At office
     WALLP_L=`find $HOME/Pictures/Wallpapers/Dual/ -name '*[L]*.jpg' -print | shuf -n 1`
     WALLP_R="${WALLP_L/\[L\]/[R]}"
-    echo $WALLP_R
-    echo $WALLP_L
-    feh --bg-scale $WALLP_L --bg-scale $WALLP_R
+    feh --bg-scale $WALLP_R --bg-scale $WALLP_L
 else
     # All other situations
     feh --randomize --bg-fill $HOME/Pictures/Wallpapers
