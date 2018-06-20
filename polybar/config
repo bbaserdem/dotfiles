@@ -38,6 +38,7 @@ margin-bottom = 0
 ;==========;
 
 [bar/alpha]
+monitor =               ${env:PB_PMON}
 width =                 99%
 height =                32
 offset-x =              .5%
@@ -62,7 +63,6 @@ wm-restack =            bspwm
 [bar/top]
 inherit =               bar/alpha
 bottom =                false
-;monitor-fallback =      ${env:MON_1}
 modules-left =          launch bspwm bspwm-label xwindow
 modules-center =        tasks date time weather offlineimap rss
 modules-right =         compton redshift bluetooth fan temperature cpu memory backlight battery powermenu
@@ -73,8 +73,6 @@ radius-bottom =         ${env:PB_RRAD}
 inherit =               bar/alpha
 bottom =                true
 tray-position =         right
-;monitor =               ${env:MON_0}
-;monitor-fallback =      ${env:MON_1}
 modules-left =          tethering ethernet wifi pkg vpn
 modules-center =        volume mpd visualizer
 modules-right =         xkeyboard uptime kernel
