@@ -11,4 +11,6 @@ case "$1" in
         echo "${IDN}" > /tmp/tw_polybar_id
         echo "${DSC}"
         ;;
+    --open)
+        $TERMINAL -e task
 esac

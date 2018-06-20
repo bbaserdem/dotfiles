@@ -41,7 +41,7 @@ config.bind( 'M', 'hint links spawn mpv {hint-url}')
 
 # Time based locking
 currentTime = datetime.datetime.now()
-if ( currentTime.hour >= 7 ) & ( currentTime.hour < 8 ):
+if ( currentTime.hour >= 7 ) & ( currentTime.hour < 20 ):
     c.content.host_blocking.enabled = True
 else:
     c.content.host_blocking.enabled = False
