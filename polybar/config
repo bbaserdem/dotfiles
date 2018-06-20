@@ -76,7 +76,7 @@ tray-position =         right
 ;monitor =               ${env:MON_0}
 ;monitor-fallback =      ${env:MON_1}
 modules-left =          tethering ethernet wifi pkg vpn
-modules-center =        volume mpd
+modules-center =        volume mpd visualizer
 modules-right =         xkeyboard uptime kernel
 radius-bottom =         0.0
 radius-top =            ${env:PB_RRAD}
@@ -527,6 +527,7 @@ format-prefix-foreground =          ${colors.gren}
 ;=======;
 ;-volume
 ;-mpd
+;-visualizer
 ; use crms
 
 [module/volume]
@@ -571,6 +572,13 @@ label-song-maxlen =                     30
 label-song =                            %title%
 toggle-on-foreground =                  ${colors.crms}
 toggle-off-foreground =                 ${colors.mute}
+
+[module/visualizer]
+type =                              custom/text
+content =                           ""
+content-foreground =                ${colors.crms}
+content-overline =                  ${colors.crms}
+click-left =                        projectM-pulseaudio
 
 ;========;
 ; System ;
