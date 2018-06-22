@@ -62,7 +62,7 @@
     # Max number of notification to be kept in history
     history_length = 20
     # Command that will run dmenu
-    dmenu = "/usr/bin/rofi -modi drun,run -show drun":
+    dmenu = "/usr/bin/rofi -modi drun,run -show drun"
     # Command to open URLS
     browser = "/usr/bin/qutebrowser :open "
     # Run rule defined scripts, even when suppressed with ""

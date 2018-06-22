@@ -5,6 +5,8 @@ if [ -z "$XDG_RUNTIME_DIR" ]; then
     exit 6
 fi
 
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
 _DISPLAY="$(systemd-escape -- "$DISPLAY")"
 trap "rm -f $(printf '%q' "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}")" EXIT
 mkfifo "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}"
