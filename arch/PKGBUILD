@@ -172,9 +172,9 @@ package_bbaserdem-desktop() {
         'dunst'             # Notification daemon
         'feh'               # Wallpaper management
         'i3lock'            # Screen locker
+        'maim'              # Screenshot utility
         'redshift'          # Screen dimmer
         'rofi'              # Application launcher
-        'scrot'             # Screenshot utility
         'sxhkd'             # Simple X HotKey Daemon
         'sway'              # i3 replacement for wayland
         'wireless_tools'    # Wireless info parse
@@ -214,6 +214,7 @@ package_bbaserdem-desktop() {
         'pdfsam'
         'projectm-pulseaudio'
         'picard'
+        'ristretto'
         'smplayer'
         'qutebrowser'
         'qopenvpn'
@@ -279,10 +280,13 @@ package_bbaserdem-devel() {
         'mathjax'
         'openblas'
         'python-matplotlib'
+        'python-pandas'
         'python-pip'
+        'python-scikit-learn'
         'python-sympy'
         'python-neovim'
         'python-numpy'
+        'python-virtualenv'
         'python-xdg'
         'python2-pip'
         )
