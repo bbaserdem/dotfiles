@@ -332,7 +332,7 @@ click-right =               exec bluetooth-sendto &
 [module/fan]
 type =                      custom/script
 format-underline =          ${colors.indg}
-format-prefix =             " "
+format-prefix =             " "
 format-prefix-foreground =  ${colors.indg}
 exec =                      $XDG_CONFIG_HOME/polybar/fan_info.sh
 interval =                  5
