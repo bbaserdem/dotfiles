@@ -126,9 +126,13 @@ super + {p,b,comma,period}
 super + {_,shift + }c
 	bspc node --focus {next,prev}
 
-# focus the next/previous desktop or move window
-super + {_,shift + }{Left,Right}
-	bspc {desktop --focus,node --to-desktop} {prev,next}
+# focus the next/previous desktop
+super + {Left,Right}
+	~/.config/sxhkd/bspcFocusDesktop.sh {prev,next}
+
+# Move window the next/previous desktop
+super + shift + {Left,Right}
+	bspc desktop node --to-desktop {prev,next}
 
 # focus the last node/desktop
 super + {grave,Tab}
