@@ -256,6 +256,8 @@ package_bbaserdem-devel() {
 
     # Arduino developement
     depends+=(
+        'arduino'
+        'arduino-docs'
         'arm'
         'arm-none-eabi-binutils'
         'arm-none-eabi-gcc'
@@ -264,7 +266,8 @@ package_bbaserdem-devel() {
         'avr-gcc'
         'avr-libc'
         'avrdude'
-        'dfu-util')
+        'dfu-util'
+        'processing')
 
     # Android developement
     depends+=(

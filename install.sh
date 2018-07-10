@@ -6,7 +6,8 @@ IF=$'\n\t'
 # Configuration installer script
 
 # Add to user groups
-
+sudo usermod -a -G uucp sbp
+sudo usermod -a -G lock sbp
 
 # Place symlinks
 echo 'Symlinking...\n'
