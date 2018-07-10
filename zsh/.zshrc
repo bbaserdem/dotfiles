@@ -19,7 +19,7 @@ alias mutt='neomutt'
 alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-5.0/etc/bashrc"
 alias calender="calcurse -D ~/Documents/Calender"
 alias cp-rsync="rsync -avzh --append-verify"
-
+alias ncmpc="ncmpcpp --screen playlist --slave-screen visualizer"
 
 # Powerlevel9k things
 source $ZDOTDIR/powerlevel9k.settings
