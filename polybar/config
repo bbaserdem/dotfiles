@@ -474,7 +474,7 @@ label-disconnected-foreground =         ${colors.mute}
 
 [module/wifi]
 inherit =                               module/internet
-format-connected =                      %{A:wpa_gui&:}<label-connected>%{A}
+format-connected =                      <label-connected>
 format-connected-prefix =               " "
 label-connected =                       ${env:PB_WIFI}
 format-disconnected-prefix =            " "
