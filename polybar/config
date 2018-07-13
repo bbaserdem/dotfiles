@@ -38,7 +38,7 @@ margin-bottom = 0
 ;==========;
 
 [bar/alpha]
-monitor =               ${env:PB_PMON}
+;monitor =               ${env:PB_PMON}
 width =                 99%
 height =                32
 offset-x =              .5%
