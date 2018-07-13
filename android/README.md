@@ -14,7 +14,7 @@ The rest can be downloaded through Yalp store.
 * **Yalp Store**: Download google apps.
 * **Syncthing**: File synching.
 * **DAVdroid**: Synching contacts, calenders and tasks.
-* **Tasks**: Tasks synching.
+* **Vanilla Music Player**: Tasks synching.
 * **OsmAnd~**: Open street maps.
 * **M.A.L.P.**: Mpd remote.
 * **Kore**: Kodi remote.
