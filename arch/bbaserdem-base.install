@@ -11,6 +11,10 @@ post_upgrade() {
     systemctl enable --now systemd-networkd
     systemctl enable --now systemd-resolved
     systemctl enable --now wpa_supplicant@wifi.service
+
+    # Cpupower package
+    systemctl enable --now cpupower.service
+
     # systemctl enable --now avahi-daemon
     # ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 

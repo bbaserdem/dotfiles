@@ -4,7 +4,7 @@
     # In a multi-monitor setup, can override
     follow = none
     # Where the window dialog is to be
-    geometry = "640x10-0+32"
+    geometry = "640x10-10+32"
     # Show number of hidden notifications
     indicate_hidden = yes
     # Compress if it can be compressed

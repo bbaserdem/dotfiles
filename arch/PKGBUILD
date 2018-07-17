@@ -67,6 +67,7 @@ package_bbaserdem-base() {
         'atool'                         # Archive tool for following formats
         'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar' 'unzip' 'xz' 'zip'
         'bash-completion'               # Programmable completion for bash
+        'cpupower'                      # CPU scaling user utility
         'discount'                      # Markdown implementation
         'flatpak'                       # Jailed software repository
         'geoip' 'geoip-database-extra'  # IP to location resolver
@@ -294,9 +295,13 @@ package_bbaserdem-devel() {
         'python2-pip'
         )
 
-    # Java
+    # Java, matlab things and octave
     depends+=(
-        'jre8-openjdk')
+        'jre7-openjdk'
+        'jre8-openjdk'
+        'jre9-openjdk'
+        'jre10-openjdk'
+        'octave')
 
     # LaTeX
     depends+=(

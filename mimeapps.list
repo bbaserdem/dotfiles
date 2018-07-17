@@ -1,14 +1,14 @@
 [Added Associations]
 application/pdf=zathura-pdf-poppler.desktop;org.pwmt.zathura-pdf-poppler.desktop;
 video/x-msvideo=smplayer.desktop;
-image/jpeg=imv.desktop;
+image/jpeg=imv.desktop;ristretto.desktop;
 application/msword=libreoffice-writer.desktop;
 text/html=qutebrowser.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
 image/gif=imv.desktop;
 text/plain=mousepad.desktop;nvim.desktop;org.daa.NeovimGtk.desktop;
 image/vnd.djvu+multipage=zathura-djvu.desktop;
-image/png=imv.desktop;
+image/png=imv.desktop;ristretto.desktop;
 text/x-tex=mousepad.desktop;
 inode/directory=exo-file-manager.desktop
 x-scheme-handler/trash=exo-file-manager.desktop
@@ -17,5 +17,6 @@ x-scheme-handler/trash=exo-file-manager.desktop
 application/octet-stream=zathura-pdf-poppler.desktop;
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop
 text/plain=org.daa.NeovimGtk.desktop
-image/jpeg=imv.desktop;
+image/jpeg=ristretto.desktop
 image/gif=imv.desktop;
+image/png=ristretto.desktop
