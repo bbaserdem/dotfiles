@@ -19,6 +19,7 @@ ln -s ~/.config/zsh/zshenv ~/.zshenv
 ln -s ~/.config/mpdscribble ~/.mpdscribble
 ln -s ~/.config/X11/initrc ~/.Xinitrc
 ln -s ~/.config/X11/serverrc ~/.xserverrc
+ln -s ~/.config/octave/octaverc ~/.octaverc
 mkdir -p ~/.local/share
 ln -s ~/.config/applications ~/.local/share/applications
 read -rsp $'Press any key to continue...\n' -n1 key
