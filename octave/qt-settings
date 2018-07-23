@@ -20,36 +20,36 @@ useCustomFileEditor=false
 useProxyServer=false
 
 [DockWidgets]
-DocumentationDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\xff\xff\xfc\xbd\xff\xff\xfd\x37\xff\xff\xfe\v\xff\xff\xfe\v\xff\xff\xfc\xbd\xff\xff\xfd\x37\xff\xff\xfe\v\xff\xff\xfe\v\xff\xff\xff\xff\0\0\0\0\a\x80)
+DocumentationDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\xff\xff\xfc\xc5\xff\xff\xfd\x43\xff\xff\xfe\v\xff\xff\xfe\v\xff\xff\xfc\xc5\xff\xff\xfd\x43\xff\xff\xfe\v\xff\xff\xfe\v\xff\xff\xff\xff\0\0\0\0\a\x80)
 DocumentationDockWidgetFloating=false
 DocumentationDockWidgetVisible=true
 DocumentationDockWidget_minimized=false
-FileEditor=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\0\xbb\0\0\0?\0\0\x2_\0\0\x3\x93\0\0\0\xbb\0\0\0?\0\0\x2_\0\0\x3\x93\0\0\0\0\0\0\0\0\a\x80)
+FileEditor=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\x1\x42\0\0\0\x38\0\0\x4\xd0\0\0\x3\x96\0\0\x1\x42\0\0\0\x38\0\0\x4\xd0\0\0\x3\x96\0\0\0\0\0\0\0\0\a\x80)
 FileEditorFloating=false
 FileEditorVisible=true
 FileEditor_minimized=false
-FilesDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\0\0\0\0\0\0\0\0\0\x82\0\0\0\x89\0\0\0\0\0\0\0\0\0\0\0\x82\0\0\0\x89\0\0\0\0\0\0\0\0\a\x80)
+FilesDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\0\0\0\0\0\0\0\0\0t\0\0\0\x83\0\0\0\0\0\0\0\0\0\0\0t\0\0\0\x83\0\0\0\0\0\0\0\0\a\x80)
 FilesDockWidgetFloating=false
 FilesDockWidgetVisible=false
 FilesDockWidget_dock_area=2
 FilesDockWidget_floating_geometry=@Rect(24 56 924 968)
 FilesDockWidget_minimized=false
-HistoryDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\0\0\0\0\x2 \0\0\0\xb4\0\0\x3\xb1\0\0\0\0\0\0\x2 \0\0\0\xb4\0\0\x3\xb1\0\0\0\0\0\0\0\0\a\x80)
+HistoryDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\0\0\0\0\x2\x1c\0\0\x1<\0\0\x3\xb1\0\0\0\0\0\0\x2\x1c\0\0\x1<\0\0\x3\xb1\0\0\0\0\0\0\0\0\a\x80)
 HistoryDockWidgetFloating=false
 HistoryDockWidgetVisible=true
 HistoryDockWidget_minimized=false
 NewsDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x1\0\0\0\0\x2\"\0\0\0@\0\0\x4\xb3\0\0\x1\x1a\0\0\x2\"\0\0\0@\0\0\x4\xb3\0\0\x1\x1a\0\0\0\0\0\0)
 NewsDockWidgetFloating=false
 NewsDockWidgetVisible=true
-TerminalDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\x2\x66\0\0\0?\0\0\x3\x9b\0\0\x2q\0\0\x2\x66\0\0\0?\0\0\x3\x9b\0\0\x2q\0\0\0\0\0\0\0\0\a\x80)
+TerminalDockWidget=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\x4\xd6\0\0\0\x38\0\0\aO\0\0\x2o\0\0\x4\xd6\0\0\0\x38\0\0\aO\0\0\x2o\0\0\0\0\0\0\0\0\a\x80)
 TerminalDockWidgetFloating=false
 TerminalDockWidgetVisible=true
 TerminalDockWidget_minimized=false
-VariableEditor=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\x2\x66\0\0\x2x\0\0\x3\x9b\0\0\x3\xb1\0\0\x2\x66\0\0\x2x\0\0\x3\x9b\0\0\x3\xb1\0\0\0\0\0\0\0\0\a\x80)
+VariableEditor=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\x4\xd6\0\0\x2u\0\0\aO\0\0\x3\xb1\0\0\x4\xd6\0\0\x2u\0\0\aO\0\0\x3\xb1\0\0\0\0\0\0\0\0\a\x80)
 VariableEditorFloating=false
 VariableEditorVisible=true
 VariableEditor_minimized=false
-WorkspaceView=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\0\0\0\0\0?\0\0\0\xb4\0\0\x2\x19\0\0\0\0\0\0\0?\0\0\0\xb4\0\0\x2\x19\0\0\0\0\0\0\0\0\a\x80)
+WorkspaceView=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\0\0\0\0\0\x38\0\0\x1<\0\0\x2\x16\0\0\0\0\0\0\0\x38\0\0\x1<\0\0\x2\x16\0\0\0\0\0\0\0\0\a\x80)
 WorkspaceViewFloating=false
 WorkspaceViewVisible=true
 WorkspaceView_minimized=false
@@ -63,8 +63,8 @@ widget_title_custom_style=false
 
 [MainWindow]
 current_directory_list=/home/sbp, /home/sbp/Research/WindSimulation/Trials5, /home/sbp/Research
-geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\x3\xcc\0\0\0\x38\0\0\ag\0\0\x3\xff\0\0\x3\xcc\0\0\0\x38\0\0\ag\0\0\x3\xff\0\0\0\0\0\0\0\0\a\x80)
-windowState="@ByteArray(\0\0\0\xff\0\0\0\0\xfd\0\0\0\x1\0\0\0\x1\0\0\x3\x9c\0\0\x3s\xfc\x2\0\0\0\x1\xfc\0\0\0?\0\0\x3s\0\0\x1 \0\xff\xff\xff\xfc\x1\0\0\0\x3\xfc\0\0\0\0\0\0\0\xb5\0\0\0\x9b\0\xff\xff\xff\xfc\x2\0\0\0\x3\xfb\0\0\0\x1e\0\x46\0i\0l\0\x65\0s\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\0\0\0\0?\0\0\0\xbf\0\0\0\x8a\0\xff\xff\xff\xfb\0\0\0\x1a\0W\0o\0r\0k\0s\0p\0\x61\0\x63\0\x65\0V\0i\0\x65\0w\x1\0\0\0?\0\0\x1\xdb\0\0\0\x83\0\xff\xff\xff\xfb\0\0\0\"\0H\0i\0s\0t\0o\0r\0y\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\x1\0\0\x2 \0\0\x1\x92\0\0\0\x83\0\xff\xff\xff\xfc\0\0\0\xbb\0\0\x1\xa5\0\0\x1O\0\xff\xff\xff\xfc\x2\0\0\0\x2\xfb\0\0\0\x1c\0N\0\x65\0w\0s\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\x1\0\0\0@\0\0\0\xdb\0\0\0\0\0\0\0\0\xfc\0\0\0?\0\0\x3s\0\0\0\xf3\x1\0\0\x1d\xfa\0\0\0\0\x2\0\0\0\x3\xfb\0\0\0\x14\0\x46\0i\0l\0\x65\0\x45\0\x64\0i\0t\0o\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\x64\0\xff\xff\xff\xfb\0\0\0.\0\x44\0o\0\x63\0u\0m\0\x65\0n\0t\0\x61\0t\0i\0o\0n\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\xd5\0\xff\xff\xff\xfb\0\0\0\x1e\0v\0\x61\0r\0i\0\x61\0\x62\0l\0\x65\0_\0\x65\0\x64\0i\0t\0o\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\xfc\0\0\x2\x66\0\0\x1\x36\0\0\x1,\0\xff\xff\xff\xfc\x2\0\0\0\x2\xfb\0\0\0$\0T\0\x65\0r\0m\0i\0n\0\x61\0l\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\x1\0\0\0?\0\0\x2\x33\0\0\0\xdd\0\xff\xff\xff\xfb\0\0\0\x1c\0V\0\x61\0r\0i\0\x61\0\x62\0l\0\x65\0\x45\0\x64\0i\0t\0o\0r\x1\0\0\x2x\0\0\x1:\0\0\0=\0\xff\xff\xff\0\0\0\0\0\0\x3s\0\0\0\x4\0\0\0\x4\0\0\0\b\0\0\0\b\xfc\0\0\0\x1\0\0\0\x2\0\0\0\x1\0\0\0\x16\0M\0\x61\0i\0n\0T\0o\0o\0l\0\x42\0\x61\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0)"
+geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\a\x98\0\0\0\x38\0\0\xe\xe7\0\0\x3\xff\0\0\a\x98\0\0\0\x38\0\0\xe\xe7\0\0\x3\xff\0\0\0\0\0\0\0\0\a\x80)
+windowState="@ByteArray(\0\0\0\xff\0\0\0\0\xfd\0\0\0\x1\0\0\0\x1\0\0\aP\0\0\x3z\xfc\x2\0\0\0\x1\xfc\0\0\0\x38\0\0\x3z\0\0\x1\x17\0\xff\xff\xff\xfc\x1\0\0\0\x3\xfc\0\0\0\0\0\0\x1=\0\0\0\x89\0\xff\xff\xff\xfc\x2\0\0\0\x3\xfb\0\0\0\x1e\0\x46\0i\0l\0\x65\0s\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\0\0\0\0?\0\0\0\xbf\0\0\0\x84\0\xff\xff\xff\xfb\0\0\0\x1a\0W\0o\0r\0k\0s\0p\0\x61\0\x63\0\x65\0V\0i\0\x65\0w\x1\0\0\0\x38\0\0\x1\xdf\0\0\0\x7f\0\xff\xff\xff\xfb\0\0\0\"\0H\0i\0s\0t\0o\0r\0y\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\x1\0\0\x2\x1c\0\0\x1\x96\0\0\0\x7f\0\xff\xff\xff\xfc\0\0\x1\x42\0\0\x3\x8f\0\0\x1G\0\xff\xff\xff\xfc\x2\0\0\0\x2\xfb\0\0\0\x1c\0N\0\x65\0w\0s\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\x1\0\0\0@\0\0\0\xdb\0\0\0\0\0\0\0\0\xfc\0\0\0\x38\0\0\x3z\0\0\0\xe4\x1\0\0\x1a\xfa\0\0\0\0\x2\0\0\0\x3\xfb\0\0\0\x14\0\x46\0i\0l\0\x65\0\x45\0\x64\0i\0t\0o\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0Y\0\xff\xff\xff\xfb\0\0\0.\0\x44\0o\0\x63\0u\0m\0\x65\0n\0t\0\x61\0t\0i\0o\0n\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\xc9\0\xff\xff\xff\xfb\0\0\0\x1e\0v\0\x61\0r\0i\0\x61\0\x62\0l\0\x65\0_\0\x65\0\x64\0i\0t\0o\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\xfc\0\0\x4\xd6\0\0\x2z\0\0\x1,\0\xff\xff\xff\xfc\x2\0\0\0\x2\xfb\0\0\0$\0T\0\x65\0r\0m\0i\0n\0\x61\0l\0\x44\0o\0\x63\0k\0W\0i\0\x64\0g\0\x65\0t\x1\0\0\0\x38\0\0\x2\x38\0\0\0\xdb\0\xff\xff\xff\xfb\0\0\0\x1c\0V\0\x61\0r\0i\0\x61\0\x62\0l\0\x65\0\x45\0\x64\0i\0t\0o\0r\x1\0\0\x2u\0\0\x1=\0\0\0\x37\0\xff\xff\xff\0\0\0\0\0\0\x3z\0\0\0\x4\0\0\0\x4\0\0\0\b\0\0\0\b\xfc\0\0\0\x1\0\0\0\x2\0\0\0\x1\0\0\0\x16\0M\0\x61\0i\0n\0T\0o\0o\0l\0\x42\0\x61\0r\x1\0\0\0\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0)"
 
 [Scintilla]
 Bash\autoindentstyle=-1
@@ -865,7 +865,7 @@ tab_width=4
 wrap_lines=false
 
 [filesdockwidget]
-column_state=@ByteArray(\0\0\0\xff\0\0\0\0\0\0\0\x1\0\0\0\x1\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\x4\xe\0\0\0\x3\0\0\0\x2\0\0\0\x64\0\0\0\x3\0\0\0\x64\0\0\0\x1\0\0\0\x64\0\xf\xff\xff\0\0\0\x4\x1\x1\0\x1\0\0\0\0\0\0\0\0\0\0\0\0\x64\xff\xff\xff\xff\0\0\0\x81\0\0\0\0\0\0\0\x4\0\xf\xff\xff\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\x3\xe8\0\0\xf\xff\xff)
+column_state=@ByteArray(\0\0\0\xff\0\0\0\0\0\0\0\x1\0\0\0\x1\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\x4\xe\0\0\0\x3\0\0\0\x1\0\0\0\x64\0\0\0\x3\0\0\0\x64\0\0\0\x2\0\0\0\x64\0\xf\xff\xff\0\0\0\x4\x1\x1\0\x1\0\0\0\0\0\0\0\0\0\0\0\0T\xff\xff\xff\xff\0\0\0\x81\0\0\0\0\0\0\0\x4\0\xf\xff\xff\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\x3\xe8\0\0\xf\xff\xff)
 mru_dir_list=/home/sbp/Research, /home/sbp
 restore_last_dir=false
 showFileSize=false
@@ -1044,7 +1044,7 @@ color_g=@Variant(\0\0\0\x43\x1\xff\xff\xff\xff\xff\xff\xff\xff\0\0)
 color_h=@Variant(\0\0\0\x43\x1\xff\xff\xff\xff\xff\xff\xbe\xbe\0\0)
 color_i=@Variant(\0\0\0\x43\x1\xff\xff\xff\xff\xdc\xdc\xdc\xdc\0\0)
 color_p=@Variant(\0\0\0\x43\x1\xff\xff\xff\xff\xbe\xbe\xff\xff\0\0)
-column_state=@ByteArray(\0\0\0\xff\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x1\xa0\0\0\0\x5\x1\x1\0\x1\0\0\0\0\0\0\0\0\0\0\0\0\x64\xff\xff\xff\xff\0\0\0\x81\0\0\0\0\0\0\0\x5\0\0\0\x64\0\0\0\x1\0\0\0\0\0\0\0\x64\0\0\0\x1\0\0\0\0\0\0\0\x64\0\0\0\x1\0\0\0\0\0\0\0\x64\0\0\0\x1\0\0\0\0\0\0\0\x10\0\0\0\x1\0\0\0\0\0\0\x3\xe8\0\xff\xff\xff\xff)
+column_state=@ByteArray(\0\0\0\xff\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x1\xa0\0\0\0\x5\x1\x1\0\x1\0\0\0\0\0\0\0\0\0\0\0\0T\xff\xff\xff\xff\0\0\0\x81\0\0\0\0\0\0\0\x5\0\0\0\x64\0\0\0\x1\0\0\0\0\0\0\0\x64\0\0\0\x1\0\0\0\0\0\0\0\x64\0\0\0\x1\0\0\0\0\0\0\0\x64\0\0\0\x1\0\0\0\0\0\0\0\x10\0\0\0\x1\0\0\0\0\0\0\x3\xe8\0\xff\xff\xff\xff)
 filter_active=false
 filter_shown=true
 global_collapsed=false
