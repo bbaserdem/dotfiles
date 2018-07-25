@@ -1,8 +1,0 @@
-# Maintained by bbaserdem-base
-post_install() {
-    post_upgrade()
-}
-
-post_upgrade() {
-    systemctl enable --now libvirtd.service
-}

@@ -1,3 +1,0 @@
-[Unit]
-Description=Minimized gui apps to X11 display %I
-After=wm-running@%i.target
