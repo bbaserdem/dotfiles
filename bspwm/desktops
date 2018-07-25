@@ -1,0 +1,27 @@
+#!/bin/bash
+# Get active monitor number
+M=$(bspc query -M | wc -l)
+if [[ "$M" == 1 ]]
+then
+    # Place all stuff in one desktop
+    bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+elif [[ "$M" == 2 ]]
+then
+    # Seperate in two
+     bspc monitor $(bspc query -M | awk NR==1) -d 1 3 5 7 9
+     bspc monitor $(bspc query -M | awk NR==2) -d 2 4 6 8 0
+elif [[ "$M" == 3 ]]
+then
+    # Make main with work stuff, second with media and the last two as entertainment
+     bspc monitor $(bspc query -M | awk NR==1) -d 1 2 3 4 5 6
+     bspc monitor $(bspc query -M | awk NR==2) -d 7 8
+     bspc monitor $(bspc query -M | awk NR==3) -d 9 0
+else
+    # Put three windows per monitor
+    I=1
+    for monitor in $(bspc query -M)
+    do
+        bspc monitor $monitor -n "$I" -d $I-{A,B,C}
+        let I++
+    done
+fi

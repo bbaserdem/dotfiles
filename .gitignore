@@ -1,55 +1,16 @@
-# By default, ignore all files
+#-------------------#
+#-----BLACKLIST-----#
+#-------------------#
+
+# Ignore all files
 *
 
 #-------------------#
 #-----WHITELIST-----#
 #-------------------#
 
-# Gitignore file is whitelisted
-!/.gitignore
-
-# Directories with files to track
-!/android/**
-!/applications
-!/arch
-!/bspwm
-!/cantata
-!/dunst
-!/fontconfig
-!/gnupg
-!/gtk-3.0
-!/htop
-!/kitty
-!/mpd
-!/mpdscribble
-!/mpv
-!/ncmpcpp
-!/neofetch
-!/neomutt
-!/newsboat
-!/nvim
-!/octave
-!/offlineimap
-!/packagebuilds
-!/polybar
-!/qutebrowser
-!/ranger
-!/redshift
-!/rofi
-!/scripts
-!/sounds
-!/sxhkd
-!/syncthing-gtk
-!/systemd
-!/termite
-!/udiskie
-!/urxvt
-!/X11
-!/youtube-dl
-!/zathura
-!/zsh
-
 # Files to track
+!/.gitignore
 !/abcde.conf
 !/compton.conf
 !/gtk2rc
@@ -61,50 +22,184 @@
 !/tmux.conf
 !/user-dirs.dirs
 
-#-------------------#
-#-----BLACKLIST-----#
-#-------------------#
+# ANDROID: Accept all
+!/android
+!/android/**
+
+# APPLICATIONS: Accept all
+!/applications
+!/applications/**
+
+# ARCH: Accept all
+!/arch
+!/arch/**
+
+# BSPWM: Accept all the files I wrote
+!/bspwm
+!/bspwm/bspwmrc
+!/bspwm/desktops
+!/bspwm/ext_rule
+
+# CANTATA: Accept all that is there
+!/cantata
+!/cantata/cantata.conf
+
+# DUNST: Accept the rc
+!/dunst
+!/dunst/dunstrc
+
+# FONTCONFIG: Accept the fontconfig file
+!/fontconfig
+!/fontconfig/fonts.conf
 
 # GNUPG: Only get the config files
-/gnupg/**
+!/gnupg
 !/gnupg/gpg-agent.conf
 
+# GTK-3.0: Get bookmarks and settings
+!/gtk-3.0
+!/gtk-3.0/bookmarks
+!/gtk-3.0/settings.ini
+
+# HTOP: Get the rc file
+!/htop
+!/htop/htoprc
+
+# KITTY: Grab the conf files
+!/kitty
+!/kitty/*.conf
+
 # MPD: Only get config
-/mpd/**
+!/mpd
 !/mpd/mpd.conf
 
 # MPDSCRIBBLE: Only grab the example config
-/mpdscribble/**
+!/mpdscribble
 !/mpdscribble/mpdscribble.conf.example
 
 # MPV: Only grab config
-/mpv/**
+!/mpv
 !/mpv/mpv.conf
 
-# NVIM: Ignore the plugins page
-/nvim/bundle
+# NCMPCPP: Grab what I have created
+!/ncmpcpp
+!/ncmpcpp/config
 
-# OCTAVE: Ignore all but the QT setup (for colors) and octaverc
-/octave/**
+# NEOFETCH: Grab the config
+!/neofetch
+!/neofetch/config
+
+# NEOMUTT: Things are safe to grab
+!/neomutt
+!/neomutt/colortheme
+!/neomutt/mailcap
+!/neomutt/neomuttrc
+!/neomutt/signature
+!/neomutt/solarized_dark
+!/neomutt/solarized_light
+
+# NEWSBOAT: Grab the config and url
+!/newsboat
+!/newsboat/config
+!/newsboat/urls
+
+# NVIM: Grab the config and colors, not the bundle
+!/nvim
+!/nvim/colors
+!/nvim/colors/**
+!/nvim/ginit.vim
+!/nvim/init.vim
+
+# OCTAVE: Grab example qt for colors, and the rc file
+!/octave
 !/octave/octaverc
 !/octave/qt-settings.example
 
 # OFFLINEIMAP: Only include config and gmailPass.py.example
-/offlineimap/**
+!/offlineimap
 !/offlineimap/config
 !/offlineimap/gmailPass.py.example
 
 # PACKAGEBUILDS: Do not include sourcefiles
+!/packagebuilds
+!/packagebuilds/**
 /packagebuilds/**/src
 /packagebuilds/**/pkg
 /packagebuilds/**/*.xz
 
-# QUTEBROWSER: Do not track autoconfig.yml; overwritten by app
-/qutebrowser/autoconfig.yml
-/qutebrowser/qsettings
+# POLYBAR: Grab all files
+!/polybar
+!/polybar/*
+
+# QUTEBROWSER: Grab my files
+!/qutebrowser
+!/qutebrowser/bookmarks
+!/qutebrowser/bookmarks/urls
+!/qutebrowser/css
+!/qutebrowser/css/*
+!/qutebrowser/blocked-hosts
+!/qutebrowser/config.py
+!/qutebrowser/quickmarks
+
+# RANGER: Grab my files
+!/ranger
+!/ranger/commands.py
+!/ranger/rc.conf
+!/ranger/rifle.conf
+
+# REDSHIFT: Grab config
+!/redshift
+!/redshift/redshift.conf
+
+# ROFI: Grab user made files and scripts
+!/rofi
+!/rofi/*.rasi
+!/rofi/*.sh
+!/rofi/rofi-pass.conf
+
+# SOUNDS: Sounds grabbed from mint, sync all
+!/sounds
+!/sounds/*.oga
+
+# SXHKD: Grab scripts and rc
+!/sxhkd
+!/sxhkd/sxhkdrc
+!/sxhkd/*.sh
+
+# SYNCTHING-GTK: Grab config
+!/syncthing-gtk
+!/syncthing-gtk/config.json
+
+# SYSTEMD: Grab entire directory
+!/systemd
+!/systemd/**
+
+# TERMITE: Grab config
+!/termite
+!/termite/config
+
+# UDISKIE: Grab config
+!/udiskie
+!/udiskie/config.json
+
+# URXVT: Grab all Xresources files
+!/urxvt
+!/urxvt/*.Xresources
+
+# X11: Grab everything here since I wrote them
+!/X11
+!/X11/**
+
+# YOUTUBE-DL: Grab config
+!/youtube-dl
+!/youtube-dl/config
+
+# ZATHURA: Grab config
+!/zathura
+!/zathura/zathurarc
 
 # ZSH: Ignore all but few files certain files
-/zsh/**
+!/zsh
 !/zsh/.zlogin
 !/zsh/.zlogout
 !/zsh/.zprofile
@@ -112,4 +207,3 @@
 !/zsh/powerlevel9k.settings
 !/zsh/zshenv
 
-#

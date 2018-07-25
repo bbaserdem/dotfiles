@@ -1,0 +1,6 @@
+# Maintained by bbaserdem-base
+[Match]
+Name=wifi
+
+[Network]
+DHCP=ipv4

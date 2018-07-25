@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+GenericName=Programming for Data Analysis
+X-GNOME-FullName=MATLAB R2018a
+Keywords=matlab;calculation;programming;analysis
+Categories=Developement;
+MimeType=text/x-matlab
+Name=MATLAB R2018a
+Comment=Start MATLAB - The Language of Technical Computing
+Exec=/usr/bin/matlab -desktop
+Terminal=false
+StartupNotify=true
+Icon=matlab
+Categories=Development;
+StartupWMClass="MATLAB R2018a - academic use"

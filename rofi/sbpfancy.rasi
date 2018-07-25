@@ -1,0 +1,151 @@
+// Based on theme arthur?
+
+configuration {
+    display-top:        "";
+    display-ssh:        "";
+    display-run:        "";
+    display-drun:       "";
+    display-window:     "";
+    display-combi:      "";
+}
+
+* {
+    transparent: rgba(0,0,0,0);
+    
+    foreground:     #C0C5CE;
+    backlight:      #A7ADBA;
+    background-color:  transparent;
+    dark:           #65737E;
+    
+    black:          #343D46;
+    lightblack:     #4F5B66;
+    tlightblack:    #4F5B66cc;
+    white:          #CDD3DE;
+    lightwhite:     #D8DEE9;
+
+    brown:          #AB7967;
+    red:            #EC5f67;
+    orange:         #F99157;
+    yellow:         #FAC863;
+    green:          #99C794;
+    cyan:           #5FB3B3;
+    blue:           #6699CC;
+    magenta:        #C594C5;
+    
+    // Bold, Italic, Underline
+    highlight:     underline bold #ffffff;
+}
+
+#window {
+    anchor:   center;
+    fullscreen: false;
+    transparency: "screenshot";
+    padding: 0px;
+    border:  0px;
+    border-radius: 0px;
+    background-color: @transparent;
+    spacing: 0px;
+    children:  [sidebar, mainbox];
+    orientation: vertical;
+}
+
+#mainbox {
+    expand: false;
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+#message {
+    border-color: @foreground;
+    border:  0px 2px 0px 2px;
+    padding: 0;
+    background-color: @orange;
+    color: @black;
+}
+
+#inputbar {
+    color: @brown;
+    padding: 2px;
+    background-color: @tlightblack;
+    border: 2px 2px 2px 2px;
+    border-radius:  0px 0px 0px 0px;
+    border-color: @foreground;
+}
+
+#entry,prompt,case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+
+#listview {
+    expand: false;
+    padding: 0px;
+    border-radius: 0px 0px 15px 15px;
+    border-color: @foreground;
+    border: 0px 2px 2px 2px;
+    background-color: #1c1c1ccc;
+    dynamic: false;
+    lines: 20;
+}
+#element {
+    padding: 3px;
+    vertical-align: 0.5;
+    border: 0px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: @foreground;
+    font:inherit;
+}
+
+#element selected.normal {
+    background-color: @cyan;
+    color: @lightblack;
+}
+#element selected active {
+    background-color: @green;
+    color: @lightblack;
+}
+#element selected urgent {
+    background-color: @red;
+    color: @lightblack;
+}
+
+#element normal normal {
+}
+#element normal active {
+    foreground: @cyan;
+}
+#element normal urgent {
+    foreground: @red;
+}
+
+#element alternate normal {
+}
+#element alternate active {
+}
+#element alternate urgent {
+}
+
+#sidebar {
+    expand: false;
+    orientation: horizontal;
+    spacing: 0px;
+    border: 2px 2px 2px 2px;
+}
+#button {
+    font: "FontAwesome 28";
+    padding: 0px;
+    border: 2px 2px 2px 2px;
+    border-radius: 4px 4px 0px 0px;
+    background-color: @tlightblack;
+    border-color: @foreground;
+    color: @foreground;
+    horizontal-align: 0.5;
+}
+#button selected normal {
+    color: @dark;
+    border: 2px 0px 2px 2px;
+    background-color: @backlight;
+    border-color: @foreground;
+}
+
