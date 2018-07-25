@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+GenericName=Power off computer using systemd
+X-GNOME-FullName=Shutdown
+Keywords=shutdowm;poweroff
+Categories=System
+Name=Shutdown
+Comment=Power off computer using systemd
+Terminal=false
+Exec=systemctl poweroff
+Icon=system-shutdown

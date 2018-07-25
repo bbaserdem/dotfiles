@@ -1,0 +1,34 @@
+#! /bin/sh
+
+# Specific
+xset -b
+export _JAVA_AWT_WM_NONREPARENTING=1
+wmname LG3D
+
+bspc config merge_overlapping_monitors  true
+~/.config/bspwm/desktops
+
+bspc config border_width                0
+bspc config window_gap                  24
+bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/ext_rule
+
+bspc config split_ratio                 0.5
+bspc config borderless_monocle          false
+bspc config gapless_monocle             false
+bspc config focus_follows_pointer       true
+bspc config focused_border_color        '#A5A5A5'
+bspc config remove_disabled_monitors    true
+bspc config remove_unplugged_monitors   true
+bspc config pointer_follows_monitor     true
+bspc config honor_size_hints            true
+bspc config initial_polarity            second_child
+
+# Fixing Windows
+bspc rule -a Pinentry               state=floating
+bspc rule -a Zathura                state=tiled
+bspc rule -a libreoffice-writer     state=tiled
+bspc rule -a LibreOffice            state=tiled
+bspc rule -a Steam                  state=tiled follow=no
+bspc rule -a stellarium             state=tiled
+bspc rule -a gtk2fontsel            state=tiled
+bspc rule -a rdesktop               state=floating
