@@ -9,7 +9,6 @@
 !/.gitignore
 
 # Directories with files to track
-!/android
 !/android/**
 !/applications
 !/arch
