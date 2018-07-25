@@ -1,9 +1,0 @@
-# Set default search option to youtube
---default-search "youtube1:"
---yes-playlist
---output "${HOME}/Downloads/Youtube/%(title)s-%(resolution)s.%(ext)s"
---no-overwrites
---write-info-json
---audio-format "flac"
---audio-quality 0
-

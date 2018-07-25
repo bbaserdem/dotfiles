@@ -1,3 +1,0 @@
-brightnessctl
-stepmania
-steam-fonts

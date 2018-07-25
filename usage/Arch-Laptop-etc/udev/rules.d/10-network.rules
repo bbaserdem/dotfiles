@@ -1,3 +1,0 @@
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="08:62:66:22:8a:57", NAME="ethernet"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="a0:a8:cd:63:2b:bc", NAME="wifi"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:00:00:00:00:00", NAME="usbtether"
