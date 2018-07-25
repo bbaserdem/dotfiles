@@ -1,1 +1,115 @@
+# By default, ignore all files
 *
+
+#-------------------#
+#-----WHITELIST-----#
+#-------------------#
+
+# Gitignore file is whitelisted
+!/.gitignore
+
+# Directories with files to track
+!/android
+!/applications
+!/arch
+!/bspwm
+!/cantata
+!/dunst
+!/fontconfig
+!/gnupg
+!/gtk-3.0
+!/htop
+!/kitty
+!/mpd
+!/mpdscribble
+!/mpv
+!/ncmpcpp
+!/neofetch
+!/neomutt
+!/newsboat
+!/nvim
+!/octave
+!/offlineimap
+!/packagebuilds
+!/polybar
+!/qutebrowser
+!/ranger
+!/redshift
+!/rofi
+!/scripts
+!/sounds
+!/sxhkd
+!/syncthing-gtk
+!/systemd
+!/termite
+!/udiskie
+!/urxvt
+!/X11
+!/youtube-dl
+!/zathura
+!/zsh
+
+# Files to track
+!/abcde.conf
+!/compton.conf
+!/gtk2rc
+!/install.sh
+!/mimeapps.list
+!/msmtprc
+!/README.md
+!/taskrc
+!/tmux.conf
+!/user-dirs.dirs
+
+#-------------------#
+#-----BLACKLIST-----#
+#-------------------#
+
+# GNUPG: Only get the config files
+/gnupg/**
+!/gnupg/gpg-agent.conf
+
+# MPD: Only get config
+/mpd/**
+!/mpd/mpd.conf
+
+# MPDSCRIBBLE: Only grab the example config
+/mpdscribble/**
+!/mpdscribble/mpdscribble.conf.example
+
+# MPV: Only grab config
+/mpv/**
+!/mpv/mpv.conf
+
+# NVIM: Ignore the plugins page
+/nvim/bundle
+
+# OCTAVE: Ignore all but the QT setup (for colors) and octaverc
+/octave/**
+!/octave/octaverc
+!/octave/qt-settings.example
+
+# OFFLINEIMAP: Only include config and gmailPass.py.example
+/offlineimap/**
+!/offlineimap/config
+!/offlineimap/gmailPass.py.example
+
+# PACKAGEBUILDS: Do not include sourcefiles
+/packagebuilds/**/src
+/packagebuilds/**/pkg
+/packagebuilds/**/*.xz
+
+# QUTEBROWSER: Do not track autoconfig.yml; overwritten by app
+/qutebrowser/autoconfig.yml
+/qutebrowser/qsettings
+
+# ZSH: Ignore all but few files certain files
+/zsh/**
+!/zsh/.zlogin
+!/zsh/.zlogout
+!/zsh/.zprofile
+!/zsh/.zshrc
+!/zsh/powerlevel9k.settings
+!/zsh/zshenv
+
+#
