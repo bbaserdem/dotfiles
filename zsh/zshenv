@@ -5,11 +5,6 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # ZIM stuff
 export ZIM_HOME="$ZDOTDIR/zimfw"
 
-# SSH agent
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
 # GPG public key
 export GPGKEY=0B7151C823559DD8A7A04CE36426139E2F4C6CCE
 # Password store location
