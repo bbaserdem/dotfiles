@@ -27,8 +27,8 @@ super + d
     ~/.config/rofi/rofi-systemd.sh
 
 # Screenshot
-Print
-    scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'
+Print + {_,shift}
+    maim {_,-i $(xdotool getactivewindow)} ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
 
 # Change wallpapers
 super + Down
