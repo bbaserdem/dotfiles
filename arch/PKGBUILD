@@ -1,30 +1,51 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
-pkgbase=bbaserdem
+pkgbase=sbp
 pkgname=(
-    bbaserdem-base
-    bbaserdem-efi
-    bbaserdem-bios
-    bbaserdem-desktop
-    bbaserdem-devel
-    bbaserdem-gaming
-    bbaserdem-server
-    bbaserdem-asus-gl702zc
-    bbaserdem-asus-n550jk
-    bbaserdem-dell-t7500
+    'sbp-base'
+    'sbp-efi'
+    'sbp-desktop'
+    'sbp-devel'
+    'sbp-server'
+    'sbp-laptop'
+    'sbp-workstation'
 )
-pkgver=1
+
+pkgver=0.0.1
 pkgrel=1
-pkgdesc="Generic build for bbaserdem computer systems"
-arch=(any)
+pkgdesc="Meta package to automate packages computer systems"
+arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
 licence=(MIT)
 groups=(bbaserdem)
-source=()
+source=(
+    'base/fixed-bitmap'
+    'base/inotify'
+    'base/install'
+    'base/reflector.service'
+    'base/reflector.timer'
+    'base/snapper-root'
+    'base/sudoers'
+    'base/sysctl'
+    'base/vconsole'
+    'base/wired'
+    'base/wireless'
+    'efi/stable'
+    'efi/longterm'
+    'efi/hardened'
+    'efi/zen'
+    'efi/install'
+    'efi/sign'
+    'desktop.install'
+    'devel.install'
+    'laptop/backlight'
+    'laptop/battery'
+    'laptop/install'
+)
 
-package_bbaserdem-base() {
+package_sbp-base() {
     provides=(nano vim vi)
     conflicts=(nano vim vi)
-    install=bbaserdem-base.install
+    install=base/install
 
     # Base and base-devel group
     # Removed; netctl, nano, vi, reiserfsprogs
@@ -38,8 +59,8 @@ package_bbaserdem-base() {
         'logrotate'     'lvm2'          'man-db'        'man-pages'
         'mdadm'         'pacman'        'pciutils'
         'pcmciautils'   'perl'          'procps-ng'     'psmisc'
-        's-nail'        'sed'           'shadow'
-        'sysfsutils'    'systemd-sysvcompat'    'tar'   'texinfo'
+        's-nail'        'sed'           'shadow'        'tar'
+        'sysfsutils'    'systemd-sysvcompat'            'texinfo'
         'usbutils'      'util-linux'    'which'         'xfsprogs'
         'autoconf'      'automake'      'binutils'      'bison'
         'fakeroot'      'file'          'findutils'     'flex'
@@ -47,27 +68,15 @@ package_bbaserdem-base() {
         'groff'         'gzip'          'libtool'       'm4'
         'make'          'pacman'        'patch'         'pkgconf'
         'sed'           'sudo'          'systemd'       'texinfo'
-        'util-linux'    'which'
-        )
-    install -Dm 0644 bbaserdem-base.vconsole "${pkgdir}/etc/vconsole.conf"
-    install -Dm 0640 bbaserdem-base.sudoers "${pkgdir}/etc/sudoers.d/bbaserdem-base"
-    install -Dm 0644 bbaserdem-base.sysctl "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
-    install -Dm 0644 bbaserdem-base.inotify "${pkgdir}/etc/sysctl.d/01-inotify.conf"
-    install -Dm 0644 bbaserdem-base.fixed-bitmap "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
-    install -Dm 0644 bbaserdem-base.wired "${pkgdir}/etc/systemd/network/20-wired.network"
-    install -Dm 0644 bbaserdem-base.wireless "${pkgdir}/etc/systemd/network/20-wireless.network"
-
-    # Filesystems
-    depends+=( 'btrfs-progs' 'f2fs-tools' )
-
-    # Extra packages
-    depends+=(
+        'util-linux'    'which'         'btrfs-progs'   'f2fs-tools'
         'abcde'                         # CD ripper
         'asp'                           # Arch Source Package management
-        'atool'                         # Archive tool for following formats
-        'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar' 'unzip' 'xz' 'zip'
+        'atool'                         # Archive tool for following formats;
+        'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace'
+        'unrar' 'unzip' 'xz' 'zip'
         'bash-completion'               # Programmable completion for bash
         'cpupower'                      # CPU scaling user utility
+        'cups' 'cups-pdf' 'cups-pk-helper'  # Printing
         'discount'                      # Markdown implementation
         'flatpak'                       # Jailed software repository
         'geoip' 'geoip-database-extra'  # IP to location resolver
@@ -88,7 +97,6 @@ package_bbaserdem-base() {
         'rsync'                         # File synching utility
         'snapper'                       # BTRFS snapshot manager
         'sshfs' 'openssh' 'fuse3'       # SSH and FUSE for ssh
-        'stow'                          # Symlink manager
         'sudo'                          # To check your privilage
         'tor'                           # TOR Onion network
         'tmux'                          # Terminal multiplexer
@@ -100,10 +108,6 @@ package_bbaserdem-base() {
         'pulseaudio' 'lib32-libpulse' 'pamixer' 'pavucontrol'   # Pulseaudio
         'pulseaudio-alsa'                                       # Pulse plugins
         'mpc' 'mpd'                                             # Music daemon
-        )
-
-    # Console apps
-    depends+=(
         'calcurse'                                  # Calender
         'htop'                                      # Process viewer
         'ncmpcpp'                                   # Music player
@@ -113,37 +117,44 @@ package_bbaserdem-base() {
         'newsboat'                                  # RSS/Atom feed
         'parted'                                    # Partition manager
         'ranger'                                    # File browser
+        'syncthing'                                 # File syncing
         'task'                                      # Taskwarrior tasks manager
         'w3m'                                       # Console based web browser
-    )
+        )
+    install -Dm 0644 base/fixed-bitmap "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
+    install -Dm 0644 base/inotify "${pkgdir}/etc/sysctl.d/01-inotify.conf"
+    install -Dm 0644 base/reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
+    install -Dm 0644 base/reflector.timer "${pkgdir}/etc/systemd/system/reflector.timer"
+    install -Dm 0640 base/sudoers "${pkgdir}/etc/sudoers.d/sbp-base"
+    install -Dm 0644 base/sysctl "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
+    install -Dm 0644 base/vconsole "${pkgdir}/etc/vconsole.conf"
+    install -Dm 0644 base/wired "${pkgdir}/etc/systemd/network/19-wired.network"
+    install -Dm 0644 base/wireless "${pkgdir}/etc/systemd/network/20-wireless.network"
+
     chmod 750 /.snapshots
-    install -Dm 0644 bbaserdem-base.snapper-root "${pkgdir}/etc/snapper/configs/root"
+    install -Dm 0644 base/snapper-root "${pkgdir}/etc/snapper/configs/root"
     install -dm 0755 "${pkgdir}/usr/bin"
     ln -s /usr/bin/nvim "${pkgdir}/usr/bin/vim"
+    ln -s /usr/bin/nvim "${pkgdir}/usr/bin/nano"
     ln -s /usr/bin/nvim "${pkgdir}/usr/bin/vi"
 
 }
 
-package_bbaserdem-efi() {
-    install=bbaserdem-efi.install
-    depends=('efitools' 'refind-efi' 'sbsigntools')
-    install -Dm 0755 bbaserdem-efi.sign "${pkgdir}/etc/sbkeys/sbsign.sh"
-    install -Dm 0644 bbaserdem-efi.refind "${pkgdir}/boot/EFI/refind/refind.conf"
-    install -Dm 0644 bbaserdem-efi.hook "${pkgdir}/etc/pacman.d/hooks/10-refind.hook"
-    install -Dm 0644 bbaserdem-efi.stable "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
-    install -Dm 0644 bbaserdem-efi.longterm "${pkgdir}/etc/pacman.d/hooks/12-longterm.hook"
-    install -Dm 0644 bbaserdem-efi.hardened "${pkgdir}/etc/pacman.d/hooks/12-hardened.hook"
-    install -Dm 0644 bbaserdem-efi.zen "${pkgdir}/etc/pacman.d/hooks/13-zen.hook"
+package_sbp-efi() {
+    depends=('efitools' 'sbsigntools')
+    install -Dm 0755 efi/sign "${pkgdir}/etc/sbkeys/sbsign.sh"
+    install -Dm 0644 efi/stable "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
+    install -Dm 0644 efi/longterm "${pkgdir}/etc/pacman.d/hooks/12-longterm.hook"
+    install -Dm 0644 efi/hardened "${pkgdir}/etc/pacman.d/hooks/12-hardened.hook"
+    install -Dm 0644 efi/zen "${pkgdir}/etc/pacman.d/hooks/13-zen.hook"
 }
 
-package_bbaserdem-bios() {
-    depends=('grub' 'os-prober')
-}
-
-package_bbaserdem-desktop() {
-    depends=(bbaserdem-base)
+package_sbp-desktop() {
+    depends=('sbp-base')
+    install=('desktop.install')
 
     # X-org and wayland studd
+    # Window-manager and related
     depends+=(
         'xorgproto'             'xf86-video-vesa'       'xorg-bdftopcf'
         'xorg-docs'             'xorg-font-util'        'xorg-fonts-100dpi'
@@ -162,12 +173,7 @@ package_bbaserdem-desktop() {
         'xorg-xprop'            'xorg-xrandr'           'xorg-xrdb'
         'xorg-xrefresh'         'xorg-xset'             'xorg-xsetroot'
         'xorg-xvinfo'           'xorg-xwd'              'xorg-xwininfo'
-        'xorg-xwud'
-        'wayland'
-        )
-
-    # Window-manager and related
-    depends+=(
+        'xorg-xwud'             'wayland'
         'bspwm'             # Tiling window manager
         'compton'           # Compositor for X
         'dunst'             # Notification daemon
@@ -180,25 +186,18 @@ package_bbaserdem-desktop() {
         'sway'              # i3 replacement for wayland
         'wireless_tools'    # Wireless info parse
         'wmname'            # Window manager name changer
-        )
-    install -Dm 0755 bbaserdem-desktop.fancylock "${pkgdir}/usr/local/bin/fancy-lock"
-
-    # Libraries for apps to work
-    depends+=(
         'mpv'
         'pdfjs'
         'polkit'
         'polkit-gnome'
+        'nemo'
         'nemo-python'
         'qt4'
         'syncthing'
         'trash-cli'
         'tumbler'
         'udiskie'
-        'xsel')
-
-    # Applications
-    depends+=(
+        'xsel'
         'audacity'
         'blender'
         'cantata'
@@ -211,24 +210,20 @@ package_bbaserdem-desktop() {
         'inkscape'
         'kitty'
         'libreoffice-fresh'
-        'nemo'
         'pdfsam'
         'projectm-pulseaudio'
         'picard'
+        'openscad'
         'ristretto'
         'smplayer'
         'qutebrowser'
         'qopenvpn'
-        'rdesktop'
         'stellarium'
         'syncthing-gtk'
         'termite'
         'udisks2'
         'virt-manager'
-        'zathura-pdf-poppler')
-
-    # Graphical theming
-    depends+=(
+        'zathura-pdf-poppler'
         'arc-gtk-theme'
         'elementary-icon-theme'
         'gnome-themes-extra'
@@ -236,28 +231,24 @@ package_bbaserdem-desktop() {
         'gtk2fontsel'
         'gucharmap'
         'papirus-icon-theme'
-        'qt5-styleplugins')
-
-    # Fonts
-    depends+=(
+        'qt5-styleplugins'
         'tamsyn-font'
         'otf-fira-code'
         'ttf-gentium'
         'ttf-hack'
         'ttf-liberation'
-        'noto-fonts-emoji')
+        'noto-fonts-emoji'
+        )
 }
 
-package_bbaserdem-devel() {
-    depends=('bbaserdem-devel')
+package_sbp-devel() {
+    depends=('sbp-base')
+    install=('devel.install')
 
     # C developement
     depends+=(
-        'clang')
-
-    # Arduino developement
-    depends+=(
-        'arduino'
+        'clang'
+        'arduino'           # Arduino developement
         'arduino-docs'
         'arm'
         'arm-none-eabi-binutils'
@@ -267,17 +258,10 @@ package_bbaserdem-devel() {
         'avr-gcc'
         'avr-libc'
         'avrdude'
-        'dfu-util'
-        'processing')
-
-    # Android developement
-    depends+=(
-        'android-tools'
-        'libmtp')
-
-    # Python developement
-    depends+=(
-        'bpython'
+        'dfu-util'          # Dfu-programmer is in aur
+        'android-tools'     # Android developement
+        'libmtp'
+        'bpython'           # Python developement
         'jupyter-nbconvert'
         'jupyter-notebook'
         'lapack'
@@ -293,29 +277,19 @@ package_bbaserdem-devel() {
         'python-virtualenv'
         'python-xdg'
         'python2-pip'
-        )
-
-    # Java, matlab things and octave
-    depends+=(
-        'jre7-openjdk'
+        'jre7-openjdk'      # Java, matlab things and octave
         'jre8-openjdk'
         'jre9-openjdk'
         'jre10-openjdk'
-        'octave')
-
-    # LaTeX
-    depends+=(
-        'biber'
+        'octave'
+        'biber'             # LaTeX
         'texlive-core'
         'texlive-fontsextra'
         'texlive-latexextra'
         'texlive-pictures'
         'texlive-pstricks'
-        'texlive-science')
-
-    # Virtualization, QEMU
-    depends+=(
-        'dnsmasq'
+        'texlive-science'
+        'dnsmasq'           # Virtualization, QEMU
         'firewalld'
         'libvirt'
         'qemu'
@@ -324,21 +298,18 @@ package_bbaserdem-devel() {
 
 # Server packages;
 #   These packafes should not need xorg, must be settable from console`
-package_bbaserdem-server() {
-    depends=(bbaserdem-base)
+package_sbp-server() {
+    depends=(sbp-base)
 
     depends+=(
-        'deluge'
-        'openvpn'
-        'python2-service-identity'
-        'syncthing'
-        'tlp'
+        'transmission-cli'
+        'kodi'
         'youtube-dl')
 }
 
 # Computer specific stuff
-package_bbaserdem-laptop() {
-    depends=(bbaserdem-base bbaserdem-efi bbaserdem-devel bbaserdem-desktop)
+package_sbp-laptop() {
+    depends=('sbp-base' 'sbp-efi' 'sbp-devel' 'sbp-desktop')
     depends+=(
         'blueberry'
         'bluez'
@@ -358,18 +329,18 @@ package_bbaserdem-laptop() {
         'libva-mesa-driver'
         'xf86-video-amdgpu'
         'vulcan-radeon'
-        'tlp')
-    install -Dm 0644 bbaserdem-base.bt-sink "${pkgdir}/etc/bluetooth/audio.conf"
-    # Steam
-    depends+=(
+        'tlp'
         'steam'
         'steam-native-runtime')
+    install -Dm 0644 laptop/backlight "${pkgdir}/etc/udev/ruless/90-backlight.rules"
+    install -Dm 0644 laptop/battery "${pkgdir}/etc/udev/ruless/91-battery.rules"
 }
 
-package_bbaserdem-workstation() {
-    depends=(bbaserdem-base bbaserdem-bios bbaserdem-devel bbaserdem-desktop)
+package_sbp-workstation() {
+    depends=('sbp-base' 'sbp-devel' 'sbp-desktop')
 
     depends+=(
+        'grub'
         'nvidia-340xx-lts'
         'lib32-nvidia-340xx-utils'
         'linux-lts'

@@ -1,44 +1,55 @@
 # Maintained by bbaserdem-base
 post_install() {
-    post_upgrade()
-}
-
-post_upgrade() {
-    # systemctl disable --now connman
-    # systemctl enable --now systemd-timesyncd
     
+    echo "Installing . . ."
+
+    # Set timezone to NY
+    echo "Setting local time and enabling NTP . . ."
+    ln -sf /usr/share/zoneinfo/America/New_York "/etc/localtime"
+    timedatectl set-ntp true
+    hwclock --systohc
+
     # Network
+    echo "Enabling systemd-networkd . . ."
     systemctl enable --now systemd-networkd
     systemctl enable --now systemd-resolved
     systemctl enable --now wpa_supplicant@wifi.service
 
     # Cpupower package
+    echo "Enabling cpupower . . ."
     systemctl enable --now cpupower.service
 
-    # systemctl enable --now avahi-daemon
-    # ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-
-    # Set timezone to NY
-    ln -sf /usr/share/zoneinfo/America/New_York "/etc/localtime"
-    timedatectl set-ntp true
-    hwclock --systohc
-
-    # Set language
+    # Set language    
+    echo "Setting locale to en_US.UTF-8 . . ."
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
     sed 's/#en_US/en_US/' -i /etc/locale.gen
     locale-gen
     localectl set-locale LANG=en_US.UTF-8
 
     # Set timeout to 10 seconds
+    echo "Reducing systemd timeout to 10 seconds . . ."
     sed -i '/DefaultTimeoutStartSec/s/^#//g'        /etc/systemd/system.conf
     sed -i '/DefaultTimeoutStopSec/s/^#//g'         /etc/systemd/system.conf
     sed -i '/DefaultTimeoutStartSec/s/=.*/=10s/'    /etc/systemd/system.conf
     sed -i '/DefaultTimeoutStopSec/s/=.*/=10s/'     /etc/systemd/system.conf
 
-    # Enable periodic trim
-    systemctl enable --now fstrim.timer
-
     # Activate snapper
+    echo "Enabling snapper . . ."
     systemctl enable --now snapper-timeline.timer
     systemctl enable --now snapper-cleanup.timer
+ 
+    # Enable periodic trim
+    echo "Enabling trim . . ."
+    systemctl enable --now fstrim.timer
+
+    # Enable periodic reflector
+    echo "Enabling pacman updates . . ."
+    systemctl enable --now reflector.service
+    systemctl enable --now reflector.timer
+
+    post_upgrade
+}
+
+post_upgrade() {
+    echo "Upgrading . . ."
 }
