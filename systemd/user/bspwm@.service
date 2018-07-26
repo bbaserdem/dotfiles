@@ -8,7 +8,7 @@ Before=wm-running@%i.target
 [Service]
 Environment=DISPLAY=%I
 Type=simple
-ExecStart=/bin/bash -c 'exec 8>%t/x11-wm@%I; echo "$DISPLAY"; exec /usr/bin/bspwm'
+ExecStart=/bin/bash -c 'exec 8>%t/x11-wm@%I; exec /usr/bin/bspwm'
 SyslogIdentifier=bspwm
 Restart=always
 RestartSec=10

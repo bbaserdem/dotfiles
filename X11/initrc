@@ -1,18 +1,34 @@
-#!/bin/sh
+#!/usr/bin/sh
 
+# Copied mostly from https://www.lukeshu.com/blog/x11-systemd.html
+
+# Check if XDG_RUNTIME_DIR is set, and fail otherwise
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     printf "XDG_RUNTIME_DIR isn't set\n" >&2
     exit 6
 fi
 
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-
+# Grab the display variable
 _DISPLAY="$(systemd-escape -- "$DISPLAY")"
-trap "rm -f $(printf '%q' "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}")" EXIT
-mkfifo "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}"
 
+# Turn off system beep
+xset -b
+# This is to fix the xdg_gnome_session stuff from crashing
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+# Fix missing mouse pointer issues
 xsetroot -cursor_name left_ptr
 
+# This next section is to mimic usual xinitrx; execute a command, and wait till
+#   it terminates. The setup of the pipe and the wait. When the window manager
+#   exits, the target will be closed, script will terminate and pipe will be
+#   closed
+
+# trap ... EXIT executes when shell is exited; which cleans the pipe
+trap "rm -f $(printf '%q' "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}")" EXIT
+# Create a named pipe to be opened by the window manager
+mkfifo "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}"
+
+# Redirect output to the pipe
 cat < "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}" &
 systemctl --user start "X11@${_DISPLAY}.target" &
 wait

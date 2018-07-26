@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/bash
+
 # Get active monitor number
 M=$(bspc query -M | wc -l)
 if [[ "$M" == 1 ]]
