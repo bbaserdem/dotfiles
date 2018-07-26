@@ -1,5 +1,5 @@
+# Maintainer: Batuhan Başerdem <baserdem.batuhan@gmail.com>
 # Contributor: Patrick Jackson <PatrickSJackson gmail com>
-# Maintainer: Christoph Vigano <mail@cvigano.de>
 
 pkgname=sbp-st
 pkgver=0.8.1
@@ -67,4 +67,3 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
 }
-
