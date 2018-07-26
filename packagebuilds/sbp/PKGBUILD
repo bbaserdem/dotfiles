@@ -18,34 +18,36 @@ url="https://github.com/bbaserdem/dotfiles"
 licence=(MIT)
 groups=(bbaserdem)
 source=(
-    'base/fixed-bitmap'
-    'base/inotify'
-    'base/install'
-    'base/reflector.service'
-    'base/reflector.timer'
-    'base/snapper-root'
-    'base/sudoers'
-    'base/sysctl'
-    'base/vconsole'
-    'base/wired'
-    'base/wireless'
-    'efi/stable'
-    'efi/longterm'
-    'efi/hardened'
-    'efi/zen'
-    'efi/install'
-    'efi/sign'
+    'base.fixed-bitmap'
+    'base.inotify'
+    'base.install'
+    'base.reflector.service'
+    'base.reflector.timer'
+    'base.snapper-root'
+    'base.sudoers'
+    'base.sysctl'
+    'base.vconsole'
+    'base.wired'
+    'base.wireless'
+    'efi.stable'
+    'efi.longterm'
+    'efi.hardened'
+    'efi.zen'
+    'efi.install'
+    'efi.sign'
     'desktop.install'
     'devel.install'
-    'laptop/backlight'
-    'laptop/battery'
-    'laptop/install'
+    'laptop.backlight'
+    'laptop.battery'
+    'laptop.install'
+    'server.install'
+    'workstation.install'
 )
 
 package_sbp-base() {
     provides=(nano vim vi)
     conflicts=(nano vim vi)
-    install=base/install
+    install=base.install
 
     # Base and base-devel group
     # Removed; netctl, nano, vi, reiserfsprogs
@@ -121,18 +123,17 @@ package_sbp-base() {
         'task'                                      # Taskwarrior tasks manager
         'w3m'                                       # Console based web browser
         )
-    install -Dm 0644 base/fixed-bitmap "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
-    install -Dm 0644 base/inotify "${pkgdir}/etc/sysctl.d/01-inotify.conf"
-    install -Dm 0644 base/reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
-    install -Dm 0644 base/reflector.timer "${pkgdir}/etc/systemd/system/reflector.timer"
-    install -Dm 0640 base/sudoers "${pkgdir}/etc/sudoers.d/sbp-base"
-    install -Dm 0644 base/sysctl "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
-    install -Dm 0644 base/vconsole "${pkgdir}/etc/vconsole.conf"
-    install -Dm 0644 base/wired "${pkgdir}/etc/systemd/network/19-wired.network"
-    install -Dm 0644 base/wireless "${pkgdir}/etc/systemd/network/20-wireless.network"
-
+    install -Dm 0644 base.fixed-bitmap "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
+    install -Dm 0644 base.inotify "${pkgdir}/etc/sysctl.d/01-inotify.conf"
+    install -Dm 0644 base.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
+    install -Dm 0644 base.reflector.timer "${pkgdir}/etc/systemd/system/reflector.timer"
+    install -Dm 0640 base.sudoers "${pkgdir}/etc/sudoers.d/sbp-base"
+    install -Dm 0644 base.sysctl "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
+    install -Dm 0644 base.vconsole "${pkgdir}/etc/vconsole.conf"
+    install -Dm 0644 base.wired "${pkgdir}/etc/systemd/network/19-wired.network"
+    install -Dm 0644 base.wireless "${pkgdir}/etc/systemd/network/20-wireless.network"
     chmod 750 /.snapshots
-    install -Dm 0644 base/snapper-root "${pkgdir}/etc/snapper/configs/root"
+    install -Dm 0644 base.snapper-root "${pkgdir}/etc/snapper/configs/root"
     install -dm 0755 "${pkgdir}/usr/bin"
     ln -s /usr/bin/nvim "${pkgdir}/usr/bin/vim"
     ln -s /usr/bin/nvim "${pkgdir}/usr/bin/nano"
@@ -142,18 +143,18 @@ package_sbp-base() {
 
 package_sbp-efi() {
     depends=('efitools' 'sbsigntools')
-    install -Dm 0755 efi/sign "${pkgdir}/etc/sbkeys/sbsign.sh"
-    install -Dm 0644 efi/stable "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
-    install -Dm 0644 efi/longterm "${pkgdir}/etc/pacman.d/hooks/12-longterm.hook"
-    install -Dm 0644 efi/hardened "${pkgdir}/etc/pacman.d/hooks/12-hardened.hook"
-    install -Dm 0644 efi/zen "${pkgdir}/etc/pacman.d/hooks/13-zen.hook"
+    install=efi.install
+    install -Dm 0755 efi.sign "${pkgdir}/etc/sbkeys/sbsign.sh"
+    install -Dm 0644 efi.stable "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
+    install -Dm 0644 efi.longterm "${pkgdir}/etc/pacman.d/hooks/12-longterm.hook"
+    install -Dm 0644 efi.hardened "${pkgdir}/etc/pacman.d/hooks/12-hardened.hook"
+    install -Dm 0644 efi.zen "${pkgdir}/etc/pacman.d/hooks/13-zen.hook"
 }
 
 package_sbp-desktop() {
     depends=('sbp-base')
-    install=('desktop.install')
-
-    # X-org and wayland studd
+    install=desktop.install
+    # X-org and wayland stuff
     # Window-manager and related
     depends+=(
         'xorgproto'             'xf86-video-vesa'       'xorg-bdftopcf'
@@ -243,8 +244,7 @@ package_sbp-desktop() {
 
 package_sbp-devel() {
     depends=('sbp-base')
-    install=('devel.install')
-
+    install=devel.install
     # C developement
     depends+=(
         'clang'
@@ -300,7 +300,7 @@ package_sbp-devel() {
 #   These packafes should not need xorg, must be settable from console`
 package_sbp-server() {
     depends=(sbp-base)
-
+    install=server.install
     depends+=(
         'transmission-cli'
         'kodi'
@@ -310,6 +310,7 @@ package_sbp-server() {
 # Computer specific stuff
 package_sbp-laptop() {
     depends=('sbp-base' 'sbp-efi' 'sbp-devel' 'sbp-desktop')
+    install=laptop.install
     depends+=(
         'blueberry'
         'bluez'
@@ -332,13 +333,13 @@ package_sbp-laptop() {
         'tlp'
         'steam'
         'steam-native-runtime')
-    install -Dm 0644 laptop/backlight "${pkgdir}/etc/udev/ruless/90-backlight.rules"
-    install -Dm 0644 laptop/battery "${pkgdir}/etc/udev/ruless/91-battery.rules"
+    install -Dm 0644 laptop.backlight "${pkgdir}/etc/udev/ruless/90-backlight.rules"
+    install -Dm 0644 laptop.battery "${pkgdir}/etc/udev/ruless/91-battery.rules"
 }
 
 package_sbp-workstation() {
     depends=('sbp-base' 'sbp-devel' 'sbp-desktop')
-
+    install=workstation.install
     depends+=(
         'grub'
         'nvidia-340xx-lts'
