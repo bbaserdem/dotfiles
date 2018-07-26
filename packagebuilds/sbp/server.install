@@ -1,0 +1,7 @@
+# Maintained by sbp-server
+post_install() {
+    post_upgrade()
+}
+
+post_upgrade() {
+}
