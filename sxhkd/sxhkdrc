@@ -132,7 +132,7 @@ super + {Left,Right}
 
 # Move window the next/previous desktop
 super + shift + {Left,Right}
-	bspc desktop node -d {prev,next}
+	bspc node -d {prev,next}
 
 # focus the last node/desktop
 super + {grave,Tab}

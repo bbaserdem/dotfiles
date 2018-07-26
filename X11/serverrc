@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/usr/bin/sh
+
+# Send the XDG_VTNR as an argument to X if its not defined already
 if [ -z "$XDG_VTNR" ]; then
   exec /usr/bin/X -nolisten tcp "$@"
 else

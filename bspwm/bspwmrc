@@ -1,10 +1,10 @@
-#! /bin/sh
+#! /usr/bin/sh
 
-# Specific
-xset -b
+# Java apps fix
 export _JAVA_AWT_WM_NONREPARENTING=1
 wmname LG3D
 
+# Arrange monitors
 bspc config merge_overlapping_monitors  true
 ~/.config/bspwm/desktops
 

@@ -1,7 +1,7 @@
 [Unit]
 Description=Pacman mirrorlist update
-Wants=systemd-networkd-wait-online.target
-After=systemd-networkd-wait-online.target
+Wants=systemd-networkd-wait-online.service
+After=systemd-networkd-wait-online.service
 
 [Service]
 Type=oneshot

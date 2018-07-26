@@ -7,13 +7,8 @@ syntax on
 set rtp+=$XDG_CONFIG_HOME/nvim/bundle/Vundle.vim
 call vundle#begin('$XDG_CONFIG_HOME/nvim/bundle')
 Plugin 'VundleVim/Vundle.vim'
-
-" Custom plugins...
-" EasyMotion - Allows <leader><leader>(b|e) to jump to (b)eginning or (end)
-" of words.
-" Plugin 'easymotion/vim-easymotion'
-" Ctrl-P - Fuzzy file search
-" Plugin 'kien/ctrlp.vim'
+" Colorscheme
+Plugin 'chriskempson/base16-vim'
 " Neomake build tool (mapped below to <c-b>)
 Plugin 'neomake/neomake'
 " Autocomplete for programming
@@ -36,8 +31,19 @@ call vundle#end()
 filetype plugin indent on
 
 """"""" Colorscheme """""""
-"let base16colorspace=256
+let base16colorspace=256
 "colorscheme base16-default-dark
+"colorscheme base16-eighties
+"colorscheme base16-material
+"colorscheme base16-nord
+"colorscheme base16-ocean
+colorscheme base16-onedark
+"colorscheme base16-railscasts
+"colorscheme base16-tomorrow-night
+"colorscheme base16-bright
+"colorscheme base16-classic-dark
+"colorscheme base16-default-dark
+
 
 """"""" NERDTree """""""
 map <C-r> :NERDTreeToggle<CR>
