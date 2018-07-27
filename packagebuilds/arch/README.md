@@ -57,9 +57,18 @@ I want to have multiple services running in my computer.
 * Allow remote access to web interface.
 * Setup split tunneling, 
 
-## Kodi
+## MariaDB + Apache
 
+* Generate config with `mysql_install_db --user=mysql --basedir=/usr --datadir=/srv/mysql`.
+* Change `datadir=/srv/mysql` under `[mysqld]` in `/etc/mysql/my.cnf`
+* Start thu mariadb service `systemctl enable mariadb.service`
 
 ## Mpd
 
+Need to figure out how network outn to pulse audio for streaming.
+
 * Change mpd user directory `usermod -d /srv/mpd -m mpd`.
+
+## Mail
+
+Use dovecot, postfix and rspamd.

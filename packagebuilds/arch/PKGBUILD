@@ -194,7 +194,6 @@ package_sbp-desktop() {
         'nemo'
         'nemo-python'
         'qt4'
-        'syncthing'
         'trash-cli'
         'tumbler'
         'udiskie'
@@ -302,9 +301,13 @@ package_sbp-server() {
     depends=(sbp-base)
     install=server.install
     depends+=(
-        'transmission-cli'
+        'apache'
+        'dovecot'
         'kodi'
-        'youtube-dl')
+        'mariadb'
+        'postfix'
+        'rspamd'
+        'transmission-cli')
 }
 
 # Computer specific stuff
