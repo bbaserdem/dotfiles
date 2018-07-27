@@ -147,6 +147,7 @@
 !/ranger/rc.conf
 !/ranger/rifle.conf
 !/ranger/devicons.py
+!/ranger/plugins
 !/ranger/plugins/devicons_linemode.py
 
 # REDSHIFT: Grab config
