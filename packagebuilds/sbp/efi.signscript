@@ -1,5 +1,5 @@
 #!/bin/sh
-# Maintained by bbaserdem-efi
+# Maintained by sbp-efi
 KEY=/etc/sbkeys/DB.key
 CER=/etc/sbkeys/DB.crt
 if [ -e $KEY ] && [ -e $CER ]

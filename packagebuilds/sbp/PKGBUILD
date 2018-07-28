@@ -7,9 +7,7 @@ pkgname=(
     'sbp-devel'
     'sbp-server'
     'sbp-laptop'
-    'sbp-workstation'
-)
-
+    'sbp-workstation')
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Meta package to automate packages computer systems"
@@ -29,20 +27,45 @@ source=(
     'base.vconsole'
     'base.wired'
     'base.wireless'
-    'efi.stable'
-    'efi.longterm'
     'efi.hardened'
-    'efi.zen'
     'efi.install'
-    'efi.sign'
+    'efi.longterm'
+    'efi.signscript'
+    'efi.stable'
+    'efi.zen'
     'desktop.install'
     'devel.install'
     'laptop.backlight'
     'laptop.battery'
     'laptop.install'
     'server.install'
-    'workstation.install'
-)
+    'workstation.install')
+md5sums=('01f4af660187b09d79d709fdfd2f2e43'
+         'c3fad1964fce11da4879f823d3d1c2fe'
+         'b203bbd5802d1bb3df82a908f0f276f2'
+         '76bf8b92b07d1c26952791729d223cf2'
+         '678a5325cbacc04df3c854d468fc57f4'
+         'e3b5ed70982addb05feaa47f377613e7'
+         '58e4c2d6c0a89a499ee9c432e316c412'
+         '74f75149a93d5773d79f61d2f943211d'
+         'd0bfbc2bf404bd0ef1b5fac41126b314'
+         '7da9b874efdc857777d586298a9d208c'
+         '0ed16bddac9d24946c8d0d73c9a41610'
+         'f186f66617b5da25d75d734bc18c5446'
+         '5658cb4411ee8814c421ec38a15759bc'
+         '39e9766de5d4cd13529f8d5e2727b59b'
+         'f80d4f01f858e5521968d02ea10b0074'
+         'e3217b4c75d3bc302347b7bdf27f29de'
+         'f0a9613c424243d2480eadf8855ad292'
+         '27ce407a0ed9cc46a56bc1b38d2f5328'
+         'bcb71801be3a663484e9f2f569da08f3'
+         '36adcc034c7a69ffe93e2c0937f051da'
+         '28429e1b4adb07286f6ea670f422f00d'
+         '90792a95f9d8f9d0c8bb19aed841a8f1'
+         'ca2d52b2899a47fa7770ffd31f162f08'
+         '5b7dcdc44de198c4629e8c08626f88dc')
+validpgpkeys=(
+    '0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 
 package_sbp-base() {
     provides=(nano vim vi)
@@ -121,8 +144,7 @@ package_sbp-base() {
         'ranger'                                    # File browser
         'syncthing'                                 # File syncing
         'task'                                      # Taskwarrior tasks manager
-        'w3m'                                       # Console based web browser
-        )
+        'w3m')                                      # Console based web browser
     install -Dm 0644 base.fixed-bitmap "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
@@ -144,7 +166,7 @@ package_sbp-base() {
 package_sbp-efi() {
     depends=('efitools' 'sbsigntools')
     install=efi.install
-    install -Dm 0755 efi.sign "${pkgdir}/etc/sbkeys/sbsign.sh"
+    install -Dm 0755 efi.signscript "${pkgdir}/etc/sbkeys/sbsign.sh"
     install -Dm 0644 efi.stable "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
     install -Dm 0644 efi.longterm "${pkgdir}/etc/pacman.d/hooks/12-longterm.hook"
     install -Dm 0644 efi.hardened "${pkgdir}/etc/pacman.d/hooks/12-hardened.hook"
@@ -218,7 +240,6 @@ package_sbp-desktop() {
         'ristretto'
         'smplayer'
         'qutebrowser'
-        'qopenvpn'
         'stellarium'
         'syncthing-gtk'
         'termite'
@@ -238,8 +259,7 @@ package_sbp-desktop() {
         'ttf-gentium'
         'ttf-hack'
         'ttf-liberation'
-        'noto-fonts-emoji'
-        )
+        'noto-fonts-emoji')
 }
 
 package_sbp-devel() {
@@ -299,7 +319,7 @@ package_sbp-devel() {
 # Server packages;
 #   These packafes should not need xorg, must be settable from console`
 package_sbp-server() {
-    depends=(sbp-base)
+    depends=('sbp-base')
     install=server.install
     depends+=(
         'transmission-cli'
