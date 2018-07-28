@@ -1,4 +1,4 @@
-# Maintained by bbaserdem-efi
+# Maintained by sbp-efi
 [Trigger]
 Operation = Install
 Operation = Upgrade
