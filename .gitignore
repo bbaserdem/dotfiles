@@ -189,6 +189,10 @@
 !/urxvt
 !/urxvt/*.Xresources
 
+# USAGE: It's documentation; grab all
+!/usage
+!/usage/*
+
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**
