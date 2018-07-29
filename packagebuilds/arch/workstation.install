@@ -1,5 +1,10 @@
 # Maintained by sbp-workstation
 post_install() {
+
+    # Enable SSH
+    echo "Enabling SSH socket . . ."
+    systemctl enable --now sshd.socket
+
     post_upgrade()
 }
 
