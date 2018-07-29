@@ -1,4 +1,4 @@
-# Managed by bbaserdem-base
+# Managed by sbp-base
 #
 # subvolume to snapshot
 SUBVOLUME="/"

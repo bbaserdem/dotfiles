@@ -1,8 +1,15 @@
 # Maintained by bbaserdem-efi
 post_install() {
+    mkdir -p /etc/refind.d/keys
     ln -sf /etc/sbkeys/DB.cer /etc/refind.d/keys/refind_local.cer
     ln -sf /etc/sbkeys/DB.crt /etc/refind.d/keys/refind_local.crt
     ln -sf /etc/sbkeys/DB.key /etc/refind.d/keys/refind_local.key
-    /usr/bin/refind-install --localkeys
+    # /usr/bin/refind-install --localkeys
     /etc/sbkeys/sbsign.sh /boot/vmlinuz-linux
+    /usr/bin/bootctl install
+}
+
+post_upgrade() {
+    echo "Updating systemd-boot"
+    /usr/bin/bootctl update
 }

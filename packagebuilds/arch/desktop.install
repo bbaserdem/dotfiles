@@ -1,4 +1,4 @@
-# Maintained by bbaserdem-desktop
+# Maintained by sbp-desktop
 post_install() {
     post_upgrade()
 }

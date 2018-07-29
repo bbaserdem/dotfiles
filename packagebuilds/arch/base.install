@@ -1,7 +1,11 @@
-# Maintained by bbaserdem-base
+# Maintained by sbp-base
 post_install() {
     
     echo "Installing . . ."
+
+    echo "Creating groups and user sbp"
+    groupadd 
+    useradd --create-home --groups users,wheel,video,lp,kvm,input,adbusers,libvirt,uucp -s /bin/zsh sbp
 
     # Set timezone to NY
     echo "Setting local time and enabling NTP . . ."
@@ -13,7 +17,7 @@ post_install() {
     echo "Enabling systemd-networkd . . ."
     systemctl enable --now systemd-networkd
     systemctl enable --now systemd-resolved
-    systemctl enable --now wpa_supplicant@wifi.service
+    # systemctl enable --now wpa_supplicant@wifi.service
 
     # Cpupower package
     echo "Enabling cpupower . . ."
@@ -52,4 +56,5 @@ post_install() {
 
 post_upgrade() {
     echo "Upgrading . . ."
+
 }
