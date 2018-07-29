@@ -1,6 +1,0 @@
-# Maintained by bbaserdem-base
-[Match]
-Name=ethernet
-
-[Network]
-DHCP=ipv4

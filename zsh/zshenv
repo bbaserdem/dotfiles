@@ -48,7 +48,7 @@ export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 export QT_STYLE_OVERRIDE="gtk2"
 # Set neovim as editor
 export EDITOR=nvim
-# Set firefox as browser
+# Set qutebrowser as browser
 export BROWSER=qutebrowser
 # Set default terminal
 export TERM=rxvt-unicode
