@@ -16,6 +16,7 @@ url="https://github.com/bbaserdem/dotfiles"
 licence=(MIT)
 groups=(bbaserdem)
 source=(
+    'base.btaudio'
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
@@ -38,6 +39,7 @@ source=(
     'laptop.backlight'
     'laptop.battery'
     'laptop.install'
+    'laptop.touchpad'
     'server.install'
     'workstation.install')
 md5sums=('01f4af660187b09d79d709fdfd2f2e43'
@@ -94,6 +96,10 @@ package_sbp-base() {
         'make'          'pacman'        'patch'         'pkgconf'
         'sed'           'sudo'          'systemd'       'texinfo'
         'util-linux'    'which'         'btrfs-progs'   'f2fs-tools'
+        'bluez'
+        'bluez-libs'
+        'bluez-utils'
+        'pulseaudio-bluetooth'
         'abcde'                         # CD ripper
         'asp'                           # Arch Source Package management
         'atool'                         # Archive tool for following formats;
@@ -145,17 +151,16 @@ package_sbp-base() {
         'syncthing'                                 # File syncing
         'task'                                      # Taskwarrior tasks manager
         'w3m')                                      # Console based web browser
+    install -Dm 0644 base.btaudio "${pkgdir}/etc/bluetooth/audio.conf"
     install -Dm 0644 base.fixed-bitmap "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
     install -Dm 0644 base.reflector.timer "${pkgdir}/etc/systemd/system/reflector.timer"
+    install -Dm 0644 base.snapper-root "${pkgdir}/etc/snapper/configs/root"
     install -Dm 0640 base.sudoers "${pkgdir}/etc/sudoers.d/sbp-base"
     install -Dm 0644 base.sysctl "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
     install -Dm 0644 base.vconsole "${pkgdir}/etc/vconsole.conf"
-    install -Dm 0644 base.wired "${pkgdir}/etc/systemd/network/19-wired.network"
-    install -Dm 0644 base.wireless "${pkgdir}/etc/systemd/network/20-wireless.network"
     chmod 750 /.snapshots
-    install -Dm 0644 base.snapper-root "${pkgdir}/etc/snapper/configs/root"
     install -dm 0755 "${pkgdir}/usr/bin"
     ln -s /usr/bin/nvim "${pkgdir}/usr/bin/vim"
     ln -s /usr/bin/nvim "${pkgdir}/usr/bin/nano"
@@ -196,7 +201,7 @@ package_sbp-desktop() {
         'xorg-xprop'            'xorg-xrandr'           'xorg-xrdb'
         'xorg-xrefresh'         'xorg-xset'             'xorg-xsetroot'
         'xorg-xvinfo'           'xorg-xwd'              'xorg-xwininfo'
-        'xorg-xwud'             'wayland'
+        'xorg-xwud'             'wayland'               'xf86-input-libinput'
         'bspwm'             # Tiling window manager
         'compton'           # Compositor for X
         'dunst'             # Notification daemon
@@ -209,20 +214,20 @@ package_sbp-desktop() {
         'sway'              # i3 replacement for wayland
         'wireless_tools'    # Wireless info parse
         'wmname'            # Window manager name changer
-        'mpv'
-        'pdfjs'
-        'polkit'
+        'mpv'               # Video player daemon
+        'pdfjs'             # PDF rendering to webpages
+        'polkit'            # Policykit for authentication
         'polkit-gnome'
-        'nemo'
+        'nemo'              # File browser
         'nemo-python'
-        'qt4'
-        'trash-cli'
-        'tumbler'
-        'udiskie'
-        'xsel'
-        'audacity'
-        'blender'
-        'cantata'
+        'qt4'               # QT implementation
+        'trash-cli'         # Trash can
+        'tumbler'           # Thumbnails
+        'udiskie'           # Mount manager
+        'xsel'              # Select text/area
+        'audacity'          # Audio manipulator
+        'blender'           # 3d designing utility
+        'cantata'           # MPD frontend
         'cdparanoia'
         'freerdp'
         'gimp'
@@ -335,11 +340,6 @@ package_sbp-laptop() {
     depends=('sbp-base' 'sbp-efi' 'sbp-devel' 'sbp-desktop')
     install=laptop.install
     depends+=(
-        'blueberry'
-        'bluez'
-        'bluez-libs'
-        'bluez-utils'
-        'pulseaudio-bluetooth'
         'mesa'
         'mesa-demos'
         'lib32-mesa'
@@ -356,8 +356,9 @@ package_sbp-laptop() {
         'tlp'
         'steam'
         'steam-native-runtime')
-    install -Dm 0644 laptop.backlight "${pkgdir}/etc/udev/ruless/90-backlight.rules"
-    install -Dm 0644 laptop.battery "${pkgdir}/etc/udev/ruless/91-battery.rules"
+    install -Dm 0644 laptop.backlight "${pkgdir}/etc/udev/rules/90-backlight.rules"
+    install -Dm 0644 laptop.battery "${pkgdir}/etc/udev/rules/91-battery.rules"
+    install -Dm 0644 laptop.touchpad "${pkgdir}/etc/X11/xorg.conf.d/30-touchpad.conf"
 }
 
 package_sbp-workstation() {

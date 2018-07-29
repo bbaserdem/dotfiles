@@ -1,3 +1,4 @@
+# Managed by sbp-laptop
 Section "InputClass"
 	Identifier "AsusTouchpad"
 	MatchIsTouchpad "on"
