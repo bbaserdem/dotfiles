@@ -5,7 +5,7 @@
 #
 #   Requirements:
 #     rofi, xsel, curl, xmllint
-#
+#   - Download libxml2 xsel curl rofi
 #   Usage:
 #     1. Download all emoji
 #        $ rofi-emoji --download
