@@ -1,8 +1,0 @@
-# Maintained by sbp-desktop
-post_install() {
-    post_upgrade()
-}
-
-post_upgrade() {
-    /bin/python /usr/share/qutebrowser/scripts/dictcli.py
-}
