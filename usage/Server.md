@@ -27,7 +27,17 @@ here.
 ## SSH access
 
 * Enable sshd service for ssh access.
+* Change ssh default port
 * Create a user to use server
+
+Changing port corresponds to adding the line 
+`Port XXXXX` to `/etc/sshd/sshd_config`.
+Then the socket file needs to be changed; `systemctl edit sshd.socket`
+```
+[Socket]
+ListenStream=
+ListenStream=XXXXX
+```
 
 ## Router
 
