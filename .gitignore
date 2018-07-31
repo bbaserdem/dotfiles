@@ -120,13 +120,6 @@
 !/offlineimap/config
 !/offlineimap/gmailPass.py.example
 
-# PACKAGEBUILDS: Do not include sourcefiles
-!/packagebuilds
-!/packagebuilds/**
-/packagebuilds/**/src
-/packagebuilds/**/pkg
-/packagebuilds/**/*.xz
-
 # POLYBAR: Grab all files
 !/polybar
 !/polybar/*
