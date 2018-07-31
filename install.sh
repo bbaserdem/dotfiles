@@ -6,7 +6,6 @@ IF=$'\n\t'
 # Configuration installer script
 
 # Add to user groups
-sudo usermod -a -G uucp sbp
 sudo usermod -a -G lock sbp
 
 # Place symlinks
@@ -41,21 +40,5 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.config/zsh/zimfw/modul
 ln -s ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme ~/.config/zsh/zimfw/modules/prompt/functions/prompt_powerlevel9k_setup
 read -rsp $'Press any key to continue...\n' -n1 key
 
-# Enabling services
-echo 'Enabling services...\n'
-systemctl --user enable syncthing.service
-systemctl --user enable offlineimap.service
-if [[ $(hostname) != 'sbpserver' ]]
-then
-    systemctl --user enable mpd.service
-    systemctl --user enable dunst.service
-    systemctl --user enable redshift.service
-fi
-if [[ $(hostname) == 'sbpworkstation' ]]
-then
-    mkdir -p ~/Dropbox/lab_projects
-    ln -s ~/Research ~/Dropbox/lab_projects/bbaserde
-    systemctl enable --user dropbox.service
-    rm -rf ~/.dropbox-dist
-    install -dm0 ~/.dropbox-dist
-fi
+# Nemo
+gsettings set org.cinnamon.desktop.default-applications.terminal exec termite
