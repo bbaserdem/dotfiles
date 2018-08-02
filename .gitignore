@@ -139,6 +139,7 @@
 !/ranger/commands.py
 !/ranger/rc.conf
 !/ranger/rifle.conf
+!/ranger/scope.sh
 !/ranger/devicons.py
 !/ranger/plugins
 !/ranger/plugins/devicons_linemode.py
