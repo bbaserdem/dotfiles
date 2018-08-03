@@ -53,7 +53,7 @@ export BROWSER=qutebrowser
 # Set default terminal
 export TERM=rxvt-unicode
 # Set terminal to use for launching
-export TERMINAL=termite
+export TERMINAL=kitty
 # Notmuch
 export NOTMUCH_CONFIG=$XDG_CONFIG_HOME/neomutt/notmuch-config
 # OpenFOAM
