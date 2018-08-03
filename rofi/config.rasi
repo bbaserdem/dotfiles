@@ -21,7 +21,7 @@ configuration {
     show-match: true;
 
     // View options
-    font: "Hack,FontAwesome 12";
+    font: "Iosevka,FuraCode Nerd Font Mono 12";
     width: 50;
     lines: 10;
     show-icons: true;
