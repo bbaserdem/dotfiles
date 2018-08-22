@@ -21,7 +21,11 @@ indg =  ${env:PB_INDG}
 viol =  ${env:PB_VIOL}
 
 [settings]
-screenchange-reload = false
+screenchange-reload =       false
+format-underline =          ${colors.cyan}
+format-prefix-foreground =  ${colors.cyan}
+format-foreground =         ${colors.frgr}
+format-background =         ${colors.bkgr}
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
@@ -37,7 +41,7 @@ margin-bottom = 0
 ;          ;
 ;==========;
 
-[bar/alpha]
+[bar/top]
 ;monitor =               ${env:PB_PMON}
 width =                 99%
 height =                32
@@ -58,148 +62,53 @@ fixed-center =          true
 tray-detached =         false
 tray-transparent =      true
 tray-background =       ${colors.bkgr}
-wm-restack =            bspwm
-
-[bar/top]
-inherit =               bar/alpha
+tray-position =         left
+modules-left =          i3 xwindow
+modules-center =        tasks mpd offlineimap
+modules-right =         wifi ethernet tethering vpn date time backlight volume battery
 bottom =                false
-modules-left =          launch bspwm bspwm-label xwindow
-modules-center =        tasks date time weather offlineimap rss
-modules-right =         compton redshift bluetooth fan temperature cpu memory backlight battery powermenu
-radius-top =            0.0
-radius-bottom =         ${env:PB_RRAD}
 
-[bar/bot]
-inherit =               bar/alpha
-bottom =                true
-tray-position =         right
-modules-left =          tethering ethernet wifi pkg vpn
-modules-center =        volume mpd visualizer
-modules-right =         xkeyboard uptime kernel
-radius-bottom =         0.0
-radius-top =            ${env:PB_RRAD}
-
-
-;========;
-; Window ;
-;========;
-;-launch
-;-bspwm
-;-bspwm-label
-;-i3
-;-xwindow
-; Using cyan
-
-[module/launch]
-type =                      custom/text
-content-underline =         ${colors.cyan}
-content =                   ${env:PB_OSIC}
-content-foreground =        ${colors.cyan}
-click-left =                rofi -mode combi -show drun &
-click-right =               nemo &
-
-[module/bspwm]
-type =                      internal/bspwm
-pin-workspaces =            false
-inline-mode =               false
-enable-click =              true
-enable-scroll =             false
-reverse-scroll =            true
-fuzzy-match =               false
-; Icons per workspace
-ws-icon-0 =                 1;
-ws-icon-1 =                 2;
-ws-icon-2 =                 3;
-ws-icon-3 =                 4;
-ws-icon-4 =                 5;
-ws-icon-5 =                 6;
-ws-icon-6 =                 7;
-ws-icon-7 =                 8;
-ws-icon-8 =                 9;
-ws-icon-9 =                 0;
-ws-icon-default =           ""
-format =                    <label-state>
-; When monitor is visible, but is not in focus
-; label-dimmed-foreground =   ${colors.cyan}
-; label-dimmed-underline =    ${colors.frgr}
-; When the focus is on the workspace
-label-focused =             %icon%
-label-focused-foreground =  ${colors.cyan}
-label-focused-underline =   ${colors.cyan}
-; Occupied is when there are active nodes in unfocused workspace
-label-occupied =            %icon%
-label-occupied-foreground = ${colors.frgr}
-label-occupied-underline =  ${colors.frgr}
-; Urgent when workspace has a bell
-label-urgent =              %icon%!
-label-urgent-foreground =   ${colors.orng}
-label-urgent-underline =    ${colors.orng}
-; Empty when no nodes in workspace
-label-empty =               %icon%
-label-empty-foreground =    ${colors.mute}
-label-empty-underline =     ${colors.mute}
-; Padding makes in tool much better
-label-focused-padding =     1
-label-occupied-padding =    1
-label-urgent-padding =      1
-label-empty-padding =       1
-
-
-[module/bspwm-label]
-type =                      internal/bspwm
-format =                    <label-mode> 
-; Indicate mode for the current workspace
-label-monocle =             ""
-label-tiled =               ""
-label-fullscreen =          ""
-label-floating =            ""
-label-pseudotiled =         ""
-label-locked =              ""
-label-sticky =              ""
-label-private =             ""
+;=========;
+; MODULES ;
+;=========;
 
 [module/i3]
 type =                          internal/i3
-;pin-workspaces =                true
-ws-icon-0 =                     "1;"
-ws-icon-1 =                     "2;"
-ws-icon-2 =                     "3;"
-ws-icon-3 =                     "4;"
-ws-icon-4 =                     "5;"
-ws-icon-5 =                     "6;"
-ws-icon-6 =                     "7;"
-ws-icon-7 =                     "8;"
+pin-workspaces =                false
+ws-icon-0 =                     "1;漣"
+ws-icon-1 =                     "2;爵"
+ws-icon-2 =                     "3;"
+ws-icon-3 =                     "4;"
+ws-icon-4 =                     "5;"
+ws-icon-5 =                     "6;"
+ws-icon-6 =                     "7;"
+ws-icon-7 =                     "8;"
 ws-icon-8 =                     "9;"
-ws-icon-9 =                     "10;"
+ws-icon-9 =                     "10;"
 ws-icon-default =               ""
 ; Mode: Keysym mode for shortcuts
 label-mode =                    %mode%
 label-mode-padding =            1
-label-mode-background =         ${colors.bkgr}
 label-mode-foreground =         ${colors.frgr}
 label-mode-underline =          ${colors.bkgr}
 ; Focused: The workspace you currently are on
 label-focused =                 %icon%
 label-focused-padding =         1
-label-focused-background =      ${colors.bkgr}
 label-focused-foreground =      ${colors.cyan}
 label-focused-underline =       ${colors.cyan}
 ; Unfocused: Windows are there, but workspace not visible
 label-unfocused =               %icon%
 label-unfocused-padding =       1
-label-unfocused-background =    ${colors.bkgr}
 label-unfocused-foreground =    ${colors.mute}
 label-unfocused-underline =     ${colors.mute}
 ; Visible: Workspace is on a monitor but not focused
 label-visible =                 %icon%
 label-visible-padding =         1
-label-visible-background =      ${colors.bkgr}
 label-visible-foreground =      ${colors.frgr}
 label-visible-underline =       ${colors.frgr}
 ; Urgent: There is a window with attention here
 label-urgent =                  !%icon%
 label-urgent-padding =          1
-label-urgent-background =       ${colors.bkgr}
 label-urgent-foreground =       ${colors.orng}
 label-urgent-underline =        ${colors.orng}
 
@@ -211,22 +120,11 @@ format-prefix-foreground =      ${colors.cyan}
 label =                         %title%
 label-maxlen =                  30
 
-;======;
-; Time ;
-;======;
-;-tasks
-;-date
-;-time
-;-weather
-;-offlineimap
-;-rss
-; Use viol
 
 [module/tasks]
 type =                      custom/script
-format-underline =          ${colors.viol}
-format-prefix-foreground =  ${colors.viol}
 format-prefix =             "省 "
+format-prefix-foreground =  ${colors.cyan}
 format =                    <label>
 exec =                      $XDG_CONFIG_HOME/polybar/taskwarrior_info.sh --show
 interval =                  60
@@ -235,9 +133,8 @@ click-right =               $XDG_CONFIG_HOME/polybar/taskwarrior_info.sh --done
 
 [module/timekeep]
 type =                      internal/date
-format-underline =          ${colors.viol}
-format-prefix-foreground =  ${colors.viol}
-interval =                  60
+format-prefix-foreground =  ${colors.cyan}
+interval =                  1
 date =                      " %a, %d %b"
 date-alt =                  " %d-%m-%y"
 time =                      " %H:%M:%S"
@@ -254,128 +151,30 @@ inherit =                   module/timekeep
 format-prefix =             " "
 label =                     %time%
 
-[module/weather]
-type =                      custom/script
-format-underline =          ${colors.viol}
-interval =                  300
-format =                    <label>
-exec =                      $XDG_CONFIG_HOME/polybar/weather_info.sh
-
 [module/offlineimap]
 type =                      custom/script
-format-underline =          ${colors.viol}
 exec =                      $XDG_CONFIG_HOME/polybar/offlineimap_info.sh
 interval =                  5
 format =                    <label>
 click-left =                $XDG_CONFIG_HOME/polybar/offlineimap_info.sh --toggle
 
-[module/rss]
-type =                      custom/script
-format-underline =          ${colors.viol}
-format-prefix-foreground =  ${colors.viol}
-format-prefix =             " "
-format =                    <label>
-exec =                      $XDG_CONFIG_HOME/polybar/newsboat_info.sh --check
-interval =                  60
-click-left =                $XDG_CONFIG_HOME/polybar/newsboat_info.sh --open
-;==========;
-; Hardware ;
-;==========;
-;-compton
-;-redshift
-;-bluetooth
-;-fan
-;-temperature
-;-cpu
-;-memory
-;-backlight
-;-battery
-;-powermenu
-; use indg
-
-[module/compton]
-type =                      custom/script
-format-underline =          ${colors.indg}
-exec =                      $XDG_CONFIG_HOME/polybar/compton_info.sh
-interval =                  5
-format =                    <label>
-click-left =                $XDG_CONFIG_HOME/polybar/compton_info.sh --toggle
-
-[module/redshift]
-type =                      custom/script
-format-underline =          ${colors.indg}
-exec =                      $XDG_CONFIG_HOME/polybar/redshift_info.sh
-interval =                  5
-format =                    <label>
-click-left =                $XDG_CONFIG_HOME/polybar/redshift_info.sh --toggle
-
 [module/backlight]
-; doesn't work
 type =                      internal/backlight
+format-prefix-foreground =  ${colors.cyan}
 card =                      ${env:BRI_SCR}
-format-underline =          ${colors.indg}
 format-prefix =             " "
-format-prefix-foreground =  ${colors.indg}
 format =                    <label>
 label =                     %percentage%%
 
-[module/bluetooth]
-type =                      custom/script
-format-underline =          ${colors.indg}
-exec =                      $XDG_CONFIG_HOME/polybar/bluetooth_info.sh
-interval =                  5
-format =                    <label>
-label =                     "%output%"
-click-left =                exec blueberry &
-click-right =               exec bluetooth-sendto &
-
-[module/fan]
-type =                      custom/script
-format-underline =          ${colors.indg}
-format-prefix =             " "
-format-prefix-foreground =  ${colors.indg}
-exec =                      $XDG_CONFIG_HOME/polybar/fan_info.sh
-interval =                  5
-format =                    <label>
-
-[module/temperature]
-type =                      custom/script
-format-underline =          ${colors.indg}
-format-prefix =             " "
-format-prefix-foreground =  ${colors.indg}
-exec =                      $XDG_CONFIG_HOME/polybar/coreTemperature_info.sh
-interval =                  3
-format =                    <label>
-
-[module/cpu]
-type =                      internal/cpu
-interval =                  2
-format-prefix =             " "
-format-prefix-foreground =  ${colors.indg}
-format-underline =          ${colors.indg}
-label =                     %{A:termite -e htop:}%percentage%%%{A}
-format =                    <label>
-
-[module/memory]
-type =                      internal/memory
-interval =                  2
-format-prefix =             " "
-format-prefix-foreground =  ${colors.indg}
-format-underline =          ${colors.indg}
-label =                     %{A:termite -e htop:}%mb_used%(%percentage_used%%)%{A}
-
 [module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC0
-full-at = 98
+type =                          internal/battery
+format-prefix-foreground =      ${colors.cyan}
+battery =                       BAT0
+adapter =                       AC0
+full-at =                       98
 format-charging =               <animation-charging> <label-charging>
-format-charging-underline =     ${colors.indg}
 format-discharging =            <ramp-capacity> <label-discharging>
-format-discharging-underline =  ${colors.indg}
 format-full-prefix =            " "
-format-full-prefix-foreground = ${colors.indg}
-format-full-underline =         ${colors.indg}
 ramp-capacity-0 =               
 ramp-capacity-1 =               
 ramp-capacity-2 =               
@@ -390,152 +189,49 @@ animation-charging-4 =          
 animation-charging-foreground = ${colors.frgr}
 animation-charging-framerate =  750
 
-[module/powermenu]
-type =                          custom/menu
-format-underline =              ${colors.indg}
-format-spacing =                1
-label-open =                    
-label-open-foreground =         ${colors.indg}
-label-close =                   
-label-close-foreground =        ${colors.indg}
-label-separator =               |
-label-separator-foreground =    ${colors.frgr}
-; Main menu
-menu-0-0 =                      
-menu-0-0-foreground =           ${colors.indg}
-menu-0-0-exec =                 menu-open-1
-menu-0-1 =                      
-menu-0-1-exec =                 menu-open-2
-menu-0-1-foreground =           ${colors.indg}
-menu-0-2 =                      
-menu-0-2-exec =                 menu-open-3
-menu-0-2-foreground =           ${colors.indg}
-menu-0-3 =                      
-menu-0-3-exec =                 menu-open-4
-menu-0-3-foreground =           ${colors.indg}
-menu-0-4 =                      
-menu-0-4-exec =                 menu-open-5
-menu-0-4-foreground =           ${colors.indg}
-; Lock screen menu
-menu-1-0 =                      
-menu-1-0-exec =                 menu-open-0
-menu-1-0-foreground =           ${colors.indg}
-menu-1-1 =                       Lock
-menu-1-1-exec =                 lock
-menu-1-1-foreground =           ${colors.indg}
-; Sleep menu
-menu-2-0 =                      
-menu-2-0-exec =                 menu-open-0
-menu-2-0-foreground =           ${colors.indg}
-menu-2-1 =                       Suspend
-menu-2-1-exec =                 systemctl suspend
-menu-2-1-foreground =           ${colors.indg}
-; Hibernate menu
-menu-3-0 =                      
-menu-3-0-exec =                 menu-open-0
-menu-3-0-foreground =           ${colors.indg}
-menu-3-1 =                       Hibernate
-menu-3-1-exec =                 systemctl hibernate
-menu-3-1-foreground =           ${colors.indg}
-; Reboot menu
-menu-4-0 =                      
-menu-4-0-exec =                 menu-open-0
-menu-4-0-foreground =           ${colors.indg}
-menu-4-1 =                       Reboot
-menu-4-1-exec =                 systemctl reboot
-menu-4-1-foreground =           ${colors.indg}
-; Shutdown menu
-menu-5-0 =                      
-menu-5-0-exec =                 menu-open-0
-menu-5-0-foreground =           ${colors.indg}
-menu-5-1 =                       Shutdown
-menu-5-1-exec =                 systemctl poweroff
-menu-5-1-foreground =           ${colors.indg}
-
-;==========;
-; Internet ;
-;==========;
-;-wlan
-;-eth
-;-(usb)
-;-pkg
-;-openvpn
-;-openconnect
-; use gren
-
-[module/internet]
-type =                                  internal/network
-interval =                              3.0
-format-connected-prefix-foreground =    ${colors.gren}
-format-connected-overline =             ${colors.gren}
-format-disconnected-prefix-foreground = ${colors.gren}
-format-disconnected-overline =          ${colors.gren}
-label-disconnected-foreground =         ${colors.mute}
-
 [module/wifi]
-inherit =                               module/internet
+type =                                  internal/network
+format-prefix-foreground =              ${colors.cyan}
+interval =                              3.0
 format-connected =                      <label-connected>
 format-connected-prefix =               " "
-label-connected =                       ${env:PB_WIFI}
-format-disconnected-prefix =            " "
-format-disconnected =                   %{A:wpa_gui&:}<label-disconnected>%{A}
-label-disconnected =                    
+label-connected =                       %essid%
 interface =                             wifi
-;label-disconnected =                    ${env:PB_NOFI}
 
 [module/ethernet]
-inherit =                               module/internet
+type =                                  internal/network
+format-prefix-foreground =              ${colors.cyan}
+interval =                              3.0
 format-connected =                      <label-connected>
 format-connected-prefix =               " "
-label-connected =                       ${env:PB_ETHC}
-;format-disconnected-prefix =            
-;label-disconnected =                    
+label-connected =                       %local_ip%
 interface =                             ethernet
 
 [module/tethering]
-inherit =                               module/internet
+type =                                  internal/network
+format-prefix-foreground =              ${colors.cyan}
+interval =                              3.0
 format-connected-prefix =               " "
 label-connected =                       %local_ip%
 interface =                             usbtether
-;format-disconnected-prefix =            
-;label-disconnected =                    
-
-[module/pkg]
-type =                              custom/script
-exec =                              $XDG_CONFIG_HOME/polybar/package_info.sh
-interval =                          60
-format =                            <label>
-label =                             "%output%"
-format-prefix =                     " "
-format-prefix-foreground =          ${colors.gren}
-format-overline =                   ${colors.gren}
 
 [module/vpn]
-type =                              custom/script
-exec =                              $XDG_CONFIG_HOME/polybar/vpn_info.sh
-interval =                          5
-format =                            <label>
-label =                             "%output%"
-format-prefix =                     " "
-format-overline =                   ${colors.gren}
-format-prefix-foreground =          ${colors.gren}
-
-;=======;
-; Music ;
-;=======;
-;-volume
-;-mpd
-;-visualizer
-; use crms
+type =                                  custom/script
+exec =                                  $XDG_CONFIG_HOME/polybar/vpn_info.sh
+interval =                              5
+format =                                <label>
+label =                                 "%output%"
+format-prefix =                         " "
+format-prefix-foreground =              ${colors.cyan}
 
 [module/volume]
 type =                                  internal/pulseaudio
-format-overline =                       ${colors.crms}
+format-prefix-foreground =              ${colors.cyan}
 click-right =                           exec pavucontrol &
 format-volume =                         ${env:PB_VOLM}
 format-muted =                          ${env:PB_NOVL}
 label-volume =                          %percentage%%
-label-muted =                           --
+label-muted =                           -
 icon-headphones =                       
 icon-speaker =                          
 icon-hdmi =                             
@@ -545,8 +241,6 @@ ramp-volume-1 =                         
 
 [module/mpd]
 type =                                  internal/mpd
-format-online-overline =                ${colors.crms}
-format-offline-overline =               ${colors.crms}
 format-online =                         ${env:PB_MPDA}
 format-offline =                        ${env:PB_MPDI}
 icon-play =                             
@@ -568,92 +262,5 @@ bar-progress-indicator-foreground =     ${colors.frgr}
 bar-progress-empty-foreground =         ${colors.mute}
 label-song-maxlen =                     30
 label-song =                            %title%
-toggle-on-foreground =                  ${colors.crms}
+toggle-on-foreground =                  ${colors.cyan}
 toggle-off-foreground =                 ${colors.mute}
-
-[module/visualizer]
-type =                              custom/text
-content =                           ""
-content-foreground =                ${colors.crms}
-content-overline =                  ${colors.crms}
-click-left =                        projectM-pulseaudio
-
-;========;
-; System ;
-;========;
-;-xkeyboard
-;-uptime
-;-kernel
-;-bbswitch
-; use orng
-
-[module/xkeyboard]
-type =                                  internal/xkeyboard
-format-prefix-overline =                ${colors.orng}
-label-indicator-overline =              ${colors.orng}
-label-layout-overline =                 ${colors.orng}
-blacklist-0 =                           scroll lock
-format =                                <label-layout> <label-indicator>
-format-spacing =                        0
-format-prefix =                         " "
-format-prefix-foreground =              ${colors.orng}
-label-layout =                          %name%
-label-indicator =                       %name%
-
-[module/uptime]
-type =                                  custom/script
-format-overline =                       ${colors.orng}
-exec =                                  $XDG_CONFIG_HOME/polybar/uptime_info.sh
-interval =                              30
-format =                                <label>
-label =                                 "%output%"
-format-prefix =                         " "
-format-prefix-foreground =              ${colors.orng}
-
-[module/kernel]
-type =                                  custom/script
-format-overline =                       ${colors.orng}
-exec =                                  uname -r
-interval =                              1024
-format =                                <label>
-label =                                 "%output%"
-format-prefix =                         " "
-format-prefix-foreground =              ${colors.orng}
-
-;=======;
-; Other ;
-;=======;
-
-[module/volume-old]
-type =                              internal/volume
-master-soundcard =                  default
-speaker-soundcard =                 default
-format-volume =                     %{A3:pavucontrol:}<label-volume>%{A}
-format-volume-prefix =              " "
-format-muted-prefix =               " "
-format-headphones-prefix =          " "
-format-muted-foreground =           ${colors.frgr}
-label-muted =                       " "
-label-volume =                      %percentage%%
-bar-volume-width =                  12
-bar-volume-gradient =               false
-bar-volume-indicator =              
-bar-volume-fill =                   
-bar-volume-empty =                  
-bar-volume-empty-foreground =       ${colors.frgr}
-bar-volume-indicator-foreground =   ${colors.crms}
-
-[module/temperature-old]
-type =                  internal/temperature
-thermal-zone =          0
-warn-temperature =      80
-format =                <ramp> <label>
-format-underline =      ${colors.indg}
-format-warn =           <ramp> <label-warn>
-label =                 %temperature%
-label-warn =            %temperature% !
-label-warn-foreground = ${colors.orng}
-ramp-0 =                
-ramp-1 =                
-ramp-2 =                
-ramp-foreground =       ${colors.indg}

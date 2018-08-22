@@ -15,6 +15,7 @@
 !/compton.conf
 !/gtk2rc
 !/install.sh
+!/matlabrc.m
 !/mimeapps.list
 !/msmtprc
 !/README.md
@@ -43,6 +44,10 @@
 # CANTATA: Accept all that is there
 !/cantata
 !/cantata/cantata.conf
+
+# CONKY: Accept all that is there
+!/conky
+!/conky/*
 
 # DUNST: Accept the rc
 !/dunst
@@ -110,6 +115,10 @@
 !/nvim/ginit.vim
 !/nvim/init.vim
 
+# I3: Grab all things i3
+!/i3
+!/i3/*
+
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
 !/octave/octaverc
@@ -150,9 +159,7 @@
 
 # ROFI: Grab user made files and scripts
 !/rofi
-!/rofi/*.rasi
-!/rofi/*.sh
-!/rofi/rofi-pass.conf
+!/rofi/*
 
 # SOUNDS: Sounds grabbed from mint, sync all
 !/sounds

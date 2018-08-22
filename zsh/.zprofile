@@ -20,5 +20,6 @@ systemctl --user import-environment BRI_KBD
 if   [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq  1 ]
 then
     # Set cursor theme
+    export XDG_CURRENT_DESKTOP="i3"
     exec startx
 fi

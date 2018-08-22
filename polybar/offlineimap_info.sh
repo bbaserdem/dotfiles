@@ -13,9 +13,9 @@ case "$1" in
         OI_NEW=$(find $HOME/.mail/Gmail/INBOX/new | wc -l)
         if [ "${OI_NEW}" -eq "0" ]
         then
-            OI_ICON="%{F${PB_VIOL}}%{F-}"
+            OI_ICON="%{F${PB_CYAN}}%{F-}"
         else
-            OI_ICON="%{F${PB_VIOL}}%{F-}"
+            OI_ICON="%{F${PB_CYAN}}%{F-}"
         fi
 
         if (systemctl is-active --user --quiet offlineimap.service)

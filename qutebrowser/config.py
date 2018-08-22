@@ -32,7 +32,6 @@ c.content.javascript.can_close_tabs = False
 c.content.javascript.can_open_tabs_automatically = False
 c.content.pdfjs = True
 c.downloads.location.prompt = False
-c.editor.command = [ os.environ['TERM'], '-e', 'nvim', '{}']
 # c.content.cookies.store = False
 
 config.bind( '<Ctrl-b>', 'adblock-update')

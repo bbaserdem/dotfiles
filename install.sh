@@ -28,7 +28,7 @@ fi
 
 if [ -e '~/.Xresources' ]
 then
-    ln -s ~/.config/Xresources ~/.Xresources
+    ln -s ~/.config/X11/resources ~/.Xresources
 fi
 
 if [ -e '~/.zshenv' ]
@@ -54,6 +54,12 @@ fi
 if [ -e '~/.octaverc' ]
 then
     ln -s ~/.config/octave/octaverc ~/.octaverc
+fi
+
+if [ -e '~/Documents/MATLAB/startup.m' ]
+then
+    mkdir -p ~/Documents/MATLAB
+    ln -s ~/.config/matlabrc.m ~/Documents/MATLAB/startup.m
 fi
 
 if [ -e '~/.local/share/applications' ]

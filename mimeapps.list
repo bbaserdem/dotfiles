@@ -1,22 +1,24 @@
 [Added Associations]
-application/pdf=zathura-pdf-poppler.desktop;org.pwmt.zathura-pdf-poppler.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
 video/x-msvideo=smplayer.desktop;
-image/jpeg=imv.desktop;ristretto.desktop;
+image/jpeg=ristretto.desktop;
 application/msword=libreoffice-writer.desktop;
 text/html=qutebrowser.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
-image/gif=imv.desktop;
-text/plain=mousepad.desktop;nvim.desktop;org.daa.NeovimGtk.desktop;
+image/gif=ristretto.desktop;
+text/plain=nvim.desktop;
 image/vnd.djvu+multipage=zathura-djvu.desktop;
-image/png=imv.desktop;ristretto.desktop;
-text/x-tex=mousepad.desktop;
-inode/directory=exo-file-manager.desktop
-x-scheme-handler/trash=exo-file-manager.desktop
+image/png=ristretto.desktop;
+text/x-tex=nvim.desktop;
+inode/directory=nemo.desktop
+x-scheme-handler/trash=nemo.desktop
+
+[Removed Associations]
+application/pdf=libreoffice-writer.desktop;
 
 [Default Applications]
-application/octet-stream=zathura-pdf-poppler.desktop;
-application/pdf=org.pwmt.zathura-pdf-poppler.desktop
-text/plain=org.daa.NeovimGtk.desktop
+application/pdf=org.pwmt.zathura-pdf-mudpf.desktop
+text/plain=nvim.desktop
 image/jpeg=ristretto.desktop
-image/gif=imv.desktop;
+image/gif=ristretto.desktop;
 image/png=ristretto.desktop
