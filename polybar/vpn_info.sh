@@ -5,5 +5,5 @@ then
 elif [ "$(pgrep openconnect)" ]; then
     echo "CSHL"
 else
-    echo "%{F${PB_MUTE}}N/A%{F-}"
+    echo ""
 fi

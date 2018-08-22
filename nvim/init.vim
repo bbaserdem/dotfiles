@@ -20,6 +20,8 @@ Plugin 'mhinz/neovim-remote'
 " Status bar mods
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
+" I3 vim
+Plugin 'PotatoesMaster/i3-vim-syntax'
 " Matlab file editor
 Plugin 'daeyun/vim-matlab'
 " NERDtree file browser

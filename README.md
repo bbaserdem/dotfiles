@@ -14,10 +14,13 @@ This repository contains my UNIX user configuration.
 
 # TMUX
 
-* Ctrl + A: Activates commands.
-* |: Splits window vertically
-* -: Splits window horizantally
-* Alt + <Movement>: Moves between panes (without command activation)
+Ctrl + A is the leader key.
+Alt and arrows allow navigation, without needing the command key.
+
+* | and -: Splits window vertically/horizontally.
+* hjkl: Move between panes
+* Left Right: Move between windows
+* O: Create new window.
 
 # SXHKD
 
