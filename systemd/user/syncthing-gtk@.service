@@ -10,8 +10,5 @@ Type=simple
 ExecStart=/usr/bin/syncthing-gtk --minimized
 SyslogIdentifier=syncthing-gtk
 
-
-
-
 [Install]
 WantedBy=systray@.target

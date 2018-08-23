@@ -11,8 +11,5 @@ Type=simple
 ExecStart=/usr/bin/env /usr/bin/wpa_gui -t -q
 SyslogIdentifier=wpa_gui
 
-
-
-
 [Install]
 WantedBy=systray@.target

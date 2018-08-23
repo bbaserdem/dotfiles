@@ -35,12 +35,6 @@
 !/arch
 !/arch/**
 
-# BSPWM: Accept all the files I wrote
-!/bspwm
-!/bspwm/bspwmrc
-!/bspwm/desktops
-!/bspwm/ext_rule
-
 # CANTATA: Accept all that is there
 !/cantata
 !/cantata/cantata.conf
@@ -119,6 +113,10 @@
 !/i3
 !/i3/*
 
+# I3BLOCKS: Grab all things i3
+!/i3blocks
+!/i3blocks/*
+
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
 !/octave/octaverc
@@ -165,11 +163,6 @@
 !/sounds
 !/sounds/*.oga
 
-# SXHKD: Grab scripts and rc
-!/sxhkd
-!/sxhkd/sxhkdrc
-!/sxhkd/*.sh
-
 # SYNCTHING-GTK: Grab config
 !/syncthing-gtk
 !/syncthing-gtk/config.json
@@ -177,6 +170,10 @@
 # SYSTEMD: Grab entire directory
 !/systemd
 !/systemd/**
+
+# SWAY: Grab all sway files
+!/sway
+!/sway/*
 
 # TERMITE: Grab config
 !/termite
