@@ -4,15 +4,9 @@ Documentation=man:feh(1)
 After=X11@%i.target
 Requisite=X11@%i.target
 
-
 [Timer]
 OnUnitActiveSec=15m
 Unit=wallpaper@%i.service
 
-
-
-
-
-
 [Install]
-WantedBy=bspwm@.service
+WantedBy=i3@.service

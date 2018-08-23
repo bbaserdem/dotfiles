@@ -2,9 +2,6 @@
 Description=Refresh feed database
 Documentation=man:newsboat(1)
 
-
-
-
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/newsboat -x reload

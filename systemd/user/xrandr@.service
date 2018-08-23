@@ -10,8 +10,5 @@ Type=oneshot
 ExecStart=%h/.config/X11/monitors.sh
 SyslogIdentifier=xrandr-monitors-script
 
-
-
-
 [Install]
 WantedBy=X11@%i.target

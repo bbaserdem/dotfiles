@@ -1,0 +1,61 @@
+#-----------------#
+#-----GLOBAL------#
+#-----------------#
+
+command=~/.config/i3blocks/blocklets/${BLOCK_NAME}.sh
+separator_block_width=15
+markup=pango
+
+#-------------------#
+#-----BLOCKLETS-----#
+#-------------------#
+
+[time]
+command=echo "<span color='#75B5AA'></span> $(date '+%H:%M:%S')"
+interval=1
+
+[date]
+command=echo "<span color='#75B5AA'></span> $(date '+%a %d, %b %Y')"
+interval=60
+
+# Music player daemon notification
+[mpd]
+interval=once
+signal=2
+
+# Taskwarrior
+[taskwarrior]
+interval=60
+signal=4
+
+# Wifi script
+[wifi]
+interval=5
+separator=false
+
+# Internet
+[ethernet]
+interval=5
+
+# Pulseaudio volume
+[pulseaudio]
+interval=once
+signal=1
+
+# Weather info
+[weather]
+interval=600
+
+# VPN
+[vpn]
+interval=10
+command=echo "<span color='#75B5AA'>$(if [ "$(pgrep openvpn)" ]; then echo ""; elif [ "$(pgrep openconnect)" ]; then echo "ﮂ"; else echo "</span><span color='#505050'>廬"; fi;)</span>"
+
+# Brightness
+[brightness]
+interval=once
+signal=3
+
+# Battery
+[battery]
+interval=20
