@@ -1,2 +1,65 @@
-#include "../urxvt/config.Xresources"
+! vim:fileencoding=utf-8:ft=xdefaults
+#include "themes/base16-eighties.Xresources"
+
+! X11 stuff
 Xcursor.theme: Breeze_Hacked
+
+! URxvt should I use it
+URxvt.depth:                    32
+URxvt.geometry:                 128x32
+URxvt.transparent:              true
+URxvt.shading:                  32
+URxvt.loginShell:               false
+URxvt.saveLines:                10000
+URxvt.internalBorder:           0
+URxvt.lineSpace:                0
+URxvt.allow_bold:               true
+URxvt.scrollStyle:              rxvt
+URxvt.scrollBar:                false
+URxvt.cursorBlink:              false
+URxvt.cursorUnderline:          true
+URxvt.fading:                   15
+URxvt.pointerBlank:             false
+
+! URxvt.letterSpace:              -1
+! URxvt.urgentOnBell:             true
+! URxvt.visualBell:               true
+
+URxvt.color0:       base00
+URxvt.color1:       base08
+URxvt.color2:       base0B
+URxvt.color3:       base0A
+URxvt.color4:       base0D
+URxvt.color5:       base0E
+URxvt.color6:       base0C
+URxvt.color7:       base05
+URxvt.color8:       base03
+URxvt.color9:       base08
+URxvt.color10:      base01
+URxvt.color11:      base02
+URxvt.color12:      base04
+URxvt.color13:      base06
+URxvt.color14:      base0F
+URxvt.color15:      base07
+URxvt.foreground:   base05
+URxvt.background:   base00
+URxvt.cursorColor:  base05
+
+! i3 colorset
+i3.black: base00
+i3.backg: base01
+i3.grayD: base02
+i3.grayd: base03
+i3.grayl: base04
+i3.foreg: base05
+i3.whtDa: base06
+i3.white: base07
+i3.crmsn: base08
+i3.orang: base09
+i3.yllow: base0A
+i3.green: base0B
+i3.lblue: base0C
+i3.indgo: base0D
+i3.violt: base0E
+i3.brown: base0F
+i3.trans: #202020CC

@@ -1,0 +1,52 @@
+#-----------------#
+#-----GLOBAL------#
+#-----------------#
+
+command=~/.config/i3blocks/blocklets/${BLOCK_NAME}.sh
+separator_block_width=15
+markup=pango
+
+#-------------------#
+#-----BLOCKLETS-----#
+#-------------------#
+
+# Disk usage (Brown)
+[disk]
+interval=3600
+
+# Temperature (Red)
+[temperature]
+interval=1
+
+# Fan speed (Orange)
+[fan]
+interval=5
+
+# Cpu info (Yellow)
+[cpu]
+interval=1
+
+# Memory (Green)
+[memory]
+interval=1
+
+[swap]
+interval=1
+
+# Internet (Cyan)
+[wifi]
+interval=5
+
+[ethernet]
+interval=5
+
+[vpn]
+interval=5
+
+# Uptime (Indigo)
+[uptime]
+interval=300
+
+# Kernel (Violet)
+[kernel]
+interval=once

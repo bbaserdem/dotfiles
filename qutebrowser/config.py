@@ -31,7 +31,8 @@ c.content.javascript.can_access_clipboard = False
 c.content.javascript.can_close_tabs = False
 c.content.javascript.can_open_tabs_automatically = False
 c.content.pdfjs = True
-c.downloads.location.prompt = False
+c.content.geolocation = True
+c.downloads.location.prompt = True
 # c.content.cookies.store = False
 
 config.bind( '<Ctrl-b>', 'adblock-update')
