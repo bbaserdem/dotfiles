@@ -1,0 +1,52 @@
+#-----------------#
+#-----GLOBAL------#
+#-----------------#
+
+command=~/.config/i3blocks/blocklets/${BLOCK_NAME}.sh
+separator_block_width=15
+markup=pango
+
+#-------------------#
+#-----BLOCKLETS-----#
+#-------------------#
+
+# Taskwarrior (brown)
+[taskwarrior]
+interval=60
+signal=4
+
+# Music player daemon notification (red)
+[mpd]
+interval=once
+signal=2
+
+# Weather info (orange)
+[weather]
+interval=600
+
+# Offlineimap (yellow)
+[offlineimap]
+interval=once
+signal=5
+
+# Time (green)
+[time]
+interval=1
+
+# Date (cyan)
+[date]
+interval=60
+
+# Pulseaudio volume (indigo)
+[pulseaudio]
+interval=once
+signal=1
+
+# Brightness (violet)
+[brightness]
+interval=once
+signal=3
+
+# Battery (varies)
+[battery]
+interval=20

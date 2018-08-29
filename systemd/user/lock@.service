@@ -1,8 +1,6 @@
 [Unit]
 Description=Screen lock on X display %I
 Documentation=man:i3lock(1)
-After=X11@%i.target
-Requisite=X11@%i.target
 
 [Service]
 Environment=DISPLAY=%I

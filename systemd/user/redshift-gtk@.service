@@ -1,13 +1,13 @@
 [Unit]
 Description=Redshift display colour temperature adjustment on X display %I
 Documentation=man:redshift(1)
-After=X11@%i.target
-Requisite=X11@%i.target
+Requires=geoclue-demo-agent.service
+After=geoclue-demo-agent.service
 
 [Service]
 Environment=DISPLAY=%I
 Type=simple
-ExecStart=/usr/bin/redshift
+ExecStart=/usr/bin/redshift-gtk
 SyslogIdentifier=Redshift
 ExecStopPost=/usr/bin/env redshift -x
 
