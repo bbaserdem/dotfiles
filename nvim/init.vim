@@ -28,6 +28,8 @@ Plugin 'daeyun/vim-matlab'
 Plugin 'scrooloose/nerdtree'
 " Grammar checker
 Plugin 'rhysd/vim-grammarous'
+" Taskwarrior plugin
+Plugin 'farseer90718/vim-taskwarrior'
 " After all plugins...
 call vundle#end()
 filetype plugin indent on

@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+toggle_systemd() {
+    ( /usr/bin/systemctl --user is-active --quiet $1 ) && /usr/bin/systemctl --user restart $1 || /usr/bin/systemctl --user start $1
+}
+
+# i3 related stuff
+toggle_systemd i3layout@${DISPLAY}.service
+#toggle_systemd i3blocksr@${DISPLAY}.service
+${XDG_CONFIG_HOME}/i3blocks/updater
+
+# System tray
+toggle_systemd blueman-applet@${DISPLAY}.service
+toggle_systemd syncthing-gtk@${DISPLAY}.service
+toggle_systemd redshift-gtk@${DISPLAY}.service
+toggle_systemd udiskie@${DISPLAY}.service
+if   [[ "$hostname" == 'sbplaptop' ]]
+then
+    toggle_systemd wpa_gui@${DISPLAY}.service
+elif [[ "$hostname" == 'sbpworkstation' ]]
+then
+    toggle_systemd dropbox@${DISPLAY}.service
+fi
+
+# Usual autostart for X
+toggle_systemd compton@${DISPLAY}.service
+toggle_systemd dunst@${DISPLAY}.service
+toggle_systemd polkit-gnome@${DISPLAY}.service
+toggle_systemd wallpaper@${DISPLAY}.service
+toggle_systemd dunst@${DISPLAY}.timer
+toggle_systemd systray@${DISPLAY}.target

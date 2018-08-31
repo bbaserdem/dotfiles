@@ -1,8 +1,8 @@
 [Unit]
 Description=Udiskie mount manager tray icon on X display %I
 Documentation=man:udiskie(1)
-After=systray@%i.target
-Requisite=systray@%i.target
+After=X11@%i.target i3@%i.target
+Requisite=X11@%i.target
 
 [Service]
 Environment=DISPLAY=%I
@@ -11,4 +11,4 @@ ExecStart=/usr/bin/udiskie
 SyslogIdentifier=udiskie
 
 [Install]
-WantedBy=systray@.target
+WantedBy=i3@.service

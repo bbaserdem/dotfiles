@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+# Run all updater scripts
+for _scr in $XDG_CONFIG_HOME/i3blocks/update/*
+do
+    _ins="$(/usr/bin/basename ${_scr})"
+    if (/usr/bin/systemctl --user is-active --quiet i3blocks_socket@${_ins}.service)
+    then
+        /usr/bin/systemctl --user restart i3blocks_socket@${_ins}.service
+    else
+        /usr/bin/systemctl --user start i3blocks_socket@${_ins}.service
+    fi
+done

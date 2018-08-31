@@ -1,5 +1,7 @@
 [Unit]
 Description=Polkit Authentication Agent (Gnome) on X display %I
+After=X11@%i.target i3@%i.target
+Requisite=X11@%i.target
 
 [Service]
 Environment=DISPLAY=%I

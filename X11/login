@@ -1,0 +1,4 @@
+#!/bin/sh
+# ~/.xsession: Executed by the XDM at login, maybe after sourcing ~/.xprofile
+
+exec bash --login ~/.xinitrc

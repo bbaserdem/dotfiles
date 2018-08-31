@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+# Socket for deactivation
+_socket=6
+/usr/bin/pactl subscribe | \
+    grep --line-buffered -e "sink" -e "'change' on server #" | \
+    while IFS= read -r line; do
+    pkill -RTMIN+"${_socket}" i3blocks ;
+done

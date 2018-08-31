@@ -1,16 +1,17 @@
 [Unit]
 Description=Dropbox file syncing on X display %I
-After=systray@%i.target
-Requisite=systray@%i.target
+Documentation=man:dropbox(1)
+After=X11@%i.target i3@%i.target
+Requisite=X11@%i.target
 
 [Service]
 Environment=DISPLAY=%i
 Type=simple
-ExecStart=/usr/bin/dropbox
+ExecStart=/usr/bin/env bash -c '[ -e /usr/bin/dropbox ] && /usr/bin/dropbox'
 SyslogIdentifier=dropbox
 Restart=on-failure
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 
 [Install]
-WantedBy=systray@.target
+WantedBy=i3@.service

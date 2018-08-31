@@ -1,7 +1,7 @@
 [Unit]
 Description=Change wallpaper using Feh on X display %I
 Documentation=man:sxhkd(1)
-After=X11@%i.target
+After=X11@%i.target i3@%i.target
 Requisite=X11@%i.target
 
 [Service]

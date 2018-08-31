@@ -1,0 +1,11 @@
+[Unit]
+Description=i3blocks socket refresher
+After=i3@.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env %h/.config/i3blocks/updater
+SyslogIdentifier=i3blocks_updater
+
+[Install]
+WantedBy=i3@.service

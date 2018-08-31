@@ -72,6 +72,7 @@ bar {
 	position top
 	mode dock
 	modifier None
+    tray_output none
 
     i3bar_command i3bar -t
 }
@@ -97,22 +98,12 @@ bar {
 	mode dock
 	modifier None
     workspace_buttons no
+    tray_output primary
 
     i3bar_command i3bar -t
 }
 # Need this to update i3blocks on song change
-exec_always --no-startup-id "~/.config/i3/i3mpdupdate"
 # Need this to remember persistent workspace layout
-exec_always --no-startup-id "~/.config/i3/per-workspace-layout.pl"
-
-# Autostart
-exec --no-startup-id "/usr/bin/systemctl --user start compton@${DISPLAY}.service"
-exec --no-startup-id "/usr/bin/systemctl --user start dunst@${DISPLAY}.service"
-exec --no-startup-id "/usr/bin/systemctl --user start polkit-gnome@${DISPLAY}.service"
-exec --no-startup-id "/usr/bin/systemctl --user start redshift-gtk@${DISPLAY}.service"
-exec --no-startup-id "/usr/bin/systemctl --user start wallpaper@${DISPLAY}.service"
-exec --no-startup-id "/usr/bin/systemctl --user start dunst@${DISPLAY}.timer"
-exec --no-startup-id "/usr/bin/systemctl --user start systray@${DISPLAY}.target"
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
@@ -138,6 +129,7 @@ assign [class="Conky"]          $ws1
 # Desktop 2 is for web browsing
 set $ws2 "2:爵"
 assign [class="qutebrowser"]    $ws2
+assign [class="Firefox"]    $ws2
 # Desktop 3 is for terminal
 set $ws3 "3:"
 assign [class="Termite"]        $ws3
@@ -184,7 +176,7 @@ set $Resize     ""
 set $Gaps       ""
 set $Gaps_In    ""
 set $Gaps_Out   ""
-set $Power              "<span color='#8F5536'>⏼:</span> <span color='#AC4142'>⏻:[x]</span> <span color='#F4BF75'>ﰇ:[r]</span> <span color='#90A959'>:[h]</span> <span color='#6A9FB5'>:鈴[s]</span> <span color='#AA759F'>﫢:[l]</span>"
+set $Power              "<span color='#8F5536'>拉</span> <span color='#AC4142'>⏻:x</span> <span color='#F4BF75'>ﰇ:r</span> <span color='#90A959'>:h</span> <span color='#6A9FB5'>鈴:s</span> <span color='#AA759F'>﫢:l</span>"
 set $Power_Shutdown     "<span color='#AC4142'>⏻ Shutdown? [y]es|[n]o</span>"
 set $Power_Reboot       "<span color='#F4BF75'>ﰇ Reboot? [y]es|[n]o</span>"
 set $Power_Hibernate    "<span color='#90A959'> Hibernate? [y]es|[n]o</span>"
@@ -199,45 +191,43 @@ floating_modifier $Meta
 
 
 # Terminal
-bindsym $Meta+Return exec "/usr/bin/termite"
+bindsym $Meta+Return            exec "exec 8>&- ; $TERMINAL"
 # Rofi (launcher)
-bindsym $Meta+space exec "/usr/bin/rofi -show drun"
+bindsym $Meta+space             exec "exec 8>&- ; /usr/bin/rofi -show drun"
 # Daemons
-bindsym $Meta+d exec "~/.config/rofi/systemd"
+bindsym $Meta+d                 exec "exec 8>&- ; /usr/bin/env ~/.config/rofi/systemd"
 # Password
-bindsym $Meta+p exec "ROFI_PASS_CONFIG=~/.config/rofi/rofi-pass.conf /usr/bin/rofi-pass"
+bindsym $Meta+p                 exec "exec 8>&- ; /usr/bin/env /usr/bin/rofi-pass"
 # Screenshot
-bindsym Print       exec "maim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
-bindsym Shift+Print exec "maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
-bindsym $Alt+Print  exec"maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym Print                   exec "exec 8>&- ; maim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym Shift+Print             exec "exec 8>&- ; maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym $Alt+Print              exec "exec 8>&- ; maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
 # Wallpaper
-bindsym $Meta+Down exec "/usr/bin/systemctl --user start wallpaper@${DISPLAY}.service"
+bindsym $Meta+Down              exec --no-startup-id "exec 8>&- ; /usr/bin/systemctl --user start wallpaper@${DISPLAY}.service"
 # Lock
-bindsym $Meta+Escape exec "/usr/bin/systemctl --user start lock@${DISPLAY}.service"
+bindsym $Meta+Escape            exec "exec 8>&- ; /usr/bin/systemctl --user start lock@${DISPLAY}.service"
 # reload the configuration file
-bindsym $Meta+Shift+Escape exec "i3-msg reload"
+bindsym $Meta+Shift+Escape      exec "exec 8>&- ; /usr/bin/i3-msg reload"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $Meta+Ctrl+r exec "i3-msg restart"
+bindsym $Meta+Ctrl+r            exec "exec 8>&- ; /usr/bin/i3-msg restart"
 # exit i3 (logs you out of your X session)
-bindsym $Meta+$Alt+Escape exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $Meta+$Alt+Escape       exec "exec 8>&- ; i3-msg exit"
 # Music controls, with signal to 2
-bindsym XF86AudioPlay exec "mpc toggle ; pkill -RTMIN+2 i3blocks ;"
-bindsym XF86AudioStop exec "mpc stop ; pkill -RTMIN+2 i3blocks ;"
-bindsym XF86AudioNext exec "mpc next ; pkill -RTMIN+2 i3blocks ;"
-bindsym XF86AudioPrev exec "if [[ $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,\\"\\",$3); split($3,a,/:/); print a[1]*60+a[2] }') -ge 3 ]]; then mpc seek 0; else mpc prev; fi ; pkill -RTMIN+2 i3blocks ;"
+bindsym XF86AudioPlay           exec "exec 8>&- ; mpc toggle"
+bindsym XF86AudioStop           exec "exec 8>&- ; mpc stop"
+bindsym XF86AudioNext           exec "exec 8>&- ; mpc next"
+bindsym XF86AudioPrev           exec "exec 8>&- ; if [[ $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,\\"\\",$3); split($3,a,/:/); print a[1]*60+a[2] }') -ge 3 ]]; then mpc seek 0; else mpc prev; fi"
 # Sound controls, with signal to 1
-bindsym XF86AudioRaiseVolume exec "/usr/bin/pamixer --increase 5 ; pkill -RTMIN+1 i3blocks ;"
-bindsym XF86AudioLowerVolume exec "/usr/bin/pamixer --decrease 5 ; pkill -RTMIN+1 i3blocks ;"
-bindsym XF86AudioMute        exec "/usr/bin/pamixer --toggle-mute ; pkill -RTMIN+1 i3blocks ;"
+bindsym XF86AudioRaiseVolume    exec "exec 8>&- ; /usr/bin/pamixer --increase 5"
+bindsym XF86AudioLowerVolume    exec "exec 8>&- ; /usr/bin/pamixer --decrease 5"
+bindsym XF86AudioMute           exec "exec 8>&- ; /usr/bin/pamixer --toggle-mute"
 # Brightness settings
-bindsym XF86MonBrightnessUp   exec "/usr/bin/brightnessctl -d $BRI_SCR s +10 ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86MonBrightnessDown exec "/usr/bin/brightnessctl -d $BRI_SCR s 10- ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86KbdBrightnessUp   exec "/usr/bin/brightnessctl -d $BRI_KBD s +1  ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86KbdBrightnessDown exec "/usr/bin/brightnessctl -d $BRI_KBD s 1-  ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86MonBrightnessUp     exec "exec 8>&- ; /usr/bin/brightnessctl -d $BRI_SCR s +10 ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86MonBrightnessDown   exec "exec 8>&- ; /usr/bin/brightnessctl -d $BRI_SCR s 10- ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86KbdBrightnessUp     exec "exec 8>&- ; /usr/bin/brightnessctl -d $BRI_KBD s +1  ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86KbdBrightnessDown   exec "exec 8>&- ; /usr/bin/brightnessctl -d $BRI_KBD s 1-  ; pkill -RTMIN+3 i3blocks ;"
 # Compton
-bindsym $Meta+c exec "if (systemctl is-active --user --quiet compton@${DISPLAY}.service); then systemctl --user stop compton@${DISPLAY}.service; else systemctl --user start compton@${DISPLAY}.service; fi"
-# Redshift
-bindsym $Meta+r exec "if (systemctl is-active --user --quiet redshift@${DISPLAY}.service); then systemctl --user stop redshift@${DISPLAY}.service; else systemctl --user start redshift@${DISPLAY}.service; fi"
+bindsym $Meta+c                 exec --no-startup-id "exec 8>&- ; if (systemctl is-active --user --quiet compton@${DISPLAY}.service); then systemctl --user stop compton@${DISPLAY}.service; else systemctl --user start compton@${DISPLAY}.service; fi"
 
 # Kill window
 bindsym $Meta+q kill
@@ -317,8 +307,8 @@ mode $Gaps {
         bindsym i      mode $Gaps_In
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym 0      gaps inner current set 0 ; gaps outer current set 0 
-        bindsym Shift+0 gaps inner all set 0 ; gaps all current set 0 
+        bindsym 0       gaps inner current set 0 ; gaps outer current set 0 
+        bindsym Shift+0 gaps inner all     set 0 ; gaps outer all     set 0 
 }
 
 mode $Gaps_In {
@@ -359,36 +349,36 @@ mode --pango_markup $Power {
 }
 
 mode --pango_markup $Power_Shutdown {
-    bindsym y       exec "/usr/bin/systemctl poweroff"
-    bindsym Enter   exec "/usr/bin/systemctl poweroff"
+    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl poweroff"
+    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl poweroff"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }
 
 mode --pango_markup $Power_Reboot {
-    bindsym y       exec "/usr/bin/systemctl reboot"
-    bindsym Enter   exec "/usr/bin/systemctl reboot"
+    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl reboot"
+    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl reboot"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }
 
 mode --pango_markup $Power_Hibernate {
-    bindsym y       exec "/usr/bin/systemctl hibernate"
-    bindsym Enter   exec "/usr/bin/systemctl hibernate"
+    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl hibernate"
+    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl hibernate"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }
 
 mode --pango_markup $Power_Sleep {
-    bindsym y       exec "/usr/bin/systemctl sleep"
-    bindsym Enter   exec "/usr/bin/systemctl sleep"
+    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl sleep"
+    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl sleep"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }
 
 mode --pango_markup $Power_Logout {
-    bindsym y       exec "/usr/bin/systemctl hybrid-sleep"
-    bindsym Enter   exec "/usr/bin/systemctl hybrid-sleep"
+    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl hybrid-sleep"
+    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl hybrid-sleep"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }

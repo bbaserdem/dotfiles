@@ -1,8 +1,8 @@
 [Unit]
 Description=GTK frontend for the Syncthing daemon on X display %I
 Documentation=man:syncthing-gtk(1)
-After=systray@%i.target
-Requisite=systray@%i.target
+After=syncthing.service X11@%i.target i3@%i.target
+Requisite=syncthing.service X11@%i.target
 
 [Service]
 Environment=DISPLAY=%I
@@ -11,4 +11,4 @@ ExecStart=/usr/bin/syncthing-gtk --minimized
 SyslogIdentifier=syncthing-gtk
 
 [Install]
-WantedBy=systray@.target
+WantedBy=i3@.service

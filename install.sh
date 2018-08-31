@@ -11,62 +11,53 @@ sudo usermod -a -G lock sbp
 # Place symlinks
 echo 'Symlinking...\n'
 
-if [ -e '~/.abcde.conf' ]
-then
-    ln -s ~/.config/abcde.conf ~/.abcde.conf
-fi
+[ -e '~/.abcde.conf' ] && rm ~/.abcde.conf
+ln -s ~/.config/abcde.conf ~/.abcde.conf
 
-if [ -e '~/.gtkrc-2.0' ]
-then
-    ln -s ~/.config/gtk2rc ~/.gtkrc-2.0
-fi
+[ -e '~/.bashrc' ] && rm ~/.bashrc
+ln -s ~/.config/bash/bashrc ~/.bashrc
 
-if [ -e '~/.tmux.conf' ]
-then
-    ln -s ~/.config/tmux.conf ~/.tmux.conf
-fi
+[ -e '~/.bash_profile' ] && rm ~/.bash_profile
+[ -e '~/.bash_login' ] && rm ~/.bash_login
+ln -s ~/.config/bash/login ~/.bash_profile
 
-if [ -e '~/.Xresources' ]
-then
-    ln -s ~/.config/X11/resources ~/.Xresources
-fi
+[ -e '~/.bash_logout' ] && rm ~/.bash_logout
+ln -s ~/.config/bash/logout ~/.bash_logout
 
-if [ -e '~/.zshenv' ]
-then
-    ln -s ~/.config/zsh/zshenv ~/.zshenv
-fi
+[ -e '~/.gtkrc-2.0' ] && rm ~/.gtkrc-2.0
+ln -s ~/.config/gtk2rc ~/.gtkrc-2.0
 
-if [ -e '~/.mpdscribble' ]
-then
-    ln -s ~/.config/mpdscribble ~/.mpdscribble
-fi
+[ -e '~/.tmux.conf' ] && rm ~/.tmux.conf
+ln -s ~/.config/tmux.conf ~/.tmux.conf
 
-if [ -e '~/.Xinitrc' ]
-then
-    ln -s ~/.config/X11/initrc ~/.xinitrc
-fi
 
-if [ -e '~/.xserverrrc' ]
-then
-    ln -s ~/.config/X11/serverrc ~/.xserverrc
-fi
+[ -e '~/.zshenv' ] && rm ~/.zshenv
+[ -e '~/.zprofile' ] && rm ~/.zprofile
+[ -e '~/.zshrc' ] && rm ~/.zshrc
+[ -e '~/.zlogin' ] && rm ~/.zlogin
+[ -e '~/.zlogout' ] && rm ~/.zlogout
+ln -s ~/.config/zsh/zshenv ~/.zshenv
 
-if [ -e '~/.octaverc' ]
-then
-    ln -s ~/.config/octave/octaverc ~/.octaverc
-fi
+[ -e '~/.mpdscribble' ] && rm ~/.mpdscribble
+ln -s ~/.config/mpdscribble ~/.mpdscribble
 
-if [ -e '~/Documents/MATLAB/startup.m' ]
-then
-    mkdir -p ~/Documents/MATLAB
-    ln -s ~/.config/matlabrc.m ~/Documents/MATLAB/startup.m
-fi
+[ -e '~/.xinitrc' ] && rm ~/.xinitrc
+[ -e '~/.xserverrrc' ] && rm ~/.xserverrc
+[ -e '~/.Xresources' ] && rm ~/.Xresources
+ln -s ~/.config/X11/clientrc ~/.xinitrc
+ln -s ~/.config/X11/serverrc ~/.xserverrc
+ln -s ~/.config/X11/resources ~/.Xresources
 
-if [ -e '~/.local/share/applications' ]
-then
-    mkdir -p ~/.local/share
-    ln -s ~/.config/applications ~/.local/share/applications
-fi
+[ -e '~/.octaverc' ] && rm ~/.octaverc
+ln -s ~/.config/octave/octaverc ~/.octaverc
+
+[ -e '~/Documents/MATLAB/startup.m' ] && rm ~/Documents/MATLAB/startup.m
+mkdir -p ~/Documents/MATLAB
+ln -s ~/.config/matlabrc.m ~/Documents/MATLAB/startup.m
+
+[ -e '~/.local/share/applications' ] && rm -r ~/.local/share/applications
+mkdir -p ~/.local/share
+ln -s ~/.config/applications ~/.local/share/applications
 
 read -rsp $'Press any key to continue...\n' -n1 key
 
@@ -92,15 +83,9 @@ read -rsp $'Press any key to continue...' -n1 key
 
 # Dropbox
 echo 'Preventing dropbox auto updates...'
-if [ -d ~/.dropbox-dist ]
-then
-    rm -rf ~/.dropbox-dist
-fi
+[ -d ~/.dropbox-dist ] && rm -rf ~/.dropbox-dist
 install --mode 0 --directory ~/.dropbox-dist
 read -rsp $'Press any key to continue...' -n1 key
 
 # MPD
 mkdir -p ~/.cache/mpd
-
-# Nemo
-gsettings set org.cinnamon.desktop.default-applications.terminal exec termite

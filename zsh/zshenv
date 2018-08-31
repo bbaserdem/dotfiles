@@ -1,5 +1,6 @@
 # Set XDG_CONFIG_HOME
 export XDG_CONFIG_HOME="$HOME/.config"
+/usr/bin/systemctl --user set-environment XDG_CONFIG_HOME=$XDG_CONFIG_HOME
 # Z directory
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # ZIM stuff
@@ -10,6 +11,8 @@ export GPGKEY=0B7151C823559DD8A7A04CE36426139E2F4C6CCE
 # Password store location
 export PASSWORD_STORE_DIR=$HOME/.pass
 export PASSWORD_STORE_GIT=$HOME/.pass
+/usr/bin/systemctl --user set-environment PASSWORD_STORE_GIT=$PASSWORD_STORE_GIT
+/usr/bin/systemctl --user set-environment PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR
 
 # Compile in parallel using AUR
 export MAKEFLAGS="-j$(nproc)"
@@ -21,49 +24,55 @@ export MATLAB_DIR=/opt/matlab-2018a/
 # export LD_PRELOAD=/usr/lib/libstdc++.so
 # export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 
-# Just JAVA things
-export _JAVA_AWT_WM_NONPARENTING=1
-#export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
-
 # Monitors
 if [[ $(hostname) == 'sbplaptop' ]]
 then
     export MON_0="eDP"
     export BRI_SCR="amdgpu_bl0"
+    /usr/bin/systemctl --user set-environment BRI_SCR=$BRI_SCR
     export BRI_KBD="asus::kbd_backlight"
+    /usr/bin/systemctl --user set-environment BRI_KBD=$BRI_KBD
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     export MON_0="DP-2"
+    /usr/bin/systemctl --user set-environment 
 elif [[ $(hostname) == 'sbphomestation' ]]
 then
     export MON_0="eDP-1"
+    /usr/bin/systemctl --user set-environment 
 fi
 
-# Graphical options
-export BORDER_GAP=24
-export BAR_SIZE=32
 # GPG config
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
+/usr/bin/systemctl --user set-environment GNUPGHOME=$GNUPGHOME
 # QT5 theme
 export QT_STYLE_OVERRIDE="gtk2"
+/usr/bin/systemctl --user set-environment QT_STYLE_OVERRIDE=$QT_STYLE_OVERRIDE
 # Set neovim as editor
-export EDITOR=nvim
+export EDITOR=/usr/bin/nvim
+/usr/bin/systemctl --user set-environment EDITOR=$EDITOR
 # Set qutebrowser as browser
-export BROWSER=qutebrowser
-# Set default terminal
-export TERM=rxvt-unicode
+export BROWSER=/usr/bin/qutebrowser
+/usr/bin/systemctl --user set-environment BROWSER=$BROWSER
 # Set terminal to use for launching
-export TERMINAL=termite
+export TERMINAL=/usr/bin/termite
+/usr/bin/systemctl --user set-environment TERMINAL=$TERMINAL
 # Notmuch
 export NOTMUCH_CONFIG=$XDG_CONFIG_HOME/neomutt/notmuch-config
+/usr/bin/systemctl --user set-environment NOTMUCH_CONFIG=$NOTMUCH_CONFIG
 # OpenFOAM
 export FOAM_INST_DIR=/opt/OpenFOAM
 # Weechat
 export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
+/usr/bin/systemctl --user set-environment WEECHAT_HOME=$WEECHAT_HOME
 # Taskwarrior
 export TASKRC=$XDG_CONFIG_HOME/taskrc
+/usr/bin/systemctl --user set-environment TASKRC=$TASKRC
 export TASKDATA=$HOME/Documents/Tasks/
+/usr/bin/systemctl --user set-environment TASKDATA=$TASKDATA
 export TIMEWARRIORDB=$HOME/Documents/Tasks/
+/usr/bin/systemctl --user set-environment TIMEWARRIORDB=$TIMEWARRIORDB
 # Rofi-pass
 export ROFI_PASS_CONFIG=$XDG_CONFIG_HOME/rofi/rofi-pass.conf
+/usr/bin/systemctl --user set-environment ROFI_PASS_CONFIG=$ROFI_PASS_CONFIG
 

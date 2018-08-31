@@ -1,0 +1,11 @@
+[Unit]
+Description=i3 Window Manager on X display %I
+Documentation=man:i3(1)
+After=X11@%i.target
+Requisite=X11@%i.target
+
+[Service]
+Environment=DISPLAY=%I
+Type=simple
+ExecStart=/usr/bin/env bash -c 'exec 8>%t/x11-wm@%I; echo "$DISPLAY"; exec i3'
+SyslogIdentifier=i3
