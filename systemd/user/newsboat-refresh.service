@@ -6,3 +6,6 @@ Documentation=man:newsboat(1)
 Type=oneshot
 ExecStart=/usr/bin/newsboat -x reload
 SyslogIdentifier=newsboat-reload
+
+[Install]
+WantedBy=default.target

@@ -1,2 +1,3 @@
 notify-beep no
 confirm-exit no
+cache-file "~/Documents/RSS/Cache.db"

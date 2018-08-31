@@ -1,15 +1,15 @@
 [Unit]
 Description=QT frontend for wpa_supplicant (systray) on X display %I
 Documentation=man:wpa_gui(8)
-After=systray@%i.target
-Requisite=systray@%i.target
+After=X11@%i.target i3@%i.target
+Requisite=X11@%i.target
 
 [Service]
 Environment=DISPLAY=%I
 Environment=QT_STYLE_OVERRIDE="gtk2"
 Type=simple
-ExecStart=/usr/bin/env /usr/bin/wpa_gui -t -q
+ExecStart=/usr/bin/env bash -c '[ -e /usr/bin/wpa_gui ] && wpa_gui -t -q'
 SyslogIdentifier=wpa_gui
 
 [Install]
-WantedBy=systray@.target
+WantedBy=i3@.service

@@ -35,6 +35,10 @@
 !/arch
 !/arch/**
 
+# BASH: Accept all
+!/bash
+!/bash/**
+
 # CANTATA: Accept all that is there
 !/cantata
 !/cantata/cantata.conf
@@ -111,11 +115,11 @@
 
 # I3: Grab all things i3
 !/i3
-!/i3/*
+!/i3/**
 
 # I3BLOCKS: Grab all things i3
 !/i3blocks
-!/i3blocks/*
+!/i3blocks/**
 
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
@@ -126,10 +130,6 @@
 !/offlineimap
 !/offlineimap/config
 !/offlineimap/gmailPass.py.example
-
-# POLYBAR: Grab all files
-!/polybar
-!/polybar/*
 
 # QUTEBROWSER: Grab my files
 !/qutebrowser
@@ -173,7 +173,7 @@
 
 # SWAY: Grab all sway files
 !/sway
-!/sway/*
+!/sway/**
 
 # TERMITE: Grab config
 !/termite
@@ -183,13 +183,9 @@
 !/udiskie
 !/udiskie/config.json
 
-# URXVT: Grab all Xresources files
-!/urxvt
-!/urxvt/*.Xresources
-
 # USAGE: It's documentation; grab all
 !/usage
-!/usage/*
+!/usage/**
 
 # X11: Grab everything here since I wrote them
 !/X11

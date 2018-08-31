@@ -45,7 +45,7 @@ interval=5
 
 # Uptime (Indigo)
 [uptime]
-interval=300
+interval=60
 
 # Kernel (Violet)
 [kernel]

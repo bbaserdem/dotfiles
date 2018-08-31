@@ -1,0 +1,13 @@
+[Unit]
+Description=Layout setter for i3 on X display %I
+After=X11@%i.target i3@%i.service
+Requisite=X11@%i.target i3@%i.service
+
+[Service]
+Environment=DISPLAY=%I
+Type=simple
+ExecStart=/usr/bin/env %h/.config/i3/layout.pl
+SyslogIdentifier=i3layout
+
+[Install]
+WantedBy=i3@.service

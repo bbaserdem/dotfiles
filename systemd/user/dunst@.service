@@ -1,6 +1,8 @@
 [Unit]
 Description=Dunst notification-daemon on X display %I
 Documentation=man:dunst(1)
+After=X11@%i.target i3@%i.target
+Requisite=X11@%i.target
 
 [Service]
 Environment=DISPLAY=%I
