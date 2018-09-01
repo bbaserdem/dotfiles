@@ -1,7 +1,8 @@
 #!/usr/bin/sh
 
-_col="'$(xgetres i3.crmsn)'"
-_mut="'$(xgetres i3.grayd)'"
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_red}"
 
 case $BLOCK_BUTTON in
 	1) /usr/bin/pamixer --toggle-mute;; # Left: mute
@@ -32,7 +33,7 @@ _val="$(pamixer --get-volume)"
 if [[ $(pamixer --get-mute) = "true" ]]
 then
     _pre="婢"
-    _val='<span color='"$_mut"'>'"$_val"'%</span>'
+    _val='<span color='"$_mute"'>'"$_val"'%</span>'
 elif [ "$_val" -ge 50 ]
 then
     _pre="墳"

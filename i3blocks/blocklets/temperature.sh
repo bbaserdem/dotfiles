@@ -1,6 +1,8 @@
 #!/usr/bin/sh
 
-_col="'$(xgetres i3.crmsn)'"
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_red}"
 _cel="糖"
 
 if [ $(hostname) = 'sbplaptop' ]

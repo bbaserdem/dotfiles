@@ -1,6 +1,8 @@
 #!/usr/bin/sh
 
-_col="'$(xgetres i3.brown)'"
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_bro}"
 _icr=""
 _ich=""
 _rfs="$(df -hPl /      | tail -1 | awk '{ printf $3 "/" $2 " (" $5 ")" }' )"

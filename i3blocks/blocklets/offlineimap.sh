@@ -1,6 +1,8 @@
 #!/usr/bin/sh
 
-_col="'$(xgetres i3.yllow)'"
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_yel}"
 _new="$(find $HOME/.mail/Gmail/INBOX/new | wc -l)"
 
 case $BLOCK_BUTTON in

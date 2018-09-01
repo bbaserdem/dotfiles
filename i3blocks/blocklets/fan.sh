@@ -1,6 +1,8 @@
 #!/usr/bin/sh
 
-_col="'$(xgetres i3.orang)'"
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_ora}"
 _ico=""
 _spe="$(sensors | grep fan1 | cut -d " " -f 9)"
 
