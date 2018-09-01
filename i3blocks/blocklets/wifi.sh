@@ -1,7 +1,9 @@
 #!/usr/bin/bash
 
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_cya}"
 _int="${BLOCK_INSTANCE:-wifi}"
-_col="'$(xgetres i3.lblue)'"
 _ico=""
 _ics="說"
 _ic1=""

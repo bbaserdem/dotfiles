@@ -1,3 +1,6 @@
 #!/usr/bin/sh
-_col="$(xgetres i3.lblue)"
-echo "<span color='${_col}'></span> $(date '+%H:%M:%S')"
+
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_cya}"
+echo "<span color=${_col}></span> $(date '+%H:%M:%S')"

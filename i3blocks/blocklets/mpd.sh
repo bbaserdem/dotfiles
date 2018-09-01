@@ -1,7 +1,8 @@
 #!/usr/bin/sh
 
-_col="'$(xgetres i3.crmsn)'"
-_mute="'$(xgetres i3.grayd)'"
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_red}"
 
 # Pass the password in the block instance
 if [[ -n $BLOCK_INSTANCE ]]; then

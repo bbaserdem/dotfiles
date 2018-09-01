@@ -1,7 +1,9 @@
 #!/usr/bin/sh
 
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_cya}"
 _int=${BLOCK_INSTANCE:-ethernet}
-_col="'$(xgetres i3.lblue)'"
 _ico=""
 _ic1=""
 _ic2=""

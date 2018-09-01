@@ -1,6 +1,19 @@
 # Set XDG_CONFIG_HOME
 export XDG_CONFIG_HOME="$HOME/.config"
 /usr/bin/systemctl --user set-environment XDG_CONFIG_HOME=$XDG_CONFIG_HOME
+
+# Import Path
+if [ -d "$HOME/.local/bin" ]
+then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+# import vim-live-latex
+if [ -d "$XDG_CONFIG_HOME/nvim/bundle/vim-live-latex-preview/bin" ]
+then
+    PATH="$XDG_CONFIG_HOME/nvim/bundle/vim-live-latex-preview/bin:$PATH"
+fi
+systemctl --user set-environment PATH=$PATH
+
 # Z directory
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # ZIM stuff

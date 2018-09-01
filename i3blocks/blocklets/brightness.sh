@@ -1,6 +1,8 @@
 #!/usr/bin/sh
 
-_col="'$(xgetres i3.violt)'"
+. ${XDG_CONFIG_HOME}/i3blocks/colors.sh
+
+_col="${col_vio}"
 _val="$(brightnessctl -d $BRI_SCR i | grep Current | sed 's|.*(\(.*\)%)|\1|')" || exit
 
 if   [ "$_val" -ge 75 ]
