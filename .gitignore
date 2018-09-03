@@ -19,7 +19,6 @@
 !/mimeapps.list
 !/msmtprc
 !/README.md
-!/taskrc
 !/tmux.conf
 !/user-dirs.dirs
 
@@ -121,6 +120,10 @@
 !/i3blocks
 !/i3blocks/**
 
+# KHAL: Grab all calender files
+!/khal
+!/khal/**
+
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
 !/octave/octaverc
@@ -179,6 +182,10 @@
 !/termite
 !/termite/config
 
+# TODOMAN: Grab everything
+!/todoman
+!/todoman/**
+
 # UDISKIE: Grab config
 !/udiskie
 !/udiskie/config.json
@@ -186,6 +193,10 @@
 # USAGE: It's documentation; grab all
 !/usage
 !/usage/**
+
+# VDIRSYNCER: Grab only config
+!/vdirsyncer
+!/vdirsyncer/config
 
 # X11: Grab everything here since I wrote them
 !/X11

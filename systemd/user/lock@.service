@@ -7,6 +7,6 @@ Requisite=X11@%i.target
 [Service]
 Environment=DISPLAY=%I
 Type=simple
-ExecStart=%h/.config/systemd/scripts/fancylock.sh
+ExecStart=%h/.config/i3/lock.sh
 SyslogIdentifier=i3lock
 ExecStartPost=/bin/sleep 1

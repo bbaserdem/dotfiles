@@ -7,7 +7,7 @@ Requisite=X11@%i.target
 [Service]
 Environment=DISPLAY=%I
 Type=oneshot
-ExecStart=%h/.config/systemd/scripts/wallpaper.sh
+ExecStart=%h/.config/i3/wallpaper.sh
 SyslogIdentifier=wallpaper
 
 [Install]

@@ -5,6 +5,7 @@
 command=~/.config/i3blocks/blocklets/${BLOCK_NAME}.sh
 separator_block_width=15
 markup=pango
+align=left
 
 #-------------------#
 #-----BLOCKLETS-----#

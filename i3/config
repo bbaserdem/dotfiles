@@ -15,155 +15,118 @@
 
 font pango:monospace 11px
 
-set_from_resource $transp trans #202020CC
-set_from_resource $black1 black #151515
-set_from_resource $black2 backg #202020
-set_from_resource $black3 grayD #303030
-set_from_resource $black4 grayd #505050
-set_from_resource $greyl1 grayl #B0B0B0
-set_from_resource $greyl2 foreg #D0D0D0
-set_from_resource $greyl3 whtDa #E0E0E0
-set_from_resource $white0 white #F5F5F5
-set_from_resource $redcol crmsn #AC4142
-set_from_resource $orange orang #D28445
-set_from_resource $yellow yllow #F4BF75
-set_from_resource $greenc green #90A959
-set_from_resource $cyanco lblue #75B5AA
-set_from_resource $indigo indgo #6A9FB5
-set_from_resource $violet violt #AA759F
-set_from_resource $brownc brown #8F5536
-
-# Base16 colors are as follows;
-#base00 - Black     Default Background
-#base01 - Gray:     Lighter Background (Used for status bars)
-#base02 - Gray:     Selection Background
-#base03 - Gray:     Comments, Invisibles, Line Highlighting
-#base04 - Grayish:  Dark Foreground (Used for status bars)
-#base05 - Grayish:  Default Foreground, Caret, Delimiters, Operators
-#base06 - White:    Light Foreground (Not often used)
-#base07 - White:    Light Background (Not often used)
-#base08 - Red:      Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-#base09 - Orange:   Integers, Boolean, Constants, XML Attributes, Markup Link Url
-#base0A - Yellow:   Classes, Markup Bold, Search Text Background
-#base0B - Green:    Strings, Inherited Class, Markup Code, Diff Inserted
-#base0C - Cyan:     Support, Regular Expressions, Escape Characters, Markup Quotes
-#base0D - Indigo:   Functions, Methods, Attribute IDs, Headings
-#base0E - Violet:   Keywords, Storage, Selector, Markup Italic, Diff Changed
-#base0F - Brown:    Deprecated, Opening/Closing Embedded Language Tags, e.g.
+set_from_resource $bl0 bl0 #151515
+set_from_resource $bl1 bl1 #202020
+set_from_resource $bl2 bl2 #303030
+set_from_resource $bl3 bl3 #505050
+set_from_resource $wh3 wh3 #B0B0B0
+set_from_resource $wh2 wh2 #D0D0D0
+set_from_resource $wh1 wh1 #E0E0E0
+set_from_resource $wh0 wh0 #F5F5F5
+set_from_resource $red red #AC4142
+set_from_resource $ora ora #D28445
+set_from_resource $yel yel #F4BF75
+set_from_resource $gre gre #90A959
+set_from_resource $cya cya #75B5AA
+set_from_resource $ind ind #6A9FB5
+set_from_resource $vio vio #AA759F
+set_from_resource $bro bro #8F5536
+set_from_resource $tra tra #202020CC
+# Property Name         Border  BG      Text    Ind.    Child Border
+client.focused          $wh0    $bl3    $cya    $bl1    $bl2
+client.focused_inactive $bl0    $bl2    $ind    $bl1    $bl2
+client.unfocused        $bl0    $bl2    $wh3    $bl1    $bl2
+client.urgent           $bro    $bl2    $ora    $bl1    $bl2
+client.placeholder      $bl0    $bl2    $wh3    $bl1    $bl2
+client.background       $bl0
 
 # Basic bar configuration using the Base16 variables.
 bar {
     output primary
-    font pango:Iosevka Nerd Font 16px
-    status_command /usr/bin/i3blocks -c ~/.config/i3blocks/config.top
-
-    colors {
-        background $transp
-        separator  $black4
-        statusline $greyl3
-
-        # State             Border  BG      Text
-        focused_workspace   $transp $transp $cyanco
-        active_workspace    $transp $transp $indigo
-        inactive_workspace  $transp $transp $black4
-        urgent_workspace    $transp $transp $orange
-        binding_mode        $transp $transp $greyl3
-    }
+    font pango:Iosevka Nerd Font 14px
+    status_command "/usr/bin/i3blocks -c ~/.config/i3blocks/config.top"
+    i3bar_command  "i3bar -t"
 	position top
 	mode dock
 	modifier None
     tray_output none
-
-    i3bar_command i3bar -t
+    colors {
+        background $tra
+        separator  $bl3
+        statusline $wh3
+        # State             Border  BG      Text
+        focused_workspace   $tra    $tra    $cya
+        active_workspace    $tra    $tra    $wh3
+        inactive_workspace  $tra    $tra    $bl3
+        urgent_workspace    $tra    $tra    $ora
+        binding_mode        $tra    $tra    $ind
+    }
 }
 
 bar {
     output primary
-    font pango:Iosevka Nerd Font 16px
-    status_command /usr/bin/i3blocks -c ~/.config/i3blocks/config.bot
-
-    colors {
-        background $transp
-        separator  $black4
-        statusline $greyl3
-
-        # State             Border  BG      Text
-        focused_workspace   $transp $transp $cyanco
-        active_workspace    $transp $transp $indigo
-        inactive_workspace  $transp $transp $black4
-        urgent_workspace    $transp $transp $orange
-        binding_mode        $transp $transp $greyl3
-    }
+    font pango:Iosevka Nerd Font 14px
+    status_command "/usr/bin/i3blocks -c ~/.config/i3blocks/config.bot"
+    i3bar_command  "i3bar -t"
 	position bottom
 	mode dock
 	modifier None
     workspace_buttons no
     tray_output primary
-
-    i3bar_command i3bar -t
 }
-# Need this to update i3blocks on song change
-# Need this to remember persistent workspace layout
-
-# Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $black2 $black2 $white0 $redcol $redcol
-client.focused_inactive $black1 $black1 $greyl1 $redcol $redcol
-client.unfocused        $black1 $black1 $black4 $redcol $redcol
-client.urgent           $black1 $black1 $orange $redcol $redcol
-client.placeholder      $black1 $black1 $greyl2 $redcol $redcol
-client.background       $black13
 
 # Need these for gaps
 for_window [class="^.*"] border pixel 0
-gaps inner 12
+gaps inner 0
 gaps outer 0
 
 #--------------------#
 #-----WORKSPACES-----#
 #--------------------#
 
-# Desktop 1 is for conky as a system viewer
-set $ws1 "1:漣"
+# Desktop 1 is for anything goes
+set $ws1 ""
 assign [class="Conky"]          $ws1
 # Desktop 2 is for web browsing
-set $ws2 "2:爵"
+set $ws2 "爵"
 assign [class="qutebrowser"]    $ws2
-assign [class="Firefox"]    $ws2
+assign [class="Firefox"]        $ws2
 # Desktop 3 is for terminal
-set $ws3 "3:"
+set $ws3 ""
 assign [class="Termite"]        $ws3
 # Desktop 4 is for matlab
-set $ws4 "4:"
+set $ws4 ""
 assign [class="MATLAB*"]        $ws4
 assign [class="GNU Octave"]     $ws4
+assign [class="Spyder3"]        $ws4
+assign [class="Spyder3"]        $ws4
 # Desktop 5 is for reading stuff
-set $ws5 "5:"
+set $ws5 ""
 assign [class="Zathura"]        $ws5
 assign [class="ristretto"]      $ws5
 assign [class="nemo"]           $ws5
 # Desktop 6 is for writing
-set $ws6 "6:"
+set $ws6 ""
 assign [class="libreoffice*"]   $ws6
 assign [class="Soffice"]        $ws6
 # Desktop 7 is for media viewing
-set $ws7 "7:"
+set $ws7 ""
 assign [class="mpv"]            $ws7
 assign [class="smplayer"]       $ws7
 assign [class="cantata"]        $ws7
 # Desktop 8 is for image manipulation
-set $ws8 "8:"
+set $ws8 ""
 assign [class="pdfsam"]         $ws8
 assign [class="gimp"]           $ws8
 assign [class="inkscape"]       $ws8
 assign [class="Blender"]        $ws8
 assign [class="openscad"]       $ws8
 # Desktop 9 is for Steam and games
-set $ws9 "9:"
+set $ws9 ""
 assign [class="Steam"]          $ws9
 assign [class="Stepmania"]      $ws9
-# Desktop 0 is just bleh.
-set $ws0 "10:"
+# Desktop 0 is for settings.
+set $ws0 "漣"
 
 
 #--------------#
@@ -191,43 +154,43 @@ floating_modifier $Meta
 
 
 # Terminal
-bindsym $Meta+Return            exec "exec 8>&- ; $TERMINAL"
+bindsym $Meta+Return            exec "$TERMINAL"
 # Rofi (launcher)
-bindsym $Meta+space             exec "exec 8>&- ; /usr/bin/rofi -show drun"
+bindsym $Meta+space             exec "/usr/bin/rofi -show drun"
 # Daemons
-bindsym $Meta+d                 exec "exec 8>&- ; /usr/bin/env ~/.config/rofi/systemd"
+bindsym $Meta+d                 exec "/usr/bin/env ~/.config/rofi/systemd"
 # Password
-bindsym $Meta+p                 exec "exec 8>&- ; /usr/bin/env /usr/bin/rofi-pass"
+bindsym $Meta+p                 exec "/usr/bin/env /usr/bin/rofi-pass"
 # Screenshot
-bindsym Print                   exec "exec 8>&- ; maim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
-bindsym Shift+Print             exec "exec 8>&- ; maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
-bindsym $Alt+Print              exec "exec 8>&- ; maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym Print                   exec "maim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym Shift+Print             exec "maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym $Alt+Print              exec "maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
 # Wallpaper
-bindsym $Meta+Down              exec --no-startup-id "exec 8>&- ; /usr/bin/systemctl --user start wallpaper@${DISPLAY}.service"
+bindsym $Meta+Down              exec --no-startup-id "/usr/bin/systemctl --user start wallpaper@${DISPLAY}.service"
 # Lock
-bindsym $Meta+Escape            exec "exec 8>&- ; /usr/bin/systemctl --user start lock@${DISPLAY}.service"
+bindsym $Meta+Escape            exec "/usr/bin/systemctl --user start lock@${DISPLAY}.service"
 # reload the configuration file
-bindsym $Meta+Shift+Escape      exec "exec 8>&- ; /usr/bin/i3-msg reload"
+bindsym $Meta+Shift+Escape      exec "/usr/bin/i3-msg reload"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $Meta+Ctrl+r            exec "exec 8>&- ; /usr/bin/i3-msg restart"
+bindsym $Meta+Ctrl+Escape       exec "/usr/bin/i3-msg restart"
 # exit i3 (logs you out of your X session)
-bindsym $Meta+$Alt+Escape       exec "exec 8>&- ; i3-msg exit"
+bindsym $Meta+$Alt+Escape       exec "/usr/bin/systemctl --user stop i3@${DISPLAY}.service"
 # Music controls, with signal to 2
-bindsym XF86AudioPlay           exec "exec 8>&- ; mpc toggle"
-bindsym XF86AudioStop           exec "exec 8>&- ; mpc stop"
-bindsym XF86AudioNext           exec "exec 8>&- ; mpc next"
-bindsym XF86AudioPrev           exec "exec 8>&- ; if [[ $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,\\"\\",$3); split($3,a,/:/); print a[1]*60+a[2] }') -ge 3 ]]; then mpc seek 0; else mpc prev; fi"
+bindsym XF86AudioPlay           exec "mpc toggle"
+bindsym XF86AudioStop           exec "mpc stop"
+bindsym XF86AudioNext           exec "mpc next"
+bindsym XF86AudioPrev           exec "if [[ $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,\\"\\",$3); split($3,a,/:/); print a[1]*60+a[2] }') -ge 3 ]]; then mpc seek 0; else mpc prev; fi"
 # Sound controls, with signal to 1
-bindsym XF86AudioRaiseVolume    exec "exec 8>&- ; /usr/bin/pamixer --increase 5"
-bindsym XF86AudioLowerVolume    exec "exec 8>&- ; /usr/bin/pamixer --decrease 5"
-bindsym XF86AudioMute           exec "exec 8>&- ; /usr/bin/pamixer --toggle-mute"
+bindsym XF86AudioRaiseVolume    exec "/usr/bin/pamixer --increase 5"
+bindsym XF86AudioLowerVolume    exec "/usr/bin/pamixer --decrease 5"
+bindsym XF86AudioMute           exec "/usr/bin/pamixer --toggle-mute"
 # Brightness settings
-bindsym XF86MonBrightnessUp     exec "exec 8>&- ; /usr/bin/brightnessctl -d $BRI_SCR s +10 ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86MonBrightnessDown   exec "exec 8>&- ; /usr/bin/brightnessctl -d $BRI_SCR s 10- ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86KbdBrightnessUp     exec "exec 8>&- ; /usr/bin/brightnessctl -d $BRI_KBD s +1  ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86KbdBrightnessDown   exec "exec 8>&- ; /usr/bin/brightnessctl -d $BRI_KBD s 1-  ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86MonBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_SCR s +10 ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86MonBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_SCR s 10- ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86KbdBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_KBD s +1  ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86KbdBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_KBD s 1-  ; pkill -RTMIN+3 i3blocks ;"
 # Compton
-bindsym $Meta+c                 exec --no-startup-id "exec 8>&- ; if (systemctl is-active --user --quiet compton@${DISPLAY}.service); then systemctl --user stop compton@${DISPLAY}.service; else systemctl --user start compton@${DISPLAY}.service; fi"
+bindsym $Meta+c                 exec --no-startup-id "if (systemctl is-active --user --quiet compton@${DISPLAY}.service); then systemctl --user stop compton@${DISPLAY}.service; else systemctl --user start compton@${DISPLAY}.service; fi"
 
 # Kill window
 bindsym $Meta+q kill
@@ -247,7 +210,7 @@ bindsym $Meta+f floating toggle
 bindsym $Meta+s layout stacking
 bindsym $Meta+o layout toggle split
 # Change focus between tiling/toggling
-bindsym $Meta+Up focus mode_toggle
+bindsym $Meta+Shift+Down focus mode_toggle
 # Focus parent/child container
 bindsym $Meta+a focus parent
 bindsym $Meta+b focus child
@@ -264,6 +227,9 @@ bindsym $Meta+7 workspace $ws7
 bindsym $Meta+8 workspace $ws8
 bindsym $Meta+9 workspace $ws9
 bindsym $Meta+0 workspace $ws0
+# Toggle scratchpad, and move windows to and from scratchpad
+bindsym $Meta+Up scratchpad show
+bindsym $Meta+Shift+Up move scratchpad
 # Move focused to workspace
 bindsym $Meta+Shift+Right move container to workspace next
 bindsym $Meta+Shift+Left  move container to workspace prev
@@ -277,6 +243,9 @@ bindsym $Meta+Shift+7 move container to workspace $ws7
 bindsym $Meta+Shift+8 move container to workspace $ws8
 bindsym $Meta+Shift+9 move container to workspace $ws9
 bindsym $Meta+Shift+0 move container to workspace $ws0
+# Move workspaces between monitors
+bindsym $Meta+$Alt+Right move workspace to output right
+bindsym $Meta+$Alt+Left  move workspace to output left
 # Resizing
 bindsym $Meta+w mode $Resize
 mode $Resize {
@@ -286,16 +255,16 @@ mode $Resize {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $left       resize shrink width  10 px or 10 ppt
+        bindsym $down       resize grow   height 10 px or 10 ppt
         bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+        bindsym $right      resize grow   width  10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Left        resize shrink width  10 px or 10 ppt
+        bindsym Down        resize grow   height 10 px or 10 ppt
         bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+        bindsym Right       resize grow   width  10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -312,25 +281,25 @@ mode $Gaps {
 }
 
 mode $Gaps_In {
-        bindsym plus  gaps inner current plus 5
+        bindsym plus  gaps inner current plus  5
         bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+        bindsym 0     gaps inner current set   0
 
-        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+plus  gaps inner all plus  5
         bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+        bindsym Shift+0     gaps inner all set   0
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 mode $Gaps_Out {
-        bindsym plus  gaps outer current plus 5
+        bindsym plus  gaps outer current plus  5
         bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+        bindsym 0     gaps outer current set   0
 
-        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+plus  gaps outer all plus  5
         bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+        bindsym Shift+0     gaps outer all set   0
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -349,36 +318,36 @@ mode --pango_markup $Power {
 }
 
 mode --pango_markup $Power_Shutdown {
-    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl poweroff"
-    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl poweroff"
+    bindsym y       exec "/usr/bin/systemctl poweroff"
+    bindsym Enter   exec "/usr/bin/systemctl poweroff"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }
 
 mode --pango_markup $Power_Reboot {
-    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl reboot"
-    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl reboot"
+    bindsym y       exec "/usr/bin/systemctl reboot"
+    bindsym Enter   exec "/usr/bin/systemctl reboot"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }
 
 mode --pango_markup $Power_Hibernate {
-    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl hibernate"
-    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl hibernate"
+    bindsym y       exec "/usr/bin/systemctl hibernate"
+    bindsym Enter   exec "/usr/bin/systemctl hibernate"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }
 
 mode --pango_markup $Power_Sleep {
-    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl sleep"
-    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl sleep"
+    bindsym y       exec "/usr/bin/systemctl sleep"
+    bindsym Enter   exec "/usr/bin/systemctl sleep"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }
 
 mode --pango_markup $Power_Logout {
-    bindsym y       exec "exec 8>&- ; /usr/bin/systemctl hybrid-sleep"
-    bindsym Enter   exec "exec 8>&- ; /usr/bin/systemctl hybrid-sleep"
+    bindsym y       exec "/usr/bin/systemctl hybrid-sleep"
+    bindsym Enter   exec "/usr/bin/systemctl hybrid-sleep"
     bindsym n       mode "default"
     bindsym Escape  mode "default"
 }

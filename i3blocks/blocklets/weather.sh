@@ -6,20 +6,17 @@ _col="${col_ora}"
 
 # Need a key, which I use my personal one. Please use your own if copying.
 _key="3f9128788c010e56faaa839f62ec30ad"
-# City can be defined to specify. Else, uses geoclue to get location.
+# City can be defined to specify. If ocation is not available, will use this
 _cit=""
 # Define units here, I define it as celcius (metric), but kelvin (default) and fahrenheit (imperial) works.
 _uni="metric"
 
-# Waits a bit for internet to load, I should fix this
-sleep 2
-
-
 # Get current weather and forecast
 if [ ! -z "${_cit}" ]
 then
-    _cur=$(curl -sf 'http://api.openweathermap.org/data/2.5/weather?APPID='"${_key}"'&id='"${_cit}"'&units='"${_uni}")
-    _for=$(curl -sf 'http://api.openweathermap.org/data/2.5/forecast?APPID='"${_key}"'&id='"${_cit}"'&units='"${_uni}"'cnt=1')
+    _cur=$(curl -sf 'http://api.openweathermap.org/data/2.5/weather?APPID='"${_key}"'&q='"${_cit}"'&units='"${_uni}")
+    _for=$(curl -sf 'http://api.openweathermap.org/data/2.5/forecast?APPID='"${_key}"'&q='"${_cit}"'&units='"${_uni}"'cnt=1')
+    _uvi=$(curl -sf 'http://api.openweathermap.org/data/2.5/uvi?APPID='"${_key}"'&q='"${_cit}")
 else
     _loc=$(curl -sf 'https://location.services.mozilla.com/v1/geolocate?key=geoclue')
     if [ ! -z "${_loc}" ]
@@ -28,11 +25,17 @@ else
         _lon="$(echo "${_loc}" | jq '.location.lng')"
         _cur=$(curl -sf 'http://api.openweathermap.org/data/2.5/weather?appid='"${_key}"'&lat='"${_lat}"'&lon='"$_lon"'&units='"${_uni}")
         _for=$(curl -sf 'http://api.openweathermap.org/data/2.5/forecast?APPID='"${_key}"'&lat='"${_lat}"'&lon='"${_lon}"'&units='"${_uni}"'&cnt=1')
+        _uvi=$(curl -sf 'http://api.openweathermap.org/data/2.5/uvi?appid='"${_key}"'&lat='"${_lat}"'&lon='"$_lon")
+    else
+        _id="5128581" # Fallback city is New York
+        _cur=$(curl -sf 'http://api.openweathermap.org/data/2.5/weather?APPID='"${_key}"'&id='"${_id}"'&units='"${_uni}")
+        _for=$(curl -sf 'http://api.openweathermap.org/data/2.5/forecast?APPID='"${_key}"'&id='"${_id}"'&units='"${_uni}"'cnt=1')
+        _uvi=$(curl -sf 'http://api.openweathermap.org/data/2.5/uvi?APPID='"${_key}"'&id='"${_id}")
     fi
 fi
 
 # If the things don't exit, quit
-( [ ! -z "${_cur}" ] && [ ! -z "${_for}" ] ) || exit
+[ ! -z "${_cur}" ] || ( echo "<span color=${_col}></span>" && exit )
 
 
 # FUNCTIONS
@@ -430,4 +433,14 @@ prompt_pressure_trend () {
     fi
 }
 
-echo "$(prompt_temp_trend) $(prompt_humidity) $(prompt_suntime)"
+
+
+#-----UV Index-----#
+prompt_uv_index () {
+    _uvi_ico="<span color=${_col}>碌</span>"
+    _uvi_txt="$(echo "${_uvi}" | jq -r '."value"')"
+    [ "${_uvi_txt}" == "null" ] || echo "${_uvi_ico} ${_uvi_txt}"
+}
+
+
+echo "$(prompt_temp_trend) $(prompt_humidity) $(prompt_uv_index) $(prompt_suntime)"

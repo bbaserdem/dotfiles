@@ -30,16 +30,12 @@ ln -s ~/.config/gtk2rc ~/.gtkrc-2.0
 [ -e '~/.tmux.conf' ] && rm ~/.tmux.conf
 ln -s ~/.config/tmux.conf ~/.tmux.conf
 
-
 [ -e '~/.zshenv' ] && rm ~/.zshenv
 [ -e '~/.zprofile' ] && rm ~/.zprofile
 [ -e '~/.zshrc' ] && rm ~/.zshrc
 [ -e '~/.zlogin' ] && rm ~/.zlogin
 [ -e '~/.zlogout' ] && rm ~/.zlogout
 ln -s ~/.config/zsh/zshenv ~/.zshenv
-
-[ -e '~/.mpdscribble' ] && rm ~/.mpdscribble
-ln -s ~/.config/mpdscribble ~/.mpdscribble
 
 [ -e '~/.xinitrc' ] && rm ~/.xinitrc
 [ -e '~/.xserverrrc' ] && rm ~/.xserverrc
