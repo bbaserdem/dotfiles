@@ -17,7 +17,7 @@ x-scheme-handler/trash=nemo.desktop
 application/pdf=libreoffice-writer.desktop;
 
 [Default Applications]
-application/pdf=org.pwmt.zathura-pdf-mudpf.desktop
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
 text/plain=nvim.desktop
 image/jpeg=ristretto.desktop
 image/gif=ristretto.desktop;
