@@ -12,9 +12,16 @@ fi
 autoload bashcompinit
 bashcompinit
 
+gitsync () {
+    [ -z "${1}" ] && $1="$(pwd)"
+    git -C $1 add -A
+    git -C $1 commit -m "Auto-sync: $(date +%Y-%m-%d_%H:%M:%S)"
+    git -C $1 push
+}
+
 # Put aliases here
 alias config='git -C $XDG_CONFIG_HOME'
-alias config-sync='git -C $XDG_CONFIG_HOME add -A ; git -C $XDG_CONFIG_HOME commit -m "Auto-sync" ; git -C $XDG_CONFIG_HOME push'
+alias config-sync='gitsync $XDG_CONFIG_HOME'
 alias hopper-mount='sshfs batu@hopper.cshl.edu:/home/batu ~/Remote/Hopper -o allow_other'
 alias work-mount='sshfs silverbluep@sbpworkstation.cshl.edu:/home/silverbluep ~/Remote/Work -o allow_other'
 alias hopper-rdp='rdesktop -K -g 1808x1032 -z -r sound:off -u batu hopper.cshl.edu'
