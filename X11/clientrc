@@ -10,17 +10,27 @@ fi
 
 # Turn off system beep
 xset -b
+
 # This is to fix the xdg_gnome_session stuff from crashing
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
 # Fix missing mouse pointer issues
 xsetroot -cursor_name left_ptr
 
-# Where magic happens
-_DISPLAY="$(systemd-escape -- "$DISPLAY")"
-trap "rm -f $(printf '%q' "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}")" EXIT
-mkfifo "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}"
+# Pipe name
+_fifo="${XDG_RUNTIME_DIR}/x11-wm@${DISPLAY}"
 
-cat < "${XDG_RUNTIME_DIR}/x11-wm@${_DISPLAY}" &
-systemctl --user start "X11@${_DISPLAY}.target" &
+# Make sure the FIFO gets removed if killed early
+trap "rm -f ${_fifo}" EXIT
+
+# Open the named pipe
+mkfifo "${_fifo}"
+
+# Keep this part open until those that open the pipe are terminated
+cat < "${_fifo}" &
+systemctl --user start "X11@${DISPLAY}.target" &
 wait
-systemctl --user stop "X11@${_DISPLAY}.target"
+systemctl --user stop "X11@${DISPLAY}.target"
+
+# Clear the FIFO pipe for further usage
+rm -f "${_fifo}"

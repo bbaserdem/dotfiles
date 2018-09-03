@@ -1,0 +1,37 @@
+[general]
+status_path = "~/.local/vdirsyncer/status/"
+
+[pair contacts]
+a = "contacts_local"
+b = "contacts_server"
+collections = ["from a", "from b"]
+conflict_resolution = "b wins"
+
+[pair calendar]
+a = "calendar_local"
+b = "calendar_server"
+collections = ["from a", "from b"]
+conflict_resolution = "b wins"
+metadata = ["color"]
+
+[storage contacts_local]
+type = "filesystem"
+path = "~/Documents/Contacts"
+fileext = ".vcf"
+
+[storage calendar_local]
+type = "filesystem"
+path = "~/Documents/Calendar"
+fileext = ".ics"
+
+[storage contacts_server]
+type = "carddav"
+url = "https://owncloud.example.com/remote.php/carddav/"
+username.fetch = ["command","~/.config/vdirsyncer/getarg.sh","carddav","uname"]
+password.fetch = ["command","~/.config/vdirsyncer/getarg.sh","carddav","pass" ]
+
+[storage calendar_server]
+type = "caldav"
+url = "https://owncloud.example.com/remote.php/caldav/"
+username.fetch = ["command","~/.config/vdirsyncer/getarg.sh","caldav","uname"]
+password.fetch = ["command","~/.config/vdirsyncer/getarg.sh","caldav","pass" ]
