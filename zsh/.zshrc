@@ -14,6 +14,7 @@ bashcompinit
 
 # Put aliases here
 alias config='git -C $XDG_CONFIG_HOME'
+alias config-sync='git -C $XDG_CONFIG_HOME add -A ; git -C $XDG_CONFIG_HOME commit -m "Auto-sync" ; git -C $XDG_CONFIG_HOME push'
 alias hopper-mount='sshfs batu@hopper.cshl.edu:/home/batu ~/Remote/Hopper -o allow_other'
 alias work-mount='sshfs silverbluep@sbpworkstation.cshl.edu:/home/silverbluep ~/Remote/Work -o allow_other'
 alias hopper-rdp='rdesktop -K -g 1808x1032 -z -r sound:off -u batu hopper.cshl.edu'
