@@ -5,7 +5,7 @@ configuration {
     theme: "sbpsidebar";
 
     // Application Behavior
-    modi: "window,drun,ssh,emoji";
+    modi: "window,drun,files:~/.config/rofi/filebrowser,ssh,emoji";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;

@@ -80,53 +80,58 @@ for_window [class="^.*"] border pixel 0
 gaps inner 0
 gaps outer 0
 
+# Start ncmpcpp in scratchpad
+for_window [instance="ncmpcpp_scratchpad"] floating enable
+for_window [instance="ncmpcpp_scratchpad"] move scratchpad
+exec --no-startup-id "$TERMINAL -t ncmpcpp_scratchpad --geometry 130x100 -e 'ncmpcpp --screen playlist --slave-screen visualizer'"
+
 #--------------------#
 #-----WORKSPACES-----#
 #--------------------#
 
 # Desktop 1 is for anything goes
-set $ws1 ""
+set $ws1 "1:"
 assign [class="Conky"]          $ws1
 # Desktop 2 is for web browsing
-set $ws2 "爵"
+set $ws2 "2:爵"
 assign [class="qutebrowser"]    $ws2
 assign [class="Firefox"]        $ws2
 # Desktop 3 is for terminal
-set $ws3 ""
+set $ws3 "3:"
 assign [class="Termite"]        $ws3
 # Desktop 4 is for matlab
-set $ws4 ""
+set $ws4 "4:"
 assign [class="MATLAB*"]        $ws4
 assign [class="GNU Octave"]     $ws4
 assign [class="Spyder3"]        $ws4
 assign [class="Spyder3"]        $ws4
 # Desktop 5 is for reading stuff
-set $ws5 ""
+set $ws5 "5:"
 assign [class="Zathura"]        $ws5
 assign [class="ristretto"]      $ws5
 assign [class="nemo"]           $ws5
 # Desktop 6 is for writing
-set $ws6 ""
+set $ws6 "6:"
 assign [class="libreoffice*"]   $ws6
 assign [class="Soffice"]        $ws6
 # Desktop 7 is for media viewing
-set $ws7 ""
+set $ws7 "7:"
 assign [class="mpv"]            $ws7
 assign [class="smplayer"]       $ws7
 assign [class="cantata"]        $ws7
 # Desktop 8 is for image manipulation
-set $ws8 ""
+set $ws8 "8:"
 assign [class="pdfsam"]         $ws8
 assign [class="gimp"]           $ws8
 assign [class="inkscape"]       $ws8
 assign [class="Blender"]        $ws8
 assign [class="openscad"]       $ws8
 # Desktop 9 is for Steam and games
-set $ws9 ""
+set $ws9 "9:"
 assign [class="Steam"]          $ws9
 assign [class="Stepmania"]      $ws9
 # Desktop 0 is for settings.
-set $ws0 "漣"
+set $ws0 "10:漣"
 
 
 #--------------#
@@ -162,9 +167,9 @@ bindsym $Meta+d                 exec "/usr/bin/env ~/.config/rofi/systemd"
 # Password
 bindsym $Meta+p                 exec "/usr/bin/env /usr/bin/rofi-pass"
 # Screenshot
-bindsym Print                   exec "maim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
-bindsym Shift+Print             exec "maim -i $(xdotool getactivewindow) ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
-bindsym $Alt+Print              exec "maim -s ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym Print                   exec --no-startup-id "maim ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym Shift+Print             exec --no-startup-id "maim -i $(xdotool getactivewindow) ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym $Alt+Print              exec --no-startup-id "maim -s {HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
 # Wallpaper
 bindsym $Meta+Down              exec --no-startup-id "/usr/bin/systemctl --user start wallpaper@${DISPLAY}.service"
 # Lock
@@ -289,6 +294,7 @@ mode $Gaps_In {
         bindsym Shift+minus gaps inner all minus 5
         bindsym Shift+0     gaps inner all set   0
 
+        bindsym o      mode $Gaps_Out
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -301,6 +307,7 @@ mode $Gaps_Out {
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set   0
 
+        bindsym i      mode $Gaps_In
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
