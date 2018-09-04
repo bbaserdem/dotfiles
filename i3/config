@@ -132,6 +132,8 @@ assign [class="Steam"]          $ws9
 assign [class="Stepmania"]      $ws9
 # Desktop 0 is for settings.
 set $ws0 "10:漣"
+assign [class="Pavucontrol"]    $ws0
+assign [class="Blueman-manager"] $ws0
 
 
 #--------------#

@@ -7,6 +7,6 @@ Requisite=X11@%i.target
 [Service]
 Environment=DISPLAY=%I
 Type=simple
-ExecStart=/usr/bin/env bash -c 'exec 8>%t/x11-wm@%I; echo "$DISPLAY"; exec i3'
+ExecStart=/usr/bin/env bash -c 'exec 8>%t/x11-wm@%I; echo "$DISPLAY"; exec systemd-inhibit --what=handle-power-key i3'
 ExecStop=/usr/bin/i3-msg exit ; sleep 2
 SyslogIdentifier=i3
