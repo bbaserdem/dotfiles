@@ -14,6 +14,7 @@ bashcompinit
 
 gitsync () {
     [ -z "${1}" ] && $1="$(pwd)"
+    git -C $1 pull
     git -C $1 add -A
     git -C $1 commit -m "Auto-sync: $(date +%Y-%m-%d_%H:%M:%S)"
     git -C $1 push
