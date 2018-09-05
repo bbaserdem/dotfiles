@@ -21,5 +21,5 @@ input libinput {
 bindsym Print               exec --no-startup-id "swaygrab ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
 bindsym Shift+Print         exec --no-startup-id "swaygrab --focused ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
 # Video
-bindsym $Alt+Print          exec --no-startup-id "[ -z "$(swaygrab)" ] && swaygrab --capture ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).webm || pkill swaygrab"
-bindsym $Alt+Shift+Print    exec --no-startup-id "[ -z "$(swaygrab)" ] && swaygrab --capture --focused ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).webm || pkill swaygrab"
+bindsym Mod1+Print          exec --no-startup-id "[ -z "$(swaygrab)" ] && swaygrab --capture ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).webm || pkill swaygrab"
+bindsym Mod1+Shift+Print    exec --no-startup-id "[ -z "$(swaygrab)" ] && swaygrab --capture --focused ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).webm || pkill swaygrab"
