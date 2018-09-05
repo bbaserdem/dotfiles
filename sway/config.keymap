@@ -1,0 +1,163 @@
+# vim:filetype=i3
+
+#-------------------#
+#-----LAUNCHERS-----#
+#-------------------#
+
+# Terminal
+bindsym $Meta+Return            exec "$TERMINAL"
+# Rofi (launcher)
+bindsym $Meta+space             exec "/usr/bin/rofi -show drun"
+# Daemons
+bindsym $Meta+d                 exec "/usr/bin/env ~/.config/rofi/systemd"
+# Password
+bindsym $Meta+p                 exec "/usr/bin/env /usr/bin/rofi-pass"
+# Wallpaper
+bindsym $Meta+Down              exec --no-startup-id "/usr/bin/systemctl --user start sway-wallpaper@${DISPLAY}.service"
+# Lock
+bindsym $Meta+Escape            exec "/usr/bin/systemctl --user start sway-lock@${DISPLAY}.service"
+# reload the configuration file
+bindsym $Meta+Shift+Escape      exec "/usr/bin/swaymsg reload"
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $Meta+Ctrl+Escape       exec "/usr/bin/swaymsg restart"
+# exit i3 (logs you out of your X session)
+bindsym $Meta+$Alt+Escape       exec --no-startup-id "/usr/bin/systemctl --user stop sway@${DISPLAY}.service"
+# Music controls, with signal to 2
+bindsym XF86AudioPlay           exec "mpc toggle"
+bindsym XF86AudioStop           exec "mpc stop"
+bindsym XF86AudioNext           exec "mpc next"
+bindsym XF86AudioPrev           exec "if [[ $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,\\"\\",$3); split($3,a,/:/); print a[1]*60+a[2] }') -ge 3 ]]; then mpc seek 0; else mpc prev; fi"
+# Sound controls, with signal to 1
+bindsym XF86AudioRaiseVolume    exec "/usr/bin/pamixer --increase 5"
+bindsym XF86AudioLowerVolume    exec "/usr/bin/pamixer --decrease 5"
+bindsym XF86AudioMute           exec "/usr/bin/pamixer --toggle-mute"
+# Brightness settings
+bindsym XF86MonBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_SCR s +10 ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86MonBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_SCR s 10- ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86KbdBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_KBD s +1  ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86KbdBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_KBD s 1-  ; pkill -RTMIN+3 i3blocks ;"
+
+#-----------------#
+#-----CONTROL-----#
+#-----------------#
+
+# Kill window
+bindsym $Meta+q kill
+# change focus
+bindsym $Meta+h focus left
+bindsym $Meta+j focus down
+bindsym $Meta+k focus up
+bindsym $Meta+l focus right
+# split in horizontal orientation
+bindsym $Meta+comma split h
+# split in vertical orientation
+bindsym $Meta+period split v
+# Screen modes
+bindsym $Meta+m fullscreen
+bindsym $Meta+t layout tabbed
+bindsym $Meta+f floating toggle
+bindsym $Meta+s layout stacking
+bindsym $Meta+o layout toggle split
+# Change focus between tiling/toggling
+bindsym $Meta+Shift+Down focus mode_toggle
+# Focus parent/child container
+bindsym $Meta+a focus parent
+bindsym $Meta+b focus child
+# Switch to workspace
+bindsym $Meta+Right workspace next
+bindsym $Meta+Left  workspace prev
+bindsym $Meta+1 workspace $ws1
+bindsym $Meta+2 workspace $ws2
+bindsym $Meta+3 workspace $ws3
+bindsym $Meta+4 workspace $ws4
+bindsym $Meta+5 workspace $ws5
+bindsym $Meta+6 workspace $ws6
+bindsym $Meta+7 workspace $ws7
+bindsym $Meta+8 workspace $ws8
+bindsym $Meta+9 workspace $ws9
+bindsym $Meta+0 workspace $ws0
+# Toggle scratchpad, and move windows to and from scratchpad
+bindsym $Meta+Up scratchpad show
+bindsym $Meta+Shift+Up move scratchpad
+# Move focused to workspace
+bindsym $Meta+Shift+Right move container to workspace next
+bindsym $Meta+Shift+Left  move container to workspace prev
+bindsym $Meta+Shift+1 move container to workspace $ws1
+bindsym $Meta+Shift+2 move container to workspace $ws2
+bindsym $Meta+Shift+3 move container to workspace $ws3
+bindsym $Meta+Shift+4 move container to workspace $ws4
+bindsym $Meta+Shift+5 move container to workspace $ws5
+bindsym $Meta+Shift+6 move container to workspace $ws6
+bindsym $Meta+Shift+7 move container to workspace $ws7
+bindsym $Meta+Shift+8 move container to workspace $ws8
+bindsym $Meta+Shift+9 move container to workspace $ws9
+bindsym $Meta+Shift+0 move container to workspace $ws0
+# Move workspaces between monitors
+bindsym $Meta+$Alt+Right move workspace to output right
+bindsym $Meta+$Alt+Left  move workspace to output left
+
+#---------------#
+#-----MODES-----#
+#---------------#
+
+# Resizing
+bindsym $Meta+w mode $Resize
+mode $Resize {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width  10 px or 10 ppt
+        bindsym $down       resize grow   height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow   width  10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width  10 px or 10 ppt
+        bindsym Down        resize grow   height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow   width  10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $Meta+g mode $Gaps
+mode $Gaps {
+        bindsym o      mode $Gaps_Out
+        bindsym i      mode $Gaps_In
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym 0       gaps inner current set 0 ; gaps outer current set 0 
+        bindsym Shift+0 gaps inner all     set 0 ; gaps outer all     set 0 
+}
+
+mode $Gaps_In {
+        bindsym plus  gaps inner current plus  5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set   0
+
+        bindsym Shift+plus  gaps inner all plus  5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set   0
+
+        bindsym o      mode $Gaps_Out
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode $Gaps_Out {
+        bindsym plus  gaps outer current plus  5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set   0
+
+        bindsym Shift+plus  gaps outer all plus  5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set   0
+
+        bindsym i      mode $Gaps_In
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+

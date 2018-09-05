@@ -2,7 +2,7 @@
 Type=Application
 GenericName=Restart computer using systemd
 X-GNOME-FullName=Reboot
-Keywords=reboot;restart
+Keywords=reboot;restart;power
 Categories=System
 Name=Reboot
 Comment=Restart computer using systemd

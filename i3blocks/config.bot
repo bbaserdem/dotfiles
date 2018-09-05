@@ -48,6 +48,11 @@ interval=5
 [uptime]
 interval=60
 
+# Pacman (Indigo)
+[pacman]
+interval=300
+
 # Kernel (Violet)
 [kernel]
 interval=once
+

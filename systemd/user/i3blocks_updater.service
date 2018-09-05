@@ -1,11 +1,15 @@
 [Unit]
 Description=i3blocks socket refresher
-After=i3@.service
+After=i3@.service sway@.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/env %h/.config/i3blocks/updater
+ExecStop=/usr/bin/env %h/.config/i3blocks/updater stop
+ExecStart=/usr/bin/env %h/.config/i3blocks/updater start
+ExecReload=/usr/bin/env %h/.config/i3blocks/updater restart
 SyslogIdentifier=i3blocks_updater
+RemainAfterExit=true
 
 [Install]
 WantedBy=i3@.service
+WantedBy=sway@.service

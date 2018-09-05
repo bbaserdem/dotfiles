@@ -4,7 +4,7 @@ Documentation=man:feh(1)
 
 [Timer]
 OnUnitActiveSec=15m
-Unit=wallpaper@%i.service
+Unit=i3-wallpaper@%i.service
 
 [Install]
 WantedBy=i3@.service

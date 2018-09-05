@@ -1,0 +1,14 @@
+[Unit]
+Description=Change wallpaper using Sway on X display %I
+Documentation=man:sway(1)
+After=sway@%i.target
+Requisite=sway@%i.target
+
+[Service]
+Environment=DISPLAY=%I
+Type=oneshot
+ExecStart=%h/.config/sway/wallpaper.sh
+SyslogIdentifier=wallpaper
+
+[Install]
+WantedBy=sway@.service

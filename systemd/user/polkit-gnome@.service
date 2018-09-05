@@ -1,7 +1,6 @@
 [Unit]
 Description=Polkit Authentication Agent (Gnome) on X display %I
-After=X11@%i.target i3@%i.target
-Requisite=X11@%i.target
+After=X11@%i.target i3@%i.service sway@%i.service
 
 [Service]
 Environment=DISPLAY=%I
@@ -11,3 +10,4 @@ SyslogIdentifier=polkit-gnome
 
 [Install]
 WantedBy=i3@.service
+WantedBy=sway@.service

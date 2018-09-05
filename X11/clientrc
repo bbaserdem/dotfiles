@@ -20,7 +20,7 @@ xsetroot -cursor_name left_ptr
 # Pipe name
 _fifo="${XDG_RUNTIME_DIR}/x11-wm@${DISPLAY}"
 
-# Make sure the FIFO gets removed if killed early
+# Make sure the pipe gets removed if killed early
 trap "rm -f ${_fifo}" EXIT
 
 # Open the named pipe

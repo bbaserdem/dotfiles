@@ -60,7 +60,9 @@ export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
 /usr/bin/systemctl --user set-environment GNUPGHOME=$GNUPGHOME
 # QT5 theme
 export QT_STYLE_OVERRIDE="gtk2"
+export QT_QPA_PLATFORMTHEME="gtk2"
 /usr/bin/systemctl --user set-environment QT_STYLE_OVERRIDE=$QT_STYLE_OVERRIDE
+/usr/bin/systemctl --user set-environment QT_QPA_PLATFORMTHEME=$QT_QPA_PLATFORMTHEME
 # Set neovim as editor
 export EDITOR=/usr/bin/nvim
 /usr/bin/systemctl --user set-environment EDITOR=$EDITOR

@@ -2,7 +2,7 @@
 Type=Application
 GenericName=Power off computer using systemd
 X-GNOME-FullName=Shutdown
-Keywords=shutdowm;poweroff
+Keywords=shutdown;poweroff;power
 Categories=System
 Name=Shutdown
 Comment=Power off computer using systemd

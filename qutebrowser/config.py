@@ -36,8 +36,8 @@ c.downloads.location.prompt = True
 # c.content.cookies.store = False
 
 config.bind( '<Ctrl-b>', 'adblock-update')
-config.bind( 'm', 'spawn mpv {url}')
-config.bind( 'M', 'hint links spawn mpv {hint-url}')
+config.bind( 'm', 'spawn--detach mpv {url}')
+config.bind( 'M', 'hint links spawn --detach mpv {hint-url}')
 
 # Time based locking
 currentTime = datetime.datetime.now()

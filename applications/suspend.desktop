@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+GenericName=Suspend computer using systemd
+X-GNOME-FullName=Suspend
+Keywords=suspend,sleep;power
+Categories=System
+Name=Suspend
+Comment=Suspend computer using systemd
+Terminal=false
+Exec=systemctl suspend
+Icon=system-suspend

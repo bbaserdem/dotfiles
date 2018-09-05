@@ -4,6 +4,15 @@
 
 _col="${col_ora}"
 
+# Check for internet
+for ((_n=0;_n<10;_n++))
+do
+    # Try to ping OoenWeatherMap API service
+    ping -c 1 -W 2 162.243.53.59 &>/dev/null
+    [ "$?" -eq "0" ] && _n=10
+    sleep 2
+done
+
 # Need a key, which I use my personal one. Please use your own if copying.
 _key="3f9128788c010e56faaa839f62ec30ad"
 # City can be defined to specify. If ocation is not available, will use this
@@ -44,6 +53,7 @@ fi
 
 #-----Temperature-----#
 get_icon() {
+    ov="$1"
     case $1 in
         01d) echo "<span foreground=${_col}></span>";;
         01n) echo "<span foreground=${_col}></span>";;
@@ -63,8 +73,8 @@ get_icon() {
         13n) echo "<span foreground=${_col}></span>";;
         50d) echo "<span foreground=${_col}></span>";;
         50n) echo "<span foreground=${_col}></span>";;
-       null) echo "<span foreground=${_col}></span>";;
-        *)   echo "<span foreground=${_col}></span>";;
+        null) echo "<span foreground=${_col}></span>";;
+        *)   echo "<span foreground=${_col}>$ov</span>";;
     esac
 }
 prompt_temp () {
@@ -79,7 +89,7 @@ prompt_temp () {
     echo "${_tem_ico_cur} ${_cur_tem}"
 }
 prompt_temp_trend () {
-    _tem_ico=""
+    _tem_ico="糖"
 
     _cur_tem="$(echo "${_cur}" | jq -r '.main."temp"' | awk '{printf("%.1f",$1)}')"
     # Check if current temperature is OK

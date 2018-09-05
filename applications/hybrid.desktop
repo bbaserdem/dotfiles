@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+GenericName=Hybrid-suspend computer using systemd
+X-GNOME-FullName=Hybrid-Suspend
+Keywords=hybrid;power
+Categories=System
+Name=Hybrid-Suspend
+Comment=Hybrid-Suspend computer using systemd
+Terminal=false
+Exec=systemctl suspend-then-hibernate
+Icon=system-suspend-hibernate
