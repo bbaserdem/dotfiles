@@ -6,9 +6,9 @@ Requisite=X11@%i.target
 
 [Service]
 Environment=DISPLAY=%I
-Type=oneshot
-ExecStart=%h/.config/X11/monitors.sh
-SyslogIdentifier=xrandr-monitors-script
+Type=simple
+ExecStart=%h/.config/X11/randrrc
+SyslogIdentifier=xrandr
 
 [Install]
 WantedBy=X11@%i.target

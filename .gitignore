@@ -115,6 +115,7 @@
 # I3: Grab all things i3
 !/i3
 !/i3/**
+/i3/config
 
 # I3BLOCKS: Grab all things i3
 !/i3blocks
@@ -174,9 +175,10 @@
 !/systemd
 !/systemd/**
 
-# SWAY: Grab all sway files
+# SWAY: Grab all sway files, except config which is dynamically generated
 !/sway
 !/sway/**
+/sway/config
 
 # TERMITE: Grab config
 !/termite

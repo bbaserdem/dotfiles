@@ -1,13 +1,12 @@
 [Unit]
 Description=Dropbox file syncing on X display %I
 Documentation=man:dropbox(1)
-After=X11@%i.target i3@%i.target
-Requisite=X11@%i.target
+After=X11@%i.target i3@%i.service sway@%i.service
 
 [Service]
 Environment=DISPLAY=%i
 Type=simple
-ExecStart=/usr/bin/env bash -c '[ -e /usr/bin/dropbox ] && /usr/bin/dropbox'
+ExecStart=/usr/bin/sh -c 'if [ -e /usr/bin/dropbox ] ; then /usr/bin/dropbox ; fi'
 SyslogIdentifier=dropbox
 Restart=on-failure
 ExecReload=/bin/kill -HUP $MAINPID
@@ -15,3 +14,4 @@ KillMode=process
 
 [Install]
 WantedBy=i3@.service
+WantedBy=sway@.service

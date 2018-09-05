@@ -2,7 +2,7 @@
 Description=Redshift display colour temperature adjustment on X display %I
 Documentation=man:redshift(1)
 Requires=geoclue-demo-agent.service
-After=geoclue-demo-agent.service X11@%i.target i3@%i.target
+After=geoclue-demo-agent.service X11@%i.target i3@%i.service
 Requisite=X11@%i.target
 
 [Service]

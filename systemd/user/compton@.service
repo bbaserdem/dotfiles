@@ -1,7 +1,7 @@
 [Unit]
 Description=Compton Compositor on X display %I
 Documentation=man:compton(1)
-After=X11@%i.target i3@%i.target
+After=X11@%i.target i3@%i.service
 Requisite=X11@%i.target
 
 [Service]

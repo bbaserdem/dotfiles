@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+GenericName=Hibernate computer using systemd
+X-GNOME-FullName=Hibernate
+Keywords=hibernate;power
+Categories=System
+Name=Hibernate
+Comment=Hibernate computer using systemd
+Terminal=false
+Exec=systemctl hibernate
+Icon=system-hibernate

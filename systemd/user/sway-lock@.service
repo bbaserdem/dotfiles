@@ -1,0 +1,11 @@
+[Unit]
+Description=Screen lock for Sway on X display %I
+Documentation=man:swaylock(1)
+After=sway@%i.target
+
+[Service]
+Environment=DISPLAY=%I
+Type=simple
+ExecStart=%h/.config/sway/lock.sh
+SyslogIdentifier=swaylock
+ExecStartPost=/bin/sleep 1
