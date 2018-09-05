@@ -1,13 +1,13 @@
 [Unit]
 Description=QT frontend for wpa_supplicant (systray) on X display %I
 Documentation=man:wpa_gui(8)
-After=X11@%i.target i3@%i.service sway@%i.service
+After=X11@%i.target i3@%i.service sway@%i.service systemd-networkd-wait-online.service
 
 [Service]
 Environment=DISPLAY=%I
 Environment=QT_STYLE_OVERRIDE="gtk2"
 Type=simple
-ExecStart=/usr/bin/sh -c 'if [ -e /usr/bin/wpa_gui ] ; then wpa_gui -t -q ; fi'
+ExecStart=/usr/bin/sh -c 'if [ -e /usr/bin/wpa_gui ] ; then /usr/bin/wpa_gui -t -q ; fi'
 Restart=on-failure
 SyslogIdentifier=wpa_gui
 

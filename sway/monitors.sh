@@ -73,4 +73,3 @@ do
     sleep .1
     reload_monitors
 done
-

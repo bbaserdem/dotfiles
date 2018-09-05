@@ -20,6 +20,17 @@ bindsym Mod1+Print              exec --no-startup-id "maim -s {HOME}/Pictures/Sc
 bindsym Mod4+c                  exec --no-startup-id "if (systemctl is-active --user --quiet compton@${DISPLAY}.service); then systemctl --user stop compton@${DISPLAY}.service; else systemctl --user start compton@${DISPLAY}.service; fi"
 # vim:filetype=i3
 
+#--------------#
+#-----KEYS-----#
+#--------------#
+
+set $Alt        Mod1
+set $Meta       Mod4
+set $Resize     ""
+set $Gaps       ""
+set $Gaps_In    ""
+set $Gaps_Out   ""
+
 #----------------#
 #-----COLORS-----#
 #----------------#
@@ -44,18 +55,6 @@ set $vio #BA8BAF
 set $bro #A16946
 
 set $tra #282828CC
-# vim:filetype=i3
-
-#--------------#
-#-----KEYS-----#
-#--------------#
-
-set $Alt        Mod1
-set $Meta       Mod4
-set $Resize     ""
-set $Gaps       ""
-set $Gaps_In    ""
-set $Gaps_Out   ""
 
 #----------------#
 #-----CONFIG-----#
@@ -198,7 +197,6 @@ assign [class="Pavucontrol"]    $ws0
 assign [class="QDBusViewer"]    $ws0
 assign [class="Blueman-manager"]    $ws0
 assign [class="Qemu-system-x86_64"] $ws0
-# vim:filetype=i3
 
 #-------------------#
 #-----LAUNCHERS-----#
@@ -305,20 +303,23 @@ bindsym $Meta+w mode $Resize
 mode $Resize {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width  10 px or 10 ppt
-        bindsym $down       resize grow   height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow   width  10 px or 10 ppt
+        # Arrange seperations with HJKL
+        bindsym h           resize shrink width  10 px or 10 ppt
+        bindsym j           resize grow   height 10 px or 10 ppt
+        bindsym k           resize shrink height 10 px or 10 ppt
+        bindsym l           resize grow   width  10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width  10 px or 10 ppt
+        # Increase size for floating windows
+        bindsym Left        resize grow   width  10 px or 10 ppt
         bindsym Down        resize grow   height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Up          resize grow   height 10 px or 10 ppt
         bindsym Right       resize grow   width  10 px or 10 ppt
+
+        # Decrease size for floating windows
+        bindsym Shift+Left  resize shrink width  10 px or 10 ppt
+        bindsym Shift+Down  resize shrink height 10 px or 10 ppt
+        bindsym Shift+Up    resize shrink height 10 px or 10 ppt
+        bindsym Shift+Right resize shrink width  10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -360,4 +361,3 @@ mode $Gaps_Out {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
