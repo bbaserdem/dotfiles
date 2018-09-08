@@ -22,26 +22,22 @@ row=7
 col=0
 
 [/home/sbp/Phone]
-row=0
-col=1
-
-[BBCC-A919]
-row=1
-col=1
+row=9
+col=0
 
 [38723ae5-3578-4941-a1b6-a81546260444]
 row=0
 col=0
 
 [Trash]
-row=3
-col=0
-
-[/]
 row=1
 col=0
 
-[/home/sbp]
+[/]
 row=2
+col=0
+
+[/home/sbp]
+row=3
 col=0
 
