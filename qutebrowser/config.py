@@ -47,6 +47,7 @@ else:
     c.content.host_blocking.enabled = False
 
 if ghn() == "spbworkstation":
+    backend = 'webkit'
     c.url.default_page = "http://intranet.cshl.edu"
     c.url.start_pages = [ "http://intranet.cshl.edu" ]
 else:
@@ -74,8 +75,8 @@ base0E = "#b294bb"
 base0F = "#a3685a"
 # set qutebrowser colors
 c.colors.completion.category.bg = base00
-c.colors.completion.category.border.bottom= base00
-c.colors.completion.category.border.top= base00
+c.colors.completion.category.border.bottom = base00
+c.colors.completion.category.border.top = base00
 c.colors.completion.category.fg = base0A
 c.colors.completion.fg = base05
 c.colors.completion.item.selected.bg = base0A
