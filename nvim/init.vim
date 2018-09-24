@@ -41,8 +41,6 @@ Plugin 'PotatoesMaster/i3-vim-syntax'
 " Plugin 'numirias/semshi'
 " Grammar checker
 Plugin 'rhysd/vim-grammarous'
-" Taskwarrior plugin
-Plugin 'farseer90718/vim-taskwarrior'
 " After all plugins...
 call vundle#end()
 filetype plugin indent on
