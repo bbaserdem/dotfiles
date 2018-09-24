@@ -33,7 +33,7 @@ unhdr_order *                           # some distros order things by default
 hdr_order from: to: cc: date: subject:  # and in this order
 set sendmail_wait = 0                   # Mail send delay
 unset record                            # A copy will be generated on mail server
-set signature = $XDG_CONFIG_HOME/neomutt/signature
+set signature = ~/Documents/Mail/Signature
 
 #-----Pager (mail view)-----#
 set mailcap_path = $XDG_CONFIG_HOME/neomutt/mailcap
@@ -58,7 +58,7 @@ set mail_check_stats = yes          # Get mail statistics (for sidebar)
 set mail_check_stats_interval = 30  # Mail stat checking interval
 set move = no                       # Dont move around read mails
 set quit = ask-yes                  # Ask before exit
-set tmpdir = ~/.mail/temp           # Where to store temp files
+set tmpdir = ~/.cache/neomutt       # Where to store temp files
 set timeout = 5                     # Timeaut for user input
 set thorough_search = yes           # Decode messages before using search
 set wrap = 0                        # Lines to wrap text
@@ -91,7 +91,7 @@ bind index,pager / search                 # Search features
 bind index,pager ? search-reverse
 bind index,pager n search-next
 bind index,pager N search-opposite
-macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.config/neomutt/mutt-notmuch.py -G ~/.mail/temp/search<enter><change-folder-readonly>+temp/search<enter>" "search mail (using notmuch)"
+macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.config/neomutt/mutt-notmuch.py -G ~/.cache/neomutt/search<enter><change-folder-readonly>+temp/search<enter>" "search mail (using notmuch)"
 
 # Threading
 bind index h collapse-thread
@@ -114,7 +114,7 @@ macro index,pager \Cb "<enter-command> unset pipe_decode<enter><pipe-message>ext
 #-----------------#
 #-----ACCOUNT-----#
 #-----------------#
-set folder = "~/.mail"
+set folder = "~/Documents/Mail"
 source ~/.mail/mailboxes
 set mbox_type=Maildir
 ### Msmtp settings
@@ -125,7 +125,7 @@ set spoolfile = "+Gmail/INBOX"
 set record = "+Gmail/Sent\ Mail"
 set postponed = "+Gmail/Drafts"
 ### Set system file locations
-set header_cache = ~/.mail/Gmail/headers
-set alias_file = ~/.mail/Gmail/alias
-set message_cachedir = ~/.mail/Gmail/bodies
-set certificate_file = ~/.mail/Gmail/certificates
+set header_cache = ~/Documents/Mail/Gmail/headers
+set alias_file = ~/Documents/Mail/Gmail/alias
+set message_cachedir = ~/Documents/Mail/Gmail/bodies
+set certificate_file = ~/Documents/Mail/Gmail/certificates

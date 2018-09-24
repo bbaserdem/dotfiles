@@ -19,7 +19,7 @@ postsynchook = ~/.config/notmuch new
 
 [Repository Gmail-local]
 type = Maildir  
-localfolders = ~/.mail/Gmail
+localfolders = ~/Documents/Mail/Gmail
 #---Fix label names---#
 nametrans = lambda f: '[Gmail]/' + f if f in ['Starred', 'Important', 'Sent Mail', 'Drafts', 'All Mail', 'Spam', 'Trash'] else f
 
@@ -41,7 +41,7 @@ folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
 [mbnames]
 #---Tell mutt the folders---#
 enabled = yes
-filename = ~/.mail/mailboxes
+filename = ~/Documents/Mail/mailboxes
 header = "mailboxes "
 peritem = "+%(accountname)s/%(foldername)s"
 sep = " "

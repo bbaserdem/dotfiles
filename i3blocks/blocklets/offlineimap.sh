@@ -3,7 +3,7 @@
 . ${XDG_CONFIG_HOME}/i3blocks/colors.sh
 
 _col="${col_yel}"
-_new="$(find $HOME/.mail/Gmail/INBOX/new | wc -l)"
+_new="$(find $HOME/Documents/Mail/Gmail/INBOX/new | wc -l)"
 
 case $BLOCK_BUTTON in
     1)  # Toggle offlineimap on or off
