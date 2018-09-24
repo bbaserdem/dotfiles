@@ -28,11 +28,10 @@ pip install --user neovim
 pip install --user neovim-remote
 pip install --user pexpect
 pip2 install --user neovim
-if [ -d '~/.config/nvim/bundle/Vundle.vim' ]
-then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
-    nvim +PluginInstall +qall
-fi
+[ -e '~/.config/nvim/bundle' ] || mkdir ~/.config/nvim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+nvim +PluginInstall +qall
+
 ~/.config/nvim/bundle/YouCompleteMe/install.py --clang-completer --system-libclang
 read -rsp $'Press any key to continue...' -n1 key
 
