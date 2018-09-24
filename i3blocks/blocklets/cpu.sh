@@ -13,4 +13,4 @@ _per="$( echo "$(cat $_fil) $(grep 'cpu ' /proc/stat)" | awk '{ printf( "%.2f", 
 # Write stuff
 grep 'cpu ' /proc/stat > "${_fil}"
 
-echo "<span color=${_col}>${_ico}</span> ${_per}%"
+echo "<span color=${_col}>${_ico}</span> ${_per}%" | sed 's|&|&amp;|g'

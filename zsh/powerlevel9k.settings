@@ -38,4 +38,3 @@ export POWERLEVEL9K_WINDOWS_ICON=""
 export POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(history ssh context root_indicator dir dir_writable vcs rbenv nvm virtualenv)
 export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(battery time command_execution_time status background_jobs)
-

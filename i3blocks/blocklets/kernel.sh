@@ -4,4 +4,4 @@
 
 _col="${col_vio}"
 _ico=""
-echo "<span color=${_col}>${_ico}</span> $(uname -r)"
+echo "<span color=${_col}>${_ico}</span> $(uname -r)" | sed 's|&|&amp;|g'

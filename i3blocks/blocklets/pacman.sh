@@ -11,4 +11,4 @@ case $BLOCK_BUTTON in
 esac
 
 _upd="$(checkupdates | wc -l)"
-echo "<span color=${_col}>${_ico}</span> ${_upd}"
+echo "<span color=${_col}>${_ico}</span> ${_upd}" | sed 's|&|&amp;|g'

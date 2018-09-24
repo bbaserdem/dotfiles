@@ -1,9 +1,0 @@
-[Unit]
-Description=Geoclue agent for location services
-
-[Service]
-ExecStart=/usr/lib/geoclue-2.0/demos/agent
-Restart=on-failure
-
-[Install]
-WantedBy=default.target

@@ -53,8 +53,8 @@ fi
 
 #-----Temperature-----#
 get_icon() {
-    ov="$1"
-    case $1 in
+    ov="$(echo "${1}" | head -n 1 | awk '{ print $1 }')"
+    case $ov in
         01d) echo "<span foreground=${_col}></span>";;
         01n) echo "<span foreground=${_col}></span>";;
         02d) echo "<span foreground=${_col}></span>";;
@@ -74,7 +74,7 @@ get_icon() {
         50d) echo "<span foreground=${_col}></span>";;
         50n) echo "<span foreground=${_col}></span>";;
         null) echo "<span foreground=${_col}></span>";;
-        *)   echo "<span foreground=${_col}>$ov</span>";;
+        *)   echo "<span foreground=${_col}></span>";;
     esac
 }
 prompt_temp () {
@@ -453,4 +453,4 @@ prompt_uv_index () {
 }
 
 
-echo "$(prompt_temp_trend) $(prompt_humidity) $(prompt_uv_index) $(prompt_suntime)"
+echo "$(prompt_temp_trend) $(prompt_humidity) $(prompt_uv_index) $(prompt_suntime)" | sed 's|&|&amp;|g'

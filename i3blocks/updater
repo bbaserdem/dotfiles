@@ -1,20 +1,113 @@
 #!/usr/bin/bash
-# Run all updater scripts
-for _scr in $XDG_CONFIG_HOME/i3blocks/update/*
-do
-    _ins="$(/usr/bin/basename ${_scr})"
-    case $1 in
-        restart)
-            /usr/bin/systemctl --user restart   i3blocks_socket@${_ins}.service ;;
-        stop)
-            /usr/bin/systemctl --user stop      i3blocks_socket@${_ins}.service ;;
-        start)
-            /usr/bin/systemctl --user is-active i3blocks_socket@${_ins}.service &&
-            /usr/bin/systemctl --user restart   i3blocks_socket@${_ins}.service ||
-            /usr/bin/systemctl --user start     i3blocks_socket@${_ins}.service ;;
-        toggle)
-            /usr/bin/systemctl --user is-active i3blocks_socket@${_ins}.service &&
-            /usr/bin/systemctl --user stop      i3blocks_socket@${_ins}.service ||
-            /usr/bin/systemctl --user start     i3blocks_socket@${_ins}.service ;;
-    esac
-done
+
+# Updater scripts
+
+i3b_update_backlight () {
+    [ "$(pgrep -x i3b_update_backlight | wc -l)" -gt 2 ] && ( \
+        echo 'Backlight updater is already running' && exit )
+    _socket=1
+    _file="/sys/class/backlight/${BRI_SCR}/brightness"
+    while : ; do
+        [ -e "${_file}" ] || ( echo 'Backlight file not found' && sleep 60 && continue )
+	    inotifywait --quiet "${_file}" > /dev/null
+	    pkill -RTMIN+"${_socket}" i3blocks ;
+        sleep .1
+    done
+    echo 'Backlight updater is exiting'
+}
+
+i3b_update_battery () {
+    [ "$(pgrep -x i3b_update_battery | wc -l)" -gt 2 ] && ( \
+        echo 'Battery updater is already running' && exit )
+    _socket=2
+    _ac="/sys/class/power_supply/AC0/online"
+    _ba="/sys/class/power_supply/BAT0/capacity"
+    while : ; do
+	    [ -e "${_ac}" ] || ( echo 'AC power source not found' && sleep 60 && continue )
+	    [ -e "${_ba}" ] || ( echo 'Battery not found' && sleep 60 && continue )
+	    inotifywait --quiet "${_ac}" "${_ba}" > /dev/null
+	    pkill -RTMIN+"${_socket}" i3blocks ;
+        sleep .1
+    done
+    echo 'Battery updater is exiting'
+}
+
+i3b_update_mpd () {
+    [ "$(pgrep -x i3b_update_mpd | wc -l)" -gt 2 ] && ( \
+        echo 'MPD updater is already running' && exit )
+    _socket=3
+    while : ; do
+	    pgrep -x mpd > /dev/null || ( echo 'MPD is unreachable' && sleep 60 && continue )
+	    mpc idle > /dev/null
+	    pkill -RTMIN+"${_socket}" i3blocks ;
+    done
+    echo 'MPD updater is exiting'
+}
+
+i3b_update_rss () {
+    [ "$(pgrep -x i3b_update_rss | wc -l)" -gt 2 ] && ( \
+        echo 'RSS updater is already running' && exit )
+    _socket=4
+    _file="${HOME}/Documents/RSS"
+    while : ; do
+        [ -e "${_file}" ] || ( echo 'RSS file not found' && sleep 60 && continue )
+	    inotifywait --quiet "${_file}" > /dev/null
+	    pkill -RTMIN+"${_socket}" i3blocks ;
+        sleep 5
+    done
+    echo 'RSS updater is exiting'
+}
+
+i3b_update_offlineimap () {
+    [ "$(pgrep -x i3b_update_offlineimap | wc -l)" -gt 2 ] && ( \
+        echo 'Offlineimap updater is already running' && exit )
+    _socket=5
+    _file="${HOME}/.mail/Gmail/INBOX/new"
+    while : ; do
+	    [ -e "${_file}" ] || ( echo 'Mailbox not found' && sleep 60 && continue )
+	    inotifywait --quiet "${_file}" > /dev/null
+	    pkill -RTMIN+"${_socket}" i3blocks ;
+        sleep 5
+    done
+    echo 'Offlineimap updater is exiting'
+}
+
+i3b_update_pulseaudio () {
+    [ "$(pgrep -x i3b_update_pulseaudio | wc -l)" -gt 2 ] && ( \
+        echo 'Pulseaudio updater is already running' && exit )
+    _socket=6
+    /usr/bin/pactl subscribe | \
+        grep --line-buffered -e "sink" -e "'change' on server #" | \
+        while IFS= read -r line; do
+        pkill -RTMIN+"${_socket}" i3blocks ;
+    done
+    echo 'Pulseaudio updater is exiting'
+}
+
+i3b_update_calendar () {
+    [ "$(pgrep -x i3b_update_calendar | wc -l)" -gt 2 ] && ( \
+        echo 'Calendar updater is already running' && exit )
+    echo 'Calendar updater is exiting'
+}
+
+i3b_update_tasks () {
+    [ "$(pgrep -x i3b_update_tasks | wc -l)" -gt 2 ] && ( \
+        echo 'Tasks updater is already running' && exit )
+    echo 'Tasks updater is exiting'
+}
+
+# Kill all children on exit
+trap 'kill $(jobs -p)' EXIT SIGINT SIGTERM
+
+# run all updater programs and fork them
+i3b_update_backlight &
+i3b_update_battery &
+i3b_update_mpd &
+i3b_update_rss &
+i3b_update_offlineimap &
+i3b_update_pulseaudio &
+i3b_update_calendar &
+i3b_update_tasks &
+
+# Remain open for all children
+wait

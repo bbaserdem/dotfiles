@@ -12,7 +12,6 @@
 # Files to track
 !/.gitignore
 !/abcde.conf
-!/compton.conf
 !/gtk2rc
 !/install.sh
 !/matlabrc.m
@@ -115,7 +114,6 @@
 # I3: Grab all things i3
 !/i3
 !/i3/**
-/i3/config
 
 # I3BLOCKS: Grab all things i3
 !/i3blocks
@@ -145,6 +143,12 @@
 !/qutebrowser/config.py
 !/qutebrowser/quickmarks
 
+# RAMBOX: Only copy the config
+!/Rambox
+!/Rambox/config.json
+!/Rambox/themes
+!/Rambox/themes/**
+
 # RANGER: Grab my files
 !/ranger
 !/ranger/commands.py
@@ -161,7 +165,12 @@
 
 # ROFI: Grab user made files and scripts
 !/rofi
-!/rofi/*
+!/rofi/**
+/rofi/__pycache__
+
+# SCRIPTS: Grab these things
+!/scripts
+!/scripts/**
 
 # SOUNDS: Sounds grabbed from mint, sync all
 !/sounds
@@ -175,10 +184,9 @@
 !/systemd
 !/systemd/**
 
-# SWAY: Grab all sway files, except config which is dynamically generated
+# SWAY: Grab all sway files
 !/sway
 !/sway/**
-/sway/config
 
 # TERMITE: Grab config
 !/termite
@@ -220,4 +228,3 @@
 !/zsh/.zshrc
 !/zsh/powerlevel9k.settings
 !/zsh/zshenv
-

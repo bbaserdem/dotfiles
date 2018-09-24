@@ -44,22 +44,3 @@ URxvt.color15:      base07
 URxvt.foreground:   base05
 URxvt.background:   base00
 URxvt.cursorColor:  base05
-
-! i3 colorset
-i3.bl0: base00
-i3.bl1: base01
-i3.bl2: base02
-i3.bl3: base03
-i3.wh3: base04
-i3.wh2: base05
-i3.wh1: base06
-i3.wh0: base07
-i3.red: base08
-i3.ora: base09
-i3.yel: base0A
-i3.gre: base0B
-i3.cya: base0C
-i3.ind: base0D
-i3.vio: base0E
-i3.bro: base0F
-i3.tra: #202020CC

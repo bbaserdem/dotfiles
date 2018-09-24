@@ -2,10 +2,10 @@
 configuration {
 
     // Theme
-    theme: "sbpsidebar";
+    theme: "Pop-Dark";
 
     // Application Behavior
-    modi: "window,drun,files:~/.config/rofi/filebrowser,ssh,emoji";
+    modi: "window,drun,files:~/.config/rofi/filebrowser,ssh";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;
@@ -23,7 +23,7 @@ configuration {
     // View options
     font: "Iosevka,FuraCode Nerd Font Mono 12";
     width: 50;
-    lines: 10;
+    lines: 16;
     show-icons: true;
     drun-icon-theme: "Papirus-Dark";
     xoffset: 24;

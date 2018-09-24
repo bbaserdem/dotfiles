@@ -1,7 +1,0 @@
-[Unit]
-Description=i3blocks updater for module %I
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/env %h/.config/i3blocks/update/%i
-SyslogIdentifier=i3blocks_updater_%i

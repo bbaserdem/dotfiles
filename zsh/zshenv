@@ -3,10 +3,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 /usr/bin/systemctl --user set-environment XDG_CONFIG_HOME=$XDG_CONFIG_HOME
 
 # Import Path
-if [ -d "$HOME/.local/bin" ]
-then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+[ -d "$XDG_CONFIG_HOME/scripts" ] && PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 # import vim-live-latex
 if [ -d "$XDG_CONFIG_HOME/nvim/bundle/vim-live-latex-preview/bin" ]
 then
@@ -32,9 +30,10 @@ export MAKEFLAGS="-j$(nproc)"
 
 # Just MATLAB things
 # One day . . . one day MATLAB will actually do what I want it to do . . .
-export MATLAB_DIR=/opt/matlab-2018a/
+export MATLAB_DIR=/opt/matlab
+export MATLAB_LOG_DIR="~/.cache/matlab/"
 # export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
-# export LD_PRELOAD=/usr/lib/libstdc++.so
+export LD_PRELOAD="/usr/lib/libstdc++.so:/usr/lib/libfreetype.so.6"
 # export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 
 # Monitors
@@ -87,7 +86,3 @@ export TASKDATA=$HOME/Documents/Tasks/
 /usr/bin/systemctl --user set-environment TASKDATA=$TASKDATA
 export TIMEWARRIORDB=$HOME/Documents/Tasks/
 /usr/bin/systemctl --user set-environment TIMEWARRIORDB=$TIMEWARRIORDB
-# Rofi-pass
-export ROFI_PASS_CONFIG=$XDG_CONFIG_HOME/rofi/rofi-pass.conf
-/usr/bin/systemctl --user set-environment ROFI_PASS_CONFIG=$ROFI_PASS_CONFIG
-

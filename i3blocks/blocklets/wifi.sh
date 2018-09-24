@@ -57,4 +57,4 @@ else
     _upl="${tx_kib} KiB/s"
 fi
 
-echo "<span color=${_col}>${_ico}</span> ${_sid} <span color=${_col}>${_ics}</span> ${_sgn}% <span color=${_col}>${_ic1}</span> ${_upl} <span color=${_col}>${_ic2}</span> ${_dnl} <span color=${_col}>${_icp}</span> ${_ipa}"
+echo "<span color=${_col}>${_ico}</span> ${_sid} <span color=${_col}>${_ics}</span> ${_sgn}% <span color=${_col}>${_ic1}</span> ${_upl} <span color=${_col}>${_ic2}</span> ${_dnl} <span color=${_col}>${_icp}</span> ${_ipa}" | sed 's|&|&amp;|g'

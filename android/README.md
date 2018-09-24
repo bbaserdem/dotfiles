@@ -5,50 +5,85 @@ This is an organization of my android phone setup.
 ## Software
 
 Unless marked, all these apps are available through F-Droid.
-The rest can be downloaded through Yalp store.
+All Google apps are to be switched with FOSS alternatives when suitable are found.
 
-* **Fennec F-Droid**: Browser.
-* **K-9 Mail**: Mail Client.
-* **NewPipe**: Youtube.
 * **AntennaPod**: Podcasts.
-* **Yalp Store**: Download google apps.
+* **Binaural Beats**: Ambient sound
+* **Cythara**: Insturment tuner
+* **DAVdroid**: Synching CalDAV and CardDAV
+* **Editor**: Edit txt files.
+* **Fennec F-Droid**: Browser
+* **K-9 Mail**: Mail Client.
+* **Kore**: Kodi remote.
+* **LocalWifiNlpBackend**: Local NLP
+* **LocalGsmNlpBackend**: Local NLP
+* **M.A.L.P.**: Mpd remote.
+* **Meditation Assistant**: Self explanatory
+* **MozillaNlpBackend**: Mozilla network location
+* **NewPipe**: Youtube.
+* **NominatimNlpBackend**: OSM base NLP
+* **OpenKeychain**: For GNUPG.
+* **OpenWLANMap**: Enable network location
+* **OsmAnd~**: Open street maps
+* **Password Store**: Pass integration.
+* **Radiocells.org UnifiedNlp Backend**: Enable network location
+* **Simple Last.fm Scrobbler**: Scrobble music.
+* **Sky Map**: Star viewer.
+* **Survival Manual**: Nice reading thing
 * **Syncthing**: File synching.
-* **DAVdroid**: Synching contacts, calenders and tasks.
+* **Tasks**: Task management from CalDAV server.
+* **Yalp Store**: Download google apps.
 * **Vanilla Music Player**: Tasks synching.
 * **OsmAnd~**: Open street maps.
-* **M.A.L.P.**: Mpd remote.
-* **Kore**: Kodi remote.
-* **Password Store**: Pass integration.
 * **OpenKeychain**: GPG implementation.
 * **Notepad**: Text editor
 * **Simple Last.fm Scrobbler**: Music scrobbler
-* **Sky Map**: Star viewer.
-* **Cythara**: Sound tuning app.
-
 
 Google apps:
 
-* **Strong**: Workout recording.
-* **WhatsApp**: Communicating with everyone.
-* **Signal**: Communicating but more private.
+* **AnyConnect**: To connect to VPN of workplace
+* **Bitmoji**: Next generational Bitmoji
+* **BofA**: Bank of America
+* **CapitalOne**: Capital One Bank
+* **Chase**: Chase
+* **CNSTapMonitor**: CNS fitness test
+* **Connect**: Garmin device controller
+* **CVS**: Pharmacy app.
+* **Discover**: Discover Bank
+* **Dropbox**: Access files.
+* **GoneMAD Music Player**: Music app.
+* **Maps**: Google maps
+* **Mint**: Financial manager
+* **MyChart**: Mount Sinai helper
 * **MyFitnessPall**: Record calories.
-* **CNS Tap Test**: Gauge CNS stress.
-* **Garmin Connect**: Sync with Garmin watch.
-* **Google Maps**: Can't do without this.
+* **Nova Launcher**: Smooth launcher
+* **Paypal**: For paying.
+* **Signal**: Secure communication
+* **Skype**: For communication
+* **Snapseed**: Photo editor
+* **Steam Link**: For game playing
+* **Strong**: Workout recording
+* **Waze**: Travel app
+* **WhatsApp**: Communicating with everyone
+* **Yelp**: Food place finder
 
 ## Setup
 
-### OpenKeychain
+Installation should follow these steps;
 
-Using the guide online, from computer, run
+* Install LineageOS as per the guides
+* Along with lineage, flash fdroid, fdroid privilaged, yalp contemporary.
 
-```
-gpg --armor --export-secret-keys <EMAIL> | gpg --armor --symmetric --output mykey.sec.asc
-```
+### UnifiedNLP
 
+Install UnifiedNLP as a system private app, by pushing `NetworkLocation.apk`
+to `/system/priv-app/NetworkLocation.apk` by using adb as root and remounting.
+
+
+### OpenKeychain & Password Store
+
+Using the guide online, from computer, run;
+`gpg --armor --export-secret-keys <EMAIL> | gpg --armor --symmetric --output mykey.sec.asc`
 Afterwards, use `adb` to push the file, and use import on the app.
-
-### Password Store
-
 OpenKeychain should work fine with it.
-When downloaded, let the app generate a keypair, and upload to git server. (Github)
+When downloaded, upload the ssh keys using adb, and then import them.

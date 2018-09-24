@@ -19,4 +19,4 @@ echo "${_idn}" > $_file
 
 [ "${#_des}" -gt "${_len}" ] && _des="${_des:0:${_len}}…"
 
-echo '<span color='"$_col"'>'"$_ico"'</span> '"$_des"
+echo '<span color='"$_col"'>'"$_ico"'</span> '"$_des" | sed 's|&|&amp;|g'

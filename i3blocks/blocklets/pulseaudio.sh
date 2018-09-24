@@ -31,4 +31,4 @@ esac
 _val="$(pamixer --get-volume)%"
 [[ $(pamixer --get-mute) = "true" ]] && _val="<span color=${_mute}>${_val}</span>"
 
-echo "<span color=${_col}>${_ico}</span> ${_val}"
+echo "<span color=${_col}>${_ico}</span> ${_val}" | sed 's|&|&amp;|g'
