@@ -6,6 +6,15 @@
 
 # This document containst items specific to i3
 
+# Layout parser
+exec --no-startup-id "$XDG_CONFIG_HOME/i3/layout.pl"
+
+# Redshift
+exec --no-startup-id "/usr/bin/redshift-gtk"
+
+# Monitors
+exec --no-startup-id "$XDG_CONFIG_HOME/i3/monitors.sh"
+
 # Need these for gaps
 for_window [class="^.*"] border pixel 0
 
@@ -16,5 +25,4 @@ for_window [class="^.*"] border pixel 0
 bindsym Print                   exec --no-startup-id "maim ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
 bindsym Shift+Print             exec --no-startup-id "maim -i $(xdotool getactivewindow) ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
 bindsym Mod1+Print              exec --no-startup-id "maim -s {HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
-# Compton
-bindsym Mod4+c                  exec --no-startup-id "if (systemctl is-active --user --quiet compton@${DISPLAY}.service); then systemctl --user stop compton@${DISPLAY}.service; else systemctl --user start compton@${DISPLAY}.service; fi"
+bindsym $Meta+Shift+Escape      exec "$XDG_CONFIG_HOME/i3/parse_config.sh ; /usr/bin/i3-msg reload"

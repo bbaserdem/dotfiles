@@ -1,8 +1,0 @@
-#!/usr/bin/bash
-# Socket for deactivation
-_socket=3
-while : ; do
-	pgrep -x mpd > /dev/null || exit
-	mpc idle > /dev/null
-	pkill -RTMIN+"${_socket}" i3blocks ;
-done

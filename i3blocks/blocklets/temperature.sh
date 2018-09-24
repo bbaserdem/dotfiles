@@ -30,4 +30,4 @@ else
     _ico=""
 fi
 
-echo "<span color=${_col}>${_ico}</span> ${_tmp}${_cel}"
+echo "<span color=${_col}>${_ico}</span> ${_tmp}${_cel}" | sed 's|&|&amp;|g'

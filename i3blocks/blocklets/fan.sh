@@ -12,4 +12,4 @@ else
    exit
 fi
 
-echo "<span color=${_col}>${_ico}</span> ${_spe}"
+echo "<span color=${_col}>${_ico}</span> ${_spe}" | sed 's|&|&amp;|g'

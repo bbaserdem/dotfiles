@@ -24,4 +24,4 @@ else
     _ico=""
 fi
 
-echo '<span color='"$_col"'>'"$_ico"'</span> '"$_new"
+echo '<span color='"$_col"'>'"$_ico"'</span> '"$_new" | sed 's|&|&amp;|g'

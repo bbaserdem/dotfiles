@@ -26,7 +26,7 @@ _icon="<span color=${_col}></span>"
 
 if [ "$(mpc status | tail -n 2 | head -n 1 | awk '{ print $1 }')" == "[paused]" ]
 then
-    echo "${_icon} <span color=${_mute}>${_text}</span>"
+    echo "${_icon} <span color=${_mute}>${_text}</span>" | sed 's|&|&amp;|g'
 else
-    echo "${_icon} ${_text}"
+    echo "${_icon} ${_text}" | sed 's|&|&amp;|g'
 fi

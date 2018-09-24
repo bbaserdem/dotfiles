@@ -78,4 +78,4 @@ get_lunar () {
     echo "<span color=${_col}>$(get_dark "${_moon}")</span>"
 }
 
-echo "$(get_lunar) $(date '+%a %d, %b %Y')"
+echo "$(get_lunar) $(date '+%a %d, %b %Y')" | sed 's|&|&amp;|g'

@@ -1,0 +1,24 @@
+# vim:filetype=i3
+
+#-------------------#
+#-----AUTOSTART-----#
+#-------------------#
+
+# List of autostart targets so that a config without systemd can use them
+
+# Desktop independent stuff
+exec --no-startup-id "/usr/lib/geoclue-2.0/demos/agent"
+exec --no-startup-id "/usr/bin/mpd"
+exec --no-startup-id "/usr/bin/mpdscribble"
+exec --no-startup-id "/usr/bin/offlineimap"
+exec --no-startup-id "/usr/bin/syncthing"
+
+# Graphical stuff
+exec --no-startup-id "/usr/bin/blueman-applet"
+exec --no-startup-id "[ -e /usr/bin/dropbox ] && /usr/bin/dropbox"
+exec --no-startup-id "/usr/bin/dunst"
+exec --no-startup-id "$XDG_CONFIG_HOME/sway/wallpaper.sh"
+exec --no-startup-id "$XDG_CONFIG_HOME/i3blocks/updater"
+exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+exec --no-startup-id "/usr/bin/syncthing-gtk"
+exec --no-startup-id "/usr/bin/udiskie"

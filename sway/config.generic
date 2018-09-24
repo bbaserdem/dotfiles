@@ -63,7 +63,6 @@ font pango:sans-serif 12px
 gaps inner 0
 gaps outer 0
 
-# Window colors
 # Property Name         Border  BG      Text    Ind.    Child Border
 client.focused          $wh0    $bl3    $cya    $bl1    $bl2
 client.focused_inactive $bl0    $bl2    $ind    $bl1    $bl2
@@ -74,6 +73,8 @@ client.background       $bl0
 
 # Use to frag floating with mod
 floating_modifier $Meta
+# Make default mode as stacking
+# workspace_layout tabbed
 
 #--------------------#
 #-----STATUS BAR-----#
@@ -156,6 +157,9 @@ exec --no-startup-id "$TERMINAL -t ncmpcpp_scratchpad --geometry 130x100 -e 'ncm
 # Desktop 1 is for anything goes
 set $ws1 "1:"
 assign [class="Conky"]          $ws1
+assign [class="Skype"]          $ws1
+for_window [class="Skype"]      layout tabbed
+assign [class="Rambox"]         $ws1
 # Desktop 2 is for web browsing
 set $ws2 "2:爵"
 assign [class="qutebrowser"]    $ws2
@@ -165,9 +169,14 @@ set $ws3 "3:"
 assign [class="Termite"]        $ws3
 # Desktop 4 is for matlab
 set $ws4 "4:"
+assign [class="kitty"]          $ws4
 assign [class="MATLAB*"]        $ws4
 assign [class="GNU Octave"]     $ws4
 assign [class="Spyder"]         $ws4
+for_window [class="kitty"]      layout stacking
+for_window [class="MATLAB*"]    layout stacking
+for_window [class="GNU Octave"] layout stacking
+for_window [class="Spyder"]     layout stacking
 # Desktop 5 is for reading stuff
 set $ws5 "5:"
 assign [class="Zathura"]        $ws5
@@ -209,19 +218,21 @@ bindsym $Meta+Return            exec "$TERMINAL"
 # Rofi (launcher)
 bindsym $Meta+space             exec "/usr/bin/rofi -show drun"
 # Daemons
-bindsym $Meta+d                 exec "/usr/bin/env ~/.config/rofi/systemd"
+bindsym $Meta+d                 exec "$XDG_CONFIG_HOME/rofi/systemd"
 # Password
-bindsym $Meta+p                 exec "/usr/bin/env /usr/bin/rofi-pass"
+bindsym $Meta+p                 exec "$XDG_CONFIG_HOME/rofi/pass"
+# Emoji
+bindsym $Meta+e                 exec "/usr/bin/rofi -show emoji -modi emoji"
 # Wallpaper
-bindsym $Meta+Down              exec --no-startup-id "/usr/bin/systemctl --user start sway-wallpaper@${DISPLAY}.service"
+bindsym $Meta+c                 exec "$XDG_CONFIG_HOME/sway/wallpaper.sh"
 # Lock
-bindsym $Meta+Escape            exec "/usr/bin/systemctl --user start sway-lock@${DISPLAY}.service"
+bindsym $Meta+Escape            exec "$XDG_CONFIG_HOME/sway/lock.sh"
 # reload the configuration file
 bindsym $Meta+Shift+Escape      exec "/usr/bin/swaymsg reload"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $Meta+Ctrl+Escape       exec "/usr/bin/swaymsg restart"
 # exit i3 (logs you out of your X session)
-bindsym $Meta+$Alt+Escape       exec --no-startup-id "/usr/bin/systemctl --user stop sway@${DISPLAY}.service"
+bindsym $Meta+$Alt+Escape       exec "/usr/bin/swaymsg exit"
 # Music controls, with signal to 2
 bindsym XF86AudioPlay           exec "mpc toggle"
 bindsym XF86AudioStop           exec "mpc stop"
@@ -236,6 +247,8 @@ bindsym XF86MonBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_SCR s +10 ;
 bindsym XF86MonBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_SCR s 10- ; pkill -RTMIN+3 i3blocks ;"
 bindsym XF86KbdBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_KBD s +1  ; pkill -RTMIN+3 i3blocks ;"
 bindsym XF86KbdBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_KBD s 1-  ; pkill -RTMIN+3 i3blocks ;"
+# Power Button
+bindsym XF86PowerOff            exec "$XDG_CONFIG_HOME/sway/power.sh"
 
 #-----------------#
 #-----CONTROL-----#
@@ -243,23 +256,26 @@ bindsym XF86KbdBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_KBD s 1-  ;
 
 # Kill window
 bindsym $Meta+q kill
+# Toggle scratchpad, and move windows to and from scratchpad
+bindsym F12 scratchpad show
+bindsym Shift+F12 move scratchpad
 # change focus
 bindsym $Meta+h focus left
 bindsym $Meta+j focus down
 bindsym $Meta+k focus up
 bindsym $Meta+l focus right
-# split in horizontal orientation
-bindsym $Meta+comma split h
-# split in vertical orientation
-bindsym $Meta+period split v
+bindsym $Meta+Up   focus up
+bindsym $Meta+Down focus down
+# Split the container and toggle the orientation
+bindsym $Meta+period split toggle
 # Screen modes
 bindsym $Meta+m fullscreen
 bindsym $Meta+t layout tabbed
 bindsym $Meta+f floating toggle
 bindsym $Meta+s layout stacking
 bindsym $Meta+o layout toggle split
-# Change focus between tiling/toggling
-bindsym $Meta+Shift+Down focus mode_toggle
+# Change focus to tiling/floating
+bindsym $Meta+Shift+f focus mode_toggle
 # Focus parent/child container
 bindsym $Meta+a focus parent
 bindsym $Meta+b focus child
@@ -276,9 +292,6 @@ bindsym $Meta+7 workspace $ws7
 bindsym $Meta+8 workspace $ws8
 bindsym $Meta+9 workspace $ws9
 bindsym $Meta+0 workspace $ws0
-# Toggle scratchpad, and move windows to and from scratchpad
-bindsym $Meta+Up scratchpad show
-bindsym $Meta+Shift+Up move scratchpad
 # Move focused to workspace
 bindsym $Meta+Shift+Right move container to workspace next
 bindsym $Meta+Shift+Left  move container to workspace prev

@@ -20,6 +20,15 @@ gitsync () {
     git -C $1 push
 }
 
+wttr_weather () {
+    if [ -z "${1}" ]
+    then
+        curl 'https://wttr.in/?w'
+    else
+        curl 'https://wttr.in/'"$(echo $1)"
+    fi
+}
+
 # Put aliases here
 alias config='git -C $XDG_CONFIG_HOME'
 alias config-sync='gitsync $XDG_CONFIG_HOME'
@@ -34,9 +43,9 @@ alias py='bpython'
 alias vim='nvim'
 alias mutt='neomutt'
 alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-5.0/etc/bashrc"
-alias calender="calcurse -D ~/Documents/Calender"
-alias cp-rsync="rsync -avzh --append-verify"
-alias ncmpc="ncmpcpp --screen playlist --slave-screen visualizer"
+alias cp-rsync='rsync -avzh --append-verify'
+alias ncmpc='ncmpcpp --screen playlist --slave-screen visualizer'
+alias weather='wttr_weather'
 
 # Powerlevel9k things
 source $ZDOTDIR/powerlevel9k.settings

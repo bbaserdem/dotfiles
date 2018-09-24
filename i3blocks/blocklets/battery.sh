@@ -43,4 +43,4 @@ else
     _ico=${_ico:0:1}
 fi
 
-echo "<span color=${_col}>${_ico}</span> ${_num}%"
+echo "<span color=${_col}>${_ico}</span> ${_num}%" | sed 's|&|&amp;|g'
