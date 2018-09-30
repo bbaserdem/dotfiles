@@ -228,7 +228,7 @@ bindsym $Meta+d                 exec "$XDG_CONFIG_HOME/rofi/systemd"
 # Password
 bindsym $Meta+p                 exec "$XDG_CONFIG_HOME/rofi/pass"
 # Emoji
-bindsym $Meta+e                 exec "$XDG_CONFIG_HOME/rofi/emoji"
+bindsym $Meta+e                 exec "/usr/bin/rofi -show emoji -modi emoji"
 # Wallpaper
 bindsym $Meta+c                 exec "$XDG_CONFIG_HOME/i3/wallpaper.sh"
 # Lock
@@ -405,4 +405,3 @@ exec --no-startup-id "$XDG_CONFIG_HOME/i3blocks/updater"
 exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 exec --no-startup-id "/usr/bin/syncthing-gtk"
 exec --no-startup-id "/usr/bin/udiskie"
-exec --no-startup-id "[ -e /usr/bin/wpa_gui ] && /usr/bin/wpa_gui -t -q -i wifi"
