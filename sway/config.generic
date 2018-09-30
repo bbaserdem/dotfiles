@@ -88,7 +88,7 @@ bar {
     position top
     output primary
     swaybar_command "swaybar"
-    font pango:Iosevka Nerd Font 14px
+    font pango:Iosevka 14px
     separator_symbol 
     wrap_scroll yes
     workspace_buttons yes
@@ -118,7 +118,7 @@ bar {
     position bottom
     output primary
     swaybar_command "swaybar"
-    font pango:Iosevka Nerd Font 14px
+    font pango:Iosevka 14px
     separator_symbol 
     wrap_scroll yes
     workspace_buttons no
