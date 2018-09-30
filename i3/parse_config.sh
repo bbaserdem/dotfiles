@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-rm $XDG_CONFIG_HOME/i3/config
+[ -e $XDG_CONFIG_HOME/i3/config ] && rm $XDG_CONFIG_HOME/i3/config
 
 # Get i3-specific stuff
 cp $XDG_CONFIG_HOME/i3/config.i3 $XDG_CONFIG_HOME/i3/config
