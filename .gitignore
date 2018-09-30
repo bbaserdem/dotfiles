@@ -111,9 +111,10 @@
 !/nvim/ginit.vim
 !/nvim/init.vim
 
-# I3: Grab all things i3
+# I3: Grab all things i3, but not config (dynamically generated)
 !/i3
 !/i3/**
+/i3/config
 
 # I3BLOCKS: Grab all things i3
 !/i3blocks
