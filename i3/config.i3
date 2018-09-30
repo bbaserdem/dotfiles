@@ -16,7 +16,7 @@ exec --no-startup-id "/usr/bin/redshift-gtk"
 exec --no-startup-id "$XDG_CONFIG_HOME/i3/monitors.sh"
 
 # Need these for gaps
-for_window [class="^.*"] border pixel 0
+# for_window [class="^.*"] border pixel 0
 
 #--------------------#
 #-----KEYMAP: i3-----#
