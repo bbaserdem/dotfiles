@@ -25,6 +25,7 @@ case "$_def" in
     *headphones*)       _ico="" ;;
     *speaker*)          _ico="蓼" ;;
     *network*)          _ico="爵" ;;
+    *analog*)           _ico="" ;;
     *)                  _ico="" ;;
 esac
 

@@ -115,7 +115,7 @@ macro index,pager \Cb "<enter-command> unset pipe_decode<enter><pipe-message>ext
 #-----ACCOUNT-----#
 #-----------------#
 set folder = "~/Documents/Mail"
-source ~/.mail/mailboxes
+source ~/Documents/Mail/mailboxes
 set mbox_type=Maildir
 ### Msmtp settings
 set from = "baserdem.batuhan@gmail.com"
