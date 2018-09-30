@@ -24,9 +24,12 @@ _icon="<span color=${_col}></span>"
 
 [ "${#_text}" -gt "${_len}" ] && _text="${_text:0:${_len}}…"
 
-if [ "$(mpc status | tail -n 2 | head -n 1 | awk '{ print $1 }')" == "[paused]" ]
+if   ["$(mpc status | tail -n 2 | head -n 1 | awk '{print $1}')" == "[paused]"]
 then
     echo "${_icon} <span color=${_mute}>${_text}</span>" | sed 's|&|&amp;|g'
+elif ["$(mpc status | tail -n 2 | head -n 1 | awk '{print $1}')" == "volume:"]
+then
+    echo "${_icon} <span color=${_mute}>Empty playlist…</span>" | sed 's|&|&amp;|g'
 else
     echo "${_icon} ${_text}" | sed 's|&|&amp;|g'
 fi

@@ -11,9 +11,9 @@ markup=pango
 #-------------------#
 
 # Taskwarrior (brown)
-[taskwarrior]
-interval=once
-signal=7
+#[taskwarrior]
+#interval=once
+#signal=7
 
 # Music player daemon notification (red)
 [mpd]
