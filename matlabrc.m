@@ -5,3 +5,9 @@ set(0,'DefaultFigureWindowStyle','docked')
 
 % Disable horizontal scrolling
 % !synclient HorizTwoFingerScroll=0
+
+% Include base16 colorscheme setter
+addpath('Documents/MATLAB/Base16/')
+
+darkmode = @() apply_colors('default-dark',1,0);
+lightmode = @() apply_colors('default-light',1,0);

@@ -16,7 +16,7 @@ exec --no-startup-id "/usr/bin/redshift-gtk"
 exec --no-startup-id "$XDG_CONFIG_HOME/i3/monitors.sh"
 
 # Need these for gaps
-for_window [class="^.*"] border pixel 0
+# for_window [class="^.*"] border pixel 0
 
 #--------------------#
 #-----KEYMAP: i3-----#
@@ -152,9 +152,8 @@ bar {
 #-----------------#
 
 # Start ncmpcpp in scratchpad
-for_window [instance="ncmpcpp_scratchpad"] floating enable
-for_window [instance="ncmpcpp_scratchpad"] move scratchpad
-exec --no-startup-id "$TERMINAL -t ncmpcpp_scratchpad --geometry 130x100 -e 'ncmpcpp --screen playlist --slave-screen visualizer'"
+for_window [title="drop_music"] floating enable, resize set 1920px 420px, move position 0px 23px, move scratchpad, sticky enable
+exec --no-startup-id "$TERMINAL -t 'drop_music' -e 'ncmpcpp --screen playlist --slave-screen visualizer'"
 
 #--------------------#
 #-----WORKSPACES-----#
@@ -228,7 +227,7 @@ bindsym $Meta+d                 exec "$XDG_CONFIG_HOME/rofi/systemd"
 # Password
 bindsym $Meta+p                 exec "$XDG_CONFIG_HOME/rofi/pass"
 # Emoji
-bindsym $Meta+e                 exec "$XDG_CONFIG_HOME/rofi/emoji"
+bindsym $Meta+e                 exec "/usr/bin/rofi -show emoji -modi emoji"
 # Wallpaper
 bindsym $Meta+c                 exec "$XDG_CONFIG_HOME/i3/wallpaper.sh"
 # Lock
@@ -405,4 +404,3 @@ exec --no-startup-id "$XDG_CONFIG_HOME/i3blocks/updater"
 exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 exec --no-startup-id "/usr/bin/syncthing-gtk"
 exec --no-startup-id "/usr/bin/udiskie"
-exec --no-startup-id "[ -e /usr/bin/wpa_gui ] && /usr/bin/wpa_gui -t -q -i wifi"
