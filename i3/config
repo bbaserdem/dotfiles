@@ -99,7 +99,7 @@ bar {
     position top
     output primary
     i3bar_command "i3bar -t"
-    font pango:Iosevka Nerd Font 14px
+    font pango:Iosevka 14px
     separator_symbol 
     workspace_buttons yes
     strip_workspace_numbers yes
@@ -126,7 +126,7 @@ bar {
     position bottom
     output primary
     i3bar_command "i3bar -t"
-    font pango:Iosevka Nerd Font 14px
+    font pango:Iosevka 14px
     separator_symbol 
     workspace_buttons no
     strip_workspace_numbers yes
