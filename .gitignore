@@ -25,9 +25,10 @@
 !/android
 !/android/**
 
-# APPLICATIONS: Accept all
+# APPLICATIONS: Accept all except matlab override
 !/applications
 !/applications/**
+/applications/matlab.desktop
 
 # ARCH: Accept all
 !/arch
