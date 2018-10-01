@@ -202,6 +202,7 @@ assign [class="Stepmania"]      $ws9
 # Desktop 0 is for settings.
 set $ws0 "10:漣"
 assign [class="Pavucontrol"]    $ws0
+assign [class="Syncthing GTK"]  $ws0
 assign [class="QDBusViewer"]    $ws0
 assign [class="Blueman-manager"]    $ws0
 assign [class="Qemu-system-x86_64"] $ws0
