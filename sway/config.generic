@@ -57,7 +57,7 @@ set $tra #282828CC
 #----------------#
 
 # Fonts
-font pango:sans-serif 12px
+font pango:sans-serif 11px
 
 # Gaps
 gaps inner 0
