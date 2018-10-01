@@ -8,3 +8,6 @@ set(0,'DefaultFigureWindowStyle','docked');
 
 % Include base16 colorscheme setter
 addpath('Documents/MATLAB/Base16/');
+
+% Change directory
+cd('~/Research/');

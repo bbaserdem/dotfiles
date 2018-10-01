@@ -84,16 +84,29 @@ i3b_update_pulseaudio () {
     echo 'Pulseaudio updater is exiting'
 }
 
-i3b_update_calendar () {
-    [ "$(pgrep -x i3b_update_calendar | wc -l)" -gt 2 ] && ( \
-        echo 'Calendar updater is already running' && exit )
-    echo 'Calendar updater is exiting'
+i3b_update_date () {
+    [ "$(pgrep -x i3b_update_date | wc -l)" -gt 2 ] && ( \
+        echo 'Date updater is already running' && exit )
+    echo 'Date updater is exiting'
+    _socket=7
+    while : ; do
+        sleep "$(( $(date -d "tomorrow 0" +%s) - $(date +%s) + 5 ))"
+        pkill -RTMIN+"${_socket}" i3blocks ;
+    done
 }
 
 i3b_update_tasks () {
     [ "$(pgrep -x i3b_update_tasks | wc -l)" -gt 2 ] && ( \
         echo 'Tasks updater is already running' && exit )
     echo 'Tasks updater is exiting'
+    _socket=8
+}
+
+i3b_update_calendar () {
+    [ "$(pgrep -x i3b_update_calendar | wc -l)" -gt 2 ] && ( \
+        echo 'Calendar updater is already running' && exit )
+    echo 'Calendar updater is exiting'
+    _socket=8
 }
 
 # Kill all children on exit
@@ -106,6 +119,7 @@ i3b_update_mpd &
 i3b_update_rss &
 i3b_update_offlineimap &
 i3b_update_pulseaudio &
+i3b_update_date &
 i3b_update_calendar &
 i3b_update_tasks &
 
