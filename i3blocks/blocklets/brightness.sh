@@ -20,4 +20,4 @@ case $BLOCK_BUTTON in
     5) /usr/bin/brightnessctl -d $BRI_SCR s 10- >/dev/null ;;
 esac
 
-echo '<span color='"$_col"'>'"$_icon"'</span> '"$_val"'%' | sed 's|&|&amp;|g'
+[ -z "${_val}" ] || echo '<span color='"$_col"'>'"$_icon"'</span> '"$_val"'%' | sed 's|&|&amp;|g'
