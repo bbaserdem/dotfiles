@@ -10,10 +10,15 @@ markup=pango
 #-----BLOCKLETS-----#
 #-------------------#
 
-# Taskwarrior (brown)
-#[taskwarrior]
+# Calendar (brown)
+#[calendar]
 #interval=once
-#signal=7
+#signal=9
+
+# Tasks (brown)
+#[tasks]
+#interval=once
+#signal=8
 
 # Music player daemon notification (red)
 [mpd]
@@ -45,7 +50,8 @@ interval=1
 
 # Date (indigo)
 [date]
-interval=60
+interval=once
+signal=7
 
 # Brightness (violet)
 [brightness]

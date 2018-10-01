@@ -9,6 +9,7 @@ if [ $(hostname) = 'sbplaptop' ]
 then
     _tmp="$(sensors | grep 'Tdie:' | awk '{print $2}' | sed 's/+\(.*\)°C/\1/')"
 else
+    _tmp="$(sensors | grep '°C' | awk '{print $3}' | sed 's/+\(.*\)°C/\1/')"
     return
 fi
 
