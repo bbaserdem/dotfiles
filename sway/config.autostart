@@ -8,8 +8,9 @@
 
 # Desktop independent stuff
 exec --no-startup-id "/usr/lib/geoclue-2.0/demos/agent"
+exec --no-startup-id "/usr/bin/gpg-agent --daemon"
 exec --no-startup-id "/usr/bin/mpd"
-exec --no-startup-id "/usr/bin/mpdscribble"
+exec --no-startup-id "/usr/bin/mpdscribble --conf $XDG_CONFIG_HOME/mpdscribble/mpdscribble.conf"
 exec --no-startup-id "/usr/bin/offlineimap"
 exec --no-startup-id "/usr/bin/syncthing"
 
