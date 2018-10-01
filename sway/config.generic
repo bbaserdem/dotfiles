@@ -86,7 +86,6 @@ bar {
     pango_markup enabled
     id bar-top
     position top
-    output primary
     swaybar_command "swaybar"
     font pango:Iosevka 14px
     separator_symbol 
@@ -116,7 +115,6 @@ bar {
     pango_markup enabled
     id bar-bot
     position bottom
-    output primary
     swaybar_command "swaybar"
     font pango:Iosevka 14px
     separator_symbol 
@@ -125,7 +123,7 @@ bar {
     strip_workspace_numbers yes
     binding_mode_indicator yes
 
-    tray_output all
+    tray_output primary
     icon_theme hicolor
 
     colors {
