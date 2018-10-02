@@ -20,6 +20,7 @@
 !/README.md
 !/tmux.conf
 !/user-dirs.dirs
+!/mpdscribble-confgen.sh
 
 # ANDROID: Accept all
 !/android
@@ -67,6 +68,11 @@
 !/htop
 !/htop/htoprc
 
+# ISYNC: Get only the config and password generator
+!/mbsync
+!/mbsync/config
+!/mbsync/passgen.sh
+
 # KITTY: Grab the conf files
 !/kitty
 !/kitty/*.conf
@@ -74,10 +80,6 @@
 # MPD: Only get config
 !/mpd
 !/mpd/mpd.conf
-
-# MPDSCRIBBLE: Only grab the example config
-!/mpdscribble
-!/mpdscribble/mpdscribble.conf.example
 
 # MPV: Only grab config
 !/mpv
