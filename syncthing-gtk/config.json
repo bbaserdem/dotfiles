@@ -1,7 +1,7 @@
 {
     "animate_icon": true,
     "autokill_daemon": 0,
-    "autostart_daemon": 0,
+    "autostart_daemon": 1,
     "daemon_priority": 0,
     "file_browser": "explore",
     "folder_as_path": true,
@@ -19,7 +19,6 @@
     "st_autoupdate": false,
     "syncthing_arguments": "",
     "syncthing_binary": "/usr/bin/syncthing",
-    "use_inotify": [],
     "use_old_header": false,
     "window_position": null
 }
