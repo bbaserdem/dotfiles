@@ -6,9 +6,6 @@
 
 # This document containst items specific to i3
 
-# Layout parser
-exec --no-startup-id "$XDG_CONFIG_HOME/i3/layout.pl"
-
 # Redshift
 exec --no-startup-id "/usr/bin/redshift-gtk"
 
