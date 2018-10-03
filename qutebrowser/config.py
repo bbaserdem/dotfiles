@@ -1,8 +1,6 @@
 from socket import gethostname as ghn
 import datetime
 
-
-
 # Set things like c.tabs.position = "left"
 c.url.searchengines = {
         "DEFAULT" : "https://duckduckgo.com/?q={}",
@@ -47,12 +45,11 @@ if (currentTime.hour>=7) & (currentTime.hour<20):
 else:
     c.content.host_blocking.enabled = False
 
-hname = ghn()
-if hname == "spbworkstation":
+if ghn() == "spbworkstation":
     c.url.default_page = "http://intranet.cshl.edu"
     c.url.start_pages = ["http://intranet.cshl.edu"]
 else:
-    c.url.start_pages = ["https://start.duckduckgo.com/"]
+    c.url.default_page = "https://start.duckduckgo.com/"
     c.url.start_pages = ["https://start.duckduckgo.com/"]
 
 # base16-qutebrowser (https://github.com/theova/base16-qutebrowser)

@@ -1,0 +1,39 @@
+IMAPAccount Gmail
+Host imap.gmail.com
+User baserdem.batuhan@gmail.com
+PassCmd "$XDG_CONFIG_HOME/mbsync/password.sh
+
+# Use SSL
+SSLType IMAPS
+
+# Certificate
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore Gmail-remote
+Account Gmail
+
+MaildirStore Gmail-local
+Subfolders Verbatim
+Path ~/Documents/Mail/Gmail/
+Inbox ~/Documents/Mail/Gmail/Inbox/
+
+Channel Gmail
+Master :Gmail-remote:
+Slave :Gmail-local:
+Patterns "INBOX" "arch"
+
+Channel sync-googlemail-sent
+Master :googlemail-remote:"[Google Mail]/Gesendet"
+Slave :googlemail-local:sent
+
+Channel sync-googlemail-trash
+Master :googlemail-remote:"[Google Mail]/Papierkorb"
+Slave :googlemail-local:trash
+
+# Get all the channels together into a group.
+Group googlemail
+Channel sync-googlemail-default
+Channel sync-googlemail-sent
+Channel sync-googlemail-trash
