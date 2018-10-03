@@ -44,6 +44,7 @@ set text_flowed = yes           # Allow scrolling mail
 set pager = "builtin"           # Use mutt to view mails
 set pager_stop = yes            # Dont read next mail if end is reached
 set pipe_decode = yes           # Try to decode the messages
+unset markers
 
 #-----Behaviour-----#
 set arrow_cursor = no               # If yes, will draw arrow and not highlight
@@ -63,6 +64,10 @@ set timeout = 5                     # Timeaut for user input
 set thorough_search = yes           # Decode messages before using search
 set wrap = 0                        # Lines to wrap text
 push <collapse-all><last-entry>
+set header_cache = ~/.cache/neomutt
+# set alias_file = ~/Documents/Mail/Alias
+set message_cachedir = ~/.cache/neomutt/messages
+set certificate_file = ~/.cache/neomutt/certificates
 
 
 #-----Keybinds-----#
@@ -111,21 +116,9 @@ bind compose p postpone-message
 bind index p recall-message
 macro index,pager \Cb "<enter-command> unset pipe_decode<enter><pipe-message>extract_url<enter>" "get URLs"
 
-#-----------------#
-#-----ACCOUNT-----#
-#-----------------#
-set folder = "~/Documents/Mail"
-source ~/Documents/Mail/mailboxes
-set mbox_type=Maildir
-### Msmtp settings
-set from = "baserdem.batuhan@gmail.com"
-set sendmail = "/usr/bin/msmtp --file $XDG_CONFIG_HOME/msmtprc --account default"
-### Set folder duties
-set spoolfile = "+Gmail/INBOX"
-set record = "+Gmail/Sent\ Mail"
-set postponed = "+Gmail/Drafts"
-### Set system file locations
-set header_cache = ~/Documents/Mail/Gmail/headers
-set alias_file = ~/Documents/Mail/Gmail/alias
-set message_cachedir = ~/Documents/Mail/Gmail/bodies
-set certificate_file = ~/Documents/Mail/Gmail/certificates
+#------------------#
+#-----ACCOUNTS-----#
+#------------------#
+
+folder-hook 'Gmail' source $XDG_CONFIG_HOME/neomutt/neomuttrc.gmail
+source $XDG_CONFIG_HOME/neomutt/neomuttrc.gmail
