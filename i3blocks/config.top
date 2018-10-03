@@ -35,7 +35,7 @@ signal=6
 interval=600
 
 # Offlineimap (yellow)
-[offlineimap]
+[imap]
 interval=once
 signal=5
 

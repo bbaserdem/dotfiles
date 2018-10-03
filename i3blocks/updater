@@ -58,18 +58,18 @@ i3b_update_rss () {
     echo 'RSS updater is exiting'
 }
 
-i3b_update_offlineimap () {
-    [ "$(pgrep -x i3b_update_offlineimap | wc -l)" -gt 2 ] && ( \
-        echo 'Offlineimap updater is already running' && exit )
+i3b_update_imap () {
+    [ "$(pgrep -x i3b_update_imap | wc -l)" -gt 2 ] && ( \
+        echo 'Imap updater is already running' && exit )
     _socket=5
-    _file="${HOME}/.mail/Gmail/INBOX/new"
+    _file="${HOME}/.mail/Gmail/Inbox/new"
     while : ; do
 	    [ -e "${_file}" ] || ( echo 'Mailbox not found' && sleep 60 && continue )
 	    inotifywait --quiet "${_file}" > /dev/null
 	    pkill -RTMIN+"${_socket}" i3blocks ;
         sleep 5
     done
-    echo 'Offlineimap updater is exiting'
+    echo 'Imap updater is exiting'
 }
 
 i3b_update_pulseaudio () {
