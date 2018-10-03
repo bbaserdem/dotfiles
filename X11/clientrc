@@ -16,4 +16,4 @@ xmodmap $XDG_CONFIG_HOME/X11/modmap
 xrdb $XDG_CONFIG_HOME/X11/resources
 
 # Start i3 by default
-exec i3
+exec $XDG_CONFIG_HOME/i3/launcher.sh

@@ -1,11 +1,17 @@
 #!/usr/bin/sh
 
+_ydf=62
+_xdf=0
+
 # Get screen dimensions
-DIM="$(xrandr | grep \* | awk '{print $1}' | head -n 1)"
-XDIM=$(echo \"${DIM}\" | sed 's/\([0-9]\)x[0-9]*/\1/' | bc)
-YDIM=$(echo \"${DIM}\" | sed 's/[0-9]*x\([0-9]\)/\1/' | bc)
+_dim="$(xrandr | grep \* | awk '{print $1}' | head -n 1)"
+_xdm="$(echo "${_dim}" | sed 's/\([0-9]*\)x[0-9]*/\1/')"
+_ydm="$(echo "${_dim}" | sed 's/[0-9]*x\([0-9]*\)/\1/')"
+_res="$(( $_xdm - $_xdf ))x$(( $_ydm - $_ydf ))"
 
-HEI=$(( ${YDIM} - 2 * ( ${BORDER_GAP} + ${BAR_SIZE} ) ))
-WID=$(( ${XDIM} - 2 * ${BORDER_GAP} ))
+_inf="$(pass Hopper)"
+_psw="$(echo "${_inf}" | head -n 1)"
+_una="$(echo "${_inf}" | grep "^username" | awk '{print $2}')"
+_srv="$(echo "${_inf}" | grep "^domain"   | awk '{print $2}')"
 
-rdesktop -K -g ${WID}x${HEI} -z -r sound:off -u batu hopper.cshl.edu
+xfreerdp /u:"${_una}" /p:"${_psw}" /size:"${_res}" -grab-keyboard /v:"${_srv}"
