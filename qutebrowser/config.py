@@ -45,7 +45,7 @@ if (currentTime.hour>=7) & (currentTime.hour<20):
 else:
     c.content.host_blocking.enabled = False
 
-if ghn() == "spbworkstation":
+if ghn() == "sbpworkstation":
     c.url.default_page = "http://intranet.cshl.edu"
     c.url.start_pages = ["http://intranet.cshl.edu"]
 else:

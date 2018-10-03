@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+# This script runs mbsync every N seconds
+_N=300
+
+[ "$(pgrep -x mbsync_daemon | wc -l)" -gt 2 ] && exit 
+
+while : ; do
+    mbsync --config $XDG_CONFIG_HOME/mbsync/config --all
+    sleep "${_N}"
+done
