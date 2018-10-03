@@ -13,6 +13,7 @@ text/x-tex=org.daa.NeovimGtk.desktop;nvim.desktop;
 inode/directory=thunar.desktop
 x-scheme-handler/trash=thunar.desktop
 application/x-desktop=org.daa.NeovimGtk.desktop;
+image/svg+xml=ristretto.desktop;
 
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;

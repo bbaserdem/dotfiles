@@ -29,19 +29,11 @@ wttr_weather () {
     fi
 }
 
-rdp_server () {
-    _ydif=62
-    _xdif=0
-    _res="$(( 1920 - $_xdif ))x$(( 1080 - $_ydif ))"
-    xfreerdp -u batu -g "$_res" hopper.cshl.edu
-}
-
 # Put aliases here
 alias config='git -C $XDG_CONFIG_HOME'
 alias config-sync='gitsync $XDG_CONFIG_HOME'
 alias hopper-mount='sshfs batu@hopper.cshl.edu:/home/batu ~/Remote/Hopper -o allow_other'
 alias work-mount='sshfs silverbluep@sbpworkstation.cshl.edu:/home/silverbluep ~/Remote/Work -o allow_other'
-alias hopper-rdp='rdp_server'
 alias hopper-umount='fusermount3 -u ~/Remote/Hopper'
 alias xterm-termite='termite'
 alias reflect='sudo reflector --verbose --latest 30 --sort rate --save /etc/pacman.d/mirrorlist'
