@@ -117,7 +117,7 @@ i3b_update_backlight &
 i3b_update_battery &
 i3b_update_mpd &
 i3b_update_rss &
-i3b_update_offlineimap &
+i3b_update_imap &
 i3b_update_pulseaudio &
 i3b_update_date &
 i3b_update_calendar &
