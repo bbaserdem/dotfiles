@@ -11,7 +11,9 @@ _res="$(( $_xdm - $_xdf ))x$(( $_ydm - $_ydf ))"
 
 _inf="$(pass Hopper)"
 _psw="$(echo "${_inf}" | head -n 1)"
-_una="$(echo "${_inf}" | grep "^username" | awk '{print $2}')"
-_srv="$(echo "${_inf}" | grep "^domain"   | awk '{print $2}')"
+_una="$(echo "${_inf}" | grep 'username:' | awk '{print $2}')"
+_srv="$(echo "${_inf}" | grep 'domain:'   | awk '{print $2}')"
+_prt="$(echo "${_inf}" | grep 'port:'     | awk '{print $2}')"
+_adr="${_srv}"':'"${_prt}"
 
-xfreerdp /u:"${_una}" /p:"${_psw}" /size:"${_res}" -grab-keyboard /v:"${_srv}"
+xfreerdp /u:"${_una}" /p:"${_psw}" /size:"${_res}" -grab-keyboard /v:"${_srv}${_prt}"
