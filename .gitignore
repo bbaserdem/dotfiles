@@ -69,10 +69,10 @@
 !/htop/htoprc
 
 # ISYNC: Get only the config and password generator
-!/mbsync
-!/mbsync/config
-!/mbsync/passgen.sh
-!/mbsync/mbsync_daemon
+!/isync
+!/isync/config
+!/isync/passgen.sh
+!/isync/mbsync_daemon
 
 # KITTY: Grab the conf files
 !/kitty
