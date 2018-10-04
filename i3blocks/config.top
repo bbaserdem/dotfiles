@@ -11,14 +11,14 @@ markup=pango
 #-------------------#
 
 # Calendar (brown)
-#[calendar]
-#interval=once
-#signal=9
+[calendar]
+interval=once
+signal=9
 
 # Tasks (brown)
-#[tasks]
-#interval=once
-#signal=8
+[todo]
+interval=once
+signal=8
 
 # Music player daemon notification (red)
 [mpd]

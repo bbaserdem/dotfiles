@@ -59,4 +59,4 @@ interval=once
 # Language (Violet)
 [language]
 interval=once
-signal=9
+signal=10
