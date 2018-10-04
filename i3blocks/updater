@@ -109,6 +109,16 @@ i3b_update_calendar () {
     _socket=8
 }
 
+i3b_update_rss () {
+    [ "$(pgrep -x i3b_update_rss | wc -l)" -gt 2 ] && ( \
+        echo 'Language updater is already running' && exit )
+    _socket=9
+    while : ; do
+        xkb-switch --wait
+	    pkill -RTMIN+"${_socket}" i3blocks ;
+    done
+    echo 'Language updater is exiting'
+}
 # Kill all children on exit
 trap 'kill $(jobs -p)' EXIT SIGINT SIGTERM
 
@@ -122,6 +132,7 @@ i3b_update_pulseaudio &
 i3b_update_date &
 i3b_update_calendar &
 i3b_update_tasks &
+i3b_update_language &
 
 # Remain open for all children
 wait
