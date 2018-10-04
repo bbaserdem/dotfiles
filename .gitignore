@@ -103,6 +103,7 @@
 !/neomutt/solarized_dark
 !/neomutt/solarized_light
 !/neomutt/mutt-notmuch.py
+!/neomutt/notmuch-config
 
 # NEWSBOAT: Grab the config and url
 !/newsboat
