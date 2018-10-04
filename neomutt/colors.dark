@@ -14,18 +14,18 @@
 # Valid background colors include:
 # base03, bg, black, any of the non brights
 
-# basic colors ---------------------------------------------------------
-color normal        brightyellow    default         
-color error         red             default         
-color tilde         black           default         
-color message       cyan            default         
-color markers       red             white           
-color attachment    white           default         
-color search        brightmagenta   default         
-#color status        J_black         J_status        
-color status        brightyellow    black           
-color indicator     brightblack     yellow          
-color tree          yellow          default                                     # arrow in threads
+# basic colors --------------------------------------------------------
+color normal        brightyellow    default
+color error         red             default
+color tilde         black           default
+color message       cyan            default
+color markers       red             white
+color attachment    white           default
+color search        brightmagenta   default
+#color status        J_black         J_status
+color status        brightyellow    black
+color indicator     brightblack     yellow
+color tree          yellow          default     # arrow in threads
 
 # basic monocolor screen
 mono  bold          bold
@@ -139,4 +139,3 @@ color body          blue            default         "([a-z][a-z0-9+-]*://(((([a-
 #folder-hook .                  "color status        J_black         J_status        "
 #folder-hook gmail/inbox        "color status        J_black         yellow          "
 #folder-hook gmail/important    "color status        J_black         yellow          "
-

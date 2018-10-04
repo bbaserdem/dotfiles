@@ -1,0 +1,14 @@
+#-----------------#
+#-----ACCOUNT-----#
+#-----------------#
+
+# Folder definitions
+set folder = ~/Documents/Mail/
+set spoolfile = +Gmail/Inbox
+set postponed = +Gmail/Drafts
+set record = +Gmail/Sent\ Mail
+mailboxes +Gmail/Inbox +Gmail/Important +Gmail/Starred +Gmail/CSHL +Gmail/Stony +Gmail/Drafts +Gmail/Trash +Gmail/Sent\ Mail +Gmail/Search
+# Mailing definitions
+set from = "Batuhan Başerdem <baserdem.batuhan@gmail.com>"
+set sendmail = "/usr/bin/msmtp --file $XDG_CONFIG_HOME/msmtprc --account Gmail"
+set mbox_type = Maildir

@@ -1,8 +1,7 @@
 #-----------------#
 #----SETTINGS-----#
 #-----------------#
-source $XDG_CONFIG_HOME/neomutt/solarized_dark          # Make colortheme work
-#source $XDG_CONFIG_HOME/neomutt/colortheme
+source $XDG_CONFIG_HOME/neomutt/colors.dark
 
 #-----Sidebar-----#
 set sidebar_divider_char = ' |'
@@ -122,6 +121,4 @@ macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.config/neomu
 #------------------#
 #-----ACCOUNTS-----#
 #------------------#
-
-folder-hook 'Gmail' source $XDG_CONFIG_HOME/neomutt/neomuttrc.gmail
 source $XDG_CONFIG_HOME/neomutt/neomuttrc.gmail
