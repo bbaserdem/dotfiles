@@ -115,6 +115,9 @@ bind compose p postpone-message
 bind index p recall-message
 macro index,pager \Cb "<enter-command> unset pipe_decode<enter><pipe-message>extract_url<enter>" "get URLs"
 
+# Search function
+macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.config/neomutt/mutt-notmuch.py -G ~/Documents/Mail/Search<enter><change-folder-readonly>~/Documents/Mail/Search<enter>" "search mail (using notmuch)"
+
 #------------------#
 #-----ACCOUNTS-----#
 #------------------#
