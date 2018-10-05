@@ -153,10 +153,10 @@ exec --no-startup-id "$TERMINAL -t 'drop_music' -e 'ncmpcpp --screen playlist --
 
 # Desktop 1 is for anything goes
 set $ws1 "1:"
-assign [class="Conky"]          $ws1
 assign [class="Skype"]          $ws1
-for_window [class="Skype"]      layout tabbed
 assign [class="Rambox"]         $ws1
+for_window [class="Skype"]      layout tabbed
+for_window [class="Rambox"]     layout tabbed
 # Desktop 2 is for web browsing
 set $ws2 "2:爵"
 assign [class="qutebrowser"]    $ws2
@@ -196,7 +196,7 @@ assign [class="inkscape"]       $ws8
 assign [class="Blender"]        $ws8
 assign [class="openscad"]       $ws8
 assign [class="Hopper-RDP"]     $ws8
-for_window [class="Hopper-RDP"] floating disable
+for_window [class="Hopper-RDP"] $ws8, floating disable, border pixel 0
 # Desktop 9 is for Steam and games
 set $ws9 "9:"
 assign [class="Steam"]          $ws9
