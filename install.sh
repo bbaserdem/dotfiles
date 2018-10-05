@@ -48,5 +48,11 @@ echo 'Preventing dropbox auto updates...'
 install --mode 0 --directory ~/.dropbox-dist
 read -rsp $'Press any key to continue...' -n1 key
 
+# Generating dynamic files
+~/.config/i3/parse_config.sh
+~/.config/isync/passgen.sh
+~/.config/mpdscribble-confgen.sh
+~/.config/vdirsyncer/passgen.sh
+
 # MPD
 mkdir -p ~/.cache/mpd
