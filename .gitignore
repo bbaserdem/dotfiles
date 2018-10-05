@@ -16,11 +16,11 @@
 !/install.sh
 !/matlabrc.m
 !/mimeapps.list
+!/mpdscribble-confgen.sh
 !/msmtprc
 !/README.md
 !/tmux.conf
 !/user-dirs.dirs
-!/mpdscribble-confgen.sh
 
 # ANDROID: Accept all
 !/android
@@ -30,22 +30,12 @@
 !/applications
 !/applications/**
 /applications/matlab.desktop
-
-# ARCH: Accept all
-!/arch
-!/arch/**
+/applications/userapp-qutebrowser-VYYSOZ.desktop
+/applications/mimeinfo.cache
 
 # BASH: Accept all
 !/bash
 !/bash/**
-
-# CANTATA: Accept all that is there
-!/cantata
-!/cantata/cantata.conf
-
-# CONKY: Accept all that is there
-!/conky
-!/conky/*
 
 # DUNST: Accept the rc
 !/dunst
@@ -68,11 +58,24 @@
 !/htop
 !/htop/htoprc
 
+# I3: Grab all things i3, but not config (dynamically generated)
+!/i3
+!/i3/**
+/i3/config
+
+# I3BLOCKS: Grab all things i3
+!/i3blocks
+!/i3blocks/**
+
 # ISYNC: Get only the config and password generator
 !/isync
 !/isync/config
 !/isync/passgen.sh
 !/isync/mbsync_daemon
+
+# KHAL: Grab all calender files
+!/khal
+!/khal/**
 
 # KITTY: Grab the conf files
 !/kitty
@@ -110,33 +113,15 @@
 !/nvim/ginit.vim
 !/nvim/init.vim
 
-# I3: Grab all things i3, but not config (dynamically generated)
-!/i3
-!/i3/**
-/i3/config
-
-# I3BLOCKS: Grab all things i3
-!/i3blocks
-!/i3blocks/**
-
-# KHAL: Grab all calender files
-!/khal
-!/khal/**
-
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
 !/octave/octaverc
 !/octave/qt-settings.example
 
-# OFFLINEIMAP: Only include config and gmailPass.py.example
-!/offlineimap
-!/offlineimap/config
-!/offlineimap/gmailPass.py.example
-
 # QUTEBROWSER: Grab my files
 !/qutebrowser
 !/qutebrowser/bookmarks
-!/qutebrowser/bookmarks/urls
+!/qutebrowser/bookmarks/**
 !/qutebrowser/css
 !/qutebrowser/css/*
 !/qutebrowser/blocked-hosts
@@ -176,6 +161,10 @@
 !/sounds
 !/sounds/*.oga
 
+# SWAY: Grab all sway files
+!/sway
+!/sway/**
+
 # SYNCTHING-GTK: Grab config
 !/syncthing-gtk
 !/syncthing-gtk/config.json
@@ -183,10 +172,6 @@
 # SYSTEMD: Grab entire directory
 !/systemd
 !/systemd/**
-
-# SWAY: Grab all sway files
-!/sway
-!/sway/**
 
 # TERMITE: Grab config
 !/termite
@@ -204,9 +189,10 @@
 !/usage
 !/usage/**
 
-# VDIRSYNCER: Grab only config
+# VDIRSYNCER: Grab only config and password generator
 !/vdirsyncer
 !/vdirsyncer/config
+!/vdirsyncer/passgen.sh
 
 # X11: Grab everything here since I wrote them
 !/X11
@@ -214,11 +200,11 @@
 
 # YOUTUBE-DL: Grab config
 !/youtube-dl
-!/youtube-dl/config
+!/youtube-dl/**
 
 # ZATHURA: Grab config
 !/zathura
-!/zathura/zathurarc
+!/zathura/**
 
 # ZSH: Ignore all but few files certain files
 !/zsh
