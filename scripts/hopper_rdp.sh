@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-_ydf=16
+_ydf=0
 _xdf=0
 
 if pgrep -x "i3" > /dev/null
