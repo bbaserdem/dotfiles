@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-_ydf=20
+_ydf=16
 _xdf=0
 
 if pgrep -x "i3" > /dev/null
@@ -33,4 +33,4 @@ _prt="$(echo "${_inf}" | grep 'port:'     | awk '{print $2}')"
 
 _cmd="xfreerdp /u:${_una} /p:${_psw} /size:${_res} /wm-class:'Hopper-RDP' /title:'' -grab-keyboard -wallpaper -themes /v:${_srv}"
 echo "${_cmd}"
-"${_cmd}"
+${_cmd}
