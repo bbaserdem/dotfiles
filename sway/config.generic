@@ -195,8 +195,8 @@ assign [class="gimp"]           $ws8
 assign [class="inkscape"]       $ws8
 assign [class="Blender"]        $ws8
 assign [class="openscad"]       $ws8
-assign [class="xfreerdp"]       $ws8
-for_window [class="xfreerdp"]   floating disable
+assign [class="Hopper-RDP"]     $ws8
+for_window [class="Hopper-RDP"] floating disable
 # Desktop 9 is for Steam and games
 set $ws9 "9:"
 assign [class="Steam"]          $ws9
