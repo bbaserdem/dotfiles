@@ -1,7 +1,0 @@
-#!/usr/bin/python
-
-def get_app_pass():
-    return "<NONENCRYPTED APP PASSWORD HERE>"
-
-if __name__ == "__main__":
-    print( get_app_pass() )
