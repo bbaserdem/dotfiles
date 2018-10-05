@@ -1,12 +1,13 @@
-#!/bin/sh
+#!/usr/bin/sh
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 IF=$'\n\t'
 
 # Place symlinks
-echo 'Symlinking...\n'
+echo '[config-install]==> Symlinking...\n'
 mkdir -p ~/Documents/MATLAB
 mkdir -p ~/.local/share
+mkdir -p ~/.cache/mpd
 ln -sf ~/.config/abcde.conf ~/.abcde.conf
 ln -sf ~/.config/bash/bashrc ~/.bashrc
 ln -sf ~/.config/bash/login ~/.bash_profile
@@ -23,7 +24,7 @@ ln -sf ~/.config/applications ~/.local/share/applications
 read -rsp $'Press any key to continue...\n' -n1 key
 
 # Neovim
-echo 'Setting up neovim...'
+echo '[config-install]==> Setting up neovim...'
 pip install --user neovim
 pip install --user neovim-remote
 pip install --user pexpect
@@ -36,23 +37,21 @@ nvim +PluginInstall +qall
 read -rsp $'Press any key to continue...' -n1 key
 
 # ZIM
-echo 'Setting up ZIM...\n'
+echo '[config-install]==> Setting up ZIM...\n'
 git clone --recursive https://github.com/zimfw/zimfw ~/.config/zsh/zimfw
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel9k
 ln -s ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme ~/.config/zsh/zimfw/modules/prompt/functions/prompt_powerlevel9k_setup
 read -rsp $'Press any key to continue...' -n1 key
 
 # Dropbox
-echo 'Preventing dropbox auto updates...'
+echo '[config-install]==> Preventing dropbox auto updates...'
 [ -d ~/.dropbox-dist ] && rm -rf ~/.dropbox-dist
 install --mode 0 --directory ~/.dropbox-dist
-read -rsp $'Press any key to continue...' -n1 key
-
 # Generating dynamic files
+echo '[config-install]==> Generating dynamic files, will need root...'
 ~/.config/i3/parse_config.sh
 ~/.config/isync/passgen.sh
 ~/.config/mpdscribble-confgen.sh
 ~/.config/vdirsyncer/passgen.sh
-
-# MPD
-mkdir -p ~/.cache/mpd
+~/.config/s3cfg-gen.sh
+~/.config/piagen.sh

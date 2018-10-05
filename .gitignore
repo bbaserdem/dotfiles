@@ -18,7 +18,9 @@
 !/mimeapps.list
 !/mpdscribble-confgen.sh
 !/msmtprc
+!/piagen.sh
 !/README.md
+!/s3cfg-gen.sh
 !/tmux.conf
 !/user-dirs.dirs
 
