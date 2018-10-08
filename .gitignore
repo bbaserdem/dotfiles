@@ -54,6 +54,7 @@
 /arch/**/pkg/
 /arch/**/src/
 /arch/chroot/
+arch/**.iso
 arch/iso/
 
 # AUTOSTART: Grab all autostart
