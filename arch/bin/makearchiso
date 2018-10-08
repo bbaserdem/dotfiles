@@ -1,0 +1,41 @@
+#!/bin/bash
+# Copies archlive to /tmp and generates iso
+
+# Error handling
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+# To work with variables
+_usr="$(users)"
+_cur="$(pwd)"
+_fol="${_cur}/$(dirname "${0}")/../archlive"
+_dir='/tmp/archlive'
+_iso="${1:-"${_cur}/iso"}"
+if [ -f "${_iso}" ] ; then
+    echo "(makearchiso)==> Invalid argument..."
+    exit
+fi
+
+# Clean directories
+[ -d "${_dir}" ] && sudo rm -rf "${_dir}"
+[ -d "${_iso}" ] && (echo "(makearchiso)==> Old iso, del...";rm -rf "${_iso}")
+
+# Copy existing xfce config over
+mkdir -p "${_fol}/airootfs/etc/skel/.config"
+cp -r "${XDG_CONFIG_HOME}/xfce4" "${_fol}/airootfs/etc/skel/.config/"
+
+# Copy files and change owner
+echo "(makearchiso)==> Copying to ${_dir} and making owner root..."
+cp -r "${_fol}" "${_dir}"
+sudo chown -R root:root "${_dir}"
+
+# Change directory and build
+echo "(makearchiso)==> Starting build..."
+cd "${_dir}"
+sudo ./build.sh -v
+cd "${_cur}"
+
+# Copy the iso file
+echo "(makearchiso)==> Copying iso to ${_iso}..."
+sudo chown -R "${_usr}:${_usr}" "${_dir}/out"
+cp -r "${_dir}/out" "${_iso}"

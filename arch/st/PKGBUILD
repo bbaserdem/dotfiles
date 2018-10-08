@@ -1,0 +1,68 @@
+# Maintainer: Batuhan Başerdem <baserdem.batuhan@gmail.com>
+# Contributor: Patrick Jackson <PatrickSJackson gmail com>
+
+pkgname=st
+pkgver=0.8.1
+pkgrel=1
+pkgdesc='A simple virtual terminal emulator for X.'
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('libxft' 'libxext' 'xorg-fonts-misc')
+makedepends=('ncurses')
+url="http://st.suckless.org"
+_patches=(
+    "https://st.suckless.org/patches/alpha/st-alpha-0.8.1.diff"
+    "https://st.suckless.org/patches/copyurl/st-copyurl-20180418-7e810b5.diff"
+    "https://st.suckless.org/patches/scrollback/st-scrollback-0.8.diff"
+    "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-0.8.diff"
+    "https://st.suckless.org/patches/visualbell/st-visualbell-0.8.1.diff"
+    )
+source=(
+    "https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz"
+    "config.h"
+    "${_patches[@]}"
+)
+sha256sums=('c4fb0fe2b8d2d3bd5e72763e80a8ae05b7d44dbac8f8e3bb18ef0161c7266926'
+            '257cd48eb531129c261da4ea7d516aecf9b8435177f66cb81a85110f877a8bff'
+            '7bf61cb8a505891574f3ad0a5420334d3e965b9f7d0067df3819eeef72ce1358'
+            '83873691be3634e3944efa3b0656df095a894b4f2fa5fd1b88dd024b7a98c8c7'
+            '8279d347c70bc9b36f450ba15e1fd9ff62eedf49ce9258c35d7f1cfe38cca226'
+            '3fb38940cc3bad3f9cd1e2a0796ebd0e48950a07860ecf8523a5afd0cd1b5a44'
+            'c4056cebe033875b6d6502e79a0d8c378480cf58b4804b2437ef52e9d1dc28b3')
+
+prepare() {
+    cd $srcdir/$pkgname-$pkgver
+    # skip terminfo which conflicts with ncurses
+    sed -i '/tic /d' Makefile
+    #-----PATCHING PATCHES-----#
+    # patch patches (don't let them patch config.def.h)
+    # The alpha patches first 31 lines are the ones that edit config.def.h
+    sed -i '1,31d' "$srcdir/$(basename ${_patches[0]})"
+    # The copy-url patch has preamble before, and touches config.def.h at 13-24
+    sed -i '1,24d' "$srcdir/$(basename ${_patches[1]})"
+    # The scrollback patch changes config.def.h at 1-13
+    sed -i '1,13d' "$srcdir/$(basename ${_patches[2]})"
+    # The scrollback mouse patch does the dirty deed at 1-21
+    sed -i '1,21d' "$srcdir/$(basename ${_patches[3]})"
+    # Visualbell is free of sin
+    #--------------------------#
+    #-----APPLYING PATCHES-----#
+    for patch in "${_patches[@]}"; do
+        echo "Applying patch $(basename $patch)..."
+        patch -Np1 -i "$srcdir/$(basename $patch)"
+    done
+    #--------------------------#
+    cp $srcdir/config.h config.h
+}
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  make PREFIX=/usr DESTDIR="$pkgdir" TERMINFO="$pkgdir/usr/share/terminfo" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+}

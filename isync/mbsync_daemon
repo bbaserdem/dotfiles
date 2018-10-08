@@ -2,10 +2,12 @@
 
 # This script runs mbsync every N seconds
 _N=300
+_i3b_signal=5
 
 [ "$(pgrep -x mbsync_daemon | wc -l)" -gt 2 ] && exit 
 
 while : ; do
     mbsync --config $XDG_CONFIG_HOME/mbsync/config --all
+    do pkill -RTMIN+"${_i3b_signal}" i3blocks
     sleep "${_N}"
 done

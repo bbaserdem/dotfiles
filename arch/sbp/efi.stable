@@ -1,0 +1,12 @@
+# Maintained by bbaserdem-efi
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+
+[Action]
+Description = Signing Kernel for SecureBoot
+When = PostTransaction
+Exec = /etc/sbkeys/sbsign.sh /boot/vmlinuz-linux
+Depends = sbsigntools

@@ -1,0 +1,11 @@
+# Maintained by sbp-efi
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = qutebrowser
+
+[Action]
+Description = Updating Qutebrowser spellcheck
+When = PostTransaction
+Exec = /bin/python /usr/share/qutebrowser/scripts/dictcli.py update
+Depends = qutebrowser

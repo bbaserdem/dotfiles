@@ -12,12 +12,14 @@ markup=pango
 
 # Calendar (brown)
 [calendar]
-interval=once
+#interval=once
+interval=300
 signal=9
 
 # Tasks (brown)
 [todo]
-interval=once
+#interval=once
+interval=300
 signal=8
 
 # Music player daemon notification (red)
@@ -41,7 +43,8 @@ signal=5
 
 # RSS (green)
 [rss]
-interval=once
+#interval=once
+interval=300
 signal=4
 
 # Time (cyan)
@@ -60,5 +63,6 @@ signal=1
 
 # Battery (varies)
 [battery]
-interval=once
+#interval=once
+interval=30
 signal=2

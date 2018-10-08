@@ -1,0 +1,7 @@
+c99 -I. -I/usr/include -I/usr/include/X11  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.1\" -D_XOPEN_SOURCE=600 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -c st.c
+c99 -I. -I/usr/include -I/usr/include/X11  `pkg-config --cflags fontconfig`  `pkg-config --cflags freetype2` -DVERSION=\"0.8.1\" -D_XOPEN_SOURCE=600 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -c x.c
+st build options:
+CFLAGS  = -I. -I/usr/include -I/usr/include/X11  -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/uuid   -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include  -DVERSION="0.8.1" -D_XOPEN_SOURCE=600 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt
+LDFLAGS = -L/usr/lib -lc -L/usr/lib/X11 -lm -lrt -lX11 -lutil -lXft -lXrender -lfontconfig -lfreetype   -lfreetype  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now
+CC      = c99
+c99 -o st st.o x.o -L/usr/lib -lc -L/usr/lib/X11 -lm -lrt -lX11 -lutil -lXft -lXrender `pkg-config --libs fontconfig`  `pkg-config --libs freetype2` -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now

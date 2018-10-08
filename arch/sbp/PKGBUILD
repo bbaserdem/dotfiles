@@ -1,0 +1,400 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgbase=sbp
+pkgname=(
+    'sbp-base'
+    'sbp-server'
+    'sbp-laptop'
+    'sbp-notebook'
+    'sbp-workstation'
+    'sbp-xfce'
+    )
+pkgver=0.9
+pkgrel=25
+pkgdesc="Meta package to automate packages computer systems"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+groups=(bbaserdem)
+source=(
+    'base.btaudio'
+    'base.fixed-bitmap'
+    'base.inotify'
+    'base.install'
+    'base.qbupdate'
+    'base.pa_usb'
+    'base.reflector.service'
+    'base.reflector.timer'
+    'base.snapper-root'
+    'base.sudoers'
+    'base.sysctl'
+    'base.updater'
+    'base.vconsole'
+    'efi.sdboot'
+    'efi.signscript'
+    'efi.stable'
+    'laptop.backlight'
+    'laptop.battery'
+    'server.install'
+    )
+md5sums=('2adc9c1077ee29381b6ffedf871744f4'
+         '9806f3d492c6e42f3c8d44f3f5cd7d52'
+         'aa695fb291e6b908235fe2570b0e9877'
+         '90715aa9bc0bba920a0fc3e82cf1b741'
+         '17a7cda5f070fb76e1070a2f1fcbc21d'
+         '98b541ce9c3fd6fff43d8d4ae0762215'
+         '7a1ff93a4e176d816c3ab6b5ea667ca0'
+         'c972c1e5c236f6e3c0f7d1b4989ebb75'
+         '00e5bc63b7bb82526516df8f45c4745c'
+         'df0911ed7f3bbf285de4e3c08662dafd'
+         '586c14c5f87f0097e0dfcb0454bfc2a6'
+         '3ad35f4045a3fce5bbfeecd0602c3cee'
+         '1ddf47f1278958e4cc65bfbd96dbd6f7'
+         '1a6ddf0d398c7a6d7bb8e2d8b1825385'
+         '5bf8fa065e1b853943e1d5b0634465ae'
+         'e3217b4c75d3bc302347b7bdf27f29de'
+         '36adcc034c7a69ffe93e2c0937f051da'
+         '31bc6b40fff742f9281088c7acdb6feb'
+         '67b87a7d4a68be37aaa4bf2afc763747')
+validpgpkeys=(
+    '0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+
+package_sbp-base() {
+    provides=(nano vim vi)
+    conflicts=(nano vim vi)
+    install=base.install
+
+    # Base and base-devel group
+    depends=(
+        'bash'          'bzip2'         'coreutils'     'cryptsetup'
+        'device-mapper' 'dhcpcd'        'diffutils'     'e2fsprogs'
+        'file'          'filesystem'    'findutils'     'gawk'
+        'gcc-libs'      'gettext'       'glibc'         'grep'
+        'gzip'          'inetutils'     'iproute2'      'iputils'
+        'jfsutils'      'less'          'licenses'      'linux'
+        'logrotate'     'lvm2'          'man-db'        'man-pages'
+        'mdadm'         'pacman'        'pciutils'      'perl'
+        'procps-ng'     'psmisc'        's-nail'        'sed'
+        'shadow'        'tar'           'sysfsutils'    'systemd-sysvcompat'
+        'texinfo'       'usbutils'      'util-linux'    'which'     'xfsprogs'
+        'autoconf'      'automake'      'binutils'      'bison'
+        'fakeroot'      'file'          'findutils'     'flex'
+        'gawk'          'gcc'           'gettext'       'grep'
+        'groff'         'gzip'          'libtool'       'm4'
+        'make'          'pacman'        'patch'         'pkgconf'
+        'sed'           'sudo'          'systemd'       'texinfo'
+        'util-linux'    'which'         'btrfs-progs'   'f2fs-tools'
+        'sudo'                                  # To check your privilage
+        'exfat-utils' 'udftools'                # File system stuff
+        )
+    # Utilities and Functionality
+    depends+=(
+        'archiso'                               # Live USB tool
+        'alsa-utils' 'lib32-alsa-plugins'       # ALSA
+        'pulseaudio' 'lib32-libpulse' 'pamixer' # Pulseaudio
+        'pulseaudio-alsa'                       # Pulse plugins
+        'bluez' 'bluez-libs'                    # Bluetooth
+        'bluez-utils' 'pulseaudio-bluetooth'
+        'cups' 'cups-pdf' 'cups-pk-helper'      # Printing
+        'abcde' 'cdparanoia'                    # CD utility
+        'amd-ucode' 'intel-ucode'               # Microcode updates
+        'asp' 'devtools'                        # Arch devtools
+        'reflector' 'aurutils' 'pacman-contrib' # Package management
+        'atool' 'bzip2' 'cpio' 'gzip' 'lhasa'   # Archive tools
+        'lzop' 'p7zip' 'tar' 'unace' 'unrar' 'unzip' 'xz' 'zip'
+        'bash-completion'                       # Completion for bash
+        'cpupower' 'rasdaemon'                  # CPU supervisor, AUR - MCE
+        'discount' 'jq' 'yajl'                  # Markdown & JSON
+        'flatpak'                               # Jailed software repository
+        'geoip' 'geoip-database-extra'          # IP to location resolver
+        'geoclue2'                              # GPS
+        'git'                                   # Version control tool
+        'gnupg' 'sshfs' 'openssh' 'fuse3' 'tor' # GPG and SSH
+        'zsh' 'grml-zsh-config'                 # Improved shell
+        'imagemagick'                           # Commandline image manipulator
+        'inotify-tools' 'parted'                # File change watching & part.
+        'languagetool'                          # Grammar checker
+        'linux-firmware' 'linux-headers'        # Firmware for the Linux kernel
+        'lm_sensors'                            # Thermal sensors
+        'msmtp' 'msmtp-mta' 'isync'             # Mail and DAV stuff
+        'notmuch' 'vdirsyncer'
+        'openconnect' 'openvpn'                 # VPN services
+        'private-internet-access-vpn'           # AUR: Set up PIA
+        'nftables'                              # Firewall
+        'pass' 'qrencode'                       # Password manager
+        'rsync'                                 # File synching utility
+        'snapper'                               # BTRFS snapshot manager
+        'tmux'                                  # Terminal multiplexer
+        'tlp'                                   # Power manager
+        'iwd' 'ppp' 'pptpclient'                # INet Wireless Daemon
+        'mpc' 'mpd' 'mpdscribble'               # Music daemon and AUR scrobbler
+        'syncthing' 'w3m' 'youtube-dl'          # Internet tools
+        'efitools' 'sbsigntools'                # EFI utilities
+        'tzupdate'                              # AUR: For autoupdating time
+        'xkb-switch'                            # AUR: Manage keyboard states
+        )
+    # Fonts, themes, icons etc.
+    depends+=(
+        'archlinux-wallpaper'                   # Wallpapers for Arch
+        'terminess-powerline-font-git'          # AUR: Console fonts
+        'noto-fonts-emoji'                      # Emoji font
+        'ttf-droid'                             # Sans-serif font
+        'tamsyn-font'                           # Nice monospace font
+        'adobe-source-serif-pro-fonts'          # Nice serif font
+        'ttf-iosevka'                           # AUR: Statusline
+        'otf-nerd-fonts-fira-code'              # AUR: Glyphs & Ligatures
+        'otf-hasklig'                           # AUR: Glyphs
+        'steam-fonts'                           # AUR: Fonts for steam
+        'arc-gtk-theme'                         # GTK theme
+        'arc-kde'                               # QT theme
+        'elementary-icon-theme'                 # Icon theme for desktop
+        'gnome-themes-extra'                    # Completes missing icons
+        'gtk-engine-murrine'                    # Fallback icons
+        'papirus-icon-theme'                    # Menu icons
+        'qt5-styleplugins'                      # QT5 theme from GTK
+        'xcursor-comix'                         # Funny cursor theme
+        'breeze-hacked-cursor-theme'            # Hacked cursor
+        )
+    # Console apps and utilities
+    depends+=(
+        'htop'                                      # Power sources
+        'khal'                                      # Calendar
+        'khard'                                     # Contacts
+        'ncmpcpp'                                   # Music player
+        'neofetch'                                  # System info printer
+        'neomutt'                                   # Mail reader
+        'neovim' 'python-neovim' 'python2-neovim'   # Text editor
+        'newsboat'                                  # RSS/Atom feed
+        'ranger'                                    # File browser
+        'todoman'                                   # Tasks manager
+        'weechat'                                   # IRC client
+        )
+    # X-org
+    depends+=(
+        'xorgproto'             'xf86-video-vesa'       'xorg-bdftopcf'
+        'xorg-docs'             'xorg-font-util'        'xorg-fonts-100dpi'
+        'xorg-fonts-75dpi'      'xorg-fonts-encodings'  'xorg-iceauth'
+        'xorg-luit'             'xorg-mkfontdir'        'xorg-mkfontscale'
+        'xorg-server'           'xorg-server-common'    'xorg-server-devel'
+        'xorg-server-xdmx'      'xorg-server-xephyr'    'xorg-server-xnest'
+        'xorg-server-xvfb'      'xorg-server-xwayland'  'xorg-sessreg'
+        'xorg-setxkbmap'        'xorg-smproxy'          'xorg-x11perf'
+        'xorg-xauth'            'xorg-xbacklight'       'xorg-xcmsdb'
+        'xorg-xcursorgen'       'xorg-xdpyinfo'         'xorg-xdriinfo'
+        'xorg-xev'              'xorg-xgamma'           'xorg-xhost'
+        'xorg-xinput'           'xorg-xkbcomp'          'xorg-xkbevd'
+        'xorg-xkbutils'         'xorg-xkill'            'xorg-xlsatoms'
+        'xorg-xlsclients'       'xorg-xmodmap'          'xorg-xpr'
+        'xorg-xprop'            'xorg-xrandr'           'xorg-xrdb'
+        'xorg-xrefresh'         'xorg-xset'             'xorg-xsetroot'
+        'xorg-xvinfo'           'xorg-xwd'              'xorg-xwininfo'
+        'xorg-xwud'             'xf86-input-libinput'   'xorg-xinit'
+        'xsel'                      # Select text/area
+        )
+    # Xorg window manager environment
+    depends+=(
+        'i3-gaps'                   # Improved window manager
+        'i3lock'                    # Screen locker
+        'i3blocks'                  # Input to status-bar
+        'perl-anyevent-i3'          # For layout stuff
+        'maim'                      # Screenshot utility
+        'redshift'                  # Screen dimmer
+        'feh'                       # Wallpaper management
+        )
+    # Wayland window manager stuff
+    depends+=(
+        'wayland'
+        'sway'
+        )
+    # Desktop libraries and utilities
+    depends+=(
+        'brightnessctl'                                 # AUR: Brightness
+        'ctags'                                         # Tag generator
+        'dunst'                                         # Notification daemon
+        'gpicview'                                      # Picture to ascii
+        'rofi'                                          # Application launcher
+        'mpv'                                           # Video player daemon
+        'qt4'                                           # QT implementation
+        'pdfjs'                                         # PDF rendering to webpages
+        'thunar-volman' 'gvfs' 'thunar-archive-plugin'  # Thunar stuff
+        'thunar-media-tags-plugin' 'tumbler' 'raw-thumbnailer' 'udisks2'
+        'trezor-bridge-bin'                             # Hardware wallet
+        'python-pyqt5'                                  # QT stuff for python
+        'polkit' 'polkit-gnome'                         # Authentication
+        'qemu' 'ovmf'                                   # Virtualizer
+        'wine'                                          # Windows compatibility
+        'rofi-pass' 'rofi-emoji'                        # AUR: Rofi menus
+        'vim-systemd'
+        )
+    # GUI programs
+    depends+=(
+        'audacity'                              # Audio manipulator
+        'blender'                               # 3d designing utility
+        'blueman'                               # Bluetooth manager
+        'cantata'                               # MPD frontend
+        'd-feet'                                # D-Bus settings
+        'darktable'                             # Raw format editor
+        'freerdp'                               # Remote desktop tool
+        'gimp'                                  # GNU Image Manipulation
+        'gitg'                                  # Git visualizer
+        'gourmet'                               # Recipe tracker
+        'gparted'                               # Graphical partition editor
+        'gtk2fontsel' 'gucharmap'               # Font and character map
+        'inkscape'                              # Vector graphics editor
+        'libreoffice-fresh'                     # Office suite
+        'neovim-gtk-git'                        # AUR: Neovim gui
+        'openscad'                              # CAD programming language
+        'pavucontrol'                           # Pulse audio control menu
+        'pdfsam'                                # Pdf manipulator
+        'picard'                                # Music tagger
+        'qutebrowser'                           # Browser with vim binding
+        'rambox-bin'                            # AUR: Communication app
+        'skypeforlinux-stable-bin'              # AUR: Skype app
+        'ristretto'                             # Image viewer
+        'smplayer'                              # Mpv frontend
+        'spyder3'                               # Python dev environment
+        'stellarium'                            # Star viewer
+        'steam' 'steam-native-runtime'          # Steam
+        'syncthing-gtk'                         # Tray icon for syncthing
+        'system-config-printer'                 # Printer setup utility
+        'termite'                               # Wayland native terminal
+        'udiskie'                               # Mount manager with tray icon
+        'zathura' 'zathura-cb' 'zathura-djvu'   # Document viewer
+        'zathura-pdf-mupdf' 'zathura-ps'
+        )
+    # Dev stuff
+    depends+=(
+        'android-tools' 'android-udev' 'libmtp' # Android
+        's3cmd'                                 # Amazon bucket console
+        'clang' 'cmake'                         # C
+        'arduino' 'arduino-avr-core'            # Arduino stuff
+        'arduino-docs' 'arm' 'arm-none-eabi-binutils' 'arm-none-eabi-gcc'
+        'arm-none-eabi-newlib' 'avr-binutils' 'avr-gcc' 'avr-libc'
+        'avrdude' 'dfu-util' 'dfu-programmer'
+        'bpython' 'jupyter-nbconvert'           # Python
+        'jupyter-notebook' 'lapack' 'mathjax' 'openblas' 'python-matplotlib'
+        'python-ipykernel' 'python-pandas' 'python-pip' 'python-scikit-learn'
+        'python-sympy' 'python-neovim' 'python-numpy' 'python-virtualenv'
+        'python-xdg' 'python2-pip' 'python-pexpect' 'python-jedi'
+        'jre8-openjdk' 'jre10-openjdk'          # Java
+        'octave'                                # Octave
+        'biber' 'texlive-core'                  # Latex
+        'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures'
+        'texlive-pstricks' 'texlive-science'
+        )
+    install -Dm 0644 base.btaudio           "${pkgdir}/etc/bluetooth/audio.conf"
+    install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
+    install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
+    install -Dm 0644 base.qbupdate          "${pkgdir}/etc/pacman.d/hooks/99-qutebrowser.hook"
+    install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"
+    install -Dm 0644 base.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
+    install -Dm 0644 base.reflector.timer   "${pkgdir}/etc/systemd/system/reflector.timer"
+    install -Dm 0644 base.snapper-root      "${pkgdir}/etc/snapper/configs/root"
+    install -Dm 0750 base.sudoers           "${pkgdir}/etc/sudoers.d/sbp-base"
+    install -Dm 0644 base.sysctl            "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
+    install -Dm 0644 base.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
+    install -Dm 0644 base.vconsole          "${pkgdir}/etc/vconsole.conf"
+    install -Dm 0644 efi.sdboot             "${pkgdir}/etc/pacman.d/hooks/10-systemdboot.hook"
+    install -Dm 0755 efi.signscript         "${pkgdir}/etc/sbkeys/sbsign.sh"
+    install -Dm 0644 efi.stable             "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
+    install -Dm 0644 laptop.backlight       "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
+    install -Dm 0644 laptop.battery         "${pkgdir}/etc/udev/rules.d/91-battery.rules"
+    # Make it so nano, vi and vim points to neovim
+    install -dm 0755 "${pkgdir}/usr/bin"
+    ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vim"
+    ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/nano"
+    ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vi"
+}
+
+# Server specific stuff
+package_sbp-server() {
+    depends=('sbp-base')
+    install=server.install
+    depends+=(
+        'apache'            # Web server
+        'dovecot'           # IMAP email server
+        'kodi'              # Media file server
+        'mariadb'           # Database management
+        'postfix'           # Mail transfer agent
+        'rspamd'            # Spam filter for mail
+        'transmission-cli'  # Torrenting
+        'radicale'          # CalDAV and CardDAV server
+        )
+}
+
+# Laptop specific stuff; AMD
+package_sbp-laptop() {
+    depends=('sbp-base')
+    depends+=(
+        'mesa' 'lib32-mesa'
+        'mesa-demos' 'lib32-mesa-demos' 
+        'libva-mesa-driver' 'lib32-libva-mesa-driver'
+        'mesa-vdpau' 'lib32-mesa-vdpau'
+        'libva-vdpau-driver'
+        'xf86-video-amdgpu'
+        'vulkan-radeon'
+        )
+}
+
+# Notebook specific stuff; Nvidia
+package_sbp-notebook() {
+    depends=('sbp-base')
+    depends+=(
+        'bumblebee' 'primus' 'bbswitch'
+        'mesa' 'mesa-demos'
+        'nvidia-dkms' 'lib32-nvidia-utils' 'lib32-virtualgl'
+        'ocl-icd' 'opencl-nvidia' 'cuda'
+        )
+}
+
+# Work specific stuff
+package_sbp-workstation() {
+    depends=('sbp-base')
+    depends+=(
+        'dropbox'       # AUR: File synching
+        'grub'
+        'nvidia-340xx-dkms' 'nvidia-340xx-utils' 'lib32-nvidia-340xx-utils'
+        'ocl-icd' 'opencl-nvidia-340xx' 'cuda'
+        'libva-vdpau-driver'
+        )
+}
+
+# Xfce-specific stuff
+package_sbp-xfce() {
+    depends=(
+        'lightdm' 'lightdm-gtk-greeter' 'lightdm-webkit2-greeter'
+        'lightdm-webkit-theme-aether'
+        'xorgproto'             'xf86-video-vesa'       'xorg-bdftopcf'
+        'xorg-docs'             'xorg-font-util'        'xorg-fonts-100dpi'
+        'xorg-fonts-75dpi'      'xorg-fonts-encodings'  'xorg-iceauth'
+        'xorg-luit'             'xorg-mkfontdir'        'xorg-mkfontscale'
+        'xorg-server'           'xorg-server-common'    'xorg-server-devel'
+        'xorg-server-xdmx'      'xorg-server-xephyr'    'xorg-server-xnest'
+        'xorg-server-xvfb'      'xorg-server-xwayland'  'xorg-sessreg'
+        'xorg-setxkbmap'        'xorg-smproxy'          'xorg-x11perf'
+        'xorg-xauth'            'xorg-xbacklight'       'xorg-xcmsdb'
+        'xorg-xcursorgen'       'xorg-xdpyinfo'         'xorg-xdriinfo'
+        'xorg-xev'              'xorg-xgamma'           'xorg-xhost'
+        'xorg-xinput'           'xorg-xkbcomp'          'xorg-xkbevd'
+        'xorg-xkbutils'         'xorg-xkill'            'xorg-xlsatoms'
+        'xorg-xlsclients'       'xorg-xmodmap'          'xorg-xpr'
+        'xorg-xprop'            'xorg-xrandr'           'xorg-xrdb'
+        'xorg-xrefresh'         'xorg-xset'             'xorg-xsetroot'
+        'xorg-xvinfo'           'xorg-xwd'              'xorg-xwininfo'
+        'xorg-xwud'             'xf86-input-libinput'   'xorg-xinit'
+        'xsel'                      # Select text/area
+        'exo' 'garcon' 'gtk-xfce-engine' 'thunar' 'thunar-volman' 'tumbler'
+        'gvfs' 'thunar-archive-plugin' 'thunar-media-tags-plugin'
+        'raw-thumbnailer' 'xarchiver' 'udisks2' 'xfce4-appfinder' 'xfce4-panel'
+        'xfce4-power-manager' 'xfce4-session' 'xfce4-settings' 'xfce4-terminal'
+        'xfconf' 'xfdesktop' 'xfwm4' 'xfwm4-themes' 'xfce4-battery-plugin'
+        'xfce4-cpufreq-plugin' 'xfce4-cpugraph-plugin' 'xfce4-datetime-plugin'
+        'xfce4-diskperf-plugin' 'xfce4-fsguard-plugin' 'xfce4-genmon-plugin'
+        'xfce4-mount-plugin' 'xfce4-netload-plugin' 'xfce4-notifyd'
+        'xfce4-pulseaudio-plugin' 'xfce4-sensors-plugin'
+        'xfce4-systemload-plugin' 'xfce4-taskmanager' 'xfce4-verve-plugin'
+        'xfce4-wavelan-plugin' 'xfce4-weather-plugin' 'xfce4-whiskermenu-plugin'
+        'xfce4-xkb-plugin' 'firefox' 'mousepad' 'xcursor-comix'
+        'papirus-icon-theme' 'arc-gtk-theme' 'ttf-droid'
+        'vlc' 'transmission-gtk' 'ristretto' 'spyder3' 'rhythmbox'
+        )
+}

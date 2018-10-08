@@ -1,0 +1,117 @@
+# Maintained by sbp-base
+post_install() {
+    
+    echo '[sbp-base]==> Installing meta package . . .'
+
+    # Change permissions of .snapshots
+    if [ -d /.snapshots ]
+    then
+        chmod 750 /.snapshots
+    fi
+
+    # Configure makepkg
+    echo '[sbp-base]==> Enabling multicore-compilation for makepkg . . .'
+    sed -i '/MAKEFLAGS=/s/^#//g'                     /etc/makepkg.conf
+    sed -i '/MAKEFLAGS=/s/=.*/="-j$(nproc)"/g'       /etc/makepkg.conf
+    sed -i '/COMPRESSXZ=/s/=.*/==(xz -c -z -T0 -)/g' /etc/makepkg.conf
+
+    # Configure pacman
+    echo '[sbp-base]==> Enabling eyecandy for pacman . . .'
+    sed -i '/# Misc options/aILoveCandy'        /etc/pacman.conf
+
+    # Set timeout to 10 seconds
+    echo '[sbp-base]==> Reducing systemd timeout to 10 seconds . . .'
+    sed -i '/DefaultTimeoutStartSec/s/^#//g'        /etc/systemd/system.conf
+    sed -i '/DefaultTimeoutStartSec/s/=.*/=10s/'    /etc/systemd/system.conf
+    sed -i '/DefaultTimeoutStopSec/s/^#//g'         /etc/systemd/system.conf
+    sed -i '/DefaultTimeoutStopSec/s/=.*/=10s/'     /etc/systemd/system.conf
+    sed -i '/HoldoffTimeoutSec/s/^#//g'             /etc/systemd/logind.conf
+    sed -i '/HoldoffTimeoutSec/s/=.*/=10s/'         /etc/systemd/logind.conf
+    
+    # Group and user
+    echo '[sbp-base]==> Creating user sbp . . .'
+    if [ "$(getent passwd | grep -c '^sbp')" == "0" ]
+    then
+        useradd --create-home --groups \
+            sys,ftp,log,http,games,lock,rfkill,users,video,uucp,lp,input,wheel,kvm \
+            --shell /usr/bin/zsh sbp
+    fi
+
+    # Make steam library folder
+    echo '[sbp-laptop]==> Priming steam library folder in /opt . . .'
+    mkdir /opt/Steam
+    chown sbp:games /opt/Steam
+    chmod 664 /opt/Steam
+
+    # Set timezone to NY
+    echo '[sbp-base]==> Setting local time (NYC) and enabling NTP . . .'
+    ln -sf /usr/share/zoneinfo/America/New_York "/etc/localtime"
+    timedatectl set-ntp true
+    hwclock --systohc
+
+    # Set locale
+    echo '[sbp-base]==> Setting up fonts and locale . . .'
+    sed -i '1s/^/en_US.UTF-8 UTF-8\n/' /etc/locale.gen
+    echo "LANG=en_US.UTF-8" > /etc/locale.conf
+    locale-gen
+
+    # Qutebrowser
+    echo '[sbp-desktop]==> Adding qutebrowser spellcheck . . .'
+    /bin/python /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
+
+    # Create resolve.conf symlink
+    echo '[sbp-base]==> Creating symlink to resolv.conf for DNS lookups . . .'
+    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+
+    # TLP service
+    echo '[sbp-laptop]==> Enabling TLP, and fixing BTRFS data corruption . . .'
+    sed -i '/SATA_LINKPWR_ON_BAT/s/=".*"/="max_performance"/' /etc/default/tlp
+    systemctl enable tlp.service
+    systemctl enable tlp-sleep.service
+
+    # Systemd processes
+
+    # Network
+    echo '[sbp-base]==> Enabling networking through systemd-networkd, and firewall . . .'
+    systemctl enable systemd-networkd.service
+    systemctl enable systemd-resolved.service
+    systemctl enable systemd-networkd-wait-online.service
+    systemctl enable iwd.service
+    systemctl enable nftables.service
+    # Bluetooth
+    echo '[sbp-base]==> Enabling bluetooth . . .'
+    systemctl enable bluetooth.service
+    # CUPS
+    echo '[sbp-base]==> Enabling CUPS . . .'
+    systemctl enable org.cups.cupsd.service
+    # Cpupower package
+    echo '[sbp-base]==> Enabling cpupower . . .'
+    systemctl enable cpupower.service
+    # Activate snapper
+    echo '[sbp-base]==> Enabling snapper . . .'
+    systemctl enable snapper-timeline.timer
+    systemctl enable snapper-cleanup.timer
+    # Enable periodic trim
+    echo '[sbp-base]==> Enabling trim . . .'
+    systemctl enable fstrim.timer
+    # Enable periodic reflector
+    echo '[sbp-base]==> Enabling pacman mirrorlist updates . . .'
+    systemctl enable reflector.service
+    systemctl enable reflector.timer
+    # Enable Machine-Check Exception logging
+    echo '[sbp-base]==> Enabling Machine-Check Exception (MCE) logging . . .'
+    systemctl enable ras-mc-ctl.service
+    systemctl enable rasdaemon.service
+
+    echo '[sbp-base]==> Installation complete! Check log for errors!'
+    echo '[sbp-base]!!> Be sure to set up nftables! . . .'
+    post_upgrade
+}
+
+post_upgrade() {
+
+    echo '[sbp-base]==> Upgrading . . .'
+
+
+    echo '[sbp-base]==> Nothing to upgrade.'
+}

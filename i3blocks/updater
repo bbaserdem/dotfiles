@@ -23,7 +23,7 @@ i3b_update_battery () {
     _ba="/sys/class/power_supply/BAT0/capacity"
     [ -e "${_ac}" ] || _ac=""
     [ -e "${_ba}" ] || _ba=""
-	inotifywait --monitor --timeout -1 "${_ac}" "${_ba}" | \
+    inotifywait --monitor --timeout -1 "${_ac}" "${_ba}" | \
         while IFS= read -r line; do pkill -RTMIN+"${_socket}" i3blocks
         wait .1
     done
@@ -143,14 +143,14 @@ trap 'kill $(jobs -p)' EXIT SIGINT SIGTERM
 
 # run all updater programs and fork them
 i3b_update_backlight &
-i3b_update_battery &
+# i3b_update_battery &
 i3b_update_mpd &
-i3b_update_rss &
-i3b_update_imap &
+# i3b_update_rss &
+# i3b_update_imap &
 i3b_update_pulseaudio &
 i3b_update_date &
-i3b_update_calendar &
-i3b_update_tasks &
+# i3b_update_tasks &
+# i3b_update_calendar &
 i3b_update_language &
 
 # Remain open for all children

@@ -35,6 +35,27 @@
 /applications/userapp-qutebrowser-VYYSOZ.desktop
 /applications/mimeinfo.cache
 
+# ARCH: Bit complicated
+!/arch
+!/arch/**
+/arch/**.pkg.tar.xz
+/arch/**.pkg.tar.xz~
+/arch/**.tar.gz
+/arch/**.tar.gz~
+/arch/**.tar.xz
+/arch/**.tar.xz~
+/arch/**.old
+/arch/**/pkg/
+/arch/**/src/
+/arch/repo/
+/arch/*.log
+/arch/chroot/
+arch/*.iso
+
+# AUTOSTART: Grab all autostart
+!/autostart
+!/autostart/**
+
 # BASH: Accept all
 !/bash
 !/bash/**
@@ -199,6 +220,10 @@
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**
+
+# XFCE4: Grab all the configs
+!/xfce4
+!/xfce4/**
 
 # YOUTUBE-DL: Grab config
 !/youtube-dl

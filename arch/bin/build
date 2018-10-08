@@ -1,0 +1,37 @@
+#!/bin/bash
+# Wraps aursync command to mount an amazon s3 bucket which contains a repository
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+REMOTE_PATH=s3://sbp-arch/repo
+LOCAL_PATH="$(realpath "$(dirname "$0")")"/..
+REPO_NAME=sbp
+
+PACKAGES=${@:-$LOCAL_PATH/pkg/*}
+
+CHROOT="${LOCAL_PATH}/chroot"
+
+mkdir -p "$LOCAL_PATH"
+mkdir -p "$CHROOT"
+
+[[ -d "$CHROOT/root" ]] || mkarchroot \
+    -C /etc/pacman.conf \
+    -M /etc/makepkg.conf \
+    "$CHROOT/root" base base-devel
+
+s3cmd sync "$REMOTE_PATH/$REPO_NAME".{db,files}.tar.xz "$LOCAL_PATH/"
+ln -sf "$REPO_NAME.db.tar.xz" "$LOCAL_PATH/$REPO_NAME.db"
+ln -sf "$REPO_NAME.files.tar.xz" "$LOCAL_PATH/$REPO_NAME.files"
+
+for package in $PACKAGES; do
+    cd "$package"
+    rm -f *.pkg.tar.xz
+    makechrootpkg -cur $CHROOT
+    cd -
+    repo-add "$LOCAL_PATH/$REPO_NAME.db.tar.xz" "$package"/*.pkg.tar.xz
+    s3cmd sync --follow-symlinks --acl-public \
+        "$package"/*.pkg.tar.xz "$REMOTE_PATH/"
+done
+
+s3cmd sync --follow-symlinks --acl-public \
+    "$LOCAL_PATH/$REPO_NAME".{db,files}{,.tar.xz} "$REMOTE_PATH/"

@@ -1,0 +1,3 @@
+# Managed by bbaserdem-laptop package
+# Suspend the system when battery level drops to 7% or lower
+SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]|1[0-9]", RUN+="/usr/bin/systemctl hibernate"
