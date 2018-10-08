@@ -157,9 +157,8 @@ arch/iso/
 !/qutebrowser/config.py
 !/qutebrowser/quickmarks
 
-# RAMBOX: Only copy the config
+# RAMBOX: Only copy the themes
 !/Rambox
-!/Rambox/config.json
 !/Rambox/themes
 !/Rambox/themes/**
 
