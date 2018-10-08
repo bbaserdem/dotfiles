@@ -14,9 +14,6 @@ inode/directory=thunar.desktop
 x-scheme-handler/trash=thunar.desktop
 application/x-desktop=org.daa.NeovimGtk.desktop;
 image/svg+xml=ristretto.desktop;
-application/xml=mousepad.desktop;qutebrowser.desktop;
-application/x-shellscript=org.daa.NeovimGtk.desktop;
-application/x-theme=org.daa.NeovimGtk.desktop;
 
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;

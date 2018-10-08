@@ -151,6 +151,7 @@ i3b_update_pulseaudio &
 i3b_update_date &
 # i3b_update_tasks &
 # i3b_update_calendar &
+# i3b_update_tasks &
 i3b_update_language &
 
 # Remain open for all children
