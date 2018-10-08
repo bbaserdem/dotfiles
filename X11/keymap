@@ -1,0 +1,1 @@
+-model pc105 -layout 'us,us,tr' -variant ',dvorak-classic,f' -option 'grp:caps_toggle'

@@ -9,7 +9,7 @@ pkgname=(
     'sbp-xfce'
     )
 pkgver=0.9
-pkgrel=25
+pkgrel=30
 pkgdesc="Meta package to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -27,19 +27,24 @@ source=(
     'base.snapper-root'
     'base.sudoers'
     'base.sysctl'
+    'base.touchpad'
     'base.updater'
     'base.vconsole'
+    'base.xinit'
+    'base.xsession'
     'efi.sdboot'
     'efi.signscript'
     'efi.stable'
     'laptop.backlight'
     'laptop.battery'
     'server.install'
+    'xfce.install'
+    'xfce.wallpaper'
     )
 md5sums=('2adc9c1077ee29381b6ffedf871744f4'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
-         '90715aa9bc0bba920a0fc3e82cf1b741'
+         '66c1f1acc4c7c5e8a2611d823e6e0f6e'
          '17a7cda5f070fb76e1070a2f1fcbc21d'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '7a1ff93a4e176d816c3ab6b5ea667ca0'
@@ -47,14 +52,19 @@ md5sums=('2adc9c1077ee29381b6ffedf871744f4'
          '00e5bc63b7bb82526516df8f45c4745c'
          'df0911ed7f3bbf285de4e3c08662dafd'
          '586c14c5f87f0097e0dfcb0454bfc2a6'
+         '18c4e485034ee909f9d4f3c7fab3954f'
          '3ad35f4045a3fce5bbfeecd0602c3cee'
          '1ddf47f1278958e4cc65bfbd96dbd6f7'
+         'bd1fe481ca3d992abd1558a26f01df13'
+         '65bfcfcb5bbeb035c73ee83d65b189af'
          '1a6ddf0d398c7a6d7bb8e2d8b1825385'
          '5bf8fa065e1b853943e1d5b0634465ae'
          'e3217b4c75d3bc302347b7bdf27f29de'
          '36adcc034c7a69ffe93e2c0937f051da'
          '31bc6b40fff742f9281088c7acdb6feb'
-         '67b87a7d4a68be37aaa4bf2afc763747')
+         '67b87a7d4a68be37aaa4bf2afc763747'
+         '18347ee9382689498daea486b64e672f'
+         '83e1b805fc92b3d1d3faf65158448687')
 validpgpkeys=(
     '0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 
@@ -134,25 +144,25 @@ package_sbp-base() {
         )
     # Fonts, themes, icons etc.
     depends+=(
-        'archlinux-wallpaper'                   # Wallpapers for Arch
-        'terminess-powerline-font-git'          # AUR: Console fonts
-        'noto-fonts-emoji'                      # Emoji font
-        'ttf-droid'                             # Sans-serif font
-        'tamsyn-font'                           # Nice monospace font
-        'adobe-source-serif-pro-fonts'          # Nice serif font
-        'ttf-iosevka'                           # AUR: Statusline
-        'otf-nerd-fonts-fira-code'              # AUR: Glyphs & Ligatures
-        'otf-hasklig'                           # AUR: Glyphs
-        'steam-fonts'                           # AUR: Fonts for steam
-        'arc-gtk-theme'                         # GTK theme
-        'arc-kde'                               # QT theme
-        'elementary-icon-theme'                 # Icon theme for desktop
-        'gnome-themes-extra'                    # Completes missing icons
-        'gtk-engine-murrine'                    # Fallback icons
-        'papirus-icon-theme'                    # Menu icons
-        'qt5-styleplugins'                      # QT5 theme from GTK
-        'xcursor-comix'                         # Funny cursor theme
-        'breeze-hacked-cursor-theme'            # Hacked cursor
+        'archlinux-wallpaper' 'archlinux-artwork'   # Wallpapers for Arch
+        'terminess-powerline-font-git'              # AUR: Console fonts
+        'noto-fonts-emoji'                          # Emoji font
+        'ttf-droid'                                 # Sans-serif font
+        'tamsyn-font'                               # Nice monospace font
+        'adobe-source-serif-pro-fonts'              # Nice serif font
+        'ttf-iosevka'                               # AUR: Statusline
+        'otf-nerd-fonts-fira-code'                  # AUR: Glyphs & Ligatures
+        'otf-hasklig'                               # AUR: Glyphs
+        'steam-fonts'                               # AUR: Fonts for steam
+        'arc-gtk-theme'                             # GTK theme
+        'arc-kde'                                   # QT theme
+        'elementary-icon-theme'                     # Icon theme for desktop
+        'gnome-themes-extra'                        # Completes missing icons
+        'gtk-engine-murrine'                        # Fallback icons
+        'papirus-icon-theme'                        # Menu icons
+        'qt5-styleplugins'                          # QT5 theme from GTK
+        'xcursor-comix'                             # Funny cursor theme
+        'breeze-hacked-cursor-theme'                # Hacked cursor
         )
     # Console apps and utilities
     depends+=(
@@ -192,6 +202,8 @@ package_sbp-base() {
         )
     # Xorg window manager environment
     depends+=(
+        'lightdm'                   # Login manager
+        'lightdm-webkit2-greeter' 'lightdm-webkit-theme-litarvan'
         'i3-gaps'                   # Improved window manager
         'i3lock'                    # Screen locker
         'i3blocks'                  # Input to status-bar
@@ -291,8 +303,11 @@ package_sbp-base() {
     install -Dm 0644 base.snapper-root      "${pkgdir}/etc/snapper/configs/root"
     install -Dm 0750 base.sudoers           "${pkgdir}/etc/sudoers.d/sbp-base"
     install -Dm 0644 base.sysctl            "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
+    install -Dm 0644 base.touchpad          "${pkgdir}/etc/X11/xorg.conf.d/30-touchpad.conf"
     install -Dm 0644 base.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
     install -Dm 0644 base.vconsole          "${pkgdir}/etc/vconsole.conf"
+    install -Dm 0775 base.xinit             "${pkgdir}/usr/bin/xinitrc-helper"
+    install -Dm 0644 base.xsession          "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
     install -Dm 0644 efi.sdboot             "${pkgdir}/etc/pacman.d/hooks/10-systemdboot.hook"
     install -Dm 0755 efi.signscript         "${pkgdir}/etc/sbkeys/sbsign.sh"
     install -Dm 0644 efi.stable             "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
@@ -362,7 +377,7 @@ package_sbp-workstation() {
 package_sbp-xfce() {
     depends=(
         'lightdm' 'lightdm-gtk-greeter' 'lightdm-webkit2-greeter'
-        'lightdm-webkit-theme-aether'
+        'lightdm-webkit-theme-litarvan'
         'xorgproto'             'xf86-video-vesa'       'xorg-bdftopcf'
         'xorg-docs'             'xorg-font-util'        'xorg-fonts-100dpi'
         'xorg-fonts-75dpi'      'xorg-fonts-encodings'  'xorg-iceauth'
@@ -397,4 +412,6 @@ package_sbp-xfce() {
         'papirus-icon-theme' 'arc-gtk-theme' 'ttf-droid'
         'vlc' 'transmission-gtk' 'ristretto' 'spyder3' 'rhythmbox'
         )
+    install=xfce.install
+    install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
 }

@@ -1,6 +1,5 @@
 # Set XDG_CONFIG_HOME
 export XDG_CONFIG_HOME="$HOME/.config"
-/usr/bin/systemctl --user set-environment XDG_CONFIG_HOME=$XDG_CONFIG_HOME
 
 # Import Path
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
@@ -10,7 +9,6 @@ if [ -d "$XDG_CONFIG_HOME/nvim/bundle/vim-live-latex-preview/bin" ]
 then
     PATH="$XDG_CONFIG_HOME/nvim/bundle/vim-live-latex-preview/bin:$PATH"
 fi
-systemctl --user set-environment PATH=$PATH
 
 # Z directory
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -22,8 +20,6 @@ export GPGKEY=0B7151C823559DD8A7A04CE36426139E2F4C6CCE
 # Password store location
 export PASSWORD_STORE_DIR=$HOME/.pass
 export PASSWORD_STORE_GIT=$HOME/.pass
-/usr/bin/systemctl --user set-environment PASSWORD_STORE_GIT=$PASSWORD_STORE_GIT
-/usr/bin/systemctl --user set-environment PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR
 
 # Compile in parallel using AUR
 export MAKEFLAGS="-j$(nproc)"
@@ -41,48 +37,59 @@ if [[ $(hostname) == 'sbplaptop' ]]
 then
     export MON_0="eDP"
     export BRI_SCR="amdgpu_bl0"
-    /usr/bin/systemctl --user set-environment BRI_SCR=$BRI_SCR
     export BRI_KBD="asus::kbd_backlight"
-    /usr/bin/systemctl --user set-environment BRI_KBD=$BRI_KBD
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     export MON_0="DP-2"
-    /usr/bin/systemctl --user set-environment 
+    export BRI_SCR=""
+    export BRI_KBD=""
 elif [[ $(hostname) == 'sbphomestation' ]]
 then
     export MON_0="eDP-1"
-    /usr/bin/systemctl --user set-environment 
+    export BRI_SCR=""
+    export BRI_KBD=""
 fi
 
 # GPG config
 export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
-/usr/bin/systemctl --user set-environment GNUPGHOME=$GNUPGHOME
 # QT5 theme
 export QT_STYLE_OVERRIDE="gtk2"
 export QT_QPA_PLATFORMTHEME="gtk2"
-/usr/bin/systemctl --user set-environment QT_STYLE_OVERRIDE=$QT_STYLE_OVERRIDE
-/usr/bin/systemctl --user set-environment QT_QPA_PLATFORMTHEME=$QT_QPA_PLATFORMTHEME
 # Set neovim as editor
 export EDITOR=/usr/bin/nvim
-/usr/bin/systemctl --user set-environment EDITOR=$EDITOR
 # Set qutebrowser as browser
 export BROWSER=/usr/bin/qutebrowser
-/usr/bin/systemctl --user set-environment BROWSER=$BROWSER
 # Set terminal to use for launching
 export TERMINAL=/usr/bin/termite
-/usr/bin/systemctl --user set-environment TERMINAL=$TERMINAL
 # Notmuch
 export NOTMUCH_CONFIG=$XDG_CONFIG_HOME/neomutt/notmuch-config
-/usr/bin/systemctl --user set-environment NOTMUCH_CONFIG=$NOTMUCH_CONFIG
 # OpenFOAM
 export FOAM_INST_DIR=/opt/OpenFOAM
 # Weechat
 export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
-/usr/bin/systemctl --user set-environment WEECHAT_HOME=$WEECHAT_HOME
 # Taskwarrior
 export TASKRC=$XDG_CONFIG_HOME/taskrc
-/usr/bin/systemctl --user set-environment TASKRC=$TASKRC
 export TASKDATA=$HOME/Documents/Tasks/
-/usr/bin/systemctl --user set-environment TASKDATA=$TASKDATA
 export TIMEWARRIORDB=$HOME/Documents/Tasks/
-/usr/bin/systemctl --user set-environment TIMEWARRIORDB=$TIMEWARRIORDB
+
+# Systemctl things
+load_variables_systemd () {
+    /usr/bin/systemctl --user set-environment XDG_CONFIG_HOME=$XDG_CONFIG_HOME
+    /usr/bin/systemctl --user set-environment PATH=$PATH
+    /usr/bin/systemctl --user set-environment PASSWORD_STORE_GIT=$PASSWORD_STORE_GIT
+    /usr/bin/systemctl --user set-environment PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR
+    /usr/bin/systemctl --user set-environment BRI_SCR=$BRI_SCR
+    /usr/bin/systemctl --user set-environment BRI_KBD=$BRI_KBD
+    /usr/bin/systemctl --user set-environment GNUPGHOME=$GNUPGHOME
+    /usr/bin/systemctl --user set-environment QT_STYLE_OVERRIDE=$QT_STYLE_OVERRIDE
+    /usr/bin/systemctl --user set-environment QT_QPA_PLATFORMTHEME=$QT_QPA_PLATFORMTHEME
+    /usr/bin/systemctl --user set-environment EDITOR=$EDITOR
+    /usr/bin/systemctl --user set-environment BROWSER=$BROWSER
+    /usr/bin/systemctl --user set-environment TERMINAL=$TERMINAL
+    /usr/bin/systemctl --user set-environment NOTMUCH_CONFIG=$NOTMUCH_CONFIG
+    /usr/bin/systemctl --user set-environment WEECHAT_HOME=$WEECHAT_HOME
+    /usr/bin/systemctl --user set-environment TASKRC=$TASKRC
+    /usr/bin/systemctl --user set-environment TASKDATA=$TASKDATA
+    /usr/bin/systemctl --user set-environment TIMEWARRIORDB=$TIMEWARRIORDB
+}
+# load_variables_systemd

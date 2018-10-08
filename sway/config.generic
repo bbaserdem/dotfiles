@@ -196,7 +196,7 @@ assign [class="inkscape"]       $ws8
 assign [class="Blender"]        $ws8
 assign [class="openscad"]       $ws8
 assign [class="Hopper-RDP"]     $ws8
-for_window [class="Hopper-RDP"] $ws8, floating disable, border pixel 0
+for_window [class="Hopper-RDP"] floating disable, border pixel 0
 # Desktop 9 is for Steam and games
 set $ws9 "9:"
 assign [class="Steam"]          $ws9

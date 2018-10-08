@@ -69,6 +69,15 @@ post_install() {
     systemctl enable tlp.service
     systemctl enable tlp-sleep.service
 
+    # Modify lightdm-theme
+    echo '[sbp-laptop]==> Enabling lightdm . . .'
+    sed 's|^#greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
+    sed 's|^webkit_theme.*|webkit_theme = litarvan|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    sed 's|^background_images.*|background_images = /usr/share/lightdm-webkit/themes/litarvan/images/background.jpg|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    sed 's|^logo.*|background_images = /usr/share/lightdm-webkit/themes/litarvan/images/arch.svg|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    sed 's|^user_image.*|background_images = /usr/share/lightdm-webkit/themes/litarvan/images/default_user.png|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    systemctl enable lightdm.service
+
     # Systemd processes
 
     # Network

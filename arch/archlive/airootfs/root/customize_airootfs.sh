@@ -9,6 +9,9 @@ locale-gen
 # Timezone
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 
+# Pull in config from repo
+git clone https://github.com/bbaserdem/dotfiles.git /etc/skel/.config
+
 # Switch to zsh
 usermod -s /usr/bin/zsh root
 cp -aT /etc/skel/ /root/
@@ -25,23 +28,14 @@ sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 
 systemctl enable pacman-init.service choose-mirror.service
 systemctl set-default graphical.target
-
-# Enable lightdm and auto-login
 systemctl enable lightdm.service
-sed -i 's|^greeter-session = .*|greeter-session = lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
-echo '
-[branding]
-background_images = /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/
-logo              = /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/arch-logo.png
-user_image        = /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/default-user.png
-' >> /etc/lightdm/lightdm-webkit2-greeter.conf
 
 # Create arch user
-useradd --create-home --groups wheel --shell /usr/bin/zsh archiso
+useradd --create-home --groups wheel --shell /usr/bin/zsh arch
 
 # Do passwords
-echo    "root:iusearchbtw" | chpasswd
-echo "archiso:iusearchbtw" | chpasswd
+echo "root:iusearchbtw" | chpasswd
+echo "arch:iusearchbtw" | chpasswd
 
 # Enable NetworkManager services (LET ARCH USER SET NETWORKS)
 systemctl enable NetworkManager.service

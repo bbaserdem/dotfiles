@@ -18,8 +18,12 @@ ln -sf ~/.config/zsh/zshenv ~/.zshenv
 ln -sf ~/.config/X11/clientrc ~/.xinitrc
 ln -sf ~/.config/X11/serverrc ~/.xserverrc
 ln -sf ~/.config/X11/resources ~/.Xresources
+ln -sf ~/.config/X11/profile ~/.xprofile
+ln -sf ~/.config/X11/keymap ~/.xkbmap
+ln -sf ~/.config/X11/session ~/.xsession
 ln -sf ~/.config/octave/octaverc ~/.octaverc
 ln -sf ~/.config/matlabrc.m ~/Documents/MATLAB/startup.m
+rm -rf ~/.local/share/applications
 ln -sf ~/.config/applications ~/.local/share/applications
 read -rsp $'Press any key to continue...\n' -n1 key
 

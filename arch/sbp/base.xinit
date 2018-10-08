@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+# Maintained by sbp-base
+exec $HOME/.config/X11/clientrc
