@@ -37,20 +37,24 @@
 
 # ARCH: Bit complicated
 !/arch
-!/arch/**
-/arch/**.pkg.tar.xz
-/arch/**.pkg.tar.xz~
-/arch/**.tar.gz
-/arch/**.tar.gz~
-/arch/**.tar.xz
-/arch/**.tar.xz~
-/arch/**.old
+!/arch/archlive
+!/arch/archlive/**
+!/arch/bin
+!/arch/bin/**
+!/arch/sbp/
+!/arch/sbp/**
+/arch/**/*.log
+/arch/**/*.tar.xz
+/arch/**/*.tar.xz~
+/arch/**/*.tar.gz
+/arch/**/*.tar.gz~
+/arch/**/*.pkg.tar.xz
+/arch/**/*.pkg.tar.xz~
+/arch/**/*.old
 /arch/**/pkg/
 /arch/**/src/
-/arch/repo/
-/arch/*.log
 /arch/chroot/
-arch/*.iso
+arch/iso/
 
 # AUTOSTART: Grab all autostart
 !/autostart
