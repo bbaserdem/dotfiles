@@ -9,8 +9,8 @@ pkgname=(
     'sbp-xfce'
     )
 pkgver=0.9
-pkgrel=30
-pkgdesc="Meta package to automate packages computer systems"
+pkgrel=31
+pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
 licence=(MIT)
@@ -410,7 +410,8 @@ package_sbp-xfce() {
         'xfce4-wavelan-plugin' 'xfce4-weather-plugin' 'xfce4-whiskermenu-plugin'
         'xfce4-xkb-plugin' 'firefox' 'mousepad' 'xcursor-comix'
         'papirus-icon-theme' 'arc-gtk-theme' 'ttf-droid'
-        'vlc' 'transmission-gtk' 'ristretto' 'spyder3' 'rhythmbox'
+        'vlc' 'transmission-gtk' 'ristretto' 'spyder3' 'rhythmbox' 'gparted'
+        'clonezilla' 'stress'
         )
     install=xfce.install
     install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
