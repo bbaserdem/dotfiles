@@ -75,5 +75,5 @@ networkmanager-pptp
 networkmanager-vpnc
 networkmanager-strongswan
 nftables
-gparted
+git
 sbp-xfce
