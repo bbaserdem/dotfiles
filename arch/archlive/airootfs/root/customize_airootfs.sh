@@ -10,6 +10,7 @@ locale-gen
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 
 # Pull in config from repo
+mkdir -p /etc/skel
 git clone https://github.com/bbaserdem/dotfiles.git /etc/skel/.config
 
 # Switch to zsh
@@ -28,7 +29,6 @@ sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 
 systemctl enable pacman-init.service choose-mirror.service
 systemctl set-default graphical.target
-systemctl enable lightdm.service
 
 # Create arch user
 useradd --create-home --groups wheel --shell /usr/bin/zsh arch
