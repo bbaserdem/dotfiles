@@ -12,7 +12,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=45
+pkgrel=47
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -160,6 +160,7 @@ package_sbp-base() {
         'neomutt'                                   # Mail reader
         'neovim' 'python-neovim' 'python2-neovim'   # Text editor
         'newsboat'                                  # RSS/Atom feed
+        'pulsemixer'                                # Pulse audio mixer
         'ranger'                                    # File browser
         'todoman'                                   # Tasks manager
         'weechat'                                   # IRC client

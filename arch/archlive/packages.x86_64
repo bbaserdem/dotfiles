@@ -70,5 +70,9 @@ reflector
 nftables
 git
 gparted
+pulseaudio
+pulseaudio-alsa
+pavucontrol
+pasystray
 sbp-gui
 sbp-xfce
