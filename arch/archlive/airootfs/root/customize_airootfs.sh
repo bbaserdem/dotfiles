@@ -23,7 +23,7 @@ systemctl set-default graphical.target
 useradd --create-home --groups wheel --shell /usr/bin/zsh arch
 
 # Change default session
-sed -i 's|^#user-session=.*|user-session=xfce|g'
+sed -i 's|^#user-session=.*|user-session=xfce|g' /etc/lightdm/lightdm.conf
 
 # Do passwords
 echo "root:iusearchbtw" | chpasswd
