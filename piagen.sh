@@ -3,7 +3,7 @@
 _dir="/etc/private-internet-access"
 [ ! -d "${_dir}" ] && sudo mkdir -p "${_dir}"
 
-echo "$(pass PIA|grep 'username:'|awk '{print $2}')"|sudo tee "${_dir}/login.conf"
+echo "$(pass PIA|grep 'username:'|awk '{print $2}')" | sudo tee "${_dir}/login.conf"
 echo "$(pass PIA | head -n 1)" | sudo tee -a "${_dir}/login.conf"
 
 sudo chown root:root "${_dir}/login.conf"
