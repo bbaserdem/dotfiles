@@ -1,0 +1,19 @@
+# Maintained by sbp-base
+post_install() {
+    echo '[sbp-extra]==> Installing meta package . . .'
+    # Make steam library folder
+    echo '[sbp-extra]==> Priming steam library folder in /opt . . .'
+    mkdir /opt/Steam
+    chown sbp:games /opt/Steam
+    chmod 664 /opt/Steam
+    # Qutebrowser
+    echo '[sbp-extra]==> Adding qutebrowser spellcheck . . .'
+    /bin/python /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
+    echo '[sbp-extra]==> Installation complete! Check log for errors!'
+    post_upgrade
+}
+
+post_upgrade() {
+    echo '[sbp-extra]==> Upgrading . . .'
+    echo '[sbp-extra]==> Nothing to upgrade.'
+}

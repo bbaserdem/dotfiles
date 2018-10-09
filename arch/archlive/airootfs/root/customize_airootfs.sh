@@ -2,16 +2,10 @@
 
 set -e -u
 
-# Locale
-sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
-locale-gen
-
-# Timezone
-ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
-
 # Pull in config from repo
 mkdir -p /etc/skel
 git clone https://github.com/bbaserdem/dotfiles.git /etc/skel/.config
+mv /etc/skel/.fonts.conf /etc/skel/.config/fontconfig/fonts.conf
 
 # Switch to zsh
 usermod -s /usr/bin/zsh root
@@ -31,6 +25,7 @@ systemctl enable pacman-init.service choose-mirror.service
 systemctl set-default graphical.target
 
 # Create arch user
+[ "$(getent passwd | grep -c '^sbp')" == "1" ] && userdel sbp
 useradd --create-home --groups wheel --shell /usr/bin/zsh arch
 
 # Do passwords
@@ -38,4 +33,8 @@ echo "root:iusearchbtw" | chpasswd
 echo "arch:iusearchbtw" | chpasswd
 
 # Enable NetworkManager services (LET ARCH USER SET NETWORKS)
+systemctl disable systemd-networkd.service
+systemctl disable systemd-resolved.service
+systemctl disable systemd-networkd-wait-online.service
+systemctl disable iwd.service
 systemctl enable NetworkManager.service

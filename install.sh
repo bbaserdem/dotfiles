@@ -3,6 +3,11 @@ set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 IF=$'\n\t'
 
+# Cursor
+mkdir -p ~/.icons/default
+cat '[icon theme]
+Inherits=ComixCursors-Blue' > index.theme
+
 # Place symlinks
 echo '[config-install]==> Symlinking...\n'
 mkdir -p ~/Documents/MATLAB

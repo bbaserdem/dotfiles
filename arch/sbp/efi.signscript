@@ -1,12 +1,12 @@
 #!/bin/sh
 # Maintained by sbp-efi
-KEY=/etc/sbkeys/DB.key
-CER=/etc/sbkeys/DB.crt
-if [ -e $KEY ] && [ -e $CER ]
-then
-    for VAR in "$@" ; do
-        /usr/bin/sbsign --key $KEY --cert $CER --output $VAR $VAR
+_loc="/etc/sbkeys"
+_key="${_loc}/DB.key"
+_cer="${_loc}/DB.crt"
+if [ -e "$_key" ] && [ -e "$_cer" ] ; then
+    for _var in "$@" ; do
+        /usr/bin/sbsign --key $_key --cert $_cer --output $_var $_var
     done
 else
-    echo "SB keys not found in /etc/sbkeys/DB.{key,crt}"
+    echo "SB keys not found in ${_loc}"
 fi

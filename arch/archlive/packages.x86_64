@@ -76,4 +76,6 @@ networkmanager-vpnc
 networkmanager-strongswan
 nftables
 git
+sbp-base
+sbp-gui
 sbp-xfce

@@ -51,6 +51,10 @@ run_once() {
     fi
 }
 
+make_remove_offender() {
+    arch-chroot ${work_dir}/x86_64/airootfs/ pacman -R nano vi
+}
+
 # Setup custom pacman.conf with current cache directories.
 make_pacman_conf() {
     local _cache_dirs
@@ -62,6 +66,7 @@ make_pacman_conf() {
 make_basefs() {
     mkarchiso ${verbose} -w "${work_dir}/x86_64" -C "${work_dir}/pacman.conf" -D "${install_dir}" init
     mkarchiso ${verbose} -w "${work_dir}/x86_64" -C "${work_dir}/pacman.conf" -D "${install_dir}" -p "haveged intel-ucode amd-ucode memtest86+ mkinitcpio-nfs-utils nbd zsh efitools" install
+
 }
 
 # Additional packages (airootfs)
@@ -87,7 +92,7 @@ make_setup_mkinitcpio() {
       gpg --export ${gpg_key} >${work_dir}/gpgkey
       exec 17<>${work_dir}/gpgkey
     fi
-    ARCHISO_GNUPG_FD=${gpg_key:+17} mkarchiso ${verbose} -w "${work_dir}/x86_64" -C "${work_dir}/pacman.conf" -D "${install_dir}" -r 'mkinitcpio -c /etc/mkinitcpio-archiso.conf -k /boot/vmlinuz-linux -g /boot/archiso.img' run
+    ARCHISO_GNUPG_FD=${gpg_key:+17} ./mkarchiso ${verbose} -w "${work_dir}/x86_64" -C "${work_dir}/pacman.conf" -D "${install_dir}" -r 'mkinitcpio -c /etc/mkinitcpio-archiso.conf -k /boot/vmlinuz-linux -g /boot/archiso.img' run
     if [[ ${gpg_key} ]]; then
       exec 17<&-
     fi
@@ -265,6 +270,7 @@ mkdir -p ${work_dir}
 
 run_once make_pacman_conf
 run_once make_basefs
+run_once make_remove_offender
 run_once make_packages
 run_once make_setup_mkinitcpio
 run_once make_customize_airootfs
