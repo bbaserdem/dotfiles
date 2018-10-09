@@ -46,5 +46,5 @@ if [ -d "$xinitdir" ]; then
     done
 fi
 
-# Start i3 by default
+# Start i3
 exec $XDG_CONFIG_HOME/i3/launcher.sh

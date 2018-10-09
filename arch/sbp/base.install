@@ -19,6 +19,18 @@ post_install() {
     echo '[sbp-base]==> Enabling eyecandy for pacman . . .'
     sed -i '/# Misc options/aILoveCandy'        /etc/pacman.conf
 
+    # Configure pacman
+    echo '[sbp-base]==> Adding apps to geoconf . . .'
+    echo '[redshift]
+allowed=true
+system=false
+users=
+
+[qutebrowser]
+allowed=true
+system=false
+users=' >> /etc/geoclue/geoclue.conf
+
     # Set timeout to 10 seconds
     echo '[sbp-base]==> Reducing systemd timeout to 10 seconds . . .'
     sed -i '/DefaultTimeoutStartSec/s/^#//g'        /etc/systemd/system.conf
@@ -27,7 +39,7 @@ post_install() {
     sed -i '/DefaultTimeoutStopSec/s/=.*/=10s/'     /etc/systemd/system.conf
     sed -i '/HoldoffTimeoutSec/s/^#//g'             /etc/systemd/logind.conf
     sed -i '/HoldoffTimeoutSec/s/=.*/=10s/'         /etc/systemd/logind.conf
-    
+
     # Group and user
     echo '[sbp-base]==> Creating user sbp . . .'
     if [ "$(getent passwd | grep -c '^sbp')" == "0" ]

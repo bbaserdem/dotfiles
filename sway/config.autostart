@@ -5,15 +5,6 @@
 #-------------------#
 
 # List of autostart targets so that a config without systemd can use them
-
-# Desktop independent stuff
-exec --no-startup-id "/usr/lib/geoclue-2.0/demos/agent"
-exec --no-startup-id "/usr/bin/gpg-agent --daemon"
-exec --no-startup-id "/usr/bin/mpd"
-exec --no-startup-id "/usr/bin/mpdscribble --conf $XDG_CONFIG_HOME/mpdscribble.conf"
-exec --no-startup-id "$XDG_CONFIG_HOME/sbsync/mbsync_daemon"
-exec --no-startup-id "/usr/bin/syncthing"
-# Graphical stuff
 exec --no-startup-id "/usr/bin/blueman-applet"
 exec --no-startup-id "[ -e /usr/bin/dropbox ] && /usr/bin/dropbox"
 exec --no-startup-id "/usr/bin/dunst"

@@ -24,7 +24,8 @@ ln -sf ~/.config/X11/clientrc ~/.xinitrc
 ln -sf ~/.config/X11/serverrc ~/.xserverrc
 ln -sf ~/.config/X11/resources ~/.Xresources
 ln -sf ~/.config/X11/profile ~/.xprofile
-ln -sf ~/.config/X11/keymap ~/.xkbmap
+ln -sf ~/.config/X11/keymap ~/.Xkbmap
+ln -sf ~/.config/X11/modmap ~/.Xmodmap
 ln -sf ~/.config/X11/session ~/.xsession
 ln -sf ~/.config/octave/octaverc ~/.octaverc
 ln -sf ~/.config/matlabrc.m ~/Documents/MATLAB/startup.m

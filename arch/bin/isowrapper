@@ -10,7 +10,7 @@ _usr="$(users)"
 _cur="$(pwd)"
 _fol="${_cur}/$(dirname "${0}")/../archlive"
 _dir='/tmp/archlive'
-_iso="${1:-"~/Downloads"}"
+_iso="${1:-"${HOME}/Downloads"}"
 if [ -f "${_iso}" ] ; then
     echo "(makearchiso)==> Invalid argument..."
     exit
@@ -23,6 +23,8 @@ fi
 # Copy files and change owner
 echo "(makearchiso)==> Copying to ${_dir} and making owner root..."
 cp -r "${_fol}" "${_dir}"
+cp -r "${HOME}/.config/xfce4" "${_dir}/airootfs/etc/skel/.config/"
+cp -r "${HOME}/.config/arch/bin/installer" "${_dir}/airootfs/etc/skel/"
 sudo chown -R root:root "${_dir}"
 
 # Change directory and build
@@ -31,7 +33,5 @@ cd "${_dir}"
 sudo ./build.sh -v
 cd "${_cur}"
 
-# Copy the iso file
+# Change iso file
 sudo chown -R "${_usr}:${_usr}" "${_dir}/out"
-echo "(makearchiso)==> Copying iso to ${_iso}..."
-cp "${_dir}/out/*.iso" "${_iso}/"

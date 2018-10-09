@@ -2,11 +2,6 @@
 
 set -e -u
 
-# Pull in config from repo
-mkdir -p /etc/skel
-git clone https://github.com/bbaserdem/dotfiles.git /etc/skel/.config
-mv /etc/skel/.fonts.conf /etc/skel/.config/fontconfig/fonts.conf
-
 # Switch to zsh
 usermod -s /usr/bin/zsh root
 cp -aT /etc/skel/ /root/
@@ -25,16 +20,14 @@ systemctl enable pacman-init.service choose-mirror.service
 systemctl set-default graphical.target
 
 # Create arch user
-[ "$(getent passwd | grep -c '^sbp')" == "1" ] && userdel sbp
 useradd --create-home --groups wheel --shell /usr/bin/zsh arch
+
+# Change default session
+sed -i 's|^#user-session=.*|user-session=xfce|g'
 
 # Do passwords
 echo "root:iusearchbtw" | chpasswd
 echo "arch:iusearchbtw" | chpasswd
 
-# Enable NetworkManager services (LET ARCH USER SET NETWORKS)
-systemctl disable systemd-networkd.service
-systemctl disable systemd-resolved.service
-systemctl disable systemd-networkd-wait-online.service
-systemctl disable iwd.service
+# Enable NetworkManager services
 systemctl enable NetworkManager.service
