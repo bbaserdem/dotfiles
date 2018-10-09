@@ -5,7 +5,7 @@ IF=$'\n\t'
 
 # Cursor
 mkdir -p ~/.icons/default
-cat '[icon theme]
+echo '[icon theme]
 Inherits=ComixCursors-Blue' > index.theme
 
 # Place symlinks
