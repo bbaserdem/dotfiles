@@ -41,12 +41,18 @@ source=(
     'efi.refind-hook'
     'efi.signscript'
     'efi.stable'
+    'laptop.backlight'
+    'laptop.battery'
+    'laptop.install'
+    'laptop.network'
+    'notebook.install'
+    'notebook.network'
+    'server.install'
+    'workstation.install'
+    'workstation.network'
     'xfce.install'
     'xfce.nm-polkit'
     'xfce.wallpaper'
-    'laptop.backlight'
-    'laptop.battery'
-    'server.install'
     )
 md5sums=('0d3afa7b391a50313df9449b80240807'
          '2adc9c1077ee29381b6ffedf871744f4'
@@ -69,11 +75,18 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          'ef83413fe51d5f37999b2ea8ef231d87'
          'a73c16867d95edef046d2b99b90af986'
          'e3217b4c75d3bc302347b7bdf27f29de'
-         'a470b666e3e30ac281ff74779b7c5cd6'
-         '83e1b805fc92b3d1d3faf65158448687'
          '36adcc034c7a69ffe93e2c0937f051da'
          '31bc6b40fff742f9281088c7acdb6feb'
-         '67b87a7d4a68be37aaa4bf2afc763747')
+         '24a662aafd9a0decb482c9ae2cb642f2'
+         '963647fe81d1824bb977c3618d56959a'
+         '041c130156964f703949ebe167c81d36'
+         '7d625c54c37c6296f2ab1bbebbeb8308'
+         '6ddaf3ea2554bf54dc4be9bcc2781c63'
+         '164e68152c8b2c18645afb6eb2197272'
+         '7d432ab4dd0cbb05cc1399e8cd02cfbe'
+         '20e80f330379b2036aa100692a47d004'
+         'a470b666e3e30ac281ff74779b7c5cd6'
+         '83e1b805fc92b3d1d3faf65158448687')
 validpgpkeys=(
     '0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 
@@ -253,8 +266,8 @@ package_sbp-gui() {
         )
     # Theming
     depends+=(
-        'qt4'                                           # QT implementation
-        'python-pyqt5'                                  # QT stuff for python
+        'qt4'                                       # QT implementation
+        'python-pyqt5'                              # QT stuff for python
         'archlinux-wallpaper' 'archlinux-artwork'   # AUR: Wallpapers for Arch
         'arc-gtk-theme'                             # GTK theme
         'arc-kde'                                   # QT theme
@@ -286,14 +299,14 @@ package_sbp-gui() {
     )
     # Some universal useful gui functionality
     depends+=(
-        'brightnessctl'                                 # AUR: Brightness
-        'dunst'                                         # Notification daemon
-        'freerdp'                               # Remote desktop tool
-        'mpv'                                           # Video player daemon
-        'gpicview'                                      # Picture to ascii
-        'pdfjs'                                         # PDF rendering to webpages
-        'polkit' 'polkit-gnome'                         # Authentication
-        'trezor-bridge-bin'                             # Hardware wallet
+        'brightnessctl'         # AUR: Brightness
+        'dunst'                 # Notification daemon
+        'freerdp'               # Remote desktop tool
+        'mpv'                   # Video player daemon
+        'gpicview'              # Picture to ascii
+        'pdfjs'                 # PDF rendering to webpages
+        'polkit' 'polkit-gnome' # Authentication
+        'trezor-bridge-bin'     # Hardware wallet
     )
 }
 
@@ -323,7 +336,7 @@ package_sbp-extra() {
         'steam' 'steam-native-runtime' 'steam-fonts'
         'stellarium'                            # Star viewer
         'syncthing-gtk'                         # Tray icon for syncthing
-        'texlive-core' 'texlive-science' 'biber'# Latex
+        'texlive-core' 'texlive-science' 'biber' # Latex
         'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures' 'texlive-pstricks'
         'udiskie'                               # Mount manager with tray icon
         'wine'                                  # Windows compatibility
@@ -428,6 +441,7 @@ package_sbp-server() {
 # Laptop specific stuff; AMD
 package_sbp-laptop() {
     depends=('sbp-base')
+    install=laptop.install
     depends+=(
         'mesa' 'lib32-mesa'
         'mesa-demos' 'lib32-mesa-demos' 
@@ -437,22 +451,26 @@ package_sbp-laptop() {
         'xf86-video-amdgpu'
         'vulkan-radeon'
         )
+    install -Dm 0755 laptop.network "${pkgdir}/etc/udev/rules.d/10-network.rules"
 }
 
 # Notebook specific stuff; Nvidia
 package_sbp-notebook() {
     depends=('sbp-base')
+    install=notebook.install
     depends+=(
         'bumblebee' 'primus' 'bbswitch'
         'mesa' 'mesa-demos'
         'nvidia-dkms' 'lib32-nvidia-utils' 'lib32-virtualgl'
         'ocl-icd' 'opencl-nvidia' 'cuda'
         )
+    install -Dm 0755 notebook.network "${pkgdir}/etc/udev/rules.d/10-network.rules"
 }
 
 # Work specific stuff
 package_sbp-workstation() {
     depends=('sbp-base')
+    install=workstation.install
     depends+=(
         'dropbox'       # AUR: File synching
         'grub'
@@ -460,5 +478,6 @@ package_sbp-workstation() {
         'ocl-icd' 'opencl-nvidia-340xx' 'cuda'
         'libva-vdpau-driver'
         )
+    install -Dm 0755 workstation.network "${pkgdir}/etc/udev/rules.d/10-network.rules"
 }
 

@@ -3,6 +3,13 @@ post_install() {
 
     echo '[sbp-server]==> Installing meta package . . .'
 
+    # Do hostname
+    echo '[sbp-server]==> Doing hostname and hosts . . .'
+    echo 'sbpserver' > /etc/hostname
+    echo '127.0.0.1 localhost' >  /etc/hosts
+    echo '::1       localhost' >> /etc/hosts
+    echo '127.0.1.1 sbpserver.localdomain sbpserver' >> /etc/hosts
+
     # Enable SSH
     echo '[sbp-server]==> Enabling SSH socket . . .'
     systemctl enable sshd.socket
@@ -26,8 +33,6 @@ post_install() {
 }
 
 post_upgrade() {
-
     echo '[sbp-server]==> Upgrading . . .'
-
     echo '[sbp-server]==> Nothing to do.'
 }
