@@ -6,13 +6,14 @@ pkgname=(
     'sbp-extra'
     'sbp-efi'
     'sbp-xfce'
+    'sbp-sway'
     'sbp-server'
     'sbp-laptop'
     'sbp-notebook'
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=47
+pkgrel=50
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -40,6 +41,7 @@ source=(
     'efi.refind-hook'
     'efi.signscript'
     'efi.stable'
+    'xfce.install'
     'xfce.nm-polkit'
     'xfce.wallpaper'
     'laptop.backlight'
@@ -112,6 +114,7 @@ package_sbp-base() {
         'bluez' 'bluez-libs'                    # Bluetooth
         'bluez-utils' 'pulseaudio-bluetooth'
         'clonezilla'                            # Hard disk cloning
+        'ctags'                                 # Tag generator
         'cups' 'cups-pdf' 'cups-pk-helper'      # Printing
         'abcde' 'cdparanoia'                    # CD utility
         'amd-ucode' 'intel-ucode'               # Microcode updates
@@ -229,129 +232,114 @@ package_sbp-gui() {
         'xsel'                      # Select text/area
         'wayland'
         )
-    # Window manager
+    # Login manager
     depends+=(
-        'lightdm'                   # Login manager
-        'lightdm-webkit2-greeter' 'lightdm-webkit-theme-litarvan'
+        'lightdm'
+        'lightdm-webkit2-greeter'
+        'lightdm-webkit-theme-litarvan'
         )
-    # i3 stuff
-    depends+=(
-        'i3-gaps'                   # Improved window manager
-        'i3lock'                    # Screen locker
-        'i3blocks'                  # Input to status-bar
-        'maim'                      # Screenshot utility
-        'redshift'                  # Screen dimmer
-        'feh'                       # Wallpaper management
-        'sway'
-        )
-}
-
-# Meant to be excluded from some
-package_sbp-extra() {
-    depends=('sbp-gui')
     # Fonts, themes, icons etc.
     depends+=(
-        'archlinux-wallpaper' 'archlinux-artwork'   # Wallpapers for Arch
         'terminess-powerline-font-git'              # AUR: Console fonts
-        'noto-fonts-emoji'                          # Emoji font
-        'tamsyn-font'                               # Nice monospace font
-        'adobe-source-serif-pro-fonts'              # Nice serif font
-        'ttf-iosevka'                               # AUR: Statusline
+        'ttf-iosevka'                               # AUR: Statusline font
         'otf-nerd-fonts-fira-code'                  # AUR: Glyphs & Ligatures
-        'otf-hasklig'                               # AUR: Glyphs
+        'otf-hasklig'                               # AUR: Font with ligatures
+        'bdf-tewi-git'                              # AUR: Nice bitmap font
+        'siji-git'                                  # AUR: Nice monospace font
+        'tamsyn-font'                               # Nice monospace font
+        'noto-fonts-emoji'                          # Emoji font
+        'adobe-source-serif-pro-fonts'              # Nice serif font
+        'ttf-droid'                                 # Default looking font
+        )
+    # Theming
+    depends+=(
+        'qt4'                                           # QT implementation
+        'python-pyqt5'                                  # QT stuff for python
+        'archlinux-wallpaper' 'archlinux-artwork'   # AUR: Wallpapers for Arch
         'arc-gtk-theme'                             # GTK theme
         'arc-kde'                                   # QT theme
-        'gnome-themes-extra'                        # Completes missing icons
+        'qt5-styleplugins'                          # QT GTK integration
+        'papirus-icon-theme'                        # Nice icon theme
+        'gnome-themes-extra'                        # Icon compatibility
         'gtk-engine-murrine'                        # Fallback icons
-        'papirus-icon-theme'                        # Menu icons
-        'qt5-styleplugins'                          # QT5 theme from GTK
         'breeze-hacked-cursor-theme'                # Hacked cursor
-        )
-    # GUI programs
+        'xcursor-comix'                             # Comic cursor
+    )
+    # Some universally useful GUI programs
+    depends+=(
+        'blueman'                               # Bluetooth manager
+        'firefox'                               # Fallback browser
+        'gparted'                               # Graphical partition editor
+        'gtk2fontsel' 'gucharmap'               # Font and character map
+        'pavucontrol'                           # Pulse audio control menu
+        'pdfsam'                                # Pdf manipulator
+        'ristretto'                             # Image viewer
+        'rofi' 'rofi-pass' 'rofi-emoji'         # Application launcher
+        'smplayer'                              # Mpv frontend
+        'system-config-printer'                 # Printer setup utility
+        'termite'                               # Wayland native terminal
+        'thunar'                                # File browser
+        'thunar-volman' 'gvfs' 'thunar-archive-plugin' 'xarchiver'
+        'thunar-media-tags-plugin' 'tumbler' 'raw-thumbnailer' 'udisks2'
+        'zathura' 'zathura-cb' 'zathura-djvu'   # Document viewer
+        'zathura-pdf-mupdf' 'zathura-ps'
+    )
+    # Some universal useful gui functionality
+    depends+=(
+        'brightnessctl'                                 # AUR: Brightness
+        'dunst'                                         # Notification daemon
+        'freerdp'                               # Remote desktop tool
+        'mpv'                                           # Video player daemon
+        'gpicview'                                      # Picture to ascii
+        'pdfjs'                                         # PDF rendering to webpages
+        'polkit' 'polkit-gnome'                         # Authentication
+        'trezor-bridge-bin'                             # Hardware wallet
+    )
+}
+
+# Meant to be excluded from some setups due to size
+package_sbp-extra() {
+    depends=('sbp-base' 'sbp-gui')
     depends+=(
         'audacity'                              # Audio manipulator
         'blender'                               # 3d designing utility
-        'blueman'                               # Bluetooth manager
         'cantata'                               # MPD frontend
         'd-feet'                                # D-Bus settings
         'darktable'                             # Raw format editor
-        'freerdp'                               # Remote desktop tool
         'gimp'                                  # GNU Image Manipulation
         'gitg'                                  # Git visualizer
         'gourmet'                               # Recipe tracker
-        'gparted'                               # Graphical partition editor
-        'gtk2fontsel' 'gucharmap'               # Font and character map
         'inkscape'                              # Vector graphics editor
         'libreoffice-fresh'                     # Office suite
         'neovim-gtk-git'                        # AUR: Neovim gui
         'octave'                                # Octave
         'openscad'                              # CAD programming language
-        'pavucontrol'                           # Pulse audio control menu
-        'pdfsam'                                # Pdf manipulator
         'picard'                                # Music tagger
+        'qemu' 'ovmf'                           # Virtualizer
         'qutebrowser'                           # Browser with vim binding
         'rambox-bin'                            # AUR: Communication app
-        'ristretto'                             # Image viewer
         'skypeforlinux-stable-bin'              # AUR: Skype app
-        'smplayer'                              # Mpv frontend
         'spyder3'                               # Python dev environment
         'steam' 'steam-native-runtime' 'steam-fonts'
         'stellarium'                            # Star viewer
         'syncthing-gtk'                         # Tray icon for syncthing
-        'system-config-printer'                 # Printer setup utility
-        'thunar'                                # File browser
-        'termite'                               # Wayland native terminal
+        'texlive-core' 'texlive-science' 'biber'# Latex
+        'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures' 'texlive-pstricks'
         'udiskie'                               # Mount manager with tray icon
-        'zathura' 'zathura-cb' 'zathura-djvu'   # Document viewer
-        'zathura-pdf-mupdf' 'zathura-ps'
-        )
-    # Desktop libraries and utilities
-    depends+=(
-        'brightnessctl'                                 # AUR: Brightness
-        'ctags'                                         # Tag generator
-        'dunst'                                         # Notification daemon
-        'gpicview'                                      # Picture to ascii
-        'rofi'                                          # Application launcher
-        'mpv'                                           # Video player daemon
-        'qt4'                                           # QT implementation
-        'pdfjs'                                         # PDF rendering to webpages
-        'thunar-volman' 'gvfs' 'thunar-archive-plugin'  # Thunar stuff
-        'thunar-media-tags-plugin' 'tumbler' 'raw-thumbnailer' 'udisks2'
-        'python-pyqt5'                                  # QT stuff for python
-        'polkit' 'polkit-gnome'                         # Authentication
-        'qemu' 'ovmf'                                   # Virtualizer
-        'wine'                                          # Windows compatibility
-        'rofi-pass' 'rofi-emoji'                        # AUR: Rofi menus
-        'trezor-bridge-bin'                             # Hardware wallet
-        'biber' 'texlive-core'                          # Latex
-        'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures'
-        'texlive-pstricks' 'texlive-science'
+        'wine'                                  # Windows compatibility
         )
     install -Dm 0644 extra.qbupdate "${pkgdir}/etc/pacman.d/hooks/99-qutebrowser.hook"
 }
 
 # Xfce-specific stuff
 package_sbp-xfce() {
+    install=xfce.install
     depends=('sbp-gui')
     depends+=(
-        'arc-gtk-theme' 'xcursor-comix' 'papirus-icon-theme'
-        'ttf-droid'
-        'archlinux-wallpaper' 'archlinux-artwork'
         'rhythmbox'
         'firefox'
         'mousepad'
-        'transmission-gtk'
-        'vlc'
-        'thunar' 'thunar-volman' 'gvfs' 'thunar-archive-plugin' 'xarchiver'
-        'thunar-media-tags-plugin' 'tumbler' 'raw-thumbnailer'
-        'blueman'
-        'libreoffice-fresh'
-        'ristretto'
         'skypeforlinux-stable-bin'
-        'spyder3'
-        'system-config-printer'
-        'pdfjs'
-        'gimp'
         'exo'
         'garcon'
         'gtk-xfce-engine'
@@ -395,6 +383,21 @@ package_sbp-xfce() {
         )
     install -Dm 0755 xfce.nm-polkit "${pkgdir}/etc/polkit-1/rules.d/50-NetworkManager.rules"
     install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
+}
+
+# Sway stuff
+package_sbp-sway() {
+    depends=('sbp-gui')
+    # i3 stuff
+    depends+=(
+        'i3-gaps'                   # Improved window manager
+        'i3lock'                    # Screen locker
+        'i3blocks'                  # Input to status-bar
+        'maim'                      # Screenshot utility
+        'redshift'                  # Screen dimmer
+        'feh'                       # Wallpaper management
+        'sway'
+        )
 }
 
 package_sbp-efi() {
