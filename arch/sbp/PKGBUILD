@@ -13,7 +13,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=50
+pkgrel=51
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -22,6 +22,7 @@ groups=(bbaserdem)
 source=(
     'base.bt-polkit'
     'base.btaudio'
+    'base.eth'
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
@@ -31,9 +32,11 @@ source=(
     'base.snapper-root'
     'base.sudoers'
     'base.sysctl'
+    'base.tether'
     'base.touchpad'
     'base.updater'
     'base.vconsole'
+    'base.wifi'
     'gui.install'
     'extra.install'
     'extra.qbupdate'
@@ -199,6 +202,7 @@ package_sbp-base() {
         )
     install -Dm 0644 base.bt-polkit         "${pkgdir}/etc/polkit-1/rules.d/51-blueman.rules"
     install -Dm 0644 base.btaudio           "${pkgdir}/etc/bluetooth/audio.conf"
+    install -Dm 0644 base.eth               "${pkgdir}/etc/systemd/network/21-wired.network"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"
@@ -207,9 +211,11 @@ package_sbp-base() {
     install -Dm 0644 base.snapper-root      "${pkgdir}/etc/snapper/configs/root"
     install -Dm 0750 base.sudoers           "${pkgdir}/etc/sudoers.d/sbp-base"
     install -Dm 0644 base.sysctl            "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
+    install -Dm 0644 base.tether            "${pkgdir}/etc/systemd/network/23-tether.network"
     install -Dm 0644 base.touchpad          "${pkgdir}/etc/X11/xorg.conf.d/30-touchpad.conf"
     install -Dm 0644 base.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
     install -Dm 0644 base.vconsole          "${pkgdir}/etc/vconsole.conf"
+    install -Dm 0644 base.wifi              "${pkgdir}/etc/systemd/network/22-wireless.network"
     install -Dm 0644 laptop.backlight       "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
     install -Dm 0644 laptop.battery         "${pkgdir}/etc/udev/rules.d/91-battery.rules"
     # Make it so nano, vi and vim points to neovim
@@ -242,12 +248,15 @@ package_sbp-gui() {
         'xorg-xrefresh'         'xorg-xset'             'xorg-xsetroot'
         'xorg-xvinfo'           'xorg-xwd'              'xorg-xwininfo'
         'xorg-xwud'             'xf86-input-libinput'   'xorg-xinit'
+        'xorg-fonts-misc'
         'xsel'                      # Select text/area
         'wayland'
         )
     # Login manager
     depends+=(
         'lightdm'
+        'lightdm-gtk-greeter'
+        'lightdm-gtk-settings'
         'lightdm-webkit2-greeter'
         'lightdm-webkit-theme-litarvan'
         )
@@ -259,6 +268,7 @@ package_sbp-gui() {
         'otf-hasklig'                               # AUR: Font with ligatures
         'bdf-tewi-git'                              # AUR: Nice bitmap font
         'siji-git'                                  # AUR: Nice monospace font
+        'gohufont'                                  # AUR: Nice bitmap font
         'tamsyn-font'                               # Nice monospace font
         'noto-fonts-emoji'                          # Emoji font
         'adobe-source-serif-pro-fonts'              # Nice serif font
@@ -292,7 +302,7 @@ package_sbp-gui() {
         'system-config-printer'                 # Printer setup utility
         'termite'                               # Wayland native terminal
         'thunar'                                # File browser
-        'thunar-volman' 'gvfs' 'thunar-archive-plugin' 'xarchiver'
+        'thunar-volman' 'gvfs' 'thunar-archive-plugin' 'xarchiver' 'file-roller'
         'thunar-media-tags-plugin' 'tumbler' 'raw-thumbnailer' 'udisks2'
         'zathura' 'zathura-cb' 'zathura-djvu'   # Document viewer
         'zathura-pdf-mupdf' 'zathura-ps'
@@ -339,7 +349,7 @@ package_sbp-extra() {
         'texlive-core' 'texlive-science' 'biber' # Latex
         'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures' 'texlive-pstricks'
         'udiskie'                               # Mount manager with tray icon
-        'wine'                                  # Windows compatibility
+        'wine' 'samba'                          # Windows compatibility
         )
     install -Dm 0644 extra.qbupdate "${pkgdir}/etc/pacman.d/hooks/99-qutebrowser.hook"
 }
@@ -473,7 +483,7 @@ package_sbp-workstation() {
     install=workstation.install
     depends+=(
         'dropbox'       # AUR: File synching
-        'grub'
+        'grub' 'os-prober'
         'nvidia-340xx-dkms' 'nvidia-340xx-utils' 'lib32-nvidia-340xx-utils'
         'ocl-icd' 'opencl-nvidia-340xx' 'cuda'
         'libva-vdpau-driver'

@@ -1,0 +1,9 @@
+# Managed by sbp-base
+[Match]
+Name=wifi
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+RouteMetric=40
