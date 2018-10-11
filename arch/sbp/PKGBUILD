@@ -40,6 +40,8 @@ source=(
     'gui.install'
     'extra.install'
     'extra.qbupdate'
+    'efi.conf'
+    'efi.kernel-conf'
     'efi.refind'
     'efi.refind-hook'
     'efi.signscript'
@@ -343,7 +345,7 @@ package_sbp-extra() {
         'rambox-bin'                            # AUR: Communication app
         'skypeforlinux-stable-bin'              # AUR: Skype app
         'spyder3'                               # Python dev environment
-        'steam' 'steam-native-runtime' 'steam-fonts'
+        'steam' 'steam-native-runtime' 'steam-fonts' 'steamos-compositor'
         'stellarium'                            # Star viewer
         'syncthing-gtk'                         # Tray icon for syncthing
         'texlive-core' 'texlive-science' 'biber' # Latex
@@ -395,14 +397,6 @@ package_sbp-xfce() {
         'xfce4-weather-plugin'
         'xfce4-whiskermenu-plugin'
         'xfce4-xkb-plugin'
-        'networkmanager'
-        'nm-connection-editor'
-        'network-manager-applet'
-        'networkmanager-openvpn'
-        'networkmanager-openconnect'
-        'networkmanager-pptp'
-        'networkmanager-vpnc'
-        'networkmanager-strongswan'
         )
     install -Dm 0755 xfce.nm-polkit "${pkgdir}/etc/polkit-1/rules.d/50-NetworkManager.rules"
     install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
@@ -426,6 +420,8 @@ package_sbp-sway() {
 package_sbp-efi() {
     depends=('sbp-base')
     depends+=('refind-efi' 'efibootmgr' 'efivar')
+    install -Dm 0755 efi.conf           "${pkgdir}/efi/EFI/rEFInd/refind.conf.example"
+    install -Dm 0755 efi.kernel-conf    "${pkgdir}/boot/refind_linux.conf.example"
     install -Dm 0755 efi.refind         "${pkgdir}/etc/sbkeys/update-refind.sh"
     install -Dm 0644 efi.refind-hook    "${pkgdir}/etc/pacman.d/hooks/12-refind.hook"
     install -Dm 0755 efi.signscript     "${pkgdir}/etc/sbkeys/sbsign.sh"

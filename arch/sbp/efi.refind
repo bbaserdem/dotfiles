@@ -8,11 +8,6 @@ _tgt="${_esp}/EFI/rEFInd"
 # Create directory if doesn't exist!
 mkdir -p "${_tgt}"
 
-# If a config file is not there,copy the example config
-if [ ! -e "${_tgt}/refind.conf" ] ; then
-    cp "${_src}/refind.conf-sample" "${_tgt}/refind.conf"
-fi
-
 # Copy over artwork
 rm -rf "${_tgt}/images"
 cp -r  "${_src}/images" "${_tgt}"
