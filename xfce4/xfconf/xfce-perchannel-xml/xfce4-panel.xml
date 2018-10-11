@@ -46,6 +46,7 @@
         <value type="string" value="rambox"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="syncthing-gtk"/>
+        <value type="string" value="steam"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="skypeforlinux"/>
         <value type="string" value="thunar"/>
