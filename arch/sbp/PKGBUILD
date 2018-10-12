@@ -13,7 +13,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=52
+pkgrel=53
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -263,7 +263,7 @@ package_sbp-gui() {
     depends+=(
         'lightdm'
         'lightdm-gtk-greeter'
-        'lightdm-gtk-settings'
+        'lightdm-gtk-greeter-settings'
         'lightdm-webkit2-greeter'
         'lightdm-webkit-theme-litarvan'
         )
