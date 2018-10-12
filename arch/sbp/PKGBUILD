@@ -13,7 +13,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=51
+pkgrel=52
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -61,6 +61,7 @@ source=(
     )
 md5sums=('0d3afa7b391a50313df9449b80240807'
          '2adc9c1077ee29381b6ffedf871744f4'
+         '5b3f3cc9194f11a91c4d10119bdfd656'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
          '59a7221affeb5681ff7bfc76339ad213'
@@ -70,13 +71,17 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '00e5bc63b7bb82526516df8f45c4745c'
          'df0911ed7f3bbf285de4e3c08662dafd'
          '586c14c5f87f0097e0dfcb0454bfc2a6'
+         '4e8599e6d74c8d019edccbb09faf392b'
          '18c4e485034ee909f9d4f3c7fab3954f'
          '3ad35f4045a3fce5bbfeecd0602c3cee'
          '1ddf47f1278958e4cc65bfbd96dbd6f7'
+         'e71265ed72b65b8fb8092d6a4da0da3a'
          '61f611b56f9df32bb71896d6d8ca394a'
          'b19954dbb641caa1328725b405b49130'
          '17a7cda5f070fb76e1070a2f1fcbc21d'
-         '22a1e18566d6df4d1fab23ed4b65142c'
+         'a7c1283261fb4b3e77efa739c81f481d'
+         '79267b7f57a008bdc8eadb1f399e41c5'
+         '7084c59993679d938c4265818f2116a4'
          'ef83413fe51d5f37999b2ea8ef231d87'
          'a73c16867d95edef046d2b99b90af986'
          'e3217b4c75d3bc302347b7bdf27f29de'
