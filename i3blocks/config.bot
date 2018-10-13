@@ -55,8 +55,3 @@ interval=300
 # Kernel (Violet)
 [kernel]
 interval=once
-
-# Language (Violet)
-[language]
-interval=once
-signal=10

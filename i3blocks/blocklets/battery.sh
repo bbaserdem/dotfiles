@@ -2,7 +2,6 @@
 
 . ${XDG_CONFIG_HOME}/i3blocks/colors.sh
 
-_col="${col_bro}"
 _num=`cat /sys/class/power_supply/BAT0/capacity` || exit
 _sta=`cat /sys/class/power_supply/BAT0/status`
 _acp=`cat /sys/class/power_supply/AC0/online`
@@ -29,6 +28,7 @@ then
     _ico=""
 else
     # White (03)
+	_col="${col_bro}"
     _ico=""
 fi
 

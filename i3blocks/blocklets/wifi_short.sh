@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 . ${XDG_CONFIG_HOME}/i3blocks/colors.sh
 # Get color
@@ -15,7 +15,12 @@ case "$_col" in
     *)      _col="${col_cya}" ;;
 esac
 
-_ico="⏼"
-_pro="$(uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ weeks\?,/w/' | sed 's/\ days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/')"
+_int="${BLOCK_INSTANCE:-wifi}"
+_ico=""
 
-echo "<span color=${_col}>${_ico}</span> ${_pro}" | sed 's|&|&amp;|g'
+[[ ! -d /sys/class/net/${_int}/wireless ]] && exit
+[[ "$(cat /sys/class/net/${_int}/operstate)" = 'down' ]] && exit
+
+_sid="$(iwgetid | sed 's|.*ESSID:"\(.*\)"|\1|')"
+
+echo "<span color=${_col}>${_ico}</span> ${_sid}" | sed 's|&|&amp;|g'

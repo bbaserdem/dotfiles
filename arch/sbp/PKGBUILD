@@ -170,9 +170,9 @@ package_sbp-base() {
         'tmux'                                  # Terminal multiplexer
         'tlp' 'stress'                          # Power manager
         'iwd' 'ppp' 'pptpclient'                # INet Wireless Daemon
+        'networkmanager'                        # Network connection manager
         'mpc' 'mpd' 'mpdscribble'               # Music daemon and AUR scrobbler
         'syncthing' 'w3m' 'youtube-dl'          # Internet tools
-        'efitools' 'sbsigntools'                # EFI utilities
         'tzupdate'                              # AUR: For autoupdating time
         'xkb-switch'                            # AUR: Manage keyboard states
         )
@@ -223,8 +223,6 @@ package_sbp-base() {
     install -Dm 0644 base.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
     install -Dm 0644 base.vconsole          "${pkgdir}/etc/vconsole.conf"
     install -Dm 0644 base.wifi              "${pkgdir}/etc/systemd/network/22-wireless.network"
-    install -Dm 0644 laptop.backlight       "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
-    install -Dm 0644 laptop.battery         "${pkgdir}/etc/udev/rules.d/91-battery.rules"
     # Make it so nano, vi and vim points to neovim
     install -dm 0755 "${pkgdir}/usr/bin"
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vim"
@@ -298,28 +296,29 @@ package_sbp-gui() {
     # Some universally useful GUI programs
     depends+=(
         'blueman'                               # Bluetooth manager
+        'cantata'                               # MPD frontend
         'firefox'                               # Fallback browser
         'gparted'                               # Graphical partition editor
         'gtk2fontsel' 'gucharmap'               # Font and character map
+        'mpv' 'smplayer'                        # Mpv frontend
+        'network-manager-applet' 'nm-connection-editor'
         'pavucontrol'                           # Pulse audio control menu
         'pdfsam'                                # Pdf manipulator
+        'qemu' 'ovmf'                           # Virtualizer
+        'redshift'                              # Screen dimmer
         'ristretto'                             # Image viewer
-        'rofi' 'rofi-pass' 'rofi-emoji'         # Application launcher
-        'smplayer'                              # Mpv frontend
         'system-config-printer'                 # Printer setup utility
         'termite'                               # Wayland native terminal
         'thunar'                                # File browser
         'thunar-volman' 'gvfs' 'thunar-archive-plugin' 'xarchiver' 'file-roller'
         'thunar-media-tags-plugin' 'tumbler' 'raw-thumbnailer' 'udisks2'
+        'vlc'                                   # Media player
         'zathura' 'zathura-cb' 'zathura-djvu'   # Document viewer
         'zathura-pdf-mupdf' 'zathura-ps'
     )
     # Some universal useful gui functionality
     depends+=(
-        'brightnessctl'         # AUR: Brightness
-        'dunst'                 # Notification daemon
         'freerdp'               # Remote desktop tool
-        'mpv'                   # Video player daemon
         'gpicview'              # Picture to ascii
         'pdfjs'                 # PDF rendering to webpages
         'polkit' 'polkit-gnome' # Authentication
@@ -343,9 +342,9 @@ package_sbp-extra() {
         'libreoffice-fresh'                     # Office suite
         'neovim-gtk-git'                        # AUR: Neovim gui
         'octave'                                # Octave
+        'octopi'
         'openscad'                              # CAD programming language
         'picard'                                # Music tagger
-        'qemu' 'ovmf'                           # Virtualizer
         'qutebrowser'                           # Browser with vim binding
         'rambox-bin'                            # AUR: Communication app
         'skypeforlinux-stable-bin'              # AUR: Skype app
@@ -366,10 +365,7 @@ package_sbp-xfce() {
     install=xfce.install
     depends=('sbp-gui')
     depends+=(
-        'rhythmbox'
-        'firefox'
         'mousepad'
-        'skypeforlinux-stable-bin'
         'exo'
         'garcon'
         'gtk-xfce-engine'
@@ -412,19 +408,21 @@ package_sbp-sway() {
     depends=('sbp-gui')
     # i3 stuff
     depends+=(
-        'i3-gaps'                   # Improved window manager
-        'i3lock'                    # Screen locker
-        'i3blocks'                  # Input to status-bar
-        'maim'                      # Screenshot utility
-        'redshift'                  # Screen dimmer
-        'feh'                       # Wallpaper management
-        'sway'
+        'dex'                           # Autostart launcher
+        'dunst'                         # Notification daemon
+        'feh'                           # Wallpaper management
+        'i3-gaps'                       # Improved window manager
+        'i3lock'                        # Screen locker
+        'i3blocks'                      # Input to status-bar
+        'maim'                          # Screenshot utility
+        'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
+        'sway'                          # Wayland compositor
+        'brightnessctl'                 # Brightness controls
         )
 }
 
 package_sbp-efi() {
-    depends=('sbp-base')
-    depends+=('refind-efi' 'efibootmgr' 'efivar')
+    depends=('refind-efi' 'efibootmgr' 'efivar' 'efitools' 'sbsigntools')
     install -Dm 0755 efi.conf           "${pkgdir}/efi/EFI/rEFInd/refind.conf.example"
     install -Dm 0755 efi.kernel-conf    "${pkgdir}/boot/refind_linux.conf.example"
     install -Dm 0755 efi.refind         "${pkgdir}/etc/sbkeys/update-refind.sh"
@@ -435,7 +433,8 @@ package_sbp-efi() {
 
 # Server specific stuff
 package_sbp-server() {
-    depends=('sbp-base')
+    depends=('sbp-base' 'sbp-efi' 'sbp-extra')
+    conflicts=('sbp-workstation' 'sbp-notebook' 'sbp-laptop')
     install=server.install
     depends+=(
         'apache'            # Web server
@@ -451,7 +450,8 @@ package_sbp-server() {
 
 # Laptop specific stuff; AMD
 package_sbp-laptop() {
-    depends=('sbp-base')
+    depends=('sbp-base' 'sbp-gui' 'sbp-extra' 'sbp-efi')
+    conflicts=('sbp-workstation' 'sbp-server' 'sbp-notebook')
     install=laptop.install
     depends+=(
         'mesa' 'lib32-mesa'
@@ -462,12 +462,15 @@ package_sbp-laptop() {
         'xf86-video-amdgpu'
         'vulkan-radeon'
         )
-    install -Dm 0755 laptop.network "${pkgdir}/etc/udev/rules.d/10-network.rules"
+    install -Dm 0755 laptop.network   "${pkgdir}/etc/udev/rules.d/10-network.rules"
+    install -Dm 0644 laptop.backlight "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
+    install -Dm 0644 laptop.battery   "${pkgdir}/etc/udev/rules.d/91-battery.rules"
 }
 
 # Notebook specific stuff; Nvidia
 package_sbp-notebook() {
-    depends=('sbp-base')
+    depends=('sbp-base' 'sbp-gui' 'sbp-extra' 'sbp-efi')
+    conflicts=('sbp-workstation' 'sbp-server' 'sbp-laptop')
     install=notebook.install
     depends+=(
         'bumblebee' 'primus' 'bbswitch'
@@ -480,7 +483,8 @@ package_sbp-notebook() {
 
 # Work specific stuff
 package_sbp-workstation() {
-    depends=('sbp-base')
+    depends=('sbp-base' 'sbp-extra' 'sbp-gui')
+    conflicts=('sbp-server' 'sbp-notebook' 'sbp-laptop')
     install=workstation.install
     depends+=(
         'dropbox'       # AUR: File synching
