@@ -1,8 +1,7 @@
 #!/usr/bin/sh
 
-/usr/lib/geoclue-2.0/demos/agent &
-/usr/bin/gpg-agent --daemon &
-/usr/bin/mpd &
-/usr/bin/mpdscribble --conf $XDG_CONFIG_HOME/mpdscribble.conf &
-$XDG_CONFIG_HOME/sbsync/mbsync_daemon &
-/usr/bin/syncthing
+# Turn off system beep
+xset -b
+
+# Fix missing mouse pointer name
+xsetroot -cursor_name left_ptr

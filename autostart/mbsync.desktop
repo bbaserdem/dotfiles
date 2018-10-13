@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mbsync
+Comment=Mbsync (isync) for syncronizing mail
+Exec=sh -c '~/.config/sbsync/mbsync_daemon'
+StartupNotify=false
+Terminal=false
+Hidden=false

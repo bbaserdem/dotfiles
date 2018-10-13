@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mpdscribbler
+Comment=Scrobbler plugin for MPD
+Exec=sh -c 'mpdscribble --conf ~/.config/mpdscribble.conf'
+StartupNotify=false
+Terminal=false
+Hidden=false

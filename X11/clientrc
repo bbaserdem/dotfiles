@@ -1,34 +1,40 @@
-#!/bin/sh
+#!/usr/bin/sh
 
-# Turn off system beep
-xset -b
+if [ -z "${XDG_CONFIG_HOME}" ]; then
+    XDG_CONFIG_HOME="${HOME}/.config"
+fi
 
-# Fix missing mouse pointer issues
-xsetroot -cursor_name left_ptr
+# Xsession
+file="${XDG_CONFIG_HOME}/X11/session"
+if [ -x "${file}" -a ! -d "${file}" ]; then
+    echo "Loading xsession script: ${file}"
+    . "${file}"
+fi
+
 
 # Xresources
-for file in "/etc/X11/Xresources" "$XDG_CONFIG_HOME/X11/resources"; do
-    if [ -f "$file" ]; then
-        echo "Loading resource: $file"
-        xrdb -merge "$file"
+for file in "/etc/X11/Xresources" "${XDG_CONFIG_HOME}/X11/resources"; do
+    if [ -f "${file}" ]; then
+        echo "Loading resource: ${file}"
+        xrdb -merge "${file}"
     fi
 done
 
 # Xmodmap
-for file in "/etc/X11/Xkbmap" "$XDG_CONFIG_HOME/X11/keymap"; do
-    if [ -f "$file" ]; then
-        echo "Loading keymap: $file"
-        setxkbmap `cat "$file"`
+for file in "/etc/X11/Xkbmap" "${XDG_CONFIG_HOME}/X11/keymap"; do
+    if [ -f "${file}" ]; then
+        echo "Loading keymap: ${file}"
+        setxkbmap "$(cat "$file")"
         XKB_IN_USE=yes
     fi
 done
 
 # Load xmodmap if not using XKB
-if [ -z "$XKB_IN_USE" ]; then
-    for file in "/etc/X11/Xmodmap" "$XDG_CONFIG_HOME/X11/modmap"; do
-        if [ -f "$file" ]; then
-           echo "Loading modmap: $file"
-           xmodmap "$file"
+if [ -z "${XKB_IN_USE}" ]; then
+    for file in "/etc/X11/Xmodmap" "${XDG_CONFIG_HOME}/X11/modmap"; do
+        if [ -f "${file}" ]; then
+           echo "Loading modmap: ${file}"
+           xmodmap "${file}"
         fi
     done
 fi
@@ -37,14 +43,15 @@ unset XKB_IN_USE
 
 # Run all system xinitrc shell scripts
 xinitdir="/etc/X11/xinit/xinitrc.d"
-if [ -d "$xinitdir" ]; then
-    for script in $xinitdir/*; do
-        echo "Loading xinit script $script"
-        if [ -x "$script" -a ! -d "$script" ]; then
-            . "$script"
+if [ -d "${xinitdir}" ]; then
+    for script in ${xinitdir}/*; do
+        echo "Loading xinit script ${script}"
+        if [ -x "${script}" -a ! -d "${script}" ]; then
+            . "${script}"
         fi
     done
 fi
 
-# Start i3
-exec $XDG_CONFIG_HOME/i3/launcher.sh
+# Start i3 (can differentiate ttys here I think)
+. "${XDG_CONFIG_HOME}/i3/parse_config.sh"
+exec systemd-inhibit --what=handle-power-key i3
