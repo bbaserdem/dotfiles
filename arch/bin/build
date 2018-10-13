@@ -27,7 +27,7 @@ ln -sf    "${_local}/${_name}.files.tar.xz" "${_local}/$_name.files"
 for _arg in "${@}"; do
     if [ -d "${_arg}" ] ; then
         # Update package sums
-        updpkgsums "${_arg}"
+        updpkgsums "${_arg}/PKGBUILD"
         # Create a copy of the package directory
         cp -r "${_arg}" "${_build}/"
         _loc="${_build}/$(basename "${_arg}")"
