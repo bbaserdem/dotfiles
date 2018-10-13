@@ -18,7 +18,7 @@ ln -sf    "${_local}/${_name}.files.tar.xz" "${_local}/${_name}.files"
 # Remove the packages from this repo
 for _arg in "${@}" ; do
     repo-remove "${_local}/${_name}.db.tar.xz" "${_arg}"
-    s3cmd rm "${_dest}/${_name}-*.pkg.tar.xz" || true
+    s3cmd rm "${_dest}/${_arg}-*.pkg.tar.xz" || true
 done
 
 # Sync local database to remote

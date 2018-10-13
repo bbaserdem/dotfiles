@@ -21,6 +21,11 @@ post_install() {
 
     # Configure geoconf
     echo '[sbp-base]==> Adding apps to geoconf . . .'
+    echo '[redshift-gtk]'   >> /etc/geoclue/geoclue.conf
+    echo 'allowed=true'     >> /etc/geoclue/geoclue.conf
+    echo 'system=false'     >> /etc/geoclue/geoclue.conf
+    echo 'users='           >> /etc/geoclue/geoclue.conf
+    echo ""                 >> /etc/geoclue/geoclue.conf
     echo '[redshift]'       >> /etc/geoclue/geoclue.conf
     echo 'allowed=true'     >> /etc/geoclue/geoclue.conf
     echo 'system=false'     >> /etc/geoclue/geoclue.conf
