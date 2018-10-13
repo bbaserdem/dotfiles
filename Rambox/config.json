@@ -1,6 +1,7 @@
 {
 	"always_on_top": false,
 	"hide_menu_bar": true,
+	"tabbar_location": "top",
 	"window_display_behavior": "show_trayIcon",
 	"auto_launch": true,
 	"flash_frame": true,
@@ -18,6 +19,7 @@
 	"locale": "en",
 	"enable_hidpi_support": false,
 	"default_service": "last",
+	"sendStatistics": false,
 	"x": 0,
 	"y": 28,
 	"width": 1920,

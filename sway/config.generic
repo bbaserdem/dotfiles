@@ -185,10 +185,12 @@ exec --no-startup-id "$TERMINAL -t 'drop_music' -e 'ncmpcpp --screen playlist --
 
 # Desktop 1 is for anything goes
 set $ws1 "1:"
-assign [class="Skype"]          $ws1
-assign [class="Rambox"]         $ws1
-for_window [class="Skype"]      layout tabbed
-for_window [class="Rambox"]     layout tabbed
+assign [class="Skype"]              $ws1
+assign [class="Rambox"]             $ws1
+assign [class="Qemu-system-x86_64"] $ws1
+for_window [class="Skype"]              layout tabbed
+for_window [class="Rambox"]             layout tabbed
+for_window [class="Qemu-system-x86_64"] layout tabbed
 # Desktop 2 is for web browsing
 set $ws2 "2:爵"
 assign [class="qutebrowser"]    $ws2
@@ -238,8 +240,7 @@ set $ws0 "10:漣"
 assign [class="Pavucontrol"]    $ws0
 assign [class="Syncthing GTK"]  $ws0
 assign [class="QDBusViewer"]    $ws0
-assign [class="Blueman-manager"]    $ws0
-assign [class="Qemu-system-x86_64"] $ws0
+assign [class="Pamac-updater"]  $ws0
 
 #-------------------#
 #-----LAUNCHERS-----#
