@@ -13,7 +13,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=54
+pkgrel=56
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -365,10 +365,12 @@ package_sbp-xfce() {
     install=xfce.install
     depends=('sbp-gui')
     depends+=(
-        'mousepad'
         'exo'
+        'firefox'
         'garcon'
         'gtk-xfce-engine'
+        'mousepad'
+        'thunderbird'
         'xfce4-appfinder'
         'xfce4-panel'
         'xfce4-power-manager'
