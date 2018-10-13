@@ -173,6 +173,8 @@ exec --no-startup-id "$XDG_CONFIG_HOME/i3blocks/updater-min"
 #-----STARTUP-----#
 #-----------------#
 
+# Autostart programs
+exec --no-startup-id "dex --autostart --environment sway"
 # Start ncmpcpp in scratchpad
 for_window [title="drop_music"] floating enable, resize set 1920px 420px, move position 0px 23px, move scratchpad, sticky enable
 exec --no-startup-id "$TERMINAL -t 'drop_music' -e 'ncmpcpp --screen playlist --slave-screen visualizer'"

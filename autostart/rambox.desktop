@@ -6,5 +6,4 @@ Comment=ramboxstartup script
 Exec=/opt/rambox/rambox --hidden
 StartupNotify=false
 Terminal=false
-Hidden=true
-
+Hidden=false

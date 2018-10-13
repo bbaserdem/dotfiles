@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=i3 Monitors
+Comment=Monitor hotplug listener for i3
+Exec=sh -c '~/.config/i3/monitors.sh'
+Icon=applications-system
+Terminal=false
+Type=Application
+StartupNotify=false
+OnlyShowIn=i3;

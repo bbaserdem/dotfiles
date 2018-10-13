@@ -6,5 +6,5 @@ Keywords=hopper;server;rdp
 Name=Hopper RDP
 Comment=Launch XFreeRDP to remote te Hopper
 Terminal=false
-Exec=/home/sbp/.config/scripts/hopper_rdp.sh
+Exec=sh -c '~/.config/scripts/hopper_rdp.sh'
 Icon=remmina

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Feh
+Comment=Change wallpaper using Feh
+Exec=sh -c '~/.config/i3/wallpaper.sh'
+Icon=applications-system
+Terminal=false
+Type=Application
+StartupNotify=false
+OnlyShowIn=i3;
