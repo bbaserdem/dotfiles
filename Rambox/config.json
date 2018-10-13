@@ -1,7 +1,6 @@
 {
 	"always_on_top": false,
 	"hide_menu_bar": true,
-	"tabbar_location": "top",
 	"window_display_behavior": "show_trayIcon",
 	"auto_launch": true,
 	"flash_frame": true,
@@ -25,6 +24,8 @@
 	"width": 1916,
 	"height": 1037,
 	"maximized": false,
+	"tabbar_location": "top",
+	"sendStatistics": false,
 	"master_password1": "",
 	"master_password2": ""
 }

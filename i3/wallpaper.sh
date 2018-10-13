@@ -2,11 +2,8 @@
 # Script to change wallpapers, with different options for office and home
 if [[ $(hostname) == 'sbpworkstation' ]]
 then
-    # At office
-    WALLP_L=`find $HOME/Pictures/Wallpapers/Dual/ -name '*[L]*.jpg' -print | shuf -n 1`
-    WALLP_R="${WALLP_L/\[L\]/[R]}"
-    feh --no-fehbg --bg-scale $WALLP_R --bg-scale $WALLP_L
+    feh --no-fehbg --randomize --bg-scale --no-xinerama ~/Pictures/Wallpapers/Dual/
 else
     # All other situations
-    feh --no-fehbg --randomize --bg-fill $HOME/Pictures/Wallpapers
+    feh --no-fehbg --randomize --bg-fill ~/Pictures/Wallpapers
 fi
