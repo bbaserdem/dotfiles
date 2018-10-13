@@ -2,7 +2,7 @@
 Name=Dropbox
 GenericName=Network Storage
 Comment=Dropbox is a free service that lets you bring your photos, docs, and videos anywhere and share them easily
-Exec=sh -c '[ -x /usr/bin/dropbox ] && dbus-launch dropbox start'
+Exec=dropbox
 Icon=dropbox
 Terminal=false
 Type=Application
