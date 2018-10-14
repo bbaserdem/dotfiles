@@ -3,6 +3,6 @@ Type=Application
 Version=1.0
 Name=rambox
 Comment=ramboxstartup script
-Exec=/opt/rambox/rambox --hidden
+Exec=/opt/rambox/rambox
 StartupNotify=false
 Terminal=false
