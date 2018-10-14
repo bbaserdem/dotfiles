@@ -12,58 +12,62 @@ markup=pango
 [calendar]
 command=~/.config/i3blocks/blocklets/calendar.sh brown
 interval=300
-signal=9
+signal=11
 
 # Tasks (red)
 [todo]
 command=~/.config/i3blocks/blocklets/todo.sh red
 interval=300
-signal=8
+signal=10
 
 # Music player daemon notification (orange)
 [mpd]
 command=~/.config/i3blocks/blocklets/mpd.sh orange
 interval=once
-signal=3
+signal=9
 
 # Pulseaudio volume (yellow)
 [pulseaudio]
 command=~/.config/i3blocks/blocklets/pulseaudio.sh yellow
 interval=once
-signal=6
+signal=8
 
 # Internet (green)
 [wifi-short]
 command=~/.config/i3blocks/blocklets/wifi_short.sh green
 interval=5
+signal=7
 
 [ethernet-short]
 command=~/.config/i3blocks/blocklets/ethernet_short.sh green
 interval=5
+signal=6
 
 [vpn]
 command=~/.config/i3blocks/blocklets/vpn.sh green
 interval=5
+signal=5
 
 # Language (cyan)
 [language]
 command=~/.config/i3blocks/blocklets/language.sh cyan
 interval=once
-signal=10
+signal=4
 
 # Time (indigo)
 [time]
 command=~/.config/i3blocks/blocklets/time.sh indigo
 interval=1
+signal=3
 
 # Date (violet)
 [date]
 command=~/.config/i3blocks/blocklets/date.sh violet
 interval=once
-signal=7
+signal=2
 
 # Battery (varies)
 [battery]
 command=~/.config/i3blocks/blocklets/battery.sh violet
 interval=30
-signal=2
+signal=1

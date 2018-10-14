@@ -1,12 +1,10 @@
 #!/usr/bin/sh
 
-[ -e $XDG_CONFIG_HOME/i3/config ] && rm $XDG_CONFIG_HOME/i3/config
-
 # Get i3-specific stuff
 cp $XDG_CONFIG_HOME/i3/config.i3 $XDG_CONFIG_HOME/i3/config
 
 # Get Config
-cat $XDG_CONFIG_HOME/sway/config.generic | \
+cat $XDG_CONFIG_HOME/sway/config | \
     grep -v 'set $bl0' | sed 's|\$base00|\$bl0|g' | \
     grep -v 'set $bl1' | sed 's|\$base01|\$bl1|g' | \
     grep -v 'set $bl2' | sed 's|\$base02|\$bl2|g' | \
@@ -24,6 +22,7 @@ cat $XDG_CONFIG_HOME/sway/config.generic | \
     grep -v 'set $vio' | sed 's|\$base0E|\$vio|g' | \
     grep -v 'set $bro' | sed 's|\$base0F|\$bro|g' | \
     grep -v 'pango_markup' | \
+    sed 's|^include|# include|g' | \
     sed 's|--environment sway|--environment i3|g' | \
     sed 's|swaymsg|i3-msg|g' | \
     sed 's|\$XDG_CONFIG_HOME/sway|\$XDG_CONFIG_HOME/i3|g' | \

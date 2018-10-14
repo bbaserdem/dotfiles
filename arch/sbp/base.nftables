@@ -1,0 +1,56 @@
+# Managed by sbp-base
+#!/usr/bin/nft -f
+
+table inet filter {
+    chain input {
+        type filter hook input priority 0; policy drop;
+
+        # Accept self-traffic, and previously accepted ones
+        ct state established,related accept
+
+        # Drop invalid connections
+        ct state invalid drop
+
+        # Accept localhost traffic
+        iif "lo" accept
+
+        # Accept ICMP & IGMP
+        ip6 nexthdr icmpv6 icmpv6 type { destination-unreachable, packet-too-big, time-exceeded, parameter-problem, mld-listener-query, mld-listener-report, mld-listener-reduction, nd-router-solicit, nd-router-advert, nd-neighbor-solicit, nd-neighbor-advert, ind-neighbor-solicit, ind-neighbor-advert, mld2-listener-report } accept
+        ip protocol icmp icmp type { destination-unreachable, router-solicitation, router-advertisement, time-exceeded, parameter-problem } accept
+        ip protocol icmp icmp type echo-request ct state new accept
+        ip protocol igmp accept
+        meta nfproto ipv4 counter packets 0 bytes 0 reject with icmp type prot-unreachable
+
+        # Send new UPD to chain
+        ip protocol udp ct state new jump UDP
+        ip protocol udp reject
+
+        # Send new TCP to chain
+        ip protocol tcp tcp flags & (fin | syn | rst | ack) == syn ct state new jump TCP
+        ip protocol tcp reject with tcp reset
+
+    }
+
+    chain forward {
+        type filter hook forward priority 0; policy drop;
+    }
+
+    chain output {
+        type filter hook output priority 0; policy accept;
+    }
+
+    chain TCP {
+        # TCP connections to accept
+        # HTTP:80 HTTPS:443 SSH:22 DNS:53
+        tcp dport http accept
+        tcp dport https accept
+        tcp dport ssh accept
+        tcp dport domain accept
+    }
+
+    chain UDP {
+        # UDP connections to accept
+        # DNS: 53
+        udp dport domain accept
+    }
+}
