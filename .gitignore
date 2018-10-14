@@ -245,4 +245,4 @@ arch/iso/
 !/zsh/.zprofile
 !/zsh/.zshrc
 !/zsh/powerlevel9k.settings
-!/zsh/zshenv
+!/zsh/.zshenv
