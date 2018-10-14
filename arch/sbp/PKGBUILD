@@ -131,6 +131,7 @@ package_sbp-base() {
         'util-linux'    'which'         'btrfs-progs'   'f2fs-tools'
         'sudo'                                  # To check your privilage
         'exfat-utils' 'udftools'                # File system stuff
+        'bridge-utils' 'nftables' 'hostapd'     # Networking stuff
         )
     # Utilities and Functionality
     depends+=(
@@ -167,7 +168,6 @@ package_sbp-base() {
         'notmuch' 'vdirsyncer'
         'openconnect' 'openvpn'                 # VPN services
         'private-internet-access-vpn'           # AUR: Set up PIA
-        'nftables'                              # Firewall
         'pass' 'qrencode'                       # Password manager
         'rsync'                                 # File synching utility
         'snapper'                               # BTRFS snapshot manager
