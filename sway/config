@@ -1,4 +1,3 @@
 # vim:filetype=i3
-include "$XDG_CONFIG_HOME/sway/config.autostart"
 include "$XDG_CONFIG_HOME/sway/config.generic"
 include "$XDG_CONFIG_HOME/sway/config.sway"
