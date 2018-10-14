@@ -2,9 +2,17 @@
 
 <channel name="xfce4-notifyd" version="1.0">
   <property name="primary-monitor" type="uint" value="0"/>
-  <property name="notify-location" type="uint" value="1"/>
+  <property name="notify-location" type="uint" value="3"/>
   <property name="log-level" type="uint" value="0"/>
   <property name="log-level-apps" type="uint" value="0"/>
   <property name="theme" type="string" value="Default"/>
   <property name="do-fadeout" type="bool" value="true"/>
+  <property name="applications" type="empty">
+    <property name="known_applications" type="array">
+      <value type="string" value="Firefox"/>
+      <value type="string" value="Xfce4-notifyd settings"/>
+      <value type="string" value="xfce4-power-manager"/>
+    </property>
+  </property>
+  <property name="do-slideout" type="bool" value="true"/>
 </channel>

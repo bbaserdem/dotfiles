@@ -1,8 +1,4 @@
 #!/usr/bin/sh
 
 /usr/lib/geoclue-2.0/demos/agent &
-/usr/bin/gpg-agent --daemon &
-/usr/bin/mpd &
-/usr/bin/mpdscribble --conf $XDG_CONFIG_HOME/mpdscribble.conf &
-$XDG_CONFIG_HOME/sbsync/mbsync_daemon &
-/usr/bin/syncthing
+/usr/bin/gpg-agent --daemon
