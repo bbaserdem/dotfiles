@@ -253,6 +253,7 @@ assign [class="Pavucontrol"]            $ws0
 assign [class="Syncthing GTK"]          $ws0
 assign [class="QDBusViewer"]            $ws0
 assign [class="Pamac-updater"]          $ws0
+assign [class="Pamac-manager"]          $ws0
 
 #-------------------#
 #-----LAUNCHERS-----#
