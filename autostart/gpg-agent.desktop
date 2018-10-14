@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GPG Agent
+Exec=gpg-agent --daemon
+Icon=gpg
+Comment=Initialize GPG agent daemon
+X-GNOME-Autostart-enabled=true
+Hidden=false
+Type=Application
+StartupNotify=false
