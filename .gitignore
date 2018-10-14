@@ -230,6 +230,16 @@ arch/iso/
 !/vdirsyncer/config
 !/vdirsyncer/passgen.sh
 
+# VIFM: Grab config
+!/vifm
+!/vifm/colors
+!/vifm/colors/**
+!/vifm/scripts
+!/vifm/scripts/**
+!/vifm/vim
+!/vifm/vim/**
+!/vifm/vifmrc
+
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**

@@ -98,5 +98,8 @@ export WINEPREFIX="${XDG_DATA_HOME}/wineprefixes/default"
 # Vimperator
 export VIMPERATOR_INIT=":source ${XDG_CONFIG_HOME}/vimperator/vimperatorrc"
 export VIMPERATOR_RUNTIME="${XDG_CONFIG_HOME}/vimperator"
+# VIFM
+export VIFM="${XDG_CONFIG_HOME}/vifm"
+export MYVIFMRC="${VIFM}/vifmrc"
 # ZSH
 export HISTFILE="${XDG_DATA_HOME}/zsh/history"
