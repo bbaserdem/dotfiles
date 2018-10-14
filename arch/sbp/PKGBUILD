@@ -13,7 +13,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=58
+pkgrel=59
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -175,6 +175,7 @@ package_sbp-base() {
         'syncthing' 'w3m' 'youtube-dl'          # Internet tools
         'tzupdate'                              # AUR: For autoupdating time
         'xkb-switch'                            # AUR: Manage keyboard states
+        'xdg-user-dirs'                         # Manage user directories
         )
     # Console apps and utilities
     depends+=(
@@ -346,6 +347,7 @@ package_sbp-extra() {
         'pamac-aur'                             # Package manager
         'picard'                                # Music tagger
         'qutebrowser'                           # Browser with vim binding
+        'remmina'                               # Remote manager
         'rambox-bin'                            # AUR: Communication app
         'skypeforlinux-stable-bin'              # AUR: Skype app
         'spyder3'                               # Python dev environment

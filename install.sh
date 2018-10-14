@@ -11,13 +11,12 @@ Inherits=Breeze_Hacked' > index.theme
 # Place symlinks
 echo '[config-install]==> Symlinking...\n'
 mkdir -p ~/Documents/MATLAB
-mkdir -p ~/.local/share
+mkdir -p ~/.local/{share,wineprefixes}
 mkdir -p ~/.cache/mpd
 ln -sf ~/.config/abcde.conf ~/.abcde.conf
 ln -sf ~/.config/bash/bashrc ~/.bashrc
 ln -sf ~/.config/bash/login ~/.bash_profile
 ln -sf ~/.config/bash/logout ~/.bash_logout
-ln -sf ~/.config/gtk2rc ~/.gtkrc-2.0
 ln -sf ~/.config/tmux.conf ~/.tmux.conf
 ln -sf ~/.config/zsh/zshenv ~/.zshenv
 ln -sf ~/.config/X11/clientrc ~/.xinitrc
@@ -27,7 +26,6 @@ ln -sf ~/.config/X11/profile ~/.xprofile
 ln -sf ~/.config/X11/keymap ~/.Xkbmap
 ln -sf ~/.config/X11/modmap ~/.Xmodmap
 ln -sf ~/.config/X11/session ~/.xsession
-ln -sf ~/.config/octave/octaverc ~/.octaverc
 ln -sf ~/.config/matlabrc.m ~/Documents/MATLAB/startup.m
 rm -rf ~/.local/share/applications
 ln -sf ~/.config/applications ~/.local/share/applications

@@ -1,6 +1,5 @@
-#
-# ~/.bash_profile
-#
-
-[[ -f ~/.zshenv ]] && source ~/.zshenv
+if [[ -f ~/.config/zsh/.zshenv ]] ; then
+    source ~/.zshenv
+    export HISTFILE="${XDG_DATA_HOME}/bash/history"
+fi
 [[ -f ~/.bashrc ]] && . ~/.bashrc

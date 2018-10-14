@@ -36,6 +36,9 @@ post_install() {
     echo 'system=false'     >> /etc/geoclue/geoclue.conf
     echo 'users='           >> /etc/geoclue/geoclue.conf
 
+    # Configure zsh
+    echo 'export ZDOTDIR="${HOME}/.config/zsh"' >> /etc/zsh/zprofile
+
     # Set timeout to 10 seconds
     echo '[sbp-base]==> Reducing systemd timeout to 10 seconds . . .'
     sed -i '/DefaultTimeoutStartSec/s/^#//g'        /etc/systemd/system.conf
