@@ -37,6 +37,7 @@ source=(
     'base.updater'
     'base.vconsole'
     'base.wifi'
+    'base.zshenv'
     'gui.install'
     'extra.install'
     'extra.qbupdate'
@@ -224,6 +225,7 @@ package_sbp-base() {
     install -Dm 0644 base.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
     install -Dm 0644 base.vconsole          "${pkgdir}/etc/vconsole.conf"
     install -Dm 0644 base.wifi              "${pkgdir}/etc/systemd/network/22-wireless.network"
+    install -Dm 0644 base.zshenv            "${pkgdir}/etc/zsh/zshenv"
     # Make it so nano, vi and vim points to neovim
     install -dm 0755 "${pkgdir}/usr/bin"
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vim"

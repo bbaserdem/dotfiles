@@ -18,7 +18,6 @@ ln -sf ~/.config/bash/bashrc ~/.bashrc
 ln -sf ~/.config/bash/login ~/.bash_profile
 ln -sf ~/.config/bash/logout ~/.bash_logout
 ln -sf ~/.config/tmux.conf ~/.tmux.conf
-ln -sf ~/.config/zsh/zshenv ~/.zshenv
 ln -sf ~/.config/X11/clientrc ~/.xinitrc
 ln -sf ~/.config/X11/serverrc ~/.xserverrc
 ln -sf ~/.config/X11/resources ~/.Xresources
