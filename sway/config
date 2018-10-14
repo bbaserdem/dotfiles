@@ -234,10 +234,15 @@ assign [class="cantata"]        $ws7
 # Desktop 8 is for image manipulation
 set $ws8 "8:"
 assign [class="pdfsam"]         $ws8
-assign [class="gimp"]           $ws8
+assign [class="Gimp*"]          $ws8
 assign [class="inkscape"]       $ws8
 assign [class="Blender"]        $ws8
 assign [class="openscad"]       $ws8
+for_window [class="pdfsam"]         layout stacking
+for_window [class="Gimp*"]          layout stacking
+for_window [class="inkscape"]       layout stacking
+for_window [class="Blender"]        layout stacking
+for_window [class="openscad"]       layout stacking
 # Desktop 9 is for Steam and games
 set $ws9 "9:"
 assign [class="Steam"]          $ws9
