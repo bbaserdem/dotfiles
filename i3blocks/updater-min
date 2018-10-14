@@ -2,7 +2,7 @@
 
 # Updater scripts
 i3b_update_mpd () {
-    _socket=3
+    _socket=9
     while : ; do
         pgrep -x mpd > /dev/null || ( echo 'MPD is unreachable' && sleep 60 && continue )
         mpc idle > /dev/null
@@ -13,7 +13,7 @@ i3b_update_mpd () {
 }
 
 i3b_update_pulseaudio () {
-    _socket=6
+    _socket=8
     /usr/bin/pactl subscribe | grep --line-buffered -e "sink" -e "'change' on server #" | \
         while IFS= read -r line; do pkill -RTMIN+"${_socket}" i3blocks
         wait .1
@@ -25,7 +25,7 @@ i3b_update_date () {
     [ "$(pgrep -x i3b_update_date | wc -l)" -gt 2 ] && ( \
         echo 'Date updater is already running' && exit )
     echo 'Date updater is exiting'
-    _socket=7
+    _socket=2
     while : ; do
         sleep "$(( $(date -d "tomorrow 0" +%s) - $(date +%s) + 5 ))"
         pkill -RTMIN+"${_socket}" i3blocks
@@ -35,7 +35,7 @@ i3b_update_date () {
 i3b_update_language () {
     [ "$(pgrep -x i3b_update_rss | wc -l)" -gt 2 ] && ( \
         echo 'Language updater is already running' && exit )
-    _socket=10
+    _socket=4
     xkb-switch -W | \
         while IFS= read -r line; do pkill -RTMIN+"${_socket}" i3blocks
         wait .1
