@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Udiskie
+Comment=Udisks manager and applet
+Exec=udiskie
+StartupNotify=false
+Terminal=false
+Hidden=false
+OnlyShowIn=i3;sway;

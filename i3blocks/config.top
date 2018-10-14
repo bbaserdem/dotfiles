@@ -61,6 +61,11 @@ signal=7
 interval=once
 signal=1
 
+# Language (Violet)
+[language]
+interval=once
+signal=10
+
 # Battery (varies)
 [battery]
 #interval=once

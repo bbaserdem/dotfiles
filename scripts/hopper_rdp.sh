@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-_ydf=0
+_ydf=20
 _xdf=0
 
 if pgrep -x "i3" > /dev/null
@@ -30,6 +30,9 @@ _psw="$(echo "${_inf}" | head -n 1)"
 _una="$(echo "${_inf}" | grep 'username:' | awk '{print $2}')"
 _srv="$(echo "${_inf}" | grep 'domain:'   | awk '{print $2}')"
 _prt="$(echo "${_inf}" | grep 'port:'     | awk '{print $2}')"
+
+# Force resolutiom otherwise its stupid
+_res="1920x1034"
 
 _cmd="xfreerdp /u:${_una} /p:${_psw} /size:${_res} /wm-class:'Hopper-RDP' /title:'' -grab-keyboard -wallpaper -themes /v:${_srv}"
 echo "${_cmd}"

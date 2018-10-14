@@ -19,17 +19,25 @@ post_install() {
     echo '[sbp-base]==> Enabling eyecandy for pacman . . .'
     sed -i '/# Misc options/aILoveCandy'        /etc/pacman.conf
 
-    # Configure pacman
+    # Configure geoconf
     echo '[sbp-base]==> Adding apps to geoconf . . .'
-    echo '[redshift]
-allowed=true
-system=false
-users=
+    echo '[redshift-gtk]'   >> /etc/geoclue/geoclue.conf
+    echo 'allowed=true'     >> /etc/geoclue/geoclue.conf
+    echo 'system=false'     >> /etc/geoclue/geoclue.conf
+    echo 'users='           >> /etc/geoclue/geoclue.conf
+    echo ""                 >> /etc/geoclue/geoclue.conf
+    echo '[redshift]'       >> /etc/geoclue/geoclue.conf
+    echo 'allowed=true'     >> /etc/geoclue/geoclue.conf
+    echo 'system=false'     >> /etc/geoclue/geoclue.conf
+    echo 'users='           >> /etc/geoclue/geoclue.conf
+    echo ""                 >> /etc/geoclue/geoclue.conf
+    echo '[qutebrowser]'    >> /etc/geoclue/geoclue.conf
+    echo 'allowed=true'     >> /etc/geoclue/geoclue.conf
+    echo 'system=false'     >> /etc/geoclue/geoclue.conf
+    echo 'users='           >> /etc/geoclue/geoclue.conf
 
-[qutebrowser]
-allowed=true
-system=false
-users=' >> /etc/geoclue/geoclue.conf
+    # Configure zsh
+    echo 'export ZDOTDIR="${HOME}/.config/zsh"' >> /etc/zsh/zprofile
 
     # Set timeout to 10 seconds
     echo '[sbp-base]==> Reducing systemd timeout to 10 seconds . . .'
@@ -61,10 +69,6 @@ users=' >> /etc/geoclue/geoclue.conf
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
     locale-gen
 
-    # Create resolve.conf symlink
-    echo '[sbp-base]==> Creating symlink to resolv.conf for DNS lookups . . .'
-    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-
     # TLP service
     echo '[sbp-laptop]==> Enabling TLP, and fixing BTRFS data corruption . . .'
     sed -i '/SATA_LINKPWR_ON_BAT/s/=".*"/="max_performance"/' /etc/default/tlp
@@ -72,12 +76,8 @@ users=' >> /etc/geoclue/geoclue.conf
     systemctl enable tlp-sleep.service
 
     # Systemd processes
-    # Network
-    echo '[sbp-base]==> Enabling networking through systemd-networkd, and firewall . . .'
-    systemctl enable systemd-networkd.service
-    systemctl enable systemd-resolved.service
-    systemctl enable systemd-networkd-wait-online.service
-    systemctl enable iwd.service
+    # Firewall
+    echo '[sbp-base]==> Enabling firewall . . .'
     systemctl enable nftables.service
     # Bluetooth
     echo '[sbp-base]==> Enabling bluetooth . . .'

@@ -24,6 +24,7 @@ cat $XDG_CONFIG_HOME/sway/config.generic | \
     grep -v 'set $vio' | sed 's|\$base0E|\$vio|g' | \
     grep -v 'set $bro' | sed 's|\$base0F|\$bro|g' | \
     grep -v 'pango_markup' | \
+    sed 's|--environment sway|--environment i3|g' | \
     sed 's|swaymsg|i3-msg|g' | \
     sed 's|\$XDG_CONFIG_HOME/sway|\$XDG_CONFIG_HOME/i3|g' | \
     sed 's|swaybar_command|i3bar_command|g' | \
@@ -32,9 +33,4 @@ cat $XDG_CONFIG_HOME/sway/config.generic | \
     grep -v 'icon_theme' | \
     grep -v 'wrap_scroll' | \
     grep -v 'bindsym $Meta+Shift+Escape' >> \
-    $XDG_CONFIG_HOME/i3/config
-
-# Get autostart functions
-cat $XDG_CONFIG_HOME/sway/config.autostart | \
-    sed 's|sway/wallpaper.sh|i3/wallpaper.sh|g' >> \
     $XDG_CONFIG_HOME/i3/config

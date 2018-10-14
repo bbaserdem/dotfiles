@@ -1,42 +1,42 @@
 #!/usr/bin/bash
-# Wraps aursync command to mount an amazon s3 bucket which contains a repository
+# Wraps aursync command to build & upload AUR packages.
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 # Locations
-REPO_NAME=sbp
-REMOTE_PATH=s3://sbp-arch/repo
-LOCAL_PATH="${HOME}/.cache/${REPO_NAME}-repo"
+_name=sbp
+_dest=s3://sbp-arch/repo
+_local="${HOME}/.cache/${_name}-repo"
+mkdir -p "${_local}"
 
-mkdir -p "${LOCAL_PATH}"
+# Sync remote DB to local
+s3cmd sync "${_dest}/${_name}.db.tar.xz"    "${_local}/"
+ln -sf    "${_local}/${_name}.db.tar.xz"    "${_local}/${_name}.db"
+s3cmd sync "${_dest}/${_name}.files.tar.xz" "${_local}/"
+ln -sf    "${_local}/${_name}.files.tar.xz" "${_local}/${_name}.files"
 
-## Sync remote DB to local ##
-s3cmd sync "${REMOTE_PATH}/${REPO_NAME}.db.tar.xz"    "${LOCAL_PATH}/"
-ln -sf      "${LOCAL_PATH}/${REPO_NAME}.db.tar.xz"    "${LOCAL_PATH}/$REPO_NAME.db"
-s3cmd sync "${REMOTE_PATH}/${REPO_NAME}.files.tar.xz" "${LOCAL_PATH}/"
-ln -sf      "${LOCAL_PATH}/${REPO_NAME}.files.tar.xz" "${LOCAL_PATH}/$REPO_NAME.files"
-
-## Clean up older packages that may or may not have been deleted from the
-## remote so that we do not reupload them
-for _file in "${LOCAL_PATH}/"*.pkg.tar.xz ; do
-    [ -f "${_file}" ] || break
-    rm -f "${_file}"
+# Clean up older packages
+for _file in "${_local}/"*.pkg.tar.xz ; do
+    [ -f "${_file}" ] && rm -f "${_file}"
 done
 
-# Run aursync on all arguments, and remove old if successful
+# Run aursync on all arguments
 for _arg in "${@}" ; do
-    aursync --repo "$REPO_NAME" --root "$LOCAL_PATH" "${_arg}" &&
-    s3cmd rm "${REMOTE_PATH}/${_arg}-*.pkg.tar.xz" || true
+    aursync --repo "${_name}" --root "${_local}" "${_arg}"
 done
 
-## Upload all the newly generated package files
-for _file in "${LOCAL_PATH}/"*.pkg.tar.xz ; do
+# Upload all the newly generated package files
+for _file in "${_local}/"*.pkg.tar.xz ; do
+    # Check if it is a file.
     [ -f "${_file}" ] || break
-    s3cmd sync --follow-symlinks --acl-public "${_file}" "${REMOTE_PATH}/"
+    # Remove old versions (strip -ver-num-arc.EXT)
+    _pre="$( echo "${_file}" | sed 's|^\(.*\)-.*-.*-.*|\1|g' )"
+    [ -z "${_pre}" ] || ( \
+        s3cmd rm "${_dest}/${_pre}-*.pkg.tar.xz" || true )
+    s3cmd sync --follow-symlinks --acl-public "${_file}" "${_dest}/"
 done
 
-## Sync local database to remote
-s3cmd sync --follow-symlinks --acl-public \
-    "${LOCAL_PATH}/${REPO_NAME}.db"    "${LOCAL_PATH}/${REPO_NAME}.db.tar.xz" \
-    "${LOCAL_PATH}/${REPO_NAME}.files" "${LOCAL_PATH}/${REPO_NAME}.files.tar.xz" \
-    "${REMOTE_PATH}/"
+# Sync local database to remote
+s3cmd sync --follow-symlinks --acl-public "${_local}/${_name}.db" \
+    "${_local}/${_name}.db.tar.xz" "${_local}/${_name}.files" \
+    "${_local}/${_name}.files.tar.xz" "${_dest}/"

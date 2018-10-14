@@ -1,4 +1,7 @@
 #!/usr/bin/sh
 
-/usr/lib/geoclue-2.0/demos/agent &
-/usr/bin/gpg-agent --daemon
+# Turn off system beep
+xset -b
+
+# Fix missing mouse pointer name
+xsetroot -cursor_name left_ptr

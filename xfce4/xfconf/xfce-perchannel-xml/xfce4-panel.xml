@@ -52,6 +52,7 @@
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value="rhythmbox"/>
     </property>
     <property name="plugin-10" type="string" value="notification-plugin"/>
     <property name="plugin-12" type="string" value="xfce4-mount-plugin"/>
@@ -64,6 +65,7 @@
     <property name="plugin-17" type="string" value="datetime"/>
     <property name="plugin-2" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="1"/>
     </property>
   </property>
 </channel>

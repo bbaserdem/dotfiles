@@ -10,6 +10,21 @@ post_install() {
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbplaptop.localdomain sbplaptop' >> /etc/hosts
 
+    # Enabling networking with networkd-systemd
+    echo '[sbp-laptop]==> Enabling networking through systemd-networkd . . .'
+    systemctl enable systemd-networkd.service
+    systemctl enable systemd-resolved.service
+    systemctl enable systemd-networkd-wait-online.service
+    systemctl enable iwd.service
+    # Create resolve.conf symlink
+    echo '[sbp-base]==> Creating symlink to resolv.conf for DNS lookups . . .'
+    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+    # Masking NetworkManager
+    echo '[sbp-laptop]==> Masking NetworkManager . . .'
+    systemctl mask NetworkManager.service
+    systemctl mask NetworkManager-dispatcher.service
+    systemctl mask NetworkManager-wait-online.service
+
     echo '[sbp-laptop]==> Installation done! Check log for errors.'
     post_upgrade
 }

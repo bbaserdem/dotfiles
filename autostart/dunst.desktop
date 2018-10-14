@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dunst
+Comment=D-Bus Notification daemon
+Exec=dunst
+Icon=applications-system
+Terminal=false
+Type=Application
+StartupNotify=false
+OnlyShowIn=i3;sway;
