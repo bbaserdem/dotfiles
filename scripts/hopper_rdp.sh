@@ -31,6 +31,9 @@ _una="$(echo "${_inf}" | grep 'username:' | awk '{print $2}')"
 _srv="$(echo "${_inf}" | grep 'domain:'   | awk '{print $2}')"
 _prt="$(echo "${_inf}" | grep 'port:'     | awk '{print $2}')"
 
+# Force resolutiom otherwise its stupid
+_res="1920x1034"
+
 _cmd="xfreerdp /u:${_una} /p:${_psw} /size:${_res} /wm-class:'Hopper-RDP' /title:'' -grab-keyboard -wallpaper -themes /v:${_srv}"
 echo "${_cmd}"
 ${_cmd}
