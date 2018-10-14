@@ -1,0 +1,9 @@
+gtk-can-change-accels = 1
+gtk-icon-theme-name = "Adwaita"
+gtk-theme-name = "Arc-Dark"
+style "user-font"
+{
+        font_name="Droid Sans 10"
+}
+widget_class "*" style "user-font"
+gtk-font-name = "Terminus 12"

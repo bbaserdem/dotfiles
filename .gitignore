@@ -78,6 +78,14 @@ arch/iso/
 !/gnupg
 !/gnupg/gpg-agent.conf
 
+# GTK-2.0: Get settings
+!/gtk-1.0
+!/gtk-1.0/gtkrc
+
+# GTK-2.0: Get settings
+!/gtk-2.0
+!/gtk-2.0/gtkrc
+
 # GTK-3.0: Get bookmarks and settings
 !/gtk-3.0
 !/gtk-3.0/bookmarks
