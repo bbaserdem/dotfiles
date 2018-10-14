@@ -1,8 +1,10 @@
 [Desktop Entry]
+Encoding=UTF-8
 Type=Application
-Name=Mpd
+Name=Music Player Daemon
 Comment=Music player daemon
 Exec=mpd
 StartupNotify=false
 Terminal=false
 Hidden=false
+X-GNOME-Autostart-enabled=false

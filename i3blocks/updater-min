@@ -4,8 +4,8 @@
 i3b_update_mpd () {
     _socket=9
     while : ; do
-        pgrep -x mpd > /dev/null || ( echo 'MPD is unreachable' && sleep 60 && continue )
-        mpc idle > /dev/null
+        pgrep -x mpd  || ( echo 'MPD is unreachable' && sleep 5 && continue )
+        mpc idle
         pkill -RTMIN+"${_socket}" i3blocks
         wait .1
     done
