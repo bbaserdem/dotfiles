@@ -7,6 +7,7 @@ pkgname=(
     'sbp-efi'
     'sbp-xfce'
     'sbp-sway'
+    'sbp-i3'
     'sbp-server'
     'sbp-laptop'
     'sbp-notebook'
@@ -424,17 +425,31 @@ package_sbp-xfce() {
 }
 
 # Sway stuff
-package_sbp-sway() {
+package_sbp-i3() {
     depends=('sbp-gui')
     # i3 stuff
     depends+=(
         'dex'                           # Autostart launcher
-        'dunst'                         # Notification daemon
+        'xfce4-notifyd'                 # Notification daemon
         'feh'                           # Wallpaper management
         'i3-gaps'                       # Improved window manager
         'i3lock'                        # Screen locker
         'i3blocks'                      # Input to status-bar
         'maim'                          # Screenshot utility
+        'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
+        'sway'                          # Wayland compositor
+        'brightnessctl'                 # Brightness controls
+        )
+}
+
+# Sway stuff
+package_sbp-sway() {
+    depends=('sbp-gui')
+    # sway stuff
+    depends+=(
+        'dex'                           # Autostart launcher
+        'mako'                          # Notification daemon
+        'i3blocks'                      # Input to status-bar
         'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
         'sway'                          # Wayland compositor
         'brightnessctl'                 # Brightness controls

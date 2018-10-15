@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Cantata
+Comment=GUI Manager for MPD and additional functionality
+GenericName=Music Player Client
+Icon=cantata
+Exec=cantata
+Terminal=false
+Categories=Qt;KDE;AudioVideo;Player;
+X-DBUS-ServiceName=mpd.cantata
+Keywords=Music;MPD;
+StartupNotify=false
