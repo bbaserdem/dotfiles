@@ -48,6 +48,11 @@ command=~/.config/i3blocks/blocklets/vpn.sh green
 interval=5
 signal=5
 
+# Bitcoin (cyan)
+[language]
+command=~/.config/i3blocks/blocklets/bitcoin.sh cyan
+interval=3600
+
 # Language (cyan)
 [language]
 command=~/.config/i3blocks/blocklets/language.sh cyan

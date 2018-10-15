@@ -4,7 +4,7 @@
     # In a multi-monitor setup, can override
     follow = none
     # Where the window dialog is to be
-    geometry = "640x10-10+32"
+    geometry = "360x10-0+23"
     # Show number of hidden notifications
     indicate_hidden = yes
     # Compress if it can be compressed
@@ -30,15 +30,15 @@
     # Disable timeout if screen was idle this many seconds
     idle_threshold = 120
     # Font to be used
-    font = Iosevka 12
+    font = Droid Sans 12
     # Extra space between text lines
     line_height = 1
     # Allow bold<b>, italic<i>, strikethrough<s> and underline<u> html tags
-    markup = yes
+    markup = full
     # Design formatting of the notification
-    format = "%p %a: <b>%s</b>\n%b"
+    format = "<b>%s</b>\n%b"
     # Aligning text
-    alignment = right
+    alignment = left
     # Show age of message, if it is older than this value (-1: disable)
     show_age_threshold = 60
     # Enable text wrapping
@@ -56,7 +56,7 @@
     # If >0, defines max icon size
     max_icon_size = 32
     # Paths where icons will be drawn from
-    icon_path = /usr/share/icons/Papirus/16x16/status/:/usr/share/icons/Papirus/16x16/devices/
+    icon_path = /usr/share/icons/Papirus/48x48/
     # If true, rrecalled notifications will not time out
     sticky_history = yes
     # Max number of notification to be kept in history

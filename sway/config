@@ -13,7 +13,7 @@ include "$XDG_CONFIG_HOME/sway/config.sway"
 exec "dex --autostart --environment sway"
 # Start ncmpcpp in scratchpad
 for_window [title="dropdown"] floating enable, resize set 1920px 420px, move position 0px 23px, move scratchpad, sticky enable
-exec --no-startup-id "$TERMINAL -t 'dropdown'
+exec --no-startup-id "$TERMINAL -t 'dropdown'"
 
 #--------------#
 #-----KEYS-----#
