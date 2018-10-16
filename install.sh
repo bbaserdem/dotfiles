@@ -6,7 +6,7 @@ IF=$'\n\t'
 # Cursor
 mkdir -p ~/.icons/default
 echo '[icon theme]
-Inherits=Breeze_Hacked' > index.theme
+Inherits=Breeze_Hacked' > ~/.icons/default/index.theme
 
 # Place symlinks
 echo '[config-install]==> Symlinking...\n'
