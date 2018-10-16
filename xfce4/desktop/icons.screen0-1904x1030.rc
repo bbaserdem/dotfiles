@@ -2,58 +2,54 @@
 4.10.3+=true
 
 [/home/sbp/Music]
-row=5
-col=1
-
-[/home/sbp/Sync]
-row=3
-col=1
+row=2
+col=17
 
 [/home/sbp/Documents]
-row=4
-col=0
+row=1
+col=17
 
 [/home/sbp/Phone]
-row=2
-col=1
+row=5
+col=17
 
 [/home/sbp/Desktop]
-row=0
-col=1
+row=7
+col=17
 
 [/home/sbp/Research]
-row=5
-col=0
+row=6
+col=17
 
 [/home/sbp/Configs]
 row=8
-col=0
+col=17
 
 [/home/sbp/Videos]
-row=7
-col=0
+row=3
+col=17
 
 [/home/sbp/Pictures]
-row=4
-col=1
+row=0
+col=17
 
 [/home/sbp/Downloads]
-row=1
-col=1
+row=4
+col=17
 
 [815237ff-a53e-4e8c-b01c-a96f7a5061a4]
-row=0
+row=3
 col=0
 
 [Trash]
-row=1
-col=0
-
-[/]
 row=2
 col=0
 
+[/]
+row=0
+col=0
+
 [/home/sbp]
-row=3
+row=1
 col=0
 
