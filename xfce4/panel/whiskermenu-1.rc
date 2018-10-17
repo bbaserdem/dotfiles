@@ -1,4 +1,4 @@
-favorites=firefox.desktop,xfce4-terminal.desktop,xfce-settings-manager.desktop,ristretto.desktop,spyder3.desktop,Thunar.desktop,rhythmbox.desktop,gimp.desktop
+favorites=firefox.desktop,thunderbird.desktop,ristretto.desktop,vlc.desktop,xfce-settings-manager.desktop,spyder3.desktop,Thunar.desktop,xfce4-terminal.desktop,mousepad.desktop,rhythmbox.desktop,gimp.desktop
 recent=
 button-title=Applications
 button-icon=distributor-logo-archlinux
@@ -19,8 +19,8 @@ display-recent-default=false
 position-search-alternate=true
 position-commands-alternate=false
 position-categories-alternate=true
-menu-width=529
-menu-height=574
+menu-width=515
+menu-height=683
 menu-opacity=100
 command-settings=xfce4-settings-manager
 show-command-settings=true

@@ -8,6 +8,9 @@ mkdir -p ~/.icons/default
 echo '[icon theme]
 Inherits=Breeze_Hacked' > ~/.icons/default/index.theme
 
+# Manage permission of home folder
+chmod 755 "${HOME}"
+
 # Place symlinks
 echo '[config-install]==> Symlinking...\n'
 mkdir -p ~/Documents/MATLAB

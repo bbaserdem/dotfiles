@@ -27,7 +27,12 @@
     </property>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-3" type="string" value="tasklist"/>
+    <property name="plugin-3" type="string" value="tasklist">
+      <property name="include-all-workspaces" type="bool" value="true"/>
+      <property name="grouping" type="uint" value="1"/>
+      <property name="middle-click" type="uint" value="2"/>
+      <property name="flat-buttons" type="bool" value="false"/>
+    </property>
     <property name="plugin-4" type="string" value="pager"/>
     <property name="plugin-5" type="string" value="clock">
       <property name="mode" type="uint" value="2"/>
@@ -50,6 +55,7 @@
         <value type="string" value="skypeforlinux"/>
         <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="rambox"/>
+        <value type="string" value="remmina remote desktop client"/>
       </property>
     </property>
     <property name="plugin-1" type="string" value="whiskermenu"/>
