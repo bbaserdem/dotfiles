@@ -14,7 +14,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=63
+pkgrel=65
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -214,7 +214,7 @@ package_sbp-base() {
         'jre8-openjdk' 'jre10-openjdk'          # Java
         'gcc6'                                  # For matlab
         )
-    install -Dm 0640 base.bt-polkit         "${pkgdir}/etc/polkit-1/rules.d/51-blueman.rules"
+    install -Dm 0644 base.bt-polkit         "${pkgdir}/etc/polkit-1/rules.d/51-blueman.rules"
     install -Dm 0644 base.btaudio           "${pkgdir}/etc/bluetooth/audio.conf"
     install -Dm 0644 base.eth               "${pkgdir}/etc/systemd/network/21-wired.network"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
@@ -422,15 +422,16 @@ package_sbp-xfce() {
         'xfwm4'
         'xfwm4-themes'
         )
-    install -Dm 0640 xfce.nm-polkit "${pkgdir}/etc/polkit-1/rules.d/50-NetworkManager.rules"
+    install -Dm 0644 xfce.nm-polkit "${pkgdir}/etc/polkit-1/rules.d/50-NetworkManager.rules"
     install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
 }
 
-# Sway stuff
+# i3 stuff
 package_sbp-i3() {
     depends=('sbp-gui')
     # i3 stuff
     depends+=(
+        'brightnessctl'                 # Brightness controls
         'dex'                           # Autostart launcher
         'dunst'                         # Notification daemon
         'feh'                           # Wallpaper management
@@ -439,7 +440,6 @@ package_sbp-i3() {
         'i3blocks'                      # Input to status-bar
         'maim'                          # Screenshot utility
         'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
-        'brightnessctl'                 # Brightness controls
         )
 }
 
@@ -448,15 +448,17 @@ package_sbp-sway() {
     depends=('sbp-gui')
     # sway stuff
     depends+=(
-        'dex'                           # Autostart launcher
-        'mako'                          # Notification daemon
-        'i3blocks'                      # Input to status-bar
-        'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
-        'sway'                          # Wayland compositor
         'brightnessctl'                 # Brightness controls
+        'dex'                           # Autostart launcher
+        'i3blocks'                      # Input to status-bar
+        'mako-git'                      # Notification daemon
+        'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
+        'sway-git'                      # Wayland compositor
+        'wlroots-git'                   # Wayland library
         )
 }
-
+#        'redshift-sway-git'             # Screen dimmer for wayland
+#        'rofi-wayland-git'              # App launcher
 package_sbp-efi() {
     depends=('refind-efi' 'efibootmgr' 'efivar' 'efitools' 'sbsigntools')
     install -Dm 0755 efi.conf           "${pkgdir}/efi/EFI/rEFInd/refind.conf.example"

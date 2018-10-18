@@ -2,22 +2,22 @@
 4.10.3+=true
 
 [/home/sbp/Desktop/steam.desktop]
-row=4
-col=17
+row=0
+col=16
 
 [815237ff-a53e-4e8c-b01c-a96f7a5061a4]
-row=3
-col=17
+row=0
+col=0
 
 [Trash]
 row=2
-col=0
+col=16
 
 [/]
 row=3
-col=0
+col=16
 
 [/home/sbp]
 row=4
-col=0
+col=16
 

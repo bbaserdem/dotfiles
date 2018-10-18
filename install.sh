@@ -3,11 +3,6 @@ set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 IF=$'\n\t'
 
-# Cursor
-mkdir -p ~/.icons/default
-echo '[icon theme]
-Inherits=Breeze_Hacked' > ~/.icons/default/index.theme
-
 # Manage permission of home folder
 chmod 755 "${HOME}"
 
@@ -16,11 +11,13 @@ echo '[config-install]==> Symlinking...\n'
 mkdir -p ~/Documents/MATLAB
 mkdir -p ~/.local/{share,wineprefixes}
 mkdir -p ~/.cache/mpd
+mkdir -p ~/.icons/default
 ln -sd ~/Documents/Remmina ~/.local/share/remmina
 ln -sf ~/.config/abcde.conf ~/.abcde.conf
 ln -sf ~/.config/bash/bashrc ~/.bashrc
 ln -sf ~/.config/bash/login ~/.bash_profile
 ln -sf ~/.config/bash/logout ~/.bash_logout
+ln -sf ~/.config/cursor/index.theme ~/.icons/default/
 ln -sf ~/.config/tmux.conf ~/.tmux.conf
 ln -sf ~/.config/X11/clientrc ~/.xinitrc
 ln -sf ~/.config/X11/serverrc ~/.xserverrc

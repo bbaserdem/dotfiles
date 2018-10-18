@@ -66,6 +66,10 @@ arch/iso/
 !/bash
 !/bash/**
 
+# CURSOR: Accept all
+!/cursor
+!/cursor/**
+
 # DUNST: Accept the rc
 !/dunst
 !/dunst/dunstrc
