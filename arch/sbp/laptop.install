@@ -10,6 +10,12 @@ post_install() {
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbplaptop.localdomain sbplaptop' >> /etc/hosts
 
+    # Enabling bumblebee
+    echo '[sbp-laptop]==> Enabling bumblebee . . .'
+    gpasswd --add sbp bumblebee
+    systemctl enable bumblebee.service
+    sed -i 's|^Bridge=.*|Bridge=primus|g' /etc/bumblebee/bumblebee.conf
+
     # Enabling networking with networkd-systemd
     echo '[sbp-laptop]==> Enabling networking through systemd-networkd . . .'
     systemctl enable systemd-networkd.service
