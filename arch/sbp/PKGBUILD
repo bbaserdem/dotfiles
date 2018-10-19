@@ -518,7 +518,6 @@ package_sbp-notebook() {
         'lib32-virtualgl'
         'mesa'
         'mesa-demos'
-        'nvdock-bumblebee'
         'nvidia-dkms'
         'nvidia-settings'
         'nvidia-utils'
