@@ -14,7 +14,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=66
+pkgrel=67
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -92,7 +92,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          'e3217b4c75d3bc302347b7bdf27f29de'
          '36adcc034c7a69ffe93e2c0937f051da'
          '31bc6b40fff742f9281088c7acdb6feb'
-         '39d886498f9949c1f8a138d1773c8f36'
+         'd35cb2e4bbf1e8adace00795875cab43'
          '963647fe81d1824bb977c3618d56959a'
          '850b04cc7eb552489721cd72ed945634'
          '7d625c54c37c6296f2ab1bbebbeb8308'
@@ -520,6 +520,8 @@ package_sbp-notebook() {
         'mesa-demos'
         'nvdock-bumblebee'
         'nvidia-dkms'
+        'nvidia-settings'
+        'nvidia-utils'
         'ocl-icd'
         'opencl-nvidia'
         'primus'
