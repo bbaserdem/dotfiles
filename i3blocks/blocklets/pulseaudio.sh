@@ -31,13 +31,13 @@ _def=$(pacmd list-sinks |
     tail -1)
 
 case "$_def" in
-    *hdmi*)             _ico="﴿" ;;
-    *headset*|*a2dp*)   _ico="" ;;
-    *headphones*)       _ico="" ;;
-    *speaker*)          _ico="蓼" ;;
-    *network*)          _ico="爵" ;;
-    *analog*)           _ico="" ;;
-    *)                  _ico="" ;;
+    *hdmi*)                     _ico="﴿" ;;
+    *headset*|*a2dp*|*hifi*)    _ico="" ;;
+    *headphones*)               _ico="" ;;
+    *speaker*)                  _ico="蓼" ;;
+    *network*)                  _ico="爵" ;;
+    *analog*)                   _ico="" ;;
+    *)                          _ico="" ;;
 esac
 
 _val="$(pamixer --get-volume)%"
