@@ -29,6 +29,7 @@ x-scheme-handler/feed=userapp-Thunderbird-EM4CRZ.desktop;
 application/rss+xml=userapp-Thunderbird-EM4CRZ.desktop;
 application/x-extension-rss=userapp-Thunderbird-EM4CRZ.desktop;
 text/css=mousepad.desktop;
+video/webm=vlc.desktop;
 
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;
