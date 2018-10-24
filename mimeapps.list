@@ -1,6 +1,6 @@
 [Added Associations]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
-video/x-msvideo=smplayer.desktop;
+video/x-msvideo=vlc.desktop;smplayer.desktop;
 image/jpeg=ristretto.desktop;
 application/msword=libreoffice-writer.desktop;
 text/html=qutebrowser.desktop;userapp-qutebrowser-VYYSOZ.desktop;
