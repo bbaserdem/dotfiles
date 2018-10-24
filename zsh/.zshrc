@@ -1,6 +1,5 @@
 # User configuration
 HIST_STAMPS="dd/mm/yyyy"
-export TERM="xterm-256color"
 
 # SSH agent
 unset SSH_AGENT_PID
