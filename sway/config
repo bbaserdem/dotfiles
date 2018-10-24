@@ -195,11 +195,13 @@ assign [class="Rambox"]                 $ws1
 assign [class="Qemu-system-x86_64"]     $ws1
 assign [class="org.remmina.Remmina"]    $ws1
 assign [class="Hopper-RDP"]             $ws1
-for_window [class="Skype"]              layout tabbed
-for_window [class="Rambox"]             layout tabbed
-for_window [class="Qemu-system-x86_64"] layout tabbed
-assign [class="org.remmina.Remmina"]    layout tabbed
-for_window [class="Hopper-RDP"]         floating disable, layout tabbed
+assign [class="Thunar"]                 $ws1
+for_window [class="Skype"]                          layout tabbed
+for_window [class="Rambox"]                         layout tabbed
+for_window [class="Qemu-system-x86_64"]             layout tabbed
+for_window [class="org.remmina.Remmina"]            layout tabbed
+for_window [class="Hopper-RDP"] floating disable,   layout tabbed
+for_window [class="Thunar"]                         layout tabbed
 # Desktop 2 is for web browsing
 set $ws2 "2:爵"
 assign [class="qutebrowser"]    $ws2
@@ -238,11 +240,13 @@ assign [class="Gimp*"]          $ws8
 assign [class="inkscape"]       $ws8
 assign [class="Blender"]        $ws8
 assign [class="openscad"]       $ws8
+assign [class="Ristretto"]      $ws8
 for_window [class="pdfsam"]         layout stacking
 for_window [class="Gimp*"]          layout stacking
 for_window [class="inkscape"]       layout stacking
 for_window [class="Blender"]        layout stacking
 for_window [class="openscad"]       layout stacking
+for_window [class="Ristretto"]      layout stacking
 # Desktop 9 is for Steam and games
 set $ws9 "9:"
 assign [class="Steam"]          $ws9
