@@ -233,6 +233,7 @@ set $ws7 "7:"
 assign [class="mpv"]            $ws7
 assign [class="smplayer"]       $ws7
 assign [class="cantata"]        $ws7
+assign [class="vlc"]            $ws7
 # Desktop 8 is for image manipulation
 set $ws8 "8:"
 assign [class="pdfsam"]         $ws8

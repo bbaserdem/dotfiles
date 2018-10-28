@@ -30,7 +30,10 @@ application/rss+xml=userapp-Thunderbird-EM4CRZ.desktop;
 application/x-extension-rss=userapp-Thunderbird-EM4CRZ.desktop;
 text/css=mousepad.desktop;
 video/webm=vlc.desktop;
-video/mp4=vlc.desktop;smplayer_enqueue.desktop;
+video/mp4=smplayer.desktop;vlc.desktop;smplayer_enqueue.desktop;
+text/x-csrc=org.daa.NeovimGtk.desktop;
+video/quicktime=smplayer.desktop;vlc.desktop;
+application/zip=org.gnome.FileRoller.desktop;
 
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;

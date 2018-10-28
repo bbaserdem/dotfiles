@@ -12,7 +12,7 @@ mkdir -p ~/Documents/MATLAB
 mkdir -p ~/.local/{share,wineprefixes}
 mkdir -p ~/.cache/mpd
 mkdir -p ~/.icons/default
-ln -sd ~/Documents/Remmina ~/.local/share/remmina
+ln -sf ~/Documents/Remmina ~/.local/share/remmina
 ln -sf ~/.config/abcde.conf ~/.abcde.conf
 ln -sf ~/.config/bash/bashrc ~/.bashrc
 ln -sf ~/.config/bash/login ~/.bash_profile
