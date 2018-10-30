@@ -14,7 +14,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=69
+pkgrel=71
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -368,6 +368,12 @@ package_sbp-extra() {
         'udiskie'                               # Mount manager with tray icon
         'wine' 'samba'                          # Windows compatibility
         )
+    # Matlab dependencies
+    depends+=(
+        'gcc6' 'gconf' 'glu' 'gstreamer0.10-base' 'gtk2' 'libunwind' 'libxp'
+        'libxp' 'libxpm' 'libxtst' 'nss' 'portaudio' 'python2' 'qt5-svg'
+        'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'xerces-c'
+        )
     install -Dm 0644 extra.qbupdate "${pkgdir}/etc/pacman.d/hooks/99-qutebrowser.hook"
 }
 
@@ -381,7 +387,6 @@ package_sbp-xfce() {
         'garcon'
         'gtk-xfce-engine'
         'mousepad'
-        'rhythmbox'
         'thunderbird'
         'xfce4-appfinder'
 	    'xfce4-artwork'
