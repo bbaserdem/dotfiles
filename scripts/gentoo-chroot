@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+sudo mount --types proc     /proc   /gentoo/proc
+sudo mount --rbind          /sys    /gentoo/sys
+sudo mount --make-rslave            /gentoo/sys
+sudo mount --rbind          /dev    /gentoo/dev
+sudo mount --make-rslave            /gentoo/dev
+sudo chroot /gentoo
