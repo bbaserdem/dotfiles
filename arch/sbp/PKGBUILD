@@ -27,6 +27,7 @@ source=(
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
+    'base.iwd_nm'
     'base.nftables'
     'base.pa_usb'
     'base.reflector.service'
@@ -68,6 +69,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
          'd917ff1b214b20493a23ddf29341101c'
+         'd41d8cd98f00b204e9800998ecf8427e'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '7a1ff93a4e176d816c3ab6b5ea667ca0'
@@ -219,6 +221,7 @@ package_sbp-base() {
     install -Dm 0644 base.eth               "${pkgdir}/etc/systemd/network/21-wired.network"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
+    install -Dm 0644 base.iwd_nm            "${pkgdir}/etc/NetworkManager/conf.d/wifi_backend.conf"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
     install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"
     install -Dm 0644 base.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
