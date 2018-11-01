@@ -14,7 +14,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=71
+pkgrel=72
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -370,6 +370,7 @@ package_sbp-extra() {
         'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures' 'texlive-pstricks'
         'udiskie'                               # Mount manager with tray icon
         'wine' 'samba'                          # Windows compatibility
+        'zotero'                                # Referance manager
         )
     # Matlab dependencies
     depends+=(
