@@ -7,6 +7,7 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 _name=sbp
 _dest=s3://sbp-arch/repo
 _local="${HOME}/.cache/${_name}-repo"
+_custom="/var/cache/pacman/custom/custom.db.tar"
 mkdir -p "${_local}"
 
 # Sync remote DB to local
@@ -19,6 +20,10 @@ ln -sf    "${_local}/${_name}.files.tar.xz" "${_local}/${_name}.files"
 for _arg in "${@}" ; do
     repo-remove "${_local}/${_name}.db.tar.xz" "${_arg}"
     s3cmd rm "${_dest}/${_arg}-*.pkg.tar.xz" || true
+    # Remove file from local repo
+    if [ -d "$(dirname "${_custom}")" ] ; then
+        repo-remove "${_custom}" "${_arg}"
+    fi
 done
 
 # Sync local database to remote

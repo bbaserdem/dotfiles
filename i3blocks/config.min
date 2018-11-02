@@ -32,17 +32,6 @@ command=~/.config/i3blocks/blocklets/pulseaudio.sh yellow
 interval=once
 signal=8
 
-# Internet (green)
-[wifi-short]
-command=~/.config/i3blocks/blocklets/wifi_short.sh green
-interval=5
-signal=7
-
-[ethernet-short]
-command=~/.config/i3blocks/blocklets/ethernet_short.sh green
-interval=5
-signal=6
-
 [vpn]
 command=~/.config/i3blocks/blocklets/vpn.sh green
 interval=5
@@ -50,7 +39,7 @@ signal=5
 
 # Bitcoin (cyan)
 [language]
-command=~/.config/i3blocks/blocklets/bitcoin.sh cyan
+command=~/.config/i3blocks/blocklets/bitcoin.sh green
 interval=3600
 
 # Language (cyan)

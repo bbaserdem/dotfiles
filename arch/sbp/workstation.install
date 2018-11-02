@@ -10,20 +10,10 @@ post_install() {
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbpworkstation.localdomain sbpworkstation' >> /etc/hosts
 
-    # Enabling networking with networkd-systemd
-    echo '[sbp-workstation]==> Enabling networking through systemd-networkd . . .'
-    systemctl enable systemd-networkd.service
-    systemctl enable systemd-resolved.service
-    systemctl enable systemd-networkd-wait-online.service
-    systemctl enable iwd.service
-    # Create resolve.conf symlink
-    echo '[sbp-base]==> Creating symlink to resolv.conf for DNS lookups . . .'
-    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-    # Masking NetworkManager
-    echo '[sbp-workstation]==> Masking NetworkManager . . .'
-    systemctl mask NetworkManager.service
-    systemctl mask NetworkManager-dispatcher.service
-    systemctl mask NetworkManager-wait-online.service
+    echo '[sbp-workstation]==> Enabling networking through NetworkManager . . .'
+    systemctl enable NetworkManager.service
+    systemctl enable NetworkManager-dispatcher.service
+    systemctl enable NetworkManager-wait-online.service
 
     echo '[sbp-workstation]==> Installation done! Check log for errors.'
     post_upgrade

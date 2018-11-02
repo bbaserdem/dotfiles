@@ -1,8 +1,6 @@
 # Maintained by sbp-xfce
 post_install() {
     echo '[sbp-xfce]==> Installing meta package . . .'
-    # Disable networkmanager
-    systemctl disable NetworkManager.service
     post_upgrade
 }
 

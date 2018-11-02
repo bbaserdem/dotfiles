@@ -8,13 +8,14 @@ pkgname=(
     'sbp-xfce'
     'sbp-sway'
     'sbp-i3'
+    'sbp-pantheon'
     'sbp-server'
     'sbp-laptop'
     'sbp-notebook'
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=69
+pkgrel=74
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -28,6 +29,8 @@ source=(
     'base.inotify'
     'base.install'
     'base.nftables'
+    'base.nm-polkit'
+    'base.nm-config'
     'base.pa_usb'
     'base.reflector.service'
     'base.reflector.timer'
@@ -59,7 +62,6 @@ source=(
     'workstation.install'
     'workstation.network'
     'xfce.install'
-    'xfce.nm-polkit'
     'xfce.wallpaper'
     )
 md5sums=('0d3afa7b391a50313df9449b80240807'
@@ -67,8 +69,10 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '5b3f3cc9194f11a91c4d10119bdfd656'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
-         'd917ff1b214b20493a23ddf29341101c'
+         '5015cb28ae03d6666ee414aa4dbc545c'
          '2b4a7715d47beadb71db5f7b3369a4c9'
+         '10b5ea5664e93646ef0f55f0e79b7022'
+         '179c8a0c85e8d4240566735006edb6fd'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '7a1ff93a4e176d816c3ab6b5ea667ca0'
          'c972c1e5c236f6e3c0f7d1b4989ebb75'
@@ -92,15 +96,14 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          'e3217b4c75d3bc302347b7bdf27f29de'
          '36adcc034c7a69ffe93e2c0937f051da'
          '31bc6b40fff742f9281088c7acdb6feb'
-         'd35cb2e4bbf1e8adace00795875cab43'
+         '472569d5fa67da1e36de5971c0e2a2d3'
          '963647fe81d1824bb977c3618d56959a'
-         '850b04cc7eb552489721cd72ed945634'
+         '05924a182e0465b476e30216d1d83e56'
          '7d625c54c37c6296f2ab1bbebbeb8308'
          '82d5373c4cd8d047577adcde389de4ba'
-         '93093b7e474b1d8204f90edf891e3dd0'
+         '548f849a15645c2dc10411a6ee960e90'
          '7d432ab4dd0cbb05cc1399e8cd02cfbe'
-         '20e80f330379b2036aa100692a47d004'
-         'a470b666e3e30ac281ff74779b7c5cd6'
+         'b1fe2c5d8a90b0c4bc0668d505b141c3'
          '83e1b805fc92b3d1d3faf65158448687')
 validpgpkeys=(
     '0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
@@ -166,6 +169,7 @@ package_sbp-base() {
         'linux-firmware' 'linux-headers'        # Firmware for the Linux kernel
         'lm_sensors'                            # Thermal sensors
         'msmtp' 'msmtp-mta' 'isync'             # Mail and DAV stuff
+        'networkmanager'                        # Network connection management
         'notmuch' 'vdirsyncer'
         'openconnect' 'openvpn'                 # VPN services
         'private-internet-access-vpn'           # AUR: Set up PIA
@@ -220,6 +224,8 @@ package_sbp-base() {
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
+    install -Dm 0644 base.nm-polkit         "${pkgdir}/etc/polkit-1/rules.d/50-NetworkManager.rules"
+    install -Dm 0644 base.nm-config         "${pkgdir}/etc/NetworkManager/conf.d/sbpbase.conf"
     install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"
     install -Dm 0644 base.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
     install -Dm 0644 base.reflector.timer   "${pkgdir}/etc/systemd/system/reflector.timer"
@@ -367,6 +373,13 @@ package_sbp-extra() {
         'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures' 'texlive-pstricks'
         'udiskie'                               # Mount manager with tray icon
         'wine' 'samba'                          # Windows compatibility
+        'zotero'                                # Referance manager
+        )
+    # Matlab dependencies
+    depends+=(
+        'gcc6' 'gconf' 'glu' 'gstreamer0.10-base' 'gtk2' 'libunwind' 'libxp'
+        'libxp' 'libxpm' 'libxtst' 'nss' 'portaudio' 'python2' 'qt5-svg'
+        'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'xerces-c'
         )
     install -Dm 0644 extra.qbupdate "${pkgdir}/etc/pacman.d/hooks/99-qutebrowser.hook"
 }
@@ -381,7 +394,6 @@ package_sbp-xfce() {
         'garcon'
         'gtk-xfce-engine'
         'mousepad'
-        'rhythmbox'
         'thunderbird'
         'xfce4-appfinder'
 	    'xfce4-artwork'
@@ -422,8 +434,60 @@ package_sbp-xfce() {
         'xfwm4'
         'xfwm4-themes'
         )
-    install -Dm 0644 xfce.nm-polkit "${pkgdir}/etc/polkit-1/rules.d/50-NetworkManager.rules"
     install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
+}
+
+# Xfce-specific stuff
+package_sbp-pantheon() {
+    install=pantheon.install
+    depends=('sbp-gui')
+    depends+=(
+        'cerbere-git'
+        'contractor-git'
+        'eidete-bzr'
+        'elementary-icon-theme-git'
+        'epiphany-pantheon'
+        'gala-git'
+        'gnome-settings-daemon-elementary'
+        'gtk-theme-elementary-git'
+        'lightdm-pantheon-greeter-git'
+        'pantheon-applications-menu-git'
+        'pantheon-calculator-git'
+        'pantheon-calendar-git'
+        'pantheon-camera-git'
+        'pantheon-code-git'
+        'pantheon-default-settings-git'
+        'pantheon-files-git'
+        'pantheon-mail-git'
+        'pantheon-music-git'
+        'pantheon-print-git'
+        'pantheon-photos-git'
+        'pantheon-polkit-agent-git'
+        'pantheon-screenshot-git'
+        'pantheon-session-git'
+        'pantheon-terminal-git'
+        'pantheon-videos-git'
+        'plank'
+        'switchboard-git'
+        'ttf-opensans'
+        'ttf-raleway'
+        'ttf-dejavu'
+        'ttf-droid'
+        'ttf-freefont'
+        'ttf-liberation'
+        'wingpanel-git'
+        'wingpanel-indicator-bluetooth-git'
+        'wingpanel-indicator-datetime-git'
+        'wingpanel-indicator-keyboard-git'
+        'wingpanel-indicator-network-git'
+        'wingpanel-indicator-nightlight-git'
+        'wingpanel-indicator-notifications-git'
+        'wingpanel-indicator-power-git'
+        'wingpanel-indicator-privacy-git'
+        'wingpanel-indicator-session-git'
+        'wingpanel-indicator-sound-git'
+        'wingpanel-indicator-sys-monitor-git'
+        )
 }
 
 # i3 stuff

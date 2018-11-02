@@ -1,23 +1,15 @@
 [xfdesktop-version-4.10.3+-rcfile_format]
 4.10.3+=true
 
-[/home/sbp/Desktop/steam.desktop]
-row=4
-col=0
-
-[815237ff-a53e-4e8c-b01c-a96f7a5061a4]
-row=0
-col=0
-
 [Trash]
-row=3
+row=2
 col=0
 
 [/]
-row=1
+row=0
 col=0
 
 [/home/sbp]
-row=2
+row=1
 col=0
 

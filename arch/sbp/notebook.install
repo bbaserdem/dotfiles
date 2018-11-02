@@ -10,17 +10,17 @@ post_install() {
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbpnotebook.localdomain sbpnotebook' >> /etc/hosts
 
+    # Enabling bumblebee
+    echo '[sbp-notebook]==> Enabling bumblebee . . .'
+    gpasswd --add sbp bumblebee
+    systemctl enable bumblebee.service
+    sed -i 's|^Bridge=.*|Bridge=primus|g' /etc/bumblebee/bumblebee.conf
+
     # Enabling networking with networkd-systemd
     echo '[sbp-notebook]==> Enabling networking through NetworkManager . . .'
     systemctl enable NetworkManager.service
     systemctl enable NetworkManager-dispatcher.service
     systemctl enable NetworkManager-wait-online.service
-    # Masking NetworkManager
-    echo '[sbp-notebook]==> Masking NetworkManager . . .'
-    systemctl mask systemd-networkd.service
-    systemctl mask systemd-resolved.service
-    systemctl mask systemd-networkd-wait-online.service
-    systemctl mask iwd.service
 
     echo '[sbp-notebook]==> Installation done! Check log for errors.'
     post_upgrade

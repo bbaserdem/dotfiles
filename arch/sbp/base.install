@@ -1,6 +1,6 @@
 # Maintained by sbp-base
 post_install() {
-    
+
     echo '[sbp-base]==> Installing meta package . . .'
 
     # Change permissions of .snapshots
@@ -16,8 +16,9 @@ post_install() {
     sed -i '/COMPRESSXZ=/s/=.*/==(xz -c -z -T0 -)/g' /etc/makepkg.conf
 
     # Configure pacman
-    echo '[sbp-base]==> Enabling eyecandy for pacman . . .'
+    echo '[sbp-base]==> Enabling eyecandy and local repo for pacman . . .'
     sed -i '/# Misc options/aILoveCandy'        /etc/pacman.conf
+    echo "\nInclude = /etc/pacman.d/custom" >> /etc/pacman.conf
 
     # Configure geoconf
     echo '[sbp-base]==> Adding apps to geoconf . . .'

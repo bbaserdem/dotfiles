@@ -1,0 +1,3 @@
+# Managed by sbp-base
+[device]
+wifi.backend=iwd
