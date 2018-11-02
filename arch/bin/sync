@@ -29,7 +29,7 @@ done
 for _file in "${_local}/"*.pkg.tar.xz ; do
     # Check if it is a file.
     [ -f "${_file}" ] || break
-    # Remove old versions (strip -ver-num-arc.EXT)
+    # Remove old versions from bucket (strip -ver-num-arc.EXT)
     _pre="$( echo "${_file}" | sed 's|^\(.*\)-.*-.*-.*|\1|g' )"
     [ -z "${_pre}" ] || ( \
         s3cmd rm "${_dest}/${_pre}-*.pkg.tar.xz" || true )
