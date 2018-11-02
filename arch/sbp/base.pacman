@@ -1,0 +1,13 @@
+# Managed by sbp-base
+[options]
+CacheDir = /var/cache/pacman/pkg
+CacheDir = /var/cache/pacman/custom
+CleanMethod = KeepCurrent
+
+[sbp]
+SigLevel = Optional TrustAll
+Server = https://s3.amazonaws.com/sbp-arch/repo/
+
+[custom]
+SigLevel = Optional TrustAll
+Server = file:///var/cache/pacman/custom
