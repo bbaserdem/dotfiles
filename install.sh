@@ -59,6 +59,19 @@ echo '[config-install]==> Preventing dropbox auto updates...'
 [ -d ~/.dropbox-dist ] && rm -rf ~/.dropbox-dist
 install --mode 0 --directory ~/.dropbox-dist
 
+# Steam
+echo '[config-install]==> Cloning steam theme...'
+mkdir -p ~/.local/share/Steam/skins
+git clone https://github.com/airforsteam/Air-for-Steam.git ~/.local/share/Steam/skins/Air
+
+# Thunderbird
+if [ -d ~/.thunderbird ] ; then
+    echo '[config-install]==> Cloning thunderbird theme...'
+    _folder="~/.thunderbird/$(ls ~/.thunderbird | grep default)/chrome"
+    git clone https://github.com/spymastermatt/thunderbird-monterail.git "${_folder}"
+    sed -i 's|^/\* @import "icons/darkIcons.css"|@import "icons/darkIcons.css"|g' "${_folder}/userChrome.css"
+fi
+
 # Generating dynamic files
 echo '[config-install]==> Generating dynamic files, will need root...'
 ~/.config/i3/parse_config.sh
