@@ -15,7 +15,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=74
+pkgrel=75
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -284,6 +284,7 @@ package_sbp-gui() {
     depends+=(
         'terminess-powerline-font-git'              # AUR: Console fonts
         'ttf-iosevka'                               # AUR: Statusline font
+        'ttf-roboto'                                # Google fonts, for steam
         'otf-nerd-fonts-fira-code'                  # AUR: Glyphs & Ligatures
         'otf-hasklig'                               # AUR: Font with ligatures
         'bdf-tewi-git'                              # AUR: Nice bitmap font

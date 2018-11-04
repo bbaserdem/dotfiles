@@ -43,6 +43,7 @@
         <value type="string" value="redshift-gtk"/>
         <value type="string" value="cantata"/>
         <value type="string" value="networkmanager applet"/>
+        <value type="string" value="task manager"/>
         <value type="string" value="org.remmina.remmina"/>
         <value type="string" value="steam"/>
         <value type="string" value="syncthing-gtk"/>
