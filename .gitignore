@@ -94,6 +94,7 @@ arch/iso/
 !/gtk-3.0
 !/gtk-3.0/bookmarks
 !/gtk-3.0/settings.ini
+!/gtk-3.0/gtk.css
 
 # HTOP: Get the rc file
 !/htop
