@@ -33,7 +33,6 @@ video/webm=vlc.desktop;
 video/mp4=smplayer.desktop;vlc.desktop;smplayer_enqueue.desktop;
 text/x-csrc=org.daa.NeovimGtk.desktop;
 video/quicktime=smplayer.desktop;vlc.desktop;
-application/zip=org.gnome.FileRoller.desktop;
 application/x-cd-image=org.gnome.FileRoller.desktop;
 
 [Removed Associations]
@@ -54,7 +53,7 @@ inode/directory=thunar.desktop
 x-scheme-handler/trash=thunar.desktop
 application/x-compressed-tar=xarchiver.desktop
 application/x-tar=xarchiver.desktop
-application/zip=xarchiver.desktop
+application/zip=org.gnome.FileRoller.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-7IJBRZ.desktop
 message/rfc822=userapp-Thunderbird-7IJBRZ.desktop
 x-scheme-handler/news=userapp-Thunderbird-FV5SQZ.desktop
