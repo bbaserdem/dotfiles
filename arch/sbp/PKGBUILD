@@ -15,7 +15,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=76
+pkgrel=78
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -316,6 +316,7 @@ package_sbp-gui() {
         'firefox'                               # Fallback browser
         'gparted'                               # Graphical partition editor
         'gtk2fontsel' 'gucharmap'               # Font and character map
+        'light-locker'                          # Lightdm locker
         'mpv' 'smplayer'                        # Mpv frontend
         'network-manager-applet' 'nm-connection-editor'
         'pavucontrol'                           # Pulse audio control menu
@@ -417,7 +418,7 @@ package_sbp-xfce() {
         'xfce4-pulseaudio-plugin'
         'xfce4-screenshooter'
         'xfce4-sensors-plugin'
-        'xfce4-session'
+        'xfce4-session-git'
         'xfce4-settings'
         'xfce4-smartbookmark-plugin'
         'xfce4-systemload-plugin'
@@ -443,6 +444,7 @@ package_sbp-pantheon() {
     install=pantheon.install
     depends=('sbp-gui')
     depends+=(
+        'capnet-assist'
         'cerbere-git'
         'contractor-git'
         'eidete-bzr'

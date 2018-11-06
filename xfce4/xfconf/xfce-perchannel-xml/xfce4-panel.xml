@@ -61,6 +61,7 @@
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
       <property name="mpris-players" type="string" value="cantata;rhythmbox"/>
+      <property name="blacklisted-players" type="string" value=""/>
     </property>
     <property name="plugin-10" type="string" value="notification-plugin"/>
     <property name="plugin-12" type="string" value="xfce4-mount-plugin"/>
