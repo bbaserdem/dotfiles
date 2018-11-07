@@ -11,16 +11,13 @@ post_install() {
     echo '127.0.1.1 sbpserver.localdomain sbpserver' >> /etc/hosts
 
     # Enabling networking with networkd-systemd
-    echo '[sbp-server]==> Enabling networking through systemd-networkd . . .'
+    echo '[sbp-server]==> Enabling networking through systemd-networkd & iwd...'
     systemctl enable systemd-networkd.service
-    systemctl enable systemd-resolved.service
     systemctl enable systemd-networkd-wait-online.service
     systemctl enable iwd.service
-    # Create resolve.conf symlink
-    echo '[sbp-base]==> Creating symlink to resolv.conf for DNS lookups . . .'
-    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+
     # Masking NetworkManager
-    echo '[sbp-server]==> Masking NetworkManager . . .'
+    echo '[sbp-server]==> Masking NetworkManager to disable dbus launch...'
     systemctl mask NetworkManager.service
     systemctl mask NetworkManager-dispatcher.service
     systemctl mask NetworkManager-wait-online.service
@@ -36,7 +33,7 @@ post_install() {
     mkdir /srv/git/.ssh
     chown git:git /srv/git/.ssh
     chmod 700 /srv/git/.ssh
-    
+
     # Setting up syncthing user
     echo '[sbp-server]==> Setting syncthing user and enabling daemon . . .'
     useradd --home-dir /srv/syncthing --create-home --user-group \

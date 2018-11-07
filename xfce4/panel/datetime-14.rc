@@ -1,0 +1,6 @@
+layout=3
+date_font=Bitstream Vera Sans 8
+time_font=Droid Sans Bold 16
+date_format=%A, %B %d, %Y
+time_format=%H:%M
+

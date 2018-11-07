@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Udiskie
+Icon=indicator-sensors-disk
 Comment=Udisks manager and applet
 Exec=udiskie
 StartupNotify=false

@@ -15,7 +15,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=80
+pkgrel=82
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -69,7 +69,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '5b3f3cc9194f11a91c4d10119bdfd656'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
-         '5015cb28ae03d6666ee414aa4dbc545c'
+         'c83fa5b2cfbbb9eea9bdc0f6a6342c41'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '10b5ea5664e93646ef0f55f0e79b7022'
          '179c8a0c85e8d4240566735006edb6fd'
@@ -100,7 +100,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '963647fe81d1824bb977c3618d56959a'
          '05924a182e0465b476e30216d1d83e56'
          '7d625c54c37c6296f2ab1bbebbeb8308'
-         '82d5373c4cd8d047577adcde389de4ba'
+         '57320329cc88ba4b549458d02138e492'
          '548f849a15645c2dc10411a6ee960e90'
          '7d432ab4dd0cbb05cc1399e8cd02cfbe'
          'b1fe2c5d8a90b0c4bc0668d505b141c3'
@@ -297,16 +297,19 @@ package_sbp-gui() {
         )
     # Theming
     depends+=(
-        'qt4'                                       # QT implementation
-        'python-pyqt5'                              # QT stuff for python
-        'archlinux-wallpaper' 'archlinux-artwork'   # AUR: Wallpapers for Arch
         'arc-gtk-theme'                             # GTK theme
         'arc-kde'                                   # QT theme
-        'qt5-styleplugins'                          # QT GTK integration
-        'papirus-icon-theme'                        # Nice icon theme
+        'archlinux-wallpaper' 'archlinux-artwork'   # AUR: Wallpapers for Arch
+        'breeze-hacked-cursor-theme'                # Hacked cursor
+        'elementary-icon-theme'                     # Professional looking icon
         'gnome-themes-extra'                        # Icon compatibility
         'gtk-engine-murrine'                        # Fallback icons
-        'breeze-hacked-cursor-theme'                # Hacked cursor
+        'kvantum-qt5'                               # QT5 theme engine
+        'kvantum-theme-arc'                         # Nice theme
+        'papirus-icon-theme'                        # Nice icon theme
+        'python-pyqt5'                              # QT stuff for python
+        'qt4'                                       # QT implementation
+        'qt5-styleplugins'                          # QT GTK integration
         'xcursor-comix'                             # Comic cursor
     )
     # Some universally useful GUI programs
@@ -321,6 +324,7 @@ package_sbp-gui() {
         'network-manager-applet' 'nm-connection-editor'
         'pavucontrol'                           # Pulse audio control menu
         'pdfsam'                                # Pdf manipulator
+        'plank'                                 # Dock
         'qemu' 'ovmf'                           # Virtualizer
         'redshift'                              # Screen dimmer
         'ristretto'                             # Image viewer
@@ -395,6 +399,7 @@ package_sbp-xfce() {
         'firefox'
         'garcon'
         'gtk-xfce-engine'
+        'kitty'
         'libcanberra'
         'libcanberra-pulse'
         'mousepad'

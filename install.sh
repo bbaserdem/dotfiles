@@ -67,7 +67,7 @@ git clone https://github.com/airforsteam/Air-for-Steam.git ~/.local/share/Steam/
 # Thunderbird
 if [ -d ~/.thunderbird ] ; then
     echo '[config-install]==> Cloning thunderbird theme...'
-    _folder="~/.thunderbird/$(ls ~/.thunderbird | grep default)/chrome"
+    _folder="${HOME}/.thunderbird/$(ls ~/.thunderbird | grep default)/chrome"
     git clone https://github.com/spymastermatt/thunderbird-monterail.git "${_folder}"
     sed -i 's|^/\* @import "icons/darkIcons.css"|@import "icons/darkIcons.css"|g' "${_folder}/userChrome.css"
 fi

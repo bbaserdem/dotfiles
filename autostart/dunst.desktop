@@ -2,7 +2,7 @@
 Name=Dunst
 Comment=D-Bus Notification daemon
 Exec=dunst
-Icon=applications-system
+Icon=preferences-system-notifications
 Terminal=false
 Type=Application
 StartupNotify=false

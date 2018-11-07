@@ -2,7 +2,7 @@
 Name=Feh
 Comment=Change wallpaper using Feh
 Exec=sh -c '~/.config/i3/wallpaper.sh'
-Icon=applications-system
+Icon=livewallpaper-indicator
 Terminal=false
 Type=Application
 StartupNotify=false

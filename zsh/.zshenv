@@ -67,8 +67,8 @@ export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
 # GPG config
 export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 # QT5 theme
-export QT_STYLE_OVERRIDE="gtk2"
-export QT_QPA_PLATFORMTHEME="gtk2"
+export QT_STYLE_OVERRIDE="kvantum"
+export QT_QPA_PLATFORMTHEME="kvantum"
 # GTK stuff
 export GTK_RC_FILES="${XDG_CONFIG_HOME}/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"

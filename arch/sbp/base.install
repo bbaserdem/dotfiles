@@ -104,6 +104,10 @@ post_install() {
     echo '[sbp-base]==> Enabling Machine-Check Exception (MCE) logging . . .'
     systemctl enable ras-mc-ctl.service
     systemctl enable rasdaemon.service
+    # Enable systemd-resolved
+    echo '[sbp-base]==> Enabling DNS resolution with systemd-resolved . . .'
+    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+    systemctl enable systemd-resolved.service
 
     echo '[sbp-base]==> Installation complete! Check log for errors!'
     echo '[sbp-base]!!> Be sure to set up nftables! . . .'

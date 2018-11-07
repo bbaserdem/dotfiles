@@ -74,6 +74,10 @@ arch/iso/
 !/dunst
 !/dunst/dunstrc
 
+# ENCHANT: Grab all (elementary)
+!/enchant
+!/enchant/**
+
 # FONTCONFIG: Accept the fontconfig file
 !/fontconfig
 !/fontconfig/fonts.conf
@@ -198,10 +202,6 @@ arch/iso/
 !/scripts
 !/scripts/**
 
-# SOUNDS: Sounds grabbed from mint, sync all
-!/sounds
-!/sounds/*.oga
-
 # SWAY: Grab all sway files
 !/sway
 !/sway/**
@@ -249,9 +249,15 @@ arch/iso/
 !/X11
 !/X11/**
 
-# XFCE4: Grab all the configs
+# XFCE4: Grab all the configs except dynamic app stuff
 !/xfce4
 !/xfce4/**
+/xfce4/desktop/*
+/xfce4/xfconf/xfce-perchannel-xml/*
+!/xfce4/xfconf/xfce-perchannel-xml/xfce4-*
+!/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml
+!/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+/xfce4/**/accels.scm
 
 # YOUTUBE-DL: Grab config
 !/youtube-dl

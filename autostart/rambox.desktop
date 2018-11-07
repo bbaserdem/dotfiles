@@ -1,7 +1,9 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=rambox
+Name=Rambox
+Comment="Communication aggregator (Electron)"
+Icon=rambox
 Comment=ramboxstartup script
 Exec=/opt/rambox/rambox --hidden
 StartupNotify=false

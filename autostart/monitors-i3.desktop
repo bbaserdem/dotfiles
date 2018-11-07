@@ -2,7 +2,7 @@
 Name=i3 Monitors
 Comment=Monitor hotplug listener for i3
 Exec=sh -c '~/.config/i3/monitors.sh'
-Icon=applications-system
+Icon=preferences-desktop-display
 Terminal=false
 Type=Application
 StartupNotify=false
