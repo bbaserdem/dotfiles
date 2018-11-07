@@ -127,6 +127,10 @@ arch/iso/
 !/kitty
 !/kitty/*.conf
 
+# KVANTUM: Grab the config file
+!/Kvantum
+!/Kvantum/kvantum.kvconfig
+
 # MPD: Only get config
 !/mpd
 !/mpd/mpd.conf
