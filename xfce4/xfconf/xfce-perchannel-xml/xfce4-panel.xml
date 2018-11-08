@@ -5,7 +5,7 @@
   <property name="panels" type="array">
     <value type="int" value="1"/>
     <property name="panel-1" type="empty">
-      <property name="position" type="string" value="p=6;x=960;y=27"/>
+      <property name="position" type="string" value="p=8;x=960;y=1063"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="size" type="uint" value="32"/>
