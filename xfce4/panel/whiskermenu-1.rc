@@ -1,4 +1,4 @@
-favorites=firefox.desktop,thunderbird.desktop,ristretto.desktop,vlc.desktop,xfce-settings-manager.desktop,spyder3.desktop,Thunar.desktop,xfce4-terminal.desktop,mousepad.desktop,gimp.desktop,matlab.desktop
+favorites=kitty.desktop,firefox.desktop,thunderbird.desktop,ristretto.desktop,vlc.desktop,xfce-settings-manager.desktop,spyder3.desktop,Thunar.desktop,mousepad.desktop,gimp.desktop,matlab.desktop
 recent=
 button-title=Applications
 button-icon=distributor-logo-archlinux

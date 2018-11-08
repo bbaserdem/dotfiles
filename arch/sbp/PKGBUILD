@@ -15,7 +15,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=82
+pkgrel=84
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -282,18 +282,19 @@ package_sbp-gui() {
         )
     # Fonts, themes, icons etc.
     depends+=(
-        'terminess-powerline-font-git'              # AUR: Console fonts
-        'ttf-iosevka'                               # AUR: Statusline font
-        'ttf-roboto'                                # Google fonts, for steam
-        'otf-nerd-fonts-fira-code'                  # AUR: Glyphs & Ligatures
-        'otf-hasklig'                               # AUR: Font with ligatures
-        'bdf-tewi-git'                              # AUR: Nice bitmap font
-        'siji-git'                                  # AUR: Nice monospace font
-        'gohufont'                                  # AUR: Nice bitmap font
-        'tamsyn-font'                               # Nice monospace font
-        'noto-fonts-emoji'                          # Emoji font
-        'adobe-source-serif-pro-fonts'              # Nice serif font
-        'ttf-droid'                                 # Default looking font
+        'adobe-source-serif-pro-fonts'  # Nice serif font
+        'bdf-tewi-git'                  # AUR: Nice bitmap font
+        'gohufont'                      # AUR: Nice bitmap font
+        'nerd-fonts-source-code-pro'    # AUR: Glyphs
+        'noto-fonts-emoji'              # Emoji font
+        'otf-fira-code'                 # Ligatures
+        'siji-git'                      # AUR: Nice monospace font
+        'steam-fonts'                   # AUR: Fonts for steam
+        'tamsyn-font'                   # Nice monospace font
+        'terminess-powerline-font-git'  # AUR: Console fonts
+        'ttf-droid'                     # Default looking font
+        'ttf-iosevka'                   # AUR: Statusline font
+        'ttf-roboto'                    # Google fonts, for steam
         )
     # Theming
     depends+=(
@@ -372,7 +373,7 @@ package_sbp-extra() {
         'rambox-bin'                            # AUR: Communication app
         'skypeforlinux-stable-bin'              # AUR: Skype app
         'spyder3'                               # Python dev environment
-        'steam' 'steam-native-runtime' 'steam-fonts' 'steamos-compositor'
+        'steam' 'steam-native-runtime' 'steamos-compositor'
         'stellarium'                            # Star viewer
         'syncthing-gtk'                         # Tray icon for syncthing
         'texlive-core' 'texlive-science' 'biber' # Latex
@@ -431,7 +432,6 @@ package_sbp-xfce() {
         'xfce4-smartbookmark-plugin'
         'xfce4-systemload-plugin'
         'xfce4-taskmanager'
-        'xfce4-terminal'
         'xfce4-time-out-plugin'
         'xfce4-timer-plugin'
         'xfce4-verve-plugin'
