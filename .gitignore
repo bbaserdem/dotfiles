@@ -15,7 +15,7 @@
 !/gtk2rc
 !/install.sh
 !/matlabrc.m
-!/mimeapps.list
+!/*mimeapps.list
 !/mpdscribble-confgen.sh
 !/msmtprc
 !/piagen.sh

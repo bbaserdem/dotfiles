@@ -1,0 +1,24 @@
+[Default Applications]
+application/pdf=evince.desktop
+image/vnd.djvu+multipage=evince.desktop;
+text/plain=mousepad.desktop
+text/x-tex=mousepad.desktop;
+image/jpeg=ristretto.desktop
+image/gif=ristretto.desktop
+image/png=ristretto.desktop
+text/html=firefox.desktop
+video/x-msvideo=vlc.desktop;
+application/msword=libreoffice-writer.desktop;
+inode/directory=thunar.desktop
+x-scheme-handler/trash=thunar.desktop
+application/x-compressed-tar=xarchiver.desktop
+application/x-tar=xarchiver.desktop
+application/zip=xarchiver.desktop
+x-scheme-handler/mailto=thunderbird.desktop
+message/rfc822=thunderbird.desktop
+x-scheme-handler/news=thunderbird.desktop
+x-scheme-handler/snews=thunderbird.desktop
+x-scheme-handler/nntp=thunderbird.desktop
+x-scheme-handler/feed=thunderbird.desktop
+application/rss+xml=thunderbird.desktop
+application/x-extension-rss=thunderbird.desktop

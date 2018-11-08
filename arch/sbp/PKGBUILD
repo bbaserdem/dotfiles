@@ -397,6 +397,7 @@ package_sbp-xfce() {
     depends=('sbp-gui')
     depends+=(
         'exo'
+        'evince'
         'firefox'
         'garcon'
         'gtk-xfce-engine'
