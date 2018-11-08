@@ -1,5 +1,5 @@
 [Configuration]
-ColorForeground=#dcdcdc
+ColorForeground=#d0d0d0
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=TRUE
@@ -25,10 +25,12 @@ MiscRewrapOnResize=TRUE
 MiscUseShiftArrowsToScroll=FALSE
 MiscSlimTabs=FALSE
 MiscNewTabAdjacent=TRUE
-ColorBackground=#2c2c2c
+ColorBackground=#121212
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 BackgroundDarkness=0.750000
-ColorCursor=#dcdcdc
-ColorPalette=#3f3f3f;#705050;#60b48a;#dfaf8f;#9ab8d7;#dc8cc3;#8cd0d3;#dcdcdc;#709080;#dca3a3;#72d5a3;#f0dfaf;#94bff3;#ec93d3;#93e0e3;#ffffff
-ColorCursorUseDefault=FALSE
+ColorCursor=#d0d0d0
+ColorPalette=#4e4e4e;#d68787;#5f865f;#d8af5f;#85add4;#d7afaf;#87afaf;#d0d0d0;#626262;#d75f87;#87af87;#ffd787;#add4fb;#ffafaf;#87d7d7;#e4e4e4
+ColorBold=#e4e4e4
+ColorBoldUseDefault=FALSE
+TabActivityColor=#df5f87
 
