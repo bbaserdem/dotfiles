@@ -34,6 +34,8 @@ video/mp4=smplayer.desktop;vlc.desktop;smplayer_enqueue.desktop;
 text/x-csrc=org.daa.NeovimGtk.desktop;
 video/quicktime=smplayer.desktop;vlc.desktop;
 application/x-cd-image=org.gnome.FileRoller.desktop;
+x-scheme-handler/http=exo-web-browser.desktop
+x-scheme-handler/https=exo-web-browser.desktop
 
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;
@@ -62,3 +64,4 @@ x-scheme-handler/nntp=userapp-Thunderbird-FV5SQZ.desktop
 x-scheme-handler/feed=userapp-Thunderbird-EM4CRZ.desktop
 application/rss+xml=userapp-Thunderbird-EM4CRZ.desktop
 application/x-extension-rss=userapp-Thunderbird-EM4CRZ.desktop
+
