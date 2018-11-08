@@ -9,13 +9,14 @@ pkgname=(
     'sbp-sway'
     'sbp-i3'
     'sbp-pantheon'
+    'sbp-kde'
     'sbp-server'
     'sbp-laptop'
     'sbp-notebook'
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=85
+pkgrel=87
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -85,7 +86,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '1ddf47f1278958e4cc65bfbd96dbd6f7'
          'e71265ed72b65b8fb8092d6a4da0da3a'
          '7128851ee00d22284cbdbe9b8257ad14'
-         '61f611b56f9df32bb71896d6d8ca394a'
+         '0f9cda1dc1000791243c223dbe251566'
          'b19954dbb641caa1328725b405b49130'
          '17a7cda5f070fb76e1070a2f1fcbc21d'
          'a7c1283261fb4b3e77efa739c81f481d'
@@ -301,10 +302,10 @@ package_sbp-gui() {
     # Theming
     depends+=(
         'arc-gtk-theme'                             # GTK theme
-        'arc-kde'                                   # QT theme
         'archlinux-wallpaper' 'archlinux-artwork'   # AUR: Wallpapers for Arch
         'breeze-hacked-cursor-theme'                # Hacked cursor
         'elementary-icon-theme'                     # Professional looking icon
+        'elementary-wallpapers-git'                 # Nice wallpapers
         'gnome-themes-extra'                        # Icon compatibility
         'gtk-engine-murrine'                        # Fallback icons
         'kvantum-qt5'                               # QT5 theme engine
@@ -331,6 +332,7 @@ package_sbp-gui() {
         'qemu' 'ovmf'                           # Virtualizer
         'redshift'                              # Screen dimmer
         'ristretto'                             # Image viewer
+        'rofi' 'rofi-pass' 'rofi-emoji'         # Application launcher
         'system-config-printer'                 # Printer setup utility
         'termite'                               # Wayland native terminal
         'thunar'                                # File browser
@@ -435,6 +437,7 @@ package_sbp-xfce() {
         'xfce4-smartbookmark-plugin'
         'xfce4-systemload-plugin'
         'xfce4-taskmanager'
+        'xfce4-terminal'
         'xfce4-time-out-plugin'
         'xfce4-timer-plugin'
         'xfce4-verve-plugin'
@@ -450,7 +453,7 @@ package_sbp-xfce() {
     install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
 }
 
-# Xfce-specific stuff
+# Pantheon specific stuff
 package_sbp-pantheon() {
     install=pantheon.install
     depends=('sbp-gui')
@@ -459,8 +462,6 @@ package_sbp-pantheon() {
         'cerbere-git'
         'contractor-git'
         'eidete-bzr'
-        'elementary-icon-theme-git'
-        'elementary-wallpapers-git'
         'epiphany-pantheon'
         'file-roller-pantheon'
         'gala-git'
@@ -538,10 +539,108 @@ package_sbp-pantheon() {
     #   'wingpanel-indicator-ayatana-git'
 }
 
+# Plasma stuff
+package_sbp-kde() {
+    depends=('sbp-gui')
+    depends+=(
+        'akonadi-calendar-tools' 'akonadi-import-wizard' 'akonadiconsole'
+        'akregator'
+        'arc-kde'
+        'ark'
+        'audiocd-kio'
+        'bluedevil'
+        'cantor'
+        'discover'
+        'dolphin'
+        'dolphin-plugins'
+        'dragon'
+        'drkonqi'
+        'ffmpegthumbs'
+        'filelight'
+        'gwenview'
+        'k3b'
+        'kaccounts-integration'
+        'kaccounts-providers'
+        'kaddressbook'
+        'kactivitymanagerd'
+        'kalarm'
+        'kalgebra'
+        'kalzium'
+        'kate'
+        'kcachegrind'
+        'kcalc'
+        'kcharselect'
+        'kcolorchooser'
+        'kcron'
+        'kde-cli-tools'
+        'kde-gtk-config'
+        'kdebugsettings'
+        'kdecoration'
+        'kdenetwork-filesharing'
+        'kdenlive'
+        'kdepim-addons'
+        'kdeplasma-addons'
+        'kdesdk-kioslaves'
+        'kdesdk-thumnailers'
+        'kdf'
+        'kdialog'
+        'kfind'
+        'kgamma5'
+        'kget'
+        'khotkeys'
+        'kinfocenter'
+        'kio-extras'
+        'kiten'
+        'kleopatra'
+        'kmail' 'kmail-account-wizard'
+        'kmenuedit'
+        'knetattach'
+        'konsole'
+        'kontact'
+        'korganizer'
+        'kscreen'
+        'kscreenlocker'
+        'ksshaskpass'
+        'ksysguard'
+        'ksystemlog'
+        'kteatime'
+        'ktimer'
+        'kwalletmanager'
+        'kwallet-pam'
+        'kwayland-integration'
+        'kwave'
+        'kwin'
+        'kwrited'
+        'libkscreen'
+        'libksysguard'
+        'milou'
+        'okular'
+        'picmi'
+        'pim-data-exporter' 'pim-sieve-editor'
+        'plasma-browser-integration'
+        'plasma-desktop'
+        'plasma-integration'
+        'plasma-nm'
+        'plasma-pa'
+        'plasma-sdk'
+        'plasma-vault'
+        'plasma-wayland-session'
+        'plasma-workspace'
+        'plasma-workspace-wallpapers'
+        'print-manager'
+        'polkit-kde-agent'
+        'powerdevil'
+        'signon-kwallet-extension'
+        'spectacle'
+        'systemsettings'
+        'user-manager'
+        'xdg-desktop-portal-kde'
+        )
+}
+
 # i3 stuff
 package_sbp-i3() {
     depends=('sbp-gui')
-    # i3 stuff
     depends+=(
         'brightnessctl'                 # Brightness controls
         'dex'                           # Autostart launcher
@@ -551,7 +650,6 @@ package_sbp-i3() {
         'i3lock'                        # Screen locker
         'i3blocks'                      # Input to status-bar
         'maim'                          # Screenshot utility
-        'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
         )
 }
 

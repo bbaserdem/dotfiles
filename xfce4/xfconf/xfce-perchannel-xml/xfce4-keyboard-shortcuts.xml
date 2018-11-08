@@ -37,6 +37,8 @@
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="&lt;Alt&gt;&lt;Super&gt;space" type="string" value="/usr/bin/rofi-pass"/>
+      <property name="&lt;Super&gt;p" type="string" value="/home/sbp/Configs/rofi/pass"/>
+      <property name="F12" type="string" value="xfce4-terminal --drop-down"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

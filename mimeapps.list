@@ -39,4 +39,3 @@ x-scheme-handler/https=qutebrowser.desktop;firefox.desktop;
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;
 application/xml=qutebrowser.desktop;
-
