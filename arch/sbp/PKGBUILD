@@ -458,85 +458,82 @@ package_sbp-pantheon() {
     install=pantheon.install
     depends=('sbp-gui')
     depends+=(
-        'capnet-assist'
-        'cerbere-git'
-        'contractor-git'
-        'eidete-bzr'
-        'epiphany-pantheon'
-        'file-roller-pantheon'
-        'gala-git'
-        'gnome-settings-daemon-elementary'
-        'granite-git'
-        'gsignond-plugin-lastfm-git'
-        'gsignond-plugin-oauth-git'
-        'gsignond-plugin-sasl-git'
-        'gsignond'
-        'gtk-theme-elementary-git'
-        'lightdm-pantheon-greeter-git'
-        'pantheon-applications-menu-git'
-        'pantheon-calculator-git'
-        'pantheon-calendar-git'
-        'pantheon-camera-git'
-        'pantheon-code-git'
-        'pantheon-default-settings-git'
-        'pantheon-dpms-helper-git'
-        'pantheon-mail-git'
-        'pantheon-music-git'
-        'pantheon-photos-git'
-        'pantheon-polkit-agent-git'
-        'pantheon-print-git'
-        'pantheon-screenshot-git'
-        'pantheon-session-git'
-        'pantheon-shortcut-overlay-git'
-        'pantheon-terminal-git'
-        'pantheon-videos-git'
-        'sound-theme-elementary-git'
+        'capnet-assist'                     # AUR: Public access point prompt
+        'cerbere'                           # AUR: Watchdog to relaunch serv.
+        'contractor-git'                    # Context menu provider
+        'eidete-bzr'                        # AUR: Screencaster
+        'epiphany-pantheon'                 # AUR: GNOME browser, patched
+        'file-roller-pantheon'              # AUR: Archive manipulator, patched
+        'gala-git'                          # AUR: Pantheon window manager
+        'gnome-settings-daemon-elementary'  # AUR: Setting panel with patches
+        'granite'                           # GTK extension library
+        'gtk-theme-elementary'              # AUR: GTK  theme
+        'lightdm-pantheon-greeter-git'      # AUR: Lightdm greeter
+        'pantheon-applications-menu-git'    # AUR: Applivation menu
+        'pantheon-calculator-git'           # AUR: SImple calculator
+        'pantheon-calendar-git'             # AUR: Pantheon calendar
+        'pantheon-camera-git'               # AUR: Camera application
+        'pantheon-code'                     # Text editor
+        'pantheon-default-settings-git'     # AUR: Default settings
+        'pantheon-dpms-helper-git'          # AUR: Display Monitor Power Signal
+        'pantheon-files'                    # File browser
+        'pantheon-files-plugin-dropbox-bzr' # AUR: Dropbox for File browser
+        'pantheon-geoclue2-agent-git'       # AUR: Geoclue integration
+        'pantheon-mail-git'                 # AUR: Mail client
+        'pantheon-music'                    # Music player
+        'pantheon-photos'                   # Photo viewer
+        'pantheon-polkit-agent-git'         # AUR: Polkit agent
+        'pantheon-print-git'                # AUR: Printing support (contractor)
+        'pantheon-screenshot-git'           # AUR: Screenshot tool
+        'pantheon-session-git'              # AUR: Session settings
+        'pantheon-shortcut-overlay-git'     # AUR: Native shortcut overlay
+        'pantheon-terminal'                 # Terminal
+        'pantheon-videos'                   # Video player
+        'sound-theme-elementary-git'        # AUR: ElementaryOS sounds
         'plank'
-        'switchboard-git'
-        'switchboard-plug-a11y-git'
-        'switchboard-plug-about-git'
-        'switchboard-plug-applications-git'
-        'switchboard-plug-bluetooth-git'
-        'switchboard-plug-datetime-git'
-        'switchboard-plug-desktop-git'
-        'switchboard-plug-display-git'
-        'switchboard-plug-keyboard-git'
-        'switchboard-plug-locale-git'
-        'switchboard-plug-mouse-touchpad-git'
-        'switchboard-plug-network-git'
-        'switchboard-plug-notifications-git'
-        'switchboard-plug-parental-controls-git'
-        'switchboard-plug-power-git'
-        'switchboard-plug-printers-git'
-        'switchboard-plug-security-privacy-git'
-        'switchboard-plug-sharing-git'
-        'switchboard-plug-sound-git'
-        'switchboard-plug-user-accounts-git'
-        'ttf-opensans'
-        'ttf-raleway'
-        'ttf-dejavu'
-        'ttf-droid'
-        'ttf-freefont'
-        'ttf-liberation'
-        'wingpanel-git'
-        'wingpanel-indicator-bluetooth-git'
-        'wingpanel-indicator-datetime-git'
-        'wingpanel-indicator-keyboard-git'
-        'wingpanel-indicator-network-git'
-        'wingpanel-indicator-nightlight-git'
-        'wingpanel-indicator-notifications-git'
-        'wingpanel-indicator-power-git'
-        'wingpanel-indicator-privacy-git'
-        'wingpanel-indicator-session-git'
-        'wingpanel-indicator-sound-git'
-        'wingpanel-indicator-sys-monitor-git'
+        'switchboard-git'                   # AUR: System settings
+        'switchboard-plug-a11y-git'         # AUR: accesibility
+        'switchboard-plug-about-git'        # AUR: System info
+        'switchboard-plug-applications-git' # AUR: Default applications
+        'switchboard-plug-bluetooth-git'    # AUR: Bluetooth settings
+        'switchboard-plug-datetime-git'     # AUR: Time and Date
+        'switchboard-plug-desktop-git'      # AUR: Desktop setttings
+        'switchboard-plug-display-git'      # AUR: Monitors
+        'switchboard-plug-elementary-tweaks-git'    # AUR: Tweak tool
+        'switchboard-plug-keyboard-git'     # AUR: Keyboard shortcuts
+        'switchboard-plug-locale-git'       # AUR: Locale settings
+        'switchboard-plug-mouse-touchpad-git'       # AUR: Pointer settings
+        'switchboard-plug-network-git'      # AUR: Network settings
+        'switchboard-plug-notifications-git'        # AUR: Notifications
+        'switchboard-plug-online-accounts-git'      #*AUR: Logged accounts
+        'switchboard-plug-parental-controls-git'    # AUR: Parental access
+        'switchboard-plug-power-git'        # AUR: POwer settings
+        'switchboard-plug-printers-git'     # AUR: Printer plugin
+        'switchboard-plug-security-privacy-git'     # AUR: Security settings
+        'switchboard-plug-sharing-git'      # AUR: Sharing settings
+        'switchboard-plug-sound-git'        # AUR: Pulseaudio settings
+        'switchboard-plug-user-accounts-git'        # AUR: User accounts
+        'ttf-opensans'                      # AUR: System font
+        'ttf-raleway'                       # AUR: Logo font
+        'ttf-dejavu'                        # System font
+        'ttf-droid'                         # System font
+        'ttf-freefont'                      # System font
+        'ttf-liberation'                    # System font
+        'wingpanel-git'                     # AUR: Top bat
+        'wingpanel-indicator-a11y-git'      #*AUR: Universal Access
+        'wingpanel-indicator-ayatana-git'   #*AUR: Ayatana indicators
+        'wingpanel-indicator-bluetooth-git' # AUR: Bluetooth
+        'wingpanel-indicator-datetime-git'  # AUR: Time and date
+        'wingpanel-indicator-keyboard-git'  # AUR: Keyboard layout
+        'wingpanel-indicator-network-git'   # AUR: Network status
+        'wingpanel-indicator-nightlight-git'        # AUR: Nightlight indicator
+        'wingpanel-indicator-notifications-git'     # AUR: Notifications
+        'wingpanel-indicator-power-git'     # AUR: Battery
+        'wingpanel-indicator-privacy-git'   # AUR: Privacy
+        'wingpanel-indicator-session-git'   # AUR: Log in/out
+        'wingpanel-indicator-sound-git'     # AUR: Pulse-audio
+        'wingpanel-indicator-sys-monitor-git'       # AUR: System indicator
         )
-    # Won't build:
-    #   'pantheon-files-git'
-    #   'elementary-scan-bzr'
-    #   'switchboard-plug-online-accounts-git'
-    #   'wingpanel-indicator-a11y-git'
-    #   'wingpanel-indicator-ayatana-git'
 }
 
 # Plasma stuff
