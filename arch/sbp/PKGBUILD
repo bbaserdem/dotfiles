@@ -17,7 +17,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=92
+pkgrel=93
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -702,6 +702,7 @@ package_sbp-i3() {
         'i3lock'                        # Screen locker
         'i3blocks'                      # Input to status-bar
         'maim'                          # Screenshot utility
+        'xsslock'
         )
 }
 
