@@ -17,7 +17,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=93
+pkgrel=94
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -302,18 +302,20 @@ package_sbp-gui() {
         )
     # Theming
     depends+=(
-        'arc-gtk-theme'                             # GTK theme
-        'breeze-hacked-cursor-theme'                # Hacked cursor
-        'elementary-icon-theme'                     # Professional looking icon
-        'gnome-themes-extra'                        # Icon compatibility
-        'gtk-engine-murrine'                        # Fallback icons
-        'kvantum-qt5'                               # QT5 theme engine
-        'kvantum-theme-arc'                         # Nice theme
-        'papirus-icon-theme'                        # Nice icon theme
-        'python-pyqt5'                              # QT stuff for python
-        'qt4'                                       # QT implementation
-        'qt5-styleplugins'                          # QT GTK integration
-        'xcursor-comix'                             # Comic cursor
+        'arc-gtk-theme'                     # GTK theme
+        'breeze-hacked-cursor-theme'        # Hacked cursor
+        'elementary-icon-theme'             # Professional looking icon
+        'gnome-themes-extra'                # Icon compatibility
+        'gtk-engine-murrine'                # Fallback icons
+        'kvantum-qt5'                       # QT5 theme engine
+        'kvantum-theme-arc'                 # Nice theme
+        'papirus-icon-theme'                # Nice icon theme
+        'python-pyqt5'                      # QT stuff for python
+        'qt4'                               # QT implementation
+        'qt5-styleplugins'                  # QT GTK integration
+        'sound-theme-elementary-git'        # AUR: ElementaryOS sounds
+        'sound-theme-smooth'                # AUR: Complete sound theme
+        'xcursor-comix'                     # Comic cursor
     )
     # Wallpapers
     depends+=(
@@ -331,7 +333,6 @@ package_sbp-gui() {
         'firefox'                               # Fallback browser
         'gparted'                               # Graphical partition editor
         'gtk2fontsel' 'gucharmap'               # Font and character map
-        'light-locker'                          # Lightdm locker
         'mpv' 'smplayer'                        # Mpv frontend
         'network-manager-applet' 'nm-connection-editor'
         'pavucontrol'                           # Pulse audio control menu
@@ -352,12 +353,12 @@ package_sbp-gui() {
     )
     # Some universal useful gui functionality
     depends+=(
-        'freerdp'               # Remote desktop tool
-        'nx3-compat'            # NoMachine desktop tool
-        'gpicview'              # Picture to ascii
-        'pdfjs'                 # PDF rendering to webpages
-        'polkit' 'polkit-gnome' # Authentication
-        'trezor-bridge-bin'     # Hardware wallet
+        'freerdp'                           # Remote desktop tool
+        'gpicview'                          # Picture to ascii
+        'libcanberra' 'libcanberra-pulse'   # Sound theme
+        'pdfjs'                             # PDF rendering to webpages
+        'polkit' 'polkit-gnome'             # Authentication
+        'trezor-bridge-bin'                 # Hardware wallet
     )
 }
 
@@ -408,25 +409,23 @@ package_sbp-xfce() {
     install=xfce.install
     depends=('sbp-gui')
     depends+=(
-        'exo'
-        'evince'
-        'firefox'
-        'garcon'
-        'gtk-xfce-engine'
-        'kitty'
-        'libcanberra'
-        'libcanberra-pulse'
-        'mousepad'
-        'sound-theme-smooth'
-        'thunderbird'
-        'xfce4-appfinder'
-        'xfce4-battery-plugin'
-        'xfce4-clipman-plugin'
-        'xfce4-cpufreq-plugin'
-        'xfce4-cpugraph-plugin'
-        'xfce4-datetime-plugin'
-        'xfce4-dict'
-        'xfce4-diskperf-plugin'
+        'exo'                       # File launcher
+        'evince'                    # PDF viewer
+        'firefox'                   # Web browser
+        'garcon'                    # Menu specification ?
+        'gtk-xfce-engine'           # Xfce GTK engine
+        'kitty'                     # Terminal emulator
+        'light-locker'              # Screen lock
+        'mousepad'                  # Text editor
+        'thunderbird'               # Mail client
+        'xfce4-appfinder'           # App launcher
+        'xfce4-battery-plugin'      # Power indicator
+        'xfce4-clipman-plugin'      # Clupboard manager
+        'xfce4-cpufreq-plugin'      # System resources display
+        'xfce4-cpugraph-plugin'     # System resources display
+        'xfce4-datetime-plugin'     # Time and date indicator
+        'xfce4-dict'                # Dictionary
+        'xfce4-diskperf-plugin'     # Disk usage indicator
         'xfce4-fsguard-plugin'
         'xfce4-genmon-plugin'
         'xfce4-mailwatch-plugin'
@@ -444,7 +443,7 @@ package_sbp-xfce() {
         'xfce4-smartbookmark-plugin'
         'xfce4-systemload-plugin'
         'xfce4-taskmanager'
-        'xfce4-terminal'
+        'xfce4-terminal'            # Drop-down terminal
         'xfce4-time-out-plugin'
         'xfce4-timer-plugin'
         'xfce4-verve-plugin'
@@ -496,7 +495,6 @@ package_sbp-pantheon() {
         'pantheon-shortcut-overlay-git'     # AUR: Native shortcut overlay
         'pantheon-terminal'                 # Terminal
         'pantheon-videos'                   # Video player
-        'sound-theme-elementary-git'        # AUR: ElementaryOS sounds
         'plank'
         'switchboard-git'                   # AUR: System settings
         'switchboard-plug-a11y-git'         # AUR: accesibility
@@ -702,7 +700,9 @@ package_sbp-i3() {
         'i3lock'                        # Screen locker
         'i3blocks'                      # Input to status-bar
         'maim'                          # Screenshot utility
-        'xsslock'
+        'polybar-git'                   # Status bar
+        'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
+        'xsslock'                       # Locks screen on power events
         )
 }
 
@@ -722,6 +722,7 @@ package_sbp-sway() {
 }
 #        'redshift-sway-git'             # Screen dimmer for wayland
 #        'rofi-wayland-git'              # App launcher
+
 package_sbp-efi() {
     depends=('refind-efi' 'efibootmgr' 'efivar' 'efitools' 'sbsigntools')
     install -Dm 0755 efi.conf           "${pkgdir}/efi/EFI/rEFInd/refind.conf.example"
