@@ -35,6 +35,7 @@ x-scheme-handler/news=thunderbird.desktop;
 x-scheme-handler/nntp=thunderbird.desktop;
 x-scheme-handler/snews=thunderbird.desktop;
 x-scheme-handler/trash=thunar.desktop
+application/zip=org.gnome.FileRoller.desktop;
 
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;
