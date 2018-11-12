@@ -8,3 +8,4 @@ StartupNotify=false
 Terminal=false
 Hidden=false
 OnlyShowIn=i3;sway;
+NotShowIn=GNOME;KDE;Unity;MATE;
