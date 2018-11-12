@@ -1,5 +1,7 @@
 if [[ -f ~/.config/zsh/.zshenv ]] ; then
     source ~/.zshenv
+    # For elementary os
+    unset LD_PRELOAD
 fi
 export HISTFILE="${XDG_DATA_HOME}/bash/history"
 [[ -f ~/.bashrc ]] && . ~/.bashrc
