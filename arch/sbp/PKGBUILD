@@ -10,13 +10,14 @@ pkgname=(
     'sbp-i3'
     'sbp-pantheon'
     'sbp-kde'
+    'sbp-gnome'
     'sbp-server'
     'sbp-laptop'
     'sbp-notebook'
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=87
+pkgrel=92
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -70,10 +71,10 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '5b3f3cc9194f11a91c4d10119bdfd656'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
-         'c83fa5b2cfbbb9eea9bdc0f6a6342c41'
+         '5015cb28ae03d6666ee414aa4dbc545c'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '10b5ea5664e93646ef0f55f0e79b7022'
-         '179c8a0c85e8d4240566735006edb6fd'
+         '6ec1b1a831e7e42e0b472ea9a87858dc'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '7a1ff93a4e176d816c3ab6b5ea667ca0'
          'c972c1e5c236f6e3c0f7d1b4989ebb75'
@@ -97,12 +98,12 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          'e3217b4c75d3bc302347b7bdf27f29de'
          '36adcc034c7a69ffe93e2c0937f051da'
          '31bc6b40fff742f9281088c7acdb6feb'
-         '472569d5fa67da1e36de5971c0e2a2d3'
+         '36b1c6ab3b96c308b3ccc4a541ea0ca6'
          '963647fe81d1824bb977c3618d56959a'
-         '05924a182e0465b476e30216d1d83e56'
+         '098b5bd147a43c2e8a87ce4315128379'
          '7d625c54c37c6296f2ab1bbebbeb8308'
-         '57320329cc88ba4b549458d02138e492'
-         '548f849a15645c2dc10411a6ee960e90'
+         '55ebc5c445f6ed66242d8e18fdd390ee'
+         'aae95a0b1febfd5a55805e9d4c7b28c4'
          '7d432ab4dd0cbb05cc1399e8cd02cfbe'
          'b1fe2c5d8a90b0c4bc0668d505b141c3'
          '83e1b805fc92b3d1d3faf65158448687')
@@ -302,10 +303,8 @@ package_sbp-gui() {
     # Theming
     depends+=(
         'arc-gtk-theme'                             # GTK theme
-        'archlinux-wallpaper' 'archlinux-artwork'   # AUR: Wallpapers for Arch
         'breeze-hacked-cursor-theme'                # Hacked cursor
         'elementary-icon-theme'                     # Professional looking icon
-        'elementary-wallpapers-git'                 # Nice wallpapers
         'gnome-themes-extra'                        # Icon compatibility
         'gtk-engine-murrine'                        # Fallback icons
         'kvantum-qt5'                               # QT5 theme engine
@@ -315,6 +314,15 @@ package_sbp-gui() {
         'qt4'                                       # QT implementation
         'qt5-styleplugins'                          # QT GTK integration
         'xcursor-comix'                             # Comic cursor
+    )
+    # Wallpapers
+    depends+=(
+        'archlinux-artwork'
+        'archlinux-wallpaper'
+        'elementary-wallpapers-git'
+        'gnome-backgrounds'
+        'plasma-workspace-wallpapers'
+        'xfce4-artwork'
     )
     # Some universally useful GUI programs
     depends+=(
@@ -412,7 +420,6 @@ package_sbp-xfce() {
         'sound-theme-smooth'
         'thunderbird'
         'xfce4-appfinder'
-	    'xfce4-artwork'
         'xfce4-battery-plugin'
         'xfce4-clipman-plugin'
         'xfce4-cpufreq-plugin'
@@ -536,6 +543,54 @@ package_sbp-pantheon() {
         )
 }
 
+# GNOME stuff
+package_sbp-gnome() {
+    depends=('sbp-gui')
+    depends+=(
+        'baobab'                    # Directory tree analyser
+        'eog'                       # Image viewing program
+        'evince'                    # Doc viewer
+        'chrome-gnome-shell'        # Browser and tweak integration
+        'file-roller'               # Archive manager
+        'firefox'                   # Browser
+        'gnome-calculator'
+        'gnome-calendar'
+        'gnome-characters'
+        'gnome-clocks'
+        'gnome-color-manager'
+        'gnome-contacts'
+        'gnome-control-center'
+        'gnome-dictionary'
+        'gnome-disk-utility'
+        'gnome-documents'
+        'gnome-font-viewer'
+        'gnome-keyring'
+        'gnome-logs'
+        'gnome-maps'
+        'gnome-menus'
+        'gnome-music'
+        'gnome-photos'
+        'gnome-screenshot'
+        'gnome-session'
+        'gnome-settings-daemon'
+        'gnome-shell'
+        'gnome-shell-extensions'
+        'gnome-software'
+        'gnome-system-monitor'
+        'gnome-terminal'
+        'gnome-themes-extra'
+        'gnome-todo'
+        'gnome-tweaks'
+        'mousetweaks'
+        'mutter'
+        'nautilus'
+        'simple-scan'
+        'sushi'
+        'thunderbird'
+        'totem'
+    )
+}
+
 # Plasma stuff
 package_sbp-kde() {
     depends=('sbp-gui')
@@ -578,7 +633,7 @@ package_sbp-kde() {
         'kdepim-addons'
         'kdeplasma-addons'
         'kdesdk-kioslaves'
-        'kdesdk-thumnailers'
+        'kdesdk-thumbnailers'
         'kdf'
         'kdialog'
         'kfind'
