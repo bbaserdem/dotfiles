@@ -7,3 +7,5 @@ Exec=sh -c '~/.config/sbsync/mbsync_daemon'
 StartupNotify=false
 Terminal=false
 Hidden=false
+NotShowIn=GNOME;KDE;Unity;MATE;XFCE;
+OnlyShowIn=i3;sway;

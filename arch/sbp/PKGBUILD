@@ -10,13 +10,14 @@ pkgname=(
     'sbp-i3'
     'sbp-pantheon'
     'sbp-kde'
+    'sbp-gnome'
     'sbp-server'
     'sbp-laptop'
     'sbp-notebook'
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=88
+pkgrel=92
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -302,10 +303,8 @@ package_sbp-gui() {
     # Theming
     depends+=(
         'arc-gtk-theme'                             # GTK theme
-        'archlinux-wallpaper' 'archlinux-artwork'   # AUR: Wallpapers for Arch
         'breeze-hacked-cursor-theme'                # Hacked cursor
         'elementary-icon-theme'                     # Professional looking icon
-        'elementary-wallpapers-git'                 # Nice wallpapers
         'gnome-themes-extra'                        # Icon compatibility
         'gtk-engine-murrine'                        # Fallback icons
         'kvantum-qt5'                               # QT5 theme engine
@@ -315,6 +314,15 @@ package_sbp-gui() {
         'qt4'                                       # QT implementation
         'qt5-styleplugins'                          # QT GTK integration
         'xcursor-comix'                             # Comic cursor
+    )
+    # Wallpapers
+    depends+=(
+        'archlinux-artwork'
+        'archlinux-wallpaper'
+        'elementary-wallpapers-git'
+        'gnome-backgrounds'
+        'plasma-workspace-wallpapers'
+        'xfce4-artwork'
     )
     # Some universally useful GUI programs
     depends+=(
@@ -412,7 +420,6 @@ package_sbp-xfce() {
         'sound-theme-smooth'
         'thunderbird'
         'xfce4-appfinder'
-	    'xfce4-artwork'
         'xfce4-battery-plugin'
         'xfce4-clipman-plugin'
         'xfce4-cpufreq-plugin'
@@ -537,6 +544,54 @@ package_sbp-pantheon() {
     #   'switchboard-plug-online-accounts-git'
     #   'wingpanel-indicator-a11y-git'
     #   'wingpanel-indicator-ayatana-git'
+}
+
+# GNOME stuff
+package_sbp-gnome() {
+    depends=('sbp-gui')
+    depends+=(
+        'baobab'                    # Directory tree analyser
+        'eog'                       # Image viewing program
+        'evince'                    # Doc viewer
+        'chrome-gnome-shell'        # Browser and tweak integration
+        'file-roller'               # Archive manager
+        'firefox'                   # Browser
+        'gnome-calculator'
+        'gnome-calendar'
+        'gnome-characters'
+        'gnome-clocks'
+        'gnome-color-manager'
+        'gnome-contacts'
+        'gnome-control-center'
+        'gnome-dictionary'
+        'gnome-disk-utility'
+        'gnome-documents'
+        'gnome-font-viewer'
+        'gnome-keyring'
+        'gnome-logs'
+        'gnome-maps'
+        'gnome-menus'
+        'gnome-music'
+        'gnome-photos'
+        'gnome-screenshot'
+        'gnome-session'
+        'gnome-settings-daemon'
+        'gnome-shell'
+        'gnome-shell-extensions'
+        'gnome-software'
+        'gnome-system-monitor'
+        'gnome-terminal'
+        'gnome-themes-extra'
+        'gnome-todo'
+        'gnome-tweaks'
+        'mousetweaks'
+        'mutter'
+        'nautilus'
+        'simple-scan'
+        'sushi'
+        'thunderbird'
+        'totem'
+    )
 }
 
 # Plasma stuff

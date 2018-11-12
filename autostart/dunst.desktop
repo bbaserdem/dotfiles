@@ -7,3 +7,4 @@ Terminal=false
 Type=Application
 StartupNotify=false
 OnlyShowIn=i3;sway;
+NotShowIn=GNOME;KDE;Unity;MATE;
