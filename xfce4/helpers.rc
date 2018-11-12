@@ -1,3 +1,3 @@
-TerminalEmulator=kitty
+TerminalEmulator=custom-TerminalEmulator
 WebBrowser=firefox
 
