@@ -168,6 +168,10 @@ arch/iso/
 !/octave/octaverc
 !/octave/qt-settings.example
 
+# POLYBAR: Grab all
+!/polybar
+!/polybar/**
+
 # QUTEBROWSER: Grab my files
 !/qutebrowser
 !/qutebrowser/bookmarks

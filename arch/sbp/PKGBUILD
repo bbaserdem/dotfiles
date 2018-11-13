@@ -17,7 +17,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=94
+pkgrel=95
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -702,7 +702,7 @@ package_sbp-i3() {
         'maim'                          # Screenshot utility
         'polybar-git'                   # Status bar
         'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
-        'xsslock'                       # Locks screen on power events
+        'xss-lock'                      # Locks screen on power events
         )
 }
 
