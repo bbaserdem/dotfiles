@@ -72,7 +72,7 @@ enable-ipc = false
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/i3]
+[bar/i3-bar]
 inherit = bar/alpha
 bottom = false
 modules-left = i3 mpd calendar tasks
@@ -89,50 +89,145 @@ override-redirect = false
 type = internal/i3
 pin-workspaces = false
 strip-wsnumbers = true
-index-sort = true
+index-sort = false
 enable-click = true
 enable-scroll = true
 wrapping-scroll = false
 reverse-scroll = false
+fuzzy-match = true
 format = <label-mode> <label-state>
-label = 
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
+label-mode = %mode%
 label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-
-; focused = Active workspace on focused monitor
+label-mode-background = ${colors.bkg}
+label-mode-foreground = ${colors.ora}
+label-mode-underline  = ${colors.ora}
 label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
-; visible = Active workspace on unfocused monitor
+label-focused-background = ${colors.hig}
+label-focused-foreground = ${colors.frg}
+label-focused-underline =  ${colors.ora}
 label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace with urgency hint set
+label-visible-background = ${colors.bkg}
+label-visible-foreground = ${colors.frg}
+label-visible-underline =  ${colors.ora}
+label-unfocused = %index%
+label-unfocused-background = ${colors.bkg}
+label-unfocused-foreground = ${colors.frg}
+label-unfocused-underline =  ${colors.frg}
 label-urgent = %index%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
+label-urgent-background = ${colors.bkg}
+label-urgent-foreground = ${colors.red}
+label-urgent-underline =  ${colors.red}
 
-; Separator in between workspaces
-; label-separator = |
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = false
+inline-mode = false
+enable-click = true
+enable-scroll = true
+reverse-scroll = false
+fuzzy-match = true
+format = <label-mode> <label-state>
+ws-icon-0 = 1;
+ws-icon-1 = 2;爵
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 0;漣
+ws-icon-default = 
+label-floating =    禎
+label-fullscreen =  
+label-locked =      
+label-monocle =     
+label-private =     
+label-pseudotiled = ﰪ
+label-sticky =      
+label-tiled =       舘
+label-floating-background =    ${colors.bkg}
+label-fullscreen-background =  ${colors.bkg}
+label-locked-background =      ${colors.bkg}
+label-monocle-background =     ${colors.bkg}
+label-private-background =     ${colors.bkg}
+label-pseudotiled-background = ${colors.bkg}
+label-sticky-background =      ${colors.bkg}
+label-tiled-background =       ${colors.bkg}
+label-floating-foreground =    ${colors.ora}
+label-fullscreen-foreground =  ${colors.ora}
+label-locked-foreground =      ${colors.ora}
+label-monocle-foreground =     ${colors.ora}
+label-private-foreground =     ${colors.ora}
+label-pseudotiled-foreground = ${colors.ora}
+label-sticky-foreground =      ${colors.ora}
+label-tiled-foreground =       ${colors.ora}
+label-floating-underline =     ${colors.ora}
+label-fullscreen-underline =   ${colors.ora}
+label-locked-underline =       ${colors.ora}
+label-monocle-underline =      ${colors.ora}
+label-private-underline =      ${colors.ora}
+label-pseudotiled-underline =  ${colors.ora}
+label-sticky-underline =       ${colors.ora}
+label-tiled-underline =        ${colors.ora}
+label-focused = %icon%
+label-focused-background = ${colors.hig}
+label-focused-foreground = ${colors.frg}
+label-focused-underline =  ${colors.ora}
+label-occupied = %icon%
+label-occupied-background = ${colors.bkg}
+label-occupied-foreground = ${colors.frg}
+label-occupied-underline =  ${colors.frg}
+label-empty = %icon%
+label-empty-background = ${colors.bkg}
+label-empty-foreground = ${colors.frg}
+label-empty-underline =  ${colors.mut}
+label-urgent = %icon%
+label-urgent-background = ${colors.bkg}
+label-urgent-foreground = ${colors.red}
+label-urgent-underline =  ${colors.red}
+label-dimmed-focused = %icon%
+label-dimmed-focused-background = ${colors.hig}
+label-dimmed-focused-foreground = ${colors.mut}
+label-dimmed-focused-underline =  ${colors.ora}
+label-dimmed-occupied = %icon%
+label-dimmed-occupied-background = ${colors.bkg}
+label-dimmed-occupied-foreground = ${colors.mut}
+label-dimmed-occupied-underline =  ${colors.frg}
+label-dimmed-empty = %icon%
+label-dimmed-empty-background = ${colors.bkg}
+label-dimmed-empty-foreground = ${colors.mut}
+label-dimmed-empty-underline =  ${colors.mut}
+label-dimmed-urgent = %icon%
+label-dimmed-urgent-background = ${colors.bkg}
+label-dimmed-urgent-foreground = ${colors.red}
+label-dimmed-urgent-underline =  ${colors.red}
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song> <icon-prev> <icon-stop> <toggle> <icon-next>
+icon-prev = 玲
+icon-stop = 栗
+icon-play = 契
+icon-pause = 
+icon-next = 怜
+icon-seekf = 
+icon-seekb = 丹
+icon-random = 列
+icon-repeat = 凌
+icon-repeatone = 綾
+icon-single = 駱
+icon-consume = 裸
+toggle-on-foreground = ${colors.frg}
+toggle-off-foreground = ${colors.mut}
+label-song = %title% - %album-artist%
+label-offline = N/A
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/date]
+
+[module/time]
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -181,21 +276,6 @@ label-empty-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
-
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
 [module/xbacklight]
 type = internal/xbacklight
 

@@ -14,6 +14,7 @@
 !/abcde.conf
 !/gtk2rc
 !/install.sh
+!/locale.conf
 !/matlabrc.m
 !/*mimeapps.list
 !/mpdscribble-confgen.sh
