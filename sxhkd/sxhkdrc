@@ -97,7 +97,7 @@ super + {_,shift + }{Down,Up}
 super + {_,shift + }{Left,Right}
     bspc {desktop -f,node -d} {prev,next}
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,0}'
+    bspc {desktop -f,node -d} '^{1-9,10}'
 # Alternate between tiled and monocle (stacked) layout
 super + s
     bspc desktop -l next
