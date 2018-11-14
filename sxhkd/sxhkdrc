@@ -1,3 +1,4 @@
+# vim:filetype=sxhkdrc
 #------------------------#
 #-wm independent hotkeys-#
 #------------------------#
@@ -68,7 +69,7 @@ super + Escape
 Print + {_,shift,alt}
     maim {_,-i $(xdotool getactivewindow),-s} $HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
 
-# make Sxhkd and bspwm reload its configuration files:
+# make Sxhkd, Bspwm and Polybar reload its config files
 super + shift + Escape
     pkill -USR1 -x sxhkd; \
     $XDG_CONFIG_HOME/bspwm/config; \

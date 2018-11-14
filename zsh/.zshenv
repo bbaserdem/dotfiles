@@ -37,7 +37,8 @@ export MAKEFLAGS="-j$(nproc)"
 # One day . . . one day MATLAB will actually do what I want it to do . . .
 export MATLAB_DIR="/opt/matlab"
 export MATLAB_LOG_DIR="${XDG_CACHE_HOME}/matlab/"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}/java"
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java"
+export _JAVA_AWT_WM_NONREPARENTING=1
 # export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 export LD_PRELOAD="/usr/lib/libstdc++.so:/usr/lib/libfreetype.so.6"
 # export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
