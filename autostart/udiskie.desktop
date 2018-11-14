@@ -7,5 +7,5 @@ Exec=udiskie
 StartupNotify=false
 Terminal=false
 Hidden=false
-OnlyShowIn=i3;sway;
+OnlyShowIn=i3;bspwm;sway;
 NotShowIn=GNOME;KDE;Unity;MATE;

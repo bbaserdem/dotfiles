@@ -6,10 +6,9 @@ pkgname=(
     'sbp-extra'
     'sbp-efi'
     'sbp-xfce'
+    'sbp-bspwm'
     'sbp-sway'
-    'sbp-i3'
     'sbp-pantheon'
-    'sbp-kde'
     'sbp-gnome'
     'sbp-server'
     'sbp-laptop'
@@ -17,7 +16,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=95
+pkgrel=96
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -46,6 +45,7 @@ source=(
     'base.wifi'
     'base.zshenv'
     'gui.install'
+    'gui.xinit-session'
     'extra.install'
     'extra.qbupdate'
     'efi.conf'
@@ -360,6 +360,8 @@ package_sbp-gui() {
         'polkit' 'polkit-gnome'             # Authentication
         'trezor-bridge-bin'                 # Hardware wallet
     )
+    install -dm 0755 "${pkgdir}/usr/share/xsessions"
+    install -Dm 0755 gui.xinit-session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
 }
 
 # Meant to be excluded from some setups due to size
@@ -551,14 +553,12 @@ package_sbp-gnome() {
         'chrome-gnome-shell'        # Browser and tweak integration
         'file-roller'               # Archive manager
         'firefox'                   # Browser
-        'gnome-calculator'
         'gnome-calendar'
         'gnome-characters'
         'gnome-clocks'
         'gnome-color-manager'
         'gnome-contacts'
         'gnome-control-center'
-        'gnome-dictionary'
         'gnome-disk-utility'
         'gnome-documents'
         'gnome-font-viewer'
@@ -566,14 +566,12 @@ package_sbp-gnome() {
         'gnome-logs'
         'gnome-maps'
         'gnome-menus'
-        'gnome-music'
         'gnome-photos'
         'gnome-screenshot'
         'gnome-session'
         'gnome-settings-daemon'
         'gnome-shell'
         'gnome-shell-extensions'
-        'gnome-software'
         'gnome-system-monitor'
         'gnome-terminal'
         'gnome-themes-extra'
@@ -582,134 +580,14 @@ package_sbp-gnome() {
         'mousetweaks'
         'mutter'
         'nautilus'
-        'simple-scan'
-        'sushi'
         'thunderbird'
         'totem'
     )
 }
 
-# Plasma stuff
-package_sbp-kde() {
-    depends=('sbp-gui')
-    depends+=(
-        'akonadi-calendar-tools' 'akonadi-import-wizard' 'akonadiconsole'
-        'akregator'
-        'arc-kde'
-        'ark'
-        'audiocd-kio'
-        'bluedevil'
-        'cantor'
-        'discover'
-        'dolphin'
-        'dolphin-plugins'
-        'dragon'
-        'drkonqi'
-        'ffmpegthumbs'
-        'filelight'
-        'gwenview'
-        'k3b'
-        'kaccounts-integration'
-        'kaccounts-providers'
-        'kaddressbook'
-        'kactivitymanagerd'
-        'kalarm'
-        'kalgebra'
-        'kalzium'
-        'kate'
-        'kcachegrind'
-        'kcalc'
-        'kcharselect'
-        'kcolorchooser'
-        'kcron'
-        'kde-cli-tools'
-        'kde-gtk-config'
-        'kdebugsettings'
-        'kdecoration'
-        'kdenetwork-filesharing'
-        'kdenlive'
-        'kdepim-addons'
-        'kdeplasma-addons'
-        'kdesdk-kioslaves'
-        'kdesdk-thumbnailers'
-        'kdf'
-        'kdialog'
-        'kfind'
-        'kgamma5'
-        'kget'
-        'khotkeys'
-        'kinfocenter'
-        'kio-extras'
-        'kiten'
-        'kleopatra'
-        'kmail' 'kmail-account-wizard'
-        'kmenuedit'
-        'knetattach'
-        'konsole'
-        'kontact'
-        'korganizer'
-        'kscreen'
-        'kscreenlocker'
-        'ksshaskpass'
-        'ksysguard'
-        'ksystemlog'
-        'kteatime'
-        'ktimer'
-        'kwalletmanager'
-        'kwallet-pam'
-        'kwayland-integration'
-        'kwave'
-        'kwin'
-        'kwrited'
-        'libkscreen'
-        'libksysguard'
-        'milou'
-        'okular'
-        'picmi'
-        'pim-data-exporter' 'pim-sieve-editor'
-        'plasma-browser-integration'
-        'plasma-desktop'
-        'plasma-integration'
-        'plasma-nm'
-        'plasma-pa'
-        'plasma-sdk'
-        'plasma-vault'
-        'plasma-wayland-session'
-        'plasma-workspace'
-        'plasma-workspace-wallpapers'
-        'print-manager'
-        'polkit-kde-agent'
-        'powerdevil'
-        'signon-kwallet-extension'
-        'spectacle'
-        'systemsettings'
-        'user-manager'
-        'xdg-desktop-portal-kde'
-        )
-}
-
-# i3 stuff
-package_sbp-i3() {
-    depends=('sbp-gui')
-    depends+=(
-        'brightnessctl'                 # Brightness controls
-        'dex'                           # Autostart launcher
-        'dunst'                         # Notification daemon
-        'feh'                           # Wallpaper management
-        'i3-gaps'                       # Improved window manager
-        'i3lock'                        # Screen locker
-        'i3blocks'                      # Input to status-bar
-        'maim'                          # Screenshot utility
-        'polybar-git'                   # Status bar
-        'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
-        'xss-lock'                      # Locks screen on power events
-        )
-}
-
 # Sway stuff
 package_sbp-sway() {
     depends=('sbp-gui')
-    # sway stuff
     depends+=(
         'brightnessctl'                 # Brightness controls
         'dex'                           # Autostart launcher
@@ -718,10 +596,38 @@ package_sbp-sway() {
         'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
         'sway-git'                      # Wayland compositor
         'wlroots-git'                   # Wayland library
-        )
-}
 #        'redshift-sway-git'             # Screen dimmer for wayland
 #        'rofi-wayland-git'              # App launcher
+        )
+    # i3 stuff
+    depends+=(
+        'dunst'                         # Notification daemon
+        'feh'                           # Wallpaper management
+        'i3-gaps'                       # Improved window manager
+        'i3lock'                        # Screen locker
+        'maim'                          # Screenshot utility
+        'xss-lock'                      # Locks screen on power events
+        )
+}
+
+# Bspwm stuff
+package_sbp-bspwm() {
+    depends=('sbp-gui')
+    depends+=(
+        'brightnessctl'                 # Brightness controls
+        'bspwm'                         # Binary split partitioning WM
+        'dex'                           # Autostart launcher
+        'dunst'                         # Notification daemon
+        'feh'                           # Wallpaper management
+        'i3lock'                        # Screen locker
+        'maim'                          # Screenshot utility
+        'polybar-git'                   # AUR: Status bar
+        'rofi' 'rofi-pass' 'rofi-emoji' # Application launcher
+        'sxhkd'                         # Simple X hotkey daemon
+        'xss-lock'                      # Locks screen on power events
+        )
+}
+
 
 package_sbp-efi() {
     depends=('refind-efi' 'efibootmgr' 'efivar' 'efitools' 'sbsigntools')

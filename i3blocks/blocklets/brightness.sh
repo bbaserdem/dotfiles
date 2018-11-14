@@ -28,8 +28,8 @@ else
 fi
 
 case $BLOCK_BUTTON in
-    4) /usr/bin/brightnessctl -d $BRI_SCR s +10 >/dev/null ;;
-    5) /usr/bin/brightnessctl -d $BRI_SCR s 10- >/dev/null ;;
+    4) /usr/bin/brightnessctl -d $BRI_SCR s +5% >/dev/null ;;
+    5) /usr/bin/brightnessctl -d $BRI_SCR s 5%- >/dev/null ;;
 esac
 
 [ -z "${_val}" ] || echo '<span color='"$_col"'>'"$_icon"'</span> '"$_val"'%' | sed 's|&|&amp;|g'

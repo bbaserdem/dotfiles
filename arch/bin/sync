@@ -33,10 +33,9 @@ for _file in "${_local}/"*.pkg.tar.xz ; do
     _pre="$( echo "${_file}" | sed 's|^\(.*\)-.*-.*-.*|\1|g' )"
     [ -z "${_pre}" ] || ( \
         s3cmd rm "${_dest}/${_pre}-*.pkg.tar.xz" || true )
-    s3cmd sync --follow-symlinks --acl-public "${_file}" "${_dest}/"
 done
 
 # Sync local database to remote
 s3cmd sync --follow-symlinks --acl-public "${_local}/${_name}.db" \
-    "${_local}/${_name}.db.tar.xz" "${_local}/${_name}.files" \
-    "${_local}/${_name}.files.tar.xz" "${_dest}/"
+    "${_local}/${_name}.db.tar.xz" "${_local}/"*.pkg.tar.xz" \
+    "${_local}/${_name}.files" "${_local}/${_name}.files.tar.xz" "${_dest}/"

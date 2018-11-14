@@ -67,6 +67,10 @@ arch/iso/
 !/bash
 !/bash/**
 
+# BSPWM: Accept all
+!/bspwm
+!/bspwm/**
+
 # CURSOR: Accept all
 !/cursor
 !/cursor/**
@@ -214,6 +218,10 @@ arch/iso/
 # SWAY: Grab all sway files
 !/sway
 !/sway/**
+
+# SXHKD: Grab all
+!/sxhkd
+!/sxhkd/**
 
 # SYNCTHING-GTK: Grab config
 !/syncthing-gtk

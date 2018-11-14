@@ -1,0 +1,171 @@
+#!/usr/bin/bash
+
+# Updater scripts
+
+# Subscribing to inotifywait is very bad; since other scripts will access the
+#   the values. It seems setting inotifywatch every time after connection is
+#   broken is the better approach
+
+i3b_update_backlight () {
+    _socket=1
+    _file="/sys/class/backlight/${BRI_SCR}/brightness"
+
+    [ -e "${_file}" ] || _file=""
+    while : ; do
+        pkill -RTMIN+"${_socket}" i3blocks
+        sleep .2
+        inotifywait --timeout -1 "${_file}" || break
+    done
+
+    echo 'Backlight updater is exiting'
+}
+
+i3b_update_battery () {
+    _socket=2
+    _ac="/sys/class/power_supply/AC0/online"
+    _ba="/sys/class/power_supply/BAT0/capacity"
+    [ -e "${_ac}" ] || _ac=""
+    [ -e "${_ba}" ] || _ba=""
+    
+    while : ; do
+        pkill -RTMIN+"${_socket}" i3blocks
+        sleep .2
+        inotifywait --timeout -1 "${_ac}" "${_ba}" || break
+    done
+
+    echo 'Battery updater is exiting'
+}
+
+i3b_update_mpd () {
+    _socket=3
+
+    while : ; do
+        pkill -RTMIN+"${_socket}" i3blocks
+        sleep .2
+        pgrep -x mpd > /dev/null && mpc idle > /dev/null \
+            || sleep 60
+    done
+
+    echo 'MPD updater is exiting'
+}
+
+i3b_update_rss () {
+    _socket=4
+    _file="${HOME}/Documents/RSS"
+
+    while : ; do
+        pkill -RTMIN+"${_socket}" i3blocks
+        sleep 5
+        [ -e "${_file}" ] && \
+            inotifywait --timeout -1 --recursive "${_file}" || \
+            sleep 60
+    done
+
+    echo 'RSS updater is exiting'
+}
+
+i3b_update_imap () {
+    _socket=5
+    _file="${HOME}/.mail/Gmail/Inbox/new"
+
+    while : ; do
+        pkill -RTMIN+"${_socket}" i3blocks
+        sleep 5
+        [ -e "${_file}" ] && \
+            inotifywait --timeout -1 --recursive "${_file}" || \
+            sleep 60
+    done
+
+    echo 'Imap updater is exiting'
+}
+
+i3b_update_pulseaudio () {
+    _socket=6
+
+    /usr/bin/pactl subscribe | \
+        grep --line-buffered -e "sink" -e "'change' on server #" | \
+        while IFS= read -r line; do
+            pkill -RTMIN+"${_socket}" i3blocks
+            sleep .2
+        done
+
+    echo 'Pulseaudio updater is exiting'
+}
+
+i3b_update_date () {
+    _socket=7
+
+    while : ; do
+        sleep "$(( $(date -d "tomorrow 0" +%s) - $(date +%s) + 5 ))"
+        pkill -RTMIN+"${_socket}" i3blocks
+    done
+
+    echo 'Date updater is exiting'
+}
+
+i3b_update_todo () {
+    _socket=8
+    _file="${HOME}/Documents/Tasks"
+
+    while : ; do
+        pkill -RTMIN+"${_socket}" i3blocks
+        sleep 5
+        [ -e "${_file}" ] && \
+            inotifywait --timeout -1 --recursive "${_file}" || \
+            sleep 60
+    done
+
+    echo 'Tasks updater is exiting'
+}
+
+i3b_update_calendar () {
+    _socket=9
+    _file="${HOME}/Documents/Calendar"
+
+    while : ; do
+        pkill -RTMIN+"${_socket}" i3blocks
+        sleep 5
+        [ -e "${_file}" ] && \
+	    inotifywait --timeout -1 --recursive "${_file}" || \
+            sleep 60
+    done
+
+    echo 'Calendar updater is exiting'
+}
+
+i3b_update_language () {
+    _socket=10
+
+    /usr/bin/xkb-switch -W | \
+        while IFS= read -r line; do pkill -RTMIN+"${_socket}" i3blocks
+        sleep .1
+    done
+
+    echo 'Language updater is exiting'
+}
+
+# Kill all children on exit
+trap 'kill $(jobs -p)' EXIT SIGINT SIGTERM
+
+# run all updater programs and fork them
+
+if [ "$1" = 'min' ] ; then
+    i3b_update_mpd &
+    i3b_update_pulseaudio &
+    i3b_update_date &
+    i3b_update_language &
+else
+    i3b_update_backlight &
+    i3b_update_battery &
+    i3b_update_mpd &
+    i3b_update_rss &
+    i3b_update_imap &
+    i3b_update_pulseaudio &
+    i3b_update_date &
+    i3b_update_todo &
+    i3b_update_calendar &
+    i3b_update_language &
+fi
+
+# Remain open for all children
+wait

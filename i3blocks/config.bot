@@ -13,45 +13,52 @@ align=left
 
 # Disk usage (Brown)
 [disk]
+command=~/.config/i3blocks/blocklets/disk.sh brown
 interval=3600
 
 # Temperature (Red)
 [temperature]
-interval=1
+command=~/.config/i3blocks/blocklets/temperature.sh red
+interval=2
 
 # Fan speed (Orange)
 [fan]
+command=~/.config/i3blocks/blocklets/fan.sh oranger
 interval=5
 
 # Cpu info (Yellow)
 [cpu]
-interval=1
+command=~/.config/i3blocks/blocklets/cpu.sh yellow
+interval=2
 
 # Memory (Green)
 [memory]
-interval=1
+command=~/.config/i3blocks/blocklets/memory.sh green
+interval=5
 
 [swap]
-interval=1
+command=~/.config/i3blocks/blocklets/swap.sh green
+interval=5
 
 # Internet (Cyan)
 [wifi]
+command=~/.config/i3blocks/blocklets/wifi.sh cyan
 interval=5
 
 [ethernet]
+command=~/.config/i3blocks/blocklets/ethernet.sh cyan
 interval=5
 
 [vpn]
+command=~/.config/i3blocks/blocklets/vpn.sh cyan
 interval=5
 
 # Uptime (Indigo)
 [uptime]
+command=~/.config/i3blocks/blocklets/uptime.sh indigo
 interval=60
-
-# Pacman (Indigo)
-[pacman]
-interval=300
 
 # Kernel (Violet)
 [kernel]
+command=~/.config/i3blocks/blocklets/kernel.sh violet
 interval=once

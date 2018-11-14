@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=i3blocks-updater
+Comment=Updater for i3blocks
+Exec=sh -c '~/.config/i3blocks/updater'
+Terminal=false
+Type=Application
+StartupNotify=false
+OnlyShowIn=i3;sway;
+NotShowIn=GNOME;KDE;Unity;MATE;XFCE;bspwm;

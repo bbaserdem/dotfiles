@@ -20,14 +20,13 @@ _ico=""
 _ics="說"
 _ic1=""
 _ic2=""
-_icp="爵"
 
 [[ ! -d /sys/class/net/${_int}/wireless ]] && exit
 [[ "$(cat /sys/class/net/${_int}/operstate)" = 'down' ]] && exit
 
 _sid="$(iwgetid | sed 's|.*ESSID:"\(.*\)"|\1|')"
 _sgn="$(grep ${_int} /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')"
-_ipa="$(/usr/bin/ip -o -4 addr list ${_int} | awk '{print $4}' | cut -d/ -f1)"
+_ipa="$(/usr/bin/ip -o -4 addr list ${_int}|awk '{print $4}'|head -n1|cut -d/ -f1)"
 
 # grabbing data for each adapter.
 read rx < "/sys/class/net/${_int}/statistics/rx_bytes"
@@ -69,4 +68,4 @@ else
     _upl="${tx_kib} KiB/s"
 fi
 
-echo "<span color=${_col}>${_ico}</span> ${_sid} <span color=${_col}>${_ics}</span> ${_sgn}% <span color=${_col}>${_ic1}</span> ${_upl} <span color=${_col}>${_ic2}</span> ${_dnl} <span color=${_col}>${_icp}</span> ${_ipa}" | sed 's|&|&amp;|g'
+echo "<span color=${_col}>${_ico}</span> ${_ipa} <span color=${_col}>${_ics}</span> ${_sgn}% <span color=${_col}>${_ic1}</span> ${_upl} <span color=${_col}>${_ic2}</span> ${_dnl}" | sed 's|&|&amp;|g'

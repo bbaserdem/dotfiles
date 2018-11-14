@@ -18,8 +18,8 @@ esac
 # Check for internet
 for ((_n=0;_n<10;_n++))
 do
-    # Try to ping OoenWeatherMap API service
-    ping -c 1 -W 2 162.243.53.59 &>/dev/null
+    # Try to ping open uri
+    ping -c 1 -W 2 8.8.8.8 &>/dev/null
     [ "$?" -eq "0" ] && _n=10
     sleep 2
 done
@@ -464,4 +464,4 @@ prompt_uv_index () {
 }
 
 
-echo "$(prompt_temp_trend) $(prompt_humidity) $(prompt_uv_index) $(prompt_suntime)" | sed 's|&|&amp;|g'
+echo "$(prompt_temp_trend) $(prompt_uv_index) $(prompt_suntime)" | sed 's|&|&amp;|g'

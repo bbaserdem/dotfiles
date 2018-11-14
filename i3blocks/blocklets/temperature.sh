@@ -19,9 +19,11 @@ _cel="糖"
 
 if [ $(hostname) = 'sbplaptop' ]
 then
-    _tmp="$(sensors | grep 'Tdie:' | awk '{print $2}' | sed 's/+\(.*\)°C/\1/')"
+    _tmp="$(sensors|grep 'Tdie:'|awk '{print $2}'|sed 's/+\(.*\)°C/\1/')"
+elif [ $(hostname) = 'sbpnotebook' ]
+then
+    _tmp="$(sensors|grep 'Package id'|awk '{print $4}'|sed 's/+\(.*\)°C/\1/')"
 else
-    _tmp="$(sensors | grep '°C' | awk '{print $3}' | sed 's/+\(.*\)°C/\1/')"
     return
 fi
 

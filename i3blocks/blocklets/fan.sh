@@ -17,8 +17,18 @@ esac
 
 _ico=""
 function join_by { local IFS="$1"; shift; echo "$*"; }
-_spe="$(sensors | grep 'Fan' | awk '{print $3}' | tr '\n' ',')"
-_spe="${_spe::-1}"
+if [ $(hostname) = 'sbplaptop' ]
+then
+    _spe="$(sensors | grep -i 'fan' | awk '{print $3}' | tr '\n' ',')"
+    _spe="${_spe::-1}"
+elif [ $(hostname) = 'sbpnotebook' ]
+then
+    _spe="$(sensors | grep -i 'fan' | awk '{print $2}' | tr '\n' ',')"
+    _spe="${_spe::-1}"
+else
+    _spe="$(sensors | grep -i 'fan' | awk '{print $3}' | tr '\n' ',')"
+    _spe="${_spe::-1}"
+fi
 
 [ "$_spe" != "" ] && \
     echo "<span color=${_col}>${_ico}</span> ${_spe}" | sed 's|&|&amp;|g'

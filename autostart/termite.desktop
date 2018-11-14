@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Mbsync
-Icon=applications-email-panel
-Comment=Mbsync (isync) for syncronizing mail
-Exec=sh -c '~/.config/sbsync/mbsync_daemon'
+Name=Termite dropdown
+Icon=termite
+Comment=Termite as a dropdown terminal
+Exec=termite -t 'dropdown'
 StartupNotify=false
 Terminal=false
 Hidden=false

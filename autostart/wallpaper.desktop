@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Feh
-Comment=Change wallpaper using Feh
-Exec=sh -c '~/.config/i3/wallpaper.sh'
-Icon=livewallpaper-indicator
+Name=Wallpaper
+Comment=Wallpaper slideshow
+Exec=sh -c '~/.config/scripts/x-wallpaper.sh'
+Icon=preferences-desktop-display
 Terminal=false
 Type=Application
 StartupNotify=false

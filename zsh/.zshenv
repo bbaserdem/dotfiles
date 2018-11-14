@@ -50,6 +50,11 @@ then
     export MON_0="eDP"
     export BRI_SCR="amdgpu_bl0"
     export BRI_KBD="asus::kbd_backlight"
+elif [[ $(hostname) == 'sbpnotebook' ]]
+then
+    export MON_0="eDP-1"
+    export BRI_SCR="intel_backlight"
+    export BRI_KBD=""
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     export MON_0="DP-2"
@@ -103,3 +108,21 @@ export VIFM="${XDG_CONFIG_HOME}/vifm"
 export MYVIFMRC="${VIFM}/vifmrc"
 # ZSH
 export HISTFILE="${XDG_DATA_HOME}/zsh/history"
+
+# Status bar colors: base16-default-dark
+export base00='#181818'
+export base01='#282828'
+export base02='#383838'
+export base03='#585858'
+export base04='#b8b8b8'
+export base05='#d8d8d8'
+export base06='#e8e8e8'
+export base07='#f8f8f8'
+export base08='#ab4642'
+export base09='#dc9656'
+export base0A='#f7ca88'
+export base0B='#a1b56c'
+export base0C='#86c1b9'
+export base0D='#7cafc2'
+export base0E='#ba8baf'
+export base0F='#a16946'

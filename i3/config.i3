@@ -9,6 +9,10 @@
 # Need these for gaps
 # for_window [class="^.*"] border pixel 0
 
+# Wallpaper
+bindsym $Meta+c                 exec "$XDG_CONFIG_HOME/scripts/x-wallpaper.sh --now"
+# Lock
+bindsym $Meta+Escape            exec "$XDG_CONFIG_HOME/scripts/x-lock.sh"
 # Screenshot
 bindsym Print                   exec --no-startup-id "maim ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
 bindsym Shift+Print             exec --no-startup-id "maim -i $(xdotool getactivewindow) ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"

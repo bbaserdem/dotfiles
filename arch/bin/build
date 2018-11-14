@@ -47,15 +47,13 @@ for _arg in "${@}"; do
             _pre="$( echo "${_file}" | sed 's|^\(.*\)-.*-.*-.*|\1|g' )"
             [ -z "${_pre}" ] || ( \
                 s3cmd rm "${_dest}/${_pre}-*.pkg.tar.xz" || true )
-            # Upload the file
-            s3cmd sync --follow-symlinks --acl-public "${_file}" "${_dest}/"
         done
     else
         echo "Package directory not found; ${_arg}, skipping..."
     fi
 done
 
-# Sync local database to remote
+# Sync local database to remote along with all the new packages
 s3cmd sync --follow-symlinks --acl-public "${_local}/${_name}.db" \
-    "${_local}/${_name}.db.tar.xz" "${_local}/${_name}.files" \
-    "${_local}/${_name}.files.tar.xz" "${_dest}/"
+    "${_local}/${_name}.db.tar.xz" "${_local}/"*.pkg.tar.xz" \
+    "${_local}/${_name}.files" "${_local}/${_name}.files.tar.xz" "${_dest}/"

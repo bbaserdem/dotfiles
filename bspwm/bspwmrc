@@ -1,0 +1,75 @@
+#! /bin/sh
+
+dex --autostart --environment bspwm &
+
+bspc config border_width                2
+bspc config window_gap                  12
+bspc config merge_overlapping_monitors  true
+bspc config split_ratio                 0.52
+bspc config borderless_monocle          true
+bspc config gapless_monocle             true
+
+M=$(bspc query -M | wc -l)
+if [[ "$M" == 1 ]]; then
+    bspc monitor --reset-desktops 1 2 3 4 5 6 7 8 9 0
+elif [[ "$M" == 2 ]]; then
+    bspc monitor $(bspc query --monitors|awk NR==1) --reset-desktops 1 2 3 4 5
+    bspc monitor $(bspc query --monitors|awk NR==2) --reset-desktops 6 7 8 9 0
+elif [[ "$M" == 3 ]]; then
+    bspc monitor $(bspc query --monitors|awk NR==1) --reset-desktops 1 2 3 4
+    bspc monitor $(bspc query --monitors|awk NR==2) --reset-desktops 5 6 7
+    bspc monitor $(bspc query --monitors|awk NR==3) --reset-desktops 8 9 0
+else
+    I=1
+    for monitor in $(bspc query -M); do
+        bspc monitor $monitor -n "$I" -d $I
+        let I++
+    done
+fi
+
+if [ -z "$BSPWM_RULE_SET" ] ; then
+    BSPWM_RULE_SET=yes
+    # First desktop: Communication
+    bspc rule --add Skype               desktop='^1'
+    bspc rule --add Rambox              desktop='^1'
+    bspc rule --add Qemu-system-x86_64  desktop='^1'
+    bspc rule --add org.remmina.Remmina desktop='^1'
+    bspc rule --add Thunar              desktop='^1'
+    # Second desktop: Internet
+    bspc rule --add qutebrowser         desktop='^2'
+    bspc rule --add Firefox             desktop='^2'
+    # Third desktop: Terminal
+    bspc rule --add Termite             desktop='^3'
+    bspc rule --add kitty               desktop='^3'
+    # Fourth desktop: Science
+    bspc rule --add MATLAB*             desktop='^4'
+    bspc rule --add 'GNU Octave'        desktop='^4'
+    bspc rule --add Spyder              desktop='^4'
+    # Fifth desktop: Reading
+    bspc rule --add Zathura             desktop='^5'
+    bspc rule --add Evince              desktop='^5'
+    # Sixth desktop: Writing
+    bspc rule --add libreoffice*        desktop='^6'
+    bspc rule --add Soffice             desktop='^6'
+    # Seventh desktop: Media
+    bspc rule --add mpv                 desktop='^7'
+    bspc rule --add smplayer            desktop='^7'
+    bspc rule --add cantata             desktop='^7'
+    bspc rule --add vlc                 desktop='^7'
+    # Eighth desktop: Image
+    bspc rule --add pdfsam              desktop='^8'
+    bspc rule --add Gimp*               desktop='^8'
+    bspc rule --add inkscape            desktop='^8'
+    bspc rule --add Blender             desktop='^8'
+    bspc rule --add openscad            desktop='^8'
+    bspc rule --add Ristretto           desktop='^8'
+    # Ninth desktop: Games
+    bspc rule --add Steam               desktop='^9'
+    bspc rule --add Stepmania           desktop='^9'
+    # Tenth desktop: Settings
+    bspc rule --add Pavucontrol         desktop='^0'
+    bspc rule --add 'Syncthing GTK'     desktop='^0'
+    bspc rule --add QDBusViewer         desktop='^0'
+    bspc rule --add Pamac-updater       desktop='^0'
+    bspc rule --add Pamac-manager       desktop='^0'
+fi

@@ -1,29 +1,12 @@
 #!/usr/bin/sh
 
-# base16-default-dark
-base00='#181818'
-base01='#282828'
-base02='#383838'
-base03='#585858'
-base04='#b8b8b8'
-base05='#d8d8d8'
-base06='#e8e8e8'
-base07='#f8f8f8'
-base08='#ab4642'
-base09='#dc9656'
-base0A='#f7ca88'
-base0B='#a1b56c'
-base0C='#86c1b9'
-base0D='#7cafc2'
-base0E='#ba8baf'
-base0F='#a16946'
-
-_mute="'${base03}'"
-col_red="'${base08}'"
-col_ora="'${base09}'"
-col_yel="'${base0A}'"
-col_gre="'${base0B}'"
-col_cya="'${base0C}'"
-col_ind="'${base0D}'"
-col_vio="'${base0E}'"
-col_bro="'${base0F}'"
+# Default to base16-default-dark
+_mute="'${base03:-#585858}'"
+col_red="'${base08:-#ab4642}'"
+col_ora="'${base09:-#dc9656}'"
+col_yel="'${base0A:-#f7ca88}'"
+col_gre="'${base0B:-#a1b56c}'"
+col_cya="'${base0C:-#86c1b9}'"
+col_ind="'${base0D:-#7cafc2}'"
+col_vio="'${base0E:-#ba8baf}'"
+col_bro="'${base0F:-#a16946}'"

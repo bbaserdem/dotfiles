@@ -2,74 +2,61 @@
 #-wm independent hotkeys-#
 #------------------------#
 
-# reload screen configuration
+# Reload monitor
 super + F8
-	~/.config/sxhkd/screenReload.sh
-
-# terminal emulator
+    $XDG_CONFIG_HOME/scripts/x-monitors.sh --now
+# Terminal
 super + Return
-	$TERMINAL
-
-# password prompt
-super + p
-    rofi-pass
-
-# emoji
-super + e
-    ~/.config/rofi/rofi-emoji.sh
-
-# Windows
-super + w
-    rofi -modi window -show window
-
-# Daemons
-super + d
-    ~/.config/rofi/rofi-systemd.sh
-
-# Screenshot
-Print + {_,shift}
-    maim {_,-i $(xdotool getactivewindow)} ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
-
-# Change wallpapers
-super + Down
-    systemctl --user start wallpaper@${DISPLAY}.service
-
-# launch rofi
+    $TERMINAL
+# Rofi
 super + space
-	rofi -show drun
-
-# lock screen
-super + Escape
-    systemctl --user start lock@${DISPLAY}.service
-
-# make sxhkd reload its configuration files:
-super + shift + Escape
-	systemctl --user restart sxhkd@${DISPLAY}.service
-
+    /usr/bin/rofi -show drun
+# Password-store
+super + p
+    /usr/bin/rofi-pass
+# Systemd
+super + d
+    $XDG_CONFIG_HOME/rofi/systemd
+# Emoji
+super + e
+    /usr/bin/rofi -show emoji -modi emoji
 # Music controls for mpd
 XF86Audio{Play,Stop,Next}
-    mpc {toggle,stop,next}
+    /usr/bin/mpc {toggle,stop,next}
 XF86AudioPrev
-    ~/.config/sxhkd/playprev.sh
-
-# Sound controls
+    if [[ $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,\\"\\",$3); split($3,a,/:/); print a[1]*60+a[2] }') -ge 3 ]]; then mpc seek 0; else mpc prev; fi
+# Volume controls
 XF86AudioRaiseVolume
-    pamixer --increase 5
+    /usr/bin/pamixer --increase 5
 XF86AudioLowerVolume
-    pamixer --decrease 5
+    /usr/bin/pamixer --decrease 5
 XF86AudioMute
-    pamixer --toggle-mute
-
+    /usr/bin/pamixer --toggle-mute
 # Brightness setting for laptop
 XF86MonBrightnessUp
-    brightnessctl -d $BRI_SCR s +10
+    brightnessctl -d $BRI_SCR s +5%
 XF86MonBrightnessDown
-    brightnessctl -d $BRI_SCR s 10-
+    brightnessctl -d $BRI_SCR s 5%-
 XF86KbdBrightnessUp
     brightnessctl -d $BRI_KBD s +1
 XF86KbdBrightnessDown
     brightnessctl -d $BRI_KBD s 1-
-
+# Power button
+XF86PowerOff
+    $XDG_CONFIG_HOME/scripts/power.sh
+# Change wallpapers
+super + c
+    $XDG_CONFIG_HOME/scripts/x-wallpaper.sh --now
+# lock screen
+super + Escape
+    $XDG_CONFIG_HOME/scripts/x-lock.sh
+# Screenshot
+Print + {_,shift,alt}
+    maim {_,-i $(xdotool getactivewindow),-s} $HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+# make Sxhkd and bspwm reload its configuration files:
+super + shift + Escape
+    pkill -USR1 -x sxhkd
+    $XDG_CONFIG_HOME/bspwm/config
 # Open python terminal
 XF86Calculator
     $TERMINAL -e bpython
@@ -78,108 +65,64 @@ XF86Calculator
 #-BSPWM HOTKEYS-#
 #---------------#
 
-# quit bspwm normally
-super + alt + Escape
-	systemctl --user stop bspwm@${DISPLAY}.service
-
-# close and kill
+# Close and Kill node
 super + {_,shift + }q
-	bspc node --{close,kill}
-
-# alternate between the tiled and monocle layout
-# super + alt + l
-# 	bspc desktop --layer next
-
-# if the current node is automatic, send it to the last manual, otherwise pull the last leaf
-# super + y
-#	bspc query --nodes --node focused.automatic && bspc node --to-node last.!automatic || bspc node last.leaf --to-node focused
-
-# swap the current node and the biggest node
-super + g
-	bspc node --swap biggest
-
-#
-# state/flags
-#
-
-# set the window state
-super + shift + {t,s,f,m}
-	bspc node --state {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-super + ctrl + {x,y,z}
-	bspc node --flag {locked,sticky,private}
-
-#
-# focus/swap
-#
-
-# focus the node in the given direction
+    bspc node --{close,kill}
+# Quit bspwm
+super + alt + Escape
+    bspc
+# Change and move focused node
 super + {_,shift + }{h,j,k,l}
-	bspc node --{focus,swap} {west,south,north,east}
-
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node --focus @{parent,brother,first,second}
-
-# focus the next/previous node
-super + {_,shift + }c
-	bspc node --focus {next,prev}
-
-# focus the next/previous desktop
-super + {Left,Right}
-	~/.config/sxhkd/bspcFocusDesktop.sh {prev,next}
-
-# Move window the next/previous desktop
-super + shift + {Left,Right}
-	bspc node -d {prev,next}
-
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} --focus last
-
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm --record-history off; \
-	bspc node {older,newer} --focus; \
-	bspc wm --record-history on
-
-# focus or send to the given desktop
+    bspc node -{f,s} {west,south,north,east}
+super + {_,shift + }{Down,Up}
+    bspc node -{f,s} {next,prev}.local
+# Change and move to desktop
+super + {_,shift + }{Left,Right}
+    bspc {desktop -f,node -d} {prev,next}
 super + {_,shift + }{1-9,0}
-	bspc {desktop --focus,node --to-desktop} '^{1-9,10}'
-
-#
-# preselect
-#
-
+    bspc {desktop -f,node -d} '^{1-9,0}'
+# Alternate between tiled and monocle (stacked) layout
+super + s
+    bspc desktop -l next
+# Set window state (original, tiled-ish, float, maximize)
+super + {t,shift + t,f,m}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# Toggle split orientation
+super + o
+    bspc node -R 90
+# Focus parent or child
+super + {a,b,comma,period}
+    bspc node -f @{parent,brother,first,second}
+# Node flags
+super + ctrl + {s,p}
+    bspc node -g {sticky,private}
+# Make current node the biggest
+super + g
+    bspc node --swap biggest
 # preselect the direction
 super + ctrl + {h,j,k,l}
-	bspc node --presel-dir {west,south,north,east}
-
+    bspc node --presel-dir {west,south,north,east}
 # preselect the ratio
 super + ctrl + {1-9}
-	bspc node --presel-ratio 0.{1-9}
-
+    bspc node --presel-ratio 0.{1-9}
 # cancel the preselection for the focused node
 super + ctrl + space
-	bspc node --presel-dir cancel
-
+    bspc node --presel-dir cancel
 # cancel the preselection for the focused desktop
 super + ctrl + alt + space
-	bspc query --nodes --desktop | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# move/resize
-#
-
+    bspc query --nodes --desktop | xargs -I id -n 1 bspc node id -p cancel
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-	bspc node --resize {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-
+    bspc node --resize {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
-	bspc node --resize {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
+    bspc node --resize {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+# Move desktop to other monitor
+super + alt + {Left,Right}
+    desk=`bspc query -D -d focused`; \
+    bspc desktop -m {prev,next}; \
+    bspc monitor -f {prev,next}; \
+    bspc desktop -f $desk
 # move a floating window
-super + ctrl + {Left,Down,Up,Right}
-	bspc node --move {-20 0,0 20,0 -20,20 0}
+super + alt + shift + {Left,Down,Up,Right}
+    bspc node --move {-20 0,0 20,0 -20,20 0}

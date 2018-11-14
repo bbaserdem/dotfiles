@@ -4,7 +4,7 @@
 reload_monitors () {
 
     # LAPTOP: has eDP-1 (lid) DP-1 and DP-2 ports
-    if [[ $(hostname) == 'sbplaptop' ]]
+    if [ $(hostname) = 'sbplaptop' ] || [ $(hostname) = 'sbpnotebook' ]
     then
         # Get xrandr names of monitor and the embedded screen
         MON=$(xrandr | grep " connected " | awk '{ print$1 }' | { grep -v "eDP" || true; } )
@@ -31,31 +31,32 @@ reload_monitors () {
         /usr/bin/xrandr --output DP-2 --primary
         /usr/bin/xrandr --output DVI-I-1 --left-of DP-2
 
-    # NOTEBOOK: should have eDP-1 (lid)
-    elif [[ $(hostname) == 'sbpnotebook' ]]
-    then
-        # 4k should be disabled!
-        echo 'Not set up yet' && exit
-
+    # SERVER: 
     elif [[ $(hostname) == 'sbpserver' ]]
     then
         # Server not configured
         echo 'Not set up yet' && exit
+
+    # For all other cases
+    else
+        for monitor in $(xrandr | grep " connected " | awk '{ print$1 }') ; do
+            /usr/bin/xrandr --output $monitor --auto
+        done
     fi
 }
 
-# Start by performing a monitor setup once
-reload_monitors
+# Daemonized form
+monitor_hotplug() {
+    _displays=($(find /sys/class/drm/* -name 'card[0-9]-*' | sed 's|$|/status|'))
+    [ -z "${_displays}" ] && ( reload_monitors ; exit )
+    while : ; do
+        reload_monitors
+        sleep 1
+        inotifywait --timeout -1 $_displays || break
+    done
+}
 
-# Get /proc files to watch with inotifywait
-_displays=($(find /sys/class/drm/* -name 'card[0-9]-*' | sed 's|$|/status|'))
-[ -z "${_displays}" ] && exit
-
-# Set infinite loop
-while :
-do
-    inotifywait $_displays
-    sleep .1
-    reload_monitors
-done
-
+case $1 in
+    --now)  reload_monitors ;;
+    *)      monitor_hotplug ;;
+esac
