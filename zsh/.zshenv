@@ -102,7 +102,7 @@ export TIMEWARRIORDB="${HOME}/Documents/Tasks/"
 # Tmux
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 # Wine
-export WINEPREFIX="${XDG_DATA_HOME}/wineprefixes/default"
+export WINEPREFIX="/opt/wine"
 # Vimperator
 export VIMPERATOR_INIT=":source ${XDG_CONFIG_HOME}/vimperator/vimperatorrc"
 export VIMPERATOR_RUNTIME="${XDG_CONFIG_HOME}/vimperator"

@@ -15,8 +15,8 @@ pkgname=(
     'sbp-notebook'
     'sbp-workstation'
     )
-pkgver=0.9
-pkgrel=97
+pkgver=1.0
+pkgrel=13
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -74,7 +74,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '5015cb28ae03d6666ee414aa4dbc545c'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '10b5ea5664e93646ef0f55f0e79b7022'
-         '6ec1b1a831e7e42e0b472ea9a87858dc'
+         '30e81f21538d32234f60903028edcce4'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '7a1ff93a4e176d816c3ab6b5ea667ca0'
          'c972c1e5c236f6e3c0f7d1b4989ebb75'
@@ -89,7 +89,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '7128851ee00d22284cbdbe9b8257ad14'
          '0f9cda1dc1000791243c223dbe251566'
          '023cfac6b2f1a6139f21796a53d6bc1d'
-         'b19954dbb641caa1328725b405b49130'
+         '2fe1c4886191c19440cf3b6013a34267'
          '17a7cda5f070fb76e1070a2f1fcbc21d'
          'a7c1283261fb4b3e77efa739c81f481d'
          '79267b7f57a008bdc8eadb1f399e41c5'
@@ -396,7 +396,10 @@ package_sbp-extra() {
         'texlive-core' 'texlive-science' 'biber' # Latex
         'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures' 'texlive-pstricks'
         'udiskie'                               # Mount manager with tray icon
-        'wine' 'samba'                          # Windows compatibility
+        'wine-staging' 'samba' 'wine_gecko' 'wine-mono' # Windows compatibility
+        'lib32-libxml2' 'lib32-mpg123' 'lib32-lcms2' 'lib32-giflib'
+        'lib32-libpng' 'lib32-gnutls' 'lib32-gst-plugins-base' 'lib32-openal'
+        'lib32-gst-plugins-good'
         'zotero'                                # Referance manager
         )
     # Matlab dependencies

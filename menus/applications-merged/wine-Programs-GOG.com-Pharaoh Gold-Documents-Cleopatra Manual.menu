@@ -1,0 +1,28 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+"http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>wine-wine</Name>
+    <Directory>wine-wine.directory</Directory>
+  <Menu>
+    <Name>wine-Programs</Name>
+    <Directory>wine-Programs.directory</Directory>
+  <Menu>
+    <Name>wine-Programs-GOG.com</Name>
+    <Directory>wine-Programs-GOG.com.directory</Directory>
+  <Menu>
+    <Name>wine-Programs-GOG.com-Pharaoh Gold</Name>
+    <Directory>wine-Programs-GOG.com-Pharaoh Gold.directory</Directory>
+  <Menu>
+    <Name>wine-Programs-GOG.com-Pharaoh Gold-Documents</Name>
+    <Directory>wine-Programs-GOG.com-Pharaoh Gold-Documents.directory</Directory>
+    <Include>
+      <Filename>wine-Programs-GOG.com-Pharaoh Gold-Documents-Cleopatra Manual.desktop</Filename>
+    </Include>
+  </Menu>
+  </Menu>
+  </Menu>
+  </Menu>
+  </Menu>
+</Menu>

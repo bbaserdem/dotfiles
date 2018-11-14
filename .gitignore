@@ -32,9 +32,9 @@
 # APPLICATIONS: Accept all except matlab override
 !/applications
 !/applications/**
-/applications/matlab.desktop
-/applications/userapp-qutebrowser-VYYSOZ.desktop
+/applications/userapp*
 /applications/mimeinfo.cache
+/applications/wine/Programs
 
 # ARCH: Bit complicated
 !/arch
@@ -135,6 +135,10 @@ arch/iso/
 # KVANTUM: Grab the config file
 !/Kvantum
 !/Kvantum/kvantum.kvconfig
+
+# MENUS: Grab all
+!/menus
+!/menus/**
 
 # MPD: Only get config
 !/mpd

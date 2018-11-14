@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Configure Wine
+Comment=Change application-specific and general Wine options
+Exec=winecfg
+Terminal=false
+Icon=wine-winecfg
+Type=Application
+Categories=Wine;
