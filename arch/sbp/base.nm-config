@@ -1,5 +1,5 @@
 # Managed by sbp-base
 [device]
-wifi.backend=iwd
+#wifi.backend=iwd
 [main]
-dns=systemd-resolved
+#dns=systemd-resolved

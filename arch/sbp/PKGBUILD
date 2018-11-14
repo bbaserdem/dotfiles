@@ -88,6 +88,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          'e71265ed72b65b8fb8092d6a4da0da3a'
          '7128851ee00d22284cbdbe9b8257ad14'
          '0f9cda1dc1000791243c223dbe251566'
+         '023cfac6b2f1a6139f21796a53d6bc1d'
          'b19954dbb641caa1328725b405b49130'
          '17a7cda5f070fb76e1070a2f1fcbc21d'
          'a7c1283261fb4b3e77efa739c81f481d'
@@ -274,6 +275,7 @@ package_sbp-gui() {
         'xorg-xwud'             'xf86-input-libinput'   'xorg-xinit'
         'xorg-fonts-misc'
         'xsel'                      # Select text/area
+        'xdo'                       # Do things on X windows
         'wayland'
         )
     # Login manager

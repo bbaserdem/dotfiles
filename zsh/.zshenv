@@ -54,7 +54,7 @@ elif [[ $(hostname) == 'sbpnotebook' ]]
 then
     export MON_0="eDP-1"
     export BRI_SCR="intel_backlight"
-    export BRI_KBD=""
+    export BRI_KBD="asus::kbd_backlight"
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
     export MON_0="DP-2"
@@ -92,6 +92,8 @@ export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/neomutt/notmuch-config"
 export FOAM_INST_DIR="/opt/OpenFOAM"
 # Weechat
 export WEECHAT_HOME="${XDG_CONFIG_HOME}/weechat"
+# SXHKD
+export SXHKD_SHELL="/usr/bin/sh"
 # Taskwarrior
 export TASKRC="${XDG_CONFIG_HOME}/taskrc"
 export TASKDATA="${HOME}/Documents/Tasks/"

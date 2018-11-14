@@ -5,58 +5,75 @@
 # Reload monitor
 super + F8
     $XDG_CONFIG_HOME/scripts/x-monitors.sh --now
+
 # Terminal
 super + Return
     $TERMINAL
+
+# Scratchpad
+F12
+    $XDG_CONFIG_HOME/bspwm/dropdown.sh
+
 # Rofi
 super + space
     /usr/bin/rofi -show drun
+
 # Password-store
 super + p
     /usr/bin/rofi-pass
+
 # Systemd
 super + d
     $XDG_CONFIG_HOME/rofi/systemd
+
 # Emoji
 super + e
     /usr/bin/rofi -show emoji -modi emoji
+
 # Music controls for mpd
 XF86Audio{Play,Stop,Next}
     /usr/bin/mpc {toggle,stop,next}
+
+# Doesn't work
 XF86AudioPrev
-    if [[ $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,\\"\\",$3); split($3,a,/:/); print a[1]*60+a[2] }') -ge 3 ]]; then mpc seek 0; else mpc prev; fi
+    if [[ "$(mpc status|grep playing|awk '{ sub(/\/.+/,"",$3); split($3,a,/:/); print a[1]*60+a[2] }')" -ge 3 ]] ; then mpc seek 0 ; else mpc prev ; fi
+
 # Volume controls
-XF86AudioRaiseVolume
-    /usr/bin/pamixer --increase 5
-XF86AudioLowerVolume
-    /usr/bin/pamixer --decrease 5
+XF86Audio{Raise,Lower}Volume
+    /usr/bin/pamixer --{increase,decrease} 5
+
 XF86AudioMute
     /usr/bin/pamixer --toggle-mute
+
 # Brightness setting for laptop
-XF86MonBrightnessUp
-    brightnessctl -d $BRI_SCR s +5%
-XF86MonBrightnessDown
-    brightnessctl -d $BRI_SCR s 5%-
-XF86KbdBrightnessUp
-    brightnessctl -d $BRI_KBD s +1
-XF86KbdBrightnessDown
-    brightnessctl -d $BRI_KBD s 1-
+XF86MonBrightness{Up,Down}
+    brightnessctl -d $BRI_SCR s {+5%,5%-}
+
+XF86KbdBrightness{Up,Down}
+    brightnessctl -d $BRI_KBD s {+1,1-}
+
 # Power button
 XF86PowerOff
     $XDG_CONFIG_HOME/scripts/power.sh
+
 # Change wallpapers
 super + c
     $XDG_CONFIG_HOME/scripts/x-wallpaper.sh --now
-# lock screen
+
+# Lock screen
 super + Escape
-    $XDG_CONFIG_HOME/scripts/x-lock.sh
+    /usr/bin/xset s activate
+
 # Screenshot
 Print + {_,shift,alt}
     maim {_,-i $(xdotool getactivewindow),-s} $HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+
 # make Sxhkd and bspwm reload its configuration files:
 super + shift + Escape
-    pkill -USR1 -x sxhkd
-    $XDG_CONFIG_HOME/bspwm/config
+    pkill -USR1 -x sxhkd; \
+    $XDG_CONFIG_HOME/bspwm/config; \
+    polybar-msg cmd restart
+
 # Open python terminal
 XF86Calculator
     $TERMINAL -e bpython
@@ -70,7 +87,7 @@ super + {_,shift + }q
     bspc node --{close,kill}
 # Quit bspwm
 super + alt + Escape
-    bspc
+    bspc quit
 # Change and move focused node
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
@@ -98,7 +115,7 @@ super + ctrl + {s,p}
     bspc node -g {sticky,private}
 # Make current node the biggest
 super + g
-    bspc node --swap biggest
+    bspc node --swap biggest.local
 # preselect the direction
 super + ctrl + {h,j,k,l}
     bspc node --presel-dir {west,south,north,east}

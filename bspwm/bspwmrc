@@ -1,7 +1,6 @@
-#! /bin/sh
+#!/usr/bin/sh
 
-dex --autostart --environment bspwm &
-
+# BSPWM rules
 bspc config border_width                2
 bspc config window_gap                  12
 bspc config merge_overlapping_monitors  true
@@ -9,6 +8,7 @@ bspc config split_ratio                 0.52
 bspc config borderless_monocle          true
 bspc config gapless_monocle             true
 
+# Refresh monitors
 M=$(bspc query -M | wc -l)
 if [[ "$M" == 1 ]]; then
     bspc monitor --reset-desktops 1 2 3 4 5 6 7 8 9 0
@@ -29,6 +29,7 @@ fi
 
 if [ -z "$BSPWM_RULE_SET" ] ; then
     BSPWM_RULE_SET=yes
+    bspc rule --add Termite:dropdown sticky=on state=floating hidden=on
     # First desktop: Communication
     bspc rule --add Skype               desktop='^1'
     bspc rule --add Rambox              desktop='^1'
@@ -42,6 +43,7 @@ if [ -z "$BSPWM_RULE_SET" ] ; then
     bspc rule --add Termite             desktop='^3'
     bspc rule --add kitty               desktop='^3'
     # Fourth desktop: Science
+    bspc desktop 4 --layout monocle
     bspc rule --add MATLAB*             desktop='^4'
     bspc rule --add 'GNU Octave'        desktop='^4'
     bspc rule --add Spyder              desktop='^4'
@@ -73,3 +75,6 @@ if [ -z "$BSPWM_RULE_SET" ] ; then
     bspc rule --add Pamac-updater       desktop='^0'
     bspc rule --add Pamac-manager       desktop='^0'
 fi
+
+# Autostart programs
+dex --autostart --environment bspwm &

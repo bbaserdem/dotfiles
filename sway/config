@@ -256,10 +256,10 @@ bindsym XF86AudioRaiseVolume    exec "/usr/bin/pamixer --increase 5"
 bindsym XF86AudioLowerVolume    exec "/usr/bin/pamixer --decrease 5"
 bindsym XF86AudioMute           exec "/usr/bin/pamixer --toggle-mute"
 # Brightness settings
-bindsym XF86MonBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_SCR s +5% ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86MonBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_SCR s 5%- ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86KbdBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_KBD s +1  ; pkill -RTMIN+3 i3blocks ;"
-bindsym XF86KbdBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_KBD s 1-  ; pkill -RTMIN+3 i3blocks ;"
+bindsym XF86MonBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_SCR s +5%"
+bindsym XF86MonBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_SCR s 5%-"
+bindsym XF86KbdBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_KBD s +1"
+bindsym XF86KbdBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_KBD s 1-"
 # Power Button
 bindsym XF86PowerOff            exec "$XDG_CONFIG_HOME/sway/power.sh"
 
