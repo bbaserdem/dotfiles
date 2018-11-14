@@ -60,7 +60,7 @@ if [ -z "$BSPWM_RULE_SET" ] ; then
     bspc rule --add 'GNU Octave'        desktop="$ws4"
     bspc rule --add Spyder              desktop="$ws4"
     # Fifth desktop: Reading
-    bspc rule --add Zathura             desktop="$ws5"
+    bspc rule --add Zathura             desktop="$ws5" state=tiled
     bspc rule --add Evince              desktop="$ws5"
     # Sixth desktop: Writing
     bspc rule --add libreoffice*        desktop="$ws6"
