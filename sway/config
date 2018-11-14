@@ -250,7 +250,7 @@ bindsym $Meta+$Alt+Escape       exec "/usr/bin/swaymsg exit"
 bindsym XF86AudioPlay           exec "mpc toggle"
 bindsym XF86AudioStop           exec "mpc stop"
 bindsym XF86AudioNext           exec "mpc next"
-bindsym XF86AudioPrev           exec "if [[ $(mpc status | awk '/^\[playing\]/ { sub(/\/.+/,\\"\\",$3); split($3,a,/:/); print a[1]*60+a[2] }') -ge 3 ]]; then mpc seek 0; else mpc prev; fi"
+bindsym XF86AudioPrev           exec "$XDG_CONFIG_HOME/scripts/playprev.sh"
 # Sound controls, with signal to 1
 bindsym XF86AudioRaiseVolume    exec "/usr/bin/pamixer --increase 5"
 bindsym XF86AudioLowerVolume    exec "/usr/bin/pamixer --decrease 5"

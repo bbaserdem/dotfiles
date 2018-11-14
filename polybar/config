@@ -71,9 +71,9 @@ border-size = 0
 border-color = ${colors.frg}
 module-margin = 1
 padding = 0
-font-0 = "lucy tewii:size=11;1"
-font-1 = "lucy tewii:size=11:style=bold;2"
-font-2 = "sauce code pro nerd font mono:size=11;3"
+font-0 = "lucy tewii:size=12;1"
+font-1 = "lucy tewii:size=12:style=bold;2"
+font-2 = "sauce code pro nerd font mono:size=12;3"
 seperator = 
 dim-value = 1.0
 tray-position = right
@@ -336,6 +336,9 @@ format-offline-prefix-foreground = ${self.format-stopped-underline}
 format-offline-foreground = ${colors.mut}
 format-offline-background = ${self.format-online-background}
 format-offline-underline = ${colors.mut}
+click-left = /usr/bin/mpc toggle
+scroll-up = /usr/bin/mpc prev
+scroll-down = /usr/bin/mpc next
 
 [module/pulseaudio]
 type = custom/script
@@ -349,8 +352,8 @@ format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 scroll-up = /usr/bin/pamixer --increase 5
 scroll-down = /usr/bin/pamixer --decrease 5
-click-left = /usr/bin/pavucontrol &
-click-right = /usr/bin/pamixer --toggle-mute
+click-right = /usr/bin/pavucontrol &
+click-left = /usr/bin/pamixer --toggle-mute
 
 [module/cpu]
 type = internal/cpu
@@ -390,7 +393,6 @@ format-background = ${colors.bkg}
 [module/backlight]
 type = internal/backlight
 card = ${env:BRI_SCR}
-enable_scroll = true
 format = <label>
 label = %percentage%
 format-prefix = " "

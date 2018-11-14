@@ -34,9 +34,9 @@ super + e
 XF86Audio{Play,Stop,Next}
     /usr/bin/mpc {toggle,stop,next}
 
-# Doesn't work
+# Grrrr
 XF86AudioPrev
-    if [[ "$(mpc status|grep playing|awk '{ sub(/\/.+/,"",$3); split($3,a,/:/); print a[1]*60+a[2] }')" -ge 3 ]] ; then mpc seek 0 ; else mpc prev ; fi
+    $XDG_CONFIG_HOME/scripts/playprev.sh
 
 # Volume controls
 XF86Audio{Raise,Lower}Volume

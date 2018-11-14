@@ -16,7 +16,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=0.9
-pkgrel=96
+pkgrel=97
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
