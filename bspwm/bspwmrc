@@ -12,6 +12,9 @@ bspc config borderless_monocle         true
 bspc config gapless_monocle            true
 bspc config external_rules_command     $XDG_CONFIG_HOME/bspwm/external_rules.sh
 
+# Desktop setup
+bspc desktop "$ws4" --layout monocle
+
 # Refresh monitors
 _mon=$(bspc query --monitors | wc --lines)
 if [[ "$_mon" == 1 ]]; then
