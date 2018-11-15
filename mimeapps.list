@@ -40,3 +40,17 @@ application/zip=org.gnome.FileRoller.desktop;
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;wine-extension-pdf.desktop;gimp.desktop;
 application/xml=qutebrowser.desktop;
+
+[Default Applications]
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+image/vnd.djvu+multipage=zathura-djvu.desktop;
+text/plain=org.daa.NeovimGtk.desktop
+text/x-tex=org.daa.NeovimGtk.desktop;
+image/jpeg=ristretto.desktop
+image/gif=ristretto.desktop
+image/png=ristretto.desktop
+text/html=qutebrowser.desktop
+video/x-msvideo=smplayer.desktop;
+application/msword=libreoffice-writer.desktop;
+inode/directory=thunar.desktop
+x-scheme-handler/trash=thunar.desktop
