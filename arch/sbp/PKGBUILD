@@ -68,10 +68,10 @@ source=(
     )
 md5sums=('0d3afa7b391a50313df9449b80240807'
          '2adc9c1077ee29381b6ffedf871744f4'
-         '5b3f3cc9194f11a91c4d10119bdfd656'
+         '55a3fe99f3db00777b7390fa38bc1a0c'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
-         '5015cb28ae03d6666ee414aa4dbc545c'
+         'decc632009a1cde3378405f9c0cc5c50'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '10b5ea5664e93646ef0f55f0e79b7022'
          '30e81f21538d32234f60903028edcce4'
@@ -81,11 +81,11 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '00e5bc63b7bb82526516df8f45c4745c'
          'df0911ed7f3bbf285de4e3c08662dafd'
          '586c14c5f87f0097e0dfcb0454bfc2a6'
-         '4e8599e6d74c8d019edccbb09faf392b'
+         'b3b556d07719533ffa2784dbeae5ec36'
          '18c4e485034ee909f9d4f3c7fab3954f'
          '3ad35f4045a3fce5bbfeecd0602c3cee'
          '1ddf47f1278958e4cc65bfbd96dbd6f7'
-         'e71265ed72b65b8fb8092d6a4da0da3a'
+         '5a6919fffcf1abc00c0378c70101a214'
          '7128851ee00d22284cbdbe9b8257ad14'
          '0f9cda1dc1000791243c223dbe251566'
          '023cfac6b2f1a6139f21796a53d6bc1d'
@@ -99,11 +99,11 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          'e3217b4c75d3bc302347b7bdf27f29de'
          '36adcc034c7a69ffe93e2c0937f051da'
          '31bc6b40fff742f9281088c7acdb6feb'
-         '36b1c6ab3b96c308b3ccc4a541ea0ca6'
+         '24a662aafd9a0decb482c9ae2cb642f2'
          '963647fe81d1824bb977c3618d56959a'
-         '098b5bd147a43c2e8a87ce4315128379'
+         'cf8ca1a073a27359d17c4f061aaf0532'
          '7d625c54c37c6296f2ab1bbebbeb8308'
-         '55ebc5c445f6ed66242d8e18fdd390ee'
+         'ddb8638e854711806bbb89912f6d1086'
          'aae95a0b1febfd5a55805e9d4c7b28c4'
          '7d432ab4dd0cbb05cc1399e8cd02cfbe'
          'b1fe2c5d8a90b0c4bc0668d505b141c3'
@@ -172,7 +172,6 @@ package_sbp-base() {
         'linux-firmware' 'linux-headers'        # Firmware for the Linux kernel
         'lm_sensors'                            # Thermal sensors
         'msmtp' 'msmtp-mta' 'isync'             # Mail and DAV stuff
-        'networkmanager'                        # Network connection management
         'notmuch' 'vdirsyncer'
         'openconnect' 'openvpn'                 # VPN services
         'private-internet-access-vpn'           # AUR: Set up PIA
@@ -182,7 +181,6 @@ package_sbp-base() {
         'tmux'                                  # Terminal multiplexer
         'tlp' 'stress'                          # Power manager
         'iwd' 'ppp' 'pptpclient'                # INet Wireless Daemon
-        'networkmanager'                        # Network connection manager
         'mpc' 'mpd' 'mpdscribble'               # Music daemon and AUR scrobbler
         'syncthing' 'w3m' 'youtube-dl'          # Internet tools
         'tzupdate'                              # AUR: For autoupdating time
@@ -336,7 +334,6 @@ package_sbp-gui() {
         'gparted'                               # Graphical partition editor
         'gtk2fontsel' 'gucharmap'               # Font and character map
         'mpv' 'smplayer'                        # Mpv frontend
-        'network-manager-applet' 'nm-connection-editor'
         'pavucontrol'                           # Pulse audio control menu
         'pdfsam'                                # Pdf manipulator
         'plank'                                 # Dock

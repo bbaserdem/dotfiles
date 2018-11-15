@@ -3,7 +3,8 @@
 Name=usbtether
 
 [Network]
-DHCP=ipv4
+DHCP=yes
 
 [DHCP]
-RouteMetric=30
+RouteMetric=40
+UseDomains=yes

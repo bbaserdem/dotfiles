@@ -89,7 +89,7 @@ cursor-scroll = ns-resize
 bottom = false
 modules-left = i3 bspwm-desktop bspwm-mode calendar todo
 modules-center = time
-modules-right = mpd pulseaudio cpu memory keyboard backlight temperature battery
+modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd pulseaudio backlight keyboard battery
 
 [bar/i3]
 inherit = bar/top
@@ -277,6 +277,117 @@ format-background = ${colors.bkg}
 ;   MODULES-RIGHT   ;
 ;===================;
 
+[module/temperature]
+type = internal/temperature
+interval = 2
+thermal-zone = 0
+warn-temperature = 80
+label = %temperature-c%糖
+label-warn = %temperature-c%糖
+units = false
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.red}
+format = <ramp> <label>
+format-underline = ${self.ramp-foreground}
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.ramp-foreground}
+format-warn-foreground = ${self.ramp-foreground}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = %percentage:2%
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.ora}
+format-underline = ${self.format-prefix-foreground}
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %percentage_used%
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.yel}
+format-underline = ${self.format-prefix-foreground}
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+
+[module/network]
+type = internal/network
+interval = 3
+ping-interval = 0
+accumulate-stats = false
+unknown-as-up = false
+format-connected = <label-connected>
+format-connected-prefix =
+format-connected-prefix-foreground = ${colors.gre}
+format-connected-underline = ${self.format-connected-prefix-foreground}
+format-connected-foreground = ${colors.frg}
+format-connected-background = ${colors.bkg}
+format-disconnected = <label-disconnected>
+format-disconnected-prefix =
+format-disconnected-prefix-foreground = ${self.format-connected-prefix-foreground}
+format-disconnected-underline = ${self.format-disconnected-prefix-foreground}
+format-disconnected-foreground = ${self.format-disconnected-underline}
+format-disconnected-background = ${self.format-connected-background}
+
+[module/ethernet]
+inherit = module/network
+interface = ethernet
+label-connected = "  "
+label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+label-disconnected =
+label-disconnected-foreground = ${colors.mut}
+
+[module/wifi]
+inherit = module/network
+interface = wifi
+label-connected = "  "
+label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+label-disconnected =
+label-disconnected-foreground = ${colors.mut}
+
+[module/tether]
+inherit = module/network
+interface = tether
+label-connected = "  "
+label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+label-disconnected =
+label-disconnected-foreground = ${colors.mut}
+
+[module/openvpn]
+type = custom/script
+exec = echo ""
+exec-if = pgrep -x openvpn
+interval = 5
+format = <label>
+format-underline = ${colors.gre}
+format-foreground = ${self.format-underline}
+format-background = ${colors.bkg}
+format-prefix =
+format-prefix-foreground = ${self.format-underline}
+
+[module/openconnect]
+type = custom/script
+exec = echo ""
+exec-if = pgrep -x openconnect
+interval = 5
+format = <label>
+format-underline = ${colors.gre}
+format-foreground = ${self.format-underline}
+format-background = ${colors.bkg}
+format-prefix = 
+format-prefix-foreground = ${self.format-underline}
+
 [module/mpd]
 type = internal/mpd
 host = 127.0.0.1
@@ -303,7 +414,7 @@ toggle-off-foreground = ${colors.mut}
 format-playing = %{A1:mpc toggle: A4:mpc prev: A5:mpc next:}<label-song>%{A A A}
 format-playing-foreground = ${colors.frg}
 format-playing-background = ${colors.bkg}
-format-playing-underline = ${colors.red}
+format-playing-underline = ${colors.cya}
 format-playing-prefix = " "
 format-playing-prefix-foreground = ${self.format-playing-underline}
 format-paused = ${self.format-playing}
@@ -332,35 +443,13 @@ tail = true
 interval = 0
 label = %output%
 format = <label>
-format-underline = ${colors.ora}
+format-underline = ${colors.cya}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 scroll-up = /usr/bin/pamixer --increase 5
 scroll-down = /usr/bin/pamixer --decrease 5
 click-right = /usr/bin/pavucontrol &
 click-left = /usr/bin/pamixer --toggle-mute
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-label = %percentage:2%
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.yel}
-format-underline = ${self.format-prefix-foreground}
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
-
-[module/memory]
-type = internal/memory
-interval = 2
-label = %percentage_used%
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.gre}
-format-underline = ${self.format-prefix-foreground}
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
 
 [module/keyboard]
 type = internal/xkeyboard
@@ -370,7 +459,7 @@ label-layout = %name%
 label-indicator = %name%
 format = <label-layout>
 format-prefix = " "
-format-prefix-foreground = ${colors.cya}
+format-prefix-foreground = ${colors.ind}
 format-underline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
@@ -381,34 +470,12 @@ card = ${env:BRI_SCR}
 format = %{A4:brightnessctl -d $BRI_SCR s +5%: A5:brightnessctl -d $BRI_SCR s 5%-:}<label>%{A A}
 label = %percentage%
 format-prefix = " "
-format-prefix-foreground = ${colors.ind}
+format-prefix-foreground = ${colors.vio}
 format-underline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 scroll-up = /usr/bin/
 scroll-down = /usr/bin/
-
-[module/temperature]
-type = internal/temperature
-interval = 2
-thermal-zone = 0
-warn-temperature = 80
-label = %temperature-c%糖
-label-warn = %temperature-c%糖
-units = false
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-ramp-foreground = ${colors.vio}
-format = <ramp> <label>
-format-underline = ${self.ramp-foreground}
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.ramp-foreground}
-format-warn-foreground = ${self.ramp-foreground}
 
 [module/battery]
 type = internal/battery
@@ -425,7 +492,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.gre}
+ramp-capacity-foreground = ${colors.ora}
 format-full = <label-full>
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.gre}
@@ -434,7 +501,7 @@ format-full-foreground = ${colors.frg}
 format-full-background = ${colors.bkg}
 format-charging = <label-charging>
 format-charging-prefix = " "
-format-charging-prefix-foreground = ${colors.gre}
+format-charging-prefix-foreground = ${colors.yel}
 format-charging-underline = ${self.format-charging-prefix-foreground}
 format-charging-foreground = ${colors.frg}
 format-charging-background = ${colors.bkg}

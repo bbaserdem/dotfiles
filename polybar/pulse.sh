@@ -2,7 +2,7 @@
 
 . ${XDG_CONFIG_HOME}/i3blocks/colors.sh
 # Get color
-_col="${base09:-#dc9656}"
+_col="${base0C:-#86c1b9}"
 _mut="${base03:-#585858}"
 
 get_text() {

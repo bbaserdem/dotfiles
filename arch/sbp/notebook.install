@@ -16,15 +16,6 @@ post_install() {
     systemctl enable bumblebee.service
     sed -i 's|^Bridge=.*|Bridge=primus|g' /etc/bumblebee/bumblebee.conf
 
-    # Enabling networking with networkd-systemd
-    echo '[sbp-notebook]==> Enabling networking through NetworkManager . . .'
-    systemctl enable NetworkManager.service
-    systemctl enable NetworkManager-dispatcher.service
-    systemctl enable NetworkManager-wait-online.service
-    systemctl enable iwd.service
-    systemctl enable systemd-resolved.service
-    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-
     echo '[sbp-notebook]==> Installation done! Check log for errors.'
     post_upgrade
 }

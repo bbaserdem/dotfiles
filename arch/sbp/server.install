@@ -10,20 +10,6 @@ post_install() {
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbpserver.localdomain sbpserver' >> /etc/hosts
 
-    # Enabling networking with networkd-systemd
-    echo '[sbp-server]==> Enabling networking through systemd-networkd & iwd...'
-    systemctl enable systemd-networkd.service
-    systemctl enable systemd-networkd-wait-online.service
-    systemctl enable iwd.service
-    systemctl enable systemd-resolved.service
-    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-
-    # Masking NetworkManager
-    echo '[sbp-server]==> Masking NetworkManager to disable dbus launch...'
-    systemctl mask NetworkManager.service
-    systemctl mask NetworkManager-dispatcher.service
-    systemctl mask NetworkManager-wait-online.service
-
     # Enable SSH
     echo '[sbp-server]==> Enabling SSH socket . . .'
     systemctl enable sshd.socket

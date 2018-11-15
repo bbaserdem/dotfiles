@@ -3,7 +3,8 @@
 Name=wifi
 
 [Network]
-DHCP=ipv4
+DHCP=yes
 
 [DHCP]
-RouteMetric=40
+RouteMetric=30
+UseDomains=yes

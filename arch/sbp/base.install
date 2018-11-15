@@ -9,6 +9,14 @@ post_install() {
         chmod 750 /.snapshots
     fi
 
+    # Networking
+    echo '[sbp-base]==> Enabling networking using systemd…'
+    systemctl enable systemd-networkd.service
+    systemctl enable systemd-networkd-wait-online.service
+    systemctl enable systemd-resolved.service
+    systemctl enable iwd.service
+    ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
     # Configure makepkg
     echo '[sbp-base]==> Enabling multicore-compilation for makepkg . . .'
     sed -i '/MAKEFLAGS=/s/^#//g'                     /etc/makepkg.conf
