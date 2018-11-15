@@ -89,7 +89,7 @@ cursor-scroll = ns-resize
 bottom = false
 modules-left = i3 bspwm-desktop bspwm-mode calendar todo
 modules-center = time
-modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd pulseaudio backlight keyboard battery
+modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd pulseaudio keyboard backlight battery
 
 [bar/i3]
 inherit = bar/top
