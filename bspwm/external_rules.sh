@@ -34,9 +34,9 @@ elif [ "$class" = 'kitty' ] ; then          echo "desktop=${ws3}"
 elif [ "$class" = 'Xfce4-terminal' ] ; then echo "desktop=${ws3}"
 elif [ "$class" = 'Konsole' ] ; then        echo "desktop=${ws3}"
 # Desktop 4: Science
-elif [ "$class" = 'MATLAB' ] ; then         echo "desktop=${ws4}"
-elif [ "$class" = 'GNU Octave' ] ; then     echo "desktop=${ws4}"
-elif [ "$class" = 'Spyder' ] ; then         echo "desktop=${ws4}"
+elif [ echo "$class" | grep -q 'MATLAB' ] ; then    echo "desktop=${ws4}"
+elif [ "$class" = 'GNU Octave' ] ; then             echo "desktop=${ws4}"
+elif [ "$class" = 'Spyder' ] ; then                 echo "desktop=${ws4}"
 # Desktop 5: Reading
 elif [ "$class" = 'Zathura' ] ; then        echo "desktop=${ws5} state=tiled"
 elif [ "$class" = 'Evince' ] ; then         echo "desktop=${ws5}"
