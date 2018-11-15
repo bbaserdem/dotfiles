@@ -144,7 +144,7 @@ label-urgent-underline =  ${colors.red}
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = false
-inline-mode = true
+inline-mode = false
 enable-click = true
 enable-scroll = true
 reverse-scroll = false

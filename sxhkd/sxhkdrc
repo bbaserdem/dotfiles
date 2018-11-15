@@ -11,7 +11,7 @@ super + F8
 super + Return
     $TERMINAL
 
-# Scratchpad
+# Dropdown terminal
 F12
     [ "$(xdotool search --name '^dropdown$')" == "" ] && termite -t 'dropdown' ;\
     bspc node "$(xdotool search --name '^dropdown$')" --flag hidden --focus
