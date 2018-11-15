@@ -13,7 +13,8 @@ super + Return
 
 # Scratchpad
 F12
-    $XDG_CONFIG_HOME/bspwm/dropdown.sh
+    [ "$(xdotool search --name '^dropdown$')" == "" ] && termite -t 'dropdown' ;\
+    bspc node "$(xdotool search --name '^dropdown$')" --flag hidden --focus
 
 # Rofi
 super + space

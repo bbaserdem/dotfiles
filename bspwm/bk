@@ -1,0 +1,47 @@
+
+bspc rule --add Termite:dropdown sticky=on state=floating hidden=on
+# First desktop: Communication
+bspc rule --add Skype               desktop="$ws1"
+bspc rule --add Rambox              desktop="$ws1"
+bspc rule --add Qemu-system-x86_64  desktop="$ws1"
+bspc rule --add org.remmina.Remmina desktop="$ws1"
+bspc rule --add Thunar              desktop="$ws1"
+# Second desktop: Internet
+bspc rule --add qutebrowser         desktop="$ws2"
+bspc rule --add Firefox             desktop="$ws2"
+# Third desktop: Terminal
+bspc rule --add Termite             desktop="$ws3"
+bspc rule --add kitty               desktop="$ws3"
+# Fourth desktop: Science
+bspc desktop "$ws4" --layout monocle
+bspc rule --add MATLAB*             desktop="$ws4"
+bspc rule --add 'GNU Octave'        desktop="$ws4"
+bspc rule --add Spyder              desktop="$ws4"
+# Fifth desktop: Reading
+bspc rule --add Zathura             desktop="$ws5" state=tiled
+bspc rule --add Evince              desktop="$ws5"
+# Sixth desktop: Writing
+bspc rule --add libreoffice*        desktop="$ws6"
+bspc rule --add Soffice             desktop="$ws6"
+# Seventh desktop: Media
+bspc rule --add mpv                 desktop="$ws7"
+bspc rule --add smplayer            desktop="$ws7"
+bspc rule --add cantata             desktop="$ws7"
+bspc rule --add vlc                 desktop="$ws7"
+# Eighth desktop: Image
+bspc rule --add pdfsam              desktop="$ws8"
+bspc rule --add Gimp*               desktop="$ws8"
+bspc rule --add inkscape            desktop="$ws8"
+bspc rule --add Blender             desktop="$ws8"
+bspc rule --add openscad            desktop="$ws8"
+bspc rule --add Ristretto           desktop="$ws8"
+# Ninth desktop: Games
+bspc rule --add Steam               desktop="$ws9"
+bspc rule --add Stepmania           desktop="$ws9"
+# Tenth desktop: Settings
+bspc rule --add Pavucontrol         desktop="$ws0"
+bspc rule --add 'Syncthing GTK'     desktop="$ws0"
+bspc rule --add QDBusViewer         desktop="$ws0"
+bspc rule --add Pamac-updater       desktop="$ws0"
+bspc rule --add Pamac-manager       desktop="$ws0"
+
