@@ -40,6 +40,3 @@ application/zip=org.gnome.FileRoller.desktop;
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;wine-extension-pdf.desktop;gimp.desktop;
 application/xml=qutebrowser.desktop;
-
-[Default Applications]
-application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
