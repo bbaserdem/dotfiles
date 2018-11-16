@@ -10,12 +10,14 @@ post_install() {
     fi
 
     # Networking
-    echo '[sbp-base]==> Enabling networking using systemd…'
+    echo '[sbp-base]==> Enabling networking and setting openresolv…'
     systemctl enable systemd-networkd.service
     systemctl enable systemd-networkd-wait-online.service
-    systemctl enable systemd-resolved.service
+    systemctl enable unbound.service
+    systemctl enable roothints.timer
     systemctl enable iwd.service
-    ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+    echo 'name_servers="::1 127.0.0.1"' >> /etc/resolvconf.conf
+    resolvconf -u
 
     # Configure makepkg
     echo '[sbp-base]==> Enabling multicore-compilation for makepkg . . .'
