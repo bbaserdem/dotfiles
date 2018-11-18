@@ -28,6 +28,10 @@ post_install() {
     # Configure pacman
     echo '[sbp-base]==> Enabling eyecandy and local repo for pacman . . .'
     sed -i '/# Misc options/aILoveCandy'        /etc/pacman.conf
+    sed -i '/# Misc options/aColor'             /etc/pacman.conf
+    sed -i '/# Misc options/aTotalDownload/'    /etc/pacman.conf
+    sed -i '/# Misc options/aCheckSpace/'       /etc/pacman.conf
+    sed -i '/# Misc options/aVerbosePkgLists/'  /etc/pacman.conf
     echo "\nInclude = /etc/pacman.d/custom" >> /etc/pacman.conf
 
     # Configure geoconf
