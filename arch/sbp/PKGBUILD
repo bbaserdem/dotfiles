@@ -15,7 +15,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=1.0
-pkgrel=16
+pkgrel=17
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -578,7 +578,7 @@ package_sbp-bspwm() {
     depends=('sbp-gui')
     depends+=(
         'brightnessctl'                 # Brightness controls
-        'bspwm'                         # Binary split partitioning WM
+        'bspwm-git'                     # Binary split partitioning WM
         'compton'                       # Compositor for effects
         'dex'                           # Autostart launcher
         'dunst'                         # Notification daemon
