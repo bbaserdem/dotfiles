@@ -37,5 +37,5 @@ done
 
 # Sync local database to remote
 s3cmd sync --follow-symlinks --acl-public "${_local}/${_name}.db" \
-    "${_local}/${_name}.db.tar.xz" "${_local}/"*.pkg.tar.xz" \
+    "${_local}/${_name}.db.tar.xz" "${_local}/"*.pkg.tar.xz \
     "${_local}/${_name}.files" "${_local}/${_name}.files.tar.xz" "${_dest}/"
