@@ -10,13 +10,38 @@ post_install() {
     fi
 
     # Networking
-    echo '[sbp-base]==> Enabling networking and setting openresolv…'
-    systemctl enable systemd-networkd.service
-    systemctl enable systemd-networkd-wait-online.service
+    echo '[sbp-base]==> Enabling networking…'
+    systemctl enable dhcpcd.service
     systemctl enable unbound.service
     systemctl enable roothints.timer
     systemctl enable iwd.service
-    echo 'name_servers="::1 127.0.0.1"' >> /etc/resolvconf.conf
+    echo '
+# Use us as the local nameserver
+name_servers="::1 127.0.0.1"
+# Add local DNS
+private_interfaces="*"
+# Write local DNS to unbound config file
+unbound_conf=/etc/unbound/resolvconf.conf' >> /etc/resolvconf.conf
+    sed -i '1 i\include: "/etc/unbound/resolvconf.conf"' /etc/unbound/unbound.conf
+    echo '  private-domain: "intranet"
+  private-domain: "internal"
+  private-domain: "private"
+  private-domain: "corp"
+  private-domain: "home"
+  private-domain: "lan"
+  unblock-lan-zones: yes
+  insecure-lan-zones: yes
+  domain-insecure: "intranet"
+  domain-insecure: "internal"
+  domain-insecure: "private"
+  domain-insecure: "corp"
+  domain-insecure: "home"
+  domain-insecure: "lan"' >> /etc/unbound/unbound.conf
+    echo '
+# Disable WPA supplicant in favor of iwd
+nohook wpa_supplicant
+# Only bind to interfaces renamed by udev
+allowinterfaces wifi ethernet tether broadcast' >> /etc/dhcpcd.conf
     resolvconf -u
 
     # Configure makepkg

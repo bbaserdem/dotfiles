@@ -15,7 +15,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=1.0
-pkgrel=17
+pkgrel=19
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -24,7 +24,6 @@ groups=(bbaserdem)
 source=(
     'base.bt-polkit'
     'base.btaudio'
-    'base.eth'
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
@@ -37,11 +36,9 @@ source=(
     'base.snapper-root'
     'base.sudoers'
     'base.sysctl'
-    'base.tether'
     'base.touchpad'
     'base.updater'
     'base.vconsole'
-    'base.wifi'
     'base.zshenv'
     'gui.install'
     'gui.xinit-session'
@@ -67,10 +64,9 @@ source=(
     )
 md5sums=('0d3afa7b391a50313df9449b80240807'
          '2adc9c1077ee29381b6ffedf871744f4'
-         '55a3fe99f3db00777b7390fa38bc1a0c'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
-         '0e3661d97d7494da91cbf5be40fd1b1e'
+         'c806307943e936e1f790e0b51045b4b6'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '7a1ff93a4e176d816c3ab6b5ea667ca0'
@@ -80,11 +76,9 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '00e5bc63b7bb82526516df8f45c4745c'
          'df0911ed7f3bbf285de4e3c08662dafd'
          '586c14c5f87f0097e0dfcb0454bfc2a6'
-         'b3b556d07719533ffa2784dbeae5ec36'
          '18c4e485034ee909f9d4f3c7fab3954f'
          '3ad35f4045a3fce5bbfeecd0602c3cee'
          '1ddf47f1278958e4cc65bfbd96dbd6f7'
-         '5a6919fffcf1abc00c0378c70101a214'
          '7128851ee00d22284cbdbe9b8257ad14'
          '0f9cda1dc1000791243c223dbe251566'
          '023cfac6b2f1a6139f21796a53d6bc1d'
@@ -225,7 +219,6 @@ package_sbp-base() {
     install -dm 0750 "${pkgdir}/etc/snapper/configs"
     install -Dm 0644 base.bt-polkit         "${pkgdir}/etc/polkit-1/rules.d/51-blueman.rules"
     install -Dm 0644 base.btaudio           "${pkgdir}/etc/bluetooth/audio.conf"
-    install -Dm 0644 base.eth               "${pkgdir}/etc/systemd/network/21-wired.network"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
@@ -237,11 +230,9 @@ package_sbp-base() {
     install -Dm 0644 base.snapper-root      "${pkgdir}/etc/snapper/configs/root"
     install -Dm 0750 base.sudoers           "${pkgdir}/etc/sudoers.d/sbp-base"
     install -Dm 0644 base.sysctl            "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
-    install -Dm 0644 base.tether            "${pkgdir}/etc/systemd/network/23-tether.network"
     install -Dm 0644 base.touchpad          "${pkgdir}/etc/X11/xorg.conf.d/30-touchpad.conf"
     install -Dm 0644 base.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
     install -Dm 0644 base.vconsole          "${pkgdir}/etc/vconsole.conf"
-    install -Dm 0644 base.wifi              "${pkgdir}/etc/systemd/network/22-wireless.network"
     install -Dm 0644 base.zshenv            "${pkgdir}/etc/zsh/zshenv"
     # Make it so nano, vi and vim points to neovim
     install -dm 0755 "${pkgdir}/usr/bin"
@@ -344,6 +335,7 @@ package_sbp-gui() {
         'ristretto'                             # Image viewer
         'rofi' 'rofi-pass' 'rofi-emoji'         # Application launcher
         'system-config-printer'                 # Printer setup utility
+        'dhcpcd-dbus' 'dhcpcd-ui-patched'       # DHCPCD indicator
         'termite'                               # Wayland native terminal
         'thunar'                                # File browser
         'thunar-volman' 'gvfs' 'thunar-archive-plugin' 'xarchiver' 'file-roller'
