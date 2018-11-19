@@ -281,6 +281,7 @@ format-background = ${colors.bkg}
 type = internal/temperature
 interval = 2
 thermal-zone = 0
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input
 warn-temperature = 80
 label = %temperature-c%糖
 label-warn = %temperature-c%糖
@@ -298,6 +299,15 @@ format-background = ${colors.bkg}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.ramp-foreground}
 format-warn-foreground = ${self.ramp-foreground}
+
+[module/coretemp]
+type = custom/script
+exec = ~/.config/polybar/coretemp.sh
+interval = 2
+format = <label>
+format-underline = ${colors.red}
+format-foreground = ${self.format-underline}
+format-background = ${colors.bkg}
 
 [module/cpu]
 type = internal/cpu
@@ -476,6 +486,21 @@ format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 scroll-up = /usr/bin/
 scroll-down = /usr/bin/
+
+[module/pulseaudio]
+type = custom/script
+exec = ~/.config/polybar/pulse.sh
+tail = true
+interval = 0
+label = %output%
+format = <label>
+format-underline = ${colors.cya}
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+scroll-up = /usr/bin/pamixer --increase 5
+scroll-down = /usr/bin/pamixer --decrease 5
+click-right = /usr/bin/pavucontrol &
+click-left = /usr/bin/pamixer --toggle-mute
 
 [module/battery]
 type = internal/battery
