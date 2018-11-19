@@ -15,7 +15,7 @@ pkgname=(
     'sbp-workstation'
     )
 pkgver=1.0
-pkgrel=15
+pkgrel=16
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -70,7 +70,7 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          '55a3fe99f3db00777b7390fa38bc1a0c'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
-         'f5a9f0966aa26b32c8325dd0b1c63f3d'
+         '0e3661d97d7494da91cbf5be40fd1b1e'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '7a1ff93a4e176d816c3ab6b5ea667ca0'
@@ -563,12 +563,13 @@ package_sbp-sway() {
         )
     # i3 only stuff
     depends+=(
-        'dunst'                         # Notification daemon
-        'feh'                           # Wallpaper management
-        'i3-gaps'                       # Improved window manager
-        'i3lock'                        # Screen locker
-        'maim'                          # Screenshot utility
-        'xss-lock'                      # Locks screen on power events
+        'compton'       # Compositor for effects
+        'dunst'         # Notification daemon
+        'feh'           # Wallpaper management
+        'i3-gaps'       # Improved window manager
+        'i3lock'        # Screen locker
+        'maim'          # Screenshot utility
+        'xss-lock'      # Locks screen on power events
         )
 }
 
@@ -578,6 +579,7 @@ package_sbp-bspwm() {
     depends+=(
         'brightnessctl'                 # Brightness controls
         'bspwm'                         # Binary split partitioning WM
+        'compton'                       # Compositor for effects
         'dex'                           # Autostart launcher
         'dunst'                         # Notification daemon
         'feh'                           # Wallpaper management
