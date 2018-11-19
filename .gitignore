@@ -12,6 +12,7 @@
 # Files to track
 !/.gitignore
 !/abcde.conf
+!/compton.conf
 !/gtk2rc
 !/install.sh
 !/locale.conf
