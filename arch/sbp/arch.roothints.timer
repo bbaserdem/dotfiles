@@ -1,4 +1,4 @@
-# Managed by sbp-base
+# Managed by sbp-arch
 [Unit]
 Description=Run root.hints monthly
 

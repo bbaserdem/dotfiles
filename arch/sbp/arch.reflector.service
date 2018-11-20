@@ -1,4 +1,4 @@
-# Managed by sbp-base
+# Managed by sbp-arch
 [Unit]
 Description=Pacman mirrorlist update
 Wants=systemd-networkd-wait-online.service
