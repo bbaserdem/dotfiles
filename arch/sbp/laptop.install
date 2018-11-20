@@ -10,15 +10,6 @@ post_install() {
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbplaptop.localdomain sbplaptop' >> /etc/hosts
 
-    # Enabling networking with networkmanager
-    echo '[sbp-laptop]==> Enabling networking through NetworkManager . . .'
-    systemctl enable NetworkManager.service
-    systemctl enable NetworkManager-dispatcher.service
-    systemctl enable NetworkManager-wait-online.service
-    systemctl enable iwd.service
-    systemctl enable systemd-resolved.service
-    ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
-
     echo '[sbp-laptop]==> Installation done! Check log for errors.'
     post_upgrade
 }

@@ -48,7 +48,8 @@ for _arg in "${@}"; do
             [ -z "${_pre}" ] || ( \
                 s3cmd rm "${_dest}/${_pre}-*.pkg.tar.xz" || true )
         done
-        s3cmd sync --follow-symlinks --acl-public "${_loc}/"*.pkg.tar.xz
+        s3cmd sync --follow-symlinks --acl-public "${_loc}/"*.pkg.tar.xz \
+            "${_dest}/"
     else
         echo "Package directory not found; ${_arg}, skipping..."
     fi

@@ -87,9 +87,9 @@ enable-ipc = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 bottom = false
-modules-left = i3 bspwm calendar todo
+modules-left = i3 bspwm-desktop bspwm-mode calendar todo
 modules-center = time
-modules-right = mpd alsa pulseaudio cpu memory keyboard backlight temperature battery
+modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd pulseaudio keyboard backlight battery
 
 [bar/i3]
 inherit = bar/top
@@ -148,19 +148,7 @@ inline-mode = false
 enable-click = true
 enable-scroll = true
 reverse-scroll = false
-fuzzy-match = true
 format = <label-state> <label-mode>
-ws-icon-0 = 1;
-ws-icon-1 = 2;爵
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 0;漣
-ws-icon-default = 
 label-floating =    禎
 label-fullscreen =  
 label-locked =      
@@ -193,46 +181,52 @@ label-private-padding =        ${self.label-floating-padding}
 label-pseudotiled-padding =    ${self.label-floating-padding}
 label-sticky-padding =         ${self.label-floating-padding}
 label-tiled-padding =          ${self.label-floating-padding}
-label-focused = %icon%
+label-focused = %name%
 label-focused-padding = 2
 label-focused-background = ${colors.hig}
 label-focused-foreground = ${colors.frg}
-label-focused-underline =  ${colors.ora}
-label-occupied = %icon%
+label-focused-underline =  ${colors.yel}
+label-occupied = ${self.label-focused}
 label-occupied-padding = ${self.label-focused-padding}
 label-occupied-background = ${colors.bkg}
 label-occupied-foreground = ${colors.frg}
 label-occupied-underline =  ${colors.frg}
-label-empty = %icon%
+label-empty = ${self.label-focused}
 label-empty-padding = ${self.label-focused-padding}
 label-empty-background = ${colors.bkg}
 label-empty-foreground = ${colors.frg}
 label-empty-underline =  ${colors.mut}
-label-urgent = %icon%
+label-urgent = ${self.label-focused}
 label-urgent-padding = ${self.label-focused-padding}
 label-urgent-background = ${colors.bkg}
 label-urgent-foreground = ${colors.red}
 label-urgent-underline =  ${colors.red}
-label-dimmed-focused = %icon%
+label-dimmed-focused = ${self.label-focused}
 label-dimmed-focused-padding = ${self.label-focused-padding}
 label-dimmed-focused-background = ${colors.hig}
 label-dimmed-focused-foreground = ${colors.mut}
 label-dimmed-focused-underline =  ${colors.ora}
-label-dimmed-occupied = %icon%
+label-dimmed-occupied = ${self.label-focused}
 label-dimmed-occupied-padding = ${self.label-focused-padding}
 label-dimmed-occupied-background = ${colors.bkg}
 label-dimmed-occupied-foreground = ${colors.mut}
 label-dimmed-occupied-underline =  ${colors.frg}
-label-dimmed-empty = %icon%
+label-dimmed-empty = ${self.label-focused}
 label-dimmed-empty-padding = ${self.label-focused-padding}
 label-dimmed-empty-background = ${colors.bkg}
 label-dimmed-empty-foreground = ${colors.mut}
 label-dimmed-empty-underline =  ${colors.mut}
-label-dimmed-urgent = %icon%
+label-dimmed-urgent = ${self.label-focused}
 label-dimmed-urgent-padding = ${self.label-focused-padding}
 label-dimmed-urgent-background = ${colors.bkg}
 label-dimmed-urgent-foreground = ${colors.red}
 label-dimmed-urgent-underline =  ${colors.red}
+[module/bspwm-desktop]
+inherit = module/bspwm
+format = <label-state>
+[module/bspwm-mode]
+inherit = module/bspwm
+format = <label-mode>
 
 [module/calendar]
 type = custom/script
@@ -271,9 +265,9 @@ type = internal/date
 interval = 1
 time = %H:%M
 time-alt = %H:%M:%S
-date = %a, %e %b
+date = %a, %e %b %Y
 date-alt = %d/%m/%Y
-label = %time% %date%
+label = %time%   %date%
 label-font = 2
 format = <label>
 format-foreground = ${colors.frg}
@@ -283,6 +277,127 @@ format-background = ${colors.bkg}
 ;   MODULES-RIGHT   ;
 ;===================;
 
+[module/temperature]
+type = internal/temperature
+interval = 2
+thermal-zone = 0
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input
+warn-temperature = 80
+label = %temperature-c%糖
+label-warn = %temperature-c%糖
+units = false
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.red}
+format = <ramp> <label>
+format-underline = ${self.ramp-foreground}
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.ramp-foreground}
+format-warn-foreground = ${self.ramp-foreground}
+
+[module/coretemp]
+type = custom/script
+exec = ~/.config/polybar/coretemp.sh
+interval = 2
+format = <label>
+format-underline = ${colors.red}
+format-foreground = ${self.format-underline}
+format-background = ${colors.bkg}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = %percentage:2%
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.ora}
+format-underline = ${self.format-prefix-foreground}
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %percentage_used%
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.yel}
+format-underline = ${self.format-prefix-foreground}
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+
+[module/network]
+type = internal/network
+interval = 3
+ping-interval = 0
+accumulate-stats = false
+unknown-as-up = false
+format-connected = <label-connected>
+format-connected-prefix =
+format-connected-prefix-foreground = ${colors.gre}
+format-connected-underline = ${self.format-connected-prefix-foreground}
+format-connected-foreground = ${colors.frg}
+format-connected-background = ${colors.bkg}
+format-disconnected = <label-disconnected>
+format-disconnected-prefix =
+format-disconnected-prefix-foreground = ${self.format-connected-prefix-foreground}
+format-disconnected-underline = ${self.format-disconnected-prefix-foreground}
+format-disconnected-foreground = ${self.format-disconnected-underline}
+format-disconnected-background = ${self.format-connected-background}
+
+[module/ethernet]
+inherit = module/network
+interface = ethernet
+label-connected = "  "
+label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+label-disconnected =
+label-disconnected-foreground = ${colors.mut}
+
+[module/wifi]
+inherit = module/network
+interface = wifi
+label-connected = "  "
+label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+label-disconnected =
+label-disconnected-foreground = ${colors.mut}
+
+[module/tether]
+inherit = module/network
+interface = tether
+label-connected = "  "
+label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+label-disconnected =
+label-disconnected-foreground = ${colors.mut}
+
+[module/openvpn]
+type = custom/script
+exec = echo ""
+exec-if = pgrep -x openvpn
+interval = 5
+format = <label>
+format-underline = ${colors.gre}
+format-foreground = ${self.format-underline}
+format-background = ${colors.bkg}
+format-prefix =
+format-prefix-foreground = ${self.format-underline}
+
+[module/openconnect]
+type = custom/script
+exec = echo ""
+exec-if = pgrep -x openconnect
+interval = 5
+format = <label>
+format-underline = ${colors.gre}
+format-foreground = ${self.format-underline}
+format-background = ${colors.bkg}
+format-prefix = 
+format-prefix-foreground = ${self.format-underline}
+
 [module/mpd]
 type = internal/mpd
 host = 127.0.0.1
@@ -291,7 +406,7 @@ label-song = %title% - %album-artist%
 label-song-maxlen = 25
 label-song-ellipsis = true
 label-time = %elapsed% / %total%
-label-offline = ---
+label-offline = 
 icon-prev = 玲
 icon-stop = 栗
 icon-play = 契
@@ -306,16 +421,10 @@ icon-single = 駱
 icon-consume = 裸
 toggle-on-foreground = ${colors.frg}
 toggle-off-foreground = ${colors.mut}
-format-online = <label-song>
-format-online-foreground = ${colors.frg}
-format-online-background = ${colors.bkg}
-format-online-underline = ${colors.red}
-format-online-prefix = " "
-format-online-prefix-foreground = ${self.format-online-underline}
-format-playing = <label-song>
+format-playing = %{A1:mpc toggle: A4:mpc prev: A5:mpc next:}<label-song>%{A A A}
 format-playing-foreground = ${colors.frg}
 format-playing-background = ${colors.bkg}
-format-playing-underline = ${colors.red}
+format-playing-underline = ${colors.cya}
 format-playing-prefix = " "
 format-playing-prefix-foreground = ${self.format-playing-underline}
 format-paused = ${self.format-playing}
@@ -324,21 +433,18 @@ format-paused-background = ${self.format-playing-background}
 format-paused-underline = ${self.format-playing-underline}
 format-paused-prefix = ${self.format-playing-prefix}
 format-paused-prefix-foreground = ${self.format-paused-underline}
-format-stopped = <toggle-stop>
+format-stopped = %{A1:/usr/bin/mpc play:}<toggle>%{A}
 format-stopped-foreground = ${colors.mut}
 format-stopped-background = ${self.format-playing-background}
 format-stopped-underline = ${self.format-playing-underline}
 format-stopped-prefix = ${self.format-playing-prefix}
 format-stopped-prefix-foreground = ${self.format-stopped-underline}
 format-offline = <label-offline>
-format-offline-prefix = "ﱙ "
-format-offline-prefix-foreground = ${self.format-stopped-underline}
 format-offline-foreground = ${colors.mut}
-format-offline-background = ${self.format-online-background}
+format-offline-background = ${self.format-playing-background}
 format-offline-underline = ${colors.mut}
-click-left = /usr/bin/mpc toggle
-scroll-up = /usr/bin/mpc prev
-scroll-down = /usr/bin/mpc next
+format-offline-prefix = "ﱙ "
+format-offline-prefix-foreground = ${self.format-offline-underline}
 
 [module/pulseaudio]
 type = custom/script
@@ -347,35 +453,13 @@ tail = true
 interval = 0
 label = %output%
 format = <label>
-format-underline = ${colors.ora}
+format-underline = ${colors.cya}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 scroll-up = /usr/bin/pamixer --increase 5
 scroll-down = /usr/bin/pamixer --decrease 5
 click-right = /usr/bin/pavucontrol &
 click-left = /usr/bin/pamixer --toggle-mute
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-label = %percentage:2%
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.yel}
-format-underline = ${self.format-prefix-foreground}
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
-
-[module/memory]
-type = internal/memory
-interval = 2
-label = %percentage_used%
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.gre}
-format-underline = ${self.format-prefix-foreground}
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
 
 [module/keyboard]
 type = internal/xkeyboard
@@ -385,7 +469,7 @@ label-layout = %name%
 label-indicator = %name%
 format = <label-layout>
 format-prefix = " "
-format-prefix-foreground = ${colors.cya}
+format-prefix-foreground = ${colors.ind}
 format-underline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
@@ -393,37 +477,30 @@ format-background = ${colors.bkg}
 [module/backlight]
 type = internal/backlight
 card = ${env:BRI_SCR}
-format = <label>
+format = %{A4:brightnessctl -d $BRI_SCR s +5%: A5:brightnessctl -d $BRI_SCR s 5%-:}<label>%{A A}
 label = %percentage%
 format-prefix = " "
-format-prefix-foreground = ${colors.ind}
+format-prefix-foreground = ${colors.vio}
 format-underline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
-scroll-up = /usr/bin/brightnessctl -d $BRI_SCR s +5%
-scroll-down = /usr/bin/brightnessctl -d $BRI_SCR s 5%-
+scroll-up = /usr/bin/
+scroll-down = /usr/bin/
 
-[module/temperature]
-type = internal/temperature
-interval = 2
-thermal-zone = 0
-warn-temperature = 80
-label = %temperature-c%糖
-label-warn = %temperature-c%糖
-units = false
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-ramp-foreground = ${colors.vio}
-format = <ramp> <label>
-format-underline = ${self.ramp-foreground}
+[module/pulseaudio]
+type = custom/script
+exec = ~/.config/polybar/pulse.sh
+tail = true
+interval = 0
+label = %output%
+format = <label>
+format-underline = ${colors.cya}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.ramp-foreground}
-format-warn-foreground = ${self.ramp-foreground}
+scroll-up = /usr/bin/pamixer --increase 5
+scroll-down = /usr/bin/pamixer --decrease 5
+click-right = /usr/bin/pavucontrol &
+click-left = /usr/bin/pamixer --toggle-mute
 
 [module/battery]
 type = internal/battery
@@ -440,7 +517,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.gre}
+ramp-capacity-foreground = ${colors.ora}
 format-full = <label-full>
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.gre}
@@ -449,7 +526,7 @@ format-full-foreground = ${colors.frg}
 format-full-background = ${colors.bkg}
 format-charging = <label-charging>
 format-charging-prefix = " "
-format-charging-prefix-foreground = ${colors.gre}
+format-charging-prefix-foreground = ${colors.yel}
 format-charging-underline = ${self.format-charging-prefix-foreground}
 format-charging-foreground = ${colors.frg}
 format-charging-background = ${colors.bkg}

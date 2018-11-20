@@ -2,10 +2,13 @@
 post_install() {
     echo '[sbp-extra]==> Installing meta package . . .'
     # Make steam library folder
-    echo '[sbp-extra]==> Priming steam library folder in /opt . . .'
+    echo '[sbp-extra]==> Priming steam library and wine folder in /opt . . .'
     mkdir /opt/Steam
+    mkdir /opt/wine
     chown sbp:games /opt/Steam
-    chmod 664 /opt/Steam
+    chown sbp:games /opt/wine
+    chmod 775 /opt/Steam
+    chmod 775 /opt/wine
     # Qutebrowser
     echo '[sbp-extra]==> Adding qutebrowser spellcheck . . .'
     /bin/python /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR

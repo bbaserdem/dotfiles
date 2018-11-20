@@ -9,14 +9,13 @@ pkgname=(
     'sbp-bspwm'
     'sbp-sway'
     'sbp-pantheon'
-    'sbp-gnome'
     'sbp-server'
     'sbp-laptop'
     'sbp-notebook'
     'sbp-workstation'
     )
-pkgver=0.9
-pkgrel=97
+pkgver=1.0
+pkgrel=19
 pkgdesc="Meta packages to automate packages computer systems"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -25,24 +24,21 @@ groups=(bbaserdem)
 source=(
     'base.bt-polkit'
     'base.btaudio'
-    'base.eth'
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
     'base.nftables'
-    'base.nm-polkit'
-    'base.nm-config'
     'base.pa_usb'
     'base.reflector.service'
     'base.reflector.timer'
+    'base.roothints.service'
+    'base.roothints.timer'
     'base.snapper-root'
     'base.sudoers'
     'base.sysctl'
-    'base.tether'
     'base.touchpad'
     'base.updater'
     'base.vconsole'
-    'base.wifi'
     'base.zshenv'
     'gui.install'
     'gui.xinit-session'
@@ -68,28 +64,25 @@ source=(
     )
 md5sums=('0d3afa7b391a50313df9449b80240807'
          '2adc9c1077ee29381b6ffedf871744f4'
-         '5b3f3cc9194f11a91c4d10119bdfd656'
          '9806f3d492c6e42f3c8d44f3f5cd7d52'
          'aa695fb291e6b908235fe2570b0e9877'
-         '5015cb28ae03d6666ee414aa4dbc545c'
+         'c806307943e936e1f790e0b51045b4b6'
          '2b4a7715d47beadb71db5f7b3369a4c9'
-         '10b5ea5664e93646ef0f55f0e79b7022'
-         '6ec1b1a831e7e42e0b472ea9a87858dc'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '7a1ff93a4e176d816c3ab6b5ea667ca0'
          'c972c1e5c236f6e3c0f7d1b4989ebb75'
+         '1c93a980d924f7a3efefc117ffdbdeca'
+         '8d4e9b22c3a9165d66f2f91155931d48'
          '00e5bc63b7bb82526516df8f45c4745c'
          'df0911ed7f3bbf285de4e3c08662dafd'
          '586c14c5f87f0097e0dfcb0454bfc2a6'
-         '4e8599e6d74c8d019edccbb09faf392b'
          '18c4e485034ee909f9d4f3c7fab3954f'
          '3ad35f4045a3fce5bbfeecd0602c3cee'
          '1ddf47f1278958e4cc65bfbd96dbd6f7'
-         'e71265ed72b65b8fb8092d6a4da0da3a'
          '7128851ee00d22284cbdbe9b8257ad14'
          '0f9cda1dc1000791243c223dbe251566'
          '023cfac6b2f1a6139f21796a53d6bc1d'
-         'b19954dbb641caa1328725b405b49130'
+         '2fe1c4886191c19440cf3b6013a34267'
          '17a7cda5f070fb76e1070a2f1fcbc21d'
          'a7c1283261fb4b3e77efa739c81f481d'
          '79267b7f57a008bdc8eadb1f399e41c5'
@@ -99,12 +92,12 @@ md5sums=('0d3afa7b391a50313df9449b80240807'
          'e3217b4c75d3bc302347b7bdf27f29de'
          '36adcc034c7a69ffe93e2c0937f051da'
          '31bc6b40fff742f9281088c7acdb6feb'
-         '36b1c6ab3b96c308b3ccc4a541ea0ca6'
+         '24a662aafd9a0decb482c9ae2cb642f2'
          '963647fe81d1824bb977c3618d56959a'
-         '098b5bd147a43c2e8a87ce4315128379'
+         'cf8ca1a073a27359d17c4f061aaf0532'
          '7d625c54c37c6296f2ab1bbebbeb8308'
-         '55ebc5c445f6ed66242d8e18fdd390ee'
-         'aae95a0b1febfd5a55805e9d4c7b28c4'
+         'ddb8638e854711806bbb89912f6d1086'
+         '164e68152c8b2c18645afb6eb2197272'
          '7d432ab4dd0cbb05cc1399e8cd02cfbe'
          'b1fe2c5d8a90b0c4bc0668d505b141c3'
          '83e1b805fc92b3d1d3faf65158448687')
@@ -172,17 +165,17 @@ package_sbp-base() {
         'linux-firmware' 'linux-headers'        # Firmware for the Linux kernel
         'lm_sensors'                            # Thermal sensors
         'msmtp' 'msmtp-mta' 'isync'             # Mail and DAV stuff
-        'networkmanager'                        # Network connection management
         'notmuch' 'vdirsyncer'
         'openconnect' 'openvpn'                 # VPN services
         'private-internet-access-vpn'           # AUR: Set up PIA
+        'openresolv'                            # DNS resolver manager
+        'unbound'                               # DNS resolver
         'pass' 'qrencode'                       # Password manager
         'rsync'                                 # File synching utility
         'snapper'                               # BTRFS snapshot manager
         'tmux'                                  # Terminal multiplexer
         'tlp' 'stress'                          # Power manager
         'iwd' 'ppp' 'pptpclient'                # INet Wireless Daemon
-        'networkmanager'                        # Network connection manager
         'mpc' 'mpd' 'mpdscribble'               # Music daemon and AUR scrobbler
         'syncthing' 'w3m' 'youtube-dl'          # Internet tools
         'tzupdate'                              # AUR: For autoupdating time
@@ -223,25 +216,23 @@ package_sbp-base() {
         )
     install -dm 0750 "${pkgdir}/etc/polkit-1/rules.d"
     install -dm 0750 "${pkgdir}/etc/sudoers.d"
+    install -dm 0750 "${pkgdir}/etc/snapper/configs"
     install -Dm 0644 base.bt-polkit         "${pkgdir}/etc/polkit-1/rules.d/51-blueman.rules"
     install -Dm 0644 base.btaudio           "${pkgdir}/etc/bluetooth/audio.conf"
-    install -Dm 0644 base.eth               "${pkgdir}/etc/systemd/network/21-wired.network"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
-    install -Dm 0644 base.nm-polkit         "${pkgdir}/etc/polkit-1/rules.d/50-NetworkManager.rules"
-    install -Dm 0644 base.nm-config         "${pkgdir}/etc/NetworkManager/conf.d/sbpbase.conf"
     install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"
     install -Dm 0644 base.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
     install -Dm 0644 base.reflector.timer   "${pkgdir}/etc/systemd/system/reflector.timer"
+    install -Dm 0644 base.roothints.service "${pkgdir}/etc/systemd/system/roothints.service"
+    install -Dm 0644 base.roothints.timer   "${pkgdir}/etc/systemd/system/roothints.timer"
     install -Dm 0644 base.snapper-root      "${pkgdir}/etc/snapper/configs/root"
     install -Dm 0750 base.sudoers           "${pkgdir}/etc/sudoers.d/sbp-base"
     install -Dm 0644 base.sysctl            "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
-    install -Dm 0644 base.tether            "${pkgdir}/etc/systemd/network/23-tether.network"
     install -Dm 0644 base.touchpad          "${pkgdir}/etc/X11/xorg.conf.d/30-touchpad.conf"
     install -Dm 0644 base.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
     install -Dm 0644 base.vconsole          "${pkgdir}/etc/vconsole.conf"
-    install -Dm 0644 base.wifi              "${pkgdir}/etc/systemd/network/22-wireless.network"
     install -Dm 0644 base.zshenv            "${pkgdir}/etc/zsh/zshenv"
     # Make it so nano, vi and vim points to neovim
     install -dm 0755 "${pkgdir}/usr/bin"
@@ -336,7 +327,6 @@ package_sbp-gui() {
         'gparted'                               # Graphical partition editor
         'gtk2fontsel' 'gucharmap'               # Font and character map
         'mpv' 'smplayer'                        # Mpv frontend
-        'network-manager-applet' 'nm-connection-editor'
         'pavucontrol'                           # Pulse audio control menu
         'pdfsam'                                # Pdf manipulator
         'plank'                                 # Dock
@@ -345,6 +335,7 @@ package_sbp-gui() {
         'ristretto'                             # Image viewer
         'rofi' 'rofi-pass' 'rofi-emoji'         # Application launcher
         'system-config-printer'                 # Printer setup utility
+        'dhcpcd-dbus' 'dhcpcd-ui-patched'       # DHCPCD indicator
         'termite'                               # Wayland native terminal
         'thunar'                                # File browser
         'thunar-volman' 'gvfs' 'thunar-archive-plugin' 'xarchiver' 'file-roller'
@@ -396,7 +387,10 @@ package_sbp-extra() {
         'texlive-core' 'texlive-science' 'biber' # Latex
         'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures' 'texlive-pstricks'
         'udiskie'                               # Mount manager with tray icon
-        'wine' 'samba'                          # Windows compatibility
+        'wine-staging' 'samba' 'wine_gecko' 'wine-mono' # Windows compatibility
+        'lib32-libxml2' 'lib32-mpg123' 'lib32-lcms2' 'lib32-giflib'
+        'lib32-libpng' 'lib32-gnutls' 'lib32-gst-plugins-base' 'lib32-openal'
+        'lib32-gst-plugins-good'
         'zotero'                                # Referance manager
         )
     # Matlab dependencies
@@ -545,48 +539,6 @@ package_sbp-pantheon() {
         )
 }
 
-# GNOME stuff
-package_sbp-gnome() {
-    depends=('sbp-gui')
-    depends+=(
-        'baobab'                    # Directory tree analyser
-        'eog'                       # Image viewing program
-        'evince'                    # Doc viewer
-        'chrome-gnome-shell'        # Browser and tweak integration
-        'file-roller'               # Archive manager
-        'firefox'                   # Browser
-        'gnome-calendar'
-        'gnome-characters'
-        'gnome-clocks'
-        'gnome-color-manager'
-        'gnome-contacts'
-        'gnome-control-center'
-        'gnome-disk-utility'
-        'gnome-documents'
-        'gnome-font-viewer'
-        'gnome-keyring'
-        'gnome-logs'
-        'gnome-maps'
-        'gnome-menus'
-        'gnome-photos'
-        'gnome-screenshot'
-        'gnome-session'
-        'gnome-settings-daemon'
-        'gnome-shell'
-        'gnome-shell-extensions'
-        'gnome-system-monitor'
-        'gnome-terminal'
-        'gnome-themes-extra'
-        'gnome-todo'
-        'gnome-tweaks'
-        'mousetweaks'
-        'mutter'
-        'nautilus'
-        'thunderbird'
-        'totem'
-    )
-}
-
 # Sway stuff
 package_sbp-sway() {
     depends=('sbp-gui')
@@ -601,14 +553,15 @@ package_sbp-sway() {
 #        'redshift-sway-git'             # Screen dimmer for wayland
 #        'rofi-wayland-git'              # App launcher
         )
-    # i3 stuff
+    # i3 only stuff
     depends+=(
-        'dunst'                         # Notification daemon
-        'feh'                           # Wallpaper management
-        'i3-gaps'                       # Improved window manager
-        'i3lock'                        # Screen locker
-        'maim'                          # Screenshot utility
-        'xss-lock'                      # Locks screen on power events
+        'compton'       # Compositor for effects
+        'dunst'         # Notification daemon
+        'feh'           # Wallpaper management
+        'i3-gaps'       # Improved window manager
+        'i3lock'        # Screen locker
+        'maim'          # Screenshot utility
+        'xss-lock'      # Locks screen on power events
         )
 }
 
@@ -617,7 +570,8 @@ package_sbp-bspwm() {
     depends=('sbp-gui')
     depends+=(
         'brightnessctl'                 # Brightness controls
-        'bspwm'                         # Binary split partitioning WM
+        'bspwm-git'                     # Binary split partitioning WM
+        'compton'                       # Compositor for effects
         'dex'                           # Autostart launcher
         'dunst'                         # Notification daemon
         'feh'                           # Wallpaper management

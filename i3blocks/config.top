@@ -11,69 +11,71 @@ markup=pango
 # Calendar (brown)
 [calendar]
 command=~/.config/i3blocks/blocklets/calendar.sh brown
-interval=once
-signal=9
+interval=persist
+markup=pango
 
 # Tasks (brown)
 [todo]
 command=~/.config/i3blocks/blocklets/todo.sh brown
-interval=once
-signal=8
+interval=persist
+markup=pango
 
 # Music player daemon notification (red)
 [mpd]
 command=~/.config/i3blocks/blocklets/mpd.sh red
-interval=once
-signal=3
+interval=persist
+markup=pango
 
 # Pulseaudio volume (red)
 [pulseaudio]
 command=~/.config/i3blocks/blocklets/pulseaudio.sh red
-interval=once
-signal=6
+interval=persist
+markup=pango
 
 # Weather info (orange)
 [weather]
 command=~/.config/i3blocks/blocklets/weather.sh orange
 interval=600
+markup=pango
 
 # Offlineimap (yellow)
 [imap]
 command=~/.config/i3blocks/blocklets/imap.sh yellow
-interval=once
-signal=5
+interval=persist
+markup=pango
 
 # RSS (green)
 [rss]
 command=~/.config/i3blocks/blocklets/rss.sh green
-interval=once
-signal=4
+interval=persist
+markup=pango
 
 # Time (cyan)
 [time]
 command=~/.config/i3blocks/blocklets/time.sh cyan
 interval=1
+markup=pango
 
 # Date (indigo)
 [date]
 command=~/.config/i3blocks/blocklets/date.sh indigo
-interval=once
-signal=7
+interval=persist
+markup=pango
 
 # Brightness (violet)
 [brightness]
 command=~/.config/i3blocks/blocklets/brightness.sh violet
-interval=once
-signal=1
+interval=persist
+markup=pango
 
 # Language (Violet)
 [language]
 command=~/.config/i3blocks/blocklets/language.sh violet
-interval=once
-signal=10
+interval=persist
+markup=pango
 
 # Battery (varies)
 [battery]
 command=~/.config/i3blocks/blocklets/battery.sh
-interval=once
-signal=2
+interval=persist
+markup=pango

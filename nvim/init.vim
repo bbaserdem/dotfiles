@@ -38,6 +38,7 @@ Plugin 'mhinz/neovim-remote'
 Plugin 'lervag/vimtex'
 " I3 vim
 Plugin 'PotatoesMaster/i3-vim-syntax'
+Plugin 'baskerville/vim-sxhkdrc'
 " Python highlighting
 " Plugin 'numirias/semshi'
 " Grammar checker
