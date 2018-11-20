@@ -3,6 +3,9 @@
 # Load workspace names
 . $XDG_CONFIG_HOME/bspwm/window_id.sh
 
+# Set XDG_CURRENT_DESKTOP for mimetypes
+export XDG_CURRENT_DESKTOP="bspwm"
+
 # Rules
 bspc config border_width                2
 bspc config window_gap                  12
@@ -13,33 +16,12 @@ bspc config gapless_monocle             true
 bspc config automatic_scheme            longest_side
 bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/external_rules.sh
 
-# Desktop setup
-bspc desktop "$ws4" --layout monocle
-
-# Refresh monitors
-_mon=$(bspc query --monitors | wc --lines)
-if [[ "$_mon" == 1 ]]; then
-    bspc monitor --reset-desktops $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws0
-elif [[ "$_mon" == 2 ]]; then
-    bspc monitor $(bspc query --monitors|awk NR==1) --reset-desktops $ws1 $ws2 $ws3 $ws4 $ws5
-    bspc monitor $(bspc query --monitors|awk NR==2) --reset-desktops $ws6 $ws7 $ws8 $ws9 $ws0
-elif [[ "$_mon" == 3 ]]; then
-    bspc monitor $(bspc query --monitors|awk NR==1) --reset-desktops $ws1 $ws2 $ws3 $ws4
-    bspc monitor $(bspc query --monitors|awk NR==2) --reset-desktops $ws5 $ws6 $ws7
-    bspc monitor $(bspc query --monitors|awk NR==3) --reset-desktops $ws8 $ws9 $ws0
-else
-    I=1
-    for monitor in $(bspc query --monitors); do
-        bspc monitor $monitor -n "$I" -d $I
-        let I++
-    done
-fi
-
 # Autostart programs
 dex --autostart --environment bspwm &
 
 # Set cursor (dunno why the xsession version is not working)
 xsetroot -cursor_name left_ptr
 
-# Set XDG_CURRENT_DESKTOP for mimetypes
-export XDG_CURRENT_DESKTOP="bspwm"
+# Reassign monitors
+$XDG_CONFIG_HOME/scripts/x-monitors.sh --now
+$XDG_CONFIG_HOME/bspwm/desktop_refresh.sh
