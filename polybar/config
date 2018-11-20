@@ -487,21 +487,6 @@ format-background = ${colors.bkg}
 scroll-up = /usr/bin/
 scroll-down = /usr/bin/
 
-[module/pulseaudio]
-type = custom/script
-exec = ~/.config/polybar/pulse.sh
-tail = true
-interval = 0
-label = %output%
-format = <label>
-format-underline = ${colors.cya}
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
-scroll-up = /usr/bin/pamixer --increase 5
-scroll-down = /usr/bin/pamixer --decrease 5
-click-right = /usr/bin/pavucontrol &
-click-left = /usr/bin/pamixer --toggle-mute
-
 [module/battery]
 type = internal/battery
 battery = BAT0
