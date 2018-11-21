@@ -1,0 +1,60 @@
+# Maintained by sbp-efi
+timeout 5
+use_nvram false
+screensaver 60
+icons_dir art_icons/384-144
+banner art_icons/384-144/bg.png
+banner_scale fillscreen
+small_icon_size 144
+big_icon_size 384
+selection_big art_icons/384-144/selection_big.png
+selection_small art_icons/384-144/selection_small.png
+font art_fonts/sauce-code-pro-extralight-18.png
+#textonly
+#textmode 2
+resolution 1920 1080
+enable_touch
+#enable_mouse
+#mouse_size
+#mouse_speed 4
+#use_graphics_for osx,linux
+##showtools shell, gdisk, memtest, mok_tool, apple_recovery, windows_recovery, about, hidden_tags, reboot, exit, firmware, fwupdate
+#dont_scan_tools ESP2:/EFI/ubuntu/mmx64.efi,gptsync_x64.efi
+#windows_recovery_files LRS_ESP:/EFI/Microsoft/Boot/LrsBootmgr.efi
+#scan_driver_dirs EFI/tools/drivers,drivers
+#scanfor internal,external,optical,manual
+#uefi_deep_legacy_scan
+#scan_delay 5
+#also_scan_dirs boot,ESP2:EFI/linux/kernels
+#dont_scan_volumes "Recovery HD"
+dont_scan_dirs EFI/systemd
+dont_scan_files shim.efi,MokManager.efi
+scan_all_linux_kernels true
+#fold_linux_kernels false
+#extra_kernel_version_strings linux-lts,linux
+#max_tags 0
+#default_selection "+,bzImage,vmlinuz"
+#enable_and_lock_vmx false
+#spoof_osx_version 10.9
+#csr_values 10,77
+
+menuentry Linux {
+    icon EFI/refind/icons/os_linux.png
+    volume 904404F8-B481-440C-A1E3-11A5A954E601
+    loader bzImage-3.3.0-rc7
+    initrd initrd-3.3.0.img
+    options "ro root=UUID=5f96cafa-e0a7-4057-b18f-fa709db5b837"
+    disabled
+}
+menuentry "Windows via shell script" {
+    icon \EFI\refind\icons\os_win.png
+    loader \EFI\tools\shell.efi
+    options "fs0:\EFI\tools\launch_windows.nsh"
+    disabled
+}
+menuentry "My macOS" {
+    icon \EFI\refind\icons\os_mac.png
+    volume "macOS boot"
+    loader \System\Library\CoreServices\boot.efi
+    disabled
+}

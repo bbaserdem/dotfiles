@@ -37,28 +37,9 @@
 /applications/mimeinfo.cache
 /applications/wine/Programs
 
-# ARCH: Bit complicated
+# ARCH: PKGBUILDS here, grab all
 !/arch
-!/arch/archlive
-!/arch/archlive/**
-!/arch/bin
-!/arch/bin/**
-!/arch/sbp/
-!/arch/sbp/**
-/arch/**/*.log
-/arch/**/*.tar.xz
-/arch/**/*.tar.xz~
-/arch/**/*.tar.gz
-/arch/**/*.tar.gz~
-/arch/**/*.pkg.tar.xz
-/arch/**/*.pkg.tar.xz~
-/arch/**/*.old
-/arch/**/pkg/
-/arch/**/src/
-/arch/chroot/
-arch/**.iso
-arch/**.img
-arch/iso/
+!/arch/**
 
 # AUTOSTART: Grab all autostart
 !/autostart

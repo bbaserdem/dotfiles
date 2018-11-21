@@ -1,0 +1,3 @@
+# Maintained by sbp-cmp-laptop
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="4c:ed:fb:01:f1:99", NAME="ethernet"
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="80:c5:f2:1e:60:71", NAME="wifi"

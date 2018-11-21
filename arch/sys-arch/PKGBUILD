@@ -1,0 +1,34 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgname=sbp-sys-arch
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta package: systemd specific system libraries"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+provides=('sbp-sys-init')
+conflicts=('sbp-sys-artix')
+install=arch.install
+source=(
+    'arch.install'
+    'arch.reflector.service'
+    'arch.reflector.timer'
+    'arch.roothints.service'
+    'arch.roothints.timer'
+    'arch.updater'
+    )
+depends=(
+    'linux'
+    'linux-headers'
+    'sysfsutils'
+    'systemd-sysvcompat'
+)
+
+package() {
+    install -Dm 0644 arch.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
+    install -Dm 0644 arch.reflector.timer   "${pkgdir}/etc/systemd/system/reflector.timer"
+    install -Dm 0644 arch.roothints.service "${pkgdir}/etc/systemd/system/roothints.service"
+    install -Dm 0644 arch.roothints.timer   "${pkgdir}/etc/systemd/system/roothints.timer"
+    install -Dm 0644 arch.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
+}

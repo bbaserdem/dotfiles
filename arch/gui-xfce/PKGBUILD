@@ -1,0 +1,65 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgname=sbp-gui-xfce
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta package: XFCE desktop suite"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+source=(
+    'xfce.wallpaper'
+    )
+depends=(
+    'sbp-gui-base'
+    'exo'                       # File launcher
+    'evince'                    # PDF viewer
+    'firefox'                   # Web browser
+    'garcon'                    # Menu specification ?
+    'gtk-xfce-engine'           # Xfce GTK engine
+    'kitty'                     # Terminal emulator
+    'light-locker'              # Screen lock
+    'mousepad'                  # Text editor
+    'thunderbird'               # Mail client
+    'xfce4-appfinder'           # App launcher
+    'xfce4-battery-plugin'      # Power indicator
+    'xfce4-clipman-plugin'      # Clupboard manager
+    'xfce4-cpufreq-plugin'      # System resources display
+    'xfce4-cpugraph-plugin'     # System resources display
+    'xfce4-datetime-plugin'     # Time and date indicator
+    'xfce4-dict'                # Dictionary
+    'xfce4-diskperf-plugin'     # Disk usage indicator
+    'xfce4-fsguard-plugin'
+    'xfce4-genmon-plugin'
+    'xfce4-mailwatch-plugin'
+    'xfce4-mount-plugin'
+    'xfce4-mpc-plugin'
+    'xfce4-netload-plugin'
+    'xfce4-notifyd'
+    'xfce4-panel'
+    'xfce4-power-manager'
+    'xfce4-pulseaudio-plugin'
+    'xfce4-screenshooter'
+    'xfce4-sensors-plugin'
+    'xfce4-session-git'
+    'xfce4-settings'
+    'xfce4-smartbookmark-plugin'
+    'xfce4-systemload-plugin'
+    'xfce4-taskmanager'
+    'xfce4-terminal'            # Drop-down terminal
+    'xfce4-time-out-plugin'
+    'xfce4-timer-plugin'
+    'xfce4-verve-plugin'
+    'xfce4-wavelan-plugin'
+    'xfce4-weather-plugin'
+    'xfce4-whiskermenu-plugin'
+    'xfce4-xkb-plugin'
+    'xfconf'
+    'xfdesktop'
+    'xfwm4'
+    'xfwm4-themes'
+)
+
+package() {
+    install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
+}

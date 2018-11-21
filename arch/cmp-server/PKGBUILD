@@ -1,0 +1,33 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgname=sbp-cmp-server
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta package: Server configuration"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+conflicts=('sbp-cmp-laptop' 'sbp-cmp-notebook' 'sbp-cmp-workstation')
+install=server.install
+source=(
+    'server.install'
+    'server.network'
+    )
+depends=(
+    'sbp-sys-base'
+    'sbp-sys-init'
+    'sbp-sys-uefi'
+    'apache'            # Web server
+    'dovecot'           # IMAP email server
+    'kodi'              # Media file server
+    'mariadb'           # Database management
+    'postfix'           # Mail transfer agent
+    'rspamd'            # Spam filter for mail
+    'transmission-cli'  # Torrenting
+    'radicale'          # CalDAV and CardDAV server
+)
+
+package() {
+    install -dm 0755 "${pkgdir}/etc/udev/rules.d"
+    install -Dm 0755 server.network   "${pkgdir}/etc/udev/rules.d/10-network.rules"
+}

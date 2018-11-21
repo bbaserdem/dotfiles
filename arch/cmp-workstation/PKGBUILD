@@ -1,0 +1,37 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgname=sbp-cmp-workstation
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta package: Workstation configuration"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+provides='sbp-sys-init'
+conflicts='sbp-sys-arch'
+install=workstation.install
+source=(
+    'workstation.install'
+    'workstation.network'
+    )
+depends=(
+    'sbp-sys-base'
+    'sbp-sys-init'
+    'sbp-sys-bios'
+    'cuda'
+    'cudnn'
+    'dropbox'
+    'lib32-nvidia-340xx-utils'
+    'nvidia-340xx-dkms'
+    'nvidia-340xx-utils'
+    'ocl-icd'
+    'opencl-nvidia-340xx'
+    'os-prober'
+    'libva-vdpau-driver'
+)
+
+package() {
+    install -dm 0755 "${pkgdir}/etc/udev/rules.d"
+    install -Dm 0644 workstation.network "${pkgdir}/etc/udev/rules.d/10-network.rules"
+}
+

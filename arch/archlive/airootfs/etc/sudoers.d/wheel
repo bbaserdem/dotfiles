@@ -1,2 +1,0 @@
-%wheel ALL=(ALL) ALL
-Defaults passwd_timeout=0

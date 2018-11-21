@@ -1,0 +1,30 @@
+# Maintained by sbp-cmp-notebook
+post_install() {
+
+    echo '[sbp-notebook]==> Installing meta package . . .'
+
+    # Do hostname
+    echo '[sbp-notebook]==> Doing hostname and hosts . . .'
+    echo 'sbpnotebook' > /etc/hostname
+    echo '127.0.0.1 localhost' >  /etc/hosts
+    echo '::1       localhost' >> /etc/hosts
+    echo '127.0.1.1 sbpnotebook.localdomain sbpnotebook' >> /etc/hosts
+
+    # Enabling bumblebee
+    echo '[sbp-notebook]==> Enabling bumblebee . . .'
+    sed -i 's|^Bridge=.*|Bridge=primus|g' /etc/bumblebee/bumblebee.conf
+    gpasswd --add sbp bumblebee
+    if [ -x /bin/systemctl ] ; then
+        systemctl enable bumblebee.service
+    elif [ -x /bin/rc-update ] ; then
+        rc-update add bumblebee default
+    fi
+
+    echo '[sbp-notebook]==> Installation done! Check log for errors.'
+    post_upgrade
+}
+
+post_upgrade() {
+    echo '[sbp-notebook]==> Upgrading . . .'
+    echo '[sbp-notebook]==> Nothing to do.'
+}

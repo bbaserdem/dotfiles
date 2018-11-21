@@ -1,0 +1,224 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgname=sbp-gui-base
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta package: Generic libraries and programs with GUI"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+install=gui.install
+source=(
+    'gui.xinit.session'
+    'gui.install'
+)
+depends=(
+    'sbp-sys-base'
+    'arduino'               # Arduino stuff
+    'arduino-avr-core'
+    'arduino-docs'
+    'arm'
+    'xorgproto'             # Xorg things
+    'xf86-video-vesa'
+    'xorg-bdftopcf'
+    'xorg-docs'
+    'xorg-font-util'
+    'xorg-fonts-100dpi'
+    'xorg-fonts-75dpi'
+    'xorg-fonts-encodings'
+    'xorg-iceauth'
+    'xorg-luit'
+    'xorg-mkfontdir'
+    'xorg-mkfontscale'
+    'xorg-server'
+    'xorg-server-common'
+    'xorg-server-devel'
+    'xorg-server-xdmx'
+    'xorg-server-xephyr'
+    'xorg-server-xnest'
+    'xorg-server-xvfb'
+    'xorg-server-xwayland'
+    'xorg-sessreg'
+    'xorg-setxkbmap'
+    'xorg-smproxy'
+    'xorg-x11perf'
+    'xorg-xauth'
+    'xorg-xbacklight'
+    'xorg-xcmsdb'
+    'xorg-xcursorgen'
+    'xorg-xdpyinfo'
+    'xorg-xdriinfo'
+    'xorg-xev'
+    'xorg-xgamma'
+    'xorg-xhost'
+    'xorg-xinput'
+    'xorg-xkbcomp'
+    'xorg-xkbevd'
+    'xorg-xkbutils'
+    'xorg-xkill'
+    'xorg-xlsatoms'
+    'xorg-xlsclients'
+    'xorg-xmodmap'
+    'xorg-xpr'
+    'xorg-xprop'
+    'xorg-xrandr'
+    'xorg-xrdb'
+    'xorg-xrefresh'
+    'xorg-xset'
+    'xorg-xsetroot'
+    'xorg-xvinfo'
+    'xorg-xwd'
+    'xorg-xwininfo'
+    'xorg-xwud'
+    'xf86-input-libinput'
+    'xorg-xinit'
+    'xorg-fonts-misc'
+    'xdo'
+    'xdotool'
+    'xsel'
+    'wayland'               # Display server
+    'lightdm'               # Login manager
+    'lightdm-gtk-greeter'
+    'lightdm-webkit2-greeter'
+    'lightdm-webkit-theme-litarvan'
+    'adobe-source-serif-pro-fonts'  # Nice serif font
+    'bdf-tewi-git'                  # AUR: Nice bitmap font
+    'gohufont'                      # AUR: Nice bitmap font
+    'nerd-fonts-source-code-pro'    # AUR: Glyphs
+    'noto-fonts-emoji'              # Emoji font
+    'otf-fira-code'                 # Ligatures
+    'siji-git'                      # AUR: Nice monospace font
+    'steam-fonts'                   # AUR: Fonts for steam
+    'tamsyn-font'                   # Nice monospace font
+    'terminess-powerline-font-git'  # AUR: Console fonts
+    'ttf-droid'                     # Default looking font
+    'ttf-iosevka'                   # AUR: Statusline font
+    'ttf-roboto'                    # Google fonts, for steam
+    'arc-gtk-theme'                     # GTK theme
+    'breeze-hacked-cursor-theme'        # Hacked cursor
+    'elementary-icon-theme'             # Professional looking icon
+    'gnome-themes-extra'                # Icon compatibility
+    'gtk-engine-murrine'                # Fallback icons
+    'kvantum-qt5'                       # QT5 theme engine
+    'kvantum-theme-arc'                 # Nice theme
+    'papirus-icon-theme'                # Nice icon theme
+    'python-pyqt5'                      # QT stuff for python
+    'qt4'                               # QT implementation
+    'qt5-styleplugins'                  # QT GTK integration
+    'sound-theme-elementary-git'        # AUR: ElementaryOS sounds
+    'sound-theme-smooth'                # AUR: Complete sound theme
+    'xcursor-comix'                     # Comic cursor
+    'archlinux-artwork'     # Wallpapers
+    'archlinux-wallpaper'
+    'elementary-wallpapers-git'
+    'gnome-backgrounds'
+    'plasma-workspace-wallpapers'
+    'xfce4-artwork'
+    'blueman'                       # Bluetooth manager
+    'cantata'                       # MPD frontend
+    'firefox'                       # Fallback browser
+    'gparted'                       # Graphical partition editor
+    'gtk2fontsel'                   # Font map
+    'gucharmap'                     # Character map
+    'mpv'                           # Video daemon
+    'smplayer'                      # Mpv frontend
+    'pavucontrol'                   # Pulse audio control menu
+    'pdfsam'                        # Pdf manipulator
+    'qemu'                          # Virtualizer
+    'ovmf'
+    'ristretto'                     # Image viewer
+    'system-config-printer'         # Printer setup utility
+    'termite'                       # Wayland native terminal
+    'thunar'                        # File browser
+    'thunar-volman'
+    'gvfs'
+    'thunar-archive-plugin'
+    'xarchiver'
+    'file-roller'
+    'thunar-media-tags-plugin'
+    'tumbler'
+    'raw-thumbnailer'
+    'udisks2'
+    'vlc'                           # Media player
+    'zathura'                       # Document viewer
+    'zathura-cb'
+    'zathura-djvu'
+    'zathura-pdf-mupdf'
+    'zathura-ps'
+    'gpicview'                          # Picture to ascii
+    'libcanberra'                   # Sound theme
+    'libcanberra-pulse'
+    'pdfjs'                         # PDF rendering to webpages
+    'polkit-gnome'                  # Authentication
+    'trezor-bridge-bin'             # Hardware BCN wallet
+    'audacity'                              # Audio manipulator
+    'blender'                               # 3d designing utility
+    'darktable'                             # Raw format editor
+    'gimp'                                  # GNU Image Manipulation
+    'gitg'                                  # Git visualizer
+    'gourmet'                               # Recipe tracker
+    'inkscape'                              # Vector graphics editor
+    'libreoffice-fresh'                     # Office suite
+    'neovim-gtk-git'                        # AUR: Neovim gui
+    'octave'                                # Octave
+    'openscad'                              # CAD programming language
+    'pamac-aur'                             # Package manager
+    'picard'                                # Music tagger
+    'qutebrowser'                           # Browser with vim binding
+    'remmina'                               # Remote manager
+    'freerdp'
+    'rambox-bin'                            # AUR: Communication app
+    'skypeforlinux-stable-bin'              # AUR: Skype app
+    'spyder3'                               # Python dev environment
+    'steam'
+    'steam-native-runtime'
+    'steamos-compositor'
+    'stellarium'                            # Star viewer
+    'syncthing-gtk'                         # Tray icon for syncthing
+    'texlive-core'                          # LaTeX
+    'texlive-science'
+    'biber'
+    'texlive-fontsextra'
+    'texlive-latexextra'
+    'texlive-pictures'
+    'texlive-pstricks'
+    'wine-staging'                          # Windows compat
+    'samba'
+    'wine_gecko'
+    'wine-mono'
+    'lib32-libxml2'
+    'lib32-mpg123'
+    'lib32-lcms2'
+    'lib32-giflib'
+    'lib32-libpng'
+    'lib32-gnutls'
+    'lib32-gst-plugins-base'
+    'lib32-openal'
+    'lib32-gst-plugins-good'
+    'zotero'                                # Referance manager
+    'gcc6'                                  # Matlab dependencies
+    'gconf'
+    'glu'
+    'gstreamer0.10-base'
+    'gtk2'
+    'libunwind'
+    'libxp'
+    'libxp'
+    'libxpm'
+    'libxtst'
+    'nss'
+    'portaudio'
+    'python2'
+    'qt5-svg'
+    'qt5-webkit'
+    'qt5-websockets'
+    'qt5-x11extras'
+    'xerces-c'
+)
+
+package() {
+    install -dm 0755 "${pkgdir}/opt/steam"
+    install -dm 0755 "${pkgdir}/opt/wine"
+    install -dm 0755 "${pkgdir}/usr/share/xsessions"
+    install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
+}

@@ -1,0 +1,85 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgname=sbp-sys-artix
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta package: OpenRC specific system libraries"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+provides='sbp-sys-init'
+conflicts='sbp-sys-arch'
+install=base.install
+source=(
+    'artix.something'
+    )
+depends=(
+    'linux-lts'                 # Support for lts
+    'linux-lts-headers'
+    'artix-mirrorlist'          # Artix; base base-devel
+    'artix-sysvcompat'
+    'elogind'
+    'libelogind'
+    'audit-openrc'              # Openrc-system
+    'cronie-openrc'
+    'cryptsetup-openrc'
+    'dhcpcd-openrc'
+    'glibc-openrc'
+    'gpm-openrc'
+    'hdparm-openrc'
+    'iptables-openrc'
+    'krb5-openrc'
+    'lvm2-openrc'
+    'mdadm-openrc'
+    'nfs-utils-openrc'
+    'openldap-openrc'
+    'openssh-openrc'
+    'openvpn-openrc'
+    'rpcbind-openrc'
+    'wpa_supplicant-openrc'
+    'xinetd-openrc'
+    'acpid-openrc'              # Openrc-world
+    'alsa-utils-openrc'
+    'apache-openrc'
+    'autofs-openrc'
+    'avahi-openrc'
+    'bind-openrc'
+    'bitlbee-openrc'
+    'bluez-openrc'
+    'brltty-openrc'
+    'bumblebee-openrc'
+    'cups-openrc'
+    'cyrus-sasl-openrc'
+    'dbus-openrc'
+    'dhcp-openrc'
+    'displaymanager-openrc'
+    'dnsmasq-openrc'
+    'freefall-openrc'
+    'fuse-openrc'
+    'git-openrc'
+    'haveged-openrc'
+    'lighttpd-openrc'
+    'lirc-openrc'
+    'lm_sensors-openrc'
+    'metalog-openrc'
+    'mysql-openrc'
+    'networkmanager-openrc'
+    'nginx-openrc'
+    'ntp-openrc'
+    'nvidia-utils-openrc'
+    'openrc-settingsd'
+    'openslp-openrc'
+    'postfix-openrc'
+    'postgresql-openrc'
+    'rsync-openrc'
+    'samba-openrc'
+    'sane-openrc'
+    'subversion-openrc'
+    'syslog-ng-openrc'
+    'unbound-openrc'
+    'wicd-openrc'
+)
+
+package() {
+    install -Dm 0755 artix.something "${pkgdir}/etc/something"
+}

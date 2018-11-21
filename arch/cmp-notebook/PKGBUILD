@@ -1,0 +1,38 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgname=sbp-cmp-notebook
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta package: OpenRC specific system libraries"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+conflicts=('sbp-cmp-laptop' 'sbp-cmp-workstation' 'sbp-cmp-server')
+install=notebook.install
+source=(
+    'notebook.install'
+    'notebook.network'
+    )
+depends=(
+    'sbp-sys-base'
+    'sbp-sys-init'
+    'sbp-sys-uefi'
+    'bbswitch-dkms'
+    'bumblebee'
+    'cuda'
+    'lib32-nvidia-utils'
+    'lib32-virtualgl'
+    'mesa'
+    'mesa-demos'
+    'nvidia-dkms'
+    'nvidia-settings'
+    'nvidia-utils'
+    'ocl-icd'
+    'opencl-nvidia'
+    'primus'
+)
+
+package() {
+    install -dm 0755 "${pkgdir}/etc/udev/rules.d"
+    install -Dm 0755 notebook.network "${pkgdir}/etc/udev/rules.d/10-network.rules"
+}

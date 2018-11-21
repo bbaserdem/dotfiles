@@ -43,6 +43,8 @@ Plugin 'baskerville/vim-sxhkdrc'
 " Plugin 'numirias/semshi'
 " Grammar checker
 Plugin 'rhysd/vim-grammarous'
+"" Gentoo syntax
+Plugin 'gentoo/gentoo-syntax'
 " After all plugins...
 call vundle#end()
 filetype plugin indent on

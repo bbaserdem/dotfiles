@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# REFIND install/update script
+source="/usr/share/refind"
+target="/esp/EFI/rEFInd"
+art="/tmp/regular"
+
+# Create directory if doesn't exist!
+mkdir -p "${target}"
+
+# Copy over theme files for the regula theme
+git clone https://github.com/bobafetthotmail/refind-theme-regular.git $art || true
+# Copy over images
+for _dir in images icons fonts ; do
+    # Get the stock theme
+    [ -d "${target}/${_dir}" ] && rm --force --recursive "${target}/${_dir}"
+    cp --force --recursive  "${source}/${_dir}" "${target}/${_dir}"
+    # Get the custom theme
+    [ -d "${target}/art_${_dir}" ] && rm --force --recursive "${target}/art_${_dir}"
+    [ -d "${art}/${_dir}" ] && cp --force --recursive "${art}/${_dir}" "${target}/art_${_dir}"
+done
+# Remove the temporary file
+rm -rf $art
+
+# Copy the executable here, and sign it
+cp --force --recursive "${source}/refind_x64.efi" "${target}/refind_x64.efi"
+[ -x /usr/bin/sbsign.sh ] && /etc/sbkeys/sbsign.sh "${target}/refind_x64.efi"
