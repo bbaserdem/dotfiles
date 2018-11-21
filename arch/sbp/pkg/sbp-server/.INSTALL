@@ -1,0 +1,38 @@
+# Maintained by sbp-server
+post_install() {
+
+    echo '[sbp-server]==> Installing meta package . . .'
+
+    # Do hostname
+    echo '[sbp-server]==> Doing hostname and hosts . . .'
+    echo 'sbpserver' > /etc/hostname
+    echo '127.0.0.1 localhost' >  /etc/hosts
+    echo '::1       localhost' >> /etc/hosts
+    echo '127.0.1.1 sbpserver.localdomain sbpserver' >> /etc/hosts
+
+    # Enable SSH
+    echo '[sbp-server]==> Enabling SSH socket . . .'
+    systemctl enable sshd.socket
+
+    # Setting up git user
+    echo '[sbp-server]==> Setting git user . . .'
+    useradd --home-dir /srv/git --create-home --user-group \
+        --shell /usr/bin/git-shell git
+    mkdir /srv/git/.ssh
+    chown git:git /srv/git/.ssh
+    chmod 700 /srv/git/.ssh
+
+    # Setting up syncthing user
+    echo '[sbp-server]==> Setting syncthing user and enabling daemon . . .'
+    useradd --home-dir /srv/syncthing --create-home --user-group \
+        --shell /usr/bin/nologin syncthing
+    systemctl enable syncthing@syncthing.service
+
+    echo '[sbp-server]==> Installation done! Check log for errors.'
+    post_upgrade
+}
+
+post_upgrade() {
+    echo '[sbp-server]==> Upgrading . . .'
+    echo '[sbp-server]==> Nothing to do.'
+}

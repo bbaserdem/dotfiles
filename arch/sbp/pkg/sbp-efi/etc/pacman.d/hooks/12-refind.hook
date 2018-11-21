@@ -1,0 +1,12 @@
+# Maintained by bbaserdem-efi
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = refind-efi
+
+[Action]
+Description = Updating, and signing rEFInd
+When = PostTransaction
+Exec = /etc/sbkeys/update-refind.sh
+Depends = sbsigntools

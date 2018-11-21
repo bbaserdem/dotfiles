@@ -1,0 +1,19 @@
+# Maintained by sbp-gui
+post_install() {
+    echo '[sbp-gui]==> Installing meta package . . .'
+    # Modify lightdm-theme
+    echo '[sbp-laptop]==> Enabling lightdm . . .'
+    sed -i 's|^#greeter-session=.*|greeter-session=|g' /etc/lightdm/lightdm.conf
+    sed -i 's|^greeter-session=|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
+    sed -i 's|^webkit_theme.*|webkit_theme = litarvan|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    sed -i 's|^background_images.*|background_images = /usr/share/backgrounds/elementary/|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    sed -i 's|^logo.*|logo = /usr/share/lightdm-webkit/themes/litarvan/images/arch.svg|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    sed -i 's|^user_image.*|user_image = /usr/share/lightdm-webkit/themes/litarvan/images/default_user.png|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    systemctl enable lightdm.service
+    post_upgrade
+}
+
+post_upgrade() {
+    echo '[sbp-gui]==> Upgrading . . .'
+    echo '[sbp-gui]==> Nothing to upgrade.'
+}
