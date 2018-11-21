@@ -1,17 +1,17 @@
-# Maintained by sbp-arch
+# Maintained by sbp-sys-arch
 post_install() {
 
-    echo '[sbp-arch]==> Installing meta package …'
+    echo '[sbp-sys-arch]==> Installing meta package …'
 
     # Networking
-    echo '[sbp-arch]==> Enabling networking …'
+    echo '[sbp-sys-arch]==> Enabling networking …'
     systemctl enable dhcpcd.service
     systemctl enable unbound.service
     systemctl enable roothints.timer
     systemctl enable iwd.service
 
     # Set timeout to 10 seconds
-    echo '[sbp-arch]==> Reducing systemd timeout to 10 seconds …'
+    echo '[sbp-sys-arch]==> Reducing systemd timeout to 10 seconds …'
     sed -i '/DefaultTimeoutStartSec/s/^#//g'        /etc/systemd/system.conf
     sed -i '/DefaultTimeoutStartSec/s/=.*/=10s/'    /etc/systemd/system.conf
     sed -i '/DefaultTimeoutStopSec/s/^#//g'         /etc/systemd/system.conf
@@ -20,52 +20,52 @@ post_install() {
     sed -i '/HoldoffTimeoutSec/s/=.*/=10s/'         /etc/systemd/logind.conf
 
     # TLP service
-    echo '[sbp-arch]==> Enabling TLP …'
+    echo '[sbp-sys-arch]==> Enabling TLP …'
     systemctl enable tlp.service
     systemctl enable tlp-sleep.service
 
     # Firewall
-    echo '[sbp-arch]==> Enabling firewall …'
+    echo '[sbp-sys-arch]==> Enabling firewall …'
     systemctl enable nftables.service
 
     # Bluetooth
-    echo '[sbp-arch]==> Enabling bluetooth …'
+    echo '[sbp-sys-arch]==> Enabling bluetooth …'
     systemctl enable bluetooth.service
 
     # CUPS
-    echo '[sbp-arch]==> Enabling CUPS …'
+    echo '[sbp-sys-arch]==> Enabling CUPS …'
     systemctl enable org.cups.cupsd.service
 
     # Cpupower package
-    echo '[sbp-arch]==> Enabling cpupower …'
+    echo '[sbp-sys-arch]==> Enabling cpupower …'
     systemctl enable cpupower.service
 
     # Activate snapper
-    echo '[sbp-arch]==> Enabling snapper …'
+    echo '[sbp-sys-arch]==> Enabling snapper …'
     systemctl enable snapper-timeline.timer
     systemctl enable snapper-cleanup.timer
 
     # Enable periodic trim
-    echo '[sbp-arch]==> Enabling trim …'
+    echo '[sbp-sys-arch]==> Enabling trim …'
     systemctl enable fstrim.timer
 
     # Enable periodic reflector
-    echo '[sbp-arch]==> Enabling pacman mirrorlist updates …'
+    echo '[sbp-sys-arch]==> Enabling pacman mirrorlist updates …'
     systemctl enable reflector.service
     systemctl enable reflector.timer
 
     # Enable Machine-Check Exception logging
-    echo '[sbp-arch]==> Enabling Machine-Check Exception (MCE) logging …'
+    echo '[sbp-sys-arch]==> Enabling Machine-Check Exception (MCE) logging …'
     systemctl enable ras-mc-ctl.service
     systemctl enable rasdaemon.service
 
-    echo '[sbp-arch]==> Installation complete! Check log for errors!'
-    echo '[sbp-arch]!!> Be sure to set up nftables! …'
+    echo '[sbp-sys-arch]==> Installation complete! Check log for errors!'
+    echo '[sbp-sys-arch]!!> Be sure to set up nftables! …'
     post_upgrade
 }
 
 post_upgrade() {
 
-    echo '[sbp-arch]==> Upgrading …'
-    echo '[sbp-arch]==> Nothing to upgrade.'
+    echo '[sbp-sys-arch]==> Upgrading …'
+    echo '[sbp-sys-arch]==> Nothing to upgrade.'
 }

@@ -1,4 +1,4 @@
-# Managed by sbp-arch
+# Managed by sbp-sys-arch
 [Unit]
 Description=Update root hints for unbound
 After=network.target

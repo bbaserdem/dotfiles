@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Maintained by sbp-sys-uefi
+#
 # REFIND install/update script
 source="/usr/share/refind"
 target="/esp/EFI/rEFInd"
@@ -24,4 +25,4 @@ rm -rf $art
 
 # Copy the executable here, and sign it
 cp --force --recursive "${source}/refind_x64.efi" "${target}/refind_x64.efi"
-[ -x /usr/bin/sbsign.sh ] && /etc/sbkeys/sbsign.sh "${target}/refind_x64.efi"
+[ -x /usr/bin/sbsign.sh ] && /usr/bin/sbsign.sh "${target}/refind_x64.efi"

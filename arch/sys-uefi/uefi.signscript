@@ -1,5 +1,5 @@
 #!/bin/bash
-# Maintained by sbp-efi
+# Maintained by sbp-sys-uefi
 _loc="/etc/refind.d/keys"
 _key="${_loc}/refind_local.key"
 _cer="${_loc}/refind_local.cer"

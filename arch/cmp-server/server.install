@@ -1,17 +1,17 @@
-# Maintained by sbp-server
+# Maintained by sbp-cmp-server
 post_install() {
 
-    echo '[sbp-server]==> Installing meta package …'
+    echo '[sbp-cmp-server]==> Installing meta package …'
 
     # Do hostname
-    echo '[sbp-server]==> Doing hostname and hosts …'
+    echo '[sbp-cmp-server]==> Doing hostname and hosts …'
     echo 'sbpserver' > /etc/hostname
     echo '127.0.0.1 localhost' >  /etc/hosts
     echo '::1       localhost' >> /etc/hosts
     echo '127.0.1.1 sbpserver.localdomain sbpserver' >> /etc/hosts
 
     # Enable SSH
-    echo '[sbp-server]==> Enabling SSH socket …'
+    echo '[sbp-cmp-server]==> Enabling SSH socket …'
     if [ -x /bin/systemctl ] ; then
         systemctl enable sshd.socket
     elif [ -x /bin/rc-update ] ; then
@@ -19,7 +19,7 @@ post_install() {
     fi
 
     # Setting up git user
-    echo '[sbp-server]==> Setting git user …'
+    echo '[sbp-cmp-server]==> Setting git user …'
     useradd --home-dir /srv/git --create-home --user-group \
         --shell /usr/bin/git-shell git
     mkdir /srv/git/.ssh
@@ -27,7 +27,7 @@ post_install() {
     chmod 700 /srv/git/.ssh
 
     # Setting up syncthing user
-    echo '[sbp-server]==> Setting syncthing user and enabling daemon …'
+    echo '[sbp-cmp-server]==> Setting syncthing user and enabling daemon …'
     useradd --home-dir /srv/syncthing --create-home --user-group \
         --shell /usr/bin/nologin syncthing
     if [ -x /bin/systemctl ] ; then
@@ -36,11 +36,11 @@ post_install() {
         echo "Haven't configured yet"
     fi
 
-    echo '[sbp-server]==> Installation done! Check log for errors.'
+    echo '[sbp-cmp-server]==> Installation done! Check log for errors.'
     post_upgrade
 }
 
 post_upgrade() {
-    echo '[sbp-server]==> Upgrading …'
-    echo '[sbp-server]==> Nothing to do.'
+    echo '[sbp-cmp-server]==> Upgrading …'
+    echo '[sbp-cmp-server]==> Nothing to do.'
 }

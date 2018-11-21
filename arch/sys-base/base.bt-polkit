@@ -1,4 +1,4 @@
-/* Managed by sbp-base */
+/* Managed by sbp-sys-base */
 polkit.addRule(function(action, subject) {
     if ((action.id == "org.blueman.network.setup" ||
          action.id == "org.blueman.dhcp.client" ||

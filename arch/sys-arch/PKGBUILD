@@ -19,6 +19,10 @@ source=(
     'arch.updater'
     )
 depends=(
+    'archlinux-appstream-data'
+    'archlinux-keyring'
+    'archlinux-menus'
+    'archlinux-xdg-menu'
     'linux'
     'linux-headers'
     'sysfsutils'
@@ -32,3 +36,9 @@ package() {
     install -Dm 0644 arch.roothints.timer   "${pkgdir}/etc/systemd/system/roothints.timer"
     install -Dm 0644 arch.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
 }
+md5sums=('ab6a6062a1beeaa6e4c0fbe867576f9b'
+         'aa90fefbdc42a687898020965b6fa575'
+         'a35ddc315dd663272d00ec418e9c1938'
+         '69bfe9ec9d04533ef13317c9826d3700'
+         'b57e09d0bdd118c3c2864bd23823d2e8'
+         'dcdd1a79323fbaa2ccc1d3ecabc80c07')

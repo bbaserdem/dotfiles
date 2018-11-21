@@ -1,4 +1,4 @@
-# Maintained by sbp-efi
+# Maintained by sbp-sys-uefi
 timeout 5
 use_nvram false
 screensaver 60

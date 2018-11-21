@@ -1,4 +1,4 @@
-# Managed by sbp-arch
+# Managed by sbp-sys-arch
 [Unit]
 Description=Automatic Update of packages
 After=systemd-networkd-wait-online.service

@@ -1,2 +1,2 @@
-# Maintained by sbp-base
+# Maintained by sbp-sys-base
 fs.inotify.max_user_watches=204800

@@ -1,11 +1,10 @@
-# Maintained by sbp-gui
+# Maintained by sbp-gui-base=base
 post_install() {
-    echo '[sbp-gui]==> Installing meta package …'
+    echo '[sbp-gui-base]==> Installing meta package …'
 
     # Modify lightdm-theme
-    echo '[sbp-laptop]==> Enabling lightdm …'
-    sed -i 's|^#greeter-session=.*|greeter-session=|g' /etc/lightdm/lightdm.conf
-    sed -i 's|^greeter-session=|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
+    echo '[sbp-gui-base]==> Enabling lightdm …'
+    sed -i 's|^#\?greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
     sed -i 's|^webkit_theme.*|webkit_theme = litarvan|g' /etc/lightdm/lightdm-webkit2-greeter.conf
     sed -i 's|^background_images.*|background_images = /usr/share/backgrounds/elementary/|g' /etc/lightdm/lightdm-webkit2-greeter.conf
     sed -i 's|^logo.*|logo = /usr/share/lightdm-webkit/themes/litarvan/images/arch.svg|g' /etc/lightdm/lightdm-webkit2-greeter.conf
@@ -13,7 +12,8 @@ post_install() {
     if   [ -x /bin/systemctl ] ; then
         systemctl enable lightdm.service
     elif [ -x /bin/rc-update ] ; then
-        echo "I don't know how to do OpenRC yet …"
+        rc-update add xdm default
+        sed -i 's/DISPLAYMANAGER="xdm"/DISPLAYMANAGER="lightdm"/' /etc/conf.d/xdm
     fi
 
     # Make game library folders
@@ -25,6 +25,6 @@ post_install() {
 }
 
 post_upgrade() {
-    echo '[sbp-gui]==> Upgrading …'
-    echo '[sbp-gui]==> Nothing to upgrade.'
+    echo '[sbp-gui-base]==> Upgrading …'
+    echo '[sbp-gui-base]==> Nothing to upgrade.'
 }

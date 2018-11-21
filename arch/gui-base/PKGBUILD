@@ -13,11 +13,6 @@ source=(
     'gui.install'
 )
 depends=(
-    'sbp-sys-base'
-    'arduino'               # Arduino stuff
-    'arduino-avr-core'
-    'arduino-docs'
-    'arm'
     'xorgproto'             # Xorg things
     'xf86-video-vesa'
     'xorg-bdftopcf'
@@ -110,6 +105,9 @@ depends=(
     'xcursor-comix'                     # Comic cursor
     'archlinux-artwork'     # Wallpapers
     'archlinux-wallpaper'
+    'arduino'               # Arduino stuff
+    'arduino-avr-core'
+    'arduino-docs'
     'elementary-wallpapers-git'
     'gnome-backgrounds'
     'plasma-workspace-wallpapers'
@@ -217,8 +215,10 @@ depends=(
 )
 
 package() {
-    install -dm 0755 "${pkgdir}/opt/steam"
-    install -dm 0755 "${pkgdir}/opt/wine"
+    install -dm 0775 "${pkgdir}/opt/steam"
+    install -dm 0775 "${pkgdir}/opt/wine"
     install -dm 0755 "${pkgdir}/usr/share/xsessions"
     install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
 }
+md5sums=('ba159b8c80fed9b26fc51e7bfba631d5'
+         '8222f87fdbe5f2fc8ef121e560226d2b')

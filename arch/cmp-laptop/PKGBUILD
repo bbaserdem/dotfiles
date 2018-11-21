@@ -16,9 +16,6 @@ source=(
     'laptop.network'
 )
 depends=(
-    'sbp-sys-base'
-    'sbp-sys-init'
-    'sbp-sys-uefi'
     'mesa'
     'lib32-mesa'
     'mesa-demos'
@@ -38,3 +35,7 @@ package() {
     install -Dm 0644 laptop.backlight "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
     install -Dm 0644 laptop.battery   "${pkgdir}/etc/udev/rules.d/91-battery.rules"
 }
+md5sums=('8ae4c2675fe3966171c274f86a6ffef4'
+         '3d182f82920b7f1df6a371cc1f273d6c'
+         '1b0f574670ca407cec14a7ac525e0e20'
+         '2ff77989adfe4f3e1f28f67793554f97')

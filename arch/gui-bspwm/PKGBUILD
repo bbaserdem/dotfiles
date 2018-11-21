@@ -26,3 +26,4 @@ depends=(
     'udiskie'               # Tray icon mount
     'xss-lock'              # Locks screen on power events
 )
+

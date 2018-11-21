@@ -1,5 +1,4 @@
-# GRUB boot loader configuration
-
+# Maintained by sbp-sys-bios
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=5
 GRUB_DISTRIBUTOR="Arch"

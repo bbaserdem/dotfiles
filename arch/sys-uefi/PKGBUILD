@@ -7,8 +7,8 @@ arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
 licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
-provides='sbp-sys-boot'
-conflicts='sbp-sys-bios'
+provides=('sbp-sys-boot')
+conflicts=('sbp-sys-bios')
 install=uefi.install
 source=(
     'uefi.install'
@@ -34,8 +34,16 @@ package() {
     install -Dm 0755 uefi.refind.conf.example   "${pkgdir}/esp/EFI/rEFInd/refind.conf.example"
     install -Dm 0755 uefi.kernel.conf.example   "${pkgdir}/boot/refind_linux.conf.example"
     install -Dm 0644 uefi.longterm.hook         "${pkgdir}/etc/pacman.d/hooks/11-lts.hook"
-    install -Dm 0644 uefi.stable                "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
-    install -Dm 0755 uefi.refind.install        "${pkgdir}/usr/share/refind/update-refind.sh"
-    install -Dm 0644 uefi.refind-hook           "${pkgdir}/etc/pacman.d/hooks/12-refind.hook"
+    install -Dm 0644 uefi.stable.hook           "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
+    install -Dm 0755 uefi.refind.update         "${pkgdir}/usr/share/refind/update-refind.sh"
+    install -Dm 0644 uefi.refind.hook           "${pkgdir}/etc/pacman.d/hooks/12-refind.hook"
     install -Dm 0755 uefi.signscript            "${pkgdir}/usr/bin/sbsign.sh"
 }
+md5sums=('563631a53ee1bc575f5cb8abcb5f6e64'
+         '70d5f124e7ca91f13d629a3485ecbd3f'
+         '870e1b69bea4677d58d38012f375d629'
+         'c921a69f4ba7257f9516fb1bcea5fb22'
+         '44c3e77d21abd16a1ab183af37f2fb98'
+         'f71a8c08029e14a1994ea0dba1e8d557'
+         'bf32c501a41818ab6ba481ac8bc38aec'
+         '3e98f6b269cec6cf587f84b6e915a166')

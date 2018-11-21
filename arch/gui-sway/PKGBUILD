@@ -21,3 +21,4 @@ depends=(
     'udiskie'                       # Media tray icon
     'wlroots-git'                   # Wayland library
 )
+

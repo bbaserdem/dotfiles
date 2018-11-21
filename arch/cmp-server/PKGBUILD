@@ -14,9 +14,6 @@ source=(
     'server.network'
     )
 depends=(
-    'sbp-sys-base'
-    'sbp-sys-init'
-    'sbp-sys-uefi'
     'apache'            # Web server
     'dovecot'           # IMAP email server
     'kodi'              # Media file server

@@ -1,47 +1,57 @@
-# Maintained by sbp-base
+# Maintained by sbp-sys-base
 post_install() {
 
-    echo '[sbp-base]==> Installing meta package …'
+    echo '[sbp-sys-base]==> Installing meta package …'
+
+    # Snapshots folder
+    echo '[sbp-sys-base]==> Generating snapshots folder …'
+    mkdir -p /.snapshots
+    chmod 750 /.snapshots
 
     # Networking
-    echo '[sbp-base]==> Configuring networking …'
-    echo '
-# Use us as the local nameserver
-name_servers="::1 127.0.0.1"
-# Add local DNS
-private_interfaces="*"
-# Write local DNS to unbound config file
-unbound_conf=/etc/unbound/resolvconf.conf' >> /etc/resolvconf.conf
+    echo '[sbp-sys-base]==> Configuring networking …'
+    # Openresolv config
+    echo ""                                             >> /etc/resolvconf.conf
+    echo '# Configs: by sbp-sys-base'                   >> /etc/resolvconf.conf
+    echo '# Use us as the local nameserver'             >> /etc/resolvconf.conf
+    echo 'name_servers="::1 127.0.0.1"'                 >> /etc/resolvconf.conf
+    echo '# Add local DNS'                              >> /etc/resolvconf.conf
+    echo 'private_interfaces="*"'                       >> /etc/resolvconf.conf
+    echo '# Write local DNS to unbound config file'     >> /etc/resolvconf.conf
+    echo 'unbound_conf=/etc/unbound/resolvconf.conf'    >> /etc/resolvconf.conf
+    # Unbound config
     sed -i '1 i\include: "/etc/unbound/resolvconf.conf"' /etc/unbound/unbound.conf
-    echo '  private-domain: "intranet"
-  private-domain: "internal"
-  private-domain: "private"
-  private-domain: "corp"
-  private-domain: "home"
-  private-domain: "lan"
-  unblock-lan-zones: yes
-  insecure-lan-zones: yes
-  domain-insecure: "intranet"
-  domain-insecure: "internal"
-  domain-insecure: "private"
-  domain-insecure: "corp"
-  domain-insecure: "home"
-  domain-insecure: "lan"' >> /etc/unbound/unbound.conf
-    echo '
-# Disable WPA supplicant in favor of iwd
-nohook wpa_supplicant
-# Only bind to interfaces renamed by udev
-allowinterfaces wifi ethernet tether broadcast' >> /etc/dhcpcd.conf
+    echo '  private-domain: "intranet"'     >> /etc/unbound/unbound.conf
+    echo '  private-domain: "internal"'     >> /etc/unbound/unbound.conf
+    echo '  private-domain: "private"'      >> /etc/unbound/unbound.conf
+    echo '  private-domain: "corp"'         >> /etc/unbound/unbound.conf
+    echo '  private-domain: "home"'         >> /etc/unbound/unbound.conf
+    echo '  private-domain: "lan"'          >> /etc/unbound/unbound.conf
+    echo '  unblock-lan-zones: yes'         >> /etc/unbound/unbound.conf
+    echo '  insecure-lan-zones: yes'        >> /etc/unbound/unbound.conf
+    echo '  domain-insecure: "intranet"'    >> /etc/unbound/unbound.conf
+    echo '  domain-insecure: "internal"'    >> /etc/unbound/unbound.conf
+    echo '  domain-insecure: "private"'     >> /etc/unbound/unbound.conf
+    echo '  domain-insecure: "corp"'        >> /etc/unbound/unbound.conf
+    echo '  domain-insecure: "home"'        >> /etc/unbound/unbound.conf
+    echo '  domain-insecure: "lan"'         >> /etc/unbound/unbound.conf
+    # DHCPCD config
+    echo ""                                                 >> /etc/dhcpcd.conf
+    echo '# Configs: by sbp-sys-base'                       >> /etc/dhcpcd.conf
+    echo '# Disable WPA supplicant in favor of iwd'         >> /etc/dhcpcd.conf
+    echo 'nohook wpa_supplicant'                            >> /etc/dhcpcd.conf
+    echo '# Only bind to interfaces renamed by udev'        >> /etc/dhcpcd.conf
+    echo 'allowinterfaces wifi ethernet tether broadcast'   >> /etc/dhcpcd.conf
     resolvconf -u
 
     # Configure makepkg
-    echo '[sbp-base]==> Enabling multicore-compilation for makepkg …'
+    echo '[sbp-sys-base]==> Enabling multicore-compilation for makepkg …'
     sed -i '/MAKEFLAGS=/s/^#//g'                     /etc/makepkg.conf
     sed -i '/MAKEFLAGS=/s/=.*/="-j$(nproc)"/g'       /etc/makepkg.conf
     sed -i '/COMPRESSXZ=/s/=.*/==(xz -c -z -T0 -)/g' /etc/makepkg.conf
 
     # Configure pacman
-    echo '[sbp-base]==> Enabling eyecandy and local repo for pacman …'
+    echo '[sbp-sys-base]==> Enabling eyecandy and local repo for pacman …'
     sed -i '/# Misc options/aILoveCandy'            /etc/pacman.conf
     sed -i 's/^#Color/Color/g'                      /etc/pacman.conf
     sed -i 's/^#TotalDownload/TotalDownload/g'      /etc/pacman.conf
@@ -49,7 +59,8 @@ allowinterfaces wifi ethernet tether broadcast' >> /etc/dhcpcd.conf
     sed -i 's/^#VerbosePkgLists/VerbosePkgLists/g'  /etc/pacman.conf
 
     # Configure geoconf
-    echo '[sbp-base]==> Adding apps to geoconf …'
+    echo '[sbp-sys-base]==> Adding apps to geoconf …'
+    echo ""                 >> /etc/geoclue/geoclue.conf
     echo '[redshift-gtk]'   >> /etc/geoclue/geoclue.conf
     echo 'allowed=true'     >> /etc/geoclue/geoclue.conf
     echo 'system=false'     >> /etc/geoclue/geoclue.conf
@@ -66,11 +77,11 @@ allowinterfaces wifi ethernet tether broadcast' >> /etc/dhcpcd.conf
     echo 'users='           >> /etc/geoclue/geoclue.conf
 
     # Configure zsh
-    echo '[sbp-base]==> Adding ZSH home directory …'
+    echo '[sbp-sys-base]==> Adding ZSH home directory …'
     echo 'export ZDOTDIR="${HOME}/.config/zsh"' >> /etc/zsh/zprofile
 
     # Group and user
-    echo '[sbp-base]==> Creating user sbp …'
+    echo '[sbp-sys-base]==> Creating user sbp …'
     if [ "$(getent passwd | grep -c '^sbp')" == "0" ]
     then
         useradd --create-home --groups \
@@ -79,14 +90,16 @@ allowinterfaces wifi ethernet tether broadcast' >> /etc/dhcpcd.conf
     fi
 
     # Set timezone to NY
-    echo '[sbp-base]==> Setting local time (NYC) and enabling NTP …'
+    echo '[sbp-sys-base]==> Setting local time (NYC) and enabling NTP …'
     ln -sf /usr/share/zoneinfo/America/New_York "/etc/localtime"
     timedatectl set-ntp true
     hwclock --systohc
 
     # Set locale
-    echo '[sbp-base]==> Setting up fonts and locale …'
+    echo '[sbp-sys-base]==> Setting up fonts and locale …'
     sed -i '1s/^/en_US.UTF-8 UTF-8\n/' /etc/locale.gen
+    sed -i '1s/^/en_GB.UTF-8 UTF-8\n/' /etc/locale.gen
+    sed -i '1s/^/tr_TR.UTF-8 UTF-8\n/' /etc/locale.gen
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
     locale-gen
 
@@ -94,12 +107,12 @@ allowinterfaces wifi ethernet tether broadcast' >> /etc/dhcpcd.conf
     echo '[sbp-laptop]==> Fixing BTRFS data corruption …'
     sed -i '/SATA_LINKPWR_ON_BAT/s/=".*"/="max_performance"/' /etc/default/tlp
 
-    echo '[sbp-base]==> Installation complete! Check log for errors!'
+    echo '[sbp-sys-base]==> Installation complete! Check log for errors!'
     post_upgrade
 }
 
 post_upgrade() {
 
-    echo '[sbp-base]==> Upgrading …'
-    echo '[sbp-base]==> Nothing to upgrade.'
+    echo '[sbp-sys-base]==> Upgrading …'
+    echo '[sbp-sys-base]==> Nothing to upgrade.'
 }

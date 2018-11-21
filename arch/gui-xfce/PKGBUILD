@@ -63,3 +63,4 @@ depends=(
 package() {
     install -Dm 0755 xfce.wallpaper "${pkgdir}/usr/share/archlinux/wallpaper/archlinux-xfce4.jpg"
 }
+md5sums=('83e1b805fc92b3d1d3faf65158448687')

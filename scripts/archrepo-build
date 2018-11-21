@@ -37,7 +37,7 @@ for _arg in "${@}"; do
             [ -f "${_file}" ] && rm -f "${_file}"
         done
         # Build the package
-        makechrootpkg -cur "${_chroot}"
+        makechrootpkg -ur "${_chroot}"
         cd -
         # Update the database, and upload
         for _file in "${_loc}/"*.pkg.tar.xz ; do
