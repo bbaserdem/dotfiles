@@ -1,0 +1,27 @@
+# Maintainer: Batuhan Başerdem <baserdem.batuhan@gmail.com>
+
+pkgname=nx3-compat
+pkgver=3.4.0
+pkgrel=1
+pkgdesc="NoMachine version 3.4.0-7; for compatibility issues"
+arch=('x86_64')
+url="https://www.nomachine.com/"
+license=('MIT')
+depends=('libcups' 'psmisc')
+makedepends=('python-html2text')
+provides=('nxclient' 'nxnode' 'nxserver')
+conflicts=('freenx' 'nxclient' 'nx-all' 'nx3-all')
+replaces=('nx-all')
+source=("nxclient-3.4.0-7.x86_64.rpm")
+
+package() {
+  # Install program files
+  install -m 755 -d "${pkgdir}/usr/NX"
+  cp -a "${srcdir}/usr/NX" "${pkgdir}/usr/"
+  # Install launchers
+  install -m 755 -d "${pkgdir}/usr/bin/"
+  ln -sf -t "${pkgdir}/usr/bin/" /usr/NX/bin/{nxclient,nxesd,nxkill,nxprint,nxservice,nxssh}
+  # Fix that library
+  ln -sf /lib/libz.so.1 "${pkgdir}/usr/NX/lib/libz.so.1"
+}
+md5sums=('227ac7812cf0d727adca02803f8c3847')
