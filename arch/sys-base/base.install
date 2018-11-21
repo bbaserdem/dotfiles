@@ -47,7 +47,6 @@ allowinterfaces wifi ethernet tether broadcast' >> /etc/dhcpcd.conf
     sed -i 's/^#TotalDownload/TotalDownload/g'      /etc/pacman.conf
     sed -i 's/^#CheckSpace/CheckSpace/g'            /etc/pacman.conf
     sed -i 's/^#VerbosePkgLists/VerbosePkgLists/g'  /etc/pacman.conf
-    echo "\nInclude = /etc/pacman.d/custom"      >> /etc/pacman.conf
 
     # Configure geoconf
     echo '[sbp-base]==> Adding apps to geoconf …'

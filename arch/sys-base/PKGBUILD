@@ -24,8 +24,8 @@ source=(
     'base.zshenv'
 )
 depends=(
-    'sbp-init'              # Init system
-    'sbp-boot'              # Booting system
+    'sbp-sys-init'          # Init system
+    'sbp-sys-boot'          # Booting system
     'bash'                  # Base group
     'bzip2'
     'coreutils'
@@ -194,9 +194,8 @@ depends=(
     'vifm'
     'todoman'               # Tasks manager
     'weechat'               # IRC client
-    'arm'                   # Arduino stuff
+    'arm-none-eabi-gcc'     # Arduino stuff
     'arm-none-eabi-binutils'
-    'arm-none-eabi-gcc'
     'arm-none-eabi-newlib'
     'avr-binutils'
     'avr-gcc'
@@ -258,3 +257,16 @@ package() {
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/nano"
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vi"
 }
+md5sums=('0d3afa7b391a50313df9449b80240807'
+         '2adc9c1077ee29381b6ffedf871744f4'
+         '9806f3d492c6e42f3c8d44f3f5cd7d52'
+         'aa695fb291e6b908235fe2570b0e9877'
+         '74f44c8fe33edf2c1806d30b7e699c96'
+         '2b4a7715d47beadb71db5f7b3369a4c9'
+         '98b541ce9c3fd6fff43d8d4ae0762215'
+         '00e5bc63b7bb82526516df8f45c4745c'
+         'df0911ed7f3bbf285de4e3c08662dafd'
+         '586c14c5f87f0097e0dfcb0454bfc2a6'
+         '18c4e485034ee909f9d4f3c7fab3954f'
+         '1ddf47f1278958e4cc65bfbd96dbd6f7'
+         '7128851ee00d22284cbdbe9b8257ad14')
