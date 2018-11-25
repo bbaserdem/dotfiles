@@ -1,0 +1,11 @@
+#!/usr/bin/openrc-run
+# Managed by sbp-sys-artix
+
+pidfile="/run/iwd.pid"
+command='/usr/lib/iwd/iwd --nointerfaces "wlan[0-9]*"'
+command_background="yes"
+
+depend() {
+    need dbus udev
+    keyword -shutdown
+}

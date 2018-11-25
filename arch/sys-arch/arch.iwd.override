@@ -1,0 +1,8 @@
+# Maintained by sbp-sys-arch
+[Unit]
+Before=network.target
+Wants=network.target
+
+[Service]
+ExecStart=
+ExecStart=/usr/lib/iwd/iwd --nointerfaces "wlan[0-9]*"
