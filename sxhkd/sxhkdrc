@@ -74,7 +74,7 @@ Print + {_,shift,alt}
 super + shift + Escape
     pkill -USR1 -x sxhkd; \
     $XDG_CONFIG_HOME/bspwm/config; \
-    polybar-msg cmd restart
+    pgrep polybar && polybar-msg cmd restart || polybar top & disown
 
 # Open python terminal
 XF86Calculator
