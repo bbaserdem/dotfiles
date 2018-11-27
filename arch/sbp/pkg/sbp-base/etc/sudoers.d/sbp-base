@@ -1,0 +1,5 @@
+# Managed by sbp-base package
+
+%wheel ALL=(ALL) ALL
+%wheel ALL= NOPASSWD: /bin/systemctl start pacman-update.service
+Defaults passwd_timeout=0

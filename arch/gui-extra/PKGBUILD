@@ -1,0 +1,45 @@
+# Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
+pkgname=sbp-gui-extra
+pkgver=1.0
+pkgrel=1
+pkgdesc="Meta package: Generic libraries and programs with GUI"
+arch=('any')
+url="https://github.com/bbaserdem/dotfiles"
+licence=(MIT)
+validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
+install=extra.install
+source=(
+    'extra.install'
+)
+depends=(
+    'steam-fonts'                   # AUR: Fonts for steam
+    'arduino'               # Arduino stuff
+    'arduino-avr-core'
+    'arduino-docs'
+    'trezor-bridge-bin'             # Hardware BCN wallet
+    'audacity'                              # Audio manipulator
+    'blender'                               # 3d designing utility
+    'darktable'                             # Raw format editor
+    'gimp'                                  # GNU Image Manipulation
+    'gourmet'                               # Recipe tracker
+    'inkscape'                              # Vector graphics editor
+    'openscad'                              # CAD programming language
+    'skypeforlinux-stable-bin'              # AUR: Skype app
+    'steam'
+    'steam-native-runtime'
+    'steamos-compositor'
+    'stellarium'                            # Star viewer
+    'wine-staging'                          # Windows compat
+    'wine_gecko'
+    'wine-mono'
+    'lib32-libxml2'
+    'lib32-mpg123'
+    'lib32-lcms2'
+    'lib32-giflib'
+    'lib32-libpng'
+    'lib32-gnutls'
+    'lib32-gst-plugins-base'
+    'lib32-openal'
+    'lib32-gst-plugins-good'
+)
+md5sums=('e919e15571fce9686e5678fcf266d009')

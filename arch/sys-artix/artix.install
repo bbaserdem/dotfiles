@@ -1,0 +1,58 @@
+# Maintained by sbp-sys-artix
+post_install() {
+
+    echo '[sbp-sys-artix]==> Installing meta package …'
+
+    echo '[sbp-sys-artix]==> Enabling boot services …'
+    rc-update add lvm boot
+    rc-update add device-mapper boot
+
+    # Networking
+    echo '[sbp-sys-artix]==> Enabling networking …'
+    # Enable roothints somehow ???
+    rc-update add dhcpcd default
+    rc-update add iwd default
+    rc-update add unbound default
+
+    # TLP service
+    echo '[sbp-sys-artix]==> Enabling TLP …'
+    # Does tlp-sleep needs to be enabled in extra
+    rc-update add tlp default
+
+    # Firewall
+    echo '[sbp-sys-artix]==> Enabling firewall …'
+
+    # Bluetooth
+    echo '[sbp-sys-artix]==> Enabling bluetooth …'
+    rc-update add bluez default
+
+    # CUPS
+    echo '[sbp-sys-artix]==> Enabling CUPS …'
+    rc-update add cups default
+
+    # Cpupower package
+    echo '[sbp-sys-artix]==> Enabling cpupower …'
+    rc-update add cpupower default
+
+    # Activate snapper
+    echo '[sbp-sys-artix]==> Enabling snapper …'
+
+    # Enable periodic trim
+    echo '[sbp-sys-artix]==> Enabling trim …'
+
+    # Enable periodic reflector
+    echo '[sbp-sys-artix]==> Enabling pacman mirrorlist updates …'
+
+    # Enable Machine-Check Exception logging
+    echo '[sbp-sys-artix]==> Enabling Machine-Check Exception (MCE) logging …'
+
+    echo '[sbp-sys-artix]==> Installation complete! Check log for errors!'
+    echo '[sbp-sys-artix]!!> Be sure to set up nftables! …'
+    post_upgrade
+}
+
+post_upgrade() {
+
+    echo '[sbp-sys-artix]==> Upgrading …'
+    echo '[sbp-sys-artix]==> Nothing to upgrade.'
+}

@@ -54,4 +54,4 @@ fi
 
 # Start i3 (can differentiate ttys here I think)
 . "${XDG_CONFIG_HOME}/i3/parse_config.sh"
-exec systemd-inhibit --what=handle-power-key i3
+exec systemd-inhibit --what=handle-power-key bspwm

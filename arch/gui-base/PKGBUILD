@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -83,7 +83,6 @@ depends=(
     'noto-fonts-emoji'              # Emoji font
     'otf-fira-code'                 # Ligatures
     'siji-git'                      # AUR: Nice monospace font
-    'steam-fonts'                   # AUR: Fonts for steam
     'tamsyn-font'                   # Nice monospace font
     'terminess-powerline-font-git'  # AUR: Console fonts
     'ttf-droid'                     # Default looking font
@@ -105,9 +104,6 @@ depends=(
     'xcursor-comix'                     # Comic cursor
     'archlinux-artwork'     # Wallpapers
     'archlinux-wallpaper'
-    'arduino'               # Arduino stuff
-    'arduino-avr-core'
-    'arduino-docs'
     'elementary-wallpapers-git'
     'gnome-backgrounds'
     'plasma-workspace-wallpapers'
@@ -148,30 +144,17 @@ depends=(
     'libcanberra-pulse'
     'pdfjs'                         # PDF rendering to webpages
     'polkit-gnome'                  # Authentication
-    'trezor-bridge-bin'             # Hardware BCN wallet
-    'audacity'                              # Audio manipulator
-    'blender'                               # 3d designing utility
-    'darktable'                             # Raw format editor
-    'gimp'                                  # GNU Image Manipulation
     'gitg'                                  # Git visualizer
-    'gourmet'                               # Recipe tracker
-    'inkscape'                              # Vector graphics editor
     'libreoffice-fresh'                     # Office suite
     'neovim-gtk-git'                        # AUR: Neovim gui
     'octave'                                # Octave
-    'openscad'                              # CAD programming language
     'pamac-aur'                             # Package manager
     'picard'                                # Music tagger
     'qutebrowser'                           # Browser with vim binding
     'remmina'                               # Remote manager
     'freerdp'
     'rambox-bin'                            # AUR: Communication app
-    'skypeforlinux-stable-bin'              # AUR: Skype app
     'spyder3'                               # Python dev environment
-    'steam'
-    'steam-native-runtime'
-    'steamos-compositor'
-    'stellarium'                            # Star viewer
     'syncthing-gtk'                         # Tray icon for syncthing
     'texlive-core'                          # LaTeX
     'texlive-science'
@@ -180,19 +163,7 @@ depends=(
     'texlive-latexextra'
     'texlive-pictures'
     'texlive-pstricks'
-    'wine-staging'                          # Windows compat
     'samba'
-    'wine_gecko'
-    'wine-mono'
-    'lib32-libxml2'
-    'lib32-mpg123'
-    'lib32-lcms2'
-    'lib32-giflib'
-    'lib32-libpng'
-    'lib32-gnutls'
-    'lib32-gst-plugins-base'
-    'lib32-openal'
-    'lib32-gst-plugins-good'
     'zotero'                                # Referance manager
     'gcc6'                                  # Matlab dependencies
     'gconf'
@@ -215,10 +186,8 @@ depends=(
 )
 
 package() {
-    install -dm 0775 "${pkgdir}/opt/steam"
-    install -dm 0775 "${pkgdir}/opt/wine"
     install -dm 0755 "${pkgdir}/usr/share/xsessions"
     install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
 }
 md5sums=('ba159b8c80fed9b26fc51e7bfba631d5'
-         '8222f87fdbe5f2fc8ef121e560226d2b')
+         '5db2ace115a5dd337809d021c5ba14e1')

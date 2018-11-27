@@ -1,0 +1,14 @@
+# Managed by sbp-base
+[Unit]
+Description=Automatic Update of packages
+After=systemd-networkd-wait-online.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/pacman -Syuq --noconfirm
+TimeoutStopSec=180
+KillMode=process
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

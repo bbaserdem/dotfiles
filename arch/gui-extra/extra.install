@@ -1,0 +1,19 @@
+# Maintained by sbp-gui-extra
+post_install() {
+    echo '[sbp-gui-extra]==> Installing meta package …'
+
+    # Make game library folders
+    echo "[sbp-gui-extra]==> Priming steam library and wine folder in /opt …"
+    mkdir -p /opt/{steam,wine}
+    chown sbp:games /opt/steam
+    chmod 775 /opt/steam
+    chown sbp:games /opt/wine
+    chmod 775 /opt/wine
+
+    post_upgrade
+}
+
+post_upgrade() {
+    echo '[sbp-gui-extra]==> Upgrading …'
+    echo '[sbp-gui-extra]==> Nothing to upgrade.'
+}

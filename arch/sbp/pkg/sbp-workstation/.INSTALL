@@ -1,0 +1,20 @@
+# Maintained by sbp-workstation
+post_install() {
+
+    echo '[sbp-workstation]==> Installing meta package . . .'
+
+    # Do hostname
+    echo '[sbp-workstation]==> Doing hostname and hosts . . .'
+    echo 'sbpworkstation' > /etc/hostname
+    echo '127.0.0.1 localhost' >  /etc/hosts
+    echo '::1       localhost' >> /etc/hosts
+    echo '127.0.1.1 sbpworkstation.localdomain sbpworkstation' >> /etc/hosts
+
+    echo '[sbp-workstation]==> Installation done! Check log for errors.'
+    post_upgrade
+}
+
+post_upgrade() {
+    echo '[sbp-workstation]==> Upgrading . . .'
+    echo '[sbp-workstation]==> Nothing to do.'
+}

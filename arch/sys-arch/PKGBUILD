@@ -12,6 +12,7 @@ conflicts=('sbp-sys-artix')
 install=arch.install
 source=(
     'arch.install'
+    'arch.iwd.override'
     'arch.reflector.service'
     'arch.reflector.timer'
     'arch.roothints.service'
@@ -30,6 +31,7 @@ depends=(
 )
 
 package() {
+    install -Dm 0644 arch.iwd.override      "${pkgdir}/etc/systemd/system/iwd.service.d/override.conf"
     install -Dm 0644 arch.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
     install -Dm 0644 arch.reflector.timer   "${pkgdir}/etc/systemd/system/reflector.timer"
     install -Dm 0644 arch.roothints.service "${pkgdir}/etc/systemd/system/roothints.service"
