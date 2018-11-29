@@ -147,10 +147,8 @@
 !/newsboat/config
 !/newsboat/urls
 
-# NVIM: Grab the config and colors, not the bundle
+# NVIM: Grab the config and colors, not the plugins
 !/nvim
-!/nvim/colors
-!/nvim/colors/**
 !/nvim/ginit.vim
 !/nvim/init.vim
 

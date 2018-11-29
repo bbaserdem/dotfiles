@@ -37,12 +37,8 @@ pip install --user neovim
 pip install --user neovim-remote
 pip install --user pexpect
 pip2 install --user neovim
-if [ ! -e "${HOME}/.config/nvim/bundle" ] ; then
-    mkdir ~/.config/nvim/bundle
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
-    nvim +PluginInstall +qall
-fi
-~/.config/nvim/bundle/YouCompleteMe/install.py --clang-completer --system-libclang
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +PlugInstall +qall
 read -rsp $'Press any key to continue...' -n1 key
 
 # ZIM
