@@ -94,7 +94,7 @@ super + alt + Escape
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 super + {_,shift + }{Down,Up}
-    bspc node -{f,s} {next,prev}.local
+    if [ "$(bspc query --desktop focused --nodes | wc -l)" -gt 1 ] ; then  bspc node -{f,s} {next,prev}.local ; fi
 # Change and move to desktop
 super + {_,shift + }{Left,Right}
     bspc {desktop -f,node -d} {prev,next}
