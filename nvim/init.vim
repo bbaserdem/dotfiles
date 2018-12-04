@@ -7,46 +7,45 @@ syntax on
 
 "-----Plugin management-----"
 set rtp+=$XDG_CONFIG_HOME/nvim/bundle/Vundle.vim
-call vundle#begin('$XDG_CONFIG_HOME/nvim/bundle')
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " Colorscheme
-Plugin 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 " NERDtree file browser
-Plugin 'scrooloose/nerdtree'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Status bar mods
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
 " Autocomplete for programming
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Linting
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 " Tags (What is this?)
 " Plugin 'ludovicchabant/vim-gutentags'
 " Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Matlab editor
-Plugin 'daeyun/vim-matlab'
-Plugin 'vim-scripts/MatlabFilesEdition'
+Plug 'daeyun/vim-matlab'
+Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
-Plugin 'mhinz/neovim-remote'
-Plugin 'lervag/vimtex'
+Plug 'mhinz/neovim-remote'
+Plug 'lervag/vimtex'
 " I3 vim
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'baskerville/vim-sxhkdrc'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'baskerville/vim-sxhkdrc'
 " Python highlighting
 " Plugin 'numirias/semshi'
 " Grammar checker
-Plugin 'rhysd/vim-grammarous'
+Plug 'rhysd/vim-grammarous'
 "" Gentoo syntax
-Plugin 'gentoo/gentoo-syntax'
+Plug 'gentoo/gentoo-syntax'
 " After all plugins...
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 
@@ -159,13 +158,14 @@ let g:gitgutter_sign_modified_removed = ''
 
 
 "-----YouCompleteMe-----"
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.config/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = 'python'
 
 
 
 "-----Linting-----"
 let g:ale_sign_column_always = 1
+let g:ale_set_hightlights = 0
 
 
 
@@ -175,7 +175,7 @@ let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpForwardTrigger="<C-J>"
 let g:UltiSnipsJumpBackwardTrigger="<C-K>"
-
+let g:python_host_prog='/usr/bin/python'
 
 
 "-----Matlab-----"

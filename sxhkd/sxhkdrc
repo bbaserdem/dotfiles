@@ -66,6 +66,9 @@ super + c
 super + Escape
     /usr/bin/xset s activate
 
+#NoSymbol
+#    /usr/bin/xset s activate
+
 # Screenshot
 Print + {_,shift,alt}
     maim {_,-i $(xdotool getactivewindow),-s} $HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
