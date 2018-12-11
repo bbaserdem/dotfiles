@@ -33,12 +33,8 @@ super + e
     /usr/bin/rofi -show emoji -modi emoji
 
 # Music controls for mpd
-XF86Audio{Play,Stop,Next}
-    /usr/bin/mpc {toggle,stop,next}
-
-# Grrrr
-XF86AudioPrev
-    $XDG_CONFIG_HOME/scripts/playprev.sh
+XF86Audio{Play,Stop,Next,Prev}
+    /usr/bin/mpc{ toggle, stop, next,-prev}
 
 # Volume controls
 XF86Audio{Raise,Lower}Volume
@@ -65,9 +61,6 @@ super + c
 # Lock screen
 super + Escape
     /usr/bin/xset s activate
-
-#NoSymbol
-#    /usr/bin/xset s activate
 
 # Screenshot
 Print + {_,shift,alt}

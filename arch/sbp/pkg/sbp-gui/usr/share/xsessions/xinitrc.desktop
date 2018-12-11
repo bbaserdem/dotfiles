@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Xinit
-Comment=Executes the .xinitrc script in your home directory
-Exec=sh -c 'exec $HOME/.xinitrd'
-Type=Application

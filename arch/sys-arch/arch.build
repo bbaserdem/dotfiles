@@ -20,6 +20,7 @@ mkdir -p "$CHROOT"
 
 for package in $PACKAGES; do
     cd "$package"
+    updpkgsums
     rm -f *.pkg.tar.xz
     makechrootpkg -cur $CHROOT
     cd -

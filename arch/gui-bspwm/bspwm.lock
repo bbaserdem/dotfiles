@@ -1,4 +1,5 @@
 #!/usr/bin/sh
+# Maintained by sbp-gui-bspwm
 
 # Exit if the screen is locked
 [ "$(pgrep -x i3lock | wc -l)" -gt 0 ] && exit

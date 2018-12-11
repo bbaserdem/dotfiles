@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=XSS-Lock
 Comment=Wrapper for locking screen on power events
-Exec=sh -c '/usr/bin/xss-lock -- ~/.config/scripts/x-lock.sh'
+Exec=sh -c '/usr/bin/xss-lock -- /usr/bin/bspwm-locker'
 Terminal=false
 Type=Application
 StartupNotify=false

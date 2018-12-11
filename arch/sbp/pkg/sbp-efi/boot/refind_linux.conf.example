@@ -1,3 +1,0 @@
-## Maintained by sbp-efi
-"Boot with defaults" "initrd=/EFI/Arch/amd-ucode.img initrd=/EFI/Arch/initramfs-linux.img rw rd.luks.name=<UUID>=cryptroot root=/dev/Linux/Arch resume=/dev/Linux/Swap rootflags=subvol=@root verbose"
-"Boot with fallback initrd" "initrd=/EFI/Arch/amd-ucode.img initrd=/EFI/Arch/initramfs-linux-fallback.img rw rd.luks.name=<UUID>=cryptroot root=/dev/Linux/Arch resume=/dev/Linux/Swap rootflags=subvol=@root verbose"

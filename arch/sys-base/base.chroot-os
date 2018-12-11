@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+# Maintained by sys-base
+
+DIR="${@:-/gentoo}"
+
+if [ -d "${DIR}" ]; then
+    mount --types proc     /proc   "${DIR}/proc"
+    mount --rbind          /sys    "${DIR}/sys"
+    mount --make-rslave            "${DIR}/sys"
+    mount --rbind          /dev    "${DIR}/dev"
+    mount --make-rslave            "${DIR}/dev"
+    chroot ${DIR}
+else
+    echo 'Invalid directory'
+fi
