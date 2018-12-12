@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -88,6 +88,7 @@ depends=(
     'ttf-droid'                     # Default looking font
     'ttf-iosevka'                   # AUR: Statusline font
     'ttf-roboto'                    # Google fonts, for steam
+    'steam-fonts'                   # AUR: Fonts for steam
     'arc-gtk-theme'                     # GTK theme
     'breeze-hacked-cursor-theme'        # Hacked cursor
     'elementary-icon-theme'             # Professional looking icon
@@ -109,52 +110,24 @@ depends=(
     'plasma-workspace-wallpapers'
     'xfce4-artwork'
     'blueman'                       # Bluetooth manager
-    'cantata'                       # MPD frontend
     'firefox'                       # Fallback browser
-    'gparted'                       # Graphical partition editor
     'gtk2fontsel'                   # Font map
     'gucharmap'                     # Character map
     'mpv'                           # Video daemon
-    'smplayer'                      # Mpv frontend
     'pavucontrol'                   # Pulse audio control menu
-    'pdfsam'                        # Pdf manipulator
-    'qemu'                          # Virtualizer
-    'ovmf'
     'ristretto'                     # Image viewer
     'system-config-printer'         # Printer setup utility
     'termite'                       # Wayland native terminal
     'thunar'                        # File browser
-    'thunar-volman'
-    'gvfs'
-    'thunar-archive-plugin'
-    'xarchiver'
-    'file-roller'
-    'thunar-media-tags-plugin'
-    'tumbler'
-    'raw-thumbnailer'
-    'udisks2'
+    'udisks2'                       # Mount manager
     'vlc'                           # Media player
     'zathura'                       # Document viewer
-    'zathura-cb'
-    'zathura-djvu'
-    'zathura-pdf-mupdf'
-    'zathura-ps'
+    'zathura-cb' 'zathura-djvu' 'zathura-pdf-mupdf' 'zathura-ps'
     'gpicview'                          # Picture to ascii
-    'libcanberra'                   # Sound theme
-    'libcanberra-pulse'
-    'pdfjs'                         # PDF rendering to webpages
+    'libcanberra' 'libcanberra-pulse'   # Sound theme
     'polkit-gnome'                  # Authentication
-    'gitg'                                  # Git visualizer
-    'libreoffice-fresh'                     # Office suite
-    'neovim-gtk-git'                        # AUR: Neovim gui
-    'octave'                                # Octave
-    'pamac-aur'                             # Package manager
-    'picard'                                # Music tagger
     'qutebrowser'                           # Browser with vim binding
-    'remmina'                               # Remote manager
-    'freerdp'
-    'rambox-os'                             # AUR: Communication app
-    'spyder3'                               # Python dev environment
+    'freerdp'                           # Remote desktop
     'syncthing-gtk'                         # Tray icon for syncthing
     'texlive-core'                          # LaTeX
     'texlive-science'
@@ -164,7 +137,6 @@ depends=(
     'texlive-pictures'
     'texlive-pstricks'
     'samba'
-    'zotero'                                # Referance manager
     'gcc6'                                  # Matlab dependencies
     'gconf'
     'glu'
