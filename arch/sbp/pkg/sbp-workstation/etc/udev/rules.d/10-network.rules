@@ -1,3 +1,0 @@
-# Managed by sbp-workstation
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:10:18:55:3c:e1", NAME="ethernet"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:25:64:a4:bf:10", NAME="broadcast"

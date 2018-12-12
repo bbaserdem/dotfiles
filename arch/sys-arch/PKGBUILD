@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-arch
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Meta package: systemd specific system libraries"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -11,12 +11,15 @@ provides=('sbp-sys-init')
 conflicts=('sbp-sys-artix')
 install=arch.install
 source=(
+    'arch.build'
     'arch.install'
     'arch.iwd.override'
     'arch.reflector.service'
     'arch.reflector.timer'
+    'arch.remove'
     'arch.roothints.service'
     'arch.roothints.timer'
+    'arch.sync'
     'arch.updater'
     )
 depends=(
@@ -31,16 +34,23 @@ depends=(
 )
 
 package() {
+    install -Dm 0755 arch.build             "${pkgdir}/usr/bin/archrepo-build"
     install -Dm 0644 arch.iwd.override      "${pkgdir}/etc/systemd/system/iwd.service.d/override.conf"
     install -Dm 0644 arch.reflector.service "${pkgdir}/etc/systemd/system/reflector.service"
     install -Dm 0644 arch.reflector.timer   "${pkgdir}/etc/systemd/system/reflector.timer"
+    install -Dm 0755 arch.remove            "${pkgdir}/usr/bin/archrepo-remove"
     install -Dm 0644 arch.roothints.service "${pkgdir}/etc/systemd/system/roothints.service"
     install -Dm 0644 arch.roothints.timer   "${pkgdir}/etc/systemd/system/roothints.timer"
+    install -Dm 0755 arch.sync              "${pkgdir}/usr/bin/archrepo-sync"
     install -Dm 0644 arch.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
 }
-md5sums=('ab6a6062a1beeaa6e4c0fbe867576f9b'
+md5sums=('1433085b35962e0363220b2f597fe01c'
+         'ab6a6062a1beeaa6e4c0fbe867576f9b'
+         '19d05c482c87a63936dc45fe74e892f3'
          'aa90fefbdc42a687898020965b6fa575'
          'a35ddc315dd663272d00ec418e9c1938'
+         'a090ba56e8a830d7cc0fd936e78ff7fc'
          '69bfe9ec9d04533ef13317c9826d3700'
          'b57e09d0bdd118c3c2864bd23823d2e8'
+         '311a9fd39ca1cf86cceb059e8ae77b25'
          'dcdd1a79323fbaa2ccc1d3ecabc80c07')

@@ -1,2 +1,0 @@
-# Managed by sbp-base
-ATTRS{idVendor}=="0d8c", ATTRS{idProduct}=="1066", ENV{PULSE_IGNORE}="1"
