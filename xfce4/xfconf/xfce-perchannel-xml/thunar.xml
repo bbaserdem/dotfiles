@@ -10,7 +10,11 @@
   <property name="last-separator-position" type="int" value="170"/>
   <property name="last-show-hidden" type="bool" value="false"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
+<<<<<<< HEAD
   <property name="last-details-view-column-widths" type="string" value="50,121,50,50,438,50,50,65,50,160"/>
+=======
+  <property name="last-details-view-column-widths" type="string" value="50,135,50,50,328,50,50,72,50,269"/>
+>>>>>>> 9943f23e42430399d7f927714d5ff47ed0e34149
   <property name="last-sort-column" type="string" value="THUNAR_COLUMN_NAME"/>
   <property name="last-sort-order" type="string" value="GTK_SORT_ASCENDING"/>
 </channel>

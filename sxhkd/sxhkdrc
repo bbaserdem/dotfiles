@@ -56,7 +56,7 @@ XF86PowerOff
 
 # Change wallpapers
 super + c
-    $XDG_CONFIG_HOME/scripts/x-wallpaper.sh --now
+    /usr/bin/bspwm-wallpaper -o
 
 # Lock screen
 super + Escape
