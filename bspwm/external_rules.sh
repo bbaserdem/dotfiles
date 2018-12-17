@@ -27,9 +27,9 @@ FLAGS=""
 
 case $class in
     # Monocle windows
-    MATLAB*|*Remmina|*Octave|Spyder*|mpv|smplayer|vlc|Gimp*|inkscape|Blender|Zathura) STATE="monocle";;&
+    MATLAB*|*Remmina|*Octave|Spyder*|mpv|smplayer|vlc|Gimp*|inkscape|Blender) STATE="monocle";;&
     # Force tiling
-    Soffice|libreoffice*) STATE="tiled";;&
+    Soffice|libreoffice*|Zathura) STATE="tiled";;&
     # Desktop 1: is communication
     Skype|Rambox|Qemu*|*Remmina|Thunar)                 DESKTOP="${ws1}";;
     # Desktop 2: Internet
