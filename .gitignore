@@ -263,6 +263,7 @@
 !/xfce4/xfconf/xfce-perchannel-xml/xfce4-*
 !/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml
 !/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+!/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 /xfce4/**/accels.scm
 
 # YOUTUBE-DL: Grab config
