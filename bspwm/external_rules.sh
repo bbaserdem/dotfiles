@@ -14,7 +14,7 @@ get_dropdown_flags() {
     y_cor="$((height-drop_height))"
     drop_width="$((width-drop_padding))"
     drop_geom="${drop_width}x${drop_height}+${x_cor}+${y_cor}"
-    echo "sticky=on hidden=on rectangle=${drop_geom}"
+    echo "state=floating sticky=on hidden=on rectangle=${drop_geom}"
 }
 
 # Load workspace names
@@ -29,7 +29,7 @@ case $class in
     # Monocle windows
     MATLAB*|*Remmina|*Octave|Spyder*|mpv|smplayer|vlc|Gimp*|inkscape|Blender) STATE="monocle";;&
     # Force tiling
-    Soffice|libreoffice*|Zathura) STATE="tiled";;&
+    Soffice|libreoffice*|zathura|Zathura) STATE="tiled";;&
     # Desktop 1: is communication
     Skype|Rambox|Qemu*|*Remmina|Thunar)                 DESKTOP="${ws1}";;
     # Desktop 2: Internet
