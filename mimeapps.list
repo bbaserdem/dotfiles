@@ -37,6 +37,7 @@ x-scheme-handler/snews=thunderbird.desktop;
 x-scheme-handler/trash=thunar.desktop
 application/zip=org.gnome.FileRoller.desktop;
 application/vnd.oasis.opendocument.presentation=libreoffice-impress.desktop;
+video/x-matroska=mpv.desktop;
 
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;wine-extension-pdf.desktop;gimp.desktop;
