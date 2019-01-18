@@ -48,7 +48,7 @@ post_install() {
     echo '[sbp-sys-base]==> Enabling multicore-compilation for makepkg …'
     sed -i '/MAKEFLAGS=/s/^#//g'                     /etc/makepkg.conf
     sed -i '/MAKEFLAGS=/s/=.*/="-j$(nproc)"/g'       /etc/makepkg.conf
-    sed -i '/COMPRESSXZ=/s/=.*/==(xz -c -z -T0 -)/g' /etc/makepkg.conf
+    sed -i '/COMPRESSXZ=/s/=.*/=(xz -c -z - -threads=0)/g' /etc/makepkg.conf
 
     # Configure pacman
     echo '[sbp-sys-base]==> Enabling eyecandy and local repo for pacman …'
