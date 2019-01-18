@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -15,6 +15,7 @@ source=(
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
+    'base.keyboard'
     'base.mpc-prev'
     'base.nftables'
     'base.pa_usb'
@@ -245,6 +246,7 @@ package() {
     install -Dm 0755 base.chroot-os         "${pkgdir}/usr/bin/chroot-os"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
+    install -Dm 0644 base.keyboard          "${pkgdir}/etc/X11/xorg.conf.d/20-keyboard.conf"
     install -Dm 0755 base.mpc-prev          "${pkgdir}/usr/bin/mpc-prev"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
     install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"

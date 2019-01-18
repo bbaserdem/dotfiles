@@ -1,3 +1,0 @@
-# Maintained by sbp-gui-base
-[SeatDefaults]
-display-setup-script=/usr/bin/setxkbmap us dvorak

@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -9,7 +9,6 @@ licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 install=gui.install
 source=(
-    'gui.lightdm.keyboard'
     'gui.xinit.session'
     'gui.install'
 )
@@ -160,8 +159,6 @@ depends=(
 
 package() {
     install -dm 0755 "${pkgdir}/usr/share/xsessions"
-    install -dm 0755 "${pkgdir}/etc/lightdm/lightdm.conf.d"
-    install -Dm 0755 gui.lightdm.keyboard "${pkgdir}/etc/lightdm/lightdm.conf.d/00-keyboard.conf"
     install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
 }
 md5sums=('6dc6cd386013e36426e6a4a8ab17e63d'
