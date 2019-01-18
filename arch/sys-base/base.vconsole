@@ -1,2 +1,3 @@
 # Managed by sbp-base package
 FONT=ter-powerline-v22n
+KEYMAP=dvorak
