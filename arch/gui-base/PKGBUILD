@@ -164,5 +164,6 @@ package() {
     install -Dm 0755 gui.lightdm.keyboard "${pkgdir}/etc/lightdm/lightdm.conf.d/00-keyboard.conf"
     install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
 }
-md5sums=('ba159b8c80fed9b26fc51e7bfba631d5'
+md5sums=('6dc6cd386013e36426e6a4a8ab17e63d'
+         'ba159b8c80fed9b26fc51e7bfba631d5'
          '5db2ace115a5dd337809d021c5ba14e1')
