@@ -1,5 +1,9 @@
 #!/usr/bin/sh
 
+# Load workspace names
+. $XDG_CONFIG_HOME/bspwm/window_id.sh
+
+# Rename variables for easy access
 wid=$1
 class=$2
 instance=$3
@@ -17,51 +21,59 @@ get_dropdown_flags() {
     echo "state=floating sticky=on hidden=on rectangle=${drop_geom}"
 }
 
-# Load workspace names
-. $XDG_CONFIG_HOME/bspwm/window_id.sh
-
 # Defaults
 STATE=""
 DESKTOP=""
 FLAGS=""
 
+# Grab info
 case $class in
     # Monocle windows
-    MATLAB*|*Remmina|*Octave|Spyder*|mpv|smplayer|vlc|Gimp*|inkscape|Blender) STATE="monocle";;&
+    MATLAB*|*Remmina|*Octave|Spyder*|mpv|smplayer|vlc|Gimp*|inkscape|Blender)
+        STATE="monocle";;&
     # Force tiling
-    Soffice|libreoffice*|zathura|Zathura) STATE="tiled";;&
+    Soffice|libreoffice*|zathura|Zathura)
+        STATE="tiled";;&
     # Desktop 1: is communication
-    Skype|Rambox|Qemu*|*Remmina|Thunar)                 DESKTOP="${ws1}";;
+    Skype|Rambox|Qemu*|*Remmina|Thunar)
+        DESKTOP="${ws1}";;
     # Desktop 2: Internet
-    qutebrowser|Firefox)                                DESKTOP="${ws2}";;
+    qutebrowser|Firefox)
+        DESKTOP="${ws2}";;
     # Desktop 3: Terminal
-    Termite|kitty|Xfce4-terminal)                       DESKTOP="${ws3}";;
+    Termite|kitty|Xfce4-terminal)
+        DESKTOP="${ws3}";;
     # Desktop 4: Science
-    MATLAB*|*Octave|Spyder*)                            DESKTOP="${ws4}";;
+    MATLAB*|*Octave|Spyder*)
+        DESKTOP="${ws4}";;
     # Desktop 5: Reading
-    Zathura|Evince)                                     DESKTOP="${ws5}";;
+    Zathura|Evince)
+        DESKTOP="${ws5}";;
     # Desktop 6: Writing
-    libreoffice*|Soffice)                               DESKTOP="${ws6}";;
+    libreoffice*|Soffice)
+        DESKTOP="${ws6}";;
     # Desktop 7: Media
-    mpv|smplayer|cantata|vlc)                           DESKTOP="${ws7}";;
+    mpv|smplayer|cantata|vlc)
+        DESKTOP="${ws7}";;
     # Desktop 8: Image
-    pdfsam|Gimp*|inkscape|Blender|openscad|Ristretto)   DESKTOP="${ws8}";;
+    pdfsam|Gimp*|inkscape|Blender|openscad|Ristretto)
+        DESKTOP="${ws8}";;
     # Desktop 9: Games
-    Steam|Stepmania)                                    DESKTOP="${ws9}";;
+    Steam|Stepmania)
+        DESKTOP="${ws9}";;
     # Desktop 0: Settings
-    Pavucontrol|Syncthing*|Pamac*|System*|Blueman*)     DESKTOP="${ws0}";;
+    Pavucontrol|Syncthing*|Pamac*|System*|Blueman*)
+        DESKTOP="${ws0}";;
 esac
+
+# Add desktop and state flags
+[ ! -z "${DESKTOP}" ] && FLAGS="${FLAGS} desktop=${DESKTOP}"
+[ ! -z "${STATE}" ] && FLAGS="${FLAGS} state=${STATE}"
 
 # Dropdown override
 if [ "$title" = 'dropdown' ] ; then
-    DESKTOP=""
     FLAGS="$(get_dropdown_flags)"
-    STATE="floating"
 fi
 
-OUTPUT="${FLAGS}"
-[ ! -z "${DESKTOP}" ] && OUTPUT="${OUTPUT} desktop=${DESKTOP}"
-[ ! -z "${STATE}" ] && STATE="${OUTPUT} state=${STATE}"
-
 # Payload
-echo "${OUTPUT}"
+echo "${FLAGS}"
