@@ -16,10 +16,6 @@ bspc config gapless_monocle             true
 bspc config automatic_scheme            longest_side
 bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/external_rules.sh
 
-# Monocles
-bspc desktop $ws4 --layout monocle
-bspc desktop $ws5 --layout monocle
-
 # Autostart programs
 dex --autostart --environment bspwm &
 

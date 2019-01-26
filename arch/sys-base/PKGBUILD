@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=3
+pkgrel=5
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -15,6 +15,7 @@ source=(
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
+    'base.keyboard'
     'base.mpc-prev'
     'base.nftables'
     'base.pa_usb'
@@ -245,6 +246,7 @@ package() {
     install -Dm 0755 base.chroot-os         "${pkgdir}/usr/bin/chroot-os"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
+    install -Dm 0644 base.keyboard          "${pkgdir}/etc/X11/xorg.conf.d/20-keyboard.conf"
     install -Dm 0755 base.mpc-prev          "${pkgdir}/usr/bin/mpc-prev"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
     install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"
@@ -265,7 +267,8 @@ md5sums=('9a2f3529c4e4ef9765b402ff6b5c8cb7'
          '87acd716fa014b24332bcd8e1368f010'
          'a7a3dc4d0a03d05cb0fd9f8a27f37ad6'
          '93108d9cc17ae70a0366d08823936ee4'
-         '7a91f70fe0591ca6a0b881ba93150071'
+         'e29974b9312d336d103206a1d78932cf'
+         'b6eff8ffa5d1359dbac22783e20f7bdc'
          '27e71de09f5f2003022e24be6166b9f5'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '98b541ce9c3fd6fff43d8d4ae0762215'
@@ -273,5 +276,5 @@ md5sums=('9a2f3529c4e4ef9765b402ff6b5c8cb7'
          'df0911ed7f3bbf285de4e3c08662dafd'
          '586c14c5f87f0097e0dfcb0454bfc2a6'
          '18c4e485034ee909f9d4f3c7fab3954f'
-         '1ddf47f1278958e4cc65bfbd96dbd6f7'
+         '6f78e20bfb4b080dca6a260e0423f474'
          '7128851ee00d22284cbdbe9b8257ad14')

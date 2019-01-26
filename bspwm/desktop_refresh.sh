@@ -21,3 +21,9 @@ else
         let I++
     done
 fi
+
+# Monocles
+bspc desktop $ws4 --layout monocle
+bspc desktop $ws5 --layout monocle
+bspc desktop $ws6 --layout monocle
+bspc desktop $ws7 --layout monocle

@@ -16,10 +16,10 @@ case "$_col" in
 esac
 
 case $BLOCK_BUTTON in
-	1) /usr/bin/pamixer --toggle-mute;; # Left: mute
-	3) /usr/bin/pavucontrol & disown ;; # Right: pavucontrol
-	4) /usr/bin/pamixer --increase 5 ;; # Scroll up: increase
-	5) /usr/bin/pamixer --decrease 5 ;; # Scroll down: decrease
+    1) /usr/bin/pamixer --toggle-mute;; # Left: mute
+    3) /usr/bin/pavucontrol & disown ;; # Right: pavucontrol
+    4) /usr/bin/pamixer --increase 5 ;; # Scroll up: increase
+    5) /usr/bin/pamixer --decrease 5 ;; # Scroll down: decrease
 esac
 
 _def=$(pacmd list-sinks |
