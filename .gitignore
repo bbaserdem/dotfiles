@@ -35,7 +35,7 @@
 !/applications/**
 /applications/userapp*
 /applications/mimeinfo.cache
-/applications/wine/Programs
+/applications/wine**
 
 # ARCH: PKGBUILDS here, grab all
 !/arch
@@ -126,6 +126,7 @@
 # MENUS: Grab all
 !/menus
 !/menus/**
+/menus/applications-merged/wine**
 
 # MPD: Only get config
 !/mpd
