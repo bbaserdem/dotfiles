@@ -40,6 +40,7 @@ application/vnd.oasis.opendocument.presentation=libreoffice-impress.desktop;
 video/x-matroska=mpv.desktop;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop;
 application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop;
+application/octet-stream=org.gnome.FileRoller.desktop;
 
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;wine-extension-pdf.desktop;gimp.desktop;

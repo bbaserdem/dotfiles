@@ -9,7 +9,12 @@ if [ -d "${DIR}" ]; then
     mount --make-rslave            "${DIR}/sys"
     mount --rbind          /dev    "${DIR}/dev"
     mount --make-rslave            "${DIR}/dev"
-    chroot ${DIR}
+    chroot ${DIR} /bin/bash --init-file <(export PS1="(chroot) ${PS1}")
+    umount "${DIR}/proc"
+    umount "${DIR}/sys"
+    umount "${DIR}/sys"
+    umount "${DIR}/dev"
+    umount "${DIR}/dev"
 else
     echo 'Invalid directory'
 fi
