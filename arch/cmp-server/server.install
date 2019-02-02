@@ -30,8 +30,9 @@ post_install() {
     echo '[sbp-cmp-server]==> Setting syncthing user and enabling daemon …'
     useradd --home-dir /srv/syncthing --create-home --user-group \
         --shell /usr/bin/nologin syncthing
+
     if [ -x /bin/systemctl ] ; then
-        systemctl enable syncthing@syncthing.service
+        echo '[sbp-cmp-server]==> Not enabling syncthing service …'
     elif [ -x /bin/rc-update ] ; then
         echo "Haven't configured yet"
     fi
