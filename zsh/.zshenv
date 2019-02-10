@@ -63,7 +63,7 @@ then
     export BRI_KBD=""
 elif [[ $(hostname) == 'sbpserver' ]]
 then
-    export MON_0="DP-1"
+    export MON_0="HDMI-2"
     export BRI_SCR=""
     export BRI_KBD=""
 fi
