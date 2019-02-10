@@ -59,6 +59,10 @@ echo '[config-install]==> Cloning steam theme...'
 mkdir -p ~/.local/share/Steam/skins
 git clone https://github.com/airforsteam/Air-for-Steam.git ~/.local/share/Steam/skins/Air
 
+# Qutebrowser
+echo '[config-install]==> Installing Qutebrowser spellcheck...'
+/usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
+
 # Thunderbird
 if [ -d ~/.thunderbird ] ; then
     echo '[config-install]==> Cloning thunderbird theme...'
