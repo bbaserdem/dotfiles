@@ -9,6 +9,8 @@ My usb has GPG subkeys.
 Import from them using `gpg --import <USB>/GPG/secret-subkey.key`
 Run `gpg --edit-key <EMAIL>`, and `trust` to set ultimate trust to keys.
 After cloning git repo, move everything from `~/.gnupg` to `~/.config/gnupg`.
+Permissions on `.config/gnupg` need to be set to;
+`600` for files and `700` for directories.
 
 # SSD
 

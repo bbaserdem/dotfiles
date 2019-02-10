@@ -67,6 +67,12 @@ if [ -d ~/.thunderbird ] ; then
     sed -i 's|^/\* @import "icons/darkIcons.css"|@import "icons/darkIcons.css"|g' "${_folder}/userChrome.css"
 fi
 
+# Fix permissions
+echo '[config-install]==> Correcting permissions for GNUPG and SSH...'
+[ -d ~/.gnupg ] && cp -rn ~/.gnupg ~/.config/gnupg
+[ -d ~/.config/gnupg ] && chmod -R u=rwX,g=,o= ~/.config/gnupg
+[ -d ~/.ssh ] && chmod -R u=rwX,g=,o= ~/.ssh
+
 # Generating dynamic files
 echo '[config-install]==> Generating dynamic files, will need root...'
 ~/.config/i3/parse_config.sh
@@ -75,3 +81,4 @@ echo '[config-install]==> Generating dynamic files, will need root...'
 ~/.config/vdirsyncer/passgen.sh
 ~/.config/s3cfg-gen.sh
 ~/.config/piagen.sh
+
