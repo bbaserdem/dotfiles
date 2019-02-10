@@ -157,19 +157,13 @@ Copy the dotfiles git directory with `git clone git@github.com:bbaserdem/dotfile
 Enable multilib repository by uncommenting the corresponding line in `/etc/pacman.conf`.
 Add my personal repo `WIP`.
 
-To enable auto-login on tty1, run `sudo -E systemctl edit getty@tty1.service`,
-This is a drop in script, (-E to use nvim as editor); and add these lines
+### Autologin
+Either use lightdm for login prompt.
+To enable auto-login on tty1, run `sudo -E systemctl edit getty@tty1.service`
+This is a drop in script add these lines
 ```
 [Service]
 ExecStart=
 ExecStart=-/usr/bin/agetty --autologin user --noclear %I $TERM
 Type=simple
 ```
-
-### GPG and SSH
-Import GPG subkey from my usb. by running `gpg --import <keyfiles>`
-for both the public and the secret subkey.
-Run `gpg --edit-key <keyfiles>`, and `trust` to set ultimate trust to keys.
-Then run `git config --global commit.gpgsign true` for signing commits.
-Copy the SSH directory to home.
-Run ssh-add on each key to add them to gpg-agent.

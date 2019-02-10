@@ -1,8 +1,15 @@
 # Gentoo Installation
 
 I'm documenting here, and following from the handbook.
+
+
+# Prepreation
+
 I will be chrooting from another OS (Arch).
+So I won't be including any prepatory work yet.
 Also, I assume partitioning is done, and things are mounted at `/gentoo`.
+
+# Bootability
 
 ## Tarball
 
