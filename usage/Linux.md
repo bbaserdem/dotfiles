@@ -3,14 +3,32 @@
 This is a quick lookup guide to help me set up a new computer.
 This process should be similar in all linux versions.
 
+# LUKS
+
+LUKS container should be made with one memorable password.
+Additional keyfiles can be generated with the following command;
+
+```
+dd bs=512 count=4 if=/dev/random of=<KEYFILE> iflag=fullblock
+```
+
+New passwords can be added by;
+```
+cryptsetup luksAddKey <DEVICE> [<NEW-KEYFILE>] [--key-file <OLD-KEYFILE>]
+```
+Header backups can be made by;
+```
+cryptsetup luksHeaderBackup <DEVICE> --header-backup-file <BACKUP>.img
+```
+
+
 # GPG
 
 My usb has GPG subkeys.
 Import from them using `gpg --import <USB>/GPG/secret-subkey.key`
 Run `gpg --edit-key <EMAIL>`, and `trust` to set ultimate trust to keys.
 After cloning git repo, move everything from `~/.gnupg` to `~/.config/gnupg`.
-Permissions on `.config/gnupg` need to be set to;
-`600` for files and `700` for directories.
+Permissions on `.config/gnupg` need to be set by `chmod -R u=rwX,g=,o= .config/gnupg`
 
 # SSD
 
@@ -33,7 +51,7 @@ At the moment, these keys should be generated;
 | NOTEBOOK      | ed25519   |       | Connect to 2. laptop  |
 
 After this, set directory and file permissions.
-Run `chmod 700 ~/.ssh && chmod 600 ~/.ssh/*`
+Run `chmod -R u=rwX,g=,o= .ssh`
 
 # GIT
 
@@ -56,3 +74,8 @@ git clone git@github.com:bbaserdem/pass.git ~/.pass
 ```
 
 After this, run `.config/install.sh`
+
+# Syncthing
+
+If data exists on USB, copy settings to `~/.config/syncthing`.
+If this is a new computer, let it generate keys.
