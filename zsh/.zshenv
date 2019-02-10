@@ -61,9 +61,9 @@ then
     export MON_0="DP-2"
     export BRI_SCR=""
     export BRI_KBD=""
-elif [[ $(hostname) == 'sbphomestation' ]]
+elif [[ $(hostname) == 'sbpserver' ]]
 then
-    export MON_0="eDP-1"
+    export MON_0="DP-1"
     export BRI_SCR=""
     export BRI_KBD=""
 fi

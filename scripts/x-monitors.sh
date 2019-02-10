@@ -34,8 +34,8 @@ reload_monitors () {
     # SERVER: 
     elif [[ $(hostname) == 'sbpserver' ]]
     then
-        # Server not configured
-        echo 'Not set up yet' && exit
+        /usr/bin/xrandr --output DP-1 --primary
+        /usr/bin/xrandr --output HDMI-2 --left-of DP-2
 
     # For all other cases
     else
