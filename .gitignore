@@ -110,6 +110,7 @@
 !/isync/config
 !/isync/passgen.sh
 !/isync/mbsync_daemon
+/isync/password-Gmail.sh`
 
 # KHAL: Grab all calender files
 !/khal
