@@ -18,6 +18,7 @@ ln -sf ~/.config/bash/bashrc ~/.bashrc
 ln -sf ~/.config/bash/login ~/.bash_profile
 ln -sf ~/.config/bash/logout ~/.bash_logout
 ln -sf ~/.config/cursor/index.theme ~/.icons/default/
+ln -sf ~/.config/latex/latexmkrc ~/.latexmkrc
 ln -sf ~/.config/tmux.conf ~/.tmux.conf
 ln -sf ~/.config/X11/clientrc ~/.xinitrc
 ln -sf ~/.config/X11/serverrc ~/.xserverrc

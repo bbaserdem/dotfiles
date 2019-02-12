@@ -124,6 +124,10 @@
 !/Kvantum
 !/Kvantum/kvantum.kvconfig
 
+# LATEX: Grab all
+!/latex
+!/latex/**
+
 # MENUS: Grab all
 !/menus
 !/menus/**
