@@ -22,7 +22,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " Colorscheme
 Plug 'chriskempson/base16-vim'
 " Fuzzy file finder
-Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " Git status
 Plug 'airblade/vim-gitgutter'
