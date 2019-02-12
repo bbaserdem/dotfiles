@@ -22,7 +22,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " Colorscheme
 Plug 'chriskempson/base16-vim'
 " Fuzzy file finder
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " Git status
 Plug 'airblade/vim-gitgutter'
@@ -36,6 +36,8 @@ Plug 'w0rp/ale'
 " Snippets (code snippet inserter)
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+" Ctags manager
+Plug 'ludovicchabant/vim-gutentags'
 " Matlab editor
 Plug 'daeyun/vim-matlab'
 " LaTeX editing
@@ -147,8 +149,9 @@ let g:gitgutter_sign_modified_removed = ''
 "-----Colorscheme------"
 let g:airline_theme='base16'        " Airline theme
 let g:airline_powerline_fonts=1     " Force powerline fonts
-let g:airline_statusline_ontop=1    " Put airline on top
+"let g:airline_statusline_ontop=1    " Put airline on top
 let g:airline#extensions#ale#enabled=1
+let g:airline#extensions#gutentags#enabled=1
 
 "------------------------------"
 "  _                           "
@@ -180,25 +183,34 @@ let g:ale_set_hightlights = 0
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+"----------------------------------"
+"  __                              "
+" /__    _|_  _  ._ _|_  _.  _   _ "
+" \_| |_| |_ (/_ | | |_ (_| (_| _> "
+"                            _|    "
+"----------------------------------"
+" Tag file generator (index of objects of interest)
+let g:gutentags_enabled=1
+let g:gutentags_generate_on_missing=1
+
 "----------"
 "  _     _ "
 " |_ _ _|_ "
 " |  /_ |  "
 "          "
 "----------"
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+" Fuzzy file finder
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'left': '~20%' }
+let g:fzf_history_dir = '~/.cache/fzf-history'
 
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+" Open files in vertical horizontal split
+nnoremap <silent> <Leader>f :call fzf#run({
+\   'right': winwidth('.') / 2,
+\   'sink':  'vertical botright split' })<CR>
 
 "------------------------------"
 "              __              "
@@ -246,8 +258,3 @@ let g:tex_flavor = 'latex'
 let g:grammarous#default_comments_only_filetypes = {
             \ '*' : 1, 'help' : 0, 'markdown' : 0,
             \ }
-
-
-
-
-"-----LaTeX-----"
