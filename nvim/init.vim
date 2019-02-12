@@ -1,62 +1,65 @@
+"    _   __                _              ______            _____
+"   / | / /__  ____ _   __(_)___ ___     / ____/___  ____  / __(_)___ _
+"  /  |/ / _ \/ __ \ | / / / __ `__ \   / /   / __ \/ __ \/ /_/ / __ `/
+" / /|  /  __/ /_/ / |/ / / / / / / /  / /___/ /_/ / / / / __/ / /_/ /
+"/_/ |_/\___/\____/|___/_/_/ /_/ /_/   \____/\____/_/ /_/_/ /_/\__, /
+"                                                             /____/
+
 "-----Required-----"
 set nocompatible
 filetype off
 syntax on
+set encoding=utf-8
 
-
-
-"-----Plugin management-----"
+"------------------------"
+"  _                     "
+" |_) |      _  o ._   _ "
+" |   | |_| (_| | | | _> "
+"            _|          "
+"------------------------"
 set rtp+=$XDG_CONFIG_HOME/nvim/bundle/Vundle.vim
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " Colorscheme
 Plug 'chriskempson/base16-vim'
-" NERDtree file browser
-Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Status bar mods
+" Fuzzy file finder
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+" Git status
+Plug 'airblade/vim-gitgutter'
+" Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
 " Autocomplete for programming
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-" Linting
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Linting (code checking)
 Plug 'w0rp/ale'
-" Tags (What is this?)
-" Plugin 'ludovicchabant/vim-gutentags'
-" Snippets
+" Snippets (code snippet inserter)
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Matlab editor
 Plug 'daeyun/vim-matlab'
-Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
-Plug 'mhinz/neovim-remote'
 Plug 'lervag/vimtex'
-" I3 vim
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'baskerville/vim-sxhkdrc'
-" Python highlighting
-" Plugin 'numirias/semshi'
+Plug 'mhinz/neovim-remote'
 " Grammar checker
 Plug 'rhysd/vim-grammarous'
-"" Gentoo syntax
+" Config file types
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'baskerville/vim-sxhkdrc'
 Plug 'gentoo/gentoo-syntax'
+"" Gentoo syntax
 " After all plugins...
 call plug#end()
 filetype plugin indent on
 
-
-
-"-----Colorscheme------"
-
+"-------------------------"
+"  _                      "
+" / \ ._ _|_ o  _  ._   _ "
+" \_/ |_) |_ | (_) | | _> "
+"     |                   "
+"-------------------------"
 let base16colorspace=256
 colorscheme base16-onedark
-
-
-
 "-----Base stuff-----"
 set number                  " Show line numbers
 set showmatch               " Show matching brackets
@@ -67,22 +70,22 @@ set tabstop=4               " Render TABs using this many spaces.
 set softtabstop=4
 set shiftwidth=4            " Indentation amount for < and > commands.
 set nojoinspaces            " Prevents inserting two spaces after punctuation on a join (J)
-set ignorecase          " Make searching case insensitive
-set smartcase           " ... unless the query has capital letters.
+set ignorecase              " Make searching case insensitive
+set smartcase               " ... unless the query has capital letters.
 set spelllang=en_us                                 " Turn on spellcheck
 let g:grammarous#languagetool_cmd = 'languagetool'  " Grammar check
 set colorcolumn=80                                  " Highlight 80th column
 set laststatus=2                                    " Always show status bar
 set updatetime=500                                  " Plugin update time >4s
 set mouse=a                                         " Disable mouse click
-set splitbelow              " Natural splits
-set splitright
+set splitbelow              " Horizontal splitsgo down
+set splitright              " Vertical splits go right
 
 " Tell Vim which characters to show for expanded TABs,
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
-set list                " Show problematic characters.
+"set list                " Show problematic characters.
 
 " Relative numbering
 function! NumberToggle()
@@ -94,98 +97,157 @@ function! NumberToggle()
   endif
 endfunc
 
-
-
-
-
 "-----Keymapping-----"
 let mapleader="\<Space>"
+" map leader+s to search and replace
 nmap <leader>s :%s//g<Left><Left>
+" Clear search higlights with Ctrl Q
 nnoremap <silent> <C-Q> :nohlsearch<CR>
+" Toggle line numbering mode
 nnoremap <leader>n :call NumberToggle()<cr>
+" Remap accidental ; presses to :
 nnoremap ; :
 " Navigate splits easier
 nnoremap <leader>j <C-w><C-j>
 nnoremap <leader>k <C-w><C-k>
 nnoremap <leader>l <C-w><C-l>
 nnoremap <leader>h <C-w><C-h>
-map <leader>r :NERDTreeToggle<CR>
-nmap ]g <Plug>GitGutterNextHunk
-nmap [g <Plug>GitGutterPrevHunk
-map <leader>yg :YcmGenerateConfig<CR>
+" make command
 nnoremap <F5> :make<CR>
-vnoremap <buffer>         <leader>mm <ESC>:MatlabLaunchServer<CR>
-vnoremap <buffer><silent> <leader>ms <ESC>:MatlabCliRunSelection<CR>
-nnoremap <buffer><silent> <leader>m<S-s> <ESC>:MatlabCliRunCell<CR>
-nnoremap <buffer><silent> <leader>ml :MatlabCliRunLine<CR>
-nnoremap <buffer><silent> <leader>mv <ESC>:MatlabCliViewVarUnderCursor<CR>
-nnoremap <buffer><silent> <leader>mh  <ESC>:MatlabCliHelp<CR>
-nnoremap <buffer><silent> <leader>me <ESC>:MatlabCliOpenInMatlabEditor<CR>
-nnoremap <buffer><silent> <leader>mc :MatlabCliCancel<CR>
+" Regular cut-copy-paste
 vnoremap <C-x> "+x
 vnoremap <C-c> "+y
 noremap <C-v> "+p
 
-
-
-"-----NERDTree-----"
-" Nerdtree opens if vim launched with no arguments or at a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-" Exit vim if only window remaining is nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Limit NERDTree highlighting to used filetypes
-let g:NERDTreeSyntaxDisableDefaultExtensions = 1
-let g:NERDTreeDisableExactMatchHighlight = 1
-let g:NERDTreeDisablePatternMatchHighlight = 1
-let g:NERDTreeSyntaxEnabledExtensions = ['c', 'h', 'c++', 'js', 'css', 'mat']
-" Show hidden files
-let NERDTreeShowHidden=1
-
-
-
-"-----Status Bar-----"
-let g:airline_theme='base16'       " Airline theme
+"---------------------------------"
+"  __                             "
+" /__ o _|_  _     _|_ _|_  _  ._ "
+" \_| |  |_ (_| |_| |_  |_ (/_ |  "
+"            _|                   "
+"---------------------------------"
+" Hunks are  blocks of change in code.
+" Move between git hunks using [c and ]c
+"   <leader>hp : Preview change
+"   <leader>hs : Stage (commit) change
+"   <leader>hu : Undo (commit) change
 let g:gitgutter_max_signs=1000      " Don't show if too many changes
-let g:gitgutter_map_keys = 0        " Don't do remapping keys
-let g:gitgutter_sign_added = ' '
-let g:gitgutter_sign_modified = ' '
-let g:gitgutter_sign_removed = ' '
-let g:gitgutter_sign_removed_first_line = ''
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_removed_first_line = ''
 let g:gitgutter_sign_modified_removed = ''
 
+"-----------------------"
+"                       "
+"  /\  o ._ | o ._   _  "
+" /--\ | |  | | | | (/_ "
+"                       "
+"-----------------------"
 
+"-----Colorscheme------"
+let g:airline_theme='base16'        " Airline theme
+let g:airline_powerline_fonts=1     " Force powerline fonts
+let g:airline_statusline_ontop=1    " Put airline on top
+let g:airline#extensions#ale#enabled=1
 
-"-----YouCompleteMe-----"
-let g:ycm_global_ycm_extra_conf = '~/.config/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = 'python'
+"------------------------------"
+"  _                           "
+" | \  _   _  ._  |  _ _|_  _  "
+" |_/ (/_ (_) |_) | (/_ |_ (/_ "
+"             |                "
+"------------------------------"
+" Deoplete is autocompletion engine
+"   Press tab to open autocompletion menu, and tab to navigate.
+let g:deoplete#enable_at_startup = 1                    " Start deoplete
+let g:deoplete#disable_auto_complete = 1                " Stop auto prompt
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+let g:deoplete#omni#functions = {}
+let g:deoplete#sources = {}
+let g:deoplete#sources['_'] = ['file', 'ultisnips']
 
-
-
-"-----Linting-----"
-let g:ale_sign_column_always = 1
+"------------"
+"            "
+"  /\  |  _  "
+" /--\ | (/_ "
+"            "
+"------------"
+" Linter (syntax and warning checker) and fixing
+"   Use Ctrl + jk to move back/forth between errors
+let g:ale_sign_column_always=1
+let g:ale_sign_error=''
+let g:ale_sign_warning=''
 let g:ale_set_hightlights = 0
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
+"----------"
+"  _     _ "
+" |_ _ _|_ "
+" |  /_ |  "
+"          "
+"----------"
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
 
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
-"-----Snippets-----"
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+"------------------------------"
+"              __              "
+" | | | _|_ o (_  ._  o ._   _ "
+" |_| |  |_ | __) | | | |_) _> "
+"                       |      "
+"------------------------------"
+" Macro parser
+"   Use Ctrl + hl to move through units
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger="<C-Space>"
-let g:UltiSnipsJumpForwardTrigger="<C-J>"
-let g:UltiSnipsJumpBackwardTrigger="<C-K>"
-let g:python_host_prog='/usr/bin/python'
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
-
-"-----Matlab-----"
-let g:matlab_server_launcher = 'tmux'   "Doesn't work?
-let g:matlab_server_split = 'vertical'  "Matlab splits should be vertical
+"---------------------------------------"
+"                                       "
+" \  / o ._ _ __ |\/|  _. _|_ |  _. |_  "
+"  \/  | | | |   |  | (_|  |_ | (_| |_) "
+"                                       "
+"---------------------------------------"
+" (Mostly) Syntax highlighting for matlab
 let g:matlab_auto_mappings = 0          "automatic mappings disabled
+let g:matlab_server_split = 'vertical'  "launch the server in a vertical split
+let g:matlab_server_launcher = 'tmux'   "launch the server in a tmux split
+
+"-----------------"
+"       ___       "
+" |   _. |  _  \/ "
+" |_ (_| | (/_ /\ "
+"                 "
+"-----------------"
+" Compiling LaTeX
+"   On Zathura, Ctrl click will go to selected line in nvim
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_compiler_method = 'latexmk'
+let g:tex_flavor = 'latex'
+
+"----------------------------------------"
+"  __                                    "
+" /__ ._ _. ._ _  ._ _   _. ._ _       _ "
+" \_| | (_| | | | | | | (_| | (_) |_| _> "
+"                                        "
+"----------------------------------------"
+" Grammar check
+let g:grammarous#default_comments_only_filetypes = {
+            \ '*' : 1, 'help' : 0, 'markdown' : 0,
+            \ }
+
 
 
 
 "-----LaTeX-----"
-let g:vimtex_compiler_progname = 'nvr'
-let g:vimtex_compiler_method = 'arara'
-let g:tex_flavor = 'latex'
