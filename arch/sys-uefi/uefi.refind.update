@@ -9,19 +9,20 @@ art="/tmp/regular"
 # Create directory if doesn't exist!
 mkdir -p "${target}"
 
-# Copy over theme files for the regula theme
-git clone https://github.com/bobafetthotmail/refind-theme-regular.git $art || true
+# Copy over theme files for the regular theme
+git clone https://github.com/bobafetthotmail/refind-theme-regular.git "${art}_light" || true
+git clone https://github.com/htower/refind-theme-regular-black.git    "${art}_dark"  || true
 # Copy over images
 for _dir in images icons fonts ; do
     # Get the stock theme
-    [ -d "${target}/${_dir}" ] && rm --force --recursive "${target}/${_dir}"
-    cp --force --recursive  "${source}/${_dir}" "${target}/${_dir}"
-    # Get the custom theme
-    [ -d "${target}/art_${_dir}" ] && rm --force --recursive "${target}/art_${_dir}"
-    [ -d "${art}/${_dir}" ] && cp --force --recursive "${art}/${_dir}" "${target}/art_${_dir}"
+    [ -d "${target}/${_dir}" ] && rm -rf "${target}/${_dir}"
+    cp -rf  "${source}/${_dir}" "${target}/${_dir}"
+    # Get the custom themes
+    [ -d "${target}/${_dir}_light" ] && rm -rf "${target}/${_dir}_light"
+    [ -d "${target}/${_dir}_dark"  ] && rm -rf "${target}/${_dir}_dark"
+    [ -d "${art}_light/${_dir}" ] && cp -rf "${art}_light/${_dir}" "${target}/${_dir}_light"
+    [ -d "${art}_dark/${_dir}"  ] && cp -rf "${art}_dark/${_dir}"  "${target}/${_dir}_dark"
 done
-# Remove the temporary file
-rm -rf $art
 
 # Copy the executable here, and sign it
 cp --force --recursive "${source}/refind_x64.efi" "${target}/refind_x64.efi"

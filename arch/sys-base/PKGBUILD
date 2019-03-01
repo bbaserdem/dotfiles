@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -190,7 +190,6 @@ depends=(
     'neomutt'               # Mail reader
     'neovim'                # Text editor
     'python-neovim'
-    'python2-neovim'
     'newsboat'              # RSS/Atom feed
     'pulsemixer'            # Pulse audio mixer
     'ranger'                # File browser
@@ -264,7 +263,7 @@ package() {
 }
 md5sums=('9a2f3529c4e4ef9765b402ff6b5c8cb7'
          '305f8eae3d7981c6471bc431886b659a'
-         '90935819adc9e2d0c811dfbc2e6b0d39'
+         '6d51e3d48adb0d71a9f16c2f851e1d84'
          'a7a3dc4d0a03d05cb0fd9f8a27f37ad6'
          '93108d9cc17ae70a0366d08823936ee4'
          'e29974b9312d336d103206a1d78932cf'

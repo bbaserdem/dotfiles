@@ -2,7 +2,9 @@
 [Unit]
 Before=network.target
 Wants=network.target
+BindsTo=sys-subsystem-net-devices-wifi.device
+After=sys-subsystem-net-devices-wifi.device
 
 [Service]
 ExecStart=
-ExecStart=/usr/lib/iwd/iwd --nointerfaces "wlan[0-9]*"
+ExecStart=/usr/lib/iwd/iwd --interface wifi
