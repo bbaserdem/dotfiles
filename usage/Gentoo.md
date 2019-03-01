@@ -132,14 +132,20 @@ Put in `/etc/hosts`
 ```
 
 Besides that have not configured the network stuff yet.
+Copying over dhcpd config.
+For DNS, i want to use unbound, copied config from arch, fixing some systemd stuff.
+Put in udev rules for network; same as arch.
 
 ## Applications
 
 For logging. I'm using syslog-ng.
 
 ```
+rc-update add udev sysinit
+rc-update add udev-trigger sysinit
 rc-update add syslog-nd default
 rc-update add fcron default
 rc-update add iwd default
 rc-update add dhcpcd default
+rc-update add unbound default
 ```

@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-uefi
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Meta package: UEFI specific system libraries"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -44,6 +44,6 @@ md5sums=('563631a53ee1bc575f5cb8abcb5f6e64'
          '870e1b69bea4677d58d38012f375d629'
          'c921a69f4ba7257f9516fb1bcea5fb22'
          '44c3e77d21abd16a1ab183af37f2fb98'
-         'f71a8c08029e14a1994ea0dba1e8d557'
+         '31a6104655c83aff86a8b128891822b3'
          'bf32c501a41818ab6ba481ac8bc38aec'
          '3e98f6b269cec6cf587f84b6e915a166')

@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-arch
 pkgver=1.0
-pkgrel=4
+pkgrel=7
 pkgdesc="Meta package: systemd specific system libraries"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -46,7 +46,7 @@ package() {
 }
 md5sums=('1433085b35962e0363220b2f597fe01c'
          'ab6a6062a1beeaa6e4c0fbe867576f9b'
-         '19d05c482c87a63936dc45fe74e892f3'
+         'd5fe0ff8a976b75026f24a5ce3ae5c5e'
          'aa90fefbdc42a687898020965b6fa575'
          'a35ddc315dd663272d00ec418e9c1938'
          'a090ba56e8a830d7cc0fd936e78ff7fc'
