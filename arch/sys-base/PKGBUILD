@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -17,6 +17,7 @@ source=(
     'base.install'
     'base.keyboard'
     'base.mpc-prev'
+    'base.network'
     'base.nftables'
     'base.pa_usb'
     'base.snapper-root'
@@ -247,6 +248,7 @@ package() {
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.keyboard          "${pkgdir}/etc/X11/xorg.conf.d/20-keyboard.conf"
     install -Dm 0755 base.mpc-prev          "${pkgdir}/usr/bin/mpc-prev"
+    install -Dm 0645 base.network           "${pkgdir}/etc/udev/rules.d/11-network.rules"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
     install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"
     install -Dm 0644 base.snapper-root      "${pkgdir}/etc/snapper/configs/root"
@@ -269,6 +271,7 @@ md5sums=('9a2f3529c4e4ef9765b402ff6b5c8cb7'
          'e29974b9312d336d103206a1d78932cf'
          'b6eff8ffa5d1359dbac22783e20f7bdc'
          '27e71de09f5f2003022e24be6166b9f5'
+         '67fe3ab43b239e9c51cb23c19fe4f0a1'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '98b541ce9c3fd6fff43d8d4ae0762215'
          '00e5bc63b7bb82526516df8f45c4745c'

@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-cmp-workstation
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package: Workstation configuration"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -11,7 +11,6 @@ conflicts=('sbp-cmp-laptop' 'sbp-cmp-notebook''sbp-cmp-server')
 install=workstation.install
 source=(
     'workstation.install'
-    'workstation.network'
     )
 depends=(
     'cuda'
@@ -25,10 +24,4 @@ depends=(
     'os-prober'
     'libva-vdpau-driver'
 )
-
-package() {
-    install -dm 0755 "${pkgdir}/etc/udev/rules.d"
-    install -Dm 0644 workstation.network "${pkgdir}/etc/udev/rules.d/10-network.rules"
-}
-md5sums=('202de56fe0a08e578b8bc9ad954bbcf2'
-         'a9a9d56a573ff481e05564930ab9008e')
+md5sums=('202de56fe0a08e578b8bc9ad954bbcf2')

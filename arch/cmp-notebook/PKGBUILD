@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-cmp-notebook
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package: OpenRC specific system libraries"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -11,7 +11,6 @@ conflicts=('sbp-cmp-laptop' 'sbp-cmp-workstation' 'sbp-cmp-server')
 install=notebook.install
 source=(
     'notebook.install'
-    'notebook.network'
     )
 depends=(
     'bbswitch-dkms'
@@ -29,9 +28,4 @@ depends=(
     'primus'
 )
 
-package() {
-    install -dm 0755 "${pkgdir}/etc/udev/rules.d"
-    install -Dm 0755 notebook.network "${pkgdir}/etc/udev/rules.d/10-network.rules"
-}
-md5sums=('5af7dcb89c607a376797ef8430f699f9'
-         '0f81ee3f2deb7c44892f5ff0a908b277')
+md5sums=('5af7dcb89c607a376797ef8430f699f9')

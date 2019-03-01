@@ -1,6 +1,0 @@
-# Maintained by sbp-cmp-server
-# Ethernet is the inner port
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:01:c0:20:54:5d", NAME="ethernet"
-# Broadcast is the outer port
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="00:01:c0:20:54:5a", NAME="broadcast"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="60:f6:77:df:23:e3", NAME="wifi"

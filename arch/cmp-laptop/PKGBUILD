@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-cmp-laptop
 pkgver=1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Meta package: Laptop specific configuration"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -13,7 +13,6 @@ source=(
     'laptop.battery'
     'laptop.backlight'
     'laptop.install'
-    'laptop.network'
 )
 depends=(
     'mesa'
@@ -31,11 +30,9 @@ depends=(
 
 package() {
     install -dm 0755 "${pkgdir}/etc/udev/rules.d"
-    install -Dm 0755 laptop.network   "${pkgdir}/etc/udev/rules.d/10-network.rules"
     install -Dm 0644 laptop.backlight "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
     install -Dm 0644 laptop.battery   "${pkgdir}/etc/udev/rules.d/91-battery.rules"
 }
 md5sums=('8ae4c2675fe3966171c274f86a6ffef4'
          '3d182f82920b7f1df6a371cc1f273d6c'
-         '1b0f574670ca407cec14a7ac525e0e20'
-         '2ff77989adfe4f3e1f28f67793554f97')
+         '1b0f574670ca407cec14a7ac525e0e20')

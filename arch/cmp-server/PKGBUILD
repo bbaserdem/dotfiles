@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-cmp-server
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta package: Server configuration"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -11,7 +11,6 @@ conflicts=('sbp-cmp-laptop' 'sbp-cmp-notebook' 'sbp-cmp-workstation')
 install=server.install
 source=(
     'server.install'
-    'server.network'
     )
 #depends=(
 #    'apache'            # Web server
@@ -23,10 +22,4 @@ source=(
 #    'transmission-cli'  # Torrenting
 #    'radicale'          # CalDAV and CardDAV server
 #)
-
-package() {
-    install -dm 0755 "${pkgdir}/etc/udev/rules.d"
-    install -Dm 0755 server.network   "${pkgdir}/etc/udev/rules.d/10-network.rules"
-}
-md5sums=('ae7d76623700095b029e9f439d925967'
-         '2064591457c0d084d1ec46a119afd0d2')
+md5sums=('ae7d76623700095b029e9f439d925967')
