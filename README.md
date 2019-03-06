@@ -1,3 +1,5 @@
+This is outdated, fix
+
 # Unix Configuration
 
 This repository contains my UNIX user configuration.

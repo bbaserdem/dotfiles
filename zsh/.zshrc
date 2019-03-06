@@ -48,12 +48,15 @@ alias weather='wttr_weather'
 source $ZDOTDIR/powerlevel9k.settings
 
 # ZIM
+zmodules=(directory environment git git-info history input utility custom \
+    syntax-highlighting history-substring-search prompt completion)
+ztermtitle='%~:%n@%m'
+zhighlighters=(main brackets cursor)
+zinput_mode='vi'
 if [[ $- == *i* ]]
 then
-    zmodules=(directory environment git git-info history input utility custom \
-            syntax-highlighting history-substring-search prompt completion)
     zprompt_theme='powerlevel9k'
-    ztermtitle='%~:%n@%m'
-    zhighlighters=(main brackets cursor)
-    source $ZIM_HOME/init.zsh
+else
+    zprompt_theme='steef'
 fi
+source $ZIM_HOME/init.zsh

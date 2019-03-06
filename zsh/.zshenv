@@ -26,6 +26,12 @@ export ZIM_HOME="${ZDOTDIR}/zimfw"
 
 # GPG public key
 export GPGKEY=0B7151C823559DD8A7A04CE36426139E2F4C6CCE
+# Pinentry
+export GPG_TTY=$(tty)
+if [[ -n "$SSH_CONNECTION" ]] ;then
+    export PINENTRY_USER_DATA="USE_CURSES=1"
+fi
+
 # Password store location
 export PASSWORD_STORE_DIR="${HOME}/.pass"
 export PASSWORD_STORE_GIT="${HOME}/.pass"
@@ -40,7 +46,7 @@ export MATLAB_LOG_DIR="${XDG_CACHE_HOME}/matlab/"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java"
 export _JAVA_AWT_WM_NONREPARENTING=1
 # export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
-export LD_PRELOAD="/usr/lib/libstdc++.so:/usr/lib/libfreetype.so.6"
+[ -f "/usr/lib/libstdc++.so" ] && [ -f "/usr/lib/libfreetype.so.6" ] && export LD_PRELOAD="/usr/lib/libstdc++.so:/usr/lib/libfreetype.so.6"
 # export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 export OCTAVE_HISTFILE="${XDG_CACHE_HOME}/octave-hsts"
 export OCTAVE_SITE_INITFILE="${XDG_CONFIG_HOME}/octave/octaverc"

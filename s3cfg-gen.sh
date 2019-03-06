@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 echo "[default]
 access_key = $(pass AWS|grep 'access-key-id'   |awk '{print $2'})

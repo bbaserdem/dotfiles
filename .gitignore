@@ -13,7 +13,6 @@
 !/.gitignore
 !/abcde.conf
 !/compton.conf
-!/gtk2rc
 !/install.sh
 !/locale.conf
 !/matlabrc.m
@@ -32,10 +31,7 @@
 
 # APPLICATIONS: Accept all except matlab override
 !/applications
-!/applications/**
-/applications/userapp*
-/applications/mimeinfo.cache
-/applications/wine**
+!/applications/*.desktop
 
 # ARCH: PKGBUILDS here, grab all
 !/arch
@@ -66,40 +62,33 @@
 !/dunst
 !/dunst/dunstrc
 
-# ENCHANT: Grab all (elementary)
-!/enchant
-!/enchant/**
-
 # FONTCONFIG: Accept the fontconfig file
 !/fontconfig
 !/fontconfig/fonts.conf
+
+# GENTOO: Accept all files
+!/gentoo
+!/gentoo/**
 
 # GNUPG: Only get the config files
 !/gnupg
 !/gnupg/gpg-agent.conf
 
-# GTK-2.0: Get settings
+# GTK: Get settings
 !/gtk-1.0
 !/gtk-1.0/gtkrc
-
-# GTK-2.0: Get settings
 !/gtk-2.0
 !/gtk-2.0/gtkrc
-
-# GTK-3.0: Get bookmarks and settings
 !/gtk-3.0
 !/gtk-3.0/bookmarks
 !/gtk-3.0/settings.ini
 !/gtk-3.0/gtk.css
+!/gtk-4.0/
+!/gtk-4.0/**
 
 # HTOP: Get the rc file
 !/htop
 !/htop/htoprc
-
-# I3: Grab all things i3, but not config (dynamically generated)
-!/i3
-!/i3/**
-/i3/config
 
 # I3BLOCKS: Grab all things i3
 !/i3blocks
@@ -109,8 +98,8 @@
 !/isync
 !/isync/config
 !/isync/passgen.sh
-!/isync/mbsync_daemon
-/isync/password-Gmail.sh`
+!/isync/mbsync_cron.sh
+/isync/password-Gmail.sh
 
 # KHAL: Grab all calender files
 !/khal
@@ -127,11 +116,6 @@
 # LATEX: Grab all
 !/latex
 !/latex/**
-
-# MENUS: Grab all
-!/menus
-!/menus/**
-/menus/applications-merged/wine**
 
 # MPD: Only get config
 !/mpd
@@ -160,8 +144,8 @@
 
 # NVIM: Grab the config and colors, not the plugins
 !/nvim
-!/nvim/ginit.vim
 !/nvim/init.vim
+!/nvim/README.md
 
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
@@ -206,10 +190,6 @@
 !/rofi/**
 /rofi/__pycache__
 
-# SCRIPTS: Grab these things
-!/scripts
-!/scripts/**
-
 # SWAY: Grab all sway files
 !/sway
 !/sway/**
@@ -221,10 +201,6 @@
 # SYNCTHING-GTK: Grab config
 !/syncthing-gtk
 !/syncthing-gtk/config.json
-
-# SYSTEMD: Grab entire directory
-!/systemd
-!/systemd/**
 
 # TERMITE: Grab config
 !/termite
@@ -260,17 +236,6 @@
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**
-
-# XFCE4: Grab all the configs except dynamic app stuff
-!/xfce4
-!/xfce4/**
-/xfce4/desktop/*
-/xfce4/xfconf/xfce-perchannel-xml/*
-!/xfce4/xfconf/xfce-perchannel-xml/xfce4-*
-!/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml
-!/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
-!/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
-/xfce4/**/accels.scm
 
 # YOUTUBE-DL: Grab config
 !/youtube-dl

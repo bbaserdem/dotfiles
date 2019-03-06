@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 ws1=""
 ws2="爵"
 ws3=""

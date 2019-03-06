@@ -9,7 +9,11 @@ I will be chrooting from another OS (Arch).
 So I won't be including any prepatory work yet.
 Also, I assume partitioning is done, and things are mounted at `/gentoo`.
 
-# Bootability
+# Portage
+
+As I am speaking, I'm putting all the packages I install into set files
+Organiving them with spaces for now, but will fix it later.
+if emerge wants changes, run `etc-update` afterwards.
 
 ## Tarball
 
@@ -135,12 +139,47 @@ Besides that have not configured the network stuff yet.
 Copying over dhcpd config.
 For DNS, i want to use unbound, copied config from arch, fixing some systemd stuff.
 Put in udev rules for network; same as arch.
+Wifi was not detected, need r8822be driver, in `Device Drivers > Staging Drivers`
+Wifi works after adding as a module.
+Apparently unbound can automatically update the root-anchor file.
+Run `su -s /bin/sh -c '/usr/sbin/unbound-anchor -a /etc/unbound/var/root-anchors.txt' unbound`
+
+## Config
+
+I am dropping some config files from Arch to Gentoo.
+The following is a list of what I have done so far;
+
+* `/etc/timezone`
+* `/etc/locale.gen`
+* `/etc/udev/rules.d/99-network.rules`
+* `/etc/udev/rules.d/89-pulseaudio-usb.rules`
+
+And here are some Gentoo specific configs
+
+* `/etc/portage/make.conf`
+* `/etc/genkernel.conf`
+* `/etc/conf.d/keymaps`
+* `/etc/portage/make.conf`
+* `/etc/portage/sets/sbp-*`
+* `/etc/sddm.conf`
+
+And some scripts I have written to be put in /usr/bin or /bin
+
+* <PLACEHOLDER>
+
+## Graphical Interface
+
+Evdev needs to be enabled in kernel.
+I followed the X page, then followed the AMDGPU page; lots of kernel options.
+Added to portage config `VIDEO_CARDS="amdgpu radeonsi"` and `INPUT_DEVICES="libinput"`
+Installed SDDM (switching), added to `/etc/conf.d/xdm` `DISPLAYMANAGER="sddm"`
 
 ## Applications
 
 For logging. I'm using syslog-ng.
 
 ```
+rc-update add consolefont boot
 rc-update add udev sysinit
 rc-update add udev-trigger sysinit
 rc-update add syslog-nd default
@@ -148,4 +187,10 @@ rc-update add fcron default
 rc-update add iwd default
 rc-update add dhcpcd default
 rc-update add unbound default
+rc-update add xdm default
+rc-update add dbus default
+rc-update add consolekit default
+rc-update add bluetooth default
+rc-update add acpid default
+rc-update add laptop_mode default
 ```

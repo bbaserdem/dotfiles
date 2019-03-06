@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=XSS-Lock
 Comment=Wrapper for locking screen on power events
-Exec=sh -c '/usr/bin/xss-lock -- /usr/bin/bspwm-locker'
+Exec=sh -c '/usr/bin/xss-lock -- ~/.config/bspwm/lock.sh'
 Terminal=false
 Type=Application
 StartupNotify=false
-OnlyShowIn=i3;bspwm;
+OnlyShowIn=bspwm;
 NotShowIn=GNOME;KDE;Unity;MATE;sway;

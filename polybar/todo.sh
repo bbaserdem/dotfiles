@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 _len=32
 _file="${HOME}/Documents/Todo"

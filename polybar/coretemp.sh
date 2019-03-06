@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 _col="${base08:-#ab4642}"
 _wrn="${base09:-#dc9656}"
