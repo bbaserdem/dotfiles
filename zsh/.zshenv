@@ -68,6 +68,8 @@ then
     export BRI_KBD=""
 fi
 
+# Rofi-pass config
+export ROFI_PASS_CONFIG="${XDG_CONFIG_HOME}/rofi/pass.conf"
 # Android studio
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
 # GPG config
