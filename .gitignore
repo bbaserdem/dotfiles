@@ -26,6 +26,10 @@
 !/user-dirs.dirs
 
 # ANDROID: Accept all
+!/alacritty
+!/alacritty/**
+
+# ANDROID: Accept all
 !/android
 !/android/**
 

@@ -53,10 +53,10 @@ zmodules=(directory environment git git-info history input utility custom \
 ztermtitle='%~:%n@%m'
 zhighlighters=(main brackets cursor)
 zinput_mode='vi'
-if [[ $- == *i* ]]
-then
-    zprompt_theme='powerlevel10k'
-else
+if tty | grep -q tty; then
     zprompt_theme='steef'
+else
+    zprompt_theme='powerlevel10k'
 fi
+
 source $ZIM_HOME/init.zsh
