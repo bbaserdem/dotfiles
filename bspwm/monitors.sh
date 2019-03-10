@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 # Reloading monitors program, coded for each setup
 reload_monitors () {

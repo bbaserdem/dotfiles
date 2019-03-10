@@ -1,7 +1,10 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 # Turn off system beep
 xset -b
 
 # Fix missing mouse pointer name
 xsetroot -cursor_name left_ptr
+
+# Set keymap
+setxkbmap -model pc105 -layout us,tr,us -variant dvorak,f, -option grp:caps_toggle

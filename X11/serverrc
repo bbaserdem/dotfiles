@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 # Send the XDG_VTNR as an argument to X if its not defined already
 if [ -z "$XDG_VTNR" ]; then

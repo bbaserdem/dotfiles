@@ -5,6 +5,7 @@ import datetime
 c.url.searchengines = {
         "DEFAULT" : "https://duckduckgo.com/?q={}",
         "ar"      : "https://wiki.archlinux.org/?search={}",
+        "ge"      : "https://wiki.gentoo.org/?search={}",
         "aur"     : "https://aur.archlinux.org/packages/{}",
         "ma"      : "https://www.mathworks.com/help/matlab/ref/{}.html",
         "go"      : "https://www.google.com/search?hl=en&q={}",

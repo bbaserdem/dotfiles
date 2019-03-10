@@ -3,7 +3,30 @@
 #--------------#
 #-----SWAY-----#
 #--------------#
-include "$XDG_CONFIG_HOME/sway/config.sway"
+
+# Touchpad
+input libinput {
+    tap                 enabled
+    scroll_method       two_finger
+    natural_scroll      enabled
+    middle_emulation    enabled
+    left_handed         disabled
+    dwt                 enabled
+    events              enabled
+    drag_lock           disabled
+    accel_profile       adaptive
+}
+
+# Wallpaper
+bindsym $Meta+c                 exec "$XDG_CONFIG_HOME/sway/wallpaper.sh"
+# Lock
+bindsym $Meta+Escape            exec "$XDG_CONFIG_HOME/sway/lock.sh"
+# Screenshot
+bindsym Print               exec --no-startup-id "swaygrab ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym Shift+Print         exec --no-startup-id "swaygrab --focused ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+# Video
+bindsym Mod1+Print          exec --no-startup-id "[ -z "$(swaygrab)" ] && swaygrab --capture ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).webm || pkill swaygrab"
+bindsym Mod1+Shift+Print    exec --no-startup-id "[ -z "$(swaygrab)" ] && swaygrab --capture --focused ${HOME}/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).webm || pkill swaygrab"
 
 #-----------------#
 #-----STARTUP-----#

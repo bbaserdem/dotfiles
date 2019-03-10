@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=11
+pkgrel=10
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -117,7 +117,6 @@ depends=(
     'reflector'             # Package management
     'aurutils'
     'pacman-contrib'
-    'fcron'                 # Cron implementation
     'atool'                 # Archive tools
     'bzip2'
     'cpio'
@@ -266,7 +265,7 @@ package() {
 }
 md5sums=('9a2f3529c4e4ef9765b402ff6b5c8cb7'
          '305f8eae3d7981c6471bc431886b659a'
-         '8a2dd425633e8fcd541de29b81d2c81d'
+         '6d51e3d48adb0d71a9f16c2f851e1d84'
          'a7a3dc4d0a03d05cb0fd9f8a27f37ad6'
          '93108d9cc17ae70a0366d08823936ee4'
          'e29974b9312d336d103206a1d78932cf'

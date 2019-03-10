@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 _dir="/etc/private-internet-access"
 [ ! -d "${_dir}" ] && sudo mkdir -p "${_dir}"

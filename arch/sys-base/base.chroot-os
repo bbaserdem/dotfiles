@@ -9,7 +9,7 @@ if [ -d "${DIR}" ]; then
     mount --make-rslave            "${DIR}/sys"
     mount --rbind          /dev    "${DIR}/dev"
     mount --make-rslave            "${DIR}/dev"
-    chroot ${DIR} /bin/bash -c 'export TERM=xterm-256color; source /etc/profile; export PS1="(chroot) ${PS1}"; /bin/bash --norc'
+    chroot ${DIR} /bin/bash -ic 'export TERM=xterm-256color; export PS1="(chroot) ${PS1}"; exec /bin/bash --norc'
     umount -R "${DIR}/proc"
     umount -R "${DIR}/sys"
     umount -R "${DIR}/dev"

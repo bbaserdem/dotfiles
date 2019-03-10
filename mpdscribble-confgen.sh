@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 _file="${XDG_CONFIG_HOME}/mpdscribble.conf"
 

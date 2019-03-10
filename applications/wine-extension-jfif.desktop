@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Wine Internet Explorer
-MimeType=image/jpeg;
-Exec=env WINEPREFIX="/opt/wine" /usr/bin/wine start /ProgIDOpen pjpegfile %f
-NoDisplay=true
-StartupNotify=true
-Icon=7596_iexplore.0

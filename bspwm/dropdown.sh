@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 id=$(xdo id -a dropdown);
 if [ -z "$id" ]; then

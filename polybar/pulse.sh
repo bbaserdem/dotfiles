@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 # Get color
 _col="${base0C:-#86c1b9}"

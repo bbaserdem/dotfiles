@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 # Load workspace names
 . $XDG_CONFIG_HOME/bspwm/window_id.sh

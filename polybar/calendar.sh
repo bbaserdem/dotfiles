@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 _len=52
 _file="${HOME}/Documents/Calendar"
