@@ -3,14 +3,14 @@ import datetime
 
 # Set things like c.tabs.position = "left"
 c.url.searchengines = {
-        "DEFAULT" : "https://duckduckgo.com/?q={}",
-        "ar"      : "https://wiki.archlinux.org/?search={}",
-        "ge"      : "https://wiki.gentoo.org/?search={}",
-        "aur"     : "https://aur.archlinux.org/packages/{}",
-        "ma"      : "https://www.mathworks.com/help/matlab/ref/{}.html",
-        "go"      : "https://www.google.com/search?hl=en&q={}",
-        "re"      : "https://www.reddit.com/r/{}",
-        "wi"      : "https://www.wikipedia.org/wiki/{}"
+        "DEFAULT"   : "https://duckduckgo.com/?q={}",
+        "ar"        : "https://wiki.archlinux.org/?search={}",
+        "ge"        : "https://wiki.gentoo.org/?search={}",
+        "au"        : "https://aur.archlinux.org/packages/{}",
+        "ma"        : "https://www.mathworks.com/help/matlab/ref/{}.html",
+        "go"        : "https://www.google.com/search?hl=en&q={}",
+        "wi"        : "https://www.wikipedia.org/wiki/{}"
+        "am"        : "https://www.amazon.com/s?k={}"
         }
 # Colorthemes
 css_dark = str(config.configdir) + '/css/dark.css'
@@ -25,7 +25,7 @@ c.tabs.position = "left"
 c.tabs.background = True
 c.tabs.width = "12%"
 c.completion.height = "10%"
-c.confirm_quit = ["always"]
+# c.confirm_quit = ["always"]
 c.content.javascript.alert = True
 c.content.javascript.can_access_clipboard = False
 c.content.javascript.can_close_tabs = False
