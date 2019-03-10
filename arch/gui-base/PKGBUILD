@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=7
+pkgrel=9
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -117,8 +117,7 @@ depends=(
     'pavucontrol'                   # Pulse audio control menu
     'ristretto'                     # Image viewer
     'system-config-printer'         # Printer setup utility
-    'termite'                       # Wayland native terminal
-    'thunar'                        # File browser
+    'alacritty'                     # Wayland native terminal
     'udisks2'                       # Mount manager
     'vlc'                           # Media player
     'zathura'                       # Document viewer

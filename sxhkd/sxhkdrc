@@ -13,7 +13,7 @@ super + Return
 
 # Dropdown terminal
 F12
-    [ "$(xdotool search --name '^dropdown$')" == "" ] && termite -t 'dropdown' ;\
+    [ "$(xdotool search --name '^dropdown$')" == "" ] && alacritty -t 'dropdown' ;\
     bspc node "$(xdotool search --name '^dropdown$')" --flag hidden --focus
 
 # Rofi

@@ -45,7 +45,7 @@ package() {
     install -Dm 0644 arch.updater           "${pkgdir}/etc/systemd/system/pacman-update.service"
 }
 md5sums=('1433085b35962e0363220b2f597fe01c'
-         'ab6a6062a1beeaa6e4c0fbe867576f9b'
+         'e1701b457cca15871eea8d0d2626009a'
          'd5fe0ff8a976b75026f24a5ce3ae5c5e'
          'aa90fefbdc42a687898020965b6fa575'
          'a35ddc315dd663272d00ec418e9c1938'

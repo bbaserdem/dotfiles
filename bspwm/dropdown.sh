@@ -2,7 +2,7 @@
 
 id=$(xdo id -a dropdown);
 if [ -z "$id" ]; then
-    /usr/bin/termite --title 'dropdown'
+    /usr/bin/alacritty --title 'dropdown'
 else
     if [[ $(xprop -id $id|awk '/window state: / {print $3}') == 'Withdrawn' ]]
     then

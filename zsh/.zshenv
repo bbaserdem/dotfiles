@@ -94,7 +94,7 @@ export EDITOR="/usr/bin/nvim"
 # Set qutebrowser as browser
 export BROWSER="/usr/bin/qutebrowser"
 # Set terminal to use for launching
-export TERMINAL="/usr/bin/termite"
+export TERMINAL="/usr/bin/alacritty"
 # Notmuch
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/neomutt/notmuch-config"
 # OpenFOAM

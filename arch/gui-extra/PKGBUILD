@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-extra
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -17,7 +17,6 @@ depends=(
     'trezor-bridge-bin'                     # Hardware BCN wallet
     'audacity'                              # Audio manipulator
     'blender'                               # 3d designing utility
-    'cantata'                               # MPD frontend
     'darktable'                             # Raw format editor
     'gimp'                                  # GNU Image Manipulation
     'gitg'                                  # Git visualizer
@@ -30,12 +29,8 @@ depends=(
     'octave'                                # Octave
     'pdfsam'                                # Pdf manipulator
     'qemu' 'ovmf'                           # Virtualizer
-    'pamac-aur'                             # Package manager
-    'pdfjs'                                 # PDF rendering to webpages
     'picard'                                # Music tagger
-    'rambox-os'                             # AUR: Communication app
     'remmina'                               # Remote manager
-    'skypeforlinux-stable-bin'              # AUR: Skype app
     'smplayer'                              # Mpv frontend
     'spyder3'                               # Python dev environment
     'steam'                                 # Gaming

@@ -41,7 +41,7 @@ case $class in
     qutebrowser|Firefox)
         DESKTOP="${ws2}";;
     # Desktop 3: Terminal
-    Termite|kitty|Xfce4-terminal)
+    Termite|Alacritty|kitty|Xfce4-terminal)
         DESKTOP="${ws3}";;
     # Desktop 4: Science
     MATLAB*|*Octave|Spyder*)
