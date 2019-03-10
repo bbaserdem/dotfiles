@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Script to change wallpapers, with different options for office and home
 
 # Create the crontab file if does not exist
