@@ -45,8 +45,8 @@ read -rsp $'Press any key to continue...' -n1 key
 if [ ! -e "${HOME}/.config/zsh/zimfw" ] ; then
     echo '[config-install]==> Setting up ZIM...\n'
     git clone --recursive https://github.com/zimfw/zimfw ~/.config/zsh/zimfw
-    git clone https://github.com/bhilburn/powerlevel9k.git ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel9k
-    ln -s ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme ~/.config/zsh/zimfw/modules/prompt/functions/prompt_powerlevel9k_setup
+    git clone https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel10k
+    ln -s ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme ~/.config/zsh/zimfw/modules/prompt/functions/prompt_powerlevel10k_setup
     read -rsp $'Press any key to continue...' -n1 key
 fi
 

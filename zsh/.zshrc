@@ -55,7 +55,7 @@ zhighlighters=(main brackets cursor)
 zinput_mode='vi'
 if [[ $- == *i* ]]
 then
-    zprompt_theme='powerlevel9k'
+    zprompt_theme='powerlevel10k'
 else
     zprompt_theme='steef'
 fi
