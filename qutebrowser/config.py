@@ -9,7 +9,7 @@ c.url.searchengines = {
         "au"        : "https://aur.archlinux.org/packages/{}",
         "ma"        : "https://www.mathworks.com/help/matlab/ref/{}.html",
         "go"        : "https://www.google.com/search?hl=en&q={}",
-        "wi"        : "https://www.wikipedia.org/wiki/{}"
+        "wi"        : "https://www.wikipedia.org/wiki/{}",
         "am"        : "https://www.amazon.com/s?k={}"
         }
 # Colorthemes
