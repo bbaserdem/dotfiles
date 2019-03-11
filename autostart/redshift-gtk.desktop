@@ -9,5 +9,4 @@ Type=Application
 Categories=Utility;
 StartupNotify=false
 Hidden=false
-X-GNOME-Autostart-enabled=true
-NotShowIn=GNOME;sway;
+NotShowIn=sway;

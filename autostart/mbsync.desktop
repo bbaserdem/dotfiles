@@ -7,5 +7,3 @@ Exec=sh -c '~/.config/isync/mbsync_cron.sh'
 StartupNotify=false
 Terminal=false
 Hidden=false
-NotShowIn=GNOME;KDE;Unity;MATE;XFCE;
-OnlyShowIn=i3;sway;bspwm;

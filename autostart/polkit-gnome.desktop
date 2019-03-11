@@ -7,4 +7,4 @@ X-GNOME-Autostart-enabled=true
 Hidden=false
 Type=Application
 StartupNotify=false
-OnlyShowIn=i3;sway;bspwm;
+OnlyShowIn=sway;bspwm;

@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=Monitors
-Comment=Monitor hotplug listener
+Name=Monitors (BSPWM)
+Comment=Monitor hotplug listener for BSPWM
 Exec=sh -c '~/.config/bspwm/monitors.sh'
 Icon=preferences-desktop-display
 Terminal=false
 Type=Application
 StartupNotify=false
 OnlyShowIn=bspwm;
-NotShowIn=GNOME;KDE;Unity;MATE;sway;
+NotShowIn=sway;
