@@ -12,12 +12,6 @@ export XSERVERRC="${XDG_CONFIG_HOME}/X11/serverrc"
 
 # Import Path
 [ -d "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin:${PATH}"
-[ -d "${XDG_CONFIG_HOME}/scripts" ] && PATH="${XDG_CONFIG_HOME}/scripts:${PATH}"
-# import vim-live-latex
-if [ -d "${XDG_CONFIG_HOME}/nvim/bundle/vim-live-latex-preview/bin" ]
-then
-    PATH="${XDG_CONFIG_HOME}/nvim/bundle/vim-live-latex-preview/bin:${PATH}"
-fi
 
 # Z directory
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
@@ -46,7 +40,20 @@ export MATLAB_LOG_DIR="${XDG_CACHE_HOME}/matlab/"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java"
 export _JAVA_AWT_WM_NONREPARENTING=1
 # export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
-[ -f "/usr/lib/libstdc++.so" ] && [ -f "/usr/lib/libfreetype.so.6" ] && export LD_PRELOAD="/usr/lib/libstdc++.so:/usr/lib/libfreetype.so.6"
+export MATLAB_LIBS="/usr/lib/libstdc++.so
+/usr/lib/libfreetype.so.6"
+for lib in $MATLAB_LIBS
+do
+    if [ -f "${lib}" ]; then
+        if [ -z "${LD_PRELOAD}" ]; then
+            export LD_PRELOAD="${lib}"
+        else
+            LD_PRELOAD="${LD_PRELOAD}:${lib}"
+        fi
+    fi
+done
+unset lib
+
 # export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 export OCTAVE_HISTFILE="${XDG_CACHE_HOME}/octave-hsts"
 export OCTAVE_SITE_INITFILE="${XDG_CONFIG_HOME}/octave/octaverc"
@@ -102,7 +109,7 @@ export FOAM_INST_DIR="/opt/OpenFOAM"
 # Weechat
 export WEECHAT_HOME="${XDG_CONFIG_HOME}/weechat"
 # SXHKD
-export SXHKD_SHELL="/usr/bin/sh"
+export SXHKD_SHELL="/bin/sh"
 # Taskwarrior
 export TASKRC="${XDG_CONFIG_HOME}/taskrc"
 export TASKDATA="${HOME}/Documents/Tasks/"
@@ -114,9 +121,6 @@ export WINEPREFIX="/opt/wine"
 # Vimperator
 export VIMPERATOR_INIT=":source ${XDG_CONFIG_HOME}/vimperator/vimperatorrc"
 export VIMPERATOR_RUNTIME="${XDG_CONFIG_HOME}/vimperator"
-# VIFM
-export VIFM="${XDG_CONFIG_HOME}/vifm"
-export MYVIFMRC="${VIFM}/vifmrc"
 # ZSH
 export HISTFILE="${XDG_DATA_HOME}/zsh/history"
 

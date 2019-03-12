@@ -8,6 +8,7 @@ fix_perm () {
     chmod 755 "${HOME}"
     chmod -R u=rwX,g=,o= "${HOME}/.ssh"
     chmod -R u=rwX,g=,o= "${HOME}/.gnupg"
+    chmod 600 "${XDG_CONFIG_HOME}/gpg-agent.conf"
 }
 
 symlinks_and_directories () {
