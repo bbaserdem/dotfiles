@@ -12,7 +12,7 @@ fix_perm () {
 
 symlinks_and_directories () {
     # Place symlinks
-    echo 'Creating directories . . .\n'
+    echo 'Creating directories and symlinks. . .'
     mkdir -p "${HOME}/Documents/MATLAB"
     mkdir -p "${HOME}/.local/{share,wineprefixes,bin}"
     mkdir -p "${HOME}/.cache/"{mpd,isync,mpdscribble,vdirsyncer}
@@ -20,7 +20,7 @@ symlinks_and_directories () {
 
     # Remove local applications folder, and link the one from config
     rm -rf "${HOME}/.local/share/applications"
-    ln -sf "${XDG_CONFIG_HOME}/applications" "~/.local/share/applications"
+    ln -sf "${XDG_CONFIG_HOME}/applications" "${HOME}/.local/share/applications"
 
     # Remmina config; to be shared from Documents
     ln -sf "${HOME}/Documents/Remmina ~/.local/share/remmina"
