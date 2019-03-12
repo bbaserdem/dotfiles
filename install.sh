@@ -3,87 +3,137 @@ set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 IF=$'\n\t'
 
-# Manage permission of home folder
-chmod 755 "${HOME}"
+fix_perm () {
+    # Manage permission of home folder
+    chmod 755 "${HOME}"
+    chmod -R u=rwX,g=,o= "${HOME}/.ssh"
+    chmod -R u=rwX,g=,o= "${HOME}/.gnupg"
+}
 
-# Place symlinks
-echo '[config-install]==> Symlinking...\n'
-mkdir -p ~/Documents/MATLAB
-mkdir -p ~/.local/{share,wineprefixes}
-mkdir -p ~/.cache/mpd
-mkdir -p ~/.icons/default
-ln -sf ~/Documents/Remmina ~/.local/share/remmina
-ln -sf ~/.config/abcde.conf ~/.abcde.conf
-ln -sf ~/.config/bash/bashrc ~/.bashrc
-ln -sf ~/.config/bash/login ~/.bash_profile
-ln -sf ~/.config/bash/logout ~/.bash_logout
-ln -sf ~/.config/cursor/index.theme ~/.icons/default/
-ln -sf ~/.config/latex/latexmkrc ~/.latexmkrc
-ln -sf ~/.config/tmux.conf ~/.tmux.conf
-ln -sf ~/.config/X11/clientrc ~/.xinitrc
-ln -sf ~/.config/X11/serverrc ~/.xserverrc
-ln -sf ~/.config/X11/resources ~/.Xresources
-ln -sf ~/.config/X11/profile ~/.xprofile
-ln -sf ~/.config/X11/session ~/.xsession
-ln -sf ~/.config/X11/keymap ~/.Xkbmap
-ln -sf ~/.config/matlabrc.m ~/Documents/MATLAB/startup.m
-rm -rf ~/.local/share/applications
-ln -sf ~/.config/applications ~/.local/share/applications
-read -rsp $'Press any key to continue...\n' -n1 key
+symlinks_and_directories () {
+    # Place symlinks
+    echo 'Creating directories . . .\n'
+    mkdir -p "${HOME}/Documents/MATLAB"
+    mkdir -p "${HOME}/.local/{share,wineprefixes,bin}"
+    mkdir -p "${HOME}/.cache/"{mpd,isync,mpdscribble,vdirsyncer}
+    mkdir -p "${HOME}/.icons/default"
 
-# Neovim
-echo '[config-install]==> Setting up neovim...'
-pip install --user neovim
-pip install --user neovim-remote
-pip install --user pexpect
-pip2 install --user neovim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +PlugInstall +qall
-read -rsp $'Press any key to continue...' -n1 key
+    # Remove local applications folder, and link the one from config
+    rm -rf "${HOME}/.local/share/applications"
+    ln -sf "${XDG_CONFIG_HOME}/applications" "~/.local/share/applications"
 
-# ZIM
-if [ ! -e "${HOME}/.config/zsh/zimfw" ] ; then
-    echo '[config-install]==> Setting up ZIM...\n'
-    git clone --recursive https://github.com/zimfw/zimfw ~/.config/zsh/zimfw
-    git clone https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel10k
-    ln -s ~/.config/zsh/zimfw/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme ~/.config/zsh/zimfw/modules/prompt/functions/prompt_powerlevel10k_setup
-    read -rsp $'Press any key to continue...' -n1 key
+    # Remmina config; to be shared from Documents
+    ln -sf "${HOME}/Documents/Remmina ~/.local/share/remmina"
+
+    # Fallback values for bash shell
+    ln -sf "${HOME}/.config/bash/bashrc" "${HOME}/.bashrc"
+    ln -sf "${HOME}/.config/bash/login"  "${HOME}/.bash_profile"
+    ln -sf "${HOME}/.config/bash/logout" "${HOME}/.bash_logout"
+
+    # Things for Xorg/Login manager
+    ln -sf "${HOME}/.config/X11/clientrc"  "${HOME}/.xinitrc"
+    ln -sf "${HOME}/.config/X11/serverrc"  "${HOME}/.xserverrc"
+    ln -sf "${HOME}/.config/X11/resources" "${HOME}/.Xresources"
+    ln -sf "${HOME}/.config/X11/profile"   "${HOME}/.xprofile"
+    ln -sf "${HOME}/.config/X11/session"   "${HOME}/.xsession"
+    ln -sf "${HOME}/.config/X11/keymap"    "${HOME}/.Xkbmap"
+
+    # Non-xdg-compliant configuration options
+    ln -sf "${HOME}/.config/gpg-agent.conf"     "${HOME}/.gnupg/gpg-agent.conf"
+    ln -sf "${HOME}/.config/abcde.conf"         "${HOME}/.abcde.conf"
+    ln -sf "${HOME}/.config/cursor/index.theme" "${HOME}/.icons/default/"
+    ln -sf "${HOME}/.config/latex/latexmkrc"    "${HOME}/.latexmkrc"
+    ln -sf "${HOME}/.config/tmux.conf"          "${HOME}/.tmux.conf"
+}
+
+local_update () {
+    # Neovim
+    echo "Installing local packages through pip for neovim . . .\n"
+    pip install --user neovim
+    pip install --user neovim-remote
+    pip install --user pexpect
+
+    # ZIM
+    echo "Installing/updating zim . . .\n"
+    if [ ! -d "${ZIM_HOME}" ] ; then
+        git clone --recursive 'https://github.com/zimfw/zimfw' "${ZIM_HOME}"
+    else
+        git -C "${ZIM_HOME}" pull
+        zmanage update
+    fi
+
+    # Powerlevel10k and powerlevel9k
+    if [ ! -d "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k" ]
+    then
+        git clone --recursive 'https://github.com/romkatv/powerlevel10k.git' \
+            "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k"
+    else
+        git -C "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k" pull
+    fi
+    if [ ! -d "${ZIM_HOME}/modules/prompt/external-themes/powerlevel9k" ]
+    then
+        git clone --recursive 'https://github.com/romkatv/powerlevel9k.git' \
+            "${ZIM_HOME}/modules/prompt/external-themes/powerlevel9k"
+    else
+        git -C "${ZIM_HOME}/modules/prompt/external-themes/powerlevel9k" pull
+    fi
+    ln -sf "${ZIM_HOME}/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme" \
+        "${ZIM_HOME}/modules/prompt/functions/prompt_powerlevel9k_setup"
+    ln -sf "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme" \
+        "${ZIM_HOME}/modules/prompt/functions/prompt_powerlevel10k_setup"
+
+    # Dropbox stuff
+    if [ -x '/usr/bin/dropbox' ] ; then
+        [ -d "${HOME}/.dropbox-dist" ] && rm -rf "${HOME}/.dropbox-dist"
+        install --mode 0 --directory "${HOME}/.dropbox-dist"
+    fi
+
+    # Steam stuff
+    mkdir -p ~/.local/share/Steam/skins
+    if [ -d "${HOME}/.local/share/Steam/Air" ] ; then
+        git -C "${HOME}/.local/share/Steam/Air" pull
+    else
+        git clone 'https://github.com/airforsteam/Air-for-Steam.git' "${HOME}/.local/share/Steam/Air"
+    fi
+
+    # Qutebrowser
+    if [ -x '/usr/share/qutebrowser/scripts/dictcli.py' ] ; then
+        /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
+    fi
+
+    # Generator scripts for passwords
+    ${XDG_CONFIG_HOME}/isync/passgen.sh
+    ${XDG_CONFIG_HOME}/mpdscribble-confgen.sh
+    ${XDG_CONFIG_HOME}/vdirsyncer/passgen.sh
+    ${XDG_CONFIG_HOME}/s3cfg-gen.sh
+}
+
+# Help text
+print_usage() {
+    echo "Usage:"
+    echo "    -p            Fix permissions"
+    echo "    -l            Do symlinks and directories"
+    echo "    -u            Update/install local packages and configs"
+    echo "    -s            Full setup (do all options)"
+    echo "    -h            Display this help message"
+}
+
+unset flag
+
+while getopts ':Aplush' flag; do
+    case "${flag}" in
+        p) fix_perm ;;
+        l) symlinks_and_directories ;;
+        u) local_update ;;
+        s) fix_perm; symlinks_and_directories; local_update ;;
+        h) print_usage ;;
+        \?) print_usage ; exit 1 ;;
+    esac
+done
+
+if [ -z "$flag" ]
+then
+    fix_perm
+    symlinks_and_directories
+    local_update
 fi
-
-# Dropbox
-echo '[config-install]==> Preventing dropbox auto updates...'
-[ -d ~/.dropbox-dist ] && rm -rf ~/.dropbox-dist
-install --mode 0 --directory ~/.dropbox-dist
-
-# Steam
-echo '[config-install]==> Cloning steam theme...'
-mkdir -p ~/.local/share/Steam/skins
-git clone https://github.com/airforsteam/Air-for-Steam.git ~/.local/share/Steam/skins/Air
-
-# Qutebrowser
-echo '[config-install]==> Installing Qutebrowser spellcheck...'
-/usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
-
-# Thunderbird
-if [ -d ~/.thunderbird ] ; then
-    echo '[config-install]==> Cloning thunderbird theme...'
-    _folder="${HOME}/.thunderbird/$(ls ~/.thunderbird | grep default)/chrome"
-    git clone https://github.com/spymastermatt/thunderbird-monterail.git "${_folder}"
-    sed -i 's|^/\* @import "icons/darkIcons.css"|@import "icons/darkIcons.css"|g' "${_folder}/userChrome.css"
-fi
-
-# Fix permissions
-echo '[config-install]==> Correcting permissions for GNUPG and SSH...'
-[ -d ~/.gnupg ] && cp -rn ~/.gnupg ~/.config/gnupg
-[ -d ~/.config/gnupg ] && chmod -R u=rwX,g=,o= ~/.config/gnupg
-[ -d ~/.ssh ] && chmod -R u=rwX,g=,o= ~/.ssh
-
-# Generating dynamic files
-echo '[config-install]==> Generating dynamic files, will need root...'
-~/.config/i3/parse_config.sh
-~/.config/isync/passgen.sh
-~/.config/mpdscribble-confgen.sh
-~/.config/vdirsyncer/passgen.sh
-~/.config/s3cfg-gen.sh
-~/.config/piagen.sh
-

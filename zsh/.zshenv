@@ -79,7 +79,7 @@ export ROFI_PASS_CONFIG="${XDG_CONFIG_HOME}/rofi/pass.conf"
 # Android studio
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
 # GPG config
-export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
+export GNUPGHOME="${HOME}/.gnupg"
 # QT5 theme
 export QT_STYLE_OVERRIDE="kvantum"
 export QT_QPA_PLATFORMTHEME="kvantum"

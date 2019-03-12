@@ -17,7 +17,14 @@ set encoding=utf-8
 " |   | |_| (_| | | | _> "
 "            _|          "
 "------------------------"
-set rtp+=$XDG_CONFIG_HOME/nvim/bundle/Vundle.vim
+
+" Autoinstall Plug
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo '~/.local/share/nvim/site/autoload/plug.vim' --create-dirs
+    \ 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " Colorscheme
 Plug 'chriskempson/base16-vim'
@@ -48,11 +55,10 @@ Plug 'rhysd/vim-grammarous'
 " Config file types
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'baskerville/vim-sxhkdrc'
-Plug 'gentoo/gentoo-syntax'
 "" Gentoo syntax
+Plug 'gentoo/gentoo-syntax'
 " After all plugins...
 call plug#end()
-filetype plugin indent on
 
 "-------------------------"
 "  _                      "

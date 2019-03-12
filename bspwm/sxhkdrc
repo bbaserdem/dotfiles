@@ -22,7 +22,7 @@ super + space
 
 # Password-store
 super + p
-    /usr/bin/rofi-pass
+    $XDG_CONFIG_HOME/rofi/rofi-pass
 
 # Emoji
 super + e

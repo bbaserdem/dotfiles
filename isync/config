@@ -6,7 +6,7 @@ SyncState *
 IMAPAccount Gmail
 Host imap.gmail.com
 User baserdem.batuhan@gmail.com
-PassCmd "$XDG_CONFIG_HOME/isync/password-Gmail.sh"
+PassCmd "$HOME/.cache/isync/password-Gmail.sh"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 

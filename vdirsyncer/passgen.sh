@@ -1,5 +1,5 @@
 #!/bin/sh
-_src="${XDG_CONFIG_HOME}/vdirsyncer/getPass.sh"
+_src="${HOME}/.cache/vdirsyncer/getPass.sh"
 echo '#!/bin/sh
 case "$1+$2" in' > "${_src}"
 for _app in CardDAV CalDAV

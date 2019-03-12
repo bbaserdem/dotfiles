@@ -13,6 +13,7 @@
 !/.gitignore
 !/abcde.conf
 !/compton.conf
+!/gpg-agent.conf
 !/install.sh
 !/locale.conf
 !/matlabrc.m
@@ -73,10 +74,6 @@
 # GENTOO: Accept all files
 !/gentoo
 !/gentoo/**
-
-# GNUPG: Only get the config files
-!/gnupg
-!/gnupg/gpg-agent.conf
 
 # GTK: Get settings
 !/gtk-1.0
