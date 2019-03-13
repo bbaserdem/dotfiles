@@ -24,10 +24,7 @@ depends=(
     'polybar-git'           # AUR: Status bar
     'redshift'              # Screen dimmer
     'rofi'                  # Application launcher
-    'rofi-pass'
-    'rofi-emoji'
     'sxhkd'                 # Simple X hotkey daemon
-    'udiskie'               # Tray icon mount
     'xss-lock'              # Locks screen on power events
 )
 

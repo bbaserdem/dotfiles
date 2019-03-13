@@ -26,7 +26,7 @@ super + p
 
 # Emoji
 super + e
-    /usr/bin/rofi -show emoji -modi emoji
+    $XDG_CONFIG_HOME/rofi/rofi-emoji
 
 # Music controls for mpd
 XF86Audio{Play,Stop,Next,Prev}

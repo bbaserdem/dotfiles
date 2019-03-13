@@ -77,20 +77,14 @@ depends=(
     'lightdm-webkit2-greeter'
     'lightdm-webkit-theme-litarvan'
     'adobe-source-serif-pro-fonts'  # Nice serif font
-    'bdf-tewi-git'                  # AUR: Nice bitmap font
-    'gohufont'                      # AUR: Nice bitmap font
-    'nerd-fonts-source-code-pro'    # AUR: Glyphs
     'noto-fonts-emoji'              # Emoji font
     'otf-fira-code'                 # Ligatures
-    'siji-git'                      # AUR: Nice monospace font
     'tamsyn-font'                   # Nice monospace font
     'terminess-powerline-font-git'  # AUR: Console fonts
     'ttf-droid'                     # Default looking font
     'ttf-iosevka'                   # AUR: Statusline font
     'ttf-roboto'                    # Google fonts, for steam
-    'steam-fonts'                   # AUR: Fonts for steam
     'arc-gtk-theme'                     # GTK theme
-    'breeze-hacked-cursor-theme'        # Hacked cursor
     'elementary-icon-theme'             # Professional looking icon
     'gnome-themes-extra'                # Icon compatibility
     'gtk-engine-murrine'                # Fallback icons
