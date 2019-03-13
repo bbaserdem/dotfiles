@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=9
+pkgrel=11
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -12,125 +12,107 @@ source=(
     'gui.xinit.session'
     'gui.install'
 )
-depends=(
-    'xorgproto'             # Xorg things
-    'xf86-video-vesa'
-    'xorg-bdftopcf'
-    'xorg-docs'
-    'xorg-font-util'
-    'xorg-fonts-100dpi'
-    'xorg-fonts-75dpi'
-    'xorg-fonts-encodings'
-    'xorg-iceauth'
-    'xorg-luit'
-    'xorg-mkfontdir'
-    'xorg-mkfontscale'
-    'xorg-server'
-    'xorg-server-common'
-    'xorg-server-devel'
-    'xorg-server-xdmx'
-    'xorg-server-xephyr'
-    'xorg-server-xnest'
-    'xorg-server-xvfb'
-    'xorg-server-xwayland'
-    'xorg-sessreg'
-    'xorg-setxkbmap'
-    'xorg-smproxy'
-    'xorg-x11perf'
-    'xorg-xauth'
-    'xorg-xbacklight'
-    'xorg-xcmsdb'
-    'xorg-xcursorgen'
-    'xorg-xdpyinfo'
-    'xorg-xdriinfo'
-    'xorg-xev'
-    'xorg-xgamma'
-    'xorg-xhost'
-    'xorg-xinput'
-    'xorg-xkbcomp'
-    'xorg-xkbevd'
-    'xorg-xkbutils'
-    'xorg-xkill'
-    'xorg-xlsatoms'
-    'xorg-xlsclients'
-    'xorg-xmodmap'
-    'xorg-xpr'
-    'xorg-xprop'
-    'xorg-xrandr'
-    'xorg-xrdb'
-    'xorg-xrefresh'
-    'xorg-xset'
-    'xorg-xsetroot'
-    'xorg-xvinfo'
-    'xorg-xwd'
-    'xorg-xwininfo'
-    'xorg-xwud'
-    'xf86-input-libinput'
-    'xorg-xinit'
-    'xorg-fonts-misc'
-    'xdo'
-    'xdotool'
-    'xsel'
-    'wayland'               # Display server
-    'lightdm'               # Login manager
+
+depends=()
+
+# Xorg stuff
+depends+=(
+    'xorgproto' 'xf86-video-vesa' 'xorg-bdftopcf' 'xorg-docs' 'xorg-font-util'
+    'xorg-fonts-encodings' 'xorg-iceauth' 'xorg-luit' 'xorg-mkfontdir'
+    'xorg-mkfontscale' 'xorg-server' 'xorg-server-common' 'xorg-server-devel'
+    'xorg-server-xdmx' 'xorg-server-xephyr' 'xorg-server-xnest'
+    'xorg-server-xvfb' 'xorg-server-xwayland' 'xorg-sessreg' 'xorg-setxkbmap'
+    'xorg-smproxy' 'xorg-x11perf' 'xorg-xauth' 'xorg-xbacklight' 'xorg-xcmsdb'
+    'xorg-xcursorgen' 'xorg-xdpyinfo' 'xorg-xdriinfo' 'xorg-xev' 'xorg-xgamma'
+    'xorg-xhost' 'xorg-xinput' 'xorg-xkbcomp' 'xorg-xkbevd' 'xorg-xkbutils'
+    'xorg-xkill' 'xorg-xlsatoms' 'xorg-xlsclients' 'xorg-xmodmap' 'xorg-xpr'
+    'xorg-xprop' 'xorg-xrandr' 'xorg-xrdb' 'xorg-xrefresh' 'xorg-xset'
+    'xorg-xsetroot' 'xorg-xvinfo' 'xorg-xwd' 'xorg-xwininfo' 'xorg-xwud'
+    'xf86-input-libinput' 'xorg-xinit' 'xorg-fonts-misc' 'xdo' 'xdotool' 'xsel'
+    'wayland' )
+
+# Login manager
+depends+=(
+    'lightdm'
     'lightdm-gtk-greeter'
     'lightdm-webkit2-greeter'
     'lightdm-webkit-theme-litarvan'
-    'adobe-source-serif-pro-fonts'  # Nice serif font
-    'noto-fonts-emoji'              # Emoji font
-    'otf-fira-code'                 # Ligatures
-    'tamsyn-font'                   # Nice monospace font
-    'terminess-powerline-font-git'  # AUR: Console fonts
-    'ttf-droid'                     # Default looking font
-    'ttf-iosevka'                   # AUR: Statusline font
-    'ttf-roboto'                    # Google fonts, for steam
-    'arc-gtk-theme'                     # GTK theme
-    'elementary-icon-theme'             # Professional looking icon
-    'gnome-themes-extra'                # Icon compatibility
-    'gtk-engine-murrine'                # Fallback icons
-    'kvantum-qt5'                       # QT5 theme engine
-    'kvantum-theme-arc'                 # Nice theme
-    'papirus-icon-theme'                # Nice icon theme
-    'python-pyqt5'                      # QT stuff for python
-    'qt4'                               # QT implementation
-    'qt5-styleplugins'                  # QT GTK integration
-    'sound-theme-elementary-git'        # AUR: ElementaryOS sounds
-    'sound-theme-smooth'                # AUR: Complete sound theme
-    'xcursor-comix'                     # Comic cursor
-    'archlinux-artwork'     # Wallpapers
-    'archlinux-wallpaper'
-    'elementary-wallpapers-git'
-    'gnome-backgrounds'
-    'plasma-workspace-wallpapers'
-    'xfce4-artwork'
-    'blueman'                       # Bluetooth manager
-    'firefox'                       # Fallback browser
-    'gtk2fontsel'                   # Font map
-    'gucharmap'                     # Character map
-    'mpv'                           # Video daemon
-    'pavucontrol'                   # Pulse audio control menu
-    'ristretto'                     # Image viewer
-    'system-config-printer'         # Printer setup utility
-    'alacritty'                     # Wayland native terminal
-    'udisks2'                       # Mount manager
-    'vlc'                           # Media player
-    'zathura'                       # Document viewer
-    'zathura-cb' 'zathura-djvu' 'zathura-pdf-mupdf' 'zathura-ps'
-    'gpicview'                          # Picture to ascii
-    'libcanberra' 'libcanberra-pulse'   # Sound theme
-    'polkit-gnome'                  # Authentication
-    'qutebrowser'                           # Browser with vim binding
-    'freerdp'                           # Remote desktop
-    'syncthing-gtk'                         # Tray icon for syncthing
-    'texlive-core'                          # LaTeX
-    'texlive-science'
-    'biber'
-    'texlive-fontsextra'
-    'texlive-latexextra'
-    'texlive-pictures'
-    'texlive-pstricks'
-    'samba'
-    'gcc6'                                  # Matlab dependencies
+    'sddm'
+    'chilli-sddm-theme' )
+
+# Fonts
+depends+=(
+    'adobe-source-serif-pro-fonts'
+    'noto-fonts-emoji'
+    'otf-fira-code'
+    'tamsyn-font'
+    'terminess-powerline-font-git'
+    'ttf-droid'
+    'ttf-iosevka'
+    'ttf-roboto' )
+
+# Themes
+depends+=(
+    'xcursor-comix'
+    'arc-gtk-theme'
+    'elementary-icon-theme'
+    'gnome-themes-extra' 'gtk-engine-murrine'
+    'kvantum-qt5' 'kvantum-theme-arc'
+    'numix-gtk-theme' )
+
+# Applications
+depends+=(
+    'virt-manager'
+    'blueman'
+    'udiskie'
+    'pavucontrol'
+    'remmina-git'
+    'ristretto'
+    'zathura' 'zathura-cb' 'zathura-djvu' 'zathura-pdf-mupdf' 'zathura-ps'
+    'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures'
+    'texlive-pstricks' 'texlive-core' 'texlive-science'
+    'inkscape'
+    'gimp'
+    'blender'
+    'darktable'
+    'audacity'
+    'picard'
+    'tuxguitar'
+    'smplayer'
+    'firefox' 'qutebrowser'
+    'zotero'
+    'libreoffice-fresh' )
+
+# Utilities
+depends+=(
+    'alacritty' 'kitty'
+    'gtk2fontsel' 'gucharmap'
+    'system-config-printer'
+    'polkit-gnome'
+    'freerdp'
+    'mpv'
+    'latex-mk'
+    'pdfsam'
+    'trevor-bridge-bin' )
+
+# Gaming
+depends+=(
+    'steam' 'steam-native-runtime' 'steamos-compositor'
+    'wine-staging'                          # Windows compatibility
+    'wine_gecko' 'wine-mono' 'lib32-libxml2' 'lib32-mpg123' 'lib32-lcms2'
+    'lib32-giflib' 'lib32-libpng' 'lib32-gnutls' 'lib32-gst-plugins-base'
+    'lib32-openal' 'lib32-gst-plugins-good' )
+
+# Programming
+depends+=(
+    'arduino'
+    'arduino-avr-core'
+    'octave'
+    'spyder3' )
+
+# Matlab stuff
+depends+=(
+    'gcc6'
     'gconf'
     'glu'
     'gstreamer0.10-base'

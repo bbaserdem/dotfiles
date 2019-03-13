@@ -24,7 +24,7 @@ symlinks_and_directories () {
     ln -sf "${XDG_CONFIG_HOME}/applications" "${HOME}/.local/share/applications"
 
     # Remmina config; to be shared from Documents
-    ln -sf "${HOME}/Documents/Remmina ~/.local/share/remmina"
+    ln -sf "${HOME}/Documents/Remmina" "${HOME}/.local/share/remmina"
 
     # Fallback values for bash shell
     ln -sf "${HOME}/.config/bash/bashrc" "${HOME}/.bashrc"
@@ -120,8 +120,10 @@ local_update () {
     # Rofi-pass and emoji
     curl 'https://raw.githubusercontent.com/carnager/rofi-pass/master/rofi-pass' \
         --output "${XDG_CONFIG_HOME}/rofi/rofi-pass"
+    chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-pass"
     curl 'https://raw.githubusercontent.com/fdw/rofimoji/master/rofimoji.py' \
         --output "${XDG_CONFIG_HOME}/rofi/rofi-emoji.py"
+    chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-emoji.py"
 
     # Generator scripts for passwords
     ${XDG_CONFIG_HOME}/isync/passgen.sh

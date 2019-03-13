@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-extra
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -12,37 +12,14 @@ source=(
     'extra.install'
 )
 depends=(
-    'arduino'               # Arduino stuff
-    'arduino-avr-core' 'arduino-docs'
+    'arduino' 'arduino-avr-core'            # Arduino stuff
+    'arduino-docs'
     'trezor-bridge-bin'                     # Hardware BCN wallet
-    'audacity'                              # Audio manipulator
-    'blender'                               # 3d designing utility
-    'darktable'                             # Raw format editor
-    'gimp'                                  # GNU Image Manipulation
-    'gitg'                                  # Git visualizer
-    'gourmet'                               # Recipe tracker
-    'gparted'                               # Graphical partition editor
-    'inkscape'                              # Vector graphics editor
     'libreoffice-fresh'                     # Office suite
-    'neovim-gtk-git'                        # AUR: Neovim gui
-    'openscad'                              # CAD programming language
-    'octave'                                # Octave
     'pdfsam'                                # Pdf manipulator
     'qemu' 'ovmf'                           # Virtualizer
     'picard'                                # Music tagger
     'remmina'                               # Remote manager
-    'smplayer'                              # Mpv frontend
-    'spyder3'                               # Python dev environment
-    'steam'                                 # Gaming
-    'steam-native-runtime' 'steamos-compositor'
-    'stellarium'                            # Star viewer
-    'thunar-volman' 'gvfs'                  # Thunar plugins
-    'thunar-archive-plugin' 'xarchiver' 'file-roller' 'thunar-media-tags-plugin'
-    'tumbler' 'raw-thumbnailer'
-    'wine-staging'                          # Windows compatibility
-    'wine_gecko' 'wine-mono' 'lib32-libxml2' 'lib32-mpg123' 'lib32-lcms2'
-    'lib32-giflib' 'lib32-libpng' 'lib32-gnutls' 'lib32-gst-plugins-base'
-    'lib32-openal' 'lib32-gst-plugins-good'
     'zotero'                                # Referance manager
 )
 md5sums=('e919e15571fce9686e5678fcf266d009')

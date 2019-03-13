@@ -1,0 +1,61 @@
+#!/bin/bash
+# Wraps aursync command to build & upload custom PKGBUILD's
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+# Locations
+_name=sbp
+_dest=s3://sbp-arch/repo
+_local="${HOME}/.cache/${_name}-repo"
+_build="${HOME}/.cache/${_name}-build"
+_chroot="${HOME}/.cache/${_name}-chroot"
+mkdir -p "${_local}"
+mkdir -p "${_build}" & rm -rf "${_build}/"*
+mkdir -p "${_chroot}"
+
+# Create the chroot if not present
+[[ -d "${_chroot}/root" ]] || mkarchroot -C /etc/pacman.conf \
+    -M /etc/makepkg.conf "$_chroot/root" base base-devel
+
+# Sync remote DB to local
+s3cmd sync "${_dest}/${_name}.db.tar.xz"    "${_local}/"
+ln -sf    "${_local}/${_name}.db.tar.xz"    "${_local}/$_name.db"
+s3cmd sync "${_dest}/${_name}.files.tar.xz" "${_local}/"
+ln -sf    "${_local}/${_name}.files.tar.xz" "${_local}/$_name.files"
+
+# Copy package to build path, build package and upload it
+for _arg in "${@}"; do
+    if [ -d "${_arg}" ] ; then
+        # Update package sums
+        updpkgsums "${_arg}/PKGBUILD"
+        # Create a copy of the package directory
+        cp -r "${_arg}" "${_build}/"
+        _loc="${_build}/$(basename "${_arg}")"
+        cd "${_loc}"
+        # Clean old packages
+        for _file in *.pkg.tar.xz ; do
+            [ -f "${_file}" ] && rm -f "${_file}"
+        done
+        # Build the package
+        makechrootpkg -cur "${_chroot}"
+        cd -
+        # Update the database, and upload
+        for _file in "${_loc}/"*.pkg.tar.xz ; do
+            [ -f "${_file}" ] || break
+            repo-add "${_local}/${_name}.db.tar.xz" "${_file}"
+            # Remove old version from database
+            _pre="$( echo "${_file}" | sed 's|^\(.*\)-.*-.*-.*|\1|g' )"
+            [ -z "${_pre}" ] || ( \
+                s3cmd rm "${_dest}/${_pre}-*.pkg.tar.xz" || true )
+        done
+        s3cmd sync --follow-symlinks --acl-public "${_loc}/"*.pkg.tar.xz \
+            "${_dest}/"
+    else
+        echo "Package directory not found; ${_arg}, skipping..."
+    fi
+done
+
+# Sync local database to remote along with all the new packages
+s3cmd sync --follow-symlinks --acl-public "${_local}/${_name}.db" \
+    "${_local}/${_name}.db.tar.xz" "${_local}/${_name}.files" \
+    "${_local}/${_name}.files.tar.xz" "${_dest}/"

@@ -477,7 +477,7 @@ format-background = ${colors.bkg}
 [module/backlight]
 type = internal/backlight
 card = ${env:BRI_SCR}
-format = %{A4:brightnessctl -d $BRI_SCR s +5%: A5:brightnessctl -d $BRI_SCR s 5%-:}<label>%{A A}
+format = %{A4:light -A 5: A5:light -U 5:}<label>%{A A}
 label = %percentage%
 format-prefix = " "
 format-prefix-foreground = ${colors.vio}

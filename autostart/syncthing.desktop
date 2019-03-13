@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Syncthing-GTK
-Exec=/usr/bin/syncthing-gtk
+Name=Syncthing
+Exec=/usr/bin/syncthing -no-browser
 Icon=emblem-syncthing
-Comment=GUI for Syncthing
+Comment=File sharing accross computers
 X-GNOME-Autostart-enabled=true
 Hidden=false
 Type=Application

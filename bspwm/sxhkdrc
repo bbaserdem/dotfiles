@@ -26,7 +26,7 @@ super + p
 
 # Emoji
 super + e
-    $XDG_CONFIG_HOME/rofi/rofi-emoji
+    $XDG_CONFIG_HOME/rofi/rofi-emoji.py
 
 # Music controls for mpd
 XF86Audio{Play,Stop,Next,Prev}
@@ -41,10 +41,10 @@ XF86AudioMute
 
 # Brightness setting for laptop
 XF86MonBrightness{Up,Down}
-    brightnessctl -d $BRI_SCR s {+5%,5%-}
+    light -{A,U} 5
 
 XF86KbdBrightness{Up,Down}
-    brightnessctl -d $BRI_KBD s {+1,1-}
+    light -{A,U}rs "sysfs/leds/asus::kbd_backlight" 1
 
 # Power button
 XF86PowerOff

@@ -1,24 +1,24 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-sway
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package: Sway window manager (wayland compositor)"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
 licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 depends=(
-    'sbp-gui-base'
-    'brightnessctl'                 # Brightness controls
-    'dex'                           # Autostart launcher
-    'i3blocks'                      # Input to status-bar
-    'mako-git'                      # Notification daemon
-    'redshift-sway-git'             # Screen dimmer for wayland
-    'rofi-wayland-git'              # App launcher
-    'rofi-pass'
-    'rofi-emoji'
-    'sway-git'                      # Wayland compositor
-    'udiskie'                       # Media tray icon
-    'wlroots-git'                   # Wayland library
+    'light'             # Brightness controls
+    'dex'               # Autostart launcher
+    'grim'              # Screenshot
+    'i3blocks'          # Input to status-bar
+    'mako'              # Notification daemon
+    'rofi'              # App launcher
+    'slurp'             # Region selector
+    'sway'              # Wayland compositor
+    'swayidle'          # Timout manager
+    'swaylock'          # Screen-locker
+    'udiskie'           # Media tray icon
+    'wlroots'           # Wayland library
 )
 

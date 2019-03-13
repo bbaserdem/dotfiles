@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Restore light levels
+Comment=Launch Light to restore brightness from cache
+Exec=/usr/bin/light -O
+Terminal=false
+Type=Application
+StartupNotify=false
+OnlyShowIn=bspwm;sway;

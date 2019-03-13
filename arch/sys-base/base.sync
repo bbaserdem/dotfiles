@@ -1,0 +1,41 @@
+#!/usr/bin/bash
+# Wraps aursync command to build & upload AUR packages.
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+# Locations
+_name=sbp
+_dest=s3://sbp-arch/repo
+_local="${HOME}/.cache/${_name}-repo"
+mkdir -p "${_local}"
+
+# Sync remote DB to local
+s3cmd sync "${_dest}/${_name}.db.tar.xz"    "${_local}/"
+ln -sf    "${_local}/${_name}.db.tar.xz"    "${_local}/${_name}.db"
+s3cmd sync "${_dest}/${_name}.files.tar.xz" "${_local}/"
+ln -sf    "${_local}/${_name}.files.tar.xz" "${_local}/${_name}.files"
+
+# Clean up older packages
+for _file in "${_local}/"*.pkg.tar.xz ; do
+    [ -f "${_file}" ] && rm -f "${_file}"
+done
+
+# Run aursync on all arguments
+for _arg in "${@}" ; do
+    aursync --repo "${_name}" --root "${_local}" "${_arg}"
+done
+
+# Upload all the newly generated package files
+for _file in "${_local}/"*.pkg.tar.xz ; do
+    # Check if it is a file.
+    [ -f "${_file}" ] || break
+    # Remove old versions from bucket (strip -ver-num-arc.EXT)
+    _pre="$( echo "${_file}" | sed 's|^\(.*\)-.*-.*-.*|\1|g' )"
+    [ -z "${_pre}" ] || ( \
+        s3cmd rm "${_dest}/${_pre}-*.pkg.tar.xz" || true )
+done
+
+# Sync local database to remote
+s3cmd sync --follow-symlinks --acl-public "${_local}/${_name}.db" \
+    "${_local}/${_name}.db.tar.xz" "${_local}/"*.pkg.tar.xz \
+    "${_local}/${_name}.files" "${_local}/${_name}.files.tar.xz" "${_dest}/"

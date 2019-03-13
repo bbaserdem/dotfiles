@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=12
+pkgrel=16
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -9,6 +9,7 @@ licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 install=base.install
 source=(
+    'base.build'
     'base.bt-polkit'
     'base.btaudio'
     'base.chroot-os'
@@ -20,8 +21,10 @@ source=(
     'base.network'
     'base.nftables'
     'base.pa_usb'
+    'base.remove'
     'base.snapper-root'
     'base.sudoers'
+    'base.sync'
     'base.sysctl'
     'base.touchpad'
     'base.vconsole'
@@ -195,7 +198,6 @@ depends=(
     'newsboat'              # RSS/Atom feed
     'pulsemixer'            # Pulse audio mixer
     'ranger'                # File browser
-    'vifm'
     'todoman'               # Tasks manager
     'weechat'               # IRC client
     'arm-none-eabi-gcc'     # Arduino stuff
@@ -236,6 +238,7 @@ depends=(
     'python-magic'
     'jre8-openjdk'          # Java
     'jre10-openjdk'
+    'qemu'
 )
 
 package() {
@@ -244,6 +247,7 @@ package() {
     install -dm 0755 "${pkgdir}/etc"
     install -Dm 0644 base.bt-polkit         "${pkgdir}/etc/polkit-1/rules.d/51-blueman.rules"
     install -Dm 0644 base.btaudio           "${pkgdir}/etc/bluetooth/audio.conf"
+    install -Dm 0755 base.build             "${pkgdir}/usr/bin/archrepo-build"
     install -Dm 0755 base.chroot-os         "${pkgdir}/usr/bin/chroot-os"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
@@ -252,8 +256,10 @@ package() {
     install -Dm 0645 base.network           "${pkgdir}/etc/udev/rules.d/11-network.rules"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
     install -Dm 0644 base.pa_usb            "${pkgdir}/etc/udev/rules.d/89-pulseaudio-usb.rules"
+    install -Dm 0755 base.remove            "${pkgdir}/usr/bin/archrepo-remove"
     install -Dm 0644 base.snapper-root      "${pkgdir}/etc/snapper/configs/root"
     install -Dm 0750 base.sudoers           "${pkgdir}/etc/sudoers.d/sbp-base"
+    install -Dm 0755 base.sync              "${pkgdir}/usr/bin/archrepo-sync"
     install -Dm 0644 base.sysctl            "${pkgdir}/etc/sysctl.d/01-sysctl.conf"
     install -Dm 0644 base.touchpad          "${pkgdir}/etc/X11/xorg.conf.d/30-touchpad.conf"
     install -Dm 0644 base.vconsole          "${pkgdir}/etc/vconsole.conf"
@@ -264,7 +270,8 @@ package() {
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/nano"
     ln -sf /usr/bin/nvim "${pkgdir}/usr/bin/vi"
 }
-md5sums=('9a2f3529c4e4ef9765b402ff6b5c8cb7'
+md5sums=('20861f3c110fc6212678f6b71f91457d'
+         '9a2f3529c4e4ef9765b402ff6b5c8cb7'
          '305f8eae3d7981c6471bc431886b659a'
          '8a2dd425633e8fcd541de29b81d2c81d'
          'a7a3dc4d0a03d05cb0fd9f8a27f37ad6'
@@ -275,8 +282,10 @@ md5sums=('9a2f3529c4e4ef9765b402ff6b5c8cb7'
          '67fe3ab43b239e9c51cb23c19fe4f0a1'
          '2b4a7715d47beadb71db5f7b3369a4c9'
          '98b541ce9c3fd6fff43d8d4ae0762215'
+         '57ed5eaba05f22cf4c3b8f2a55b8ca9e'
          '00e5bc63b7bb82526516df8f45c4745c'
          'df0911ed7f3bbf285de4e3c08662dafd'
+         'cdb07db027679fb63b2efe3492c06023'
          '586c14c5f87f0097e0dfcb0454bfc2a6'
          '18c4e485034ee909f9d4f3c7fab3954f'
          '6f78e20bfb4b080dca6a260e0423f474'

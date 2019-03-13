@@ -1,36 +1,26 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-bspwm
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package: BSPWM desktop"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
 licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
-source=(
-    'bspwm.lock'
-    'bspwm.wallpaper'
-)
 depends=(
-    'sbp-gui-base'
-    'brightnessctl'         # Brightness controls
-    'bspwm-git'             # Binary split partitioning WM
-    'compton'               # Compositor for effects
-    'dex'                   # Autostart launcher
-    'dunst'                 # Notification daemon
-    'feh'                   # Wallpaper management
-    'i3lock'                # Screen locker
-    'maim'                  # Screenshot utility
-    'polybar-git'           # AUR: Status bar
-    'redshift'              # Screen dimmer
-    'rofi'                  # Application launcher
-    'sxhkd'                 # Simple X hotkey daemon
-    'xss-lock'              # Locks screen on power events
+    'light'         # Brightness controls
+    'bspwm'         # Binary split partitioning WM
+    'dex'           # Autostart launcher
+    'dunst'         # Notification daemon
+    'feh'           # Wallpaper management
+    'i3lock'        # Screen locker
+    'maim'          # Screenshot utility
+    'polybar-git'   # AUR: Status bar
+    'redshift'      # Screen dimmer
+    'rofi'          # Application launcher
+    'sxhkd'         # Simple X hotkey daemon
+    'xss-lock'      # Locks screen on power events
 )
 
-package() {
-    install -Dm 0755 bspwm.lock      "${pkgdir}/usr/bin/bspwm-locker"
-    install -Dm 0755 bspwm.wallpaper "${pkgdir}/usr/bin/bspwm-wallpaper"
-}
 md5sums=('dbea01bce113b3c8c1cc42e12aa86be5'
          'ee6fa4f209f8ebcbe9e273549f8d0860')

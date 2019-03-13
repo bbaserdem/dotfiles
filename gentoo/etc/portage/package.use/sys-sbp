@@ -1,0 +1,22 @@
+app-admin/syslog-ng geoip2 json
+app-admin/logrotate cron
+app-admin/sudo offensive
+app-editors/neovim clipboard nvimpager remote tui
+app-portage/layman sync-plugin-portage git
+dev-lang/rust llvm_targets_AMDGPU
+mail-client/neomutt notmuch
+media-fonts/nerd-fonts sourcecodepro
+media-gfx/feh xinerama
+media-sound/ncmpcpp clock icu utputs visualizer
+media-sound/pulseaudio alsa-plugin equalizer native-headset bluetooth
+net-p2p/syncthing tools
+net-misc/remmina rdp ssh
+net-wireless/blueman appindicator network
+net-wireless/iwd client monitor
+sys-fs/btrfs-progs -convert reiserfs -zstd
+sys-fs/lvm2 lvm2create_initrd
+sys-proces/fcron debug mta pam system-crontab
+www-client/firefox gmp-autoupdate hwaccel lto system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite -neon -wifi
+www-client/qutebroser -bindist x11extras webkit webengine widgets webchannel location positioning sensors
+x11-misc/polybar -i3wm ipc mpd network
+x11-misc/redshift gtk geoclue -ayatana

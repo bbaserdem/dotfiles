@@ -17,10 +17,12 @@ post_install() {
     fi
 
     # Make game library folders
-    echo "[sbp-gui-base]==> Priming steam library and wine folder in /opt …"
+    echo "[sbp-gui-extra]==> Priming steam library and wine folder in /opt …"
+    mkdir -p /opt/{steam,wine}
     chown sbp:games /opt/steam
+    chmod 775 /opt/steam
     chown sbp:games /opt/wine
-
+    chmod 775 /opt/wine
     post_upgrade
 }
 

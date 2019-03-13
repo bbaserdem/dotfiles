@@ -12,7 +12,6 @@ x11-apps/xset
 x11-apps/xsetroot
 x11-apps/xwininfo
 x11-misc/xdotool
-dev-libs/wayland
 
 # Login
 x11-misc/sddm
@@ -35,7 +34,6 @@ x11-themes/gnome-icon-theme-extras
 x11-themes/kvantum
 x11-themes/numix-icon-theme
 
-
 # BSPWM
 x11-wm/bspwm
 x11-misc/sxhkd
@@ -49,15 +47,13 @@ media-gfx/maim
 x11-misc/rofi
 
 # Sway
+dev-libs/wayland
 gui-wm/sway
+gui-apps/wl-clipboard
 
 # Apps
 app-emulation/virt-manager
-#app-misc/zotero
-dev-python/spyder
 net-wireless/blueman
-www-client/qutebrowser
-www-client/firefox
 sys-fs/udiskie
 media-sound/pavucontrol
 net-misc/remmina
@@ -70,12 +66,16 @@ media-gfx/blender
 media-gfx/darktable
 media-sound/audacity
 media-sound/picard
+media-sound/tuxguitar
 media-video/smplayer
+www-client/firefox
+www-client/qutebrowser
 
 # Utility
+dev-libs/light
 x11-misc/dex
-x11-terms/kitty
 x11-terms/alacritty
+x11-terms/kitty
 x11-misc/gtk2fontsel
 gnome-extra/gucharmap
 app-admin/system-config-printer
@@ -87,3 +87,11 @@ app-text/zathura-ps
 app-text/zathura-cb
 app-text/zathura-djvu
 dev-tex/latexmk
+
+# Programming
+dev-python/spyder
+sci-mathematics/octave
+
+
+# Layman
+#app-misc/zotero
