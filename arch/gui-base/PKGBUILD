@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=11
+pkgrel=13
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -38,17 +38,17 @@ depends+=(
     'lightdm-webkit2-greeter'
     'lightdm-webkit-theme-litarvan'
     'sddm'
-    'chilli-sddm-theme' )
+    'chili-sddm-theme' )
 
 # Fonts
 depends+=(
     'adobe-source-serif-pro-fonts'
-    'noto-fonts-emoji'
     'otf-fira-code'
-    'tamsyn-font'
-    'terminess-powerline-font-git'
+    'terminus-font'
+    'noto-fonts-emoji'
+    'termsyn-font'
     'ttf-droid'
-    'ttf-iosevka'
+    'ttf-inconsolata'
     'ttf-roboto' )
 
 # Themes
@@ -77,7 +77,7 @@ depends+=(
     'darktable'
     'audacity'
     'picard'
-    'tuxguitar'
+    #'tuxguitar'
     'smplayer'
     'firefox' 'qutebrowser'
     'zotero'
@@ -93,7 +93,9 @@ depends+=(
     'mpv'
     'latex-mk'
     'pdfsam'
-    'trevor-bridge-bin' )
+    'trezor-bridge-bin'
+    'xkb-switch'
+    )
 
 # Gaming
 depends+=(
@@ -130,6 +132,8 @@ depends+=(
     'qt5-websockets'
     'qt5-x11extras'
     'xerces-c'
+    'jre8-openjdk'
+    'jre10-openjdk'
 )
 
 package() {
@@ -137,4 +141,4 @@ package() {
     install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
 }
 md5sums=('ba159b8c80fed9b26fc51e7bfba631d5'
-         '5db2ace115a5dd337809d021c5ba14e1')
+         '80543c7fbb6d2d84a99c3377644b36cf')

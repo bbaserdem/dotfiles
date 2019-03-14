@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-sway
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta package: Sway window manager (wayland compositor)"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -21,4 +21,5 @@ depends=(
     'udiskie'           # Media tray icon
     'wlroots'           # Wayland library
 )
+
 

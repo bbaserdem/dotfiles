@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-bspwm
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Meta package: BSPWM desktop"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -22,5 +22,4 @@ depends=(
     'xss-lock'      # Locks screen on power events
 )
 
-md5sums=('dbea01bce113b3c8c1cc42e12aa86be5'
-         'ee6fa4f209f8ebcbe9e273549f8d0860')
+

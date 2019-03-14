@@ -107,7 +107,7 @@ local_update () {
         git clone 'https://github.com/ryanoasis/nerd-fonts.git' /tmp/nerd-fonts
     fi
     if [ -x '/tmp/nerd-fonts/install.sh' ] ; then
-        /tmp/nerd-fonts/install.sh --install-to-user-path --complete --copy SourceCodePro
+        /tmp/nerd-fonts/install.sh --install-to-user-path --complete --copy Iosevka
     fi
 
     # Breeze hacked cursor theme

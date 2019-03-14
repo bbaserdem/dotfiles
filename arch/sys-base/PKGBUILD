@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=16
+pkgrel=17
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -28,217 +28,132 @@ source=(
     'base.sysctl'
     'base.touchpad'
     'base.vconsole'
-    'base.zshenv'
-)
-depends=(
-    'sbp-sys-init'          # Init system
-    'sbp-sys-boot'          # Booting system
-    'bash'                  # Base group
-    'bzip2'
-    'coreutils'
-    'cryptsetup'
-    'device-mapper'
-    'dhcpcd'
-    'diffutils'
-    'e2fsprogs'
-    'file'
-    'filesystem'
-    'findutils'
-    'gawk'
-    'gcc-libs'
-    'gettext'
-    'glibc'
-    'grep'
-    'gzip'
-    'inetutils'
-    'iproute2'
-    'iputils'
-    'less'
-    'licenses'
-    'logrotate'
-    'linux-firmware'
-    'lvm2'
-    'man-db'
-    'man-pages'
-    'mdadm'
-    'pacman'
-    'pciutils'
-    'perl'
-    'procps-ng'
-    'psmisc'
-    's-nail'
-    'sed'
-    'shadow'
-    'tar'
-    'texinfo'
-    'usbutils'
-    'util-linux'
-    'which'
-    'xfsprogs'
-    'autoconf'              # Common base-devel
-    'automake'
-    'binutils'
-    'bison'
-    'fakeroot'
-    'flex'
-    'gcc'
-    'groff'
-    'libtool'
-    'm4'
-    'make'
-    'patch'
-    'pkgconf'
-    'sudo'
-    'jfsutils'              # Filesystems
+    'base.zshenv' )
+
+depends=( 'sbp-sys-init' 'sbp-sys-boot' )
+
+# Base & base-devel
+depends+=(
+    'bash' 'bzip2' 'coreutils' 'device-mapper' 'diffutils' 'e2fsprogs' 'file'
+    'filesystem' 'findutils' 'gawk' 'gcc-libs' 'gettext' 'glibc' 'grep' 'gzip'
+    'inetutils' 'iproute2' 'iputils' 'less' 'licenses' 'lvm2' 'man-db'
+    'man-pages' 'mdadm' 'pacman' 'pciutils' 'perl' 'procps-ng' 'psmisc'
+    's-nail' 'sed' 'shadow' 'tar' 'texinfo' 'usbutils' 'util-linux' 'which'
+    'xfsprogs' 'autoconf' 'automake' 'binutils' 'bison' 'fakeroot' 'flex' 'gcc'
+    'groff' 'libtool' 'm4' 'make' 'patch' 'pkgconf' )
+
+# File system stuff
+depends+=(
+    'parted'
+    'inotify-tools'
+    'sshfs' 'fuse3'
+    'jfsutils'
     'reiserfsprogs'
-    'btrfs-progs'
+    'btrfs-progs' 'snapper'
+    'rsync'
     'f2fs-tools'
     'exfat-utils'
-    'udftools'
-    'archiso'               # Live USB tool
-    'alsa-utils'            # ALSA
-    'lib32-alsa-plugins'
-    'pulseaudio'            # Pulseaudio
-    'lib32-libpulse'
-    'pamixer'
-    'pulseaudio-alsa'
-    'bluez'                 # Bluetooth
-    'bluez-libs'
-    'bluez-utils'
-    'pulseaudio-bluetooth'
-    'clonezilla'            # Hard disk cloning
-    'ctags'                 # Tag generator
-    'cups'                  # Printing
-    'cups-pdf'
-    'cups-pk-helper'
-    'abcde'                 # CD utility
-    'cdparanoia'
-    'amd-ucode'             # Microcode updates
-    'intel-ucode'
-    'asp'                   # Arch devtools
-    'devtools'
-    'reflector'             # Package management
-    'aurutils'
-    'pacman-contrib'
-    'fcron'                 # Cron implementation
-    'atool'                 # Archive tools
-    'bzip2'
-    'cpio'
-    'gzip'
-    'lhasa'
-    'lzop'
-    'p7zip'
-    'tar'
-    'unace'
-    'unrar'
-    'unzip'
-    'xz'
-    'zip'
-    'bash-completion'       # Completion for bash
-    'cpupower'              # CPU supervisor, AUR - MCE
-    'rasdaemon'
-    'discount'              # Markdown & JSON
-    'jq'
-    'yajl'
-    'flatpak'               # Jailed software repository
-    'geoip'                 # IP to location resolver
-    'geoip-database-extra'
-    'geoclue2'              # GPS
-    'git'                   # Version control tool
-    'gnupg'                 # GPG
-    'sshfs'                 # SSH
+    'udftools' )
+
+# Hardware
+depends+=( 
+    'lm_sensors'
+    'amd-ucode' 'intel-ucode'
+    'linux-firmware'
+    'cpupower'
+    'rasdaemon' 'stress'
+    'tlp' )
+
+# Encryption
+depends+=(
+    'pass' 'qrencode'
+    'cryptsetup' 
+    'gnupg'
     'openssh'
-    'fuse3'
     'tor'
-    'zsh'                   # Improved shell
-    'grml-zsh-config'
-    'imagemagick'           # Commandline image manipulator
-    'inotify-tools'         # File change watching
-    'parted'                # Partition editor
-    'languagetool'          # Grammar checker
-    'lm_sensors'            # Thermal sensors
-    'msmtp'                 # Mail and DAV stuff
-    'postfix'
-    'isync'
-    'notmuch'
-    'vdirsyncer'
-    'nftables'              # Firewall and networking
-    'bridge-utils'
-    'hostapd'
-    'openconnect'           # VPN services
-    'openvpn'
-    'private-internet-access-vpn'
-    'openresolv'            # DNS resolver manager
-    'unbound'               # DNS resolver
-    'pass'                  # Password manager
-    'qrencode'              # QR code generation
-    'rsync'                 # File synching utility
-    'snapper'               # BTRFS snapshot manager
-    'tmux'                  # Terminal multiplexer
-    'tlp'                   # Power saver
-    'stress'                # System stress test
-    'iwd'                   # INet Wireless Daemon
-    'mpc'                   # Music daemon and AUR scrobbler
-    'mpd'
-    'mpdscribble'
-    'syncthing'             # Delocalized file sharing
-    'w3m'                   # Client internet browser
-    'youtube-dl'            # Download youtube videos
-    'tzupdate'              # AUR: For autoupdating time
-    'xkb-switch'            # AUR: Manage keyboard states
-    'xdg-user-dirs'         # Manage user directories
-    'htop'                  # Power sources
-    'khal'                  # Calendar
-    'khard'                 # Contacts
-    'ncmpcpp'               # Music player
-    'neofetch'              # System info printer
-    'neomutt'               # Mail reader
-    'neovim'                # Text editor
-    'python-neovim'
-    'newsboat'              # RSS/Atom feed
-    'pulsemixer'            # Pulse audio mixer
-    'ranger'                # File browser
-    'todoman'               # Tasks manager
-    'weechat'               # IRC client
-    'arm-none-eabi-gcc'     # Arduino stuff
-    'arm-none-eabi-binutils'
-    'arm-none-eabi-newlib'
-    'avr-binutils'
-    'avr-gcc'
-    'avr-libc'
-    'avrdude'
-    'dfu-util'
-    'dfu-programmer'
-    'android-tools'         # Android stuff
-    'android-udev'
-    'libmtp'
-    's3cmd'                 # Amazon bucket console
-    'clang'                 # C
-    'cmake'
-    'gcc6'
-    'bpython'               # Python
-    'jupyter-nbconvert'
-    'jupyter-notebook'
-    'lapack'
-    'mathjax'
-    'openblas'
-    'python-matplotlib'
-    'python-sympy'
-    'python-pandas'
-    'python-pexpect'
-    'python-scikit-learn'
-    'python-ipykernel'
-    'python-neovim'
-    'python-numpy'
-    'python-virtualenv'
-    'python-xdg'
-    'python2-pip'
-    'python-pip'
-    'python-jedi'
-    'python-magic'
-    'jre8-openjdk'          # Java
-    'jre10-openjdk'
+    'openconnect'
+    'openvpn' 'private-internet-access-vpn' )
+
+# Network
+depends+=(
+    'dhcpcd'
+    'bluez' 'bluez-libs' 'bluez-utils'
+    'nftables'
+    'bridge-utils' 'hostapd'
+    'openresolv'
+    'unbound'
+    'iwd' )
+
+# Administration
+depends+=(
+    'fcron'
+    'sudo'
+    'logrotate'
+    'tzupdate' )
+
+# Arch stuff
+depends+=(
+    'archiso' 
+    'asp'
+    'devtools'
+    'reflector'
+    'aurutils'
+    'pacman-contrib' )
+
+# Media
+depends+=(
+    'alsa-utils' 'lib32-alsa-plugins'
+    'pulseaudio' 'lib32-libpulse' 'pulseaudio-alsa' 'pulseaudio-bluetooth'
+    'pamixer'
+    'cdparanoia' )
+
+# Applications
+depends+=(
+    'atool'
+    'abcde'
+    'zsh' 'grml-zsh-config'
+    'neomutt' 'isync' 'notmuch' 'vdirsyncer'
+    'ncmpcpp' 'mpc' 'mpd' 'mpdscribble'
+    'tmux'
+    'khal' 'khard'
+    'htop'
+    'neofetch'
+    'neovim' 'python-neovim'
+    'syncthing'
+    'w3m'
+    'youtube-dl'
+    'newsboat'
+    'pulsemixer'
+    'ranger'
+    'todoman'
+    'weechat' )
+
+# Utilities
+depends+=(
+    'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar' 'unzip'
+    'xz' 'zip'
+    'ctags'
+    'cups' 'cups-pdf' 'cups-pk-helper'
+    'bash-completion'
+    'git'
+    'discount' 'jq' 'yajl'
+    'geoip' 'geoip-database-extra' 'geoclue2'
+    'imagemagick'
+    'languagetool'
+    'msmtp' 'postfix'
+    'xdg-user-dirs'
     'qemu'
+    's3cmd'
+    'cmake' 'clang' )
+
+# Developement
+depends+=(
+    'arm-none-eabi-gcc' 'arm-none-eabi-binutils' 'arm-none-eabi-newlib'
+    'avr-binutils' 'avr-gcc' 'avr-libc' 'avrdude' 'dfu-util' 'dfu-programmer'
+    'android-tools' 'android-udev' 'libmtp'
+    'bpython'
+    'lapack' 'openblas'
+    'python-pip' 'python-pipenv'
 )
 
 package() {
@@ -285,8 +200,8 @@ md5sums=('20861f3c110fc6212678f6b71f91457d'
          '57ed5eaba05f22cf4c3b8f2a55b8ca9e'
          '00e5bc63b7bb82526516df8f45c4745c'
          'df0911ed7f3bbf285de4e3c08662dafd'
-         'cdb07db027679fb63b2efe3492c06023'
+         '67ea94609f342eff9687b5b553fc503b'
          '586c14c5f87f0097e0dfcb0454bfc2a6'
          '18c4e485034ee909f9d4f3c7fab3954f'
-         '6f78e20bfb4b080dca6a260e0423f474'
+         '2d144f36bd6e9e431357d84ee2902d9e'
          '7128851ee00d22284cbdbe9b8257ad14')

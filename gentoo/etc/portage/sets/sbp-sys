@@ -100,6 +100,7 @@ app-misc/geoclue
 dev-python/neovim-remote
 dev-python/neovim-python-client
 dev-python/pip
+dev-util/ctags
 dev-vcs/git
 mail-client/notmuch
 media-gfx/imagemagick
@@ -112,8 +113,6 @@ app-mobilephone/dfu-util
 dev-embedded/avrdude
 dev-embedded/dfu-programmer
 dev-util/android-tools
-
-# Programming
 dev-python/bpython
 dev-python/numpy
 dev-python/pipenv
