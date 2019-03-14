@@ -102,27 +102,18 @@ local_update () {
         /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
     fi
 
-    # Nerdfonts
-    if [ ! -d /tmp/nerd-fonts ] ; then
-        git clone 'https://github.com/ryanoasis/nerd-fonts.git' /tmp/nerd-fonts
-    fi
-    if [ -x '/tmp/nerd-fonts/install.sh' ] ; then
-        /tmp/nerd-fonts/install.sh --install-to-user-path --complete --copy Iosevka
-    fi
-
     # Breeze hacked cursor theme
     if [ ! -d /tmp/breeze-hacked ] ; then
         git clone 'https://github.com/codejamninja/breeze-hacked-cursor-theme' /tmp/breeze-hacked
     fi
     make --directory /tmp/breeze-hacked install
-    
 
     # Rofi-pass and emoji
-    curl 'https://raw.githubusercontent.com/carnager/rofi-pass/master/rofi-pass' \
-        --output "${XDG_CONFIG_HOME}/rofi/rofi-pass"
+    wget --output-document "${XDG_CONFIG_HOME}/rofi/rofi-pass" \
+        'https://raw.githubusercontent.com/carnager/rofi-pass/master/rofi-pass'
     chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-pass"
-    curl 'https://raw.githubusercontent.com/fdw/rofimoji/master/rofimoji.py' \
-        --output "${XDG_CONFIG_HOME}/rofi/rofi-emoji.py"
+    wget  --output-document "${XDG_CONFIG_HOME}/rofi/rofi-emoji.py" \
+        'https://raw.githubusercontent.com/fdw/rofimoji/master/rofimoji.py'
     chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-emoji.py"
 
     # Generator scripts for passwords
@@ -130,6 +121,20 @@ local_update () {
     ${XDG_CONFIG_HOME}/mpdscribble-confgen.sh
     ${XDG_CONFIG_HOME}/vdirsyncer/passgen.sh
     ${XDG_CONFIG_HOME}/s3cfg-gen.sh
+
+    # Papirus icons
+    wget --output-document "${HOME}/.cache/papirus_install.sh" \
+        'https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh'
+    chmod 775 ${HOME}/.cache/papirus_install.sh
+    DESTDIR="$HOME/.local/share/icons" ${HOME}/.cache/papirus_install.sh
+
+    # Nerdfonts
+    if [ ! -d /tmp/nerd-fonts ] ; then
+        git clone 'https://github.com/ryanoasis/nerd-fonts.git' /tmp/nerd-fonts
+    fi
+    if [ -x '/tmp/nerd-fonts/install.sh' ] ; then
+        /tmp/nerd-fonts/install.sh --install-to-user-path --complete --copy Iosevka
+    fi
 }
 
 # Help text

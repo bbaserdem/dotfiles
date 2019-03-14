@@ -45,18 +45,40 @@ alias ncmpc='ncmpcpp --screen playlist --slave-screen visualizer'
 alias weather='wttr_weather'
 
 # Powerlevel9k things
-source $ZDOTDIR/powerlevel9k.settings
 
 # ZIM
 zmodules=(directory environment git git-info history input utility custom \
     syntax-highlighting history-substring-search prompt completion)
 ztermtitle='%~:%n@%m'
 zhighlighters=(main brackets cursor)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 zinput_mode='vi'
 if tty | grep -q tty; then
     zprompt_theme='steef'
 else
-    zprompt_theme='powerlevel10k'
+    zprompt_theme='powerlevel9k'
+    POWERLEVEL9K_INSTALLATION_PATH="$ZIM_HOME/modules/prompt/external-themes/${zprompt_theme}/${zprompt_theme}.zsh-theme"
+    POWERLEVEL9K_MODE='nerdfont-complete'
+    POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+        os_icon
+        root_indicator
+        history
+        ssh
+        context
+        dir
+        dir_writable
+        vcs
+        virtualenv
+        openfoam
+        )
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+        battery
+        time
+        command_execution_time
+        status
+        background_jobs
+        )
 fi
 
 source $ZIM_HOME/init.zsh
