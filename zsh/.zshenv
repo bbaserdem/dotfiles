@@ -71,7 +71,7 @@ then
     export BRI_KBD="asus::kbd_backlight"
 elif [[ $(hostname) == 'sbpworkstation' ]]
 then
-    export MON_0="DP-2"
+    export MON_0="DVI-I-1"
     export BRI_SCR=""
     export BRI_KBD=""
 elif [[ $(hostname) == 'sbpserver' ]]
