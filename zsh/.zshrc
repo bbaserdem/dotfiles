@@ -51,12 +51,11 @@ zmodules=(directory environment git git-info history input utility custom \
     syntax-highlighting history-substring-search prompt completion)
 ztermtitle='%~:%n@%m'
 zhighlighters=(main brackets cursor)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 zinput_mode='vi'
 if tty | grep -q tty; then
     zprompt_theme='steef'
 else
-    zprompt_theme='powerlevel9k'
+    zprompt_theme='powerlevel10k'
     POWERLEVEL9K_INSTALLATION_PATH="$ZIM_HOME/modules/prompt/external-themes/${zprompt_theme}/${zprompt_theme}.zsh-theme"
     POWERLEVEL9K_MODE='nerdfont-complete'
     POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -79,6 +78,7 @@ else
         status
         background_jobs
         )
+    # setopt promptsubst
 fi
 
 source $ZIM_HOME/init.zsh

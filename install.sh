@@ -9,6 +9,8 @@ fix_perm () {
     chmod -R u=rwX,g=,o= "${HOME}/.ssh"
     chmod -R u=rwX,g=,o= "${HOME}/.gnupg"
     chmod 600 "${XDG_CONFIG_HOME}/gpg-agent.conf"
+    chmod 644 "${HOME}/.face"
+    chmod 644 "${HOME}/.face.icon"
 }
 
 symlinks_and_directories () {
@@ -45,6 +47,7 @@ symlinks_and_directories () {
     ln -sf "${HOME}/.config/cursor/index.theme" "${HOME}/.icons/default/"
     ln -sf "${HOME}/.config/latex/latexmkrc"    "${HOME}/.latexmkrc"
     ln -sf "${HOME}/.config/tmux.conf"          "${HOME}/.tmux.conf"
+    ln -sf "${HOME}/.face"                      "${HOME}/.face.icon"
 }
 
 local_update () {

@@ -1,0 +1,9 @@
+# Maintained by sbp-gui-base
+Section "InputClass"
+    Identifier "system-keyboard"
+    MatchIsKeyboard "on"
+    Option "XkbLayout" "us,tr,us"
+    Option "XkbVariant" "dvorak,f,"
+    Option "XkbOptions" "grp:caps_toggle"
+    Option "XkbModel" "pc105"
+EndSection
