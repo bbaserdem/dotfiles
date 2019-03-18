@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=13
+pkgrel=17
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -9,6 +9,8 @@ licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 install=gui.install
 source=(
+    'gui.sddm-theme'
+    'gui.xkeymap'
     'gui.xinit.session'
     'gui.install'
 )
@@ -33,10 +35,6 @@ depends+=(
 
 # Login manager
 depends+=(
-    'lightdm'
-    'lightdm-gtk-greeter'
-    'lightdm-webkit2-greeter'
-    'lightdm-webkit-theme-litarvan'
     'sddm'
     'chili-sddm-theme' )
 
@@ -55,10 +53,8 @@ depends+=(
 depends+=(
     'xcursor-comix'
     'arc-gtk-theme'
-    'elementary-icon-theme'
     'gnome-themes-extra' 'gtk-engine-murrine'
-    'kvantum-qt5' 'kvantum-theme-arc'
-    'numix-gtk-theme' )
+    'kvantum-qt5' 'kvantum-theme-arc' )
 
 # Applications
 depends+=(
@@ -137,8 +133,14 @@ depends+=(
 )
 
 package() {
+    install -dm 0755 "${pkgdir}/etc/X11/xorg.conf.d"
+    install -Dm 0644 gui.xkeymap "${pkgdir}/etc/X11/xorg.conf.d/20-keyboard.conf"
     install -dm 0755 "${pkgdir}/usr/share/xsessions"
     install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
+    install -dm 0755 "${pkgdir}/etc/sddm.conf.d"
+    install -Dm 0644 gui.sddm-theme "${pkgdir}/etc/sddm.conf.d/sbp_theme.conf"
 }
-md5sums=('ba159b8c80fed9b26fc51e7bfba631d5'
-         '80543c7fbb6d2d84a99c3377644b36cf')
+md5sums=('a9faaccb86ff4b6cbc08449fff557753'
+         'bfd047421734629101314f3fb33accc0'
+         'ba159b8c80fed9b26fc51e7bfba631d5'
+         'e0b51a6e4c93894663de768d2935b223')

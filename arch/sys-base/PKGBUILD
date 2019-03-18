@@ -36,24 +36,26 @@ depends=( 'sbp-sys-init' 'sbp-sys-boot' )
 depends+=(
     'bash' 'bzip2' 'coreutils' 'device-mapper' 'diffutils' 'e2fsprogs' 'file'
     'filesystem' 'findutils' 'gawk' 'gcc-libs' 'gettext' 'glibc' 'grep' 'gzip'
-    'inetutils' 'iproute2' 'iputils' 'less' 'licenses' 'lvm2' 'man-db'
+    'inetutils' 'iproute2' 'iputils' 'less' 'licenses' 'man-db'
     'man-pages' 'mdadm' 'pacman' 'pciutils' 'perl' 'procps-ng' 'psmisc'
     's-nail' 'sed' 'shadow' 'tar' 'texinfo' 'usbutils' 'util-linux' 'which'
-    'xfsprogs' 'autoconf' 'automake' 'binutils' 'bison' 'fakeroot' 'flex' 'gcc'
+    'autoconf' 'automake' 'binutils' 'bison' 'fakeroot' 'flex' 'gcc'
     'groff' 'libtool' 'm4' 'make' 'patch' 'pkgconf' )
 
 # File system stuff
 depends+=(
+    'rsync'
     'parted'
-    'inotify-tools'
-    'sshfs' 'fuse3'
+    'btrfs-progs' 'snapper'
+    'xfsprogs'
+    'lvm2' 
+    'f2fs-tools'
+    'fuse3'
     'jfsutils'
     'reiserfsprogs'
-    'btrfs-progs' 'snapper'
-    'rsync'
-    'f2fs-tools'
     'exfat-utils'
-    'udftools' )
+    'udftools'
+    'udisks')
 
 # Hardware
 depends+=( 
@@ -72,11 +74,13 @@ depends+=(
     'openssh'
     'tor'
     'openconnect'
+    'sshfs' 
     'openvpn' 'private-internet-access-vpn' )
 
 # Network
 depends+=(
     'dhcpcd'
+    'cups' 'cups-pdf' 'cups-pk-helper'
     'bluez' 'bluez-libs' 'bluez-utils'
     'nftables'
     'bridge-utils' 'hostapd'
@@ -86,6 +90,7 @@ depends+=(
 
 # Administration
 depends+=(
+    'inotify-tools'
     'fcron'
     'sudo'
     'logrotate'
@@ -105,15 +110,17 @@ depends+=(
     'alsa-utils' 'lib32-alsa-plugins'
     'pulseaudio' 'lib32-libpulse' 'pulseaudio-alsa' 'pulseaudio-bluetooth'
     'pamixer'
+    'mpc' 'mpd' 
     'cdparanoia' )
 
 # Applications
 depends+=(
+    'qemu'
     'atool'
     'abcde'
     'zsh' 'grml-zsh-config'
     'neomutt' 'isync' 'notmuch' 'vdirsyncer'
-    'ncmpcpp' 'mpc' 'mpd' 'mpdscribble'
+    'ncmpcpp' 'mpdscribble'
     'tmux'
     'khal' 'khard'
     'htop'
@@ -133,16 +140,14 @@ depends+=(
     'bzip2' 'cpio' 'gzip' 'lhasa' 'lzop' 'p7zip' 'tar' 'unace' 'unrar' 'unzip'
     'xz' 'zip'
     'ctags'
-    'cups' 'cups-pdf' 'cups-pk-helper'
     'bash-completion'
     'git'
     'discount' 'jq' 'yajl'
     'geoip' 'geoip-database-extra' 'geoclue2'
     'imagemagick'
     'languagetool'
-    'msmtp' 'postfix'
+    'msmtp'
     'xdg-user-dirs'
-    'qemu'
     's3cmd'
     'cmake' 'clang' )
 

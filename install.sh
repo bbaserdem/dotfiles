@@ -9,6 +9,8 @@ fix_perm () {
     chmod -R u=rwX,g=,o= "${HOME}/.ssh"
     chmod -R u=rwX,g=,o= "${HOME}/.gnupg"
     chmod 600 "${XDG_CONFIG_HOME}/gpg-agent.conf"
+    chmod 644 "${HOME}/.face"
+    chmod 644 "${HOME}/.face.icon"
 }
 
 symlinks_and_directories () {
@@ -45,10 +47,14 @@ symlinks_and_directories () {
     ln -sf "${HOME}/.config/cursor/index.theme" "${HOME}/.icons/default/"
     ln -sf "${HOME}/.config/latex/latexmkrc"    "${HOME}/.latexmkrc"
     ln -sf "${HOME}/.config/tmux.conf"          "${HOME}/.tmux.conf"
+<<<<<<< HEAD
 
     # Setting profile picture
     ln -sf "${HOME}/Pictures/Profile/Linux_login_profile" "${HOME}/.face"
     ln -sf "${HOME}/Pictures/Profile/Linux_login_profile" "${HOME}/.face.icon"
+=======
+    ln -sf "${HOME}/.face"                      "${HOME}/.face.icon"
+>>>>>>> ae4222f6fff2eb1d72093fbe5d85c7f1751d60e4
 }
 
 local_update () {

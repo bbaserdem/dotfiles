@@ -12,9 +12,11 @@ x11-apps/xset
 x11-apps/xsetroot
 x11-apps/xwininfo
 x11-misc/xdotool
+#x11-apps/xkb-switch
 
 # Login
 x11-misc/sddm
+#x11-misc/chili-sddm-theme
 
 # Fonts
 media-fonts/source-pro
@@ -29,10 +31,51 @@ media-fonts/roboto
 # Themes
 x11-themes/comix-xcursors
 x11-themes/arc-theme
-x11-themes/elementary-xfce-icon-theme
 x11-themes/gnome-icon-theme-extras
 x11-themes/kvantum
-x11-themes/numix-icon-theme
+
+# Apps
+app-emulation/virt-manager
+app-office/libreoffice-bin
+app-text/texlive
+app-text/zathura
+dev-python/spyder
+#media-gfx/blender
+media-gfx/darktable
+media-gfx/gimp
+media-gfx/inkscape
+media-gfx/ristretto
+#media-sound/audacity
+media-sound/pavucontrol
+media-sound/picard
+media-sound/tuxguitar
+media-video/smplayer
+net-misc/remmina
+net-wireless/blueman
+sci-mathematics/octave
+sys-fs/udiskie
+www-client/firefox
+www-client/qutebrowser
+
+# Utility
+app-admin/system-config-printer
+app-text/zathura-cb
+app-text/zathura-djvu
+app-text/zathura-pdf-mupdf
+app-text/zathura-ps
+dev-tex/latexmk
+gnome-extra/gucharmap
+gnome-extra/polkit-gnome
+media-video/mpv
+net-misc/freerdp
+x11-terms/alacritty
+x11-terms/kitty
+x11-misc/gtk2fontsel
+
+# Joint programs
+dev-libs/light
+x11-misc/rofi
+x11-misc/dex
 
 # BSPWM
 x11-wm/bspwm
@@ -41,57 +84,18 @@ x11-misc/polybar
 x11-misc/dunst
 x11-misc/redshift
 x11-misc/xss-lock
+x11-misc/i3lock
 media-gfx/feh
-media-sound/pavucontrol
 media-gfx/maim
-x11-misc/rofi
 
 # Sway
 dev-libs/wayland
 gui-wm/sway
+gui-wm/swayidle
+gui-wm/swaylock
 gui-apps/wl-clipboard
-
-# Apps
-app-emulation/virt-manager
-net-wireless/blueman
-sys-fs/udiskie
-media-sound/pavucontrol
-net-misc/remmina
-media-gfx/ristretto
-app-text/zathura
-app-text/texlive
-media-gfx/inkscape
-media-gfx/gimp
-media-gfx/blender
-media-gfx/darktable
-media-sound/audacity
-media-sound/picard
-media-sound/tuxguitar
-media-video/smplayer
-www-client/firefox
-www-client/qutebrowser
-
-# Utility
-dev-libs/light
-x11-misc/dex
-x11-terms/alacritty
-x11-terms/kitty
-x11-misc/gtk2fontsel
-gnome-extra/gucharmap
-app-admin/system-config-printer
-gnome-extra/polkit-gnome
-net-misc/freerdp
-media-video/mpv
-app-text/zathura-pdf-mupdf
-app-text/zathura-ps
-app-text/zathura-cb
-app-text/zathura-djvu
-dev-tex/latexmk
-
-# Programming
-dev-python/spyder
-sci-mathematics/octave
-
+x11-misc/i3blocks
+# grim, mako, slurp
 
 # Layman
 #app-misc/zotero

@@ -28,8 +28,8 @@ reload_monitors () {
     # WORKSTATION: Monitors are static
     elif [[ $(hostname) == 'sbpworkstation' ]]
     then
-        /usr/bin/xrandr --output DP-2 --primary
-        /usr/bin/xrandr --output DVI-I-1 --left-of DP-2
+        /usr/bin/xrandr --output DVI-I-1 --primary
+        /usr/bin/xrandr --output DP-2 --left-of DVI-I-1
 
     # SERVER: 
     elif [[ $(hostname) == 'sbpserver' ]]

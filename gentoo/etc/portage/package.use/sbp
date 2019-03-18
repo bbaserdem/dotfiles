@@ -1,0 +1,42 @@
+app-admin/syslog-ng geoip2 json
+app-admin/logrotate cron
+app-admin/pass X -dmenu -fish-completion -importers
+app-admin/sudo offensive
+app-backup/snapper lvm xattr
+app-editors/neovim clipboard nvimpager remote tui
+app-portage/layman sync-plugin-portage git
+app-text/zathura synctex magic
+app-text/texlive epspdf graphics -games -humanities -jadetex luatex pdfannotextractor science -xetex
+dev-lang/rust llvm_targets_AMDGPU
+gui-wm/sway X -elogind -fish-completion man swaybar swaybg swayidle swaylock swaymsg swaynag tray -wallpapers
+gui-apps/swayidle -elogind
+gui-apps/swaylock -fish-completion -gdk-pixbuf man
+mail-client/neomutt notmuch
+media-fonts/nerd-fonts sourcecodepro
+media-gfx/feh xinerama
+media-gfx/inkscape -cdr -dia -inkjar latex -visio -wpg
+media-sound/ncmpcpp clock icu utputs visualizer
+media-sound/pulseaudio alsa-plugin equalizer native-headset bluetooth
+media-sound/tuxguitar fluidsynth lilypond pdf tray
+media-video/mpd archive -bluray cli cplugins -cuda drm egl gbm -jpeg libass libmpv lua opengl -raspberry-pi rubberband -sdl tools uchardet vulkan
+media-video/smplayer -autoshutdown -mpris
+net-p2p/syncthing tools
+net-misc/freerdp client -server
+net-misc/remmina rdp ssh
+net-wireless/blueman appindicator network
+net-wireless/iwd client monitor
+sci-mathematics/octave -glpk gui qhull qrupdate sparse
+sys-apps/lm_sensors contrib sensord
+sys-firmware/intel-microcode hostonly initramfs
+sys-fs/btrfs-progs -convert reiserfs -zstd
+sys-fs/lvm2 lvm2create_initrd
+sys-power/cpupower cpufreq_bench
+sys-kernel/genkernel cryptsetup firmware
+sys-proces/fcron debug mta pam system-crontab
+www-client/firefox gmp-autoupdate hwaccel lto system-harfbuzz system-icu system-jpeg system-libevent system-libvpx system-sqlite -neon -wifi
+www-client/qutebroser -bindist x11extras webkit webengine widgets webchannel location positioning sensors
+x11-misc/dunst dunstify
+x11-misc/polybar -i3wm ipc mpd network
+x11-misc/redshift geoclue
+x11-misc/rofi windowmode
+x11-terms/kitty imagemagick

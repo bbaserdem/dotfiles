@@ -3,17 +3,12 @@ post_install() {
     echo '[sbp-gui-base]==> Installing meta package …'
 
     # Modify lightdm-theme
-    echo '[sbp-gui-base]==> Enabling lightdm …'
-    sed -i 's|^#\?greeter-session=.*|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
-    sed -i 's|^webkit_theme.*|webkit_theme = litarvan|g' /etc/lightdm/lightdm-webkit2-greeter.conf
-    sed -i 's|^background_images.*|background_images = /usr/share/backgrounds/elementary/|g' /etc/lightdm/lightdm-webkit2-greeter.conf
-    sed -i 's|^logo.*|logo = /usr/share/lightdm-webkit/themes/litarvan/images/arch.svg|g' /etc/lightdm/lightdm-webkit2-greeter.conf
-    sed -i 's|^user_image.*|user_image = /usr/share/lightdm-webkit/themes/litarvan/images/default_user.png|g' /etc/lightdm/lightdm-webkit2-greeter.conf
+    echo '[sbp-gui-base]==> Enabling SDDM …'
     if   [ -x /bin/systemctl ] ; then
-        systemctl enable lightdm.service
+        systemctl enable sddm.service
     elif [ -x /bin/rc-update ] ; then
         rc-update add xdm default
-        sed -i 's/DISPLAYMANAGER="xdm"/DISPLAYMANAGER="lightdm"/' /etc/conf.d/xdm
+        sed -i 's/DISPLAYMANAGER="xdm"/DISPLAYMANAGER="sddm"/' /etc/conf.d/xdm
     fi
 
     # Make game library folders

@@ -8,9 +8,12 @@ sys-firmware/edk2-ovmf
 sys-firmware/intel-microcode
 
 # File systems
+app-backup/snapper
 net-misc/rsync
 sys-block/parted
 sys-fs/btrfs-progs
+sys-fs/exfat-utils
+sys-fs/fuse-exfat
 sys-fs/xfs-progs
 sys-fs/lvm2
 sys-fs/f2fs-tools
@@ -18,16 +21,20 @@ sys-fs/udftools
 sys-fs/udisks
 
 # Hardware
+app-benchmarks/stress-ng
 app-laptop/laptop-mode-tools
 sys-apps/lm_sensors
 sys-apps/usbutils
 sys-power/cpupower
+sys-power/powertop
 
 # Encryption
-app-crypt/gnupg
 app-admin/pass
+app-crypt/gnupg
 app-crypt/pinentry
 app-crypt/sbsigntools
+app-eselect/eselect-pinentry
+media-gfx/qrencode
 net-fs/sshfs
 net-misc/openssh
 net-vpn/openvpn
@@ -51,7 +58,7 @@ sys-auth/pambase
 sys-auth/polkit
 sys-fs/eudev
 sys-fs/inotify-tools
-sys-proces/fcron
+sys-process/fcron
 
 # Gentoo
 app-portage/eix
@@ -69,6 +76,7 @@ media-sound/mpd
 media-sound/mpc
 
 # Applications
+app-arch/atool
 app-editors/neovim
 app-emulation/qemu
 app-misc/khal
@@ -78,6 +86,8 @@ app-misc/ranger
 app-misc/tmux
 dev-python/vdirsyncer
 app-shells/zsh
+app-shells/zsh-completions
+app-shells/gentoo-zsh-completions
 mail-client/neomutt
 media-sound/abcde
 media-sound/ncmpcpp
@@ -91,18 +101,20 @@ sys-process/htop
 www-client/w3m
 
 # Utilities
-app-arch/atool
 app-arch/tar
 app-arch/zip
 app-arch/unzip
 app-arch/p7zip
 app-misc/geoclue
+app-shells/bash-completion
+app-text/languagetool
 dev-python/neovim-remote
 dev-python/neovim-python-client
 dev-python/pip
 dev-util/ctags
 dev-vcs/git
 mail-client/notmuch
+mail-mta/msmtp
 media-gfx/imagemagick
 media-sound/cdparanoia
 x11-misc/xdg-user-dirs
@@ -120,4 +132,3 @@ dev-python/pipenv
 # Layman
 #app-misc/todoman
 #dev-util/android-udev-rules
-#x11-misc/brightnessctl

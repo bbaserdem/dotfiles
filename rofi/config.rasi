@@ -5,7 +5,8 @@ configuration {
     theme: "Pop-Dark";
 
     // Application Behavior
-    modi: "window,drun,files:~/.config/rofi/filebrowser,ssh";
+    //modi: "window,drun,files:~/.config/rofi/filebrowser,ssh";
+    modi: "drun,files:~/.config/rofi/filebrowser,ssh";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;

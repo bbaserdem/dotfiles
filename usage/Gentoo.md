@@ -173,6 +173,9 @@ Evdev needs to be enabled in kernel.
 I followed the X page, then followed the AMDGPU page; lots of kernel options.
 Added to portage config `VIDEO_CARDS="amdgpu radeonsi"` and `INPUT_DEVICES="libinput"`
 Installed SDDM (switching), added to `/etc/conf.d/xdm` `DISPLAYMANAGER="sddm"`
+Touchpad not working.
+
+Message `CONFIG_KEY_DH_OPERATIONS:	 is not set when it should be.`
 
 ## Applications
 
@@ -193,4 +196,36 @@ rc-update add consolekit default
 rc-update add bluetooth default
 rc-update add acpid default
 rc-update add laptop_mode default
+```
+
+## Latest emerge what to do
+
+I need to add user to
+* sys
+* ftp
+* log
+* http
+* games
+* lock
+* rfkill
+* users
+* video
+* uucp
+* lp
+* input
+* wheel
+* kvm
+* plugdev
+
+```
+ * The following 5 packages have failed to build, install, or execute
+ * postinst:
+ *
+ *  (dev-python/PyQt5-5.10.1-r1:0/0::gentoo, ebuild scheduled for merge), Log file:
+ *   '/var/tmp/portage/dev-python/PyQt5-5.10.1-r1/temp/build.log'
+ *  (dev-python/qtconsole-4.3.1:0/0::gentoo, ebuild scheduled for merge)
+ *  (dev-python/spyder-4.0.0_beta1:0/0::gentoo, ebuild scheduled for merge)
+ *  (dev-python/QtPy-1.4.0-r1:0/0::gentoo, ebuild scheduled for merge)
+ *  (media-sound/tuxguitar-1.3.2:0/0::gentoo, ebuild scheduled for merge), Log file:
+ *   '/var/tmp/portage/media-sound/tuxguitar-1.3.2/temp/build.log'
 ```
