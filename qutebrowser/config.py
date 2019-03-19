@@ -10,7 +10,8 @@ c.url.searchengines = {
         "ma"        : "https://www.mathworks.com/help/matlab/ref/{}.html",
         "go"        : "https://www.google.com/search?hl=en&q={}",
         "wi"        : "https://www.wikipedia.org/wiki/{}",
-        "am"        : "https://www.amazon.com/s?k={}"
+        "am"        : "https://www.amazon.com/s?k={}",
+        "scp"       : "http://www.scp-wiki.net/scp-{}"
         }
 # Colorthemes
 css_dark = str(config.configdir) + '/css/dark.css'
