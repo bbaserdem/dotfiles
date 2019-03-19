@@ -47,7 +47,10 @@ symlinks_and_directories () {
     ln -sf "${HOME}/.config/cursor/index.theme" "${HOME}/.icons/default/"
     ln -sf "${HOME}/.config/latex/latexmkrc"    "${HOME}/.latexmkrc"
     ln -sf "${HOME}/.config/tmux.conf"          "${HOME}/.tmux.conf"
-    ln -sf "${HOME}/.face"                      "${HOME}/.face.icon"
+
+    # Setting profile picture
+    ln -sf "${HOME}/Pictures/Profile/Linux_login_profile" "${HOME}/.face"
+    ln -sf "${HOME}/Pictures/Profile/Linux_login_profile" "${HOME}/.face.icon"
 }
 
 local_update () {

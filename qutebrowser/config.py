@@ -18,6 +18,7 @@ css_dark = str(config.configdir) + '/css/dark.css'
 css_lght = str(config.configdir) + '/css/light.css'
 config.bind('<Ctrl-d>', 'config-cycle --temp content.user_stylesheets {0} {1} "" ;; reload'.format(css_dark, css_lght))
 
+c.auto_save.session = True
 c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"
 c.editor.command = ["alacritty", "-e", "nvim {}"]
 c.content.media_capture = True
@@ -25,6 +26,7 @@ c.spellcheck.languages = ["en-US"]
 c.tabs.position = "left"
 c.tabs.background = True
 c.tabs.width = "12%"
+c.tabs.last_close = "startpage"
 c.completion.height = "10%"
 # c.confirm_quit = ["always"]
 c.content.javascript.alert = True
