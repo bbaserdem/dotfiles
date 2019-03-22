@@ -56,9 +56,14 @@ I set mine in `/etc/portage/make.conf` (From `/usr/portage/profiles/use.desc`)
 USE="X acpi alsa apache2 bash-completion blas bluetooth branding calendar crypt cups curl cxx djvu exif fftw flac ftp geoip geolocation gif gibp git gtk imagemagick imap inotify javascript jpeg jpeg2k -kde lapack latex libcaca libnotify lm_sensors lzo maildir matroska mp3 mp4 mpeg mysql mtp multilib musicbrainz ncurses mysqli nas nntp pdf -plasma png policykit posix pulseaudio python raw rdp rss sound ssl tiff udev udisks unicode upower usb vdpau vim-syntax vorbis wavpack wayland wifi xft xscreensaver zip zsh-completion"
 ```
 
+## Software
+
+I emerged (with great difficulty) my own sets for full functionality.
+
 ## Locale
 
 Edited `/etc/timezone` and `/etc/locale.gen`.
+Ran `emerge --config sys-libs/timezone-data` and `eselect locale list`
 
 ## Kernel
 
@@ -69,12 +74,17 @@ To allow installation of production not-ready kernel; I have in `/etc/portage/pa
 sys-kernel/gentoo-sources ~amd64
 ```
 
-Then I installed `genkernel` and changed `/etc/genkernel.conf`
+I will not be using genkernel, for some reason I can't get it to compile.
 
-```
-# Run 'make menuconfig' before compiling this kernel?
-MENUCONFIG="yes"
-```
+Things to watch for
+
+* CPU
+* GPU (POLARIS 10 for AMDGPU)
+* Network
+* File systems (btrfs,xfs)
+* Encryption
+* LVM
+* Libinput
 
 ## Boot
 
@@ -185,7 +195,7 @@ For logging. I'm using syslog-ng.
 rc-update add consolefont boot
 rc-update add udev sysinit
 rc-update add udev-trigger sysinit
-rc-update add syslog-nd default
+rc-update add syslog-ng default
 rc-update add fcron default
 rc-update add iwd default
 rc-update add dhcpcd default
@@ -196,18 +206,14 @@ rc-update add consolekit default
 rc-update add bluetooth default
 rc-update add acpid default
 rc-update add laptop_mode default
+rc-update add libvirtd
+rc-update add libvirt-guests
 ```
 
 ## Latest emerge what to do
 
 I need to add user to
 * sys
-* ftp
-* log
-* http
-* games
-* lock
-* rfkill
 * users
 * video
 * uucp
@@ -217,15 +223,4 @@ I need to add user to
 * kvm
 * plugdev
 
-```
- * The following 5 packages have failed to build, install, or execute
- * postinst:
- *
- *  (dev-python/PyQt5-5.10.1-r1:0/0::gentoo, ebuild scheduled for merge), Log file:
- *   '/var/tmp/portage/dev-python/PyQt5-5.10.1-r1/temp/build.log'
- *  (dev-python/qtconsole-4.3.1:0/0::gentoo, ebuild scheduled for merge)
- *  (dev-python/spyder-4.0.0_beta1:0/0::gentoo, ebuild scheduled for merge)
- *  (dev-python/QtPy-1.4.0-r1:0/0::gentoo, ebuild scheduled for merge)
- *  (media-sound/tuxguitar-1.3.2:0/0::gentoo, ebuild scheduled for merge), Log file:
- *   '/var/tmp/portage/media-sound/tuxguitar-1.3.2/temp/build.log'
-```
+

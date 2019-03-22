@@ -3,9 +3,8 @@ sys-boot/refind
 sys-boot/efibootmgr
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
-sys-kernel/genkernel
+sys-kernel/genkernel-next
 sys-firmware/edk2-ovmf
-sys-firmware/intel-microcode
 
 # File systems
 app-backup/snapper
@@ -14,7 +13,7 @@ sys-block/parted
 sys-fs/btrfs-progs
 sys-fs/exfat-utils
 sys-fs/fuse-exfat
-sys-fs/xfs-progs
+sys-fs/xfsprogs
 sys-fs/lvm2
 sys-fs/f2fs-tools
 sys-fs/udftools
@@ -23,10 +22,16 @@ sys-fs/udisks
 # Hardware
 app-benchmarks/stress-ng
 app-laptop/laptop-mode-tools
+sys-apps/dmidecode
+sys-apps/hdparm
+sys-apps/i2c-tools
 sys-apps/lm_sensors
+sys-apps/lshw
+sys-apps/pciutils
 sys-apps/usbutils
 sys-power/cpupower
 sys-power/powertop
+dev-libs/libinput
 
 # Encryption
 app-admin/pass
@@ -41,6 +46,7 @@ net-vpn/openvpn
 sys-fs/cryptsetup
 
 # Network
+net-dns/bind-tools
 net-dns/openresolv
 net-dns/unbound
 net-misc/dhcpcd
@@ -62,6 +68,7 @@ sys-process/fcron
 
 # Gentoo
 app-portage/eix
+app-portage/genlop
 app-portage/gentoolkit
 app-portage/layman
 app-portage/ufed
@@ -113,10 +120,12 @@ dev-python/neovim-python-client
 dev-python/pip
 dev-util/ctags
 dev-vcs/git
-mail-client/notmuch
 mail-mta/msmtp
 media-gfx/imagemagick
 media-sound/cdparanoia
+media-sound/fluidsynth
+net-mail/notmuch
+sys-process/lsof
 x11-misc/xdg-user-dirs
 x11-misc/xdg-utils
 

@@ -1,0 +1,18 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/mapper/Linux-Arch LABEL=Arch
+/dev/mapper/Linux-Root /                btrfs rw,noatime,nodiratime,compress=lzo,ssd,space_cache,subvol=@gentoo                                         0 0
+/dev/mapper/Linux-Root /.snapshots      btrfs rw,noatime,nodiratime,compress=lzo,ssd,space_cache,subvol=@snapshots                                      0 0
+UUID=7653-3DB8         /esp             vfat  rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro 0 2
+/esp/EFI/Gentoo        /boot            none  rw,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro,bind     0 0
+/dev/mapper/Linux-Home /home            xfs   rw,relatime,attr2,inode64,noquota                                                                         0 2
+/dev/mapper/Linux-Swap none             swap  defaults,pri=-2                                                                                           0 0
+
+# Arch stuff
+/dev/mapper/Linux-Root /arch            btrfs rw,noatime,nodiratime,compress=lzo,ssd,space_cache,subvol=@arch                                           0 0
+/.snapshots            /arch/.snapshots none  rw,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro,bind     0 0
+/esp/EFI/Gentoo        /arch/boot       none  rw,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro,bind     0 0
+/home                  /arch/home       none  rw,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro,bind     0 0
+

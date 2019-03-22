@@ -17,6 +17,8 @@ x11-misc/xdotool
 # Login
 x11-misc/sddm
 #x11-misc/chili-sddm-theme
+dev-qt/qtgraphicaleffects
+dev-qt/qtquickcontrols2
 
 # Fonts
 media-fonts/source-pro
@@ -66,7 +68,9 @@ app-text/zathura-ps
 dev-tex/latexmk
 gnome-extra/gucharmap
 gnome-extra/polkit-gnome
+media-video/ffmpeg
 media-video/mpv
+media-video/rtmpdump
 net-misc/freerdp
 x11-terms/alacritty
 x11-terms/kitty
@@ -90,9 +94,9 @@ media-gfx/maim
 
 # Sway
 dev-libs/wayland
-gui-wm/sway
-gui-wm/swayidle
-gui-wm/swaylock
+#gui-wm/sway
+#gui-apps/swayidle
+#gui-apps/swaylock
 gui-apps/wl-clipboard
 x11-misc/i3blocks
 # grim, mako, slurp

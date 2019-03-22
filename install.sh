@@ -139,8 +139,8 @@ local_update () {
         git clone 'https://github.com/ryanoasis/nerd-fonts.git' /tmp/nerd-fonts
     fi
     if [ -x '/tmp/nerd-fonts/install.sh' ] ; then
-        /tmp/nerd-fonts/install.sh --install-to-user-path --complete --copy Iosevka
-    fi
+        /tmp/nerd-fonts/install.sh --install-to-user-path --complete --copy Iosevka FiraCode
+    fi 
 }
 
 # Help text
@@ -154,7 +154,6 @@ print_usage() {
 }
 
 unset flag
-
 while getopts ':Aplush' flag; do
     case "${flag}" in
         p) fix_perm ;;
@@ -162,13 +161,15 @@ while getopts ':Aplush' flag; do
         u) local_update ;;
         s) fix_perm; symlinks_and_directories; local_update ;;
         h) print_usage ;;
-        \?) print_usage ; exit 1 ;;
+        \?) echo "Unknown option ${flag}"; print_usage ; exit 1 ;;
+
     esac
 done
 
-if [ -z "$flag" ]
-then
+if [[ "${flag}" = '?' ]] ; then
+    echo 'Defaulting to full setup'
     fix_perm
     symlinks_and_directories
     local_update
 fi
+unset flag

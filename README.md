@@ -1,20 +1,47 @@
-This is outdated, fix
+This repo is my general unix configuration.
+This is my `.config` folder, but scripts regarding system setup are also kept here.
+I currently use Arch Linux, and Gentoo, and tried to make my config OS-Agnostic.
+I will try to expand to Linux Mint some time as well.
 
-# Unix Configuration
+# Issues
 
 This repository contains my UNIX user configuration.
 
 * Do hotplug monitor with udev for laptop
 * Do hibernation below 10% battery.
-* Create QEMU launchers, and fix QEMU monitor sizing issues.
-* Migrate from rdesktop to freerdp.
 * GPU temperatures using AMDGPU, its on the fancontrol page.
-* Fix no permission on bluetooth-applet
 * Make it so graphical prompts launch kitty instead of termite
 * Build tmux alias with all my console programs
-* Fix pulseaudio sink type detection on i3blocks
-* Clean packages and fonts
-* Set up Conky for start page.
+
+# Installation
+
+To set up my personal system; do the following;\
+
+* Set up git by `git config --global user.name "Batuhan Başerdem"` and
+`git config --global user.email "baserdem.batuhan@gmail.com"`
+* Retrieve my SSH keys.
+* Retrieve GPG keys.
+* Clone this repo to `~/.config`.
+* Clone the password repo to `~/.pass`.
+* (Optional) Restore Syncthing config folder.
+* Run `~/.config/install.sh`
+
+To update certain modules, run the installation script again.
+
+# Fonts
+
+Here is an index of fonts I like and use.
+
+* **Termsyn** is a retro monospace font, for infobar. (AUR)
+* **Terminus** is a nice readable monospace font.
+* **Inconsolata** is a better rendering font then Terminus for otf.
+* **Iosevka** is a nice, slender font with ligatures. (Aur)
+* **Fira Code** is a neutral programming font with ligatures
+* **Source Code Pro** is the Adobe font for some application.
+* **Droid Sans** is a good font for applications.
+* **Roboto** for some applications. (Steam)
+
+I (will) also use the Nerd Fonts glyph only font, when they patch it.
 
 # TMUX
 
@@ -26,7 +53,7 @@ Alt and arrows allow navigation, without needing the command key.
 * Left Right: Move between windows
 * O: Create new window.
 
-# i3
+# Shortcuts
 
 Everything but the **XF86** keys require the **_Super_** modifier.
 

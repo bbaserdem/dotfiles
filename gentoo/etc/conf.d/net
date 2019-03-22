@@ -1,0 +1,4 @@
+# Set the dns_domain_lo variable to the selected domain name
+dns_domain_lo="localdomain"
+config_wifi="dhcp"
+config_ethernet="dhcp"
