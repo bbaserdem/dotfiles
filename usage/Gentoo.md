@@ -85,6 +85,8 @@ Things to watch for
 * Encryption
 * LVM
 * Libinput
+* Plymouth
+* KMS
 
 ## Boot
 
@@ -178,6 +180,22 @@ And some scripts I have written to be put in /usr/bin or /bin
 * <PLACEHOLDER>
 
 ## Graphical Interface
+
+Touchpad is not working; here is arch proc/bus/input/devices.
+
+```
+I: Bus=0018 Vendor=04f3 Product=3066 Version=0100
+N: Name="ELAN1200:00 04F3:3066 Touchpad"
+P: Phys=i2c-ELAN1200:00
+S: Sysfs=/devices/platform/AMDI0010:03/i2c-0/i2c-ELAN1200:00/0018:04F3:3066.0004/input/input13
+U: Uniq=
+H: Handlers=event9 mouse1
+B: PROP=5
+B: EV=1b
+B: KEY=e520 10000 0 0 0 0
+B: ABS=2e0800000000003
+B: MSC=20
+```
 
 Evdev needs to be enabled in kernel.
 I followed the X page, then followed the AMDGPU page; lots of kernel options.

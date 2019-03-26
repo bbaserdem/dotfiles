@@ -1,0 +1,923 @@
+#!/bin/sh
+
+#############################################################################
+# _______   __       _______..______    __          ___   ____    ____      #
+#|       \ |  |     /       ||   _  \  |  |        /   \  \   \  /   /      #
+#|  .--.  ||  |    |   (----`|  |_)  | |  |       /  ^  \  \   \/   /       #
+#|  |  |  ||  |     \   \    |   ___/  |  |      /  /_\  \  \_    _/        #
+#|  '--'  ||  | .----)   |   |  |      |  `----./  _____  \   |  |          #
+#|_______/ |__| |_______/    | _|      |_______/__/     \__\  |__|          #
+#                                                                           #
+#     _______.  ______ .______       __  .______   .___________.    _______.#
+#    /       | /      ||   _  \     |  | |   _  \  |           |   /       |#
+#   |   (----`|  ,----'|  |_)  |    |  | |  |_)  | `---|  |----`  |   (----`#
+#    \   \    |  |     |      /     |  | |   ___/      |  |        \   \    #
+#.----)   |   |  `----.|  |\  \----.|  | |  |          |  |    .----)   |   #
+#|_______/     \______|| _| `._____||__| | _|          |__|    |_______/    #
+#############################################################################
+
+# Default colorset; if colors not in ENV, default to base16-default
+_mute="${base03:-#585858}"
+col_red="${base08:-#ab4642}"
+col_ora="${base09:-#dc9656}"
+col_yel="${base0A:-#f7ca88}"
+col_gre="${base0B:-#a1b56c}"
+col_cya="${base0C:-#86c1b9}"
+col_ind="${base0D:-#7cafc2}"
+col_vio="${base0E:-#ba8baf}"
+col_bro="${base0F:-#a16946}"
+
+print_help () {
+    echo -e "Usage: $0 [-f <pango|lemonbar>] [-c <color>] [-h] MODULE" 1>&2
+    exit 1
+}
+
+# Default to pango
+_format="pango"
+_color=""
+
+while getopts ":f:c:h" _optns; do
+    case "${_optns}" in
+        f) _format="${OPTARG}" ;;
+        c) _color="${OPTARG}"  ;;
+        *) usage ;;
+    esac
+done
+_module=${@:$OPTIND:1}
+
+# Check format
+case $_format in
+    pango|i3|i3blocks|sway|lemonbar|polybar|bspwm) ;;
+    *) echo 'Invalid format'; exit 2 ;;
+esac
+
+module_selection () {
+    case $_module in
+        battery) battery ;;
+        brightness) brightness ;;   # Switch this to acpi?
+        calendar) calendar ;;       # Right now, it's an infinite loop!
+        cpu) cpu ;;
+        day) day ;;
+        clock) clock ;;
+        disk) disk ;;
+        ethernet) ethernet ;;
+        wireless) wireless ;;
+        internet) internet ;;
+        fan) fan ;;
+        email) email ;;
+        kernel) kernel ;;
+        keymap ) keymap ;;
+        memory) memory ;;
+        swap) swap ;;
+        mpd) mpd ;;
+        pulseaudio) pulseaudio ;; # Needs rewrite
+        rss) rss ;;
+        temperature) temperature ;;
+        todo) todo ;;           # Not working?
+        uptime) uptime ;;       # Not working?
+        *) echo "Missing module ${_module}"; exit 3 ;;
+    esac
+}
+
+battery () {
+    _cap="/sys/class/power_supply/BAT0/capacity"
+    _stt="/sys/class/power_supply/BAT0/status"
+    _onl="/sys/class/power_supply/AC0/online"
+    
+    get_text () {
+        _num="$(cat ${_cap})"
+        _sta="$(cat ${_stt})"
+        _acp="$(cat ${_onl})"
+
+        if   [ "$_num" -ge 80 ] ; then
+            # Green ()
+            _col="${col_gre}"
+            _ico=""
+        elif [ "$_num" -ge 60 ] ; then
+            # Yellow (0A)
+            _col="${col_yel}"
+            _ico=""
+        elif [ "$_num" -ge 40 ] ; then
+            # Orange (09)
+            _col="${col_ora}"
+            _ico=""
+        elif [ "$_num" -ge 20 ] ; then
+            # Red (08)
+            _col="${col_red}"
+            _ico=""
+        else
+            # White (03)
+            _col="${col_bro}"
+            _ico=""
+        fi
+
+        if [ "$_sta" = "Charging" ] ; then
+            _ico=${_ico:1:2}
+        elif [ "$_acp" = "1" ] ; then
+            _ico=""
+        else
+            _ico=${_ico:0:1}
+        fi
+        
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_num}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_num}%{-u}%{u-}"
+        esac
+    }
+
+    while : ; do
+        get_text
+        sleep .2
+        inotifywait --timeout -1 "${_cap}" "${_stt}" "${_onl}" > /dev/null 2>&1 || break
+    done
+}
+
+brightness () {
+    _file="/sys/class/backlight/${BRI_SCR}/brightness"
+    _col="${_color:-$col_vio}"
+
+    get_text () {
+        _val="$(light | sed 's|^\(.*\)\..*|\1|')" || exit
+
+        if   [ "$_val" -ge 75 ] ; then
+            _ico=""
+        elif [ "$_val" -ge 50 ] ; then
+            _ico=""
+        else
+            _ico=""
+        fi
+        
+        if [ ! -z "${_val}" ] ; then
+            case $_format in
+                pango|i3|i3blocks|sway)
+                    echo "<span color='${_col}'>${_ico}</span> ${_val}" ;;
+                lemonbar|polybar|bspwm)
+                    echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_val}%{-u}%{u-}"
+            esac
+        fi
+    }
+    
+    get_loop () {
+        while : ; do
+            get_text
+            sleep .5
+            inotifywait --timeout -1 "${_file}" > /dev/null 2>&1 || break
+        done
+    }
+
+    get_loop &
+    while read button ; do
+        case $button in
+            4) /usr/bin/light -A 5 > /dev/null 2>&1 ;;
+            5) /usr/bin/light -U 5 > /dev/null 2>&1 ;;
+        esac
+    done
+}
+
+calendar () {
+    _file="${HOME}/Documents/Calendar"
+    _col="${_color:-$col_bro}"
+    _ico=""
+    _len=52
+
+    get_text () {
+        _txt="$(khal list | head -n 1)"
+        [ "${#_txt}" -gt "${_len}" ] && _txt="${_txt:0:${_len}}…"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                [ "${_txt}" = "No events" ]  &&
+                    _txt="<span color='${_mute}'>${_txt}</span>"
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" |
+                    sed 's|&|&amp;|g'
+                ;;
+            lemonbar|polybar|bspwm)
+                [ "${_txt}" = "No events" ]  &&
+                    _txt="{F${_mute}}${_txt}%{F-}"
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}"
+                ;;
+        esac
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 5
+            inotifywait --recursive --timeout -1 "${_file}" > /dev/null 2>&1 || break
+        done
+    }
+
+    get_loop
+}
+
+cpu () {
+    _col="${_color:-$col_yel}"
+    _ico=""
+    _cpu1="$(grep 'cpu ' /proc/stat)"
+
+    while : ; do
+        sleep 1
+        _cpu2="$(grep 'cpu ' /proc/stat)"
+        _per="$( echo "${_cpu1} ${_cpu2}" | awk '{ printf( "%.2f", ($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5)) }' )"
+        _cpu1="${_cpu2}"
+
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_per}"
+                ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_per}%{-u}%{u-}"
+                ;;
+        esac
+    done
+}
+
+day () {
+    _col="${_color:-$col_ind}"
+    get_light () {
+        case "$1" in
+            0|30)   echo "" ;;
+            1)      echo "" ;;
+            2)      echo "" ;;
+            3)      echo "" ;;
+            4)      echo "" ;;
+            5)      echo "" ;;
+            6)      echo "" ;;
+            7)      echo "" ;;
+            8)      echo "" ;;
+            9)      echo "" ;;
+            10)     echo "" ;;
+            11)     echo "" ;;
+            12)     echo "" ;;
+            13)     echo "" ;;
+            14)     echo "" ;;
+            15)     echo "" ;;
+            16)     echo "" ;;
+            18)     echo "" ;;
+            19)     echo "" ;;
+            20)     echo "" ;;
+            21)     echo "" ;;
+            22)     echo "" ;;
+            23)     echo "" ;;
+            24)     echo "" ;;
+            25)     echo "" ;;
+            26)     echo "" ;;
+            27)     echo "" ;;
+            28)     echo "" ;;
+            29)     echo "" ;;
+        esac
+    }
+
+    get_dark () {
+        case "$1" in
+            0|30)   echo "" ;;
+            1)      echo "" ;;
+            2)      echo "" ;;
+            3)      echo "" ;;
+            4)      echo "" ;;
+            5)      echo "" ;;
+            6)      echo "" ;;
+            7)      echo "" ;;
+            8)      echo "" ;;
+            9)      echo "" ;;
+            10)     echo "" ;;
+            11)     echo "" ;;
+            12)     echo "" ;;
+            13)     echo "" ;;
+            14)     echo "" ;;
+            15)     echo "" ;;
+            16)     echo "" ;;
+            18)     echo "" ;;
+            19)     echo "" ;;
+            20)     echo "" ;;
+            21)     echo "" ;;
+            22)     echo "" ;;
+            23)     echo "" ;;
+            24)     echo "" ;;
+            25)     echo "" ;;
+            26)     echo "" ;;
+            27)     echo "" ;;
+            28)     echo "" ;;
+            29)     echo "" ;;
+        esac
+    }
+
+    get_text () {
+        _ico="$(get_dark "$( echo "$(printf "%.0f" "$(echo "scale=2; ( $(date -d "00:00" +%s) - $(date -d "1999-08-11" +%s) )/(60*60*24)" | bc)") % 29.530588853" | bc | awk '{printf("%d",$1+.5)}' )")"
+        _txt="$(date '+%a %d, %b %Y')"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}"
+                ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}"
+                ;;
+        esac
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep "$(( $(date -d "tomorrow 0" +%s) - $(date +%s) + 5 ))"
+        done
+    }
+
+    get_loop
+}
+
+clock () {
+    _col="${_color:-$col_cya}"
+    _ico=""
+
+    get_text () {
+        _txt="$(date '+%H:%M:%S')"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}"
+                ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}"
+                ;;
+        esac
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 1
+        done
+    }
+
+    get_loop
+}
+
+disk () {
+    _col="${_color:-$col_bro}"
+    _icr=""
+    _ich=""
+
+    get_text () {
+        _rfs="$(df -hPl /      | tail -1 | awk '{ printf $3 "/" $2 " (" $5 ")" }' )"
+        _hfs="$(df -hPl /home/ | tail -1 | awk '{ printf $3 "/" $2 " (" $5 ")" }' )"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_icr}</span> ${_rfs} <span color='${_col}'>${_ich}</span> ${_hfs}"
+                ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_icr}%{F-} ${_rfs} %{F${_col}}${_ich}%{F-} ${_hfs}%{-u}%{u-}"
+                ;;
+        esac
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 60
+        done
+    }
+
+    get_loop
+    
+}
+
+ethernet () {
+    _col="${_color:-$col_cya}"
+    _int='ethernet'
+    _ico=""
+    _ic1=""
+    _ic2=""
+    _sto="/tmp/i3blocks-${_int}"
+
+    get_text() {
+        [[ "$(cat /sys/class/net/${_int}/operstate)" = 'down' ]] && exit
+
+        _ipa="$(/usr/bin/ip -o -4 addr list ${_int} | awk '{print $4}' | cut -d/ -f1)"
+
+        # grabbing data for each adapter.
+        read rx < "/sys/class/net/${_int}/statistics/rx_bytes"
+        read tx < "/sys/class/net/${_int}/statistics/tx_bytes"
+
+        # get time
+        time=$(date +%s)
+
+        # write current data if file does not exist. Do not exit, this will cause
+        # problems if this file is sourced instead of executed as another process.
+        if ! [[ -f "${_sto}" ]]; then
+            echo "${time} ${rx} ${tx}" > "${_sto}"
+            chmod 0666 "${_sto}"
+            exit
+        fi
+
+        # read previous state and update data storage
+        read old < "${_sto}"
+        echo "${time} ${rx} ${tx}" > "${_sto}"
+
+        # parse old data and calc time passed
+        old=(${old//;/ })
+        time_diff=$(( $time - ${old[0]} ))
+
+        # calc bytes transferred, and their rate in byte/s
+        rx_diff=$(( $rx - ${old[1]} ))
+        tx_diff=$(( $tx - ${old[2]} ))
+        rx_rate=$(( $rx_diff / $time_diff ))
+        tx_rate=$(( $tx_diff / $time_diff ))
+
+        # Download speed
+        rx_kib=$(( $rx_rate >> 10 ))
+        if hash bc 2>/dev/null && [[ "$rx_rate" -gt 1048576 ]]
+        then
+            _dnl="$(echo "scale=1; $rx_kib / 1024" | bc) MiB/s"
+        else
+            _dnl="${rx_kib} KiB/s"
+        fi
+
+        # Upload speed
+        tx_kib=$(( $tx_rate >> 10 ))
+        if hash bc 2>/dev/null && [[ "$tx_rate" -gt 1048576 ]]
+        then
+            _upl="$(echo "scale=1; $tx_kib / 1024" | bc) MiB/s"
+        else
+            _upl="${tx_kib} KiB/s"
+        fi
+
+        echo "<span color='${_col}'>${_ico}</span> ${_ipa} <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                "<span color='${_col}'>${_ico}</span> ${_ipa} <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}"
+                ;;
+            lemonbar|polybar|bspwm)
+"%{u${_col}}%{+u}<span color='${_col}'>${_ico}</span> ${_ipa} <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}"
+                echo "%{u${_col}}%{+u}%{F${_col}}${_icr}%{F-} ${_rfs} %{F${_col}}${_ich}%{F-} ${_hfs}%{-u}%{u-}"
+                ;;
+        esac
+    }
+    
+    get_loop () {
+        [[ ! -d /sys/class/net/${_int} ]] && exit
+        while : ; do
+            get_text
+            sleep 5
+        done
+    }
+
+    get_loop
+
+}
+
+wireless () {
+    _col="${_color:-$col_cya}"
+    _int='wifi'
+    _ico=""
+    _ics="說"
+    _ic1=""
+    _ic2=""
+    _sto="/tmp/i3blocks-${_int}"
+
+    get_text() {
+        [[ ! -d /sys/class/net/${_int}/wireless ]] && exit
+        [[ "$(cat /sys/class/net/${_int}/operstate)" = 'down' ]] && exit
+
+        _sid="$(iwgetid | sed 's|.*ESSID:"\(.*\)"|\1|')"
+        _sgn="$(grep ${_int} /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')"
+        _ipa="$(/usr/bin/ip -o -4 addr list ${_int}|awk '{print $4}'|head -n1|cut -d/ -f1)"
+
+        # grabbing data for each adapter.
+        read rx < "/sys/class/net/${_int}/statistics/rx_bytes"
+        read tx < "/sys/class/net/${_int}/statistics/tx_bytes"
+
+        # get time
+        time=$(date +%s)
+
+        # write current data if file does not exist. Do not exit, this will cause
+        # problems if this file is sourced instead of executed as another process.
+        if ! [[ -f "${_sto}" ]]; then
+            echo "${time} ${rx} ${tx}" > "${_sto}"
+            chmod 0666 "${_sto}"
+            exit
+        fi
+
+        # read previous state and update data storage
+        read old < "${_sto}"
+        echo "${time} ${rx} ${tx}" > "${_sto}"
+
+        # parse old data and calc time passed
+        old=(${old//;/ })
+        time_diff=$(( $time - ${old[0]} ))
+
+        # calc bytes transferred, and their rate in byte/s
+        rx_diff=$(( $rx - ${old[1]} ))
+        tx_diff=$(( $tx - ${old[2]} ))
+        rx_rate=$(( $rx_diff / $time_diff ))
+        tx_rate=$(( $tx_diff / $time_diff ))
+pactl gentoo
+        # Download speed
+        rx_kib=$(( $rx_rate >> 10 ))
+        if hash bc 2>/dev/null && [[ "$rx_rate" -gt 1048576 ]]
+        then
+            _dnl="$(echo "scale=1; $rx_kib / 1024" | bc) MiB/s"
+        else
+            _dnl="${rx_kib} KiB/s"
+        fi
+
+        # Upload speed
+        tx_kib=$(( $tx_rate >> 10 ))
+        if hash bc 2>/dev/null && [[ "$tx_rate" -gt 1048576 ]]
+        then
+            _upl="$(echo "scale=1; $tx_kib / 1024" | bc) MiB/s"
+        else
+            _upl="${tx_kib} KiB/s"
+        fi
+
+        echo "<span color='${_col}'>${_ico}</span> ${_sid} <span color='${_col}'>${_ics}</span> ${_sgn}% <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}" | sed 's|&|&amp;|g'
+    }
+    
+    get_loop () {
+        [[ ! -d /sys/class/net/${_int} ]] && exit
+        while : ; do
+            get_text
+            sleep 5
+        done
+    }
+
+    get_loop
+}
+
+internet () {
+    _col="${_color:-$col_cya}"
+    _eint='ethernet'
+    _eico=""
+    _wint='wifi'
+    _wico=""
+    _uint='usbtether'
+    _uico=""
+    _bint="broadcast"
+    _bico=""
+    _ovpn=""
+    _ocnc="ﮂ"
+
+    _esta="/sys/class/net/${_eint}/operstate"
+    _wsta="/sys/class/net/${_wint}/operstate"
+    _usta="/sys/class/net/${_uint}/operstate"
+    _bsta="/sys/class/net/${_bint}/operstate"
+
+    get_text() {
+        _txt=""
+        [ -f ${_esta} ] && _econ="$(cat "${_esta}")"
+        [ -f ${_wsta} ] && _wcon="$(cat "${_wsta}")"
+        [ -f ${_usta} ] && _ucon="$(cat "${_usta}")"
+        [ -f ${_bsta} ] && _bcon="$(cat "${_bsta}")"
+        [[ ${_econ} == 'up' ]] && _txt="${_txt}${_eico} "
+        [[ ${_wcon} == 'up' ]] && _txt="${_txt}${_wico} "
+        [[ ${_ucon} == 'up' ]] && _txt="${_txt}${_uico} "
+        [[ ${_bcon} == 'up' ]] && _txt="${_txt}${_bico} "
+        pgrep openvpn >/dev/null && _txt="${_txt}${_ovpn} "
+        pgrep openconnect >/dev/null && _txt="${_txt}${_ocnc} "
+
+        [ -z ${_txt} ] && echo '' || echo "<span color='${_col}'>${_txt::-1}</span>"
+    }
+    
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 5
+        done
+    }
+
+    get_loop
+
+}
+
+fan () {
+    _ico=""
+    _col="${_color:-$col_ora}"
+
+    get_text () {
+        if [ $(hostname) = 'sbplaptop' ] ; then
+            # Can't read this
+            exit
+        elif [ $(hostname) = 'sbpnotebook' ] ; then
+            _spe="$(sensors | grep -i 'fan' | awk '{print $2}' | tr '\n' ',')"
+            _spe="${_spe::-1}"
+        else
+            _spe="$(sensors | grep -i 'fan' | awk '{print $3}' | tr '\n' ',')"
+            _spe="${_spe::-1}"
+        fi
+        [ ! -z "$_spe" ] && \
+            echo "<span color='${_col}'>${_ico}</span> ${_spe}"
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 5
+        done
+    }
+    
+    get_loop
+}
+
+email () {
+    _col="${_color:-$col_yel}"
+    _file="${HOME}/Documents/Mail/Gmail/Inbox/new"
+
+    get_text () {
+        _new="$(find $HOME/Documents/Mail/Gmail/Inbox/new | wc -l)"
+        if [ "$_new" -le 0 ] ; then
+            _ico=""
+            _new=""
+        else
+            _ico=""
+            _new=" ${_new}"
+        fi
+        echo "<span color='${_col}'>${_ico}</span>${_new}"
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 5
+            inotifywait --timeout -1 --recursive "${_file}" > /dev/null 2>&1 || break
+        done
+    }
+
+    get_loop
+}
+
+kernel () {
+    _col="${_color:-$col_vio}"
+    _dis="$(hostnamectl | sed -n 's/.*Operating System: \(.*\)/\1/p')"
+    case "$_dis" in
+        "Arch Linux")   _ico="" ;;
+        "Gentoo")       _ico="" ;;
+    esac
+    echo "<span color='${_col}'>${_ico}</span> $(uname -r)"
+}
+
+keymap () {
+    _col="${_color:-$col_vio}"
+    _ico=""
+    
+    get_text () {
+        _sta="$(xkb-switch -p)"
+        _lan="$(echo "${_sta}" | sed 's|\(.*\)(.*)|\1|' | awk '{print toupper($0)}')"
+        _lay="$(echo "${_sta}" | grep '(' | sed 's|.*(\(.*\))|\1|')"
+        [ -z "${_lay}" ] && _lay="qwe" || _lay="${_lay:0:3}"
+        echo "<span color='${_col}'>${_ico}</span> ${_lan}(${_lay})" | sed 's|&|&amp;|g'
+    }
+    
+    get_loop () {
+        get_text
+        /usr/bin/xkb-switch -W | while IFS= read -r line ; do
+            get_text
+            sleep .1
+        done
+    }
+
+    get_loop
+
+}
+
+memory () {
+    _col="${_color:-$col_gre}"
+    _ico=""
+
+    get_text () {
+        _prc="$(free -m | grep Mem | awk '{ printf("%.1f", $3/$2 * 100.0) }')"
+        _val="$(free -m | grep Mem | awk '{ printf("%.2fGB",($3*1.0)/(1024.0)) }' )"
+        echo "<span color='${_col}'>${_ico}</span> ${_val} (${_prc}%)"
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 1
+        done
+    }
+
+    get_loop
+}
+
+swap () {
+    _col="${_color:-$col_gre}"
+    _ico="力"
+
+    get_text () {
+        _val="$(free -m | grep Swap | awk '{ printf( $3 ) }' | numfmt --to=iec-i --suffix=B)"
+        echo "<span color='${_col}'>${_ico}</span> ${_val}"
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 1
+        done
+    }
+
+    get_loop
+
+}
+
+mpd () {
+    _col="${_color:-$col_red}"
+    _len=32
+    _ico=""
+    _ilf=""
+    
+    get_text () {
+        # Prompt stuff
+        _text="$(mpc $_pass status | head -n 1)"
+        [ "${#_text}" -gt "${_len}" ] && _text="${_text:0:${_len}}…"
+        _pre="$(mpc $_pass status | tail -n 2 | head -n 1 | awk '{print $1}')"
+        if [ "${_text}" == "" ] ; then
+            _txt="<span color='${_mute}'>--</span>"
+        elif [ "${_pre}" == "[paused]" ] ; then
+            _txt="$(echo "<span color='${_mute}'>${_text}</span>" | sed 's|&|&amp;|g')"
+        elif [[ $_pre == volume:* ]] ; then
+            _txt="<span color='${_mute}'>Empty playlist…</span>"
+        elif [ "${_pre}" == "Updating" ] ; then
+            _txt="<span color='${_mute}'>DB Update…</span>"
+        else
+            _txt="$(echo "${_text}" | sed 's|&|&amp;|g')"
+        fi
+        
+        pgrep mpdscribble >/dev/null && _end=" <span color='${_col}'>${_ilf}</span>"
+        echo "<span color='${_col}'>${_ico}</span> ${_txt}${_end}"
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep .2
+            mpc idle > /dev/null || sleep 10
+        done
+    }
+
+    get_loop &
+    while read button ; do
+        case $button in
+            1) mpc toggle > /dev/null ;;  # left click, toggle
+            4) mpc prev > /dev/null ;;    # scroll up, previous
+            5) mpc next > /dev/null ;;    # scroll down, next
+        esac
+    done
+
+}
+
+pulseaudio () {
+    # Fix this to use only pacmd and pactl
+    _col="${_color:-$col_red}"
+
+    get_text() {
+        _def=$(pacmd list-sinks |
+            grep 'active port: ' |
+            sed 's/.*active port: <\(.*\)>$/\1/' |
+            head -n $(pacmd list-sinks |
+            grep index | grep -n '\*' |
+            sed 's/\(.\).*/\1/') |
+            tail -1)
+
+        case "$_def" in
+            *hdmi*)                     _ico="﴿" ;;
+            *headset*|*a2dp*|*hifi*)    _ico="" ;;
+            *headphones*)               _ico="" ;;
+            *speaker*)                  _ico="蓼" ;;
+            *network*)                  _ico="爵" ;;
+            *analog*)                   _ico="" ;;
+            *)                          _ico="" ;;
+        esac
+
+        _val="$(pamixer --get-volume)%"gentoo media-sound/pamixer
+        [[ $(pamixer --get-mute) = "true" ]] &&
+            _val="<span color='${_mute}'>${_val}</span>"
+
+        echo "<span color='${_col}'>${_ico}</span> ${_val}" | sed 's|&|&amp;|g'
+    }
+
+
+    get_loop() {
+        get_text
+        /usr/bin/pactl subscribe | while read -r line ; do
+            echo $line |
+                grep -q -e "sink" -e "'change' on server #" && 
+                get_text
+        done
+    }
+
+    get_loop &
+    while read button ; do
+        case $button in
+            1) /usr/bin/pamixer --toggle-mute > /dev/null 2>&1;; # Left
+            3) /usr/bin/pavucontrol > /dev/null 2>&1 & disown ;; # Right
+            4) /usr/bin/pamixer --increase 5  > /dev/null 2>&1;; # Scroll up
+            5) /usr/bin/pamixer --decrease 5  > /dev/null 2>&1;; # Scroll down
+        esac
+    done
+}
+
+rss () {
+    _col="${_color:-$col_gre}"
+    _ico=""
+    _file="${HOME}/Documents/RSS"
+
+    get_text () {
+        _num="$(newsboat -x print-unread | awk '{ print $1 }')"
+        [ "${_num}" == "Error:" ] && _num="<span color='${_mute}'></span>"
+        echo "<span color='${_col}'>${_ico}</span> ${_num}" | sed 's|&|&amp;|g'
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 5
+            inotifywait --timeout -1 --recursive "${_file}" > /dev/null 2>&1 || break
+        done
+    }
+    get_loop
+}
+
+temperature () {
+    _col="${_color:-$col_red}"
+    _cel="糖"
+
+    get_text () {
+        if [ $(hostname) = 'sbplaptop' ] ; then
+            _tmp="$(sensors|grep 'Tdie:'|awk '{print $2}'|sed 's/+\(.*\)°C/\1/')"
+        elif [ $(hostname) = 'sbpnotebook' ] ; then
+            _tmp="$(sensors|grep 'Package id'|awk '{print $4}'|sed 's/+\(.*\)°C/\1/')"
+        else
+            return
+        fi
+        # Do integer check
+        _sto="$(echo ${_tmp} | sed 's/\(.*\)\..*/\1/')"
+        if [ "${_sto}" -gt 75 ] ; then
+            _ico=""
+        elif [ "${_sto}" -gt 65 ] ; then
+            _ico=""
+        elif [ "${_sto}" -gt 55 ] ; then
+            _ico=""
+        elif [ "${_sto}" -gt 45 ] ; then
+            _ico=""
+        else
+            _ico=""
+        fi
+        echo "<span color='${_col}'>${_ico}</span> ${_tmp}${_cel}"
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 1
+        done
+    }
+
+    get_loop
+}
+
+todo () {
+    # Does not work
+    _col="${_color:-$col_bro}"
+    _ico="省"
+    _len=32
+    _file="${HOME}/Documents/Todo"
+
+    get_text () {
+        _jso="$(todo --porcelain list --sort priority)"
+        _txt="$(echo "${_jso}" | jq -r '.[0]."summary"')"
+        [ "${_txt}" = "null" ] && _txt="<span color='${_mute}'>No tasks</span>"
+        echo "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g'
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 5
+            inotifywait --timeout -1 --recursive "${_file}" > /dev/null 2>&1 ||
+                break
+        done
+    }
+
+    get_text
+    get_loop
+}
+
+uptime () {
+    _col="${_color:-$col_cya}"
+    _ico="⏼"
+
+    get_text () {
+        _pro="$(uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ weeks\?,/w/' | sed 's/\ days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/')"
+        echo "<span color='${_col}'>${_ico}</span> ${_pro}"
+    }
+
+    get_loop () {
+        while : ; do
+            get_text
+            sleep 60
+        done
+    }
+
+    get_loop
+}
+
+module_selection

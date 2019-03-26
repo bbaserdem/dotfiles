@@ -7,5 +7,5 @@ Categories=System
 Name=Reboot
 Comment=Restart computer using systemd
 Terminal=false
-Exec=systemctl reboot
+Exec=sh -c '[ -x /bin/systemctl ] && systemctl reboot || /sbin/reboot'
 Icon=system-restart

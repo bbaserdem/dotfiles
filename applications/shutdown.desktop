@@ -7,5 +7,5 @@ Categories=System
 Name=Shutdown
 Comment=Power off computer using systemd
 Terminal=false
-Exec=systemctl poweroff
+Exec=sh -c '[ -x /bin/systemctl ] && systemctl poweroff || /sbin/shutdown now'
 Icon=system-shutdown

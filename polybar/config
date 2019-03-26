@@ -87,7 +87,7 @@ enable-ipc = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 bottom = false
-modules-left = i3 bspwm-desktop bspwm-mode calendar todo
+modules-left = bspwm-desktop bspwm-mode calendar todo
 modules-center = time
 modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd pulseaudio keyboard backlight battery
 
@@ -281,7 +281,7 @@ format-background = ${colors.bkg}
 type = internal/temperature
 interval = 2
 thermal-zone = 0
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp2_input
+hwmon-path = /sys/class/hwmon/hwmon1/temp2_input
 warn-temperature = 80
 label = %temperature-c%糖
 label-warn = %temperature-c%糖
@@ -446,9 +446,28 @@ format-offline-underline = ${colors.mut}
 format-offline-prefix = "ﱙ "
 format-offline-prefix-foreground = ${self.format-offline-underline}
 
+[module/pulsenotworking]
+type = internal/pulseaudio
+use-ui-max = true
+interval = 5
+icon-headphones = ""
+icon-speaker = "蓼"
+icon-hdmi = "﴿"
+icon-bluetooth = ""
+label-volume = %percentage%
+label-muted = %percentage%
+format-prefix = <port-icon>
+format-prefix-foreground = ${colors.cya}
+format-underline = ${self.format-prefix-foreground}
+format-volume = <label-volume>
+format-muted = <label-muted>
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+label-muted-foreground = ${colors.mut}
+
 [module/pulseaudio]
 type = custom/script
-exec = ~/.config/polybar/pulse.sh
+exec = ~/.config/polybar/pulse.sh polybar
 tail = true
 interval = 0
 label = %output%
