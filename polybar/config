@@ -230,7 +230,7 @@ format = <label-mode>
 
 [module/calendar]
 type = custom/script
-exec = ~/.config/daemons.sh -f polybar -c brown calendar
+exec = ~/.config/bin/daemons.sh -f polybar -c brown calendar
 exec-if = [ -d ~/Documents/Calendar ]
 tail = true
 interval = 0
@@ -464,7 +464,7 @@ label-muted-foreground = ${colors.mut}
 
 [module/pulseaudio]
 type = custom/script
-exec = ~/.config/daemons.sh -c cyan -f polybar pulseaudio
+exec = ~/.config/bin/daemons.sh -c cyan -f polybar pulseaudio
 tail = true
 interval = 0
 label = %output%
