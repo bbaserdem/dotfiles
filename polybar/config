@@ -230,15 +230,12 @@ format = <label-mode>
 
 [module/calendar]
 type = custom/script
-exec = ~/.config/polybar/calendar.sh
+exec = ~/.config/daemons.sh -f polybar -c brown calendar
 exec-if = [ -d ~/Documents/Calendar ]
 tail = true
 interval = 0
 label = %output%
 format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.bro}
-format-underline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 
@@ -467,12 +464,11 @@ label-muted-foreground = ${colors.mut}
 
 [module/pulseaudio]
 type = custom/script
-exec = ~/.config/polybar/pulse.sh polybar
+exec = ~/.config/daemons.sh -c cyan -f polybar pulseaudio
 tail = true
 interval = 0
 label = %output%
 format = <label>
-format-underline = ${colors.cya}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 scroll-up = /usr/bin/pamixer --increase 5

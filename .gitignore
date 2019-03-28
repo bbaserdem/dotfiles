@@ -13,6 +13,7 @@
 !/.gitignore
 !/abcde.conf
 !/compton.conf
+!/daemons.sh
 !/gpg-agent.conf
 !/install.sh
 !/locale.conf

@@ -9,7 +9,7 @@ get_text() {
     _sink="$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')"
     _line="$(pactl list sinks short | grep -n "${_sink}" | cut -d : -f 1)"
     _defn="$(pactl list sinks | sed -n 's|.*Active Port: \([^\s]*\).*|\1|p'"${_line}")"
-    _vol="$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"${_line}" | awk '
+    _volm="$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"${_line}" | awk '
         BEGIN{ RS=" "; vol=0; n=0; }
         /[0-9]+%$/ { n++; vol+=$1; }
         END{ if(n>0) { printf( "%.0f", vol/n ); } }' )"
@@ -26,12 +26,12 @@ get_text() {
 
     case $_form in
         pango)      [[ $(pamixer --get-mute) = "true" ]] &&
-            _vol="<span color=${_mute}>${_vol}</span>"
-            echo "<span color=${_col}>${_ico}</span> ${_vol}"
+            _volm="<span color=${_mute}>${_volm}</span>"
+            echo "<span color=${_col}>${_ico}</span> ${_volm}"
             ;;
         polybar)    [[ $(pamixer --get-mute) = "true" ]] &&
-            _vol="%{F${_mut}}${_vol}%{F-}"
-            echo "%{F${_col}}${_ico}%{F-} ${_vol}"
+            _volm="%{F${_mut}}${_volm}%{F-}"
+            echo "%{F${_col}}${_ico}%{F-} ${_volm}"
             ;;
     esac
 }

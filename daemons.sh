@@ -27,15 +27,19 @@ col_ind="${base0D:-#7cafc2}"
 col_vio="${base0E:-#ba8baf}"
 col_bro="${base0F:-#a16946}"
 
+
+
 print_help () {
     echo -e "Usage: $0 [-f <pango|lemonbar>] [-c <color>] [-h] MODULE" 1>&2
     exit 1
 }
 
+
+
 # Default to pango
 _format="pango"
 _color=""
-
+# Get options
 while getopts ":f:c:h" _optns; do
     case "${_optns}" in
         f) _format="${OPTARG}" ;;
@@ -45,11 +49,28 @@ while getopts ":f:c:h" _optns; do
 done
 _module=${@:$OPTIND:1}
 
+
+
 # Check format
 case $_format in
     pango|i3|i3blocks|sway|lemonbar|polybar|bspwm) ;;
     *) echo 'Invalid format'; exit 2 ;;
 esac
+
+# Check color
+case $_color in
+    0|8|red)                _color="${col_red}" ;;
+    1|9|orange|ora)         _color="${col_ora}" ;;
+    2|A|yellow|yel)         _color="${col_yel}" ;;
+    3|B|green|gre)          _color="${col_gre}" ;;
+    4|C|cyan|cya)           _color="${col_cya}" ;;
+    5|D|blue|indigo|ind)    _color="${col_ind}" ;;
+    6|E|pink|violet|vio)    _color="${col_vio}" ;;
+    7|F|brown|bro)          _color="${col_bro}" ;;
+esac
+
+
+
 
 module_selection () {
     case $_module in
@@ -79,52 +100,67 @@ module_selection () {
     esac
 }
 
+##########################################
+#  __  __           _       _            #
+# |  \/  | ___   __| |_   _| | ___  ___  #
+# | |\/| |/ _ \ / _` | | | | |/ _ \/ __| #
+# | |  | | (_) | (_| | |_| | |  __/\__ \ #
+# |_|  |_|\___/ \__,_|\__,_|_|\___||___/ #
+#                                        #
+##########################################
+
+# Display battery status
+#   This module ignores colors
 battery () {
     _cap="/sys/class/power_supply/BAT0/capacity"
     _stt="/sys/class/power_supply/BAT0/status"
     _onl="/sys/class/power_supply/AC0/online"
     
     get_text () {
-        _num="$(cat ${_cap})"
-        _sta="$(cat ${_stt})"
-        _acp="$(cat ${_onl})"
+        if [ -e "${_cap}" ] ; then 
+            _num="$(cat ${_cap})"
+            _sta="$(cat ${_stt})"
+            _acp="$(cat ${_onl})"
 
-        if   [ "$_num" -ge 80 ] ; then
-            # Green ()
-            _col="${col_gre}"
-            _ico=""
-        elif [ "$_num" -ge 60 ] ; then
-            # Yellow (0A)
-            _col="${col_yel}"
-            _ico=""
-        elif [ "$_num" -ge 40 ] ; then
-            # Orange (09)
-            _col="${col_ora}"
-            _ico=""
-        elif [ "$_num" -ge 20 ] ; then
-            # Red (08)
-            _col="${col_red}"
-            _ico=""
-        else
-            # White (03)
-            _col="${col_bro}"
-            _ico=""
-        fi
+            if   [ "$_num" -ge 80 ] ; then
+                # Green ()
+                _col="${col_gre}"
+                _ico=""
+            elif [ "$_num" -ge 60 ] ; then
+                # Yellow (0A)
+                _col="${col_yel}"
+                _ico=""
+            elif [ "$_num" -ge 40 ] ; then
+                # Orange (09)
+                _col="${col_ora}"
+                _ico=""
+            elif [ "$_num" -ge 20 ] ; then
+                # Red (08)
+                _col="${col_red}"
+                _ico=""
+            else
+                # White (03)
+                _col="${col_bro}"
+                _ico=""
+            fi
 
-        if [ "$_sta" = "Charging" ] ; then
-            _ico=${_ico:1:2}
-        elif [ "$_acp" = "1" ] ; then
-            _ico=""
-        else
-            _ico=${_ico:0:1}
-        fi
+            if [ "$_sta" = "Charging" ] ; then
+                _ico=${_ico:1:2}
+            elif [ "$_acp" = "1" ] ; then
+                _ico=""
+            else
+                _ico=${_ico:0:1}
+            fi
         
-        case $_format in
-            pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_num}" ;;
-            lemonbar|polybar|bspwm)
-                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_num}%{-u}%{u-}"
-        esac
+            case $_format in
+                pango|i3|i3blocks|sway)
+                    echo "<span color='${_col}'>${_ico}</span> ${_num}" ;;
+                lemonbar|polybar|bspwm)
+                    echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_num}%{-u}%{u-}"
+            esac
+        else
+            echo ''
+        fi
     }
 
     while : ; do
@@ -134,28 +170,34 @@ battery () {
     done
 }
 
+# Display screen brightness
+#   Needs the app light
 brightness () {
     _file="/sys/class/backlight/${BRI_SCR}/brightness"
     _col="${_color:-$col_vio}"
 
     get_text () {
-        _val="$(light | sed 's|^\(.*\)\..*|\1|')" || exit
+        if [ -e "${_file}" ] ; then
+            _val="$(light | sed 's|^\(.*\)\..*|\1|')" || exit
 
-        if   [ "$_val" -ge 75 ] ; then
-            _ico=""
-        elif [ "$_val" -ge 50 ] ; then
-            _ico=""
-        else
-            _ico=""
-        fi
+            if   [ "$_val" -ge 75 ] ; then
+                _ico=""
+            elif [ "$_val" -ge 50 ] ; then
+                _ico=""
+            else
+                _ico=""
+            fi
         
-        if [ ! -z "${_val}" ] ; then
-            case $_format in
-                pango|i3|i3blocks|sway)
-                    echo "<span color='${_col}'>${_ico}</span> ${_val}" ;;
-                lemonbar|polybar|bspwm)
-                    echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_val}%{-u}%{u-}"
-            esac
+            if [ ! -z "${_val}" ] ; then
+                case $_format in
+                    pango|i3|i3blocks|sway)
+                        echo "<span color='${_col}'>${_ico}</span> ${_val}" ;;
+                    lemonbar|polybar|bspwm)
+                        echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_val}%{-u}%{u-}"
+                esac
+            fi
+        else
+            echo ''
         fi
     }
     
@@ -176,6 +218,7 @@ brightness () {
     done
 }
 
+# Reads a khal calendar, and spits out the most urgent event
 calendar () {
     _file="${HOME}/Documents/Calendar"
     _col="${_color:-$col_bro}"
@@ -194,7 +237,7 @@ calendar () {
                 ;;
             lemonbar|polybar|bspwm)
                 [ "${_txt}" = "No events" ]  &&
-                    _txt="{F${_mute}}${_txt}%{F-}"
+                    _txt="%{F${_mute}}${_txt}%{F-}"
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}"
                 ;;
         esac
@@ -211,6 +254,7 @@ calendar () {
     get_loop
 }
 
+# Calculate CPU percentage
 cpu () {
     _col="${_color:-$col_yel}"
     _ico=""
@@ -793,7 +837,7 @@ pulseaudio () {
                 echo "<span color=${_col}>${_icon}</span> ${_volm}" ;;
             lemonbar|polybar|bspwm) [[ $(pamixer --get-mute) = "true" ]] &&
                 _volm="%{F${_mut}}${_volm}%{F-}"
-                echo "%{F${_col}}${_icon}%{F-} ${_volm}" ;;
+                echo "%{u${_col}}%{+u}%{F${_col}}${_icon}%{F-} ${_volm}%{-u}%{u-}" ;;
         esac
 
     }
