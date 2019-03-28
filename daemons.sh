@@ -255,6 +255,7 @@ calendar () {
 }
 
 # Calculate CPU percentage
+#
 cpu () {
     _col="${_color:-$col_yel}"
     _ico=""
