@@ -787,11 +787,11 @@ pulseaudio () {
             *)                          _icon="" ;;
         esac
 
-        case $_form in
-            pango)      [[ $(pamixer --get-mute) = "true" ]] &&
+        case $_format in
+            pango|i3|i3blocks|sway) [[ $(pamixer --get-mute) = "true" ]] &&
                 _volm="<span color=${_mute}>${_volm}</span>"
                 echo "<span color=${_col}>${_icon}</span> ${_volm}" ;;
-            polybar)    [[ $(pamixer --get-mute) = "true" ]] &&
+            lemonbar|polybar|bspwm) [[ $(pamixer --get-mute) = "true" ]] &&
                 _volm="%{F${_mut}}${_volm}%{F-}"
                 echo "%{F${_col}}${_icon}%{F-} ${_volm}" ;;
         esac
