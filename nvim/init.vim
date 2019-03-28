@@ -88,6 +88,7 @@ set updatetime=500                                  " Plugin update time >4s
 set mouse=a                                         " Disable mouse click
 set splitbelow              " Horizontal splitsgo down
 set splitright              " Vertical splits go right
+set showtabline=2           " For airline on top
 
 " Tell Vim which characters to show for expanded TABs,
 if &listchars ==# 'eol:$'
@@ -155,7 +156,7 @@ let g:gitgutter_sign_modified_removed = ''
 "-----Colorscheme------"
 let g:airline_theme='base16'        " Airline theme
 let g:airline_powerline_fonts=1     " Force powerline fonts
-"let g:airline_statusline_ontop=1    " Put airline on top
+let g:airline_statusline_ontop=1    " Put airline on top
 let g:airline#extensions#ale#enabled=1
 let g:airline#extensions#gutentags#enabled=1
 
