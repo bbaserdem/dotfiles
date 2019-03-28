@@ -809,6 +809,8 @@ mpd () {
 
 }
 
+# Pulseaudio daemon
+#   Fully production ready
 pulseaudio () {
     # Fix this to use only pacmd and pactl
     _col="${_color:-$col_red}"
@@ -816,7 +818,8 @@ pulseaudio () {
     get_text() {
         _sink="$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')"
         _line="$(pactl list sinks short | grep -n "${_sink}" | cut -d : -f 1)"
-        _defn="$(pactl list sinks | sed -n 's|.*Active Port: \([^\s]*\).*|\1|p'"${_line}")"
+        _defn="$(pactl list sinks | sed -n 's|^\sActive Port: \([^\s]*\)|\1|p'"${_line}")"
+        _ismt="$(pactl list sinks | sed -n 's|^\sMute: \([^\s]*\)|\1|p'"${_line}")"
         _volm="$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"${_line}" | awk '
             BEGIN{ RS=" "; vol=0; n=0; }
             /[0-9]+%$/ { n++; vol+=$1; }
@@ -833,11 +836,11 @@ pulseaudio () {
         esac
 
         case $_format in
-            pango|i3|i3blocks|sway) [[ $(pamixer --get-mute) = "true" ]] &&
+            pango|i3|i3blocks|sway) [[ $_ismt = "yes" ]] &&
                 _volm="<span color=${_mute}>${_volm}</span>"
                 echo "<span color=${_col}>${_icon}</span> ${_volm}" ;;
-            lemonbar|polybar|bspwm) [[ $(pamixer --get-mute) = "true" ]] &&
-                _volm="%{F${_mut}}${_volm}%{F-}"
+            lemonbar|polybar|bspwm) [[ $_ismt = "yes" ]] &&
+                _volm="%{F${_mute}}${_volm}%{F-}"
                 echo "%{u${_col}}%{+u}%{F${_col}}${_icon}%{F-} ${_volm}%{-u}%{u-}" ;;
         esac
 
@@ -852,15 +855,36 @@ pulseaudio () {
         done
     }
 
-    get_loop &
-    while read button ; do
-        case $button in
-            1) /usr/bin/pamixer --toggle-mute > /dev/null 2>&1;; # Left
-            3) /usr/bin/pavucontrol > /dev/null 2>&1 & disown ;; # Right
-            4) /usr/bin/pamixer --increase 5  > /dev/null 2>&1;; # Scroll up
-            5) /usr/bin/pamixer --decrease 5  > /dev/null 2>&1;; # Scroll down
+    get_action () {
+        _sink="$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')"
+        _line="$(pactl list sinks short | grep -n "${_sink}" | cut -d : -f 1)"
+        _volm="$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"${_line}" | awk '
+            BEGIN{ RS=" "; vol=0; n=0; }
+            /[0-9]+%$/ { n++; vol+=$1; }
+            END{ if(n>0) { printf( "%.0f", vol/n ); } }' )"
+
+        case $1 in
+            1)  # Left
+                /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null 2>&1
+                ;;
+            2) # Middle
+                ;;
+            3) # Right
+                [ -x '/usr/bin/pavucontrol' ] && /usr/bin/pavucontrol > /dev/null 2>&1 &
+                disown ;;
+            4) # Scroll Up
+                if [ "$_volm" -ge 100 ] ; then
+                    /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ 100%  > /dev/null 2>&1
+                else
+                    /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5% > /dev/null 2>&1
+                fi ;;
+            5) # Scroll Down
+                /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%  > /dev/null 2>&1
+                ;;
         esac
-    done
+    }
+
+    get_loop & while read button ; do get_action $button ; done
 }
 
 rss () {
