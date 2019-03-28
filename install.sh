@@ -161,12 +161,11 @@ while getopts ':Aplush' flag; do
         u) local_update ;;
         s) fix_perm; symlinks_and_directories; local_update ;;
         h) print_usage ;;
-        \?) echo "Unknown option ${flag}"; print_usage ; exit 1 ;;
-
+        *) echo "Unknown option ${flag}"; print_usage ; exit 1 ;;
     esac
 done
 
-if [[ "${flag}" = '?' ]] ; then
+if [ -z "${flag}" ] ; then
     echo 'Defaulting to full setup'
     fix_perm
     symlinks_and_directories

@@ -769,31 +769,34 @@ pulseaudio () {
     _col="${_color:-$col_red}"
 
     get_text() {
-        _def=$(pacmd list-sinks |
-            grep 'active port: ' |
-            sed 's/.*active port: <\(.*\)>$/\1/' |
-            head -n $(pacmd list-sinks |
-            grep index | grep -n '\*' |
-            sed 's/\(.\).*/\1/') |
-            tail -1)
+        _sink="$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')"
+        _line="$(pactl list sinks short | grep -n "${_sink}" | cut -d : -f 1)"
+        _defn="$(pactl list sinks | sed -n 's|.*Active Port: \([^\s]*\).*|\1|p'"${_line}")"
+        _volm="$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"${_line}" | awk '
+            BEGIN{ RS=" "; vol=0; n=0; }
+            /[0-9]+%$/ { n++; vol+=$1; }
+            END{ if(n>0) { printf( "%.0f", vol/n ); } }' )"
 
-        case "$_def" in
-            *hdmi*)                     _ico="﴿" ;;
-            *headset*|*a2dp*|*hifi*)    _ico="" ;;
-            *headphones*)               _ico="" ;;
-            *speaker*)                  _ico="蓼" ;;
-            *network*)                  _ico="爵" ;;
-            *analog*)                   _ico="" ;;
-            *)                          _ico="" ;;
+        case "$_defn" in
+            *hdmi*)                     _icon="﴿" ;;
+            *headset*|*a2dp*|*hifi*)    _icon="" ;;
+            *headphones*)               _icon="" ;;
+            *speaker*)                  _icon="蓼" ;;
+            *network*)                  _icon="爵" ;;
+            *analog*)                   _icon="" ;;
+            *)                          _icon="" ;;
         esac
 
-        _val="$(pamixer --get-volume)%"gentoo media-sound/pamixer
-        [[ $(pamixer --get-mute) = "true" ]] &&
-            _val="<span color='${_mute}'>${_val}</span>"
+        case $_form in
+            pango)      [[ $(pamixer --get-mute) = "true" ]] &&
+                _volm="<span color=${_mute}>${_volm}</span>"
+                echo "<span color=${_col}>${_icon}</span> ${_volm}" ;;
+            polybar)    [[ $(pamixer --get-mute) = "true" ]] &&
+                _volm="%{F${_mut}}${_volm}%{F-}"
+                echo "%{F${_col}}${_icon}%{F-} ${_volm}" ;;
+        esac
 
-        echo "<span color='${_col}'>${_ico}</span> ${_val}" | sed 's|&|&amp;|g'
     }
-
 
     get_loop() {
         get_text
