@@ -1,6 +1,8 @@
 #!/bin/sh
 # Script to change wallpapers, with different options for office and home
 
+# https://gkbrk.com/2018/02/simple-dbus-service-in-python/
+
 # Create the crontab file if does not exist
 _CRON="${HOME}/.cache"
 [ -d "${_CRON}" ] || mkdir -p "${_CRON}"
