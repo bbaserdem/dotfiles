@@ -1,62 +1,50 @@
 #-----------------#
 #-----GLOBAL------#
 #-----------------#
+command=~/.config/daemons.sh 
 separator_block_width=15
 markup=pango
+format=json
+interval=persist
 
 #-------------------#
 #-----BLOCKLETS-----#
 #-------------------#
 
-# Calendar (brown)
 [calendar]
-command=~/.config/i3blocks/blocklets/calendar.sh brown
-interval=300
+color=brown
 
-# Tasks (red)
 [todo]
-command=~/.config/i3blocks/blocklets/todo.sh red
-interval=300
+color=brown
 
-# Music player daemon notification (orange)
+[temperature]
+color=red
+
+[memory]
+color=orange
+
+[cpu]
+color=yellow
+
+[brightness]
+color=yellow
+
+[internet]
+color=green
+
 [mpd]
-command=~/.config/i3blocks/blocklets/mpd.sh orange
-interval=once
-signal=3
+color=cyan
 
-# Pulseaudio volume (yellow)
 [pulseaudio]
-command=~/.config/i3blocks/blocklets/pulseaudio.sh yellow
-interval=once
-signal=6
+color=cyan
 
-[vpn]
-command=~/.config/i3blocks/blocklets/vpn.sh green
-interval=5
+[day]
+color=blue
 
-# Bitcoin (cyan)
-[language]
-command=~/.config/i3blocks/blocklets/bitcoin.sh green
-interval=3600
+[clock]
+color=blue
 
-# Language (cyan)
-[language]
-command=~/.config/i3blocks/blocklets/language.sh cyan
-interval=once
-signal=10
+[keymap]
+color=violet
 
-# Time (indigo)
-[time]
-command=~/.config/i3blocks/blocklets/time.sh indigo
-interval=1
-
-# Date (violet)
-[date]
-command=~/.config/i3blocks/blocklets/date.sh violet
-interval=once
-signal=7
-
-# Battery (varies)
 [battery]
-command=~/.config/i3blocks/blocklets/battery.sh violet
-interval=30

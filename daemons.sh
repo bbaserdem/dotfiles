@@ -18,6 +18,8 @@
 
 # Default colorset; if colors not in ENV, default to base16-default
 _mute="${base03:-#585858}"
+col_frg="${base04:-#b8b8b8}"
+col_bkg="${base01:-#282828}"
 col_red="${base08:-#ab4642}"
 col_ora="${base09:-#dc9656}"
 col_yel="${base0A:-#f7ca88}"
@@ -34,7 +36,7 @@ print_help () {
 
 # Default to pango
 _format="pango"
-_color=""
+_color="${color}"
 # Get options
 while getopts ":f:c:h" _optns; do
     case "${_optns}" in
@@ -43,7 +45,12 @@ while getopts ":f:c:h" _optns; do
         *) usage ;;
     esac
 done
-_module=${@:$OPTIND:1}
+
+if [ -z "$name" ] ; then
+    _module=${@:$OPTIND:1}
+else
+    _module="${name}"
+fi
 
 # Check format
 case $_format in
@@ -89,6 +96,22 @@ module_selection () {
         uptime) uptime ;;       # Not working?
         *) echo "Missing module ${_module}"; exit 3 ;;
     esac
+}
+
+json_output () {
+    _icon="${1:0:30}"
+    [ -z $2 ] && _urg="false" || _urg="true"
+    echo "{
+        \"full_text\":\"${1}\",
+        \"short_text\":\"${_icon}\",
+        \"color\":\"${col_frg}\",
+        \"background\":\"${col_bkg}\",
+        \"border\":\"${_mute}\",
+        \"urgent\":${_urg},
+        \"seperator\":true,
+        \"separator_block_width\":1,
+        \"markup\":\"pango\"
+    }"
 }
 
 ##########################################
@@ -145,7 +168,7 @@ battery () {
         
             case $_format in
                 pango|i3|i3blocks|sway)
-                    echo "<span color='${_col}'>${_ico}</span> ${_num}" ;;
+                    json_output "<span color='${_col}'>${_ico}</span> ${_num}" ;;
                 lemonbar|polybar|bspwm)
                     echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_num}%{-u}%{u-}"
             esac
@@ -186,7 +209,7 @@ brightness () {
             if [ ! -z "${_val}" ] ; then
                 case $_format in
                     pango|i3|i3blocks|sway)
-                        echo "<span color='${_col}'>${_ico}</span> ${_val}" ;;
+                        json_output "<span color='${_col}'>${_ico}</span> ${_val}" ;;
                     lemonbar|polybar|bspwm)
                         echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_val}%{-u}%{u-}"
                 esac
@@ -228,8 +251,7 @@ calendar () {
             pango|i3|i3blocks|sway)
                 [ "${_txt}" = "No events" ]  &&
                     _txt="<span color='${_mute}'>${_txt}</span>"
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" |
-                    sed 's|&|&amp;|g'
+                    json_output "$(echo "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g')"
                 ;;
             lemonbar|polybar|bspwm)
                 [ "${_txt}" = "No events" ]  &&
@@ -265,7 +287,7 @@ cpu () {
 
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_per}"
+                json_output "<span color='${_col}'>${_ico}</span> ${_per}"
                 ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_per}%{-u}%{u-}"
@@ -307,7 +329,7 @@ day () {
         _txt="$(date '+%a %d, %b %Y')"
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}"
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}"
                 ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}"
@@ -333,7 +355,7 @@ clock () {
         _txt="$(date '+%H:%M:%S')"
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}"
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}"
                 ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}"
@@ -361,7 +383,7 @@ disk () {
         _hfs="$(df -hPl /home/ | tail -1 | awk '{ printf $3 "/" $2 " (" $5 ")" }' )"
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_icr}</span> ${_rfs} <span color='${_col}'>${_ich}</span> ${_hfs}"
+                json_output "<span color='${_col}'>${_icr}</span> ${_rfs} <span color='${_col}'>${_ich}</span> ${_hfs}"
                 ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_icr}%{F-} ${_rfs} %{F${_col}}${_ich}%{F-} ${_hfs}%{-u}%{u-}"
@@ -440,14 +462,12 @@ ethernet () {
             _upl="${tx_kib} KiB/s"
         fi
 
-        echo "<span color='${_col}'>${_ico}</span> ${_ipa} <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}"
         case $_format in
             pango|i3|i3blocks|sway)
-                "<span color='${_col}'>${_ico}</span> ${_ipa} <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}"
+                json_output "<span color='${_col}'>${_ico}</span> ${_ipa} <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}"
                 ;;
             lemonbar|polybar|bspwm)
-"%{u${_col}}%{+u}<span color='${_col}'>${_ico}</span> ${_ipa} <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}"
-                echo "%{u${_col}}%{+u}%{F${_col}}${_icr}%{F-} ${_rfs} %{F${_col}}${_ich}%{F-} ${_hfs}%{-u}%{u-}"
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_ipa} %{F${_col}}${_ic1}%{F-} ${_upl} %{F${_col}}${_ic2}%{F-} ${_dnl}%{-u}%{u-}"
                 ;;
         esac
     }
@@ -530,11 +550,9 @@ wireless () {
             _upl="${tx_kib} KiB/s"
         fi
 
-        echo "<span color='${_col}'>${_ico}</span> ${_sid} <span color='${_col}'>${_ics}</span> ${_sgn}% <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}" | sed 's|&|&amp;|g'
-
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_sid} <span color='${_col}'>${_ics}</span> ${_sgn}% <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}" | sed 's|&|&amp;|g' ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_sid} <span color='${_col}'>${_ics}</span> ${_sgn}% <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}" | sed 's|&|&amp;|g' ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_sid} %{F${_col}}${_ics}%{F-} ${_sgn}% %{F${_col}}${_ic1}%{F-} ${_upl} %{F${_col}}${_ic2}%{F-} ${_dnl}%{-u}%{u-}" ;;
         esac
@@ -585,7 +603,7 @@ internet () {
 
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_txt}</span>" ;;
+                json_output "<span color='${_col}'>${_txt}</span>" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_txt}%{F-}%{-u}%{u-}" ;;
         esac
@@ -621,7 +639,7 @@ fan () {
         [ ! -z "$_spe" ] && exit
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_spe}" ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_spe}" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_spe}%{-u}%{u-}" ;;
         esac
@@ -652,7 +670,7 @@ email () {
         fi
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span>${_new}" ;;
+                json_output "<span color='${_col}'>${_ico}</span>${_new}" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-}${_new}%{-u}%{u-}" ;;
         esac
@@ -682,7 +700,7 @@ kernel () {
     
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
         esac
@@ -704,7 +722,7 @@ keymap () {
 
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
         esac
@@ -732,7 +750,7 @@ memory () {
         _txt="${_val} (${_prc})"
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
         esac
@@ -756,7 +774,7 @@ swap () {
         _txt="$(free -m | grep Swap | awk '{ printf( $3 ) }' | numfmt --to=iec-i --suffix=B)"
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
         esac
@@ -802,7 +820,7 @@ mpd () {
             pango|i3|i3blocks|sway)
                 [ -z "${_dim}" ]                || _txt="<span color='${_mute}'>${_txt}</span>"
                 pgrep mpdscribble >/dev/null    && _txt="${_txt} <span color='${_col}'>${_ilf}</span>"
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
             lemonbar|polybar|bspwm)
                 [ -z "${_dim}" ]                || _txt="%{F${_mute}}${_txt}%{F-}"
                 pgrep mpdscribble >/dev/null    && _txt="${_txt} %{F${_col}}${_ilf}%{F-}"
@@ -860,8 +878,8 @@ pulseaudio () {
 
         case $_format in
             pango|i3|i3blocks|sway) [[ $_ismt = "yes" ]] &&
-                _volm="<span color=${_mute}>${_volm}</span>"
-                echo "<span color=${_col}>${_icon}</span> ${_volm}" ;;
+                _volm="<span color='${_mute}'>${_volm}</span>"
+                json_output "<span color='${_col}'>${_icon}</span> ${_volm}" ;;
             lemonbar|polybar|bspwm) [[ $_ismt = "yes" ]] &&
                 _volm="%{F${_mute}}${_volm}%{F-}"
                 echo "%{u${_col}}%{+u}%{F${_col}}${_icon}%{F-} ${_volm}%{-u}%{u-}" ;;
@@ -922,7 +940,7 @@ rss () {
         case $_format in
             pango|i3|i3blocks|sway)
                 [ "${_txt}" == "Error:" ] && _txt="<span color='${_mute}'></span>"
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g' ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g' ;;
             lemonbar|polybar|bspwm)
                 [ "${_txt}" == "Error:" ] && _txt="%{F${_mute}}%{F-}"
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
@@ -971,7 +989,7 @@ temperature () {
 
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
         esac
@@ -1001,7 +1019,7 @@ todo () {
         case $_format in
             pango|i3|i3blocks|sway)
                 [ "${_txt}" = "null" ] && _txt="<span color='${_mute}'>No tasks</span>"
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g' ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g' ;;
             lemonbar|polybar|bspwm)
                 [ "${_txt}" = "null" ] && _txt="%{F${_mute}}No tasks%{F-}"
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
@@ -1028,7 +1046,7 @@ uptime () {
         _txt="$(uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ weeks\?,/w/' | sed 's/\ days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/')"
         case $_format in
             pango|i3|i3blocks|sway)
-                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+                json_output "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
             lemonbar|polybar|bspwm)
                 echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
         esac
