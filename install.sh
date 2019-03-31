@@ -42,6 +42,7 @@ symlinks_and_directories () {
     ln -sf "${HOME}/.config/X11/keymap"    "${HOME}/.Xkbmap"
 
     # Non-xdg-compliant configuration options
+    ln -sf "${HOME}/.config/gtk-2.0/gtkrc"      "${HOME}/.gtkrc-2.0"
     ln -sf "${HOME}/.config/gpg-agent.conf"     "${HOME}/.gnupg/gpg-agent.conf"
     ln -sf "${HOME}/.config/abcde.conf"         "${HOME}/.abcde.conf"
     ln -sf "${HOME}/.config/cursor/index.theme" "${HOME}/.icons/default/"
