@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Wallpaper (BSPWM)
-Comment=Wallpaper slideshow for BSPWM
-Exec=sh -c '~/.config/bspwm/wallpaper.sh -s'
+Comment=Set wallpaper for BSPWM
+Exec=sh -c '~/.config/bspwm/wallpaper.sh'
 Icon=preferences-desktop-display
 Terminal=false
 Type=Application
 StartupNotify=false
 OnlyShowIn=bspwm;
+NotShowIn=sway;

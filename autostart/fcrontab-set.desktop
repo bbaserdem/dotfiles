@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cron
+Comment=Sets the user fcron tab
+Exec=sh -c 'fcrontab ~/.config/crontab.cron'
+Icon=clock
+Terminal=false
+Type=Application
+StartupNotify=false

@@ -27,14 +27,10 @@ col_ind="${base0D:-#7cafc2}"
 col_vio="${base0E:-#ba8baf}"
 col_bro="${base0F:-#a16946}"
 
-
-
 print_help () {
     echo -e "Usage: $0 [-f <pango|lemonbar>] [-c <color>] [-h] MODULE" 1>&2
     exit 1
 }
-
-
 
 # Default to pango
 _format="pango"
@@ -48,8 +44,6 @@ while getopts ":f:c:h" _optns; do
     esac
 done
 _module=${@:$OPTIND:1}
-
-
 
 # Check format
 case $_format in
@@ -68,9 +62,6 @@ case $_color in
     6|E|pink|violet|vio)    _color="${col_vio}" ;;
     7|F|brown|bro)          _color="${col_bro}" ;;
 esac
-
-
-
 
 module_selection () {
     case $_module in
@@ -163,11 +154,15 @@ battery () {
         fi
     }
 
-    while : ; do
-        get_text
-        sleep .2
-        inotifywait --timeout -1 "${_cap}" "${_stt}" "${_onl}" > /dev/null 2>&1 || break
-    done
+    get_loop () {
+        while : ; do
+            sleep .2
+            get_text
+            inotifywait --timeout -1 "${_cap}" "${_stt}" "${_onl}" > /dev/null 2>&1 || break
+        done
+    }
+
+    get_loop
 }
 
 # Display screen brightness
@@ -209,13 +204,14 @@ brightness () {
         done
     }
 
-    get_loop &
-    while read button ; do
-        case $button in
+    get_action () {
+        case $1 in
             4) /usr/bin/light -A 5 > /dev/null 2>&1 ;;
             5) /usr/bin/light -U 5 > /dev/null 2>&1 ;;
         esac
-    done
+    }
+    
+    get_loop & while read button ; do get_action $button ; done
 }
 
 # Reads a khal calendar, and spits out the most urgent event
@@ -255,7 +251,7 @@ calendar () {
 }
 
 # Calculate CPU percentage
-#
+#   Does not have seperate modules, cause I want to retain the info
 cpu () {
     _col="${_color:-$col_yel}"
     _ico=""
@@ -282,69 +278,27 @@ day () {
     _col="${_color:-$col_ind}"
     get_light () {
         case "$1" in
-            0|30)   echo "" ;;
-            1)      echo "" ;;
-            2)      echo "" ;;
-            3)      echo "" ;;
-            4)      echo "" ;;
-            5)      echo "" ;;
-            6)      echo "" ;;
-            7)      echo "" ;;
-            8)      echo "" ;;
-            9)      echo "" ;;
-            10)     echo "" ;;
-            11)     echo "" ;;
-            12)     echo "" ;;
-            13)     echo "" ;;
-            14)     echo "" ;;
-            15)     echo "" ;;
-            16)     echo "" ;;
-            18)     echo "" ;;
-            19)     echo "" ;;
-            20)     echo "" ;;
-            21)     echo "" ;;
-            22)     echo "" ;;
-            23)     echo "" ;;
-            24)     echo "" ;;
-            25)     echo "" ;;
-            26)     echo "" ;;
-            27)     echo "" ;;
-            28)     echo "" ;;
-            29)     echo "" ;;
+            0)  echo "" ;; 1)  echo "" ;; 2)  echo "" ;; 3)  echo "" ;;
+            4)  echo "" ;; 5)  echo "" ;; 6)  echo "" ;; 7)  echo "" ;;
+            8)  echo "" ;; 9)  echo "" ;; 10) echo "" ;; 11) echo "" ;;
+            12) echo "" ;; 13) echo "" ;; 14) echo "" ;; 15) echo "" ;;
+            16) echo "" ;; 18) echo "" ;; 19) echo "" ;; 20) echo "" ;;
+            21) echo "" ;; 22) echo "" ;; 23) echo "" ;; 24) echo "" ;;
+            25) echo "" ;; 26) echo "" ;; 27) echo "" ;; 28) echo "" ;;
+            29) echo "" ;; 30) echo "" ;;
         esac
     }
 
     get_dark () {
         case "$1" in
-            0|30)   echo "" ;;
-            1)      echo "" ;;
-            2)      echo "" ;;
-            3)      echo "" ;;
-            4)      echo "" ;;
-            5)      echo "" ;;
-            6)      echo "" ;;
-            7)      echo "" ;;
-            8)      echo "" ;;
-            9)      echo "" ;;
-            10)     echo "" ;;
-            11)     echo "" ;;
-            12)     echo "" ;;
-            13)     echo "" ;;
-            14)     echo "" ;;
-            15)     echo "" ;;
-            16)     echo "" ;;
-            18)     echo "" ;;
-            19)     echo "" ;;
-            20)     echo "" ;;
-            21)     echo "" ;;
-            22)     echo "" ;;
-            23)     echo "" ;;
-            24)     echo "" ;;
-            25)     echo "" ;;
-            26)     echo "" ;;
-            27)     echo "" ;;
-            28)     echo "" ;;
-            29)     echo "" ;;
+            0)  echo "" ;; 1)  echo "" ;; 2)  echo "" ;; 3)  echo "" ;;
+            4)  echo "" ;; 5)  echo "" ;; 6)  echo "" ;; 7)  echo "" ;;
+            8)  echo "" ;; 9)  echo "" ;; 10) echo "" ;; 11) echo "" ;;
+            12) echo "" ;; 13) echo "" ;; 14) echo "" ;; 15) echo "" ;;
+            16) echo "" ;; 18) echo "" ;; 19) echo "" ;; 20) echo "" ;;
+            21) echo "" ;; 22) echo "" ;; 23) echo "" ;; 24) echo "" ;;
+            25) echo "" ;; 26) echo "" ;; 27) echo "" ;; 28) echo "" ;;
+            29) echo "" ;; 30) echo "" ;;
         esac
     }
 
@@ -520,7 +474,9 @@ wireless () {
     _sto="/tmp/i3blocks-${_int}"
 
     get_text() {
-        [[ ! -d /sys/class/net/${_int}/wireless ]] && exit
+        # Exit if interface is not wireless
+        [ ! -d "/sys/class/net/${_int}/wireless" ] && exit
+        # Exit if interface is down
         [[ "$(cat /sys/class/net/${_int}/operstate)" = 'down' ]] && exit
 
         _sid="$(iwgetid | sed 's|.*ESSID:"\(.*\)"|\1|')"
@@ -555,7 +511,7 @@ wireless () {
         tx_diff=$(( $tx - ${old[2]} ))
         rx_rate=$(( $rx_diff / $time_diff ))
         tx_rate=$(( $tx_diff / $time_diff ))
-pactl gentoo
+
         # Download speed
         rx_kib=$(( $rx_rate >> 10 ))
         if hash bc 2>/dev/null && [[ "$rx_rate" -gt 1048576 ]]
@@ -575,6 +531,13 @@ pactl gentoo
         fi
 
         echo "<span color='${_col}'>${_ico}</span> ${_sid} <span color='${_col}'>${_ics}</span> ${_sgn}% <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}" | sed 's|&|&amp;|g'
+
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_sid} <span color='${_col}'>${_ics}</span> ${_sgn}% <span color='${_col}'>${_ic1}</span> ${_upl} <span color='${_col}'>${_ic2}</span> ${_dnl}" | sed 's|&|&amp;|g' ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_sid} %{F${_col}}${_ics}%{F-} ${_sgn}% %{F${_col}}${_ic1}%{F-} ${_upl} %{F${_col}}${_ic2}%{F-} ${_dnl}%{-u}%{u-}" ;;
+        esac
     }
     
     get_loop () {
@@ -616,10 +579,16 @@ internet () {
         [[ ${_wcon} == 'up' ]] && _txt="${_txt}${_wico} "
         [[ ${_ucon} == 'up' ]] && _txt="${_txt}${_uico} "
         [[ ${_bcon} == 'up' ]] && _txt="${_txt}${_bico} "
-        pgrep openvpn >/dev/null && _txt="${_txt}${_ovpn} "
+        pgrep openvpn     >/dev/null && _txt="${_txt}${_ovpn} "
         pgrep openconnect >/dev/null && _txt="${_txt}${_ocnc} "
+        _txt="${_txt::-1}"
 
-        [ -z ${_txt} ] && echo '' || echo "<span color='${_col}'>${_txt::-1}</span>"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_txt}</span>" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_txt}%{F-}%{-u}%{u-}" ;;
+        esac
     }
     
     get_loop () {
@@ -648,8 +617,14 @@ fan () {
             _spe="$(sensors | grep -i 'fan' | awk '{print $3}' | tr '\n' ',')"
             _spe="${_spe::-1}"
         fi
-        [ ! -z "$_spe" ] && \
-            echo "<span color='${_col}'>${_ico}</span> ${_spe}"
+
+        [ ! -z "$_spe" ] && exit
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_spe}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_spe}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {
@@ -675,7 +650,12 @@ email () {
             _ico=""
             _new=" ${_new}"
         fi
-        echo "<span color='${_col}'>${_ico}</span>${_new}"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span>${_new}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-}${_new}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {
@@ -692,11 +672,23 @@ email () {
 kernel () {
     _col="${_color:-$col_vio}"
     _dis="$(hostnamectl | sed -n 's/.*Operating System: \(.*\)/\1/p')"
-    case "$_dis" in
-        "Arch Linux")   _ico="" ;;
-        "Gentoo")       _ico="" ;;
-    esac
-    echo "<span color='${_col}'>${_ico}</span> $(uname -r)"
+    _txt="$(uname -r)"
+
+    get_text () {
+        case "$_dis" in
+            "Arch Linux")   _ico="" ;;
+            "Gentoo")       _ico="" ;;
+        esac
+    
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
+    }
+
+    get_text
 }
 
 keymap () {
@@ -708,7 +700,14 @@ keymap () {
         _lan="$(echo "${_sta}" | sed 's|\(.*\)(.*)|\1|' | awk '{print toupper($0)}')"
         _lay="$(echo "${_sta}" | grep '(' | sed 's|.*(\(.*\))|\1|')"
         [ -z "${_lay}" ] && _lay="qwe" || _lay="${_lay:0:3}"
-        echo "<span color='${_col}'>${_ico}</span> ${_lan}(${_lay})" | sed 's|&|&amp;|g'
+        _txt="${_lan}(${_lay})"
+
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
     }
     
     get_loop () {
@@ -730,7 +729,13 @@ memory () {
     get_text () {
         _prc="$(free -m | grep Mem | awk '{ printf("%.1f", $3/$2 * 100.0) }')"
         _val="$(free -m | grep Mem | awk '{ printf("%.2fGB",($3*1.0)/(1024.0)) }' )"
-        echo "<span color='${_col}'>${_ico}</span> ${_val} (${_prc}%)"
+        _txt="${_val} (${_prc})"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {
@@ -748,8 +753,13 @@ swap () {
     _ico="力"
 
     get_text () {
-        _val="$(free -m | grep Swap | awk '{ printf( $3 ) }' | numfmt --to=iec-i --suffix=B)"
-        echo "<span color='${_col}'>${_ico}</span> ${_val}"
+        _txt="$(free -m | grep Swap | awk '{ printf( $3 ) }' | numfmt --to=iec-i --suffix=B)"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {
@@ -771,23 +781,33 @@ mpd () {
     
     get_text () {
         # Prompt stuff
+        _dim=''
         _text="$(mpc $_pass status | head -n 1)"
         [ "${#_text}" -gt "${_len}" ] && _text="${_text:0:${_len}}…"
         _pre="$(mpc $_pass status | tail -n 2 | head -n 1 | awk '{print $1}')"
         if [ "${_text}" == "" ] ; then
-            _txt="<span color='${_mute}'>--</span>"
+            _txt="--"
+            _dim='yes'
         elif [ "${_pre}" == "[paused]" ] ; then
-            _txt="$(echo "<span color='${_mute}'>${_text}</span>" | sed 's|&|&amp;|g')"
+            _dim='yes'
         elif [[ $_pre == volume:* ]] ; then
-            _txt="<span color='${_mute}'>Empty playlist…</span>"
+            _txt='Empty playlist…'
+            _dim='yes'
         elif [ "${_pre}" == "Updating" ] ; then
-            _txt="<span color='${_mute}'>DB Update…</span>"
-        else
-            _txt="$(echo "${_text}" | sed 's|&|&amp;|g')"
+            _txt='DB Update…</span>'
+            _dim='yes'
         fi
         
-        pgrep mpdscribble >/dev/null && _end=" <span color='${_col}'>${_ilf}</span>"
-        echo "<span color='${_col}'>${_ico}</span> ${_txt}${_end}"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                [ -z "${_dim}" ]                || _txt="<span color='${_mute}'>${_txt}</span>"
+                pgrep mpdscribble >/dev/null    && _txt="${_txt} <span color='${_col}'>${_ilf}</span>"
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+            lemonbar|polybar|bspwm)
+                [ -z "${_dim}" ]                || _txt="%{F${_mute}}${_txt}%{F-}"
+                pgrep mpdscribble >/dev/null    && _txt="${_txt} %{F${_col}}${_ilf}%{F-}"
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {
@@ -798,14 +818,17 @@ mpd () {
         done
     }
 
-    get_loop &
-    while read button ; do
-        case $button in
+    get_action () {
+        case $1 in
             1) mpc toggle > /dev/null ;;  # left click, toggle
             4) mpc prev > /dev/null ;;    # scroll up, previous
             5) mpc next > /dev/null ;;    # scroll down, next
         esac
-    done
+
+    }
+
+    get_loop &
+    while read button ; do get_action $button ; done
 
 }
 
@@ -893,9 +916,17 @@ rss () {
     _file="${HOME}/Documents/RSS"
 
     get_text () {
-        _num="$(newsboat -x print-unread | awk '{ print $1 }')"
-        [ "${_num}" == "Error:" ] && _num="<span color='${_mute}'></span>"
-        echo "<span color='${_col}'>${_ico}</span> ${_num}" | sed 's|&|&amp;|g'
+        _txt="$(newsboat -x print-unread | awk '{ print $1 }')"
+        [ "${_txt}" == "Error:" ] && _txt="<span color='${_mute}'></span>"
+
+        case $_format in
+            pango|i3|i3blocks|sway)
+                [ "${_txt}" == "Error:" ] && _txt="<span color='${_mute}'></span>"
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g' ;;
+            lemonbar|polybar|bspwm)
+                [ "${_txt}" == "Error:" ] && _txt="%{F${_mute}}%{F-}"
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {
@@ -905,6 +936,7 @@ rss () {
             inotifywait --timeout -1 --recursive "${_file}" > /dev/null 2>&1 || break
         done
     }
+
     get_loop
 }
 
@@ -914,14 +946,17 @@ temperature () {
 
     get_text () {
         if [ $(hostname) = 'sbplaptop' ] ; then
-            _tmp="$(sensors|grep 'Tdie:'|awk '{print $2}'|sed 's/+\(.*\)°C/\1/')"
+            _tmp="$(sensors | grep 'Tdie:'      | awk '{print $2}' | sed 's/+\(.*\)°C/\1/')"
         elif [ $(hostname) = 'sbpnotebook' ] ; then
-            _tmp="$(sensors|grep 'Package id'|awk '{print $4}'|sed 's/+\(.*\)°C/\1/')"
+            _tmp="$(sensors | grep 'Package id' | awk '{print $4}' | sed 's/+\(.*\)°C/\1/')"
         else
             return
         fi
+
+        _txt="${_tmp}${_cel}"
+
         # Do integer check
-        _sto="$(echo ${_tmp} | sed 's/\(.*\)\..*/\1/')"
+        _sto="$(echo ${_tmp} | awk '{ printf( "%d", $1 ); }')"
         if [ "${_sto}" -gt 75 ] ; then
             _ico=""
         elif [ "${_sto}" -gt 65 ] ; then
@@ -933,7 +968,13 @@ temperature () {
         else
             _ico=""
         fi
-        echo "<span color='${_col}'>${_ico}</span> ${_tmp}${_cel}"
+
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {
@@ -956,8 +997,15 @@ todo () {
     get_text () {
         _jso="$(todo --porcelain list --sort priority)"
         _txt="$(echo "${_jso}" | jq -r '.[0]."summary"')"
-        [ "${_txt}" = "null" ] && _txt="<span color='${_mute}'>No tasks</span>"
-        echo "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g'
+
+        case $_format in
+            pango|i3|i3blocks|sway)
+                [ "${_txt}" = "null" ] && _txt="<span color='${_mute}'>No tasks</span>"
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" | sed 's|&|&amp;|g' ;;
+            lemonbar|polybar|bspwm)
+                [ "${_txt}" = "null" ] && _txt="%{F${_mute}}No tasks%{F-}"
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {
@@ -969,7 +1017,6 @@ todo () {
         done
     }
 
-    get_text
     get_loop
 }
 
@@ -978,8 +1025,13 @@ uptime () {
     _ico="⏼"
 
     get_text () {
-        _pro="$(uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ weeks\?,/w/' | sed 's/\ days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/')"
-        echo "<span color='${_col}'>${_ico}</span> ${_pro}"
+        _txt="$(uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ weeks\?,/w/' | sed 's/\ days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/')"
+        case $_format in
+            pango|i3|i3blocks|sway)
+                echo "<span color='${_col}'>${_ico}</span> ${_txt}" ;;
+            lemonbar|polybar|bspwm)
+                echo "%{u${_col}}%{+u}%{F${_col}}${_ico}%{F-} ${_txt}%{-u}%{u-}" ;;
+        esac
     }
 
     get_loop () {

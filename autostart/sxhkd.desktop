@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=SXHKD
 Comment=Simple X HotKey Daemon for BSPWM
-Exec=sh -c 'sxhkd -c ~/.config/bspwm/sxhkdrc'
+Exec=sxhkd
 Terminal=false
 Type=Application
 StartupNotify=false

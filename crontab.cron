@@ -1,0 +1,3 @@
+#Mins   Hours   Days    Months  Weekday Script    
+*/15    *       *       *       *       /home/sbp/.config/bspwm/wallpaper.sh
+*/5     *       *       *       *       mbsync --config /home/sbp/.config/isync/config --all

@@ -13,6 +13,7 @@
 !/.gitignore
 !/abcde.conf
 !/compton.conf
+!/crontab.cron
 !/daemons.sh
 !/gpg-agent.conf
 !/install.sh
@@ -51,10 +52,6 @@
 # AUTOSTART: Grab all autostart
 !/autostart
 !/autostart/**
-
-# BIN: User generated executables
-!/bin
-!/bin/**
 
 # BASH: Accept all
 !/bash
