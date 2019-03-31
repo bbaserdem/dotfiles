@@ -40,7 +40,7 @@ while getopts ":f:c:h" _optns; do
     case "${_optns}" in
         f) _format="${OPTARG}" ;;
         c) _color="${OPTARG}"  ;;
-        *) usage ;;
+        h) print_help ;;
     esac
 done
 _module=${@:$OPTIND:1}
@@ -841,9 +841,9 @@ pulseaudio () {
     get_text() {
         _sink="$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')"
         _line="$(pactl list sinks short | grep -n "${_sink}" | cut -d : -f 1)"
-        _defn="$(pactl list sinks | sed -n 's|^\sActive Port: \([^\s]*\)|\1|p'"${_line}")"
-        _ismt="$(pactl list sinks | sed -n 's|^\sMute: \([^\s]*\)|\1|p'"${_line}")"
-        _volm="$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"${_line}" | awk '
+        _defn="$(pactl list sinks | sed -n 's|^\sActive Port: \([^\s]*\)|\1|p' | sed -n "${_line}p")"
+        _ismt="$(pactl list sinks | sed -n 's|^\sMute: \([^\s]*\)|\1|p' | sed -n "${_line}p")"
+        _volm="$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p' | sed -n "${_line}p" | awk '
             BEGIN{ RS=" "; vol=0; n=0; }
             /[0-9]+%$/ { n++; vol+=$1; }
             END{ if(n>0) { printf( "%.0f", vol/n ); } }' )"
@@ -857,6 +857,10 @@ pulseaudio () {
             *analog*)                   _icon="" ;;
             *)                          _icon="" ;;
         esac
+
+        if echo $_sink | grep -q 'bluez' ; then
+            _icon=""
+        fi
 
         case $_format in
             pango|i3|i3blocks|sway) [[ $_ismt = "yes" ]] &&
