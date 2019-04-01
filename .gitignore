@@ -66,6 +66,10 @@
 !/cursor/**
 
 # DUNST: Accept the rc
+!/daemons
+!/dunst/dunstrc
+
+# DUNST: Accept the rc
 !/dunst
 !/dunst/dunstrc
 
