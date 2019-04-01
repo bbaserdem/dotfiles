@@ -67,7 +67,7 @@
 
 # DUNST: Accept the rc
 !/daemons
-!/dunst/dunstrc
+!/daemons/**
 
 # DUNST: Accept the rc
 !/dunst
