@@ -4,7 +4,6 @@ Just testing
 """
 
 import json
-import time
 import sys
 import pulsectl
 
@@ -31,16 +30,7 @@ while False:
     i+=1
     time.sleep(1)
 
-with pulsectl.Pulse('event-printer') as pulse:
-    # print('Event types:', pulsectl.PulseEventTypeEnum)
-    # print('Event facilities:', pulsectl.PulseEventFacilityEnum)
-    # print('Event masks:', pulsectl.PulseEventMaskEnum)
-
-    def print_events(ev):
-        print('Pulse event:', ev)
-        ### Raise PulseLoopStop for event_listen() to return before timeout (if any)
-        # raise pulsectl.PulseLoopStop
-
-    pulse.event_mask_set('all')
-    pulse.event_callback_set(print_events)
-    pulse.event_listen(timeout=10)
+with pulsectl.Pulse('listener') as pulse:
+  for sink in pulse.sink_list():
+    # Volume is usually in 0-1.0 range, with >1.0 being soft-boosted
+    pulse.volume_change_all_chans(sink, 0.1)

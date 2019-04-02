@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=17
+pkgrel=19
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -17,6 +17,7 @@ source=(
     'base.inotify'
     'base.install'
     'base.keyboard'
+    'base.monitor-hotplug'
     'base.mpc-prev'
     'base.network'
     'base.nftables'
@@ -55,10 +56,11 @@ depends+=(
     'reiserfsprogs'
     'exfat-utils'
     'udftools'
-    'udisks')
+    'udisks2')
 
 # Hardware
 depends+=( 
+    'acpid'
     'lm_sensors'
     'amd-ucode' 'intel-ucode'
     'linux-firmware'
@@ -172,6 +174,7 @@ package() {
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.keyboard          "${pkgdir}/etc/X11/xorg.conf.d/20-keyboard.conf"
+    install -Dm 0644 base.monitor-hotplug   "${pkgdir}/etc/udev/rules.d/80-sbp-monitor.rules"
     install -Dm 0755 base.mpc-prev          "${pkgdir}/usr/bin/mpc-prev"
     install -Dm 0645 base.network           "${pkgdir}/etc/udev/rules.d/11-network.rules"
     install -Dm 0644 base.nftables          "${pkgdir}/etc/nftables.conf.sbp"
@@ -198,6 +201,7 @@ md5sums=('20861f3c110fc6212678f6b71f91457d'
          '93108d9cc17ae70a0366d08823936ee4'
          'e29974b9312d336d103206a1d78932cf'
          'b6eff8ffa5d1359dbac22783e20f7bdc'
+         'fc1022caba32321ed2d73b690d3b26b7'
          '27e71de09f5f2003022e24be6166b9f5'
          '67fe3ab43b239e9c51cb23c19fe4f0a1'
          '2b4a7715d47beadb71db5f7b3369a4c9'

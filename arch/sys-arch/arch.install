@@ -10,19 +10,14 @@ post_install() {
     systemctl enable roothints.timer
     systemctl enable iwd.service
 
-    # Set timeout to 10 seconds
-    echo '[sbp-sys-arch]==> Reducing systemd timeout to 10 seconds …'
-    sed -i '/DefaultTimeoutStartSec/s/^#//g'        /etc/systemd/system.conf
-    sed -i '/DefaultTimeoutStartSec/s/=.*/=10s/'    /etc/systemd/system.conf
-    sed -i '/DefaultTimeoutStopSec/s/^#//g'         /etc/systemd/system.conf
-    sed -i '/DefaultTimeoutStopSec/s/=.*/=10s/'     /etc/systemd/system.conf
-    sed -i '/HoldoffTimeoutSec/s/^#//g'             /etc/systemd/logind.conf
-    sed -i '/HoldoffTimeoutSec/s/=.*/=10s/'         /etc/systemd/logind.conf
-
     # TLP service
     echo '[sbp-sys-arch]==> Enabling TLP …'
     systemctl enable tlp.service
     systemctl enable tlp-sleep.service
+
+    # Fcron
+    echo '[sbp-sys-arch]==> Enabling ACPID …'
+    systemctl enable acpid.service
 
     # Fcron
     echo '[sbp-sys-arch]==> Enabling Fcron …'

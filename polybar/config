@@ -55,8 +55,9 @@ margin-top = 0
 margin-bottom = 0
 
 [bar/top]
-monitor = ${env:MON_0:}
-monitor-strict = false
+# monitor = ${env:MON_0:}
+# monitor-strict = false
+monitor-primary = true
 fixed-center = true
 width = 100%
 height = 28

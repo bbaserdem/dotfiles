@@ -1,0 +1,2 @@
+# Managed by sbp-sys-base
+KERNEL=="card[0-9]", SUBSYSTEM=="drm", ACTION=="change", TAG+="monitor-change"

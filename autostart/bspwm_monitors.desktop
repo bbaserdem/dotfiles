@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Monitors (BSPWM)
 Comment=Monitor hotplug listener for BSPWM
-Exec=sh -c '~/.config/bspwm/monitors.sh'
+Exec=sh -c '~/.config/bspwm/monitors.sh --daemon'
 Icon=preferences-desktop-display
 Terminal=false
 Type=Application

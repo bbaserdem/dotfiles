@@ -1,0 +1,10 @@
+# Maintained by sbp-sys-arch
+
+[Login]
+HandlePowerKey=ignore
+HandleSuspendKey=ignore
+HandleHibernateKey=ignore
+HandleLidSwitch=ignore
+HandleLidSwitchExternalPower=ignore
+HandleLidSwitchDocked=ignore
+HoldoffTimeoutSec=10s
