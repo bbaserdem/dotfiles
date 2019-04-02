@@ -15,14 +15,14 @@ reload_monitors () {
         if [[ "$(cat /proc/acpi/button/lid/LID/state | awk '{ print $NF }')" == 'open' ]]
         then
             # If lid is open, screen monitor should be on
-            /usr/bin/xrandr --output $LID --auto --primary
+            /usr/bin/xrandr --output $_lid --auto --primary
         else
             # If lid is closed, turn off the lid screen
-            /usr/bin/xrandr --output $LID --off
+            /usr/bin/xrandr --output $_lid --off
         fi
 
         # Set up the rest
-        for monitor in $MON
+        for monitor in $_mon
         do
             /usr/bin/xrandr --output $monitor --auto
         done

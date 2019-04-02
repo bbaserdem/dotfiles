@@ -55,8 +55,6 @@ margin-top = 0
 margin-bottom = 0
 
 [bar/top]
-# monitor = ${env:MON_0:}
-# monitor-strict = false
 monitor-primary = true
 fixed-center = true
 width = 100%
@@ -74,7 +72,7 @@ module-margin = 1
 padding = 0
 font-0 = "Misc Termsyn:size=12;1"
 font-1 = "Misc Termsyn:size=12:style=bold;2"
-font-2 = "sauce code pro nerd font mono:size=12;3"
+font-2 = "Iosevka Nerd Font Mono:size=14;3"
 seperator = 
 dim-value = 1.0
 tray-position = right
