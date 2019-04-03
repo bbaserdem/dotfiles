@@ -886,7 +886,7 @@ pulseaudio () {
                 json_output "<span color='${_col}'>${_icon}</span> ${_volm}" ;;
             lemonbar|polybar|bspwm) [[ $_ismt = "yes" ]] &&
                 _volm="%{F${_mute}}${_volm}%{F-}"
-                echo "%{u${_col}}%{+u}%{F${_col}}${_icon}%{F-} ${_volm}%{-u}%{u-}" ;;
+                echo "%{u${_col} +u}%{F${_col}}${_icon}%{F-} ${_volm}%{-u u-}" ;;
         esac
 
     }

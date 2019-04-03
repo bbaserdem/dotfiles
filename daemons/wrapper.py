@@ -61,6 +61,7 @@ import os
 import argparse
 import re
 import json
+from collections import defaultdict,ChainMap
 
 I3BAR = {
     'color': '#FFFFFF',
@@ -75,7 +76,7 @@ I3BAR = {
     'markup': 'pango'}
 
 # Status bar colors: base16-default-dark
-COLOR = {
+COL = {
     'base00': '#181818',
     'base01': '#282828',
     'base02': '#383838',
@@ -93,66 +94,65 @@ COLOR = {
     'base0E': '#ba8baf',
     'base0F': '#a16946'}
 
-def colorPicker( x ):
-    switcher = {
-        'foreground':   'base04',
-        'frg':          'base04',
-        'background':   'base01',
-        'bkg':          'base01',
-        'muted':        'base03',
-        'red':          'base08',
-        'crimson':      'base08',
-        0:              'base08',
-        'orange':       'base09',
-        'ora':          'base09',
-        1:              'base09',
-        'yellow':       'base0A',
-        'yel':          'base0A',
-        2:              'base0A',
-        'green':        'base0B',
-        'gre':          'base0B',
-        3:              'base0B',
-        'cyan':         'base0C',
-        'cya':          'base0C',
-        4:              'base0C',
-        'blue':         'base0D',
-        'ind':          'base0D',
-        'indigo':       'base0D',
-        5:              'base0D',
-        'violet':       'base0E',
-        'vio':          'base0E',
-        'purple':       'base0E',
-        'pink':         'base0E',
-        6:              'base0E',
-        'brown':        'base0F',
-        'bro':          'base0F',
-        7:              'base0F'}
-    if re.search(r'^#(?:[0-9a-fA-F]{3,4}){1,2}$', x):
-        return x
-    else:
-        return COLOR.get(switcher.get(x, 'nomap'), '#FFFFFF')
+COLOR = defaultdict(str)
+COLOR['base00'] = COL['base00']
+COLOR['base01']
+COLOR['background']
+'bkg'] = COL['base01']
+COLOR['base02'] = COL['base02']
+COLOR['base03', 'muted', 'mute'] = COL['base03']
+COLOR['base04', 'foreground', 'frg'] = COL['base04']
+COLOR['base05'] = COL['base05']
+COLOR['base06'] = COL['base06']
+COLOR['base07'] = COL['base07']
+COLOR['base08', 'red', 'crimson'] = COL['base08']
+COLOR['base09', 'orange', 'ora'] = COL['base09']
+COLOR['base0A', 'yellow', 'yel'] = COL['base0A']
+COLOR['base0B', 'green', 'gre'] = COL['base0B']
+COLOR['base0C', 'cyan', 'cya'] = COL['base0C']
+COLOR['base0D', 'blue', 'ind', 'indigo'] = COL['base0D']
+COLOR['base0E', 'violet', 'vio', 'purple', 'pink'] = COL['base0E']
+COLOR['base0F', 'brown', 'bro'] = COL['base0F']
 
+# Pick a color with fallback
+def colorPicker(x):
+    return COLOR[x]
+
+print(COLOR['base01', 'background', 'bkg'])
+print(COLOR['base01'])
+
+# Class that contains bar information, and general methods"""
 class BarInfo:
-    """ Class that contains bar information, and can print to stdout """
-    display
-    color
-    icon
-    text
-    mute
-    action
-    json
 
-    def displayToPolybar(self):
-        """ Wraps polybar tags around the text. """
-        output = ''
-        # Insert the text
-        for i in range( len( self.text ) ):
-            output += '%{F'+self.color+'}'+self.icon[i]+'%{F-'+self.text[i]+' '
-        # Insert underline
-        output = '%{u'+self.color+' u+}'+output+'%{-u u-}'
-        # Insert the commands
-        for i in range( len( self.action ) ):
-            if self.action[i] != '':
-                output = '%{A'+str(i)+':'+self.action+':}'+output+'%{A}'
-        print(output)
+    # Init method to initialize most things
+    def __init__(self):
+        self.fields = defaultdict(lambda: '')
+        
+        # Parse the command line arguments to draw out method and color
+        defaults = {'color':'red','method':'polybar'}
+        parser = argparse.ArgumentParser()
+        parser.add_argument('-c', '--color')
+        parser.add_argument('-m', '--method')
+        namespace = parser.parse_args()
+        command_line_args = {k:v for k, v in vars(namespace).items() if v}
+        # Get the environment
+        environ_args = {}
+        for x in 'color','method':
+            if os.getenv(x):
+                environ_args[x] = os.getenv(x)
+        # Get the combined version
+        args = ChainMap(command_line_args, os.environ, defaults)
 
+        # Get accent color, and sane defaults
+        self.fields['accent'] = colorPicker(args['color'])
+        self.fields['color'] = colorPicker('frg')
+        self.fields['background'] = colorPicker('bkg')
+
+        # Get print method
+        self.method = args['method']
+
+a=BarInfo()
+print(a.method)
+print(a.fields['accent'])
+print(a.fields['color'])
+print(a.fields['background'])
