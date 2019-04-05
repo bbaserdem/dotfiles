@@ -174,9 +174,8 @@
 !/qutebrowser/quickmarks
 
 # RAMBOX: Only copy the themes
-!/Rambox
-!/Rambox/themes
-!/Rambox/themes/**
+!/pacman
+!/pacman/**
 
 # RANGER: Grab my files
 !/ranger

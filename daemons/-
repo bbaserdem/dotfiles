@@ -1,0 +1,9 @@
+#!/usr/bin/python
+import sys
+
+def respond(x=0):
+    while True:
+        x += sys.stdin.readline()
+        printx
+
+respond(0)
