@@ -68,6 +68,8 @@
 # DUNST: Accept the rc
 !/daemons
 !/daemons/**
+/daemons/__pycache__
+/daemons/__pycache__/**
 
 # DUNST: Accept the rc
 !/dunst
