@@ -463,17 +463,11 @@ label-muted-foreground = ${colors.mut}
 
 [module/pulseaudio]
 type = custom/script
-exec = ~/.config//daemons.sh -c cyan -f polybar pulseaudio
+exec = ~/.config/daemons/painfo.py --color cyan --method polybar
 tail = true
 interval = 0
 label = %output%
 format = <label>
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
-scroll-up = /usr/bin/pamixer --increase 5
-scroll-down = /usr/bin/pamixer --decrease 5
-click-right = /usr/bin/pavucontrol &
-click-left = /usr/bin/pamixer --toggle-mute
 
 [module/keyboard]
 type = internal/xkeyboard

@@ -3,13 +3,33 @@
 Wrapper around printing blocklet information
 """
 
-import os
 import argparse
 import json
+import os
 import sys
+import re
 from subprocess import Popen
 from threading import Thread
-from color import colorPicker
+
+# Status bar colors: base16-default-dark
+COLOR = {
+    'base00': '#181818',
+    'base01': '#282828',
+    'base02': '#383838',
+    'base03': '#585858',
+    'base04': '#b8b8b8',
+    'base05': '#d8d8d8',
+    'base06': '#e8e8e8',
+    'base07': '#f8f8f8',
+    'base08': '#ab4642',
+    'base09': '#dc9656',
+    'base0A': '#f7ca88',
+    'base0B': '#a1b56c',
+    'base0C': '#86c1b9',
+    'base0D': '#7cafc2',
+    'base0E': '#ba8baf',
+    'base0F': '#a16946'
+}
 
 # Needed stuff for namespace
 DVNL = open(os.devnull, 'wb')
@@ -35,7 +55,7 @@ def get_config(name, fallback='N/A'):
     else:
         output = fallback
     # Random OS variable control
-    if output == None:
+    if output is None:
         output = fallback
     return output
 
@@ -59,7 +79,56 @@ def bar_info_init():
         output = PolyBarInfo()
     return output
 
+# base01 is status bar background
+COLOR['background'] = COLOR['base01']
+COLOR['bkg'] = COLOR['base01']
+# base03 is comments, and silent text
+COLOR['muted'] = COLOR['base03']
+COLOR['mute'] = COLOR['base03']
+# base04 is foreground for status bars
+COLOR['foreground'] = COLOR['base04']
+COLOR['frg'] = COLOR['base04']
+# Colors
+COLOR['red'] = COLOR['base08']
+COLOR['crimson'] = COLOR['base08']
+COLOR['ora'] = COLOR['base09']
+COLOR['orange'] = COLOR['base09']
+COLOR['yel'] = COLOR['base0A']
+COLOR['yellow'] = COLOR['base0A']
+COLOR['gre'] = COLOR['base0B']
+COLOR['green'] = COLOR['base0B']
+COLOR['cya'] = COLOR['base0C']
+COLOR['cyan'] = COLOR['base0C']
+COLOR['ind'] = COLOR['base0D']
+COLOR['blue'] = COLOR['base0D']
+COLOR['indigo'] = COLOR['base0D']
+COLOR['vio'] = COLOR['base0E']
+COLOR['pink'] = COLOR['base0E']
+COLOR['violet'] = COLOR['base0E']
+COLOR['purple'] = COLOR['base0E']
+COLOR['bro'] = COLOR['base0F']
+COLOR['brown'] = COLOR['base0F']
+# Color printer with defaults and opacity capability
+def color_picker(inp, opacity=1):
+    """ Function to parse color strings """
+    ans = ''
+    # Do answer checking
+    if inp in COLOR:
+        ans += COLOR[inp]
+    else:
+        if re.search(r'^#(?:[0-9a-fA-F]{3}){1,2}$', inp):
+            ans += inp
+        else:
+            print('Invalid color selection, defaulting to red')
+            ans += COLOR['red']
 
+    # Check if transparency is enabled
+    if opacity < 1:
+        sto = hex(min(max(round(opacity*255), 0), 255))[:2]
+        sto = (2-len(sto))*'0' + sto
+        ans += sto
+
+    return ans
 
 
 
@@ -74,14 +143,14 @@ class BarInfo:
     """ Main class that contains common bar information """
     def __init__(self):
         # Initialize default variables
-        self.foreground = colorPicker('frg')
-        self.background = colorPicker('bkg')
-        self.muteground = colorPicker('mute')
+        self.foreground = color_picker('frg')
+        self.background = color_picker('bkg')
+        self.muteground = color_picker('mute')
         self.text = ''
         # Initialize the fields that will transform the format
         self.format = {
             'output' : '',
-            'color' : colorPicker(get_config('color', fallback='red')),
+            'color' : color_picker(get_config('color', fallback='red')),
             'foreground' : self.foreground,
             'background' : self.background,
             'prefix' : '',
@@ -134,15 +203,15 @@ class PolyBarInfo(BarInfo):
         # Set actions
         self.text += '%{{A1:{act1}: A2:{act2}: A3:{act3}: A4:{act4}: A5:{act5}:}}'
         # Set colors, foreground, background and underline
-        self.text += '%{{B{background} F{foreground} u{color} +u}}'
+        self.text += '%{{B{background} u{color} +u}}'
         # Display prefix
         self.text += '%{{F{color}}}{prefix}%{{F-}}'
         # Text display
-        self.text += '{output}'
+        self.text += '%{{F{foreground}}}{output}%{{F-}}'
         # Display postfix
         self.text += '%{{F{color}}}{suffix}%{{F-}}'
         # Finalize text formatting
-        self.text += '%{{B- F- -u u-}}'
+        self.text += '%{{B- -u u-}}'
         # Finalize action formatting
         self.text += '%{{A A A A A}}'
 
@@ -158,7 +227,6 @@ class PolyBarInfo(BarInfo):
             self.format['foreground'] = self.muteground
         else:
             self.format['foreground'] = self.foreground
-
         print(self.text.format_map(self.format))
         # Call the generic method
         BarInfo.display(self)
@@ -207,7 +275,7 @@ class I3BarInfo(BarInfo):
         # If was not already listening, start to listen to events
         if not self.listen:
             self.listen = Thread(target=self.i3_action_listen,
-                    args=(sys.stdin, self.format,))
+                                 args=(sys.stdin, self.format,))
             self.listen.start()
 
         if self.mute:
@@ -233,7 +301,7 @@ class I3BarInfo(BarInfo):
             if key in actions:
                 cmd = actions['act'+button[0]]
                 # Make sure all self.fields['actN'] dont have spaces
-                Popen(['sh','-c',cmd], stdout=DVNL)
+                Popen(['sh', '-c', cmd], stdout=DVNL)
 
 
 
