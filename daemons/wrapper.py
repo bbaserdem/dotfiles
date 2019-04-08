@@ -74,6 +74,8 @@ def bar_info_init():
         output = I3BarInfo()
     elif method == 'waybar':
         output = WayBarInfo()
+    elif method == 'console':
+        output = ConsoleInfo()
     else:
         print('Defaulting to polybar style . . .')
         output = PolyBarInfo()
@@ -108,6 +110,19 @@ COLOR['violet'] = COLOR['base0E']
 COLOR['purple'] = COLOR['base0E']
 COLOR['bro'] = COLOR['base0F']
 COLOR['brown'] = COLOR['base0F']
+# ANSI colors
+ANSI = {
+    'red': '\u001b[31m',
+    'orange': '\u001b[35m',
+    'yellow': '\u001b[33m',
+    'green': '\u001b[32m',
+    'cyan': '\u001b[33m',
+    'blue': '\u001b[34m',
+    'violet': '\u001b[35m',
+    'brown': '\u001b[36m',
+    'bold': '\u001b[1m',
+    'reset': '\u001b[0m'}
+
 # Color printer with defaults and opacity capability
 def color_picker(inp, opacity=1):
     """ Function to parse color strings """
@@ -170,6 +185,28 @@ class BarInfo:
     def display(self):
         """ Method to print information out, must be defined individually """
         sys.stdout.flush()
+
+
+
+
+
+
+class ConsoleInfo(BarInfo):
+    """ Class to format to console """
+    def __init__(self):
+        # Initialize fo the main class
+        BarInfo.__init__(self)
+        # Rename color
+        self.format['color'] = ANSI[get_config('color', fallback='red')]
+        # Set text style
+        self.text += ANSI['bold'] + '{color}{prefix}' + ANSI['reset']
+        self.text += '{output}'
+        self.text += ANSI['bold'] + '{color}{suffix}' + ANSI['reset']
+
+    def display(self):
+        print(self.text.format_map(self.format))
+        # Call the generic method
+        BarInfo.display(self)
 
 
 

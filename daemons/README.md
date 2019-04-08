@@ -14,21 +14,19 @@ The scripts are responsive to two arguments.
 They can be given as environment variables, or as command line arguments.
 `color='#FFFFFF`, `script --color='#FFFFFF'` or `script -c '#FFFFFF'` works.
 
-# wrapper.py
+# Writing modules
 
-A wrapper around printing methods, that handles printing specific formats.
-Properties that this deals with are
+Python scripts need to call the `display` method to print an output on stdin.
+The following items should be defined;
 
-* **method**: The method to use when printing. (Defaults to polybar)
-* **color**: Accent color. (Defaults to red.)
-* **fields**: All info corresponding to printing lies here
-
-The field variable contains
-* **text**: List of text to be printed.
-* **color**: Main text color.
-* **on-click**,**on-click-right**,**on-scroll-up**,**on-scroll-down**
-
-# color.py
-
-Contains routines regarding color scheme of the output.
-To change color theme, define colors on this file.
+* **format['actN']**: Where N is (
+1: left-click,
+2: middle-click,
+3: right-click,
+4: scroll-up,
+5: scroll-down.) are shell commands to run on click.
+* **format['output']**: The text to display in the info bar.
+* **format['prefix']**: Icon prefix to display.
+* **format['suffix']**: Icon suffix to display.
+* **format['color']**: Accent color for the module.
+* **mute**: When foreground should be made faded.

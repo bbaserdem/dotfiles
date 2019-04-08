@@ -60,6 +60,8 @@ local_update () {
     pip install --user neovim
     pip install --user neovim-remote
     pip install --user pexpect
+    # For daemons
+    pip install --user inotify pulsectl
 
     # ZIM
     echo "Installing/updating zim . . .\n"
