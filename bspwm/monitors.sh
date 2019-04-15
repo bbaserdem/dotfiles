@@ -8,23 +8,36 @@ reload_monitors () {
     if [ $(hostname) = 'sbplaptop' ] || [ $(hostname) = 'sbpnotebook' ]
     then
         # Get xrandr names of monitor and the embedded screen
-        _mon=($(xrandr | awk '/connected/ && $1 !~ /eDP/ {printf("%s ",$1);}'))
-        _lid=($(xrandr | awk '/connected/ && $1 ~ /eDP/ {printf("%s ",$1);}'))
+        _lid=($(xrandr | awk '$1 ~ /eDP/ {printf("%s\n",$1);}'))
+        _mon=($(xrandr | awk '$2 ~ /^connected/ && $1 !~ /eDP/ {printf("%s\n",$1);}'))
+        _dis=($(xrandr | awk '$2 ~ /disconnected/ {printf("%s\n",$1);}'))
 
         # Get lid state 
         if [[ "$(cat /proc/acpi/button/lid/LID/state | awk '{ print $NF }')" == 'open' ]]
         then
             # If lid is open, screen monitor should be on
             /usr/bin/xrandr --output $_lid --auto --primary
+            echo "Output on: $_lid"
+            # Set up the rest to mirror
+            for monitor in $_mon
+            do
+                echo "Mirror $monitor"
+                /usr/bin/xrandr --output $monitor --same-as $_lid
+            done
         else
-            # If lid is closed, turn off the lid screen
-            /usr/bin/xrandr --output $_lid --off
+            # Set up the monitors sequentially
+            for monitor in $_mon
+            do
+                echo "On auto $monitor"
+                /usr/bin/xrandr --output $monitor --auto
+            done
         fi
 
-        # Set up the rest
-        for monitor in $_mon
+        # Kill unused monitors
+        for monitor in $_dis
         do
-            /usr/bin/xrandr --output $monitor --auto
+            echo "Turn off $monitor"
+            /usr/bin/xrandr --output $monitor --off
         done
 
     # WORKSTATION: Monitors are static

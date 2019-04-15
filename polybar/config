@@ -29,8 +29,8 @@ base0D = ${env:base0D:#7cafc2}
 base0E = ${env:base0E:#ba8baf}
 base0F = ${env:base0F:#a16946}
 frg = ${self.base04}
-bkg = ${self.base01}
-hig = ${self.base02}
+bkg = #D8282828
+hig = #D8383838
 mut = ${self.base03}
 red = ${self.base08}
 ora = ${self.base09}
@@ -75,6 +75,7 @@ font-1 = "Misc Termsyn:size=12:style=bold;2"
 font-2 = "Iosevka Nerd Font Mono:size=14;3"
 seperator = 
 dim-value = 1.0
+tray-background = ${colors.bkg}
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
@@ -98,6 +99,17 @@ wm-restack = i3
 inherit = bar/top
 wm-restack = bspwm
 
+[module/skeleton]
+type = custom/script
+click-left =    echo '{ "button": 1 }' > /proc/%pid%/fd/0
+click-middle =  echo '{ "button": 2 }' > /proc/%pid%/fd/0
+click-right =   echo '{ "button": 3 }' > /proc/%pid%/fd/0
+scroll-up =     echo '{ "button": 4 }' > /proc/%pid%/fd/0
+scroll-down =   echo '{ "button": 5 }' > /proc/%pid%/fd/0
+tail = true
+interval = 0
+label = %output%
+format = <label>
 
 ;==================;
 ;   MODULES-LEFT   ;
@@ -229,7 +241,7 @@ format = <label-mode>
 
 [module/calendar]
 type = custom/script
-exec = ~/.config//daemons.sh -f polybar -c brown calendar
+exec = ~/.config/systeminfo/calendar.py -c brown -m polybar -t D8
 exec-if = [ -d ~/Documents/Calendar ]
 tail = true
 interval = 0
@@ -463,7 +475,7 @@ label-muted-foreground = ${colors.mut}
 
 [module/pulseaudio]
 type = custom/script
-exec = ~/.config/daemons/painfo.py --color cyan --method polybar
+exec = ~/.config/systeminfo/painfo.py -c cyan -m polybar -t D8
 tail = true
 interval = 0
 label = %output%

@@ -66,12 +66,6 @@
 !/cursor/**
 
 # DUNST: Accept the rc
-!/daemons
-!/daemons/**
-/daemons/__pycache__
-/daemons/__pycache__/**
-
-# DUNST: Accept the rc
 !/dunst
 !/dunst/dunstrc
 
@@ -209,6 +203,12 @@
 # SYNCTHING-GTK: Grab config
 !/syncthing-gtk
 !/syncthing-gtk/config.json
+
+# SYSTEMINFO: My python module, grab everything pythonic
+!/systeminfo
+!/systeminfo**.py
+!/systeminfo**.txt
+!/systeminfo**.md
 
 # TERMITE: Grab config
 !/termite
