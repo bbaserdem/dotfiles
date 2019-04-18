@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=IBus
+GenericName=IBus Daemon for Input
+Comment=IBus Daemon for inputting various character sets
+Exec=ibus-daemon -drx
+Icon=ibus
+Terminal=false
+Type=Application
+Categories=Network;
+StartupNotify=false

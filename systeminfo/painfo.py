@@ -40,10 +40,13 @@ def get_text(server):
     mod.mute = sink.mute
     # Write icon to module
     mod.format['prefix'] = ICONFALLBACK
-    for key, value in ICONLIST.items():
-        if key in name:
-            mod.format['prefix'] = value
-            break
+    if 'bluez' in dflt:
+        mod.format['prefix'] = ICONLIST['headset']
+    else:
+        for key, value in ICONLIST.items():
+            if key in name:
+                mod.format['prefix'] = value
+                break
     # Write volume to module
     mod.format['output'] = ' ' + str(volm) + ''
     mod.display()

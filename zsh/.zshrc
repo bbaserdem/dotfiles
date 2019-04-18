@@ -43,6 +43,7 @@ alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-5.0/etc/bashrc"
 alias cp-rsync='rsync -avzh --append-verify'
 alias ncmpc='ncmpcpp --screen playlist --slave-screen visualizer'
 alias weather='wttr_weather'
+alias newterm="$TERMINAL 2>/dev/null & disown 2>&1 1>/dev/null"
 
 # Powerlevel9k things
 

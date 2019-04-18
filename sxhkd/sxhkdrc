@@ -25,10 +25,6 @@ super + space
 super + p
     $XDG_CONFIG_HOME/rofi/rofi-pass
 
-# Emoji
-super + e
-    $XDG_CONFIG_HOME/rofi/rofi-emoji.py
-
 # Music controls for mpd
 XF86Audio{Play,Stop,Next,Prev}
     /usr/bin/mpc{ toggle, stop, next,-prev}

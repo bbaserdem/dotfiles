@@ -81,6 +81,11 @@ then
     export BRI_KBD=""
 fi
 
+# IBus support
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
 # Rofi-pass config
 export ROFI_PASS_CONFIG="${XDG_CONFIG_HOME}/rofi/pass.conf"
 # Android studio

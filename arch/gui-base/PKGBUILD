@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=17
+pkgrel=18
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -47,7 +47,9 @@ depends+=(
     'termsyn-font'
     'ttf-droid'
     'ttf-inconsolata'
-    'ttf-roboto' )
+    'ttf-roboto'
+    'ibus'
+    'ibus-m17n')
 
 # Themes
 depends+=(

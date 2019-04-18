@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=19
+pkgrel=20
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -13,6 +13,7 @@ source=(
     'base.bt-polkit'
     'base.btaudio'
     'base.chroot-os'
+    'base.devices'
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
@@ -171,6 +172,7 @@ package() {
     install -Dm 0644 base.btaudio           "${pkgdir}/etc/bluetooth/audio.conf"
     install -Dm 0755 base.build             "${pkgdir}/usr/bin/archrepo-build"
     install -Dm 0755 base.chroot-os         "${pkgdir}/usr/bin/chroot-os"
+    install -Dm 0645 base.devices           "${pkgdir}/etc/udev/rules.d/50-devices.rules"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
     install -Dm 0644 base.keyboard          "${pkgdir}/etc/X11/xorg.conf.d/20-keyboard.conf"
@@ -197,6 +199,7 @@ md5sums=('20861f3c110fc6212678f6b71f91457d'
          '9a2f3529c4e4ef9765b402ff6b5c8cb7'
          '305f8eae3d7981c6471bc431886b659a'
          '8a2dd425633e8fcd541de29b81d2c81d'
+         'e08f3aac4fb834db851a561735051ee7'
          'a7a3dc4d0a03d05cb0fd9f8a27f37ad6'
          '93108d9cc17ae70a0366d08823936ee4'
          'e29974b9312d336d103206a1d78932cf'

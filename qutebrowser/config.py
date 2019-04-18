@@ -41,6 +41,8 @@ c.downloads.location.prompt = True
 config.bind('<Ctrl-b>', 'adblock-update')
 config.bind('m', 'spawn --detach mpv {url}')
 config.bind( 'M', 'hint links spawn --detach mpv {hint-url}')
+config.bind(',p', 'spawn --userscript qute-pass --dmenu-invocation rofi')
+config.bind(',P', 'spawn --userscript qute-pass --dmenu-invocation rofi --password-only')
 
 # Time based locking
 currentTime = datetime.datetime.now()
