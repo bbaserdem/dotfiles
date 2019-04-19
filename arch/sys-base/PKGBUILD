@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=20
+pkgrel=21
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -17,7 +17,6 @@ source=(
     'base.fixed-bitmap'
     'base.inotify'
     'base.install'
-    'base.keyboard'
     'base.monitor-hotplug'
     'base.mpc-prev'
     'base.network'
@@ -175,7 +174,6 @@ package() {
     install -Dm 0645 base.devices           "${pkgdir}/etc/udev/rules.d/50-devices.rules"
     install -Dm 0644 base.fixed-bitmap      "${pkgdir}/etc/fonts/conf.avail/90-fixed-bitmaps.conf"
     install -Dm 0644 base.inotify           "${pkgdir}/etc/sysctl.d/01-inotify.conf"
-    install -Dm 0644 base.keyboard          "${pkgdir}/etc/X11/xorg.conf.d/20-keyboard.conf"
     install -Dm 0644 base.monitor-hotplug   "${pkgdir}/etc/udev/rules.d/80-sbp-monitor.rules"
     install -Dm 0755 base.mpc-prev          "${pkgdir}/usr/bin/mpc-prev"
     install -Dm 0645 base.network           "${pkgdir}/etc/udev/rules.d/11-network.rules"
