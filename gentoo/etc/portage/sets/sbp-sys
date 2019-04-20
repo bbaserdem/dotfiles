@@ -117,6 +117,7 @@ app-shells/bash-completion
 app-text/languagetool
 dev-python/neovim-remote
 dev-python/neovim-python-client
+dev-python/pexpect
 dev-python/pip
 dev-util/ctags
 dev-vcs/git

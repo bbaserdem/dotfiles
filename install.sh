@@ -56,11 +56,7 @@ symlinks_and_directories () {
 
 local_update () {
     # Neovim
-    echo "Installing local packages through pip for neovim . . .\n"
-    pip install --user neovim
-    pip install --user neovim-remote
-    pip install --user pexpect
-    # For daemons
+    echo "Installing local python packages from pip . . .\n"
     pip install --user inotify pulsectl
 
     # ZIM
@@ -73,6 +69,7 @@ local_update () {
     fi
 
     # Powerlevel10k and powerlevel9k
+    echo "Installing zsh prompts . . .\n"
     if [ ! -d "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k" ]
     then
         git clone --recursive 'https://github.com/romkatv/powerlevel10k.git' \
@@ -93,12 +90,14 @@ local_update () {
         "${ZIM_HOME}/modules/prompt/functions/prompt_powerlevel10k_setup"
 
     # Dropbox stuff
+    echo "Fixing dropbox update . . .\n"
     if [ -x '/usr/bin/dropbox' ] ; then
         [ -d "${HOME}/.dropbox-dist" ] && rm -rf "${HOME}/.dropbox-dist"
-        install --mode 0 --directory "${HOME}/.dropbox-dist"
     fi
+    install --mode 0 --directory "${HOME}/.dropbox-dist"
 
     # Steam stuff
+    echo "Installing steam theme . . .\n"
     mkdir -p ~/.local/share/Steam/skins
     if [ -d "${HOME}/.local/share/Steam/Air" ] ; then
         git -C "${HOME}/.local/share/Steam/Air" pull
@@ -107,43 +106,66 @@ local_update () {
     fi
 
     # Qutebrowser
+    echo "Setting up qutebrowser spellcheck . . .\n"
     if [ -x '/usr/share/qutebrowser/scripts/dictcli.py' ] ; then
         /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
     fi
 
-    # Breeze hacked cursor theme
-    if [ ! -d /tmp/breeze-hacked ] ; then
-        git clone 'https://github.com/codejamninja/breeze-hacked-cursor-theme' /tmp/breeze-hacked
-    fi
-    make --directory /tmp/breeze-hacked install
-
-    # Rofi-pass and emoji
+    # Rofi-pass
+    echo "Installing rofi-pass . . .\n"
     wget --output-document "${XDG_CONFIG_HOME}/rofi/rofi-pass" \
         'https://raw.githubusercontent.com/carnager/rofi-pass/master/rofi-pass'
     chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-pass"
-    wget  --output-document "${XDG_CONFIG_HOME}/rofi/rofi-emoji.py" \
-        'https://raw.githubusercontent.com/fdw/rofimoji/master/rofimoji.py'
-    chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-emoji.py"
 
     # Generator scripts for passwords
+    echo "Genorating local password files . . .\n"
     ${XDG_CONFIG_HOME}/isync/passgen.sh
     ${XDG_CONFIG_HOME}/mpdscribble-confgen.sh
     ${XDG_CONFIG_HOME}/vdirsyncer/passgen.sh
     ${XDG_CONFIG_HOME}/s3cfg-gen.sh
 
-    # Papirus icons
+}
+
+icons_config () {
+    # Breeze hacked cursor theme
+    echo "Installing cursor themes"
+    echo "Breeze-hacked"
+    if [ ! -d "${home}/.cache/breeze-hacked" ] ; then
+        git clone 'https://github.com/codejamninja/breeze-hacked-cursor-theme' /tmp/breeze-hacked
+    else
+        git -c "${home}/.cache/breeze-hacked" pull
+    fi
+    make --directory "${home}/.cache/breeze-hacked" install
+
+    # Icons
+    echo "Getting icons"
+    echo "Papirus"
     wget --output-document "${HOME}/.cache/papirus_install.sh" \
         'https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh'
     chmod 775 ${HOME}/.cache/papirus_install.sh
     DESTDIR="$HOME/.local/share/icons" ${HOME}/.cache/papirus_install.sh
 
     # Nerdfonts
-    if [ ! -d /tmp/nerd-fonts ] ; then
-        git clone 'https://github.com/ryanoasis/nerd-fonts.git' /tmp/nerd-fonts
+    echo "Installing fonts"
+    echo "Nerdfonts"
+    if [ ! -d "${HOME}/.cache/nerdfonts" ] ; then
+        git clone 'https://github.com/ryanoasis/nerd-fonts.git' "${HOME}/.cache/nerdfonts"
+    else
+        git clone -C "${HOME}/.cache/nerdfonts" pull
     fi
-    if [ -x '/tmp/nerd-fonts/install.sh' ] ; then
-        /tmp/nerd-fonts/install.sh --install-to-user-path --complete --copy Iosevka FiraCode
+    if [ -x "${HOME}/.cache/nerdfonts/install.sh" ] ; then
+        echo "Iosevka Nerd Font Complete"
+        "${HOME}/.cache/nerdfonts/install.sh" --install-to-user-path --complete --copy Iosevka
+        echo "Fura Code Nerd Font Complete"
+        "${HOME}/.cache/nerdfonts/install.sh" --install-to-user-path --complete --copy FiraCode
     fi 
+}
+
+run_all () {
+    fix_perm
+    symlinks_and_directories
+    local_update
+    icons_config
 }
 
 # Help text
@@ -152,26 +174,24 @@ print_usage() {
     echo "    -p            Fix permissions"
     echo "    -l            Do symlinks and directories"
     echo "    -u            Update/install local packages and configs"
-    echo "    -s            Full setup (do all options)"
+    echo "    -s (default)  Full setup (do all options)"
     echo "    -h            Display this help message"
+    echo "    -i            Install icons and fonts"
 }
 
-unset flag
-while getopts ':Aplush' flag; do
-    case "${flag}" in
-        p) fix_perm ;;
-        l) symlinks_and_directories ;;
-        u) local_update ;;
-        s) fix_perm; symlinks_and_directories; local_update ;;
-        h) print_usage ;;
-        *) echo "Unknown option ${flag}"; print_usage ; exit 1 ;;
-    esac
-done
-
-if [ -z "${flag}" ] ; then
-    echo 'Defaulting to full setup'
-    fix_perm
-    symlinks_and_directories
-    local_update
+if [ -z "${1}" ] ; then
+    echo "No flags set, defaulting to full config"
+    run_all
+else
+    while getopts ':plushi' flag; do
+        case "${flag}" in
+            p) fix_perm ;;
+            l) symlinks_and_directories ;;
+            u) local_update ;;
+            s) run_all ;;
+            h) print_usage ;;
+            i) icons_config ;;
+            *) echo "Unknown option ${flag}"; print_usage ; exit 1 ;;
+        esac
+    done
 fi
-unset flag

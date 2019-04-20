@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=21
+pkgrel=22
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -127,7 +127,7 @@ depends+=(
     'khal' 'khard'
     'htop'
     'neofetch'
-    'neovim' 'python-neovim'
+    'neovim' 'python-neovim' 'python-pexpect' 'neovim-remote'
     'syncthing'
     'w3m'
     'youtube-dl'
@@ -160,8 +160,7 @@ depends+=(
     'android-tools' 'android-udev' 'libmtp'
     'bpython'
     'lapack' 'openblas'
-    'python-pip' 'python-pipenv'
-)
+    'python-pip' 'python-pipenv' )
 
 package() {
     install -dm 0750 "${pkgdir}/etc/polkit-1/rules.d"
