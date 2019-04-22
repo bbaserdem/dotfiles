@@ -108,6 +108,10 @@
 !/khal
 !/khal/**
 
+# KHARD: Grab all contact
+!/khard
+!/khard/**
+
 # KITTY: Grab the conf files
 !/kitty
 !/kitty/*.conf

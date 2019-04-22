@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=20
+pkgrel=22
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -85,6 +85,9 @@ depends+=(
     'alacritty' 'kitty'
     'gtk2fontsel' 'gucharmap'
     'system-config-printer'
+    'perl-image-exiftool'       # For exif data on ranger
+    'python-pillow'             # For image preview in kitty
+    'python-tldextract'         # For password in qutebrowser
     'polkit-gnome'
     'freerdp'
     'mpv'

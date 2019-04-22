@@ -1,32 +1,37 @@
 [calendars]
 
-[[personal]]
-path = ~/Documents/Calendar/Personal
-type = calendar
-color = dark blue
+#[[personal]]
+#path = ~/Documents/Calendar/Personal
+#type = calendar
+#color = dark blue
 
-[[work]]
-path = ~/Documents/Calendar/Work
-type = calendar
-color = dark red
+#[[work]]
+#path = ~/Documents/Calendar/Work
+#type = calendar
+#color = dark red
 
-[[birthdays]]
-path = ~/Documents/Contacts
-type = birthdays
-color = dark cyan
+#[[birthdays]]
+#path = ~/Documents/Contacts
+#type = birthdays
+#color = dark cyan
 
-[[holiday]]
-path = ~/Documents/Calendar/Holiday
-type = calendar
-color = dark green
+#[[holiday]]
+#path = ~/Documents/Calendar/Holiday
+#type = calendar
+#color = dark green
 
-[[travel]]
-path = ~/Documents/Calendar/Travel
+#[[travel]]
+#path = ~/Documents/Calendar/Travel
+#type = calendar
+#color = dark magenta
+
+[[google]]
+path = ~/Documents/Calendar/events
 type = calendar
 color = dark magenta
 
 [default]
-default_calendar = personal
+default_calendar = google
 highlight_event_days = true
 timedelta = 30d
 

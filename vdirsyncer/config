@@ -26,12 +26,12 @@ fileext = ".ics"
 
 [storage contacts_server]
 type = "carddav"
-url = "https://owncloud.example.com/remote.php/carddav/"
-username.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","carddav","uname"]
-password.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","carddav","pass" ]
+url.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CardDAV","url"]
+username.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CardDAV","uname"]
+password.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CardDAV","pass" ]
 
 [storage calendar_server]
 type = "caldav"
-url = "https://owncloud.example.com/remote.php/caldav/"
-username.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","caldav","uname"]
-password.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","caldav","pass" ]
+url.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CalDAV","url"]
+username.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CalDAV","uname"]
+password.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CalDAV","pass" ]

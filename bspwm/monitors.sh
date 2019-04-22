@@ -5,12 +5,15 @@
 
 reload_monitors () {
     # LAPTOP: has eDP(-1) (lid) DP-1 and DP-2 ports
-    if [ $(hostname) = 'sbplaptop' ] || [ $(hostname) = 'sbpnotebook' ]
-    then
+    if [ $(hostname) = 'sbplaptop' ] || [ $(hostname) = 'sbpnotebook' ] ; then
+        echo "Using Laptop"
         # Get xrandr names of monitor and the embedded screen
         _lid=($(xrandr | awk '$1 ~ /eDP/ {printf("%s\n",$1);}'))
         _mon=($(xrandr | awk '$2 ~ /^connected/ && $1 !~ /eDP/ {printf("%s\n",$1);}'))
         _dis=($(xrandr | awk '$2 ~ /disconnected/ {printf("%s\n",$1);}'))
+        echo "Lid is: ${_lid}"
+        echo "Connected are: ${_mon}"
+        echo "Disconnected are: ${_dis}"
 
         # Get lid state 
         if [[ "$(cat /proc/acpi/button/lid/LID/state | awk '{ print $NF }')" == 'open' ]]
@@ -22,7 +25,7 @@ reload_monitors () {
             for monitor in $_mon
             do
                 echo "Mirror $monitor"
-                /usr/bin/xrandr --output $monitor --same-as $_lid
+                /usr/bin/xrandr --output $monitor --auto --same-as $_lid
             done
         else
             # Set up the monitors sequentially
@@ -43,17 +46,20 @@ reload_monitors () {
     # WORKSTATION: Monitors are static
     elif [[ $(hostname) == 'sbpworkstation' ]]
     then
+        echo "Using Workstation"
         /usr/bin/xrandr --output DVI-I-1 --primary
         /usr/bin/xrandr --output DP-2 --left-of DVI-I-1
 
     # SERVER: 
     elif [[ $(hostname) == 'sbpserver' ]]
     then
+        echo "Using Server"
         /usr/bin/xrandr --output DP-1 --primary
         /usr/bin/xrandr --output HDMI-2 --left-of DP-2
 
     # For all other cases
     else
+        echo "No match"
         for monitor in $(xrandr | grep " connected " | awk '{ print$1 }') ; do
             /usr/bin/xrandr --output $monitor --auto
         done
