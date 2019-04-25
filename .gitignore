@@ -234,6 +234,12 @@
 !/vdirsyncer/config
 !/vdirsyncer/passgen.sh
 
+# VIFM: Grab config files
+!/vifm
+!/vifm/vifmrc
+!/vifm/colors
+!/vifm/colors/**
+
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**

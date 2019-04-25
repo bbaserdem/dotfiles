@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-bspwm
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Meta package: BSPWM desktop"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -13,6 +13,7 @@ depends=(
     'dex'           # Autostart launcher
     'dunst'         # Notification daemon
     'feh'           # Wallpaper management
+    'unclutter'     # Hide mouse when idle
     'i3lock'        # Screen locker
     'maim'          # Screenshot utility
     'polybar-git'   # AUR: Status bar
@@ -21,5 +22,6 @@ depends=(
     'sxhkd'         # Simple X hotkey daemon
     'xss-lock'      # Locks screen on power events
 )
+
 
 

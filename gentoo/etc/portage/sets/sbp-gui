@@ -89,6 +89,7 @@ x11-misc/dunst
 x11-misc/redshift
 x11-misc/xss-lock
 x11-misc/i3lock
+x11-misc/unclutter
 media-gfx/feh
 media-gfx/maim
 
