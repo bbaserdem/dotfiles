@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=23
+pkgrel=24
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -64,7 +64,7 @@ depends+=(
     'udiskie'
     'pavucontrol'
     'remmina'
-    'ristretto'
+    'imv'
     'zathura' 'zathura-cb' 'zathura-djvu' 'zathura-pdf-mupdf' 'zathura-ps'
     'texlive-fontsextra' 'texlive-latexextra' 'texlive-pictures'
     'texlive-pstricks' 'texlive-core' 'texlive-science'
@@ -76,7 +76,7 @@ depends+=(
     'picard'
     #'tuxguitar'
     'smplayer'
-    'firefox' 'qutebrowser'
+    'qutebrowser' 'chromium-widevine'
     'zotero'
     'libreoffice-fresh' )
 

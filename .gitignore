@@ -97,12 +97,14 @@
 !/i3blocks
 !/i3blocks/**
 
+# IMV: Get all
+!/imv
+!/imv/**
+
 # ISYNC: Get only the config and password generator
 !/isync
 !/isync/config
 !/isync/passgen.sh
-!/isync/mbsync_cron.sh
-/isync/password-Gmail.sh
 
 # KHAL: Grab all calender files
 !/khal

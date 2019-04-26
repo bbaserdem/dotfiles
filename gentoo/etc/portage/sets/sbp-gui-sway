@@ -1,0 +1,22 @@
+# Compositor
+dev-libs/wayland
+
+# Window manager
+gui-wm/sway
+
+# Idle management daemon
+gui-apps/swayidle
+
+# Screen-locker
+gui-apps/swaylock
+
+# Clipboard
+gui-apps/wl-clipboard
+
+# Notification daemon
+gui-apps/mako
+
+# grim, slurp
+
+# Layman
+#app-misc/zotero

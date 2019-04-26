@@ -1,0 +1,41 @@
+# Apps
+app-emulation/virt-manager
+app-office/libreoffice-bin
+app-text/texlive
+app-text/zathura
+dev-python/spyder
+#media-gfx/blender
+media-gfx/darktable
+media-gfx/gimp
+media-gfx/inkscape
+media-gfx/ristretto
+#media-sound/audacity
+media-sound/pavucontrol
+media-sound/picard
+media-sound/tuxguitar
+media-video/smplayer
+net-misc/remmina
+net-wireless/blueman
+sci-mathematics/octave
+sys-fs/udiskie
+www-client/qutebrowser
+
+# Utility
+app-admin/system-config-printer
+app-text/zathura-cb
+app-text/zathura-djvu
+app-text/zathura-pdf-mupdf
+app-text/zathura-ps
+dev-tex/latexmk
+gnome-extra/gucharmap
+gnome-extra/polkit-gnome
+media-video/ffmpeg
+media-video/mpv
+media-video/rtmpdump
+net-misc/freerdp
+x11-terms/alacritty
+x11-terms/kitty
+x11-misc/gtk2fontsel
+
+# Layman
+#app-misc/zotero

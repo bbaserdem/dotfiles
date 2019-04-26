@@ -1,0 +1,37 @@
+# X11
+x11-base/xorg-server
+x11-apps/setxkbmap
+x11-apps/xauth
+x11-apps/xdpyinfo
+x11-apps/xev
+x11-apps/xinit
+x11-apps/xprop
+x11-apps/xrandr
+x11-apps/xrdb
+x11-apps/xset
+x11-apps/xsetroot
+x11-apps/xwininfo
+x11-misc/xdotool
+#x11-apps/xkb-switch
+
+# Login
+x11-misc/sddm
+#x11-misc/chili-sddm-theme
+dev-qt/qtgraphicaleffects
+dev-qt/qtquickcontrols2
+
+# Fonts
+media-fonts/source-pro
+media-fonts/fira-code
+media-fonts/terminus-font
+media-fonts/noto-emoji
+media-fonts/termsyn
+media-fonts/droid
+media-fonts/inconsolata
+media-fonts/roboto
+
+# Themes
+x11-themes/comix-xcursors
+x11-themes/arc-theme
+x11-themes/gnome-icon-theme-extras
+x11-themes/kvantum

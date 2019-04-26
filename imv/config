@@ -1,0 +1,63 @@
+# Default config for imv
+
+[options]
+background = 000000
+fullscreen = false
+width = 1920
+height = 1080
+list_files_at_exit = false
+loop_input = true
+overlay = true
+overlay_font = Monospace:12
+recursive = false
+scaling_mode = shrink
+slideshow_duration = 0
+stay_fullscreen_on_focus_loss = false
+suppress_default_binds = true
+title_text = $([ $imv_loading = '1' ] && echo ' ') [${imv_current_index}/${imv_file_count}] (${imv_width}x${imv_height}, ${imv_scale}) $imv_current_file
+upscaling_method = linear
+
+[aliases]
+q = quit
+next = select_rel 1
+previous = select_rel -1
+n = select_rel 1
+p = select_rel -1
+
+[binds]
+# Quit app
+qq = quit
+# Back to left corner
+gg = select_abs 0
+# Image navigation
+<Left> = select_rel -1
+<LeftSquareBracket> = select_rel -1
+<Right> = select_rel 1
+<RightSquareBracket> = select_rel 1
+<Shift+g> = select_abs -1
+# Panning
+j = pan 0 -50
+k = pan 0 50
+h = pan 50 0
+l = pan -50 0
+# Zooming
+<Up> = zoom 1
+i = zoom 1
+<Down> = zoom -1
+o = zoom -1
+# Other commands
+x = close
+f = fullscreen
+d = overlay
+p = exec echo $imv_current_file
+c = center
+s = scaling_mode next
+a = zoom actual
+r = exec mogrify -rotate 90 "$imv_current_file"
+<Shift+r> = exec mogrify -rotate -90 "$imv_current_file"
+# Gif playback
+. = next_frame
+<Space> = toggle_playing
+# Slideshow control
+t = slideshow_duration +1
+<Shift+t> = slideshow_duration -1

@@ -1,0 +1,36 @@
+# BSPWM: Window Manager
+x11-wm/bspwm
+
+# SXHKD: Hotkey Manager
+x11-misc/sxhkd
+
+# LIGHT: Backlight tool
+dev-libs/light
+
+# Autostart manager
+x11-misc/dex
+
+# Infobar
+x11-misc/polybar
+
+# Notification
+x11-misc/dunst
+
+# Screen-dimmer
+x11-misc/redshift
+
+# App-launcher
+x11-misc/rofi
+
+# Screen-locker
+x11-misc/xss-lock
+x11-misc/i3lock
+
+# Hide mouse when idle
+x11-misc/unclutter
+
+# Set background
+media-gfx/feh
+
+# Screenshots
+media-gfx/maim
