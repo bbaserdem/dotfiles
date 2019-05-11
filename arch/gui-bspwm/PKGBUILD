@@ -1,13 +1,14 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-bspwm
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Meta package: BSPWM desktop"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
 licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 depends=(
+    'caffeine'      # Screen lock inhibitor
     'light'         # Brightness controls
     'bspwm'         # Binary split partitioning WM
     'dex'           # Autostart launcher
@@ -22,6 +23,7 @@ depends=(
     'sxhkd'         # Simple X hotkey daemon
     'xss-lock'      # Locks screen on power events
 )
+
 
 
 
