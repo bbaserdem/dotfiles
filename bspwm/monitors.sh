@@ -3,65 +3,75 @@
 # Load workspace names
 . $XDG_CONFIG_HOME/bspwm/window_id.sh
 
+reload_laptop () {
+    echo "Using Laptop"
+    # Get xrandr names of monitor and the embedded screen
+    _lid=($(xrandr | awk '$1 ~ /eDP/ {printf("%s\n",$1);}'))
+    _mon=($(xrandr | awk '$2 ~ /^connected/ && $1 !~ /eDP/ {printf("%s\n",$1);}'))
+    _dis=($(xrandr | awk '$2 ~ /disconnected/ {printf("%s\n",$1);}'))
+    echo "Lid is: ${_lid}"
+    echo "Connected are: ${_mon}"
+    echo "Disconnected are: ${_dis}"
+
+    # Get lid state 
+    if [[ "$(cat /proc/acpi/button/lid/LID/state | awk '{ print $NF }')" == 'open' ]] ; then
+        # If lid is open, screen monitor should be on
+        /usr/bin/xrandr --output "${_lid}" --auto --primary
+        echo "Output on: ${_lid}"
+        # Set up the rest to mirror
+        for monitor in $_mon ; do
+            echo "Mirroring: ${monitor} (to ${_lid})"
+            /usr/bin/xrandr --output $monitor --auto --same-as $_lid
+        done
+    else
+        # Set up the monitors sequentially
+        for monitor in $_mon ; do
+            echo "Auto-config on: $monitor"
+            /usr/bin/xrandr --output $monitor --auto
+        done
+        # Kill lid
+        echo "Turn off: $_lid"
+        /usr/bin/xrandr --output $_lid --off
+    fi
+
+    # Kill unused monitors
+    for monitor in $_dis ; do
+        echo "Turn off: $monitor"
+        /usr/bin/xrandr --output $monitor --off
+    done
+}
+
+reload_dual () {
+    echo "Setting the right (primary) as: $1"
+    /usr/bin/xrandr --output "${1}" --primary
+    echo "Setting the left as: $2"
+    /usr/bin/xrandr --output "${2}" --left-of "${1}"
+}
+
 reload_monitors () {
     # LAPTOP: has eDP(-1) (lid) DP-1 and DP-2 ports
     if [ $(hostname) = 'sbplaptop' ] || [ $(hostname) = 'sbpnotebook' ] ; then
-        echo "Using Laptop"
-        # Get xrandr names of monitor and the embedded screen
-        _lid=($(xrandr | awk '$1 ~ /eDP/ {printf("%s\n",$1);}'))
-        _mon=($(xrandr | awk '$2 ~ /^connected/ && $1 !~ /eDP/ {printf("%s\n",$1);}'))
-        _dis=($(xrandr | awk '$2 ~ /disconnected/ {printf("%s\n",$1);}'))
-        echo "Lid is: ${_lid}"
-        echo "Connected are: ${_mon}"
-        echo "Disconnected are: ${_dis}"
-
-        # Get lid state 
-        if [[ "$(cat /proc/acpi/button/lid/LID/state | awk '{ print $NF }')" == 'open' ]]
-        then
-            # If lid is open, screen monitor should be on
-            /usr/bin/xrandr --output $_lid --auto --primary
-            echo "Output on: $_lid"
-            # Set up the rest to mirror
-            for monitor in $_mon
-            do
-                echo "Mirror $monitor"
-                /usr/bin/xrandr --output $monitor --auto --same-as $_lid
-            done
-        else
-            # Set up the monitors sequentially
-            for monitor in $_mon
-            do
-                echo "On auto $monitor"
-                /usr/bin/xrandr --output $monitor --auto
-            done
-        fi
-
-        # Kill unused monitors
-        for monitor in $_dis
-        do
-            echo "Turn off $monitor"
-            /usr/bin/xrandr --output $monitor --off
-        done
-
+        reload_laptop
     # WORKSTATION: Monitors are static
-    elif [[ $(hostname) == 'sbpworkstation' ]]
-    then
+    elif [[ $(hostname) == 'sbpworkstation' ]] ; then
         echo "Using Workstation"
-        /usr/bin/xrandr --output DVI-I-1 --primary
-        /usr/bin/xrandr --output DP-2 --left-of DVI-I-1
-
+        reload_dual 'DVI-I-1' 'DP-2'
     # SERVER: 
-    elif [[ $(hostname) == 'sbpserver' ]]
-    then
+    elif [[ $(hostname) == 'sbpserver' ]] ; then
         echo "Using Server"
+        reload_dual 'DP-1' 'HDMI-2'
         /usr/bin/xrandr --output DP-1 --primary
         /usr/bin/xrandr --output HDMI-2 --left-of DP-2
-
     # For all other cases
     else
-        echo "No match"
+        echo "No match to hostname, doing default ..."
         for monitor in $(xrandr | grep " connected " | awk '{ print$1 }') ; do
+            echo "Auto-config on: ${monitor}"
             /usr/bin/xrandr --output $monitor --auto
+        done
+        for monitor in $(xrandr | grep " disconnected " | awk '{ print$1 }') ; do
+            echo "Turning off: ${monitor}"
+            /usr/bin/xrandr --output $monitor --off
         done
     fi
 }
