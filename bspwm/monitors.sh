@@ -55,7 +55,7 @@ reload_monitors () {
     # WORKSTATION: Monitors are static
     elif [[ $(hostname) == 'sbpworkstation' ]] ; then
         echo "Using Workstation"
-        reload_dual 'DVI-I-1' 'DP-2'
+        reload_dual 'DVI-I-1' 'DP-1'
     # SERVER: 
     elif [[ $(hostname) == 'sbpserver' ]] ; then
         echo "Using Server"

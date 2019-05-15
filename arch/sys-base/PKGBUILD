@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-base
 pkgver=1.0
-pkgrel=25
+pkgrel=26
 pkgdesc="Meta package: system libraries and tools"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -144,6 +144,7 @@ depends+=(
     'xz' 'zip'
     'ctags'
     'bash-completion'
+    'fbset'
     'git'
     'discount' 'jq' 'yajl'
     'geoip' 'geoip-database-extra' 'geoclue2'

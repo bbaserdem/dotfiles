@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-cmp-workstation
 pkgver=1.0
-pkgrel=2
+pkgrel=5
 pkgdesc="Meta package: Workstation configuration"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -13,15 +13,12 @@ source=(
     'workstation.install'
     )
 depends=(
-    'cuda'
-    'cudnn'
     'dropbox'
-    'lib32-nvidia-340xx-utils'
-    'nvidia-340xx-dkms'
-    'nvidia-340xx-utils'
     'ocl-icd'
-    'opencl-nvidia-340xx'
     'os-prober'
-    'libva-vdpau-driver'
+    'mesa'
+    'lib32-mesa'
+    'xf86-video-nouveau'
 )
+
 md5sums=('202de56fe0a08e578b8bc9ad954bbcf2')

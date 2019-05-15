@@ -52,6 +52,7 @@ else:
     c.content.host_blocking.enabled = False
 
 if ghn() == "sbpworkstation":
+    c.qt.force_software_rendering = 'chromium'
     c.url.default_page = "http://intranet.cshl.edu"
     c.url.start_pages = ["http://intranet.cshl.edu"]
 else:
