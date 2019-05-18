@@ -25,6 +25,7 @@
 !/piagen.sh
 !/README.md
 !/s3cfg-gen.sh
+!/syncrepo.sh
 !/tmux.conf
 !/user-dirs.dirs
 

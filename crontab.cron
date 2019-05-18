@@ -3,3 +3,4 @@
 */5     *       *       *       *       mbsync --config /home/sbp/.config/isync/config --all
 */5     *       *       *       *       vdirsyncer sync contacts
 */5     *       *       *       *       vdirsyncer sync calendar
+*/1     *       *       *       *       pass git pull; pass git push;
