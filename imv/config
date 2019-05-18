@@ -55,6 +55,7 @@ s = scaling_mode next
 a = zoom actual
 r = exec mogrify -rotate 90 "$imv_current_file"
 <Shift+r> = exec mogrify -rotate -90 "$imv_current_file"
+<Shift+d> = exec trash-put "$imv_current_file"
 # Gif playback
 . = next_frame
 <Space> = toggle_playing
