@@ -1,7 +1,7 @@
 #!/bin/sh
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
-IF=$'\n\t'
+IF=$'\t'
 
 fix_perm () {
     # Manage permission of home folder
@@ -56,20 +56,20 @@ symlinks_and_directories () {
 
 local_update () {
     # Neovim
-    echo "Installing local python packages from pip . . .\n"
+    echo "Installing local python packages from pip . . ."
     pip install --user inotify pulsectl
 
     # ZIM
-    echo "Installing/updating zim . . .\n"
+    echo "Installing/updating zim . . ."
     if [ ! -d "${ZIM_HOME}" ] ; then
         git clone --recursive 'https://github.com/zimfw/zimfw' "${ZIM_HOME}"
     else
         git -C "${ZIM_HOME}" pull
-        zmanage update
+        zsh -c 'zmanage update'
     fi
 
     # Powerlevel10k and powerlevel9k
-    echo "Installing zsh prompts . . .\n"
+    echo "Installing zsh prompts . . ."
     if [ ! -d "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k" ]
     then
         git clone --recursive 'https://github.com/romkatv/powerlevel10k.git' \
@@ -90,14 +90,14 @@ local_update () {
         "${ZIM_HOME}/modules/prompt/functions/prompt_powerlevel10k_setup"
 
     # Dropbox stuff
-    echo "Fixing dropbox update . . .\n"
+    echo "Fixing dropbox update . . ."
     if [ -x '/usr/bin/dropbox' ] ; then
         [ -d "${HOME}/.dropbox-dist" ] && rm -rf "${HOME}/.dropbox-dist"
     fi
     install --mode 0 --directory "${HOME}/.dropbox-dist"
 
     # Steam stuff
-    echo "Installing steam theme . . .\n"
+    echo "Installing steam theme . . ."
     mkdir -p ~/.local/share/Steam/skins
     if [ -d "${HOME}/.local/share/Steam/Air" ] ; then
         git -C "${HOME}/.local/share/Steam/Air" pull
@@ -106,19 +106,19 @@ local_update () {
     fi
 
     # Qutebrowser
-    echo "Setting up qutebrowser spellcheck . . .\n"
+    echo "Setting up qutebrowser spellcheck . . ."
     if [ -x '/usr/share/qutebrowser/scripts/dictcli.py' ] ; then
         /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
     fi
 
     # Rofi-pass
-    echo "Installing rofi-pass . . .\n"
+    echo "Installing rofi-pass . . ."
     wget --output-document "${XDG_CONFIG_HOME}/rofi/rofi-pass" \
         'https://raw.githubusercontent.com/carnager/rofi-pass/master/rofi-pass'
     chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-pass"
 
     # Generator scripts for passwords
-    echo "Genorating local password files . . .\n"
+    echo "Genorating local password files . . ."
     ${XDG_CONFIG_HOME}/isync/passgen.sh
     ${XDG_CONFIG_HOME}/mpdscribble-confgen.sh
     ${XDG_CONFIG_HOME}/vdirsyncer/passgen.sh
@@ -130,12 +130,12 @@ icons_config () {
     # Breeze hacked cursor theme
     echo "Installing cursor themes"
     echo "Breeze-hacked"
-    if [ ! -d "${home}/.cache/breeze-hacked" ] ; then
+    if [ ! -d "${HOME}/.cache/breeze-hacked" ] ; then
         git clone 'https://github.com/codejamninja/breeze-hacked-cursor-theme' /tmp/breeze-hacked
     else
-        git -c "${home}/.cache/breeze-hacked" pull
+        git -c "${HOME}/.cache/breeze-hacked" pull
     fi
-    make --directory "${home}/.cache/breeze-hacked" install
+    make --directory "${HOME}/.cache/breeze-hacked" install
 
     # Icons
     echo "Getting icons"

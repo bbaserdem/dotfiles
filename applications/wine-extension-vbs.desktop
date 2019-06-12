@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=A Wine application
+MimeType=application/x-wine-extension-vbs;
+Exec=env WINEPREFIX="/opt/wine" /usr/bin/wine start /ProgIDOpen VBSFile %f
+NoDisplay=true
+StartupNotify=true

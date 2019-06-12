@@ -9,9 +9,9 @@ colors:
     foreground: '0xd3d0c8'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
-  #cursor:
-  #  text: '0x2d2d2d'
-  #  cursor: '0xd3d0c8'
+  cursor:
+    text: '0x2d2d2d'
+    cursor: '0xd3d0c8'
 
   # Normal colors
   normal:

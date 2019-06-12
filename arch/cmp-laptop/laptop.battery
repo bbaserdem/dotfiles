@@ -1,3 +1,0 @@
-# Managed by sbp-cmp-laptop
-# Suspend the system when battery level drops to 7% or lower
-SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]|1[0-9]", RUN+="if [ -x /usr/bin/systemctl ] ; then /usr/bin/systemctl hibernate ; elif [ -x /usr/bin/rc-update ] ; then loginctl hibernate ; fi"

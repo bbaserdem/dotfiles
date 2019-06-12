@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-bios
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta package: BIOS specific system libraries"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -11,8 +11,4 @@ provides=('sbp-sys-boot')
 conflicts=('sbp-sys-uefi')
 source=('bios.grub.config.example')
 depends=('grub' 'os-prober')
-package() {
-    install -dm 0755 "${pkgdir}/etc/default"
-    install -Dm 0644 bios.grub.config.example "${pkgdir}/etc/default/grub.example"
-}
 md5sums=('2da245006e7b023954b1ae6c25c3190c')

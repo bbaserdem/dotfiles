@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-gui-base
 pkgver=1.0
-pkgrel=24
+pkgrel=26
 pkgdesc="Meta package: Generic libraries and programs with GUI"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -9,8 +9,6 @@ licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 install=gui.install
 source=(
-    'gui.sddm-theme'
-    'gui.xkeymap'
     'gui.xinit.session'
     'gui.install'
 )
@@ -19,24 +17,41 @@ depends=()
 
 # Xorg stuff
 depends+=(
+    'xorg-server'
+    'xorg-setxkbmap'
+    'xorg-xauth'
+    'xorg-xev'
+    'xorg-xinit'
+    'xorg-xprop'
+    'xorg-xrandr'
+    'xorg-xrdb'
+    'xorg-xset'
+    'xorg-xsetroot'
+    'xorg-xwininfo'
+    'xdotool'
+    'xkb-switch'
     'xorgproto' 'xf86-video-vesa' 'xorg-bdftopcf' 'xorg-docs' 'xorg-font-util'
     'xorg-fonts-encodings' 'xorg-iceauth' 'xorg-luit' 'xorg-mkfontdir'
-    'xorg-mkfontscale' 'xorg-server' 'xorg-server-common' 'xorg-server-devel'
+    'xorg-mkfontscale' 'xorg-server-common' 'xorg-server-devel'
     'xorg-server-xdmx' 'xorg-server-xephyr' 'xorg-server-xnest'
-    'xorg-server-xvfb' 'xorg-server-xwayland' 'xorg-sessreg' 'xorg-setxkbmap'
-    'xorg-smproxy' 'xorg-x11perf' 'xorg-xauth' 'xorg-xbacklight' 'xorg-xcmsdb'
-    'xorg-xcursorgen' 'xorg-xdpyinfo' 'xorg-xdriinfo' 'xorg-xev' 'xorg-xgamma'
+    'xorg-server-xvfb'  'xorg-sessreg' 
+    'xorg-smproxy' 'xorg-x11perf'  'xorg-xbacklight' 'xorg-xcmsdb'
+    'xorg-xcursorgen' 'xorg-xdpyinfo' 'xorg-xdriinfo' 'xorg-xgamma'
     'xorg-xhost' 'xorg-xinput' 'xorg-xkbcomp' 'xorg-xkbevd' 'xorg-xkbutils'
     'xorg-xkill' 'xorg-xlsatoms' 'xorg-xlsclients' 'xorg-xmodmap' 'xorg-xpr'
-    'xorg-xprop' 'xorg-xrandr' 'xorg-xrdb' 'xorg-xrefresh' 'xorg-xset'
-    'xorg-xsetroot' 'xorg-xvinfo' 'xorg-xwd' 'xorg-xwininfo' 'xorg-xwud'
-    'xf86-input-libinput' 'xorg-xinit' 'xorg-fonts-misc' 'xdo' 'xdotool' 'xsel'
-    'wayland' )
+    'xorg-xrefresh'  'xorg-xvinfo' 'xorg-xwd'  'xorg-xwud'
+    'xf86-input-libinput'  'xorg-fonts-misc' 'xdo'  'xsel')
+
+# Wayland stuff
+depends+=(
+    'wayland'
+    'xorg-server-xwayland')
 
 # Login manager
 depends+=(
     'sddm'
-    'chili-sddm-theme' )
+    'chili-sddm-theme'
+    'qt5-quickcontrols2')
 
 # Fonts
 depends+=(
@@ -48,17 +63,18 @@ depends+=(
     'ttf-droid'
     'ttf-inconsolata'
     'ttf-roboto'
-    'ibus')
+    'ibus' 'ibus-m17n')
 
 # Themes
 depends+=(
     'xcursor-comix'
     'arc-gtk-theme'
-    'gnome-themes-extra' 'gtk-engine-murrine'
+    'gnome-themes-extra'
     'kvantum-qt5' 'kvantum-theme-arc' )
 
 # Applications
 depends+=(
+    'alacritty' 'kitty'
     'virt-manager'
     'blueman'
     'udiskie'
@@ -82,7 +98,6 @@ depends+=(
 
 # Utilities
 depends+=(
-    'alacritty' 'kitty'
     'gtk2fontsel' 'gucharmap'
     'system-config-printer'
     'perl-image-exiftool'       # For exif data on ranger
@@ -94,7 +109,6 @@ depends+=(
     'latex-mk'
     'pdfsam'
     'trezor-bridge-bin'
-    'xkb-switch'
     )
 
 # Gaming
@@ -137,12 +151,8 @@ depends+=(
 )
 
 package() {
-    install -dm 0755 "${pkgdir}/etc/X11/xorg.conf.d"
-    install -Dm 0644 gui.xkeymap "${pkgdir}/etc/X11/xorg.conf.d/20-keyboard.conf"
     install -dm 0755 "${pkgdir}/usr/share/xsessions"
     install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
-    install -dm 0755 "${pkgdir}/etc/sddm.conf.d"
-    install -Dm 0644 gui.sddm-theme "${pkgdir}/etc/sddm.conf.d/sbp_theme.conf"
 }
 md5sums=('a9faaccb86ff4b6cbc08449fff557753'
          'bfd047421734629101314f3fb33accc0'

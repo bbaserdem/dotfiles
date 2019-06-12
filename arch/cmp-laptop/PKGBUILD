@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-cmp-laptop
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package: Laptop specific configuration"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -9,11 +9,7 @@ licence=(MIT)
 validpgpkeys=('0B7151C823559DD8A7A04CE36426139E2F4C6CCE')
 conflicts=('sbp-cmp-notebook' 'sbp-cmp-workstation' 'sbp-cmp-server')
 install=laptop.install
-source=(
-    'laptop.battery'
-    'laptop.backlight'
-    'laptop.install'
-)
+source=('laptop.install')
 depends=(
     'mesa'
     'lib32-mesa'
@@ -27,12 +23,6 @@ depends=(
     'xf86-video-amdgpu'
     'vulkan-radeon'
 )
-
-package() {
-    install -dm 0755 "${pkgdir}/etc/udev/rules.d"
-    install -Dm 0644 laptop.backlight "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
-    install -Dm 0644 laptop.battery   "${pkgdir}/etc/udev/rules.d/91-battery.rules"
-}
 md5sums=('8ae4c2675fe3966171c274f86a6ffef4'
          '3d182f82920b7f1df6a371cc1f273d6c'
          '1b0f574670ca407cec14a7ac525e0e20')
