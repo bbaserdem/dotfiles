@@ -1017,8 +1017,7 @@ todo () {
     _file="${HOME}/Documents/Todo"
 
     get_text () {
-        _jso="$(todo --porcelain list --sort priority)"
-        _txt="$(echo "${_jso}" | jq -r '.[0]."summary"')"
+        _txt="$(todo --porcelain list --sort priority | jq -r '.[0]."summary"')"
 
         case $_format in
             pango|i3|i3blocks|sway)

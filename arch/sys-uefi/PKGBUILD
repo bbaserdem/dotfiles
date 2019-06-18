@@ -1,7 +1,7 @@
 # Maintainer: Batuhan Baserdem <baserdem.batuhan@gmail.com>
 pkgname=sbp-sys-uefi
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package: UEFI specific system libraries"
 arch=('any')
 url="https://github.com/bbaserdem/dotfiles"
@@ -13,12 +13,9 @@ install=uefi.install
 source=(
     'uefi.install'
     'uefi.kernel.conf.example'
-    'uefi.longterm.hook'
     'uefi.refind.conf.example'
-    'uefi.refind.hook'
     'uefi.refind.update'
     'uefi.signscript'
-    'uefi.stable.hook'
 )
 depends=(
     'efibootmgr'
@@ -33,10 +30,7 @@ package() {
     install -dm 0750 "${pkgdir}/etc/refind.d/keys"
     install -Dm 0755 uefi.refind.conf.example   "${pkgdir}/esp/EFI/rEFInd/refind.conf.example"
     install -Dm 0755 uefi.kernel.conf.example   "${pkgdir}/boot/refind_linux.conf.example"
-    install -Dm 0644 uefi.longterm.hook         "${pkgdir}/etc/pacman.d/hooks/11-lts.hook"
-    install -Dm 0644 uefi.stable.hook           "${pkgdir}/etc/pacman.d/hooks/11-stable.hook"
     install -Dm 0755 uefi.refind.update         "${pkgdir}/usr/share/refind/update-refind.sh"
-    install -Dm 0644 uefi.refind.hook           "${pkgdir}/etc/pacman.d/hooks/12-refind.hook"
     install -Dm 0755 uefi.signscript            "${pkgdir}/usr/bin/sbsign.sh"
 }
 md5sums=('563631a53ee1bc575f5cb8abcb5f6e64'

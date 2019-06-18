@@ -2,7 +2,6 @@
 
 I'm documenting here, and following from the handbook.
 
-
 # Prepreation
 
 I will be chrooting from another OS (Arch).
@@ -11,8 +10,8 @@ Also, I assume partitioning is done, and things are mounted at `/gentoo`.
 
 # Portage
 
-As I am speaking, I'm putting all the packages I install into set files
-Organiving them with spaces for now, but will fix it later.
+As I am speaking, I'm putting all the packages I install into set files.
+I set up etc-keeper to version control everything.
 if emerge wants changes, run `etc-update` afterwards.
 
 ## Tarball
@@ -22,6 +21,12 @@ After setting up partitions, all I did was unpack it.
 ```
 cd /gentoo
 sudo tar xpvf /home/sbp/Downloads/stage3-amd64-20190124T214501Z.tar.xz --xattrs-include='*.*' --numeric-owner
+```
+
+On top of this, I cloned the etcfiles repo to tmp, and copied over the configuration.
+
+```
+sudo cp --force --recursive -a /tmp/etcfiles/. /gentoo/etc/
 ```
 
 Then chrooting (my chroot-os script needs /bin/bash as second argument) works.
