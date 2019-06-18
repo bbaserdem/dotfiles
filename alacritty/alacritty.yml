@@ -43,8 +43,8 @@ colors:
     - { index: 20, color: '0xa09f93' }
     - { index: 21, color: '0xe8e6df' }
 
-# env:
-  # WINIT_HIDPI_FACTOR: 1
+env:
+  WINIT_HIDPI_FACTOR: '1'
   # TERM variable
   # TERM: xterm-256color
 
