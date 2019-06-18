@@ -20,6 +20,11 @@ export ZIM_HOME="${ZDOTDIR}/zimfw"
 
 # GPG public key
 export GPGKEY=0B7151C823559DD8A7A04CE36426139E2F4C6CCE
+# SBP Config
+export SBP_REPO_NAME="sbp"
+export SBP_REPO_URL='s3://sbp-arch/repo'
+export SBP_REPO_SOURCE='/etc/archlinux'
+
 # Pinentry
 export GPG_TTY=$(tty)
 if [[ -n "$SSH_CONNECTION" ]] ;then

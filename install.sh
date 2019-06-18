@@ -57,7 +57,7 @@ symlinks_and_directories () {
 local_update () {
     # Neovim
     echo "Installing local python packages from pip . . ."
-    pip install --user inotify pulsectl
+    pip install --user inotify pulsectl 'https://github.com/dlenski/vpn-slice/archive/master.zip'
 
     # ZIM
     echo "Installing/updating zim . . ."
@@ -98,11 +98,11 @@ local_update () {
 
     # Steam stuff
     echo "Installing steam theme . . ."
-    mkdir -p ~/.local/share/Steam/skins
-    if [ -d "${HOME}/.local/share/Steam/Air" ] ; then
-        git -C "${HOME}/.local/share/Steam/Air" pull
+    mkdir -p "${HOME}/.local/share/Steam/skins"
+    if [ -d "${HOME}/.local/share/Steam/skins/Air" ] ; then
+        git -C "${HOME}/.local/share/Steam/skins/Air" pull
     else
-        git clone 'https://github.com/airforsteam/Air-for-Steam.git' "${HOME}/.local/share/Steam/Air"
+        git clone 'https://github.com/airforsteam/Air-for-Steam.git' "${HOME}/.local/share/Steam/skins/Air"
     fi
 
     # Qutebrowser
