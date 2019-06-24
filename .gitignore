@@ -42,15 +42,6 @@
 !/applications/*.desktop
 /applications/wine**
 
-# ARCH: PKGBUILDS here, grab all
-!/arch
-!/arch/**
-/arch/**.pkg.tar.xz
-/arch/**.tar.gz
-/arch/**/pkg
-/arch/**/src/
-/arch/**.log
-
 # AUTOSTART: Grab all autostart
 !/autostart
 !/autostart/**
