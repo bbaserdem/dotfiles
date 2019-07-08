@@ -205,8 +205,9 @@
 
 # SYSTEMINFO: My python module, grab everything pythonic
 !/systeminfo
-!/systeminfo/*.py
-!/systeminfo/*.md
+!/systeminfo/daemons
+!/systeminfo/systeminfo.py
+!/systeminfo/README.md
 
 # TERMITE: Grab config
 !/termite
