@@ -4,6 +4,7 @@
 " / /|  /  __/ /_/ / |/ / / / / / / /  / /___/ /_/ / / / / __/ / /_/ /
 "/_/ |_/\___/\____/|___/_/_/ /_/ /_/   \____/\____/_/ /_/_/ /_/\__, /
 "                                                             /____/
+" Use Bigfig ascii art
 
 "-----Required-----"
 set nocompatible
@@ -29,7 +30,6 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " Colorscheme
 Plug 'chriskempson/base16-vim'
 " Fuzzy file finder
-Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " Git status
 Plug 'airblade/vim-gitgutter'
@@ -37,7 +37,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Autocomplete for programming
+Plug 'ervandew/SuperTab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
 " Linting (code checking)
 Plug 'w0rp/ale'
 " Snippets (code snippet inserter)
@@ -46,7 +48,8 @@ Plug 'honza/vim-snippets'
 " Ctags manager
 Plug 'ludovicchabant/vim-gutentags'
 " Matlab editor
-Plug 'daeyun/vim-matlab'
+Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
 Plug 'lervag/vimtex'
 Plug 'mhinz/neovim-remote'
@@ -168,12 +171,29 @@ let g:airline#extensions#gutentags#enabled=1
 "------------------------------"
 " Deoplete is autocompletion engine
 "   Press tab to open autocompletion menu, and tab to navigate.
-let g:deoplete#enable_at_startup = 1                    " Start deoplete
-let g:deoplete#disable_auto_complete = 1                " Stop auto prompt
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-let g:deoplete#omni#functions = {}
-let g:deoplete#sources = {}
-let g:deoplete#sources['_'] = ['file', 'ultisnips']
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('auto_complete', v:false)
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+call deoplete#custom#source('ale', 'rank', 1)
+
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+"------------------------------"
+"              __              "
+" | | | _|_ o (_  ._  o ._   _ "
+" |_| |  |_ | __) | | | |_) _> "
+"                       |      "
+"------------------------------"
+" Macro parser
+let g:UltiSnipsExpandTrigger="<C-j>"
+"   Use Ctrl + hl to move through units
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
 "------------"
 "            "
@@ -207,30 +227,19 @@ let g:gutentags_generate_on_missing=1
 "          "
 "----------"
 " Fuzzy file finder
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-let g:fzf_layout = { 'left': '~20%' }
+
+let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_history_dir = '~/.cache/fzf-history'
 
 " Open files in vertical horizontal split
 nnoremap <silent> <Leader>f :call fzf#run({
 \   'right': winwidth('.') / 2,
 \   'sink':  'vertical botright split' })<CR>
-
-"------------------------------"
-"              __              "
-" | | | _|_ o (_  ._  o ._   _ "
-" |_| |  |_ | __) | | | |_) _> "
-"                       |      "
-"------------------------------"
-" Macro parser
-"   Use Ctrl + hl to move through units
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsJumpForwardTrigger="<C-l>"
-let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
 "---------------------------------------"
 "                                       "
@@ -239,7 +248,7 @@ let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 "                                       "
 "---------------------------------------"
 " (Mostly) Syntax highlighting for matlab
-"let g:matlab_auto_mappings = 1          "automatic mappings disabled
+let g:matlab_auto_mappings = 0          "automatic mappings disabled
 let g:matlab_server_split = 'vertical'  "launch the server in a vertical split
 let g:matlab_server_launcher = 'tmux'   "launch the server in a tmux split
 

@@ -1,20 +1,18 @@
 #!/bin/env python
 """
-Wrapper around printing blocklet information
+Formatting wrapper around system monitoring daemons
 """
 
-# Standart libraries
 import argparse
 import json
 import os
 import re
 import sys
-from subprocess import Popen
+import subprocess
 from threading import Thread
 
-# Third party packages
-
-# Self modules
+# Name of daemons script
+CMD = '/home/sbp/.config/systeminfo/daemons'
 
 # Status bar colors: base16-default-dark
 COLOR = {
@@ -35,50 +33,6 @@ COLOR = {
     'base0E': 'ba8baf',
     'base0F': 'a16946'
 }
-
-# Needed stuff for namespace
-DVNL = open(os.devnull, 'wb')
-PRSR = argparse.ArgumentParser('Modules to print system info')
-PRSR.add_argument('-c', '--color', help="Specify accent color")
-PRSR.add_argument('-m', '--method', help="Specify output program")
-PRSR.add_argument('-t', '--transparency', help="Specify background transparency")
-NSPC = PRSR.parse_args()
-
-def get_config(name, fallback='N/A'):
-    """ Function to get specific config option from environment """
-    # Force string type
-    if not isinstance(name, str):
-        name = str(name)
-    # Get argument
-    if name in vars(NSPC):
-        output = vars(NSPC)[name]
-    elif os.getenv(name):
-        output = os.getenv(name)
-    else:
-        output = fallback
-    # Random OS variable control
-    if output is None:
-        output = fallback
-    return output
-
-def bar_info_init():
-    """ Returns the class for the specific bar type """
-    # Get environment variable
-    method = get_config('method', fallback='polybar')
-    # Return the proper object
-    if method == 'polybar':
-        output = PolyBarInfo()
-    elif method == 'i3bar':
-        output = I3BarInfo()
-    elif method == 'waybar':
-        output = WayBarInfo()
-    elif method == 'console':
-        output = ConsoleInfo()
-    else:
-        print('Defaulting to polybar style . . .')
-        output = PolyBarInfo()
-    return output
-
 # base01 is status bar background
 COLOR['background'] = COLOR['base01']
 COLOR['bkg'] = COLOR['base01']
@@ -121,6 +75,58 @@ ANSI = {
     'bold': '\u001b[1m',
     'reset': '\u001b[0m'}
 
+
+
+# Get command line arguments
+DVNL = open(os.devnull, 'wb')
+PRSR = argparse.ArgumentParser('Modules to print system info')
+PRSR.add_argument('-c', '--color', help="Specify accent color")
+PRSR.add_argument('-m', '--method', help="Specify output program")
+PRSR.add_argument('-t', '--transparency', help="Specify background transparency")
+PRSR.add_argument('MODULE', help="Daemon module to run", type=str)
+NSPC = PRSR.parse_args()
+
+
+
+def get_config(name, fallback='N/A'):
+    """ Function to get specific config option from environment """
+    # Force string type
+    if not isinstance(name, str):
+        name = str(name)
+    # Get argument
+    if name in vars(NSPC):
+        output = vars(NSPC)[name]
+    elif os.getenv(name):
+        output = os.getenv(name)
+    else:
+        output = fallback
+    # Random OS variable control
+    if output is None:
+        output = fallback
+    return output
+
+
+
+def bar_info_init():
+    """ Returns the class for the specific bar type """
+    # Get environment variable
+    method = get_config('method', fallback='polybar')
+    # Return the proper object
+    if method == 'polybar':
+        output = PolyBarInfo()
+    elif method == 'i3bar':
+        output = I3BarInfo()
+    elif method == 'waybar':
+        output = WayBarInfo()
+    elif method == 'console':
+        output = ConsoleInfo()
+    else:
+        print('Defaulting to polybar style . . .')
+        output = PolyBarInfo()
+    return output
+
+
+
 # Color printer with defaults and opacity capability
 def color_picker(inp):
     """ Function to parse color strings """
@@ -137,6 +143,8 @@ def color_picker(inp):
 
     return ans
 
+
+
 # Get opacity hex string
 def get_opacity(inp=1):
     """ Function to parse opacity value """
@@ -150,11 +158,22 @@ def get_opacity(inp=1):
     ans = (2-len(ans))*'0' + ans
     return ans
 
+
+
+def exec_shell_command(cmd):
+    """ Function to run arbitrary shell command """
+    subprocess.call(['dash', '-c', cmd],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL)
+
+
+
 # Main object
 class BarInfo:
     """ Main class that contains common bar information """
     def __init__(self):
         # Initialize default variables
+        self.module = get_config('MODULE')
         self.foreground = color_picker('frg')
         self.background = color_picker('bkg')
         self.muteground = color_picker('mute')
@@ -162,51 +181,50 @@ class BarInfo:
         # Initialize the fields that will transform the format
         self.format = {
             'output' : '',
-            'color' : color_picker(get_config('color', fallback='red')),
+            'accent' : color_picker(get_config('color', fallback='red')),
             'foreground' : self.foreground,
             'background' : self.background,
             'opacity' : get_opacity(get_config('transparency', fallback='1.0')),
             'prefix' : '',
             'suffix' : '',
-            'act1' : '',
-            'act2' : '',
-            'act3' : '',
-            'act4' : '',
-            'act5' : ''}
-        # Flag to see if text needs to be muted
-        self.mute = False
-        # Initialize click actions
-        self.mouse_left = lambda *args: None
-        self.mouse_middle = lambda *args: None
-        self.mouse_right = lambda *args: None
-        self.mouse_scroll_up = lambda *args: None
-        self.mouse_scroll_down = lambda *args: None
-
-    def add_action(self, command, button):
-        """ Function to add command calls to click events """
-        self.format['act'+str(button)] = command
+            'on-click-left' : 'true',
+            'on-click-right' : 'true',
+            'on-click-middle' : 'true',
+            'on-scroll-up' : 'true',
+            'on-scroll-down' : 'true',
+            'mute' : False}
+        # Check if there is a listener function
+        self.listen = False
 
     def display(self):
         """ Method to print information out, must be defined individually """
         sys.stdout.flush()
 
-    def listen(self):
-        """ Start a thread to listen for actions and execute them """
-        def choice(stdin):
-            for line in stdin:
-                button = json.loads(line)['button']
-                if button == 1:
-                    self.mouse_left
-                elif button == 2:
-                    self.mouse_middle
-                elif button == 3:
-                    self.mouse_right
-                elif button == 4:
-                    self.mouse_scroll_up
-                elif button == 5:
-                    self.mouse_scroll_down
-        self.thread = Thread(target=choice, args=(sys.stdin,))
-        self.thread.start()
+    def launch(self):
+        """ Execute the main daemon, and collect info from it continuously"""
+        prc = subprocess.Popen([CMD, self.module], stdout=subprocess.PIPE,
+                               stderr=subprocess.DEVNULL)
+        while True:
+            output = prc.stdout.readline()
+            if not output:
+                break
+            inp = json.loads(output)
+            # Overload this dict on top
+            self.format = {**self.format, **inp}
+            # Adapt foreground color
+            if self.format['mute']:
+                self.format['foreground'] = self.muteground
+            else:
+                self.format['foreground'] = self.foreground
+            # Start listener if not started yet
+            if self.listen:
+                self.listen.start()
+                self.listen = False
+            # Print output
+            self.display()
+
+
+
 
 # Print to console
 class ConsoleInfo(BarInfo):
@@ -225,6 +243,11 @@ class ConsoleInfo(BarInfo):
         print(self.text.format_map(self.format))
         # Call the generic method
         BarInfo.display(self)
+
+
+
+
+
 
 # Print to Polybar
 class PolyBarInfo(BarInfo):
@@ -252,37 +275,56 @@ class PolyBarInfo(BarInfo):
         # Initialize fo the main class
         BarInfo.__init__(self)
         # Set actions
-        self.text += '%{{A1:{act1}: A2:{act2}: A3:{act3}: A4:{act4}: A5:{act5}:}}'
+        self.text += ('%{{A1:{on-click-left}: ' +
+                'A2:{on-click-middle}: A3:{on-click-right}: ' +
+                'A4:{on-scroll-up}: A5:{on-scroll-down}:}}')
         # Set colors, foreground, background and underline
-        self.text += '%{{B#{opacity}{background} u#{color} +u}}'
+        self.text += '%{{B#{opacity}{background} u#{accent} +u}}'
         # Display prefix
-        self.text += '%{{F#{color}}}{prefix}%{{F-}}'
+        self.text += '%{{F#{accent}}}{prefix}%{{F-}}'
         # Text display
         self.text += '%{{F#{foreground}}}{output}%{{F-}}'
         # Display postfix
-        self.text += '%{{F#{color}}}{suffix}%{{F-}}'
+        self.text += '%{{F#{accent}}}{suffix}%{{F-}}'
         # Finalize text formatting
         self.text += '%{{B- -u u-}}'
         # Finalize action formatting
         self.text += '%{{A A A A A}}'
 
-    def add_action(self, command, button):
-        """ Need to overload to escape the string properly """
-        BarInfo.add_action(self, command, button)
-        # Need to escape colon in script for lemonbar tags
-        ind = 'act'+str(button)
-        self.format[ind] = self.format[ind].replace(':', r'\:')
-
     def display(self):
-        if self.mute:
-            self.format['foreground'] = self.muteground
-        else:
-            self.format['foreground'] = self.foreground
+        # Correct the action strings for lemonbar tags
+        self.format['on-click-left'] = self.format['on-click-left'].replace(':', r'\:')
+        self.format['on-click-right'] = self.format['on-click-right'].replace(':', r'\:')
+        self.format['on-click-middle'] = self.format['on-click-middle'].replace(':', r'\:')
+        self.format['on-scroll-up'] = self.format['on-scroll-up'].replace(':', r'\:')
+        self.format['on-scroll-down'] = self.format['on-scroll-down'].replace(':', r'\:')
+        # Print the formatted line
         print(self.text.format_map(self.format))
         # Call the generic method
         BarInfo.display(self)
 
+
+
+
+
+
+
 # Print to i3bar
+def i3_respond(stdin, form):
+    """ Respond to stdin """
+    for line in stdin:
+        button = json.loads(line)['button']
+        if button == 1:
+            exec_shell_command(form['on-click-left'])
+        elif button == 2:
+            exec_shell_command(form['on-click-right'])
+        elif button == 3:
+            exec_shell_command(form['on-click-middle'])
+        elif button == 4:
+            exec_shell_command(form['on-scroll-up'])
+        elif button == 5:
+            exec_shell_command(form['on-scroll-down'])
+
 class I3BarInfo(BarInfo):
     """ Class to output JSON format for i3blocks
     I3 FORMATTINC
@@ -303,9 +345,9 @@ class I3BarInfo(BarInfo):
         BarInfo.__init__(self)
         # Define the formatting for i3bar protocol (color and background set)
         self.jlist = {
-            'color' : self.foreground,
-            'background' : self.format['background'],
+            'color' : '',
             'full_text' : '',
+            'short_text' : self.module,
             'min_width' : 0,
             'align' : 'left',
             'urgent' : False,
@@ -313,27 +355,23 @@ class I3BarInfo(BarInfo):
             'seperator_block_width' : 1,
             'markup' : 'pango'}
         # Display prefix
-        self.text += "<span color='{color}'>{prefix}</span>"
+        self.text += "<span color='{accent}'>{prefix}</span>"
         self.text += "{output}"
-        self.text += "<span color='{color}'>{suffix}</span>"
-        self.listen = False
+        self.text += "<span color='{accent}'>{suffix}</span>"
+        self.listen = Thread(target=i3_respond, args=(sys.stdin, self.format,))
 
     def display(self):
-        # If was not already listening, start to listen to events
-        if not self.listen:
-            self.listen = Thread(target=self.i3_action_listen,
-                                 args=(sys.stdin, self.format,))
-            self.listen.start()
-
-        if self.mute:
-            self.jlist['color'] = self.muteground
-        else:
-            self.jlist['color'] = self.foreground
-
+        """ Modify the jsonlist to be sent to i3bar """
+        self.jlist = {**self.jlist, **self.format}
+        self.jlist['color'] = self.format['foreground']
         self.jlist['full_text'] = self.text.format_map(self.format)
         print(json.dumps(self.jlist))
         # Call the generic method
         BarInfo.display(self)
+
+
+
+
 
 # Print to waybar
 class WayBarInfo(BarInfo):
@@ -354,30 +392,22 @@ class WayBarInfo(BarInfo):
             'tooltip' : False}
 
         # Display prefix
-        self.text += "<span color='{color}'>{prefix}</span>"
+        self.text += "<span color='{accent}'>{prefix}</span>"
         self.text += "{output}"
-        self.text += "<span color='{color}'>{suffix}</span>"
-
-    def add_action(self, command, button):
-        """ Overload this command to properly format actions """
-        if button == 1:
-            self.jlist['on-click'] = command
-        elif button == 2:
-            self.jlist['on-click-middle'] = command
-        elif button == 3:
-            self.jlist['on-click-right'] = command
-        elif button == 4:
-            self.jlist['on-scroll-up'] = command
-        elif button == 5:
-            self.jlist['on-scroll-down'] = command
+        self.text += "<span color='{accent}'>{suffix}</span>"
 
     def display(self):
-        if self.mute:
-            self.jlist['color'] = self.muteground
-        else:
-            self.jlist['color'] = self.foreground
-
+        self.jlist = {**self.jlist, **self.format}
+        # Custom theme
+        self.jlist['color'] = self.format['background']
+        self.jlist['background'] = self.format['background']
+        self.jlist['format'] = self.text.format_map(self.format)
         self.jlist['full_text'] = self.text.format_map(self.format)
         json.dumps(self.jlist)
         # Call the generic method
         BarInfo.display(self)
+
+
+if __name__ == '__main__':
+    x = bar_info_init()
+    x.launch()

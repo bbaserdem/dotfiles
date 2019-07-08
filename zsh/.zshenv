@@ -59,6 +59,10 @@ do
 done
 unset lib
 
+# Just steam things
+export LD_PRELOAD="${LD_PRELOAD}:/usr/lib/libgio-2.0.so.0:/usr/lib/libglib-2.0.so.0"
+export STEAM_RUNTIME=0
+
 # export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 export OCTAVE_HISTFILE="${XDG_CACHE_HOME}/octave-hsts"
 export OCTAVE_SITE_INITFILE="${XDG_CONFIG_HOME}/octave/octaverc"

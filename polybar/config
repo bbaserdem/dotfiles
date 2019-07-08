@@ -89,7 +89,7 @@ cursor-scroll = ns-resize
 bottom = false
 modules-left = bspwm-desktop bspwm-mode calendar todo
 modules-center = time
-modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd pulseaudio keyboard backlight battery
+modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd audio keyboard backlight battery
 
 [bar/i3]
 inherit = bar/top
@@ -473,9 +473,9 @@ format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 label-muted-foreground = ${colors.mut}
 
-[module/pulseaudio]
+[module/audio]
 type = custom/script
-exec = ~/.config/systeminfo/painfo.py -c cyan -m polybar -t D8
+exec = ~/.config/systeminfo/systeminfo.py -c cyan -m polybar -t D8 audio
 tail = true
 interval = 0
 label = %output%
