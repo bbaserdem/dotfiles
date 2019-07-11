@@ -71,6 +71,7 @@ call plug#end()
 "-------------------------"
 let base16colorspace=256
 colorscheme base16-onedark
+
 "-----Base stuff-----"
 set number                  " Show line numbers
 set showmatch               " Show matching brackets
@@ -84,7 +85,6 @@ set nojoinspaces            " Prevents inserting two spaces after punctuation on
 set ignorecase              " Make searching case insensitive
 set smartcase               " ... unless the query has capital letters.
 set spelllang=en_us                                 " Turn on spellcheck
-let g:grammarous#languagetool_cmd = 'languagetool'  " Grammar check
 set colorcolumn=80                                  " Highlight 80th column
 set laststatus=2                                    " Always show status bar
 set updatetime=500                                  " Plugin update time >4s
@@ -92,6 +92,9 @@ set mouse=a                                         " Disable mouse click
 set splitbelow              " Horizontal splitsgo down
 set splitright              " Vertical splits go right
 set showtabline=2           " For airline on top
+let g:grammarous#languagetool_cmd = 'languagetool'  " Grammar check
+let g:is_posix = 1
+
 
 " Tell Vim which characters to show for expanded TABs,
 if &listchars ==# 'eol:$'

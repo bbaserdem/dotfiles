@@ -1,0 +1,53 @@
+#!/bin/dash
+# vim:ft=sh
+
+# Pulseaudio daemon
+# Fix this to use only pacmd and pactl
+_left='/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle'
+_right="/usr/bin/pavucontrol & disown"
+_up='/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%'
+_down='/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%'
+
+get_text() {
+    _sink="$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')"
+    _line="$(pactl list sinks short | grep -n "${_sink}" | cut -d : -f 1)"
+    _defn="$(pactl list sinks | sed -n 's|^\sActive Port: \([^\s]*\)|\1|p' | sed -n "${_line}p")"
+    _ismt="$(pactl list sinks | sed -n 's|^\sMute: \([^\s]*\)|\1|p' | sed -n "${_line}p")"
+    _volm="$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p' | sed -n "${_line}p" | awk '
+        BEGIN{ RS=" "; vol=0; n=0; }
+        /[0-9]+%$/ { n++; vol+=$1; }
+        END{ if(n>0) { printf( "%.0f", vol/n ); } }' )"
+
+    case "$_defn" in
+        *hdmi*)                     _icon="﴿" ;;
+        *headset*|*a2dp*|*hifi*)    _icon="" ;;
+        *headphones*)               _icon="" ;;
+        *speaker*)                  _icon="蓼" ;;
+        *network*)                  _icon="爵" ;;
+        *analog*)                   _icon="" ;;
+        *)                          _icon="" ;;
+    esac
+
+    if echo $_sink | grep -q 'bluez' ; then
+        _icon=""
+    fi
+
+    [ $_ismt = 'yes' ] && _ismt='true' || _ismt='false'
+
+    _js="{ "
+    _js="${_js}  \"output\":\"${_volm}\""
+    _js="${_js}, \"prefix\":\"${_icon} \""
+    _js="${_js}, \"mute\":${_ismt}"
+    _js="${_js}, \"on-click-left\":\"${_left}\""
+    _js="${_js}, \"on-click-right\":\"${_right}\""
+    _js="${_js}, \"on-scroll-up\":\"${_up}\""
+    _js="${_js}, \"on-scroll-down\":\"${_down}\""
+    _js="${_js} }"
+
+    echo $_js
+}
+
+get_text
+/usr/bin/pactl subscribe | while read -r line ; do
+    echo $line | grep -q -e "sink" -e "'change' on server #" && get_text
+done

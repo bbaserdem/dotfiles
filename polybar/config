@@ -241,7 +241,7 @@ format = <label-mode>
 
 [module/calendar]
 type = custom/script
-exec = ~/.config/systeminfo/calendar.py -c brown -m polybar -t D8
+exec = ~/.config/systeminfo/wrapper -c brown -m polybar -t D8 calendar
 exec-if = [ -d ~/Documents/Calendar ]
 tail = true
 interval = 0
@@ -475,7 +475,7 @@ label-muted-foreground = ${colors.mut}
 
 [module/audio]
 type = custom/script
-exec = ~/.config/systeminfo/systeminfo.py -c cyan -m polybar -t D8 audio
+exec = ~/.config/systeminfo/wrapper -c cyan -m polybar -t D8 audio
 tail = true
 interval = 0
 label = %output%
