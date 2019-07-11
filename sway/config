@@ -56,7 +56,7 @@ set $tra #282828CC
 #-----HARDWARE-----#
 #------------------#
 
-input "*" {
+input type:touchpad {
     # Touchpad
     tap                 enabled
     scroll_method       two_finger
@@ -67,6 +67,8 @@ input "*" {
     events              enabled
     drag_lock           disabled
     accel_profile       adaptive
+}
+input type:keyboard {
     # Keyboard
 	xkb_layout          "us,tr,us"
 	xkb_variant         "dvorak,f,"
@@ -164,7 +166,7 @@ assign [class="qutebrowser"]    $ws2
 assign [class="Firefox"]        $ws2
 # Desktop 3 is for terminal
 set $ws3 "3:"
-assign [class="Termite"]        $ws3
+assign [class="alacritty"]      $ws3
 assign [class="kitty"]          $ws3
 # Desktop 4 is for matlab
 set $ws4 "4:"
@@ -219,15 +221,11 @@ assign [class="Pamac-manager"]          $ws0
 #-------------------#
 
 # Terminal
-bindsym $Meta+Return            exec "$TERMINAL"
+bindsym $Meta+Return            exec "/usr/bin/alacritty"
 # Rofi (launcher)
 bindsym $Meta+space             exec "/usr/bin/rofi -show drun"
-# Daemons
-bindsym $Meta+d                 exec "$XDG_CONFIG_HOME/rofi/systemd"
 # Password
-bindsym $Meta+p                 exec "$XDG_CONFIG_HOME/rofi/pass"
-# Emoji
-bindsym $Meta+e                 exec "/usr/bin/rofi -show emoji -modi emoji"
+bindsym $Meta+p                 exec "$XDG_CONFIG_HOME/rofi/rofi-pass"
 # reload the configuration file
 bindsym $Meta+Shift+Escape      exec "/usr/bin/swaymsg reload"
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -235,19 +233,19 @@ bindsym $Meta+Ctrl+Escape       exec "/usr/bin/swaymsg restart"
 # exit i3 (logs you out of your X session)
 bindsym $Meta+$Alt+Escape       exec "/usr/bin/swaymsg exit"
 # Music controls, with signal to 2
-bindsym XF86AudioPlay           exec "mpc toggle"
-bindsym XF86AudioStop           exec "mpc stop"
-bindsym XF86AudioNext           exec "mpc next"
-bindsym XF86AudioPrev           exec "$XDG_CONFIG_HOME/scripts/playprev.sh"
+bindsym XF86AudioPlay           exec "/usr/bin/mpc toggle"
+bindsym XF86AudioStop           exec "/usr/bin/mpc stop"
+bindsym XF86AudioNext           exec "/usr/bin/mpc next"
+bindsym XF86AudioPrev           exec "/usr/bin/mpc-prev"
 # Sound controls, with signal to 1
 bindsym XF86AudioRaiseVolume    exec "/usr/bin/pamixer --increase 5"
 bindsym XF86AudioLowerVolume    exec "/usr/bin/pamixer --decrease 5"
 bindsym XF86AudioMute           exec "/usr/bin/pamixer --toggle-mute"
 # Brightness settings
-bindsym XF86MonBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_SCR s +5%"
-bindsym XF86MonBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_SCR s 5%-"
-bindsym XF86KbdBrightnessUp     exec "/usr/bin/brightnessctl -d $BRI_KBD s +1"
-bindsym XF86KbdBrightnessDown   exec "/usr/bin/brightnessctl -d $BRI_KBD s 1-"
+bindsym XF86MonBrightnessUp     exec "/usr/bin/light -A 5"
+bindsym XF86MonBrightnessDown   exec "/usr/bin/light -U 5"
+bindsym XF86KbdBrightnessUp     exec "/usr/bin/light -Ars sysfs/leds/asus::kbd_backlight 1"
+bindsym XF86KbdBrightnessDown   exec "/usr/bin/light -Urs sysfs/leds/asus::kbd_backlight 1"
 # Power Button
 bindsym XF86PowerOff            exec "$XDG_CONFIG_HOME/sway/power.sh"
 

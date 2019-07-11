@@ -1,0 +1,19 @@
+#!/bin/dash
+_ram=""
+_swap="力"
+# Value not working, fix later
+
+get_text () {
+    _prc="$(free -m | grep Mem | awk '{ printf("%.1f", $3/$2 * 100.0) }')"
+    _val="$(free -m | grep Mem | awk '{ printf("%.2fGB",($3*1.0)/(1024.0)) }' )"
+    _val="$(free -m | grep Swap | awk '{ printf( $3 ) }' | numfmt --to=iec-i --suffix=B)"
+    _txt=""
+    
+    _js="{ \"format\":\"${_val} (${_prc})${_val}\""
+    echo "${_js}, \"prefix\":\"${_ram} \", \"suffix\":\" ${_swap}\" }"
+}
+
+while : ; do
+    get_text
+    sleep 2
+done

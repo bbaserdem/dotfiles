@@ -1,0 +1,12 @@
+#!/bin/dash
+
+_ico=""
+_cpu1="$(grep 'cpu ' /proc/stat)"
+
+while : ; do
+    sleep 1
+    _cpu2="$(grep 'cpu ' /proc/stat)"
+    _per="$( echo "${_cpu1} ${_cpu2}" | awk '{ printf( "%.2f", ($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5)) }' )"
+    _cpu1="${_cpu2}"
+    echo "{ \"format\":\"${_per}\", \"prefix\":\"${_ico} \" }"
+done

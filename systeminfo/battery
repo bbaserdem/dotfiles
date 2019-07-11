@@ -27,14 +27,14 @@ get_text() {
         fi
 
         if [ "$_sta" = "Charging" ] ; then
-            _ico="(echo "${_ico}" | tail -n 1)"
+            _ico="$(echo "${_ico}" | awk '{print substr($0,length,1)}')"
         elif [ "$_acp" = "1" ] ; then
             _ico=""
         else
-            _ico="$(echo "${_ico}" | head -n 1)"
+            _ico="$(echo "${_ico}" | awk '{print substr($0,1,1)}')"
         fi
     
-        echo "{\"output\":\"${_num}\", \"prefix\":\"${_ico} \" }"
+        echo "{\"format\":\"${_num}\", \"prefix\":\"${_ico} \" }"
 
     else
         echo "{}"

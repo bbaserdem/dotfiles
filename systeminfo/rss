@@ -1,0 +1,23 @@
+#!/bin/dash
+_ico=""
+_file="${HOME}/Documents/RSS"
+
+get_text () {
+    _txt="$(newsboat -x print-unread | awk '{ print $1 }')"
+    if echo "${_txt}" | grep -q "Error:" ; then
+        _txt=""
+        _mute="true"
+    elif [ "${_txt}" = '0' ] ; then
+        _mute="true"
+    else
+        _mute='false'
+    fi
+
+    echo "{ \"format\":\"${_txt}\", \"prefix\":\"${_ico} \", \"mute\":${_mute} }"
+}
+
+while : ; do
+    get_text
+    sleep 5
+    inotifywait -t -1 -r "${_file}" -e modify -e move -e create -e delete >/dev/null 2>&1 || break
+done

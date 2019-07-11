@@ -1,0 +1,25 @@
+#!/bin/dash
+# Read this better
+
+_ico=""
+
+get_text () {
+    if [ $(hostname) = 'sbplaptop' ] ; then
+        # Can't read this
+        exit
+    elif [ $(hostname) = 'sbpnotebook' ] ; then
+        _spe="$(sensors | grep -i 'fan' | awk '{print $2}' | tr '\n' ',')"
+        _spe="${_spe::-1}"
+    else
+        _spe="$(sensors | grep -i 'fan' | awk '{print $3}' | tr '\n' ',')"
+        _spe="${_spe::-1}"
+    fi
+
+    echo "{ \"format\":\"${_spe}\", \"prefix\":\"${_ico} \" }"
+
+}
+
+while : ; do
+    get_text
+    sleep 2
+done

@@ -1,0 +1,24 @@
+#!/bin/dash
+# vim:ft=sh
+
+_file="${HOME}/Documents/Calendar"
+_ico=""
+_len=52
+
+get_text () {
+    _txt="$(khal list | head -n 1)"
+    _mute='false'
+    if [ "${_txt}" = "No events" ] ; then
+        _mute='true'
+    elif [ "${#_txt}" -gt "${_len}" ] ; then
+        _txt="$(echo $_txt | awk '{print substr($0,1,'$_len'}')…"
+    fi
+
+    echo "{ \"format\":\"${_txt}\", \"mute\":${_mute}, \"prefix\":\"${_ico} \" }"
+}
+
+while : ; do
+    get_text
+    sleep 5
+    inotifywait -r -t -1 "${_file}" -e modify -e move -e create -e delete >/dev/null 2>&1 || break
+done

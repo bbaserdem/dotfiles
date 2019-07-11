@@ -35,7 +35,7 @@ get_text() {
     [ $_ismt = 'yes' ] && _ismt='true' || _ismt='false'
 
     _js="{ "
-    _js="${_js}  \"output\":\"${_volm}\""
+    _js="${_js}  \"format\":\"${_volm}\""
     _js="${_js}, \"prefix\":\"${_icon} \""
     _js="${_js}, \"mute\":${_ismt}"
     _js="${_js}, \"on-click-left\":\"${_left}\""
