@@ -1,0 +1,5 @@
+[counter]
+count=0
+command=printf '{"full_text":"Counter: %s", "count":%d}\n' $count $((count + 1))
+format=json
+interval=once

@@ -56,7 +56,8 @@ Plug 'mhinz/neovim-remote'
 " Grammar checker
 Plug 'rhysd/vim-grammarous'
 " Config file types
-Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'mboughaba/i3config.vim'
+Plug 'aouelete/sway-vim-syntax'
 Plug 'baskerville/vim-sxhkdrc'
 "" Gentoo syntax
 Plug 'gentoo/gentoo-syntax'

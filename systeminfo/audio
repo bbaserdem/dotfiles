@@ -38,7 +38,7 @@ get_text() {
     _js="${_js}  \"format\":\"${_volm}\""
     _js="${_js}, \"prefix\":\"${_icon} \""
     _js="${_js}, \"mute\":${_ismt}"
-    _js="${_js}, \"on-click-left\":\"${_left}\""
+    _js="${_js}, \"on-click\":\"${_left}\""
     _js="${_js}, \"on-click-right\":\"${_right}\""
     _js="${_js}, \"on-scroll-up\":\"${_up}\""
     _js="${_js}, \"on-scroll-down\":\"${_down}\""
@@ -48,6 +48,6 @@ get_text() {
 }
 
 get_text
-/usr/bin/pactl subscribe | while read -r line ; do
+/usr/bin/pactl subscribe 2>/dev/null | while read -r line ; do
     echo $line | grep -q -e "sink" -e "'change' on server #" && get_text
 done

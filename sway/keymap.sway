@@ -1,0 +1,189 @@
+#--------------#
+#-----KEYS-----#
+#--------------#
+
+set $Alt        Mod1
+set $Meta       Mod4
+set $Resize     ""
+set $Gaps       ""
+set $Gaps_In    ""
+set $Gaps_Out   ""
+
+#-------------------#
+#-----LAUNCHERS-----#
+#-------------------#
+
+# Terminal
+bindsym $Meta+Return            exec "/usr/bin/alacritty"
+
+# Toggle scratchpad, and move windows to and from scratchpad
+bindsym F12 scratchpad show
+bindsym Shift+F12 move scratchpad
+
+# Rofi (launcher)
+bindsym $Meta+space             exec "/usr/bin/rofi -show drun"
+
+# Password
+bindsym $Meta+p                 exec "~/.config/rofi/rofi-pass"
+
+# Music controls
+bindsym XF86AudioPlay           exec "/usr/bin/mpc toggle"
+bindsym XF86AudioStop           exec "/usr/bin/mpc stop"
+bindsym XF86AudioNext           exec "/usr/bin/mpc next"
+bindsym XF86AudioPrev           exec "/usr/bin/mpc-prev"
+
+# Sound controls
+bindsym XF86AudioRaiseVolume    exec "/usr/bin/pamixer --increase 5"
+bindsym XF86AudioLowerVolume    exec "/usr/bin/pamixer --decrease 5"
+bindsym XF86AudioMute           exec "/usr/bin/pamixer --toggle-mute"
+
+# Brightness settings
+bindsym XF86MonBrightnessUp     exec "/usr/bin/light -A 5"
+bindsym XF86MonBrightnessDown   exec "/usr/bin/light -U 5"
+bindsym XF86KbdBrightnessUp     exec "/usr/bin/light -Ars sysfs/leds/asus::kbd_backlight 1"
+bindsym XF86KbdBrightnessDown   exec "/usr/bin/light -Urs sysfs/leds/asus::kbd_backlight 1"
+
+# Power Button
+bindsym XF86PowerOff            exec "~/.config/sway/power.sh"
+
+# Wallpaper
+bindsym $Meta+c                 exec "~/.config/sway/wallpaper.sh"
+
+# Screen lock
+bindsym $Meta+Escape            exec "~/.config/sway/lock.sh"
+
+# Screenshot
+bindsym Print                   exec "~/.config/sway/screenshot.sh --full"
+bindsym Shift+Print             exec "~/.config/sway/screenshot.sh --window"
+bindsym $Alt+Print              exec "~/.config/sway/screenshot.sh --region"
+bindsym $Meta+Print             exec "~/.config/sway/screenshot.sh --full --clipboard"
+bindsym $Meta+Shift+Print       exec "~/.config/sway/screenshot.sh --window --clipboard"
+bindsym $Meta+$Alt+Print        exec "~/.config/sway/screenshot.sh --region --clipboard"
+
+# reload the configuration file
+bindsym $Meta+Shift+Escape      exec "/usr/bin/swaymsg reload"
+
+# Exit sway
+bindsym $Meta+$Alt+Shift+Escape       exec "/usr/bin/swaymsg exit"
+
+#-----------------#
+#-----CONTROL-----#
+#-----------------#
+
+# Kill window
+bindsym $Meta+q kill
+# change focus
+bindsym $Meta+h focus left
+bindsym $Meta+j focus down
+bindsym $Meta+k focus up
+bindsym $Meta+l focus right
+# Focus parent/child
+bindsym $Meta+Up   focus parent
+bindsym $Meta+Down focus child
+# Split the container and toggle the orientation
+bindsym $Meta+period split toggle
+# Screen modes
+bindsym $Meta+m fullscreen
+bindsym $Meta+t layout tabbed
+bindsym $Meta+f floating toggle
+bindsym $Meta+s layout stacking
+bindsym $Meta+o layout toggle split
+# Change focus to tiling/floating
+bindsym $Meta+Shift+f focus mode_toggle
+# Switch to workspace
+bindsym $Meta+Right workspace next
+bindsym $Meta+Left  workspace prev
+bindsym $Meta+1 workspace $ws1
+bindsym $Meta+2 workspace $ws2
+bindsym $Meta+3 workspace $ws3
+bindsym $Meta+4 workspace $ws4
+bindsym $Meta+5 workspace $ws5
+bindsym $Meta+6 workspace $ws6
+bindsym $Meta+7 workspace $ws7
+bindsym $Meta+8 workspace $ws8
+bindsym $Meta+9 workspace $ws9
+bindsym $Meta+0 workspace $ws0
+# Move focused to workspace
+bindsym $Meta+Shift+Right move container to workspace next
+bindsym $Meta+Shift+Left  move container to workspace prev
+bindsym $Meta+Shift+1 move container to workspace $ws1
+bindsym $Meta+Shift+2 move container to workspace $ws2
+bindsym $Meta+Shift+3 move container to workspace $ws3
+bindsym $Meta+Shift+4 move container to workspace $ws4
+bindsym $Meta+Shift+5 move container to workspace $ws5
+bindsym $Meta+Shift+6 move container to workspace $ws6
+bindsym $Meta+Shift+7 move container to workspace $ws7
+bindsym $Meta+Shift+8 move container to workspace $ws8
+bindsym $Meta+Shift+9 move container to workspace $ws9
+bindsym $Meta+Shift+0 move container to workspace $ws0
+# Move workspaces between monitors
+bindsym $Meta+$Alt+Right move workspace to output right
+bindsym $Meta+$Alt+Left  move workspace to output left
+
+#---------------#
+#-----MODES-----#
+#---------------#
+
+# Resizing
+bindsym $Meta+w mode $Resize
+mode $Resize {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Arrange seperations with HJKL
+    bindsym h           resize shrink width  10 px or 10 ppt
+    bindsym j           resize grow   height 10 px or 10 ppt
+    bindsym k           resize shrink height 10 px or 10 ppt
+    bindsym l           resize grow   width  10 px or 10 ppt
+
+    # Increase size for floating windows
+    bindsym Left        resize grow   width  10 px or 10 ppt
+    bindsym Down        resize grow   height 10 px or 10 ppt
+    bindsym Up          resize grow   height 10 px or 10 ppt
+    bindsym Right       resize grow   width  10 px or 10 ppt
+
+    # Decrease size for floating windows
+    bindsym Shift+Left  resize shrink width  10 px or 10 ppt
+    bindsym Shift+Down  resize shrink height 10 px or 10 ppt
+    bindsym Shift+Up    resize shrink height 10 px or 10 ppt
+    bindsym Shift+Right resize shrink width  10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $Meta+g mode $Gaps
+mode $Gaps {
+    bindsym o      mode $Gaps_Out
+    bindsym i      mode $Gaps_In
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym 0       gaps inner current set 0 ; gaps outer current set 0 
+    bindsym Shift+0 gaps inner all     set 0 ; gaps outer all     set 0 
+}
+
+mode $Gaps_In {
+        bindsym plus  gaps inner current plus  5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set   0
+
+        bindsym Shift+plus  gaps inner all plus  5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set   0
+
+        bindsym o      mode $Gaps_Out
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode $Gaps_Out {
+        bindsym plus  gaps outer current plus  5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set   0
+
+        bindsym Shift+plus  gaps outer all plus  5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set   0
+
+        bindsym i      mode $Gaps_In
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}

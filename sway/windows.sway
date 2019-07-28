@@ -1,0 +1,72 @@
+#--------------------#
+#-----WORKSPACES-----#
+#--------------------#
+
+# Dropdown terminal
+for_window [title="^dropdown$"] floating enable, resize set 1920px 420px, move position 0px 0px, move scratchpad, sticky enable
+
+# Desktop 1 is for fullscreen programs
+set $ws1 0: 
+assign [class="Skype"]          $ws1
+assign [class="Rambox"]         $ws1
+assign [class="Qemu.*"]         $ws1
+assign [class=".*Remmina"]      $ws1
+assign [class="Thunar"]         $ws1
+for_window [class="Skype"]      layout tabbed
+for_window [class="Rambox"]     layout tabbed
+for_window [class="Qemu.*"]     layout tabbed
+for_window [class=".*Remmina"]  layout tabbed
+for_window [class="Thunar"]     layout tabbed
+# Desktop 2 is for web browsing
+set $ws2 1: 爵
+assign [class="qutebrowser"]    $ws2
+assign [class="firefox"]        $ws2
+# Desktop 3 is for terminal
+set $ws3 2: 
+assign [app_id="Alacritty"]     $ws3
+assign [class="kitty"]          $ws3
+# Desktop 4 is for matlab
+set $ws4 3: 
+assign [class="MATLAB*"]        $ws4
+assign [class=".*Octave"]       $ws4
+assign [class="Spyder.*"]       $ws4
+for_window [class="MATLAB.*"]   layout stacking
+for_window [class=".*Octave"]   layout stacking
+for_window [class="Spyder*"]    layout stacking
+# Desktop 5 is for reading stuff
+set $ws5 4: 
+assign [class="Zathura"]        $ws5
+assign [class="Evince"]         $ws5
+for_window [class="Zathura"]    $ws5
+# Desktop 6 is for writing
+set $ws6 5: 
+assign [class="libreoffice.*"]  $ws6
+assign [class="Soffice"]        $ws6
+# Desktop 7 is for media viewing
+set $ws7 6: 
+assign [class="mpv"]            $ws7
+assign [class="smplayer"]       $ws7
+assign [class="vlc"]            $ws7
+# Desktop 8 is for image manipulation
+set $ws8 7: 
+assign [class="pdfsam"]         $ws8
+assign [class="Gimp.*"]         $ws8
+assign [class="inkscape"]       $ws8
+assign [class="Blender"]        $ws8
+assign [class="openscad"]       $ws8
+assign [class="Ristretto"]      $ws8
+for_window [class="pdfsam"]     layout stacking
+for_window [class="Gimp.*"]     layout stacking
+for_window [class="inkscape"]   layout stacking
+for_window [class="Blender"]    layout stacking
+for_window [class="openscad"]   layout stacking
+# Desktop 9 is for Steam and games
+set $ws9 8: 
+assign [class="Steam"]          $ws9
+assign [class="Stepmania"]      $ws9
+# Desktop 0 is for setting viewing
+set $ws0 9: 漣
+assign [class="Pavucontrol"]    $ws0
+assign [class="Syncthing GTK"]  $ws0
+assign [class="System.*"]       $ws0
+assign [class="Blueman.*"]      $ws0

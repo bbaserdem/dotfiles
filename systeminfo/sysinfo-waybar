@@ -1,0 +1,81 @@
+#!/bin/env python
+"""
+Formatting wrapper around system monitoring daemons
+"""
+
+import argparse
+import json
+import re
+import sys
+import subprocess
+
+# Status bar colors: base16-default-dark
+COLOR = {
+    'base00': '181818',
+    'base01': '282828',
+    'base02': '383838',
+    'base03': '585858',
+    'base04': 'b8b8b8',
+    'base05': 'd8d8d8',
+    'base06': 'e8e8e8',
+    'base07': 'f8f8f8',
+    'base08': 'ab4642',
+    'base09': 'dc9656',
+    'base0A': 'f7ca88',
+    'base0B': 'a1b56c',
+    'base0C': '86c1b9',
+    'base0D': '7cafc2',
+    'base0E': 'ba8baf',
+    'base0F': 'a16946'
+}
+
+if __name__ == '__main__':
+    # Parse inputs
+    PRSR = argparse.ArgumentParser('Modules to print system info')
+    PRSR.add_argument('name', help="Daemon name to run", type=str)
+    NSPC = PRSR.parse_args()
+
+    # Get requested method
+    METHOD = vars(NSPC)['name']
+
+    # Create formatting string
+    TEXT = '{prefix}{format}{suffix}'
+
+    # Create formatting dict
+    FORM = {'format': '',
+            'prefix': '',
+            'suffix': '',
+            'mute': False}
+
+    # Create output dict
+    OUT = {'text': '', 'class': ''}
+
+    # Start the daemon
+    DAEMON = subprocess.Popen(sys.path[0] + '/' + METHOD,
+                              stdout=subprocess.PIPE,
+                              stderr=subprocess.DEVNULL)
+    while True:
+        # Read all lines as json until termination
+        LINE = DAEMON.stdout.readline()
+        # Exit if terminated
+        if not LINE:
+            break
+        # Read input
+        NEW = json.loads(LINE.decode('utf-8'))
+        # Load onto the formatting dict
+        FORM = {**FORM, **NEW}
+        # If both the prefix and format are empty, skip
+        if FORM['prefix'] == '' and FORM['suffix'] == '' and FORM['format'] == '':
+            print('{}')
+            sys.stdout.flush()
+            continue
+        # Set mute css class
+        if FORM['mute']:
+            OUT['class'] = 'mute'
+        else:
+            OUT['class'] = ''
+        # Format string
+        OUT['text'] = TEXT.format_map(FORM)
+        print(json.dumps(OUT, ensure_ascii=False))
+        # Flush stdout
+        sys.stdout.flush()

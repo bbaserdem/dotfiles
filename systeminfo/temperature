@@ -1,7 +1,6 @@
 #!/bin/dash
 # Fix later
 
-r:-$col_red}"
 _cel="糖"
 
 get_text () {

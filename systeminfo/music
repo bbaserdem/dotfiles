@@ -1,7 +1,6 @@
 #!/bin/dash
 
 _len=32
-_icon=""
 _left='/usr/bin/mpc toggle >/dev/null'
 _down='/usr/bin/mpc >/dev/null'
 _up='/usr/bin/mpc prev >/dev/null'
@@ -11,7 +10,7 @@ get_text () {
 
     _out="$(mpc $_pass status | head -n 1)"
     if [ "${#_out}" -gt "${_len}" ] ; then
-        _out="$(echo $_out | awk '{print substr($0,1,'$_len'}')…"
+        _out="$(echo $_out | awk "{print substr(\$0,1,${_len});}")…"
     fi
 
     _pre="$(mpc $_pass status | tail -n 2 | head -n 1 | awk '{print $1}')"
@@ -35,9 +34,9 @@ get_text () {
         _suf=''
     fi
 
-    _js="{ \"format\":\"${_out}\", \"prefix\":\"${_icon} \", \"mute\":${_mute}"
+    _js="{ \"format\":\"${_out}\", \"prefix\":\" \", \"mute\":${_mute}"
     _js="${_js}, \"on-scroll-down\":\"${_down}\", \"on-scroll-up\":\"${_up}\""
-    echo "${_js}, \"on-click-left\":\"${_left}\", \"suffix\":\"${_suf}\" }"
+    echo "${_js}, \"on-click\":\"${_left}\", \"suffix\":\"${_suf}\" }"
     
 }
 

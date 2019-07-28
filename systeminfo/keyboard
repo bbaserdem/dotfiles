@@ -18,7 +18,6 @@ get_text () {
         _suf=""
     fi
     # Get keymap
-    _ico=""
     _sta="$(xkb-switch -p)"
     _lan="$(echo "${_sta}" | sed 's|\(.*\)(.*)|\1|' | awk '{print toupper($0)}')"
     _lay="$(echo "${_sta}" | grep '(' | sed 's|.*(\(.*\))|\1|')"
@@ -28,15 +27,9 @@ get_text () {
         _lay="$(echo "${_lay}" | awk '{print substr($0,1,3)}')"
     fi
 
-    _js="{ "
-    _js="${_js}  \"format\":\"${_lan}(${_lay})\""
-    _js="${_js}, \"prefix\":\"${_ico} \""
-    _js="${_js}, \"suffix\":\"${_suf}\""
-    _js="${_js}, \"on-click-left\":\"${_left}\""
-    _js="${_js}, \"on-scroll-up\":\"${_up}\""
-    _js="${_js}, \"on-scroll-down\":\"${_down}\""
-    _js="${_js} }"
-    echo "${_js}"
+    _js="{\"format\":\"${_lan}(${_lay})\", \"prefix\":\" \", \"suffix\":\"${_suf}\""
+    _js="${_js}, \"on-click\":\"${_left}\", \"on-scroll-up\":\"${_up}\""
+    echo "${_js}, \"on-scroll-down\":\"${_down}\" }"
 }
 
 blight () {
