@@ -154,7 +154,5 @@ package() {
     install -dm 0755 "${pkgdir}/usr/share/xsessions"
     install -Dm 0755 gui.xinit.session "${pkgdir}/usr/share/xsessions/xinitrc.desktop"
 }
-md5sums=('a9faaccb86ff4b6cbc08449fff557753'
-         'bfd047421734629101314f3fb33accc0'
-         'ba159b8c80fed9b26fc51e7bfba631d5'
+md5sums=('ba159b8c80fed9b26fc51e7bfba631d5'
          'e0b51a6e4c93894663de768d2935b223')

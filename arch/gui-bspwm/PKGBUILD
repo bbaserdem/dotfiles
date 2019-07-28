@@ -16,9 +16,12 @@ depends=(
     'unclutter'     # Hide mouse when idle
     'i3lock'        # Screen locker
     'maim'          # Screenshot utility
-    'polybar-git'   # AUR: Status bar
+    'polybar'       # AUR: Status bar
     'redshift'      # Screen dimmer
     'rofi'          # Application launcher
     'sxhkd'         # Simple X hotkey daemon
     'xss-lock'      # Locks screen on power events
 )
+
+
+

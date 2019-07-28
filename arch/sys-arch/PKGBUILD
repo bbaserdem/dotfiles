@@ -22,11 +22,4 @@ depends=(
     'systemd-sysvcompat'
 )
 
-md5sums=('d5fe0ff8a976b75026f24a5ce3ae5c5e'
-         'b03943dc335d6bf86cc6753b2009f7a8'
-         'aa90fefbdc42a687898020965b6fa575'
-         'a35ddc315dd663272d00ec418e9c1938'
-         '69bfe9ec9d04533ef13317c9826d3700'
-         'b57e09d0bdd118c3c2864bd23823d2e8'
-         '559cce0992362b0c0a753c3801ce24dd'
-         'dcdd1a79323fbaa2ccc1d3ecabc80c07')
+md5sums=('e17ddff4c6559bcadf4bb7ca0a13bb86')
