@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/dash
 # Script to change wallpapers, with different options for office and home
 
 # Set default directory
-if [[ $(hostname) == 'sbpworkstation' ]]; then
+if [ $(hostname) = 'sbpworkstation' ]; then
     _DIR="${HOME}/Pictures/Wallpapers/Dual/"
 else
     _DIR="${HOME}/Pictures/Wallpapers"

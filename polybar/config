@@ -89,7 +89,7 @@ cursor-scroll = ns-resize
 bottom = false
 modules-left = bspwm-desktop bspwm-mode calendar todo
 modules-center = time
-modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd pulseaudio keyboard backlight battery
+modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd audio keyboard backlight battery
 
 [bar/i3]
 inherit = bar/top
@@ -99,17 +99,31 @@ wm-restack = i3
 inherit = bar/top
 wm-restack = bspwm
 
+;=============;
+;   SCRIPTS   ;
+;=============;
 [module/skeleton]
 type = custom/script
-click-left =    echo '{ "button": 1 }' > /proc/%pid%/fd/0
-click-middle =  echo '{ "button": 2 }' > /proc/%pid%/fd/0
-click-right =   echo '{ "button": 3 }' > /proc/%pid%/fd/0
-scroll-up =     echo '{ "button": 4 }' > /proc/%pid%/fd/0
-scroll-down =   echo '{ "button": 5 }' > /proc/%pid%/fd/0
 tail = true
 interval = 0
 label = %output%
 format = <label>
+
+[module/todo]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c brown todo
+
+[module/calendar]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c brown calendar
+
+[module/coretemp]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c red temperature
+
+[module/audio]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c cyan audio
 
 ;==================;
 ;   MODULES-LEFT   ;
@@ -239,31 +253,6 @@ format = <label-state>
 inherit = module/bspwm
 format = <label-mode>
 
-[module/calendar]
-type = custom/script
-exec = ~/.config/systeminfo/calendar.py -c brown -m polybar -t D8
-exec-if = [ -d ~/Documents/Calendar ]
-tail = true
-interval = 0
-label = %output%
-format = <label>
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
-
-[module/todo]
-type = custom/script
-exec = ~/.config/polybar/todo.sh
-exec-if = [ -d ~/Documents/Todo ]
-tail = true
-interval = 0
-label = %output%
-format = <label>
-format-prefix = "省 "
-format-prefix-foreground = ${colors.bro}
-format-underline = ${self.format-prefix-foreground}
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
-
 ;====================;
 ;   MODULES-CENTER   ;
 ;====================;
@@ -307,15 +296,6 @@ format-background = ${colors.bkg}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.ramp-foreground}
 format-warn-foreground = ${self.ramp-foreground}
-
-[module/coretemp]
-type = custom/script
-exec = ~/.config/polybar/coretemp.sh
-interval = 2
-format = <label>
-format-underline = ${colors.red}
-format-foreground = ${self.format-underline}
-format-background = ${colors.bkg}
 
 [module/cpu]
 type = internal/cpu
@@ -472,14 +452,6 @@ format-muted = <label-muted>
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 label-muted-foreground = ${colors.mut}
-
-[module/pulseaudio]
-type = custom/script
-exec = ~/.config/systeminfo/painfo.py -c cyan -m polybar -t D8
-tail = true
-interval = 0
-label = %output%
-format = <label>
 
 [module/keyboard]
 type = internal/xkeyboard

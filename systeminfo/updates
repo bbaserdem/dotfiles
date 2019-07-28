@@ -1,0 +1,35 @@
+#!/bin/dash
+
+get_text () {
+    _dis="$(lsb_release -a | sed -n 's|^Distributor ID:\s\(.*\)$|\1|p')"
+
+    if [ $_dis = 'Arch' ] ; then
+        _ico=''
+        _txt="$(checkupdates 2>/dev/null | wc -l)"
+        [ ! $_txt ] && _txt = ''
+    elif [ $_dis = 'Gentoo' ] ; then
+        _ico=''
+        _txt=''
+    elif [ $_dis = 'Debian' ] ; then
+        _ico=''
+        _txt=''
+    elif [ $_dis = 'Mint' ] ; then
+        _ico=''
+        _txt=''
+    else
+        exit 1
+    fi
+
+    if [ "$_txt" = '0' ] ; then
+        _mute='true'
+    else
+        _mute='false'
+    fi
+
+    echo "{ \"format\":\"${_txt}\", \"prefix\":\"${_ico} \", \"mute\":$_mute }"
+}
+
+while : ; do
+    get_text
+    sleep 60
+done

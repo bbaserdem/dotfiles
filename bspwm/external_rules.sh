@@ -41,7 +41,7 @@ case $class in
     qutebrowser|Firefox)
         DESKTOP="${ws2}";;
     # Desktop 3: Terminal
-    Termite|Alacritty|kitty|Xfce4-terminal)
+    Alacritty|kitty)
         DESKTOP="${ws3}";;
     # Desktop 4: Science
     MATLAB*|*Octave|Spyder*)
@@ -53,16 +53,16 @@ case $class in
     libreoffice*|Soffice)
         DESKTOP="${ws6}";;
     # Desktop 7: Media
-    mpv|smplayer|cantata|vlc)
+    mpv|smplayer|vlc)
         DESKTOP="${ws7}";;
     # Desktop 8: Image
-    pdfsam|Gimp*|inkscape|Blender|openscad|Ristretto)
+    pdfsam|Gimp*|inkscape|Blender|openscad)
         DESKTOP="${ws8}";;
     # Desktop 9: Games
     Steam|Stepmania)
         DESKTOP="${ws9}";;
     # Desktop 0: Settings
-    Pavucontrol|Syncthing*|Pamac*|System*|Blueman*)
+    Pavucontrol|Syncthing*|System*|Blueman*)
         DESKTOP="${ws0}";;
 esac
 

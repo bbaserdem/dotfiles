@@ -1,0 +1,48 @@
+#!/bin/dash
+
+_cap="/sys/class/power_supply/BAT0/capacity"
+_stt="/sys/class/power_supply/BAT0/status"
+_onl="/sys/class/power_supply/AC0/online"
+
+get_text() {
+    if [ -e "${_cap}" ] ; then 
+        _num="$(cat ${_cap})"
+        _sta="$(cat ${_stt})"
+        _acp="$(cat ${_onl})"
+
+        if   [ "$_num" -ge 80 ] ; then
+            _col='green'
+            _ico=""
+        elif [ "$_num" -ge 60 ] ; then
+            _col='yellow'
+            _ico=""
+        elif [ "$_num" -ge 40 ] ; then
+            _col='orange'
+            _ico=""
+        elif [ "$_num" -ge 20 ] ; then
+            _col='red'
+            _ico=""
+        else
+            # White (03)
+            _ico=""
+        fi
+
+        if [ "$_sta" = "Charging" ] ; then
+            _ico="$(echo "${_ico}" | awk '{print substr($0,length,1)}')"
+        elif [ "$_acp" = "1" ] ; then
+            _ico=""
+        else
+            _ico="$(echo "${_ico}" | awk '{print substr($0,1,1)}')"
+        fi
+    
+        echo "{\"format\":\"${_num}\",\"prefix\":\"${_ico} \",\"accent\":\"${_col}\"}"
+
+    else
+        echo "{}"
+    fi
+    }
+
+get_text
+/usr/bin/acpi_listen | while read -r line ; do
+    echo $line | grep -q -e 'battery' && get_text
+done

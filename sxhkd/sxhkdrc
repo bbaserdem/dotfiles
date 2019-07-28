@@ -30,13 +30,9 @@ XF86Audio{Play,Stop,Next,Prev}
     /usr/bin/mpc{ toggle, stop, next,-prev}
 
 # Volume controls
-XF86AudioRaiseVolume
-    if [ "$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"$(pactl list sinks short | grep -n "$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')" | cut -d : -f 1)" | awk 'BEGIN\{ RS=" "; vol=0; n=0; \} /[0-9]+%$/ \{ n++; vol+=$1; \} END\{ if(n>0) \{ printf( "%.0f", vol/n ); \} \}' )" -ge 100 ] ; then /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ 100% ; else /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5% ; fi
-
-# Volume controls
-XF86AudioLowerVolume
-    /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%
-
+XF86Audio{Raise,Lower}Volume
+    /usr/bin/pamixer --{increase,decrease} 5
+#if [ "$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"$(pactl list sinks short | grep -n "$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')" | cut -d : -f 1)" | awk 'BEGIN\{ RS=" "; vol=0; n=0; \} /[0-9]+%$/ \{ n++; vol+=$1; \} END\{ if(n>0) \{ printf( "%.0f", vol/n ); \} \}' )" -ge 100 ] ; then /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ 100% ; else /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5% ; fi
 XF86AudioMute
     /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
@@ -84,9 +80,6 @@ XF86Calculator
 # Close and Kill node
 super + {_,shift + }q
     bspc node --{close,kill}
-# Quit bspwm
-super + alt + Escape
-    bspc quit
 # Change and move focused node
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}

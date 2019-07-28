@@ -1,0 +1,17 @@
+#!/bin/dash
+
+_icr=""
+_ich=""
+
+get_text () {
+    _rfs="$(df -hPl /      | tail -1 | awk '{ printf $3 "/" $2 " (" $5 ")" }' )"
+    _hfs="$(df -hPl /home/ | tail -1 | awk '{ printf $3 "/" $2 " (" $5 ")" }' )"
+    echo "{ \"format\":\"${_rfs}  ${_hfs}\", \"prefix\":\"${_icr} \", \"suffix\":\" ${_ich}\" }"
+}
+
+while : ; do
+    get_text
+    sleep 60
+done
+
+get_loop

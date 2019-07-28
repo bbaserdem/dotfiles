@@ -43,6 +43,7 @@ config.bind('m', 'spawn --detach mpv {url}')
 config.bind( 'M', 'hint links spawn --detach mpv {hint-url}')
 config.bind(',p', 'spawn --userscript qute-pass --dmenu-invocation rofi')
 config.bind(',P', 'spawn --userscript qute-pass --dmenu-invocation rofi --password-only')
+config.bind('gs', 'set-cmd-text --space :quickmark-add {url}')
 
 # Time based locking
 currentTime = datetime.datetime.now()

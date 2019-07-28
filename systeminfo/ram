@@ -1,0 +1,15 @@
+#!/bin/dash
+
+get_text () {
+    _prc="$(free -m | awk '/Mem/ {printf("%.1f", $3/$2*100.0);}')"
+    _ram="$(free -m | awk '/Mem/ {printf("%.2fGB", ($3*1.0)/(1024.0));}')"
+    _swp="$(free -m | awk '/Swap/ {printf($3);}' | numfmt --to=iec-i --suffix=B)"
+    _txt="${_ram} (${_prc})  ${_swp}"
+    
+    echo "{ \"format\":\"${_txt}\", \"prefix\":\" \", \"suffix\":\" 力\" }"
+}
+
+while : ; do
+    get_text
+    sleep 2
+done

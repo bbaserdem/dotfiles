@@ -11,9 +11,8 @@ configuration {
     disable-history: false;
     cycle: false;
     sort: true;
-    levenshtein-sort: false;
     case-sensitive: false;
-    parse-hosts: true;
+    // parse-hosts: true;
     parse-known-hosts: false;
     monitor: "-1";
     filter: "";
@@ -26,13 +25,13 @@ configuration {
     width: 50;
     lines: 16;
     show-icons: true;
-    drun-icon-theme: "Papirus-Dark";
+    // drun-icon-theme: "Papirus-Dark";
     xoffset: 24;
     yoffset: 0;
     eh: 1;
 
     // System Behavior
-    terminal: "st";
+    terminal: "alacritty";
     ssh-client: "ssh";
     ssh-command: "{terminal} -e {ssh-client} {host}";
     run-command: "{cmd}";
@@ -41,7 +40,7 @@ configuration {
     window-command: "xkill -id {window}";
     sidebar-mode: true;
     auto-select: false;
-    matching: "fuzzy";
+    matching: "normal";
     tokenize: true;
     fake-transparency: true;
     fake-background: "screenshot";

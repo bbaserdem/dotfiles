@@ -5,4 +5,4 @@ MimeType=image/gif;
 Exec=env WINEPREFIX="/opt/wine" /usr/bin/wine start /ProgIDOpen giffile %f
 NoDisplay=true
 StartupNotify=true
-Icon=7596_iexplore.0
+Icon=FB4C_iexplore.0

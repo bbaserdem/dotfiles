@@ -20,6 +20,11 @@ export ZIM_HOME="${ZDOTDIR}/zimfw"
 
 # GPG public key
 export GPGKEY=0B7151C823559DD8A7A04CE36426139E2F4C6CCE
+# SBP Config
+export SBP_REPO_NAME="sbp"
+export SBP_REPO_URL='s3://sbp-arch/repo'
+export SBP_REPO_SOURCE='/etc/archlinux'
+
 # Pinentry
 export GPG_TTY=$(tty)
 if [[ -n "$SSH_CONNECTION" ]] ;then
@@ -53,6 +58,10 @@ do
     fi
 done
 unset lib
+
+# Just steam things
+export LD_PRELOAD="${LD_PRELOAD}:/usr/lib/libgio-2.0.so.0:/usr/lib/libglib-2.0.so.0"
+export STEAM_RUNTIME=0
 
 # export LD_LIBRARY_PATH=/usr/lib/xorg/modules/dri/
 export OCTAVE_HISTFILE="${XDG_CACHE_HOME}/octave-hsts"

@@ -13,5 +13,11 @@ bspc config gapless_monocle             true
 bspc config automatic_scheme            longest_side
 bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/external_rules.sh
 
+# Monocle desktops
+bspc desktop $ws1 --layout monocle
+bspc desktop $ws4 --layout monocle
+bspc desktop $ws7 --layout monocle
+bspc desktop $ws8 --layout monocle
+
 # Reassign monitors
-$XDG_CONFIG_HOME/bspwm/desktop_refresh.sh
+$XDG_CONFIG_HOME/bspwm/monitors.sh --refresh
