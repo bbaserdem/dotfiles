@@ -12,15 +12,19 @@ get_text() {
 
         if   [ "$_num" -ge 80 ] ; then
             _col='green'
+            _sta='full'
             _ico=""
         elif [ "$_num" -ge 60 ] ; then
             _col='yellow'
+            _sta=''
             _ico=""
         elif [ "$_num" -ge 40 ] ; then
             _col='orange'
+            _sta='low'
             _ico=""
         elif [ "$_num" -ge 20 ] ; then
             _col='red'
+            _sta='critical'
             _ico=""
         else
             # White (03)
@@ -35,7 +39,7 @@ get_text() {
             _ico="$(echo "${_ico}" | awk '{print substr($0,1,1)}')"
         fi
     
-        echo "{\"format\":\"${_num}\",\"prefix\":\"${_ico} \",\"accent\":\"${_col}\"}"
+        echo "{\"format\":\"${_num}\",\"prefix\":\"${_ico} \",\"accent\":\"${_col}\", \"class\":\"${_sta}\"}"
 
     else
         echo "{}"
