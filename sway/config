@@ -1,7 +1,7 @@
-exec --no-startup-id "export XDG_CURRENT_DESKTOP='sway'"
+# Sway config loader
 include keymap.sway
 include color.sway
 include input.sway
 include main.sway
-include bar.sway
+include waybar.sway
 include windows.sway

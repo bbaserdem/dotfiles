@@ -1,0 +1,259 @@
+[
+    {
+	    "position": "top",
+	    "modules-left": [
+            "custom/updates",
+            "custom/kernel",
+            "custom/email",
+            "custom/rss",
+            "custom/calendar",
+            "custom/todo",
+            "custom/music"
+        ],
+	    "modules-center": [
+            "clock",
+            "custom/day"
+        ],
+	    "modules-right": [
+            "custom/audio",
+            "cpu",
+            "memory",
+            "custom/brightness",
+            "custom/keyboard",
+            "custom/battery"
+        ],
+        "custom/updates": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a cyan updates",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/kernel": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a violet kernel",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false,
+            "interval": "once"
+        },
+        "custom/email": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a yellow email",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/rss": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a green rss",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/calendar": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a brown calendar",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/todo": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a brown todo",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/music": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a red music",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false,
+            "on-click": "mpc toggle",
+            "on-scroll-up": "mpc prev",
+            "on-scroll-down": "mpc next"
+        },
+        "mpd": {
+            "interval": 5,
+            "timeout": 30,
+            "unknown-tag": "",
+            "format": "<span color='#ab4642'></span> {artist} - {title}",
+            "format-stopped": "<span color='#ab4642'></span>",
+            "format-disconnected": "<span color='#ab4642'>ﱙ</span>",
+            "tooltip": true,
+            "tooltip-format": "<span color='#ab4642'></span> {artist} - {title} - {album}",
+            "max-length": 40,
+            "on-click": "mpc toggle",
+            "on-click-right": "mpc stop",
+            "on-scroll-up": "[ \"$(mpc status | awk '/^\\[/ { sub(/\\/.+/,\"\",$3); split($3,a,/:/); print a[1]*60+a[2] }')\" -ge '5' ] && mpc seek 0 || mpc prev"
+        },
+        "custom/clock": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a cyan clock",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "clock": {
+            "interval": 1,
+            "format": "<span color='#86c1b9'></span> {:%H:%M:%S}"
+        },
+        "custom/day": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a indigo day",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/cpu": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a yellow cpu",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "cpu": {
+            "interval": 2,
+            "format": "<span color='#f7ca88'>﬙</span> {usage}"
+        },
+        "custom/memory": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a green ram",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "memory": {
+            "interval": 2,
+            "format": "<span color='#a1b56c'></span> {percentage}"
+        },
+        "custom/audio": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a red audio",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false,
+            "on-click": "pamixer --toggle",
+            "on-scroll-up": "pamixer --increase 5",
+            "on-scroll-down": "pamixer --decrease 5"
+        },
+	    "pulseaudio": {
+		    "tooltip": false,
+		    "scroll-step": 5,
+		    "format": "<span color='#dc9656'>{icon}</span> {volume} {format_source}",
+		    "format-bluetooth": "<span color='#dc9656'>{icon}</span> {volume}  {format_source}",
+            "format-source": "<span color='#dc9656'></span> {volume}",
+            "format-source-muted": "<span color='#dc9656'></span> {volume}",
+		    "format-icons": {
+                "headphones": "",
+                "speaker": "蓼",
+                "hdmi": "﴿",
+                "headset": "",
+                "portable": "",
+                "phone": "",
+                "car": "",
+                "hifi": "﫛",
+			    "default": ""
+		    },
+            "on-click": "pamixer --toggle-mute",
+            "on-click-right": "pavucontrol & disown"
+	    },
+        "custom/brightness": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a cyan brightness",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false,
+            "on-scroll-up": "light -A 5",
+            "on-scroll-down": "light -U 5"
+        },
+        "custom/keyboard": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a indigo keyboard",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false,
+            "on-scroll-up": "light -Ars sysfs/leds/asus::kbd_backlight 1",
+            "on-scroll-down": "light -Urs sysfs/leds/asus::kbd_backlight 1"
+        },
+        "custom/battery": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a frg battery",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        }
+    },
+    {
+        "position": "bottom",
+	    "modules-left": [
+            "sway/workspaces",
+            "sway/mode",
+            "idle_inhibitor"
+        ],
+	    "modules-center": [
+            "sway/window"
+        ],
+	    "modules-right": [
+            "custom/ethernet",
+            "custom/wifi",
+            "custom/tether",
+            "custom/broadcast",
+            "tray"
+        ],
+        "sway/mode": {
+            "format": "{}",
+            "min-length": 3
+        },
+        "sway/workspaces": {
+            "all-outputs": true,
+            "format": "{icon}",
+            "disable-scroll": false,
+            "persistant_workspaces": {
+                "0: ": [],
+                "1: 爵": [],
+                "2: ": [],
+                "3: ": [],
+                "4: ": [],
+                "5: ": [],
+                "6: ": [],
+                "7: ": [],
+                "8: ": [],
+                "9: 漣": [] },
+            "format-icons": {
+                "0: ": "",
+                "1: 爵": "爵",
+                "2: ": "",
+                "3: ": "",
+                "4: ": "",
+                "5: ": "",
+                "6: ": "",
+                "7: ": "",
+                "8: ": "",
+                "9: 漣": "漣" }
+        },
+        "sway/window": {
+            "format": {},
+            "max-length": 50
+        },
+        "idle_inhibitor": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/ethernet": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a green net-ethernet",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/wifi": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a green net-wireless",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/tether": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a green net-tether",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "custom/broadcast": {
+            "exec": "~/.config/systeminfo/sysinfo-waybar -a green net-broadcast",
+            "format": "{}",
+            "return-type": "json",
+		    "tooltip": false
+        },
+        "tray": {
+            "icon-size": 20,
+            "spacing": 7
+        }
+    }
+]

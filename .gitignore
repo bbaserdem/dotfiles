@@ -235,6 +235,10 @@
 !/vifm/colors
 !/vifm/colors/**
 
+# WAYBAR: Grab all
+!/waybar
+!/waybar/**
+
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**

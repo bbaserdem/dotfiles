@@ -1,0 +1,117 @@
+@import "color.css";
+
+/* Generic bar properties */
+* {
+	border: none;
+	font-family: Iosevka;
+	font-size: 14px;
+    transition: none;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+/* General formatting for modules*/
+#mode, #window, #custom-updates, #custom-kernel, #custom-calendar, #custom-todo, #custom-clock, #custom-day, #custom-audio, #custom-music, #custom-email, #custom-rss, #custom-brightness, #custom-keyboard, #custom-updates, #custom-battery, #mpd, #clock, #cpu, #memory, #pulseaudio, #idle_inhibitor, #tray, #custom-ethernet, #custom-wifi, #custom-tether, #custom-broadcast, #custom-temperature, #tray {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    color: @base04;
+    background: transparent;
+	border-radius: 0px;
+	margin-top: 4px;
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+}
+
+/* General formatting for quiet */
+#custom-updates.mute, #custom-calendar.mute, #custom-todo.mute, #custom-clock.mute, #custom-day.mute, #custom-audio.mute, #custom-music.mute, #mpd.paused, #mpd.stopped, #mpd.disconnected, #custom-email.mute, #custom-rss.mute, #custom-brightness.mute, #custom-keyboard.mute, #custom-updates.mute #idle_inhibitor.deactivated, #custom-broadcast.mute #pulseaudio.muted {
+	color: @base03;
+}
+
+/* Borders */
+#custom-updates { border-bottom: 3px solid @base0C; }
+#custom-kernel { border-bottom: 3px solid @base0E; }
+#custom-email { border-bottom: 3px solid @base0A; }
+#custom-rss { border-bottom: 3px solid @base0B; }
+#custom-calendar { border-bottom: 3px solid @base0F; }
+#custom-todo { border-bottom: 3px solid @base0F; }
+#custom-music { border-bottom: 3px solid @base08; }
+#mpd { border-bottom: 3px solid @base08; }
+
+#custom-clock { border-bottom: 3px solid @base0C; }
+#clock { border-bottom: 3px solid @base0C; }
+#custom-day { border-bottom: 3px solid @base0D; }
+
+#custom-audio { border-bottom: 3px solid @base08; }
+#pulseaudio { border-bottom: 3px solid @base08; }
+#custom-temperature { border-bottom: 3px solid @base09; }
+#temperature { border-bottom: 3px solid @base09; }
+#custom-cpu { border-bottom: 3px solid @base0A; }
+#cpu { border-bottom: 3px solid @base0A; }
+#custom-memory { border-bottom: 3px solid @base0B; }
+#memory { border-bottom: 3px solid @base0B; }
+#custom-brightness { border-bottom: 3px solid @base0C; }
+#brightness { border-bottom: 3px solid @base0C; }
+#custom-keyboard { border-bottom: 3px solid @base0D; }
+#custom-battery.critical { border-bottom: 3px solid @base08; }
+#custom-battery.low { border-bottom: 3px solid @base09; }
+#custom-battery { border-bottom: 3px solid @base0A; }
+#custom-battery.full { border-bottom: 3px solid @base0B; }
+#battery.critical { border-bottom: 3px solid @base08; }
+#battery.low { border-bottom: 3px solid @base09; }
+#battery { border-bottom: 3px solid @base0A; }
+#battery.full { border-bottom: 3px solid @base0B; }
+
+#idle_inhibitor { border-top: 3px solid @base0F; }
+#mode { border-top: 3px solid @base04; }
+
+#window { border-top: 3px solid @base04; }
+
+#custom-ethernet { border-top: 3px solid @base0B; }
+#custom-wifi { border-top: 3px solid @base0B; }
+#custom-tether { border-top: 3px solid @base0B; }
+#custom-broadcast { border-top: 3px solid @base0B; }
+#tray { border-top: 3px solid @base04; }
+
+/* Sway stuff */
+#workspaces {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: @base04;
+    background: transparent;
+	border-radius: 0px;
+	margin-top: 4px;
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+}
+#workspaces button {
+    background: transparent;
+    font-weight: bold;
+	border-radius: 0px;
+	margin-top: 0px;
+	margin-top: 0px;
+	margin-left: 3px;
+	margin-bottom: 3px;
+}
+#workspaces button.persistant { color: @base03; }
+#workspaces button.visible { color: @base04; border-top: 3px solid @base04 }
+#workspaces button:hover { color: @base05; border-top: 3px solid @base05 }
+#workspaces button.urgent { color: @base09; border-top: 3px solid @base09 }
+#workspaces button.focused { color: @base0C; border-top: 3px solid @base0C }
+
+/* Custom colors */
+#custom-temperature.critical { background: @base08; color: @base03; }
+#temperature.critical { background: @base08; color: @base03; }
+
+#idle_inhibitor.activated { color: @base0F; }
