@@ -1,8 +1,6 @@
 #!/bin/dash
-_ico=""
-
 while : ; do
     _txt="$(date '+%H:%M:%S')"
-    echo "{ \"format\":\"$(date '+%H:%M:%S')\", \"prefix\":\"${_ico} \" }"
+    echo "{ \"format\":\"$(date '+%H:%M:%S')\", \"prefix\":\" \" }"
     sleep 1
 done

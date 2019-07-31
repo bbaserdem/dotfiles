@@ -17,6 +17,6 @@ get_icon () {
 
 while : ; do
     _moon="$(echo "$(printf "%.0f" "$(echo "scale=2; ( $(date -d "00:00" +%s) - $(date -d "1999-08-11" +%s) )/(60*60*24)" | bc)") % 29.530588853" | bc | awk '{printf("%d",$1+.5)}')"
-    echo "{ \"format\":\"$(date '+%a %d, %b %Y')\", \"prefix\":\"$(get_icon $_moon) \" }"
+    echo "{ \"format\":\"$(date '+%a %d, %b %Y')\", \"prefix\": \" \", \"suffix\":\" $(get_icon $_moon)\" }"
     sleep "$(( $(date -d "tomorrow 0" +%s) - $(date +%s) + 5 ))"
 done

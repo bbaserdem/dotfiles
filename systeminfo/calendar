@@ -2,7 +2,6 @@
 # vim:ft=sh
 
 _file="${HOME}/Documents/Calendar"
-_ico=""
 _len=52
 
 get_text () {
@@ -14,7 +13,7 @@ get_text () {
         _txt="$(echo $_txt | awk '{print substr($0,1,'$_len'}')…"
     fi
 
-    echo "{ \"format\":\"${_txt}\", \"mute\":${_mute}, \"prefix\":\"${_ico} \" }"
+    echo "{ \"format\":\"${_txt}\", \"mute\":${_mute}, \"prefix\":\" \" }"
 }
 
 while : ; do

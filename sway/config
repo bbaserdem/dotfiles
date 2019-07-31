@@ -1,3 +1,4 @@
+exec --no-startup-id "export XDG_CURRENT_DESKTOP='sway'"
 include keymap.sway
 include color.sway
 include input.sway

@@ -1,0 +1,22 @@
+#!/bin/dash
+
+_int="wifi"
+
+get_text () {
+    # Use substr to strip escape seq
+    _ssid="$(iwctl station "${_int}" get-networks | awk '/>/ {printf("%s",substr($2,5));} ' 2>/dev/null)"
+
+    if [ -z "${_ssid}" ] ; then
+        echo '{ "format": "", "mute": true, "prefix": ""}'
+    else
+        echo "{ \"format\": \"${_ssid}\", \"mute\": false, \"prefix\": \" \"}"
+    fi
+}
+
+get_text
+ip monitor | while read line; do
+    if echo $line | grep -q "${_int}" && [ "$_time" != "$(date +%s)" ]; then
+        get_text
+        _time="$(date +%s)"
+    fi
+done

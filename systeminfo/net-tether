@@ -1,0 +1,25 @@
+#!/bin/dash
+
+_int="usbtether"
+
+get_text () {
+    if [ -e "/sys/class/net/${_int}" ] ; then
+        _stat="$(cat "/sys/class/net/${_int}/operstate")"
+        if [ "${_stat}" = 'down' ] ; then
+            echo '{ "format": "", "mute": true, "prefix": " "}'
+        else
+            _ip="$(ip addr show "${_int}" | awk '/inet / {print $2}' | sed 's|\(.*\)\/.*|\1|g')"
+            echo "{ \"format\":\"${_ip}\", \"mute\": false, \"prefix\":\" \" }"
+        fi
+    else
+        echo '{ "format": "", "mute": true, "prefix": ""}'
+    fi
+}
+
+get_text
+ip monitor | while read line; do
+    if echo $line | grep -q "${_int}" && [ "$_time" != "$(date +%s)" ]; then
+        get_text
+        _time="$(date +%s)"
+    fi
+done
