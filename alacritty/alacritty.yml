@@ -121,7 +121,7 @@ cursor:
 live_config_reload: true
 
 #shell:
-#  program: /bin/bash
+#    program: /usr/bin/tmux
 #  args:
 #    - --login
 
@@ -222,6 +222,115 @@ key_bindings:
   #- { key: Key0,     mods: Control,       action: ResetFontSize    }
   #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
   #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  #-----TMUX integration-----#
+    # Regular commands
+  # Command prompt
+  - { key: Grave,    mods: Alt|Shift,   chars: "\x02\x3a" } # :: 3a
+  # Help menu
+  - { key: Slash,    mods: Alt|Shift,   chars: "\x02\x3f" } # ?: 3f
+  # Copy mode
+  - { key: C,        mods: Alt|Shift,   chars: "\x02\x5b" } # [: 5b
+  # Paste mode
+  - { key: V,        mods: Alt|Shift,   chars: "\x02\x5d" } # ]: 5d
+  # Start search
+  - { key: Slash,    mods: Alt,         chars: "\x02\x66" } # f: 66
+  # Show time
+  - { key: Equals,   mods: Alt,         chars: "\x02\x74" } # t: 74
+  # Show messages
+  - { key: Grave,    mods: Alt,         chars: "\x02\x3a" } # ~: 7.
+
+    # Pane manipulation
+  # Create/delete panes
+  - { key: Backslash,mods: Alt,         chars: "\x02\x25" } # %: 25
+  - { key: Minus,    mods: Alt,         chars: "\x02\x22" } # ": 22
+  - { key: D,        mods: Alt,         chars: "\x02\x78" } # x: 78
+  # Navigate panes
+  - { key: H,        mods: Alt,         chars: "\x02\x1b\x4f\x44" } # Left:  1b4f44
+  - { key: L,        mods: Alt,         chars: "\x02\x1b\x4f\x43" } # Right: 1b4f43
+  - { key: J,        mods: Alt,         chars: "\x02\x1b\x4f\x42" } # Down:  1b4f42
+  - { key: K,        mods: Alt,         chars: "\x02\x1b\x4f\x41" } # Up:    1b4f41
+  # Resize panes
+  - { key: H,        mods: Alt|Control, chars: "\x02\x1b\x5b\x31\x3b\x35\x44" } # C-Left:  1b5b313b3544
+  - { key: L,        mods: Alt|Control, chars: "\x02\x1b\x5b\x31\x3b\x35\x43" } # C-Right: 1b5b313b3543
+  - { key: J,        mods: Alt|Control, chars: "\x02\x1b\x5b\x31\x3b\x35\x42" } # C-Down:  1b5b313b3542
+  - { key: K,        mods: Alt|Control, chars: "\x02\x1b\x5b\x31\x3b\x35\x41" } # C-Up:    1b5b313b3541
+  # Select Next pane
+  - { key: Right,    mods: Alt,         chars: "\x02\x6f" } # o: 6f
+  # Move to previously active pane
+  - { key: Up,       mods: Alt,         chars: "\x02\x3b" } # ;: 3b
+  # Rotate panes?
+  - { key: Period,   mods: Alt,         chars: "\x02\x0f" } # Ctrl+o: 0f
+  # Break pane out of window
+  - { key: T,        mods: Alt,         chars: "\x02\x21" } # !: 21
+  # Get pane info
+  - { key: I,        mods: Alt,         chars: "\x02\x71" } # q: 71
+  # Mark pane for selection & unmark
+  - { key: M,        mods: Alt,         chars: "\x02\x6d" } # m: 6d
+  - { key: M,        mods: Alt|Shift,   chars: "\x02\x4d" } # M: 4d
+  # Toggle zoom
+  - { key: Equals,   mods: Alt|Shift,   chars: "\x02\x7a" } # z: 7a
+  # Swap panes
+  - { key: Right,    mods: Alt|Shift,   chars: "\x02\x7b" } # {: 7b
+  - { key: Left,     mods: Alt|Shift,   chars: "\x02\x7d" } # }: 7d
+  # Arrange is preset layout
+  - { key: Space,    mods: Alt,         chars: "\x02\x7d" } #  : 20
+
+    # Window manipulation
+  # Get window info
+  - { key: I,        mods: Alt|Shift,   chars: "\x02\x69" } # i: 69
+  # Rename window
+  - { key: R,        mods: Alt,         chars: "\x02\x2c" } # ,: 2c
+  # Create/delete windows
+  - { key: O,        mods: Alt,         chars: "\x02\x63" } # c: 63
+  - { key: D,        mods: Alt,         chars: "\x02\x26" } # &: 26
+  # Navigate window by id
+  - { key: G,        mods: Alt,         chars: "\x02\x27" } # ': 27
+  # Move window to id
+  - { key: G,        mods: Alt|Shift,   chars: "\x02\x2e" } # .: 2e
+  # Go to window id; 0-9 : 30-39
+  - { key: Key0,     mods: Alt,         chars: "\x02\x30" }
+  - { key: Key1,     mods: Alt,         chars: "\x02\x31" }
+  - { key: Key2,     mods: Alt,         chars: "\x02\x32" }
+  - { key: Key3,     mods: Alt,         chars: "\x02\x33" }
+  - { key: Key4,     mods: Alt,         chars: "\x02\x34" }
+  - { key: Key5,     mods: Alt,         chars: "\x02\x35" }
+  - { key: Key6,     mods: Alt,         chars: "\x02\x36" }
+  - { key: Key7,     mods: Alt,         chars: "\x02\x37" }
+  - { key: Key8,     mods: Alt,         chars: "\x02\x38" }
+  - { key: Key9,     mods: Alt,         chars: "\x02\x39" }
+  # Move to prev/next window
+  - { key: Tab,      mods: Alt,         chars: "\x02\x70" } # p: 70
+  - { key: Tab,      mods: Alt|Shift,   chars: "\x02\x6e" } # n: 6e
+  # Move to previously selected window
+  - { key: Tab,      mods: Alt|Control, chars: "\x02\x6c" } # l: 6c
+  # Pick window iteratively
+  - { key: C,        mods: Alt,         chars: "\x02\x77" } # w: 77
+
+
+    # Session manipulation
+  # Rename session
+  - { key: N,        mods: Alt,         chars: "\x02\x24" } # $: 24
+  # Navigate sessions
+  - { key: LBracket, mods: Alt,         chars: "\x02\x28" } # (: 28
+  - { key: RBracket, mods: Alt,         chars: "\x02\x29" } # ): 29
+
+    # Client commands
+  # Redraw client
+  - { key: R,        mods: Alt|Shift,   chars: "\x02\x72" } # r: 72
+  # Detach client
+  - { key: Q,        mods: Alt,         chars: "\x02\x64" } # d: 64
+  # Choose client to detach
+  - { key: Q,        mods: Alt|Shift,   chars: "\x02\x44" } # D: 44
+  # Select client to attach
+  - { key: S,        mods: Alt,         chars: "\x02\x73" } # s: 73
+  # Send attached client to last session
+  - { key: S,        mods: Alt|Shift,   chars: "\x02\x4c" } # L: 4c
+  # Choose buffer to paste
+  - { key: C,        mods: Alt,         chars: "\x02\x3d" } # =: 3d
+  # List all paste buffers
+  - { key: V,        mods: Alt,         chars: "\x02\x23" } # #: 23
+  # Delete the recent copied buffer of text
+  - { key: X,        mods: Alt,         chars: "\x02\x2d" } # -: 2d
 
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }
