@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Load workspace names
 . $XDG_CONFIG_HOME/bspwm/window_id.sh
@@ -6,12 +6,12 @@
 reload_laptop () {
     echo "Using Laptop"
     # Get xrandr names of monitor and the embedded screen
-    _lid=($(xrandr | awk '$1 ~ /eDP/ {printf("%s\n",$1);}'))
+    _lid=$(xrandr | awk '$1 ~ /eDP/ {printf("%s\n",$1);}')
     _mon=($(xrandr | awk '$2 ~ /^connected/ && $1 !~ /eDP/ {printf("%s\n",$1);}'))
     _dis=($(xrandr | awk '$2 ~ /disconnected/ {printf("%s\n",$1);}'))
     echo "Lid is: ${_lid}"
-    echo "Connected are: ${_mon}"
-    echo "Disconnected are: ${_dis}"
+    echo "Connected are: ${_mon[@]}"
+    echo "Disconnected are: ${_dis[@]}"
 
     # Get lid state 
     if [[ "$(cat /proc/acpi/button/lid/LID/state | awk '{ print $NF }')" == 'open' ]] ; then
@@ -19,23 +19,30 @@ reload_laptop () {
         /usr/bin/xrandr --output "${_lid}" --auto --primary
         echo "Output on: ${_lid}"
         # Set up the rest to mirror
-        for monitor in $_mon ; do
+        for monitor in "${_mon[@]}" ; do
             echo "Mirroring: ${monitor} (to ${_lid})"
             /usr/bin/xrandr --output $monitor --auto --same-as $_lid
         done
     else
         # Set up the monitors sequentially
-        for monitor in $_mon ; do
-            echo "Auto-config on: $monitor"
-            /usr/bin/xrandr --output $monitor --auto
+        h="$(xrandr)"
+        for monitor in "${_mon[@]}" ; do
+            if [ -z "${_prev}" ]; then
+                echo "Auto-config on: $monitor"
+                /usr/bin/xrandr --output $monitor --auto
+            else
+                echo "Auto-config on: ${monitor}, left of ${_prev}"
+                /usr/bin/xrandr --output "${monitor}" --left-of "${_prev}"
+            fi
+            _prev="${monitor}"
         done
         # Kill lid
-        echo "Turn off: $_lid"
-        /usr/bin/xrandr --output $_lid --off
+        echo "Turn off: ${_lid}"
+        /usr/bin/xrandr --output "${_lid}" --off
     fi
 
     # Kill unused monitors
-    for monitor in $_dis ; do
+    for monitor in "${_dis[@]}" ; do
         echo "Turn off: $monitor"
         /usr/bin/xrandr --output $monitor --off
     done

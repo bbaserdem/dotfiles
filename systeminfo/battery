@@ -1,5 +1,19 @@
 #!/bin/dash
 
+# Depends on; acpid
+
+# Kill all descendents on exit
+trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM PIPE
+
+list_children () 
+{
+    local children=$(ps -o pid= --ppid "$1")
+    for pid in $children
+    do
+        list_children "$pid"
+    done
+    echo "$children"
+}
 _cap="/sys/class/power_supply/BAT0/capacity"
 _stt="/sys/class/power_supply/BAT0/status"
 _onl="/sys/class/power_supply/AC0/online"

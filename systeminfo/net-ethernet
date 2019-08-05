@@ -1,5 +1,20 @@
 #!/bin/dash
 
+# Depends on: pactl,
+
+# Kill all descendents on exit
+trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM PIPE
+
+list_children () 
+{
+    local children=$(ps -o pid= --ppid "$1")
+    for pid in $children
+    do
+        list_children "$pid"
+    done
+    echo "$children"
+}
+
 _int="ethernet"
 
 get_text () {

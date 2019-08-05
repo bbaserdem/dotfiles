@@ -55,7 +55,7 @@ margin-top = 0
 margin-bottom = 0
 
 [bar/top]
-monitor-primary = true
+monitor = ${env:POLYMON:}
 fixed-center = true
 width = 100%
 height = 28
@@ -125,6 +125,19 @@ exec = ~/.config/systeminfo/sysinfo-polybar -c red temperature
 inherit = module/skeleton
 exec = ~/.config/systeminfo/sysinfo-polybar -c cyan audio
 
+[module/mpd]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c cyan music
+
+[module/keyboard]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c indigo keyboard
+
+[module/backlight]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c violet brightness
+
+
 ;==================;
 ;   MODULES-LEFT   ;
 ;==================;
@@ -168,7 +181,7 @@ label-urgent-underline =  ${colors.red}
 
 [module/bspwm]
 type = internal/bspwm
-pin-workspaces = false
+pin-workspaces = true
 inline-mode = false
 enable-click = true
 enable-scroll = true
@@ -386,7 +399,7 @@ format-background = ${colors.bkg}
 format-prefix = 
 format-prefix-foreground = ${self.format-underline}
 
-[module/mpd]
+[module/mpd-self]
 type = internal/mpd
 host = 127.0.0.1
 port = 6600
@@ -453,7 +466,7 @@ format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 label-muted-foreground = ${colors.mut}
 
-[module/keyboard]
+[module/keyboard-self]
 type = internal/xkeyboard
 blacklist-0 = num lock
 blacklist-1 = scroll lock
@@ -466,7 +479,7 @@ format-underline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 
-[module/backlight]
+[module/backlight-self]
 type = internal/backlight
 card = ${env:BRI_SCR}
 format = %{A4:light -A 5: A5:light -U 5:}<label>%{A A}

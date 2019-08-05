@@ -1,8 +1,10 @@
 #!/bin/dash
 # vim:ft=sh
 
+# Depends on: pactl, pamixer, (pavucontrol}
+
 # Kill all descendents on exit
-trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM
+trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM PIPE
 
 list_children () 
 {
@@ -32,8 +34,10 @@ get_text() {
 
     case "$_defn" in
         *hdmi*)                     _icon="﴿" ;;
-        *headset*|*a2dp*|*hifi*)    _icon="" ;;
-        *headphones*)               _icon="" ;;
+        *headset*)                  _icon="" ;;
+        *a2dp*)                     _icon="﫽" ;;
+        *hifi*)                     _icon="﫛" ;;
+        *headphone*)                _icon="" ;;
         *speaker*)                  _icon="蓼" ;;
         *network*)                  _icon="爵" ;;
         *analog*)                   _icon="" ;;
@@ -41,25 +45,18 @@ get_text() {
     esac
 
     if echo $_sink | grep -q 'bluez' ; then
-        _icon=""
+        _suf=" "
     fi
 
     [ $_ismt = 'yes' ] && _ismt='true' || _ismt='false'
 
-    _js="{ "
-    _js="${_js}  \"format\":\"${_volm}\""
-    _js="${_js}, \"prefix\":\"${_icon} \""
-    _js="${_js}, \"mute\":${_ismt}"
-    _js="${_js}, \"on-click\":\"${_left}\""
-    _js="${_js}, \"on-click-right\":\"${_right}\""
-    _js="${_js}, \"on-scroll-up\":\"${_up}\""
-    _js="${_js}, \"on-scroll-down\":\"${_down}\""
-    _js="${_js} }"
-
-    echo $_js
+    _js="{ \"format\":\"${_volm}\", \"prefix\":\"${_icon} \", \"mute\":${_ismt}"
+    _js="${_js}, \"suffix\":\"${_suf}\", \"on-click\":\"${_left}\""
+    _js="${_js}, \"on-click-right\":\"${_right}\", \"on-scroll-up\":\"${_up}\""
+    echo "${_js}, \"on-scroll-down\":\"${_down}\" }"
 }
 
 get_text
-/usr/bin/pactl subscribe 2>/dev/null | while read -r line ; do
+pactl subscribe 2>/dev/null | while read -r line ; do
     echo $line | grep -q -e "sink" -e "'change' on server #" && get_text
 done

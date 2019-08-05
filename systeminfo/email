@@ -2,6 +2,19 @@
 
 _file="${HOME}/Documents/Mail/Gmail/Inbox/new"
 
+# Kill all descendents on exit
+trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM PIPE
+
+list_children () 
+{
+    local children=$(ps -o pid= --ppid "$1")
+    for pid in $children
+    do
+        list_children "$pid"
+    done
+    echo "$children"
+}
+
 get_text () {
     _new="$(find $HOME/Documents/Mail/Gmail/Inbox/new | wc -l)"
     if [ "$_new" -le 0 ] ; then

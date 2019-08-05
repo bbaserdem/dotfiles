@@ -1,5 +1,20 @@
 #!/bin/dash
 
+# Depends on: xkb-switch|sway, light, acpid
+
+# Kill all descendents on exit
+trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM PIPE
+
+list_children () 
+{
+    local children=$(ps -o pid= --ppid "$1")
+    for pid in $children
+    do
+        list_children "$pid"
+    done
+    echo "$children"
+}
+
 _dev="$(light -L | grep 'kbd' | head -n 1 | awk '{$1=$1};1')"
 _x11_left="/usr/bin/xkb-switch -n >/dev/null 2>&1"
 _down="/usr/bin/light -Urs ${_dev} 5 >/dev/null 2>&1"
