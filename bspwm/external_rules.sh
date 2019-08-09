@@ -35,7 +35,7 @@ case $class in
     Soffice|libreoffice*|zathura|Zathura)
         STATE="tiled";;&
     # Desktop 1: is communication
-    Skype|Rambox|Qemu*|*Remmina|Thunar)
+    Skype|Hamsket|Qemu*|*Remmina|Thunar)
         DESKTOP="${ws1}";;
     # Desktop 2: Internet
     qutebrowser|Firefox)
@@ -56,7 +56,7 @@ case $class in
     mpv|smplayer|vlc)
         DESKTOP="${ws7}";;
     # Desktop 8: Image
-    pdfsam|Gimp*|inkscape|Blender|openscad)
+    pdfsam|Gimp*|inkscape|Blender|openscad|Picard*)
         DESKTOP="${ws8}";;
     # Desktop 9: Games
     Steam|Stepmania)

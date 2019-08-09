@@ -99,7 +99,10 @@ refresh_desktops () {
                 let i++
             done ;;
     esac
+}
 
+refresh_bar () {
+    . ${XDG_CONFIG_HOME}/bspwm/bar.sh
 }
 
 # Daemonized form
@@ -109,6 +112,7 @@ monitor_hotplug() {
         if echo $line | grep -q 'drm' ; then
             reload_monitors
             refresh_desktops
+            refresh_bar
         fi
     done
 }
@@ -123,8 +127,8 @@ print_help () {
 }
 
 case $1 in
-    --refresh)  refresh_desktops ;;
-    --oneshot)  reload_monitors ; refresh_desktops ;;
+    --refresh)  refresh_desktops ; refresh_bar ;;
+    --oneshot)  reload_monitors ; refresh_desktops ; refresh_bar ;;
     --daemon)   monitor_hotplug ;;
     --help)     print_help ;;
     *)          echo 'Unknown command' ; print_help ; exit 2 ;;

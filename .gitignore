@@ -14,7 +14,6 @@
 !/abcde.conf
 !/compton.conf
 !/crontab.cron
-!/daemons.sh
 !/gpg-agent.conf
 !/install.sh
 !/locale.conf
@@ -43,10 +42,6 @@
 !/applications/*.desktop
 /applications/wine**
 
-# AUTOSTART: Grab all autostart
-!/autostart
-!/autostart/**
-
 # BASH: Accept all
 !/bash
 !/bash/**
@@ -67,10 +62,6 @@
 !/fontconfig
 !/fontconfig/fonts.conf
 
-# GENTOO: Accept all files
-!/gentoo
-!/gentoo/**
-
 # GTK: Get settings
 !/gtk-1.0
 !/gtk-1.0/gtkrc
@@ -81,7 +72,7 @@
 !/gtk-3.0/settings.ini
 !/gtk-3.0/gtk.css
 !/gtk-4.0/
-!/gtk-4.0/**
+!/gtk-4.0/settings.ini
 
 # HTOP: Get the rc file
 !/htop
@@ -149,15 +140,17 @@
 !/nvim
 !/nvim/init.vim
 !/nvim/README.md
+!/nvim/ftdetect
+!/nvim/ftdetect/**
 
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
 !/octave/octaverc
-!/octave/qt-settings.example
+!/octave/qt-settings
 
 # POLYBAR: Grab all
 !/polybar
-!/polybar/**
+!/polybar/config
 
 # QUTEBROWSER: Grab my files
 !/qutebrowser
@@ -172,16 +165,6 @@
 # RAMBOX: Only copy the themes
 !/pacman
 !/pacman/**
-
-# RANGER: Grab my files
-!/ranger
-!/ranger/commands.py
-!/ranger/rc.conf
-!/ranger/rifle.conf
-!/ranger/scope.sh
-!/ranger/devicons.py
-!/ranger/plugins
-!/ranger/plugins/devicons_linemode.py
 
 # REDSHIFT: Grab config
 !/redshift
@@ -204,13 +187,9 @@
 !/syncthing-gtk
 !/syncthing-gtk/config.json
 
-# SYSTEMINFO: My python module, grab everything pythonic
+# SYSTEMINFO: My python module, grab everything
 !/systeminfo
 !/systeminfo/*
-
-# TERMITE: Grab config
-!/termite
-!/termite/config
 
 # TODOMAN: Grab everything
 !/todoman
@@ -257,5 +236,4 @@
 !/zsh/.zlogout
 !/zsh/.zprofile
 !/zsh/.zshrc
-!/zsh/powerlevel9k.settings
 !/zsh/.zshenv

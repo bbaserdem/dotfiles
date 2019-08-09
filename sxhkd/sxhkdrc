@@ -6,7 +6,7 @@
 
 # Reload monitor
 super + F8
-    $XDG_CONFIG_HOME/scripts/x-monitors.sh --now
+    $XDG_CONFIG_HOME/bspwm/monitors.sh --oneshot
 
 # Terminal
 super + Return
@@ -63,7 +63,7 @@ Print + {_,shift,alt}
 super + shift + Escape
     pkill -USR1 -x sxhkd; \
     $XDG_CONFIG_HOME/bspwm/config.sh; \
-    pgrep polybar && polybar-msg cmd restart || polybar top & disown
+    $XDG_CONFIG_HOME/bspwm/bar.sh;
 
 # Logout
 super + shift + alt + Escape
