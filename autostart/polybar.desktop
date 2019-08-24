@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Polybar
-Comment=Statusbar for BSPWM
-Exec=sh -c '$XDG_CONFIG_HOME/bspwm/bar.sh'
-Terminal=false
-Type=Application
-StartupNotify=false
-OnlyShowIn=bspwm;

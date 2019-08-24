@@ -57,19 +57,19 @@ reload_dual () {
 
 reload_monitors () {
     # LAPTOP: has eDP(-1) (lid) DP-1 and DP-2 ports
-    if [ $(hostname) = 'sbplaptop' ] || [ $(hostname) = 'sbpnotebook' ] ; then
+    if [ $(hostname) = 'sbp-laptop' ] || [ $(hostname) = 'sbp-homestation' ] ; then
         reload_laptop
     # WORKSTATION: Monitors are static
-    elif [[ $(hostname) == 'sbpworkstation' ]] ; then
+    elif [[ $(hostname) == 'sbp-workstation' ]] ; then
         echo "Using Workstation"
         reload_dual 'DVI-I-1' 'DP-1'
     # SERVER: 
-    elif [[ $(hostname) == 'sbpserver' ]] ; then
+    elif [[ $(hostname) == 'sbp-server' ]] ; then
         echo "Using Server"
         reload_dual 'DP-1' 'HDMI-2'
         /usr/bin/xrandr --output DP-1 --primary
         /usr/bin/xrandr --output HDMI-2 --left-of DP-2
-    # For all other cases
+    # For all other cases╭─   2635  sbp@sbplaptop   ~/.config/bspwm    master          
     else
         echo "No match to hostname, doing default ..."
         for monitor in $(xrandr | grep " connected " | awk '{ print$1 }') ; do
@@ -99,10 +99,40 @@ refresh_desktops () {
                 let i++
             done ;;
     esac
+    # Set some desktops as monocle
+    # Internet, science, remote, creative and video
+    bspc desktop $ws1 --layout monocle
+    bspc desktop $ws6 --layout monocle
+    bspc desktop $ws7 --layout monocle
+    bspc desktop $ws8 --layout monocle
+    bspc desktop $ws0 --layout monocle
 }
 
 refresh_bar () {
-    . ${XDG_CONFIG_HOME}/bspwm/bar.sh
+    killall polybar
+    for mon in $(xrandr --query | grep " connected" | cut -d " " -f1); do
+        POLYMON=$mon polybar top & disown
+    done
+}
+
+set_wallpaper () {
+    # For all bspwm intances
+    for _bpr in $(pgrep 'bspwm') ; do
+        # Get the display variable
+        _dis="$( cat "/proc/${_bpr}/environ" |
+            tr '\0' '\n' |
+            sed -n 's|^DISPLAY=\(.*\)$|\1|p')"
+        # Get number of visible monitors
+        _num="$(DISPLAY="${_dis}" bspc query --names --monitors | wc -l)"
+
+        if [ "${_num}" = '2' ]; then
+            _dir="${HOME}/Pictures/Wallpapers/Dual/"
+            DISPLAY="${_dis}" feh --no-fehbg --randomize --bg-scale --no-xinerama "${_dir}"
+        else
+            _dir="${HOME}/Pictures/Wallpapers/"
+            DISPLAY="${_dis}" feh --no-fehbg --randomize --bg-scale "${_dir}"
+        fi
+    done
 }
 
 # Daemonized form
@@ -113,6 +143,7 @@ monitor_hotplug() {
             reload_monitors
             refresh_desktops
             refresh_bar
+            monitor_hotplug
         fi
     done
 }
@@ -120,16 +151,23 @@ monitor_hotplug() {
 print_help () {
     echo 'BSPWM hotplug listener'
     echo 'Usage: monitors.st [options]'
-    echo '    --refresh:    Refresh the workspace layout'
-    echo '    --oneshot:    Manually load xrandr'
+    echo '    --bar:        (Re)Launch bar'
+    echo '    --refresh:    Refresh the monitors and desktop layout'
+    echo '    --wallpaper:  Reload wallpapers accross all bspwm instances'
+    echo '    --monitor:    Set the monitors only'
     echo '    --daemon:     Listen to udevadm to reload on monitor events'
     echo '    --help:       Print this message'
 }
 
 case $1 in
-    --refresh)  refresh_desktops ; refresh_bar ;;
-    --oneshot)  reload_monitors ; refresh_desktops ; refresh_bar ;;
-    --daemon)   monitor_hotplug ;;
-    --help)     print_help ;;
+    --bar)          refresh_bar ;;
+    --refresh)      reload_monitors
+                    refresh_desktops
+                    refresh_bar
+                    set_wallpaper;;
+    --wallpaper)    set_wallpaper;;
+    --monitor)      reload_monitors ;;
+    --daemon)       monitor_hotplug ;;
+    --help)         print_help ;;
     *)          echo 'Unknown command' ; print_help ; exit 2 ;;
 esac

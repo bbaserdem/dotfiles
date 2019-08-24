@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 IF=$'\t'
@@ -65,7 +65,7 @@ local_update () {
         git clone --recursive 'https://github.com/zimfw/zimfw' "${ZIM_HOME}"
     else
         git -C "${ZIM_HOME}" pull
-        zsh -c 'zmanage update'
+        zsh -ci 'zmanage update'
     fi
 
     # Powerlevel10k and powerlevel9k
@@ -116,6 +116,22 @@ local_update () {
     wget --output-document "${XDG_CONFIG_HOME}/rofi/rofi-pass" \
         'https://raw.githubusercontent.com/carnager/rofi-pass/master/rofi-pass'
     chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-pass"
+
+    # Syncthing ignore
+    echo "Generating syncthing ignore files"
+    _stfold=("${HOME}/Pictures" "${HOME}/Documents" "${HOME}/Downloads" "${HOME}/Music" "${HOME}/Videos")
+    for _fl in "${_stfold[@]}" ; do
+        # Create/clear stignore file
+        echo "// Syncthing ignore file"                 > "${_fl}/.stignore"
+        if [ -e "${_fl}/Stignore/general" ] ; then
+            echo "// Ignore generic stuff"                  >> "${_fl}/.stignore"
+            echo "#include Stignore/general"                >> "${_fl}/.stignore"
+        fi
+        if [ -e "${_fl}/Stignore/$(hostname)" ] ; then
+            echo "// Block files according to $(hostname)"  >> "${_fl}/.stignore"
+            echo "#include Stignore/$(hostname)"            >> "${_fl}/.stignore"
+        fi
+    done
 
     # Generator scripts for passwords
     echo "Genorating local password files . . ."

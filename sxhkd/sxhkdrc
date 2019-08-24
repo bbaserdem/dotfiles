@@ -6,7 +6,7 @@
 
 # Reload monitor
 super + F8
-    $XDG_CONFIG_HOME/bspwm/monitors.sh --oneshot
+    $XDG_CONFIG_HOME/bspwm/layout.sh --refresh
 
 # Terminal
 super + Return
@@ -14,7 +14,8 @@ super + Return
 
 # Dropdown terminal
 F12
-    [ "$(xdotool search --name '^dropdown$')" == "" ] && alacritty -t 'dropdown' ;\
+    [ -z "$(xdotool search --name '^dropdown$')" ] && alacritty --title 'dropdown'
+@F12
     bspc node "$(xdotool search --name '^dropdown$')" --flag hidden --focus
 
 # Rofi
@@ -44,12 +45,11 @@ XF86KbdBrightness{Up,Down}
     light -{A,U}rs "sysfs/leds/asus::kbd_backlight" 1
 
 # Power button
-XF86PowerOff
-    $XDG_CONFIG_HOME/bspwm/power.sh
+# XF86PowerOff
 
 # Change wallpapers
 super + c
-    $XDG_CONFIG_HOME/bspwm/wallpaper.sh
+    $XDG_CONFIG_HOME/bspwm/layout.sh wallpaper
 
 # Lock screen
 super + Escape
@@ -59,11 +59,9 @@ super + Escape
 Print + {_,shift,alt}
     maim {_,-i $(xdotool getactivewindow),-s} $HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
 
-# make Sxhkd, Bspwm and Polybar reload its config files
+# make sxhkd reload its config files
 super + shift + Escape
-    pkill -USR1 -x sxhkd; \
-    $XDG_CONFIG_HOME/bspwm/config.sh; \
-    $XDG_CONFIG_HOME/bspwm/bar.sh;
+    pkill -USR1 -x sxhkd;
 
 # Logout
 super + shift + alt + Escape
@@ -88,6 +86,8 @@ super + {_,shift + }{Down,Up}
 # Change and move to desktop
 super + {_,shift + }{Left,Right}
     bspc {desktop -f,node -d} {prev,next}
+super + {_,shift + }{button8,button9}
+    bspc {desktop -f,node -d} {prev,next}
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 # Alternate between tiled and monocle (stacked) layout
@@ -99,6 +99,9 @@ super + {t,shift + t,f,m}
 # Toggle split orientation
 super + o
     bspc node -R 90
+# Rotate nodes
+super + {_,shift + }r
+    bspc node @/ -C {forward,backward}
 # Focus parent or child
 super + {a,b,comma,period}
     bspc node -f @{parent,brother,first,second}

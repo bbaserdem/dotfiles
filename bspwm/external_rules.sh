@@ -28,51 +28,75 @@ FLAGS=""
 
 # Grab info
 case $class in
-    # Monocle windows
-    MATLAB*|*Remmina|*Octave|Spyder*|mpv|smplayer|vlc|Gimp*|inkscape|Blender)
-        STATE="monocle";;&
     # Force tiling
     Soffice|libreoffice*|zathura|Zathura)
         STATE="tiled";;&
-    # Desktop 1: is communication
-    Skype|Hamsket|Qemu*|*Remmina|Thunar)
+    # Desktop 1: Internet
+    Skype|Hamsket|qutebrowser|Firefox)
         DESKTOP="${ws1}";;
-    # Desktop 2: Internet
-    qutebrowser|Firefox)
-        DESKTOP="${ws2}";;
-    # Desktop 3: Terminal
+    # Desktop 2: Terminals
     Alacritty|kitty)
+        DESKTOP="${ws2}";;
+    # Desktop 3: Settings
+    Pavucontrol|Syncthing*|System*|Blueman*|Picard*)
         DESKTOP="${ws3}";;
-    # Desktop 4: Science
-    MATLAB*|*Octave|Spyder*)
+    # Desktop 4: Images
+    Gimp*|inkscape|imv)
         DESKTOP="${ws4}";;
-    # Desktop 5: Reading
-    Zathura|Evince)
+    # Desktop 5: Text
+    Zathura|Evince|libreoffice*|Soffice)
         DESKTOP="${ws5}";;
-    # Desktop 6: Writing
-    libreoffice*|Soffice)
+    # Desktop 6: Science
+    MATLAB*|*Octave|Spyder*)
         DESKTOP="${ws6}";;
-    # Desktop 7: Media
-    mpv|smplayer|vlc)
+    # Desktop 7: Other desktops
+    Qemu*|Virt-manager|*Remmina)
         DESKTOP="${ws7}";;
-    # Desktop 8: Image
-    pdfsam|Gimp*|inkscape|Blender|openscad|Picard*)
+    # Desktop 8: Creative
+    pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
         DESKTOP="${ws8}";;
-    # Desktop 9: Games
+    # Desktop 9: Gaming
     Steam|Stepmania)
         DESKTOP="${ws9}";;
-    # Desktop 0: Settings
-    Pavucontrol|Syncthing*|System*|Blueman*)
+    # Desktop 10: Video
+    mpv|smplayer|vlc)
         DESKTOP="${ws0}";;
 esac
 
+# Title overrides
+case $title in
+    # Override the dropdown terminal to it's specific thing
+    dropdown)
+        FLAGS="$(get_dropdown_flags)"
+        DESKTOP=''
+        STATE=''
+        ;;
+    # Science figures go to image window
+    Figures*)
+        if [ "${DESKTOP}" = "${ws6}" ]; then
+            DESKTOP="${ws4}"
+        fi
+        ;;
+    # Save prompts do not go to a new desktop
+    Save*)
+        DESKTOP=""
+        ;;
+esac
+        
 # Add desktop and state flags
-[ ! -z "${DESKTOP}" ] && FLAGS="${FLAGS} desktop=${DESKTOP}"
-[ ! -z "${STATE}" ] && FLAGS="${FLAGS} state=${STATE}"
-
-# Dropdown override
-if [ "$title" = 'dropdown' ] ; then
-    FLAGS="$(get_dropdown_flags)"
+if [ ! -z "${DESKTOP}" ] ; then
+    if [ -z "${FLAGS}" ] ; then
+        FLAGS="desktop=${DESKTOP}"
+    else
+        FLAGS="${FLAGS} desktop=${DESKTOP}"
+    fi
+fi
+if [ ! -z "${STATE}" ] ; then
+    if [ -z "${FLAGS}" ] ; then
+        FLAGS="state=${STATE}"
+    else
+        FLAGS="${FLAGS} state=${STATE}"
+    fi
 fi
 
 # Payload

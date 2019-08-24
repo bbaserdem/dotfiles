@@ -72,7 +72,7 @@ module-margin = 1
 padding = 0
 font-0 = "Misc Termsyn:size=12;1"
 font-1 = "Misc Termsyn:size=12:style=bold;2"
-font-2 = "Iosevka Nerd Font Mono:size=14;3"
+font-2 = "Iosevka Nerd Font Mono:size=16;3"
 seperator = 
 dim-value = 1.0
 tray-background = ${colors.bkg}

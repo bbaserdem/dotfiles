@@ -4,7 +4,7 @@
 # Depends on lm_sensors
 
 # Kill all descendents on exit
-trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM PIPE
+trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM PIPE HUP
 
 list_children () 
 {
