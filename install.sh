@@ -177,6 +177,55 @@ icons_config () {
     fi 
 }
 
+archive_keys () {
+    # Function to do a backup of various keys in the home folder
+    _tgt="Keys_$(hostname).tar"
+    if [ -f "${HOME}/${_tgt}" ] ; then
+        mv "${HOME}/${_tgt}" "${HOME}/${_tgt}_old_$(date '+%Y%m%d-%H:%M')"
+    fi
+
+    # Change to home directory
+    cd ${HOME} 1>/dev/null
+
+    # Create archiwe
+    tar -c -f "${_tgt}" --files-from /dev/null
+
+    # Add SSH keys
+    tar -f "${_tgt}" -r ".ssh"
+
+    # Add gpg keys
+    if [ -z "${GNUPGHOME}" ] ; then
+        tar -f "${_tgt}" -r ".gnupg"
+    else
+        tar -f "${_tgt}" -r "${GNUPGHOME#"${HOME}/"}"
+    fi
+
+    # Add syncthing config files
+    if [ -z "${XDG_CONFIG_HOME}" ] ; then
+        _syn=".config/syncthing"
+    else
+        _syn="${XDG_CONFIG_HOME#"${HOME}/"}/syncthing"
+    fi
+    _cer=('cert.pam' 'config.xml' 'csrftokens.txt' 'https-cert.pem' 'https-cert.pem' 'key.pem')
+    for _file in "${_cer[@]}" ; do
+        if [ -f "${_syn}/${_file}" ] ; then
+            tar -f "${_tgt}" -r "${_syn}/${_file}"
+        fi
+    done
+
+    cd - 1>/dev/null
+}
+
+extract_keys () {
+    _tgt="${HOME}/Keys_$(hostname).tar"
+    if [ ! -f "${_tgt}" ] ; then
+        echo "Archive not found, ${_tgt}"
+    else
+        tar -f "${_tgt}" -x -C "${HOME}"
+    fi
+    
+}
+
 run_all () {
     fix_perm
     symlinks_and_directories
@@ -187,26 +236,30 @@ run_all () {
 # Help text
 print_usage() {
     echo "Usage:"
-    echo "    -p            Fix permissions"
-    echo "    -l            Do symlinks and directories"
-    echo "    -u            Update/install local packages and configs"
-    echo "    -s (default)  Full setup (do all options)"
-    echo "    -h            Display this help message"
-    echo "    -i            Install icons and fonts"
+    echo "    -a            Backup an (a)rchive of private keys"
+    echo "    -p            Fix (p)ermissions"
+    echo "    -l            Do sym(l)inks and directories"
+    echo "    -u            (U)pdate local packages and configs"
+    echo "    -s (default)  Full (s)etup (do all options)"
+    echo "    -h            Display this (h)elp message"
+    echo "    -i            (I)nstall icons and fonts"
+    echo "    -e            (E)xtract keys from backup"
 }
 
 if [ -z "${1}" ] ; then
     echo "No flags set, defaulting to full config"
     run_all
 else
-    while getopts ':plushi' flag; do
+    while getopts ':aplushie' flag; do
         case "${flag}" in
+            a) archive_keys ;;
             p) fix_perm ;;
             l) symlinks_and_directories ;;
             u) local_update ;;
             s) run_all ;;
             h) print_usage ;;
             i) icons_config ;;
+            e) extract_keys ;;
             *) echo "Unknown option ${flag}"; print_usage ; exit 1 ;;
         esac
     done

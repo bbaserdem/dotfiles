@@ -41,7 +41,7 @@ case $class in
     Pavucontrol|Syncthing*|System*|Blueman*|Picard*)
         DESKTOP="${ws3}";;
     # Desktop 4: Images
-    Gimp*|inkscape|imv)
+    Gimp*|inkscape|imv|Darktable)
         DESKTOP="${ws4}";;
     # Desktop 5: Text
     Zathura|Evince|libreoffice*|Soffice)
