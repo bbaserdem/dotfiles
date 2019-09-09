@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Depends on maim and i3lock
 
@@ -13,4 +13,5 @@ _img="${_dir}/lockscreen.png"
 
 maim | convert - -scale 10% -scale 1000% "${_img}"
 # convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
+
 i3lock --show-failed-attempts --image="${_img}" --nofork

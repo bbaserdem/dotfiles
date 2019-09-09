@@ -42,6 +42,10 @@
 !/applications/*.desktop
 /applications/wine**
 
+# AUTORANDR: Grab all info
+!/autorandr
+!/autorandr/**
+
 # BASH: Accept all
 !/bash
 !/bash/**

@@ -1,0 +1,10 @@
+output eDP
+off
+output DisplayPort-1
+mode 1920x1080
+pos 0x0
+rate 60.00
+output DisplayPort-0
+mode 1920x1080
+pos 1920x0
+rate 60.00

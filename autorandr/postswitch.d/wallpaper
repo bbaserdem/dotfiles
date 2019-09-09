@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# This script refreshes backdrop of desktops
+_num="$(bspc query --monitors | wc --lines)"
+
+if [ "${_num}" = '2' ]; then
+    _dir="${HOME}/Pictures/Wallpapers/Dual/"
+    feh --no-fehbg --randomize --bg-scale --no-xinerama "${_dir}"
+elif [ "${_num}" != '0' ]; then
+    _dir="${HOME}/Pictures/Wallpapers/"
+    feh --no-fehbg --randomize --bg-scale "${_dir}"
+fi

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Script to send a notification
+notify-send "Autorandr" "Monitor layout loaded; ${AUTORANDR_CURRENT_PROFILE}" --icon=display

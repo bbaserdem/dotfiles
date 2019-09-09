@@ -15,8 +15,5 @@ bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/external_rules.sh
 # Set XDG_CURRENT_DESKTOP for mimetypes
 export XDG_CURRENT_DESKTOP="bspwm"
 
-# Reassign monitors
-$XDG_CONFIG_HOME/bspwm/layout.sh --refresh
-
 # Autostart programs
 dex --autostart --environment bspwm

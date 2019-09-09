@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=XSS-Lock for BSPWM
-Comment=Wrapper for locking screen on power events in BSPWM
-Exec=sh -c '/usr/bin/xss-lock -- ~/.config/bspwm/lock.sh'
-Terminal=false
-Type=Application
-StartupNotify=false
-OnlyShowIn=bspwm;
