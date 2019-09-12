@@ -89,6 +89,7 @@
 # IMV: Get all
 !/imv
 !/imv/**
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/settings
 
 # ISYNC: Get only the config and password generator
 !/isync
@@ -162,6 +163,8 @@
 !/unity3d/Klei
 !/unity3d/Klei/Oxygen\ Not\ Included
 !/unity3d/Klei/Oxygen\ Not\ Included/mods
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/settings
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/settings/*.json
 !/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam
 !/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/**/
 !/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/**/Config.json
