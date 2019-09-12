@@ -156,6 +156,11 @@
 !/polybar
 !/polybar/config
 
+# OXYGEN NOT INCLUDED: Retain game mod configs
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/*/
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/*/Config.json
+
 # QUTEBROWSER: Grab my files
 !/qutebrowser
 !/qutebrowser/bookmarks
@@ -198,11 +203,6 @@
 # TODOMAN: Grab everything
 !/todoman
 !/todoman/**
-
-# UNITY: Retain game mod configs
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/*
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/*/Config.json
 
 # UDISKIE: Grab config
 !/udiskie
