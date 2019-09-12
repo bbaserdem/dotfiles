@@ -127,6 +127,7 @@
 !/ncmpcpp
 !/ncmpcpp/config
 
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/*/
 # NEOFETCH: Grab the config
 !/neofetch
 !/neofetch/config
@@ -159,7 +160,8 @@
 # OXYGEN NOT INCLUDED: Retain game mod configs
 !/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/
 !/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/*/
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/*/Config.json
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/**/Config.json
+!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/**/config.json
 
 # QUTEBROWSER: Grab my files
 !/qutebrowser
