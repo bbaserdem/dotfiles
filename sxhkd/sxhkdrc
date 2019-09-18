@@ -49,7 +49,7 @@ XF86KbdBrightness{Up,Down}
 
 # Change wallpapers
 super + c
-    $XDG_CONFIG_HOME/bspwm/layout.sh wallpaper
+    $XDG_CONFIG_HOME/autorandr/postswitch.d/wallpaper
 
 # Lock screen
 super + Escape

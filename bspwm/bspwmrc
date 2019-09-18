@@ -17,3 +17,8 @@ export XDG_CURRENT_DESKTOP="bspwm"
 
 # Autostart programs
 dex --autostart --environment bspwm
+
+# Load autorandr scripts
+for _scr in $XDG_CONFIG_HOME/autorandr/postswitch.d/* ; do
+    $_scr 2>/dev/null
+done

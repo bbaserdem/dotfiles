@@ -12,8 +12,7 @@
 
     # Get outputs from bspwm
     bspc query --names --monitors | while read m; do
-        echo "$m polybard now"
-        POLYMON=$m polybar --reload top </dev/null >/var/tmp/polybar-$m.log 2>&1 200>&- & disown
+        POLYMON=$m polybar --reload bspwm </dev/null >/var/tmp/polybar-$m.log 2>&1 200>&- & disown
     done
 
 ) 200>/var/tmp/polybar-launch.lock

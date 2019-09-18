@@ -1,4 +1,6 @@
 #!/bin/bash
 
 # Script to send a notification
-notify-send "Autorandr" "Monitor layout loaded; ${AUTORANDR_CURRENT_PROFILE}" --icon=display
+if [ -n "${AUTORANDR_CURRENT_PROFILE}" ] ; then
+    notify-send "Autorandr" "Monitor layout loaded; ${AUTORANDR_CURRENT_PROFILE}" --icon=display
+fi

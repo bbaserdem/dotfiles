@@ -18,7 +18,7 @@ symlinks_and_directories () {
     echo 'Creating directories and symlinks. . .'
     mkdir -p "${HOME}/Documents/MATLAB"
     mkdir -p "${HOME}/.local/"{share/fonts,wineprefixes,bin}
-    mkdir -p "${HOME}/.cache/"{mpd,isync,mpdscribble,vdirsyncer}
+    mkdir -p "${HOME}/.cache/"{mpd,isync,mpdscribble,vdirsyncer,newsboat}
     mkdir -p "${HOME}/.icons/default"
 
     # Remove local applications folder, and link the one from config

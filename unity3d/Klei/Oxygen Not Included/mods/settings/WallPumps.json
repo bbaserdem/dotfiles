@@ -1,14 +1,14 @@
 {
   "gasWallPump": {
     "enabled": true,
-    "energyConsumption": 120.0,
-    "pumpRate": 0.2,
+    "energyConsumption": 60.0,
+    "pumpRate": 0.25,
     "thermalConductivity": 1.0
   },
   "liquidWallPump": {
     "enabled": true,
     "energyConsumption": 120.0,
-    "pumpRate": 4.0,
+    "pumpRate": 5.0,
     "thermalConductivity": 1.0
   },
   "gasWallVent": {

@@ -1,3 +1,9 @@
+notify-always yes
+notify-format "%f unread feeds ($n unread in total)"
+notify-program "~/.cache/newsboat/notify-rss.sh"
 notify-beep no
 confirm-exit no
+auto-reload yes
 cache-file "~/.cache/newsboat/Cache.db"
+error-log "~/.cache/newsboat/error.log"
+urls-source "local"
