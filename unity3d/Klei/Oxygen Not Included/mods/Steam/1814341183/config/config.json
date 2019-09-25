@@ -5,7 +5,7 @@
   "keybind_usetool_rename": "End",
   "keybind_usetool_delete": "Delete",
   "keybind_snapshottool": "None",
-  "keybind_snapshottool_delete": "Delete",
+  "keybind_snapshottool_newsnapshot": "Delete",
   "require_constructable": true,
   "compress_blueprints": true
 }

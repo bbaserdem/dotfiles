@@ -29,7 +29,7 @@ FLAGS=""
 # Grab info
 case $class in
     # Force tiling
-    Soffice|libreoffice*|zathura|Zathura)
+    Soffice|libreoffice*|zathura|Zathura|Steam)
         STATE="tiled";;&
     # Desktop 1: Internet
     Skype|Hamsket|qutebrowser|Firefox)
@@ -75,6 +75,13 @@ case $title in
     Figures*)
         if [ "${DESKTOP}" = "${ws6}" ]; then
             DESKTOP="${ws4}"
+        fi
+        ;;
+    # Steam prompts go to steam window, and get pseudotiling status
+    Steam)
+        DESKTOP="${ws9}"
+        if [ -z "${STATE}" ] ; then
+            STATE='pseudo_tiled'
         fi
         ;;
     # Save prompts do not go to a new desktop
