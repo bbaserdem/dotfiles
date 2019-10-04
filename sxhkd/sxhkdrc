@@ -24,7 +24,7 @@ super + space
 
 # Password-store
 super + p
-    $XDG_CONFIG_HOME/rofi/rofi-pass
+    rofi-pass
 
 # Music controls for mpd
 XF86Audio{Play,Stop,Next,Prev}
