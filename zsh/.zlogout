@@ -1,2 +1,1 @@
-# Play logout sound
-paplay $XDG_CONFIG_HOME/sounds/logout.oga
+# Used for executing commands for all users when a login shell exits.

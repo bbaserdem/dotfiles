@@ -15,6 +15,9 @@ bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/external_rules.sh
 # Set XDG_CURRENT_DESKTOP for mimetypes
 export XDG_CURRENT_DESKTOP="bspwm"
 
+# Fix Java apps
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Autostart programs
 dex --autostart --environment bspwm
 

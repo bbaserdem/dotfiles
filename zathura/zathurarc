@@ -6,7 +6,6 @@ set statusbar-home-tilde true
 set scroll-page-aware "true"
 set smooth-scroll "true"
 set scroll-step 50
-set font "Inconsolata 11"
 
 map <C-i> recolor
 

@@ -59,36 +59,6 @@ local_update () {
     echo "Installing local python packages from pip . . ."
     pip install --user inotify pulsectl 'https://github.com/dlenski/vpn-slice/archive/master.zip'
 
-    # ZIM
-    echo "Installing/updating zim . . ."
-    if [ ! -d "${ZIM_HOME}" ] ; then
-        git clone --recursive 'https://github.com/zimfw/zimfw' "${ZIM_HOME}"
-    else
-        git -C "${ZIM_HOME}" pull
-        zsh -ci 'zmanage update'
-    fi
-
-    # Powerlevel10k and powerlevel9k
-    echo "Installing zsh prompts . . ."
-    if [ ! -d "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k" ]
-    then
-        git clone --recursive 'https://github.com/romkatv/powerlevel10k.git' \
-            "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k"
-    else
-        git -C "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k" pull
-    fi
-    if [ ! -d "${ZIM_HOME}/modules/prompt/external-themes/powerlevel9k" ]
-    then
-        git clone --recursive 'https://github.com/romkatv/powerlevel9k.git' \
-            "${ZIM_HOME}/modules/prompt/external-themes/powerlevel9k"
-    else
-        git -C "${ZIM_HOME}/modules/prompt/external-themes/powerlevel9k" pull
-    fi
-    ln -sf "${ZIM_HOME}/modules/prompt/external-themes/powerlevel9k/powerlevel9k.zsh-theme" \
-        "${ZIM_HOME}/modules/prompt/functions/prompt_powerlevel9k_setup"
-    ln -sf "${ZIM_HOME}/modules/prompt/external-themes/powerlevel10k/powerlevel10k.zsh-theme" \
-        "${ZIM_HOME}/modules/prompt/functions/prompt_powerlevel10k_setup"
-
     # Dropbox stuff
     echo "Fixing dropbox update . . ."
     if [ -x '/usr/bin/dropbox' ] ; then
@@ -187,7 +157,7 @@ archive_keys () {
     # Change to home directory
     cd ${HOME} 1>/dev/null
 
-    # Create archiwe
+    # Create archive
     tar -c -f "${_tgt}" --files-from /dev/null
 
     # Add SSH keys

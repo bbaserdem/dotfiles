@@ -242,6 +242,14 @@ filetype *.asc
 filetype *.torrent ktorrent %f &
 fileviewer *.torrent dumptorrent -v %c
 
+" Archive files
+filetype *.tar,*.tgz,*.tar.gz,*.tar.bz,*.tbz,*.bz,*tar.bz2,*.tbz2,*.bz2,*.tar.Z,*.tZ,*.Z,*.tar.lzo,*.tzo,*.lzo,*.tar.lz,*.tlz,*.lz,*.tar.xz,*.txz,*.xz,*.tar.7z,*.t7z,*.7z,*.zip,*.jar,*.war,*.rar,*.lha,*.lzh,*.alz,*.ace,*.a,*.arj,*.arc,*.rpm,*.deb,*.cab,*.gz,*.bz,*.lzma,*.rz,*.lrz,*.cpio
+       \ {Unpack using atool}
+       \ atool -X %d/%c:t:r %c
+fileviewer *.tar,*.tgz,*.tar.gz,*.tar.bz,*.tbz,*.bz,*tar.bz2,*.tbz2,*.bz2,*.tar.Z,*.tZ,*.Z,*.tar.lzo,*.tzo,*.lzo,*.tar.lz,*.tlz,*.lz,*.tar.xz,*.txz,*.xz,*.tar.7z,*.t7z,*.7z,*.zip,*.jar,*.war,*.rar,*.lha,*.lzh,*.alz,*.ace,*.a,*.arj,*.arc,*.rpm,*.deb,*.cab,*.gz,*.bz,*.lzma,*.rz,*.lrz,*.cpio
+       \ {List using atool}
+        \ atool -l %c
+
 " FuseZipMount
 filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
        \ {Mount with fuse-zip}
@@ -254,6 +262,7 @@ fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
 
 " ArchiveMount
 filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz
+       \ {Mount with archivemount}
        \ {Mount with archivemount}
        \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
 fileviewer *.tgz,*.tar.gz tar -tzf %c

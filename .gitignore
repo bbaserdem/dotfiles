@@ -148,6 +148,10 @@
 !/nvim/README.md
 !/nvim/ftdetect
 !/nvim/ftdetect/**
+!/nvim/before
+!/nvim/before/**
+!/nvim/after
+!/nvim/after/**
 
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
@@ -157,6 +161,11 @@
 # POLYBAR: Grab all
 !/polybar
 !/polybar/config
+
+# PROFILE.D: Grab all configuration
+!/profile
+!/profile.d
+!/profile.d/*.sh
 
 # OXYGEN NOT INCLUDED: Retain game mod configs
 !/unity3d
@@ -255,3 +264,4 @@
 !/zsh/.zprofile
 !/zsh/.zshrc
 !/zsh/.zshenv
+!/zsh/.p10k.zsh

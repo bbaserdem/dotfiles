@@ -1,3 +1,6 @@
+# Used for setting user's interactive shell configuration and executing commands,
+# will be read when starting as an interactive shell.
+
 # User configuration
 HIST_STAMPS="dd/mm/yyyy"
 
@@ -28,58 +31,36 @@ wttr_weather () {
     fi
 }
 
-# Put aliases here
+# Aliases
 alias config='git -C $XDG_CONFIG_HOME'
 alias config-sync='gitsync $XDG_CONFIG_HOME'
-alias hopper-mount='sshfs batu@hopper.cshl.edu:/home/batu ~/Remote/Hopper -o allow_other'
-alias work-mount='sshfs silverbluep@sbpworkstation.cshl.edu:/home/silverbluep ~/Remote/Work -o allow_other'
-alias hopper-umount='fusermount3 -u ~/Remote/Hopper'
-alias xterm-termite='termite'
 alias reflect='sudo reflector --verbose --latest 30 --sort rate --save /etc/pacman.d/mirrorlist'
 alias py='bpython'
 alias vim='nvim'
 alias mutt='neomutt'
 alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-5.0/etc/bashrc"
-alias cp-rsync='rsync -avzh --append-verify'
 alias ncmpc='ncmpcpp --screen playlist --slave-screen visualizer'
 alias weather='wttr_weather'
 alias newterm="$TERMINAL 2>/dev/null & disown 2>&1 1>/dev/null"
 
 # Powerlevel9k things
 
-# ZIM
-zmodules=(directory environment git git-info history input utility custom \
-    syntax-highlighting history-substring-search prompt completion)
+# ZIM settings
 ztermtitle='%~:%n@%m'
 zhighlighters=(main brackets cursor)
 zinput_mode='vi'
-if tty | grep -q tty; then
-    zprompt_theme='steef'
-else
-    zprompt_theme='powerlevel10k'
-    POWERLEVEL9K_INSTALLATION_PATH="$ZIM_HOME/modules/prompt/external-themes/${zprompt_theme}/${zprompt_theme}.zsh-theme"
-    POWERLEVEL9K_MODE='nerdfont-complete'
-    POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-        os_icon
-        root_indicator
-        history
-        ssh
-        context
-        dir
-        dir_writable
-        vcs
-        virtualenv
-        openfoam
-        )
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-        battery
-        time
-        command_execution_time
-        status
-        background_jobs
-        )
-    # setopt promptsubst
-fi
 
-source $ZIM_HOME/init.zsh
+# Prompt
+zprompt_theme='powerlevel10k'
+if tty | grep -q tty; then
+    # TTY default to the text theme
+    [[ -f "${ZDOTDIR}/.p10k.text.zsh" ]] && source "${ZDOTDIR}/.p10k.zsh"
+else
+    # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+    [[ -f "${ZDOTDIR}/.p10k.icon.zsh" ]] && source "${ZDOTDIR}/.p10k.icon.zsh"
+fi
+# Source the theme
+source ${ZIM_HOME}/init.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
