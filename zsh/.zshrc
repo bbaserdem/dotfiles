@@ -54,13 +54,10 @@ zinput_mode='vi'
 zprompt_theme='powerlevel10k'
 if tty | grep -q tty; then
     # TTY default to the text theme
-    [[ -f "${ZDOTDIR}/.p10k.text.zsh" ]] && source "${ZDOTDIR}/.p10k.zsh"
+    [[ -f "${ZDOTDIR}/.p10k.text.zsh" ]] && source "${ZDOTDIR}/.p10k.text.zsh"
 else
     # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
     [[ -f "${ZDOTDIR}/.p10k.icon.zsh" ]] && source "${ZDOTDIR}/.p10k.icon.zsh"
 fi
 # Source the theme
 source ${ZIM_HOME}/init.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
