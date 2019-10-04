@@ -138,7 +138,7 @@ icons_config () {
 
     # Iosevka
     if [ -d /usr/share/fonts/ttf-iosevka ] ; then
-        'Iosevka installed, skipping nerdfont version . . .'
+        echo 'Iosevka installed, skipping nerdfont version . . .'
     else
         echo "Installing Iosevka Nerd Font Complete . . ."
         if [ ! -d "${HOME}/.cache/nerdfonts" ] ; then
@@ -151,7 +151,7 @@ icons_config () {
 
     # Sauce code pro
     if [ -d '/usr/share/fonts/TTF/Sauce Code Pro Nerd Font Complete Moto.ttf' ] ; then
-        'Sauce Code Pro Nerd Font Complete installed, skipping'
+        echo 'Sauce Code Pro Nerd Font Complete installed, skipping'
     else
         echo "Installing Sauce Code Pro Nerd Font Complete . . ."
         if [ ! -d "${HOME}/.cache/nerdfonts" ] ; then
@@ -164,7 +164,7 @@ icons_config () {
 
     # Fira code
     if [ -d '/usr/share/fonts/OTF/Fura Code Regular Nerd Font Complete Mono.otf' ] ; then
-        'Fura Code Nerd Font Complete Mono installed, skipping'
+        echo 'Fura Code Nerd Font Complete Mono installed, skipping'
     else
         echo "Installing Fura Code Nerd Font Complete Mono . . ."
         if [ ! -d "${HOME}/.cache/nerdfonts" ] ; then
