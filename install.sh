@@ -75,12 +75,6 @@ local_update () {
         git clone 'https://github.com/airforsteam/Air-for-Steam.git' "${HOME}/.local/share/Steam/skins/Air"
     fi
 
-    # Qutebrowser
-    echo "Setting up qutebrowser spellcheck . . ."
-    if [ -x '/usr/share/qutebrowser/scripts/dictcli.py' ] ; then
-        /usr/share/qutebrowser/scripts/dictcli.py install en-US tr-TR
-    fi
-
     # Rofi-pass
     echo "Installing rofi-pass . . ."
     wget --output-document "${XDG_CONFIG_HOME}/rofi/rofi-pass" \
@@ -114,37 +108,72 @@ local_update () {
 
 icons_config () {
     # Breeze hacked cursor theme
-    echo "Installing cursor themes"
-    echo "Breeze-hacked"
-    if [ ! -d "${HOME}/.cache/breeze-hacked" ] ; then
-        git clone 'https://github.com/codejamninja/breeze-hacked-cursor-theme' /tmp/breeze-hacked
+    echo "Installing cursor themes . . ."
+    if [ -d /usr/share/icons/Breeze_Hacked ] ; then
+        echo "Breeze-hacked exists, skipping . . ."
     else
-        git -c "${HOME}/.cache/breeze-hacked" pull
+        echo "Locally installing Breeze-Hacked . . ."
+        if [ -d "${HOME}/.cache/breeze-hacked" ] ; then
+            git -c "${HOME}/.cache/Breeze-Hacked" pull
+        else
+            git clone 'https://github.com/codejamninja/breeze-hacked-cursor-theme' "${HOME}/.cache/Breeze-Hacked"
+        fi
+        make --directory "${HOME}/.cache/Breeze-Hacked" install
     fi
-    make --directory "${HOME}/.cache/breeze-hacked" install
 
     # Icons
-    echo "Getting icons"
-    echo "Papirus"
-    wget --output-document "${HOME}/.cache/papirus_install.sh" \
-        'https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh'
-    chmod 775 ${HOME}/.cache/papirus_install.sh
-    DESTDIR="$HOME/.local/share/icons" ${HOME}/.cache/papirus_install.sh
+    echo "Getting icons . . ."
+    if [ -d /usr/share/icons/Papirus-Dark ] ; then
+        echo "Papirus exists, skipping . . ."
+    else
+        echo "Locally installing Papirus . . ."
+        wget --output-document "${HOME}/.cache/papirus_install.sh" \
+            'https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install.sh'
+        chmod 775 ${HOME}/.cache/papirus_install.sh
+        DESTDIR="$HOME/.local/share/icons" ${HOME}/.cache/papirus_install.sh
+    fi
 
     # Nerdfonts
     echo "Installing fonts"
-    echo "Nerdfonts"
-    if [ ! -d "${HOME}/.cache/nerdfonts" ] ; then
-        git clone 'https://github.com/ryanoasis/nerd-fonts.git' "${HOME}/.cache/nerdfonts"
+
+    # Iosevka
+    if [ -d /usr/share/fonts/ttf-iosevka ] ; then
+        'Iosevka installed, skipping nerdfont version . . .'
     else
-        git clone -C "${HOME}/.cache/nerdfonts" pull
-    fi
-    if [ -x "${HOME}/.cache/nerdfonts/install.sh" ] ; then
-        echo "Iosevka Nerd Font Complete"
+        echo "Installing Iosevka Nerd Font Complete . . ."
+        if [ ! -d "${HOME}/.cache/nerdfonts" ] ; then
+            git clone 'https://github.com/ryanoasis/nerd-fonts.git' "${HOME}/.cache/nerdfonts"
+        else
+            git clone -C "${HOME}/.cache/nerdfonts" pull
+        fi
         "${HOME}/.cache/nerdfonts/install.sh" --install-to-user-path --complete --copy Iosevka
-        echo "Fura Code Nerd Font Complete"
+    fi
+
+    # Sauce code pro
+    if [ -d '/usr/share/fonts/TTF/Sauce Code Pro Nerd Font Complete Moto.ttf' ] ; then
+        'Sauce Code Pro Nerd Font Complete installed, skipping'
+    else
+        echo "Installing Sauce Code Pro Nerd Font Complete . . ."
+        if [ ! -d "${HOME}/.cache/nerdfonts" ] ; then
+            git clone 'https://github.com/ryanoasis/nerd-fonts.git' "${HOME}/.cache/nerdfonts"
+        else
+            git clone -C "${HOME}/.cache/nerdfonts" pull
+        fi
+        "${HOME}/.cache/nerdfonts/install.sh" --install-to-user-path --complete --copy SourceCodePro
+    fi
+
+    # Fira code
+    if [ -d '/usr/share/fonts/OTF/Fura Code Regular Nerd Font Complete Mono.otf' ] ; then
+        'Fura Code Nerd Font Complete Mono installed, skipping'
+    else
+        echo "Installing Fura Code Nerd Font Complete Mono . . ."
+        if [ ! -d "${HOME}/.cache/nerdfonts" ] ; then
+            git clone 'https://github.com/ryanoasis/nerd-fonts.git' "${HOME}/.cache/nerdfonts"
+        else
+            git clone -C "${HOME}/.cache/nerdfonts" pull
+        fi
         "${HOME}/.cache/nerdfonts/install.sh" --install-to-user-path --complete --copy FiraCode
-    fi 
+    fi
 }
 
 archive_keys () {
