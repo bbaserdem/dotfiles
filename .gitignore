@@ -78,6 +78,10 @@
 !/gtk-4.0/
 !/gtk-4.0/settings.ini
 
+# HAMSKET: Get config file
+!/Hamsket
+!/Hamsket/config.json
+
 # HTOP: Get the rc file
 !/htop
 !/htop/htoprc
