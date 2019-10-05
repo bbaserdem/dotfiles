@@ -2,7 +2,7 @@
 Version=1.0
 Name=Redshift
 Comment=Color temperature adjustment tool
-Exec=redshift-gtk
+Exec=sh -c 'if [ "sbp-workstation" != "$(hostname)" ] ; then redshift-gtk ; else echo "yay" ; fi'
 Icon=redshift
 Terminal=false
 Type=Application
