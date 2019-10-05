@@ -68,18 +68,26 @@ local_update () {
 
     # Steam stuff
     echo "Installing steam theme . . ."
-    mkdir -p "${HOME}/.local/share/Steam/skins"
-    if [ -d "${HOME}/.local/share/Steam/skins/Air" ] ; then
-        git -C "${HOME}/.local/share/Steam/skins/Air" pull
+    if [ -d /usr/share/steam/skins/air-for-steam ] ; then
+        echo 'Air for steam installed, skipping . . .'
     else
-        git clone 'https://github.com/airforsteam/Air-for-Steam.git' "${HOME}/.local/share/Steam/skins/Air"
+        mkdir -p "${HOME}/.local/share/Steam/skins"
+        if [ -d "${HOME}/.local/share/Steam/skins/Air" ] ; then
+            git -C "${HOME}/.local/share/Steam/skins/Air" pull
+        else
+            git clone 'https://github.com/airforsteam/Air-for-Steam.git' "${HOME}/.local/share/Steam/skins/Air"
+        fi
     fi
 
     # Rofi-pass
     echo "Installing rofi-pass . . ."
-    wget --output-document "${XDG_CONFIG_HOME}/rofi/rofi-pass" \
-        'https://raw.githubusercontent.com/carnager/rofi-pass/master/rofi-pass'
-    chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-pass"
+    if [ -x '/usr/bin/rofi-pass' ] ; then
+        echo 'rofi-pass is installed, skipping . . .'
+    else
+        wget --output-document "${XDG_CONFIG_HOME}/rofi/rofi-pass" \
+            'https://raw.githubusercontent.com/carnager/rofi-pass/master/rofi-pass'
+        chmod 775 "${XDG_CONFIG_HOME}/rofi/rofi-pass"
+    fi
 
     # Syncthing ignore
     echo "Generating syncthing ignore files"
