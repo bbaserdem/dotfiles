@@ -46,6 +46,10 @@
 !/autorandr
 !/autorandr/**
 
+# AUTOSTART: Grab all overrides
+!/autostart
+!/autostart/**
+
 # BASH: Accept all
 !/bash
 !/bash/**
