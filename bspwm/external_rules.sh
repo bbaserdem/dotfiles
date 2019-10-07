@@ -32,7 +32,7 @@ case $class in
     Soffice|libreoffice*|zathura|Zathura|Steam)
         STATE="tiled";;&
     # Desktop 1: Internet
-    Skype|Hamsket|qutebrowser|Firefox)
+    Skype|Hamsket|qutebrowser|firefox)
         DESKTOP="${ws1}";;
     # Desktop 2: Terminals
     Alacritty|kitty)

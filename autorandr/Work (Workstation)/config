@@ -4,7 +4,7 @@ output DisplayPort-2
 off
 output DisplayPort-1
 mode 1920x1080
-pos 0x458
+pos 0x440
 primary
 rate 60.00
 output HDMI-A-0

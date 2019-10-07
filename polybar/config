@@ -54,7 +54,7 @@ pseudo-transparency = true
 margin-top = 0
 margin-bottom = 0
 
-[bar/top]
+[bar/main]
 monitor = ${env:POLYMON:eDP}
 fixed-center = true
 width = 100%
@@ -76,7 +76,6 @@ font-2 = "Sauce Code Pro Nerd Font Mono:size=16;3"
 seperator = 
 dim-value = 1.0
 tray-background = ${colors.bkg}
-tray-position = right
 tray-detached = false
 tray-maxsize = 16
 tray-offset-x = 0
@@ -86,18 +85,22 @@ tray-scale = 1.0
 enable-ipc = true
 cursor-click = pointer
 cursor-scroll = ns-resize
-bottom = false
-modules-left = bspwm-desktop bspwm-mode calendar todo
-modules-center = time
-modules-right =  temperature cpu memory ethernet wifi openvpn openconnect mpd audio keyboard backlight battery
-
-[bar/i3]
-inherit = bar/top
-wm-restack = i3
-
-[bar/bspwm]
-inherit = bar/top
 wm-restack = bspwm
+
+[bar/top]
+inherit = bar/main
+bottom = false
+modules-left = bspwm-desktop bspwm-mode
+modules-center = time
+modules-right =  mpd audio keyboard battery
+
+[bar/bot]
+inherit = bar/main
+bottom = true
+tray-position = right
+modules-left = calendar todo
+modules-center = title
+modules-right =  temperature cpu memory ethernet wifi openvpn openconnect backlight
 
 ;=============;
 ;   SCRIPTS   ;
@@ -278,6 +281,16 @@ time-alt = %H:%M:%S
 date = %a, %e %b %Y
 date-alt = %d/%m/%Y
 label = %time%   %date%
+label-font = 2
+format = <label>
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+
+[module/title]
+type = internal/xwindow
+label-empty = 恵
+label-empty-foreground = ${colors.mut}
+label = %title%
 label-font = 2
 format = <label>
 format-foreground = ${colors.frg}
