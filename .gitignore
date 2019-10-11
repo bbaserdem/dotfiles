@@ -124,6 +124,13 @@
 !/latex
 !/latex/**
 
+# MATLAB: Only get config
+!/matlab
+!/matlab/*
+!/matlab/*/matlab.prf
+!/matlab/*/matlab.settings
+!/matlab/*/MLintDefaultSettings.txt
+
 # MPD: Only get config
 !/mpd
 !/mpd/mpd.conf

@@ -52,6 +52,9 @@ symlinks_and_directories () {
     # Setting profile picture
     ln -sf "${HOME}/Pictures/Profile/Linux_login_profile" "${HOME}/.face"
     ln -sf "${HOME}/Pictures/Profile/Linux_login_profile" "${HOME}/.face.icon"
+
+    # Matlab config
+    ln -sf "${XDG_CONFIG_HOME}/matlab" "${HOME}/.matlab"
 }
 
 local_update () {
