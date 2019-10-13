@@ -1,0 +1,13 @@
+{
+  "keybind_createtool": "None",
+  "keybind_usetool_cyclefolder_up": "UpArrow",
+  "keybind_usetool_cyclefolder_down": "DownArrow",
+  "keybind_usetool_cycleblueprint_left": "LeftArrow",
+  "keybind_usetool_cycleblueprint_right": "RightArrow",
+  "keybind_usetool_rename": "End",
+  "keybind_usetool_delete": "Delete",
+  "keybind_snapshottool": "None",
+  "keybind_snapshottool_newsnapshot": "Delete",
+  "require_constructable": true,
+  "compress_blueprints": true
+}
