@@ -1,11 +1,11 @@
 #!/bin/dash
 
 # Kill all descendents on exit
-trap 'kill $(list_children $$) 2>/dev/null' INT QUIT KILL TERM PIPE HUP
+trap 'kill $(list_children $(cut -d " " -f4 < /proc/self/stat)) 2>/dev/null; exit' INT QUIT KILL TERM PIPE HUP
 
 list_children () 
 {
-    local children=$(ps -o pid= --ppid "$1")
+    children=$(ps -o pid= --ppid "$1")
     for pid in $children
     do
         list_children "$pid"
