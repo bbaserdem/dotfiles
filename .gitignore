@@ -182,18 +182,6 @@
 !/profile.d
 !/profile.d/*.sh
 
-# OXYGEN NOT INCLUDED: Retain game mod configs
-!/unity3d
-!/unity3d/Klei
-!/unity3d/Klei/Oxygen\ Not\ Included
-!/unity3d/Klei/Oxygen\ Not\ Included/mods
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/settings
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/settings/*.json
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/**/
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/**/Config.json
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/**/config.json
-
 # QUTEBROWSER: Grab my files
 !/qutebrowser
 !/qutebrowser/bookmarks
@@ -240,6 +228,11 @@
 # UDISKIE: Grab config
 !/udiskie
 !/udiskie/config.json
+
+# UNITY: Retain save games that are configured
+!/unity3d
+!/unity3d/Klei
+!/unity3d/Klei/Oxygen Not Included
 
 # USAGE: It's documentation; grab all
 !/usage
