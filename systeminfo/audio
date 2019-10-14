@@ -37,7 +37,7 @@ get_text() {
         *headset*)                  _icon="" ;;
         *a2dp*)                     _icon="﫽" ;;
         *hifi*)                     _icon="﫛" ;;
-        *headphone*)                _icon="" ;;
+        *headphone*|*stereo*)       _icon="" ;;
         *speaker*)                  _icon="蓼" ;;
         *network*)                  _icon="爵" ;;
         *analog*)                   _icon="" ;;
