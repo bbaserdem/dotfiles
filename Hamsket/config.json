@@ -20,10 +20,10 @@
 	"enable_hidpi_support": false,
 	"default_service": "hamsketTab",
 	"width": 1920,
-	"height": 1052,
+	"height": 1024,
 	"maximized": false,
 	"x": 0,
-	"y": 28,
+	"y": 468,
 	"master_password1": "",
 	"master_password2": ""
 }

@@ -529,6 +529,11 @@
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
+                    <value><![CDATA[/home/sbp/Documents]]></value>
+                    <value><![CDATA[/home/sbp]]></value>
+                    <value><![CDATA[/home/sbp/Downloads]]></value>
+                    <value><![CDATA[/home/sbp/Downloads/B109&111ss]]></value>
+                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/methods]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/functions]]></value>
                     <value><![CDATA[/]]></value>
@@ -563,12 +568,12 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>82.6984126984127</value>
+                        <value>86.15090735434575</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
-                        <value>109</value>
+                        <value>145</value>
                     </int32>
                 </key>
             </settings>
