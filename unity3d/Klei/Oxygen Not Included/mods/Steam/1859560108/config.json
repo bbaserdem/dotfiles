@@ -1,0 +1,6 @@
+{
+  "searchMinInterval": 60.0,
+  "searchMaxInterval": 300.0,
+  "plantDetectionRadius": 1,
+  "maxPlantsInRadius": 0
+}

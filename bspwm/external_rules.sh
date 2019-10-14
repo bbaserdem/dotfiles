@@ -40,8 +40,8 @@ case $class in
     # Desktop 3: Settings
     Pavucontrol|Syncthing*|System*|Blueman*|Picard*)
         DESKTOP="${ws3}";;
-    # Desktop 4: Images
-    Gimp*|inkscape|imv|Darktable)
+    # Desktop 4: Gaming
+    Steam|Stepmania)
         DESKTOP="${ws4}";;
     # Desktop 5: Text
     Zathura|Evince|libreoffice*|Soffice)
@@ -55,8 +55,8 @@ case $class in
     # Desktop 8: Creative
     pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
         DESKTOP="${ws8}";;
-    # Desktop 9: Gaming
-    Steam|Stepmania)
+    # Desktop 9: Images
+    Gimp*|inkscape|imv|Darktable)
         DESKTOP="${ws9}";;
     # Desktop 10: Video
     mpv|smplayer|vlc)
@@ -77,12 +77,9 @@ case $title in
             DESKTOP="${ws4}"
         fi
         ;;
-    # Steam prompts go to steam window, and get pseudotiling status
+    # Steam prompts go to steam window
     Steam)
-        DESKTOP="${ws9}"
-        if [ -z "${STATE}" ] ; then
-            STATE='pseudo_tiled'
-        fi
+        DESKTOP="${ws4}"
         ;;
     # Save prompts do not go to a new desktop
     Save*)
