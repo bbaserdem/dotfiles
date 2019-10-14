@@ -92,7 +92,7 @@ inherit = bar/main
 bottom = false
 modules-left = bspwm-desktop bspwm-mode
 modules-center = time
-modules-right =  mpd audio keyboard battery
+modules-right =  mpd audio keyboard backlight battery
 
 [bar/bot]
 inherit = bar/main
@@ -100,7 +100,7 @@ bottom = true
 tray-position = right
 modules-left = calendar todo
 modules-center = title
-modules-right =  temperature cpu memory ethernet wifi openvpn openconnect backlight
+modules-right =  temperature cpu memory ethernet wifi openvpn openconnect
 
 ;=============;
 ;   SCRIPTS   ;
@@ -352,7 +352,7 @@ ping-interval = 0
 accumulate-stats = false
 unknown-as-up = false
 format-connected = <label-connected>
-format-connected-prefix =
+format-connected-prefix = "爵 "
 format-connected-prefix-foreground = ${colors.gre}
 format-connected-underline = ${self.format-connected-prefix-foreground}
 format-connected-foreground = ${colors.frg}
@@ -367,24 +367,27 @@ format-disconnected-background = ${self.format-connected-background}
 [module/ethernet]
 inherit = module/network
 interface = ethernet
-label-connected = "  "
-label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+format-connected-prefix = " "
+label-connected = "%local_ip%"
+label-connected-foreground = ${colors.frg}
 label-disconnected =
 label-disconnected-foreground = ${colors.mut}
 
 [module/wifi]
 inherit = module/network
 interface = wifi
-label-connected = "  "
-label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+format-connected-prefix = " "
+label-connected = "%essid%"
+label-connected-foreground = ${colors.frg}
 label-disconnected =
 label-disconnected-foreground = ${colors.mut}
 
 [module/tether]
 inherit = module/network
 interface = tether
-label-connected = "  "
-label-connected-foreground = ${module/network.format-connected-prefix-foreground}
+label-connected = "%linkspeed%"
+format-connected-prefix = " "
+label-connected-foreground = ${colors.frg}
 label-disconnected =
 label-disconnected-foreground = ${colors.mut}
 
