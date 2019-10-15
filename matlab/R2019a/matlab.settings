@@ -533,7 +533,6 @@
                     <value><![CDATA[/home/sbp]]></value>
                     <value><![CDATA[/home/sbp/Downloads]]></value>
                     <value><![CDATA[/home/sbp/Downloads/B109&111ss]]></value>
-                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/methods]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/functions]]></value>
                     <value><![CDATA[/]]></value>
@@ -568,12 +567,12 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>86.15090735434575</value>
+                        <value>81.80300500834724</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
-                        <value>145</value>
+                        <value>109</value>
                     </int32>
                 </key>
             </settings>
@@ -597,10 +596,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[178]]></value>
+                        <value><![CDATA[161]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
-                        <value><![CDATA[0]]></value>
+                        <value><![CDATA[125]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -633,6 +632,7 @@
                     <string minArraySize="0" maxArraySize="100">
                         <value><![CDATA[icon]]></value>
                         <value><![CDATA[name]]></value>
+                        <value><![CDATA[modified]]></value>
                     </string>
                 </key>
             </settings>

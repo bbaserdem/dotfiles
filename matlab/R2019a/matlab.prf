@@ -1,11 +1,11 @@
 #MATLAB Preferences
-#Mon Oct 14 16:41:59 EDT 2019
+#Tue Oct 15 12:44:57 EDT 2019
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
 EditorMCodeFoldCollapseFileOpenwhile=Bfalse
+ReplaceSearchText=SDIM
 ColorsUseSystem=Bfalse
-ReplaceSearchText=SFI
 DelimiterOptionsMoving=Btrue
 EditorMCodeFoldCollapseFileOpenfunction=Bfalse
 Colors_HTML_HTMLLinks=C-9452817
@@ -22,7 +22,7 @@ ReplaceText6=S
 ReplaceSearchText3=S
 ReplaceText5=S
 EditorMCodeFoldCollapseFileOpenevents=Bfalse
-ReplaceSearchText2=S
+ReplaceSearchText2=SFI
 ReplaceText4=S
 EditorMCodeFoldEnabledspmd=Btrue
 ReplaceText3=S
@@ -88,16 +88,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I130
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/opt/tmw/matlab/toolbox/matlab/specgraph/histogram.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/m11_feature.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m~
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m10_align_dorsoventral.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m11_ordering.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m04_merge.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/m01_reformat_data.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m09_sparsify.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/m10_align_dorsoventral.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m07_ffwsCluster.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m01_reformat_data.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/Todo.md
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/random_uniform_s.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
