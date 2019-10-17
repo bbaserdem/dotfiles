@@ -124,12 +124,12 @@
 !/latex
 !/latex/**
 
-# MATLAB: Only get config
+# MATLAB: Only get config, and symlinks
 !/matlab
-!/matlab/*
-!/matlab/*/matlab.prf
-!/matlab/*/matlab.settings
-!/matlab/*/MLintDefaultSettings.txt
+!/matlab/R2*
+!/matlab/matlab.prf
+!/matlab/matlab.settings
+!/matlab/MLintDefaultSettings.txt
 
 # MPD: Only get config
 !/mpd

@@ -32,6 +32,7 @@
         </key>
         <key name="ImportLegacyAddOnsAtStartup">
             <bool>
+                <value>0</value>
             </bool>
         </key>
         <key name="InstallationFolder">
@@ -140,6 +141,12 @@
             <key name="MaxFileListSize" visible="true">
                 <int32>
                 </int32>
+            </key>
+        </settings>
+        <settings name="startup">
+            <key name="ShowIntroDialog">
+                <bool undef="true">
+                </bool>
             </key>
         </settings>
         <settings name="window">
@@ -349,6 +356,41 @@
             <bool>
             </bool>
         </key>
+        <settings name="ddux_10609242311045998931">
+            <key name="applicationName">
+                <string undef="true">
+                </string>
+            </key>
+            <key name="chosen">
+                <bool undef="true">
+                </bool>
+            </key>
+            <key name="installationDate">
+                <string undef="true">
+                </string>
+            </key>
+            <key name="machineHash" visible="true">
+                <string>
+                    <value><![CDATA[9190db1f7408a130f8139bb511c04985]]></value>
+                </string>
+            </key>
+            <key name="shown">
+                <bool undef="true">
+                </bool>
+            </key>
+            <settings name="dataStreams">
+                <key name="enabled">
+                    <bool undef="true">
+                    </bool>
+                </key>
+                <settings name="MATLAB_DDUX_FUNCTION_USAGE">
+                    <key name="functionWhiteList">
+                        <string undef="true">
+                        </string>
+                    </key>
+                </settings>
+            </settings>
+        </settings>
         <settings name="ddux_11864394213026935769">
             <key name="applicationName">
                 <string>
@@ -364,7 +406,7 @@
             </key>
             <key name="machineHash" visible="true">
                 <string>
-                    <value><![CDATA[8d62753ff2cff7f7f937fe7412d4b0ea]]></value>
+                    <value><![CDATA[3e946717120381e1a2aa1dd2dc493cd9]]></value>
                 </string>
             </key>
             <key name="shown">
@@ -379,6 +421,71 @@
                 <settings name="MATLAB_DDUX_FUNCTION_USAGE">
                     <key name="functionWhiteList">
                         <string>
+                        </string>
+                    </key>
+                </settings>
+            </settings>
+        </settings>
+        <settings name="ddux_13240922449140912357">
+            <key name="applicationName">
+                <string undef="true">
+                </string>
+            </key>
+            <key name="chosen">
+                <bool undef="true">
+                </bool>
+            </key>
+            <key name="installationDate">
+                <string undef="true">
+                </string>
+            </key>
+            <key name="shown">
+                <bool undef="true">
+                </bool>
+            </key>
+            <settings name="dataStreams">
+                <key name="enabled">
+                    <bool undef="true">
+                    </bool>
+                </key>
+                <settings name="MATLAB_DDUX_FUNCTION_USAGE">
+                    <key name="functionWhiteList">
+                        <string undef="true">
+                        </string>
+                    </key>
+                </settings>
+            </settings>
+        </settings>
+        <settings name="ddux_1671514000947575136">
+            <key name="applicationName">
+                <string undef="true">
+                </string>
+            </key>
+            <key name="chosen">
+                <bool undef="true">
+                </bool>
+            </key>
+            <key name="installationDate">
+                <string undef="true">
+                </string>
+            </key>
+            <key name="machineHash">
+                <string>
+                    <value><![CDATA[732059aa7fc40d2f2f52cfd427d1fb7a]]></value>
+                </string>
+            </key>
+            <key name="shown">
+                <bool undef="true">
+                </bool>
+            </key>
+            <settings name="dataStreams">
+                <key name="enabled">
+                    <bool undef="true">
+                    </bool>
+                </key>
+                <settings name="MATLAB_DDUX_FUNCTION_USAGE">
+                    <key name="functionWhiteList">
+                        <string undef="true">
                         </string>
                     </key>
                 </settings>
@@ -527,19 +634,31 @@
             </key>
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
+                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
                     <value><![CDATA[/home/sbp]]></value>
                     <value><![CDATA[/home/sbp/Downloads]]></value>
-                    <value><![CDATA[/home/sbp/Downloads/B109&111ss]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/methods]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/functions]]></value>
-                    <value><![CDATA[/]]></value>
+                    <value><![CDATA[/home/sbp/Downloads/pmkmp]]></value>
+                    <value><![CDATA[/home/sbp/Downloads/pmkmp/pmkmp]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/SPH]]></value>
+                    <value><![CDATA[/home]]></value>
+                    <value><![CDATA[/home/sbp/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp/Research]]></value>
+                    <value><![CDATA[/home/sbp/Research/MapSeq/methods]]></value>
+                    <value><![CDATA[/home/sbp/Research/SPH]]></value>
+                    <value><![CDATA[/home/sbp/Research/SPH/matlab2]]></value>
+                    <value><![CDATA[/home/sbp/Research/SPH/matlab2/@SPH_TV]]></value>
+                    <value><![CDATA[/home/sbp/Research/SPH/matlab]]></value>
+                    <value><![CDATA[/home/sbp/Research/SPH/alex]]></value>
+                    <value><![CDATA[/home/sbp/Research/OdorNavigation]]></value>
+                    <value><![CDATA[/home/sbp/Research/OdorNavigation/+gS]]></value>
                 </string>
             </key>
             <key name="HistorySize">
                 <int32>
+                    <value>20</value>
                 </int32>
             </key>
             <key name="IsJSCurrentFolderInstance">
@@ -548,15 +667,18 @@
             </key>
             <key name="ShowHiddenFiles">
                 <bool>
+                    <value>0</value>
                 </bool>
             </key>
             <settings name="autorefresh">
                 <key name="Enabled">
                     <bool>
+                        <value>1</value>
                     </bool>
                 </key>
                 <key name="Interval">
                     <int32>
+                        <value>3</value>
                     </int32>
                 </key>
             </settings>
@@ -567,12 +689,12 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>41.56928213689483</value>
+                        <value>82.6955074875208</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
-                        <value>350</value>
+                        <value>104</value>
                     </int32>
                 </key>
             </settings>
@@ -596,10 +718,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[161]]></value>
+                        <value><![CDATA[215]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
-                        <value><![CDATA[125]]></value>
+                        <value><![CDATA[81]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -632,7 +754,6 @@
                     <string minArraySize="0" maxArraySize="100">
                         <value><![CDATA[icon]]></value>
                         <value><![CDATA[name]]></value>
-                        <value><![CDATA[modified]]></value>
                     </string>
                 </key>
             </settings>
@@ -702,10 +823,12 @@
             <settings name="pathaffordance">
                 <key name="Enabled">
                     <bool>
+                        <value>1</value>
                     </bool>
                 </key>
                 <key name="Transparency">
                     <int32>
+                        <value>40</value>
                     </int32>
                 </key>
             </settings>
@@ -903,6 +1026,10 @@
                 <bool>
                 </bool>
             </key>
+            <key name="DoubleHashtagForHeading" visible="true">
+                <bool undef="true">
+                </bool>
+            </key>
             <key name="EnableAutoFormatting" visible="true">
                 <bool>
                 </bool>
@@ -929,6 +1056,7 @@
             </key>
             <key name="TrademarkCopyrightSymbol" visible="true">
                 <bool>
+                    <value>1</value>
                 </bool>
             </key>
             <key name="URLToHyperlink" visible="true">
@@ -955,7 +1083,6 @@
             </key>
             <key name="FileExtensionToReplace" visible="true">
                 <string>
-                    <value><![CDATA[bkp.m]]></value>
                 </string>
             </key>
             <key name="Frequency" visible="true">
@@ -969,7 +1096,7 @@
             </key>
             <key name="SaveToFolder" visible="true">
                 <string>
-                    <value><![CDATA[/home/sbp/.cache/matlab/]]></value>
+                    <value><![CDATA[/home/sbp/Documents/MATLAB/Backup]]></value>
                 </string>
             </key>
             <key name="SaveUntitled" visible="true">
@@ -1022,6 +1149,7 @@
                 </key>
                 <key name="LineColumn" visible="true">
                     <int32>
+                        <value>80</value>
                     </int32>
                 </key>
                 <key name="LineWidth" visible="true">
@@ -1123,12 +1251,12 @@
         <settings name="codefont" visible="true">
             <key name="Name" visible="true">
                 <string>
-                    <value><![CDATA[Iosevka]]></value>
+                    <value><![CDATA[Iosevka Nerd Font Mono]]></value>
                 </string>
             </key>
             <key name="Size" visible="true">
                 <int32>
-                    <value>11</value>
+                    <value>12</value>
                 </int32>
             </key>
             <key name="Style" visible="true">
@@ -1157,14 +1285,64 @@
     <settings name="graphics">
         <key name="showinteractioninfobar">
             <bool>
+                <value>0</value>
             </bool>
         </key>
         <key name="showinteractioninfobarreleaseset">
             <string>
+                <value><![CDATA[R2019a]]></value>
             </string>
         </key>
         <settings name="machine_specific">
-            <settings name="H1353287475353686713">
+            <settings name="H11849101122445320282">
+                <key name="ever_crashed_in_graphics" anytype="true">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+                <key name="opengl_preference">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+            </settings>
+            <settings name="H15594920287839743699">
+                <key name="ever_crashed_in_graphics" anytype="true">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+                <key name="opengl_preference">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+            </settings>
+            <settings name="H18033005340657519865">
+                <key name="ever_crashed_in_graphics" anytype="true">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+                <key name="opengl_preference">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+            </settings>
+            <settings name="H2651736653876724164">
+                <key name="ever_crashed_in_graphics" anytype="true">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+                <key name="opengl_preference">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+            </settings>
+            <settings name="H8221298504541130895">
                 <key name="ever_crashed_in_graphics" anytype="true">
                     <uint32>
                         <value>0</value>
@@ -1320,6 +1498,16 @@
     </settings>
     <settings name="ssi">
         <settings name="upgrade">
+            <key name="R2018a">
+                <bool>
+                    <value>0</value>
+                </bool>
+            </key>
+            <key name="R2018b">
+                <bool>
+                    <value>0</value>
+                </bool>
+            </key>
             <key name="R2019a">
                 <bool>
                     <value>0</value>
@@ -1536,7 +1724,6 @@
     <settings name="workingfolder">
         <key name="CustomFolderPath">
             <string>
-                <value><![CDATA[]]></value>
             </string>
         </key>
         <key name="InitialWorkingFolder">
@@ -1546,7 +1733,7 @@
         </key>
         <key name="LastFolderPath">
             <string>
-                <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                <value><![CDATA[/home/sbp/Documents/Research]]></value>
             </string>
         </key>
     </settings>
