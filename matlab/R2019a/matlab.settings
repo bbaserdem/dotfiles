@@ -529,6 +529,10 @@
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
+                    <value><![CDATA[/home/sbp/Documents]]></value>
+                    <value><![CDATA[/home/sbp]]></value>
+                    <value><![CDATA[/home/sbp/Downloads]]></value>
+                    <value><![CDATA[/home/sbp/Downloads/B109&111ss]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/methods]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/functions]]></value>
                     <value><![CDATA[/]]></value>
@@ -563,12 +567,12 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>82.6984126984127</value>
+                        <value>41.56928213689483</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
-                        <value>109</value>
+                        <value>350</value>
                     </int32>
                 </key>
             </settings>
@@ -592,10 +596,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[178]]></value>
+                        <value><![CDATA[161]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
-                        <value><![CDATA[0]]></value>
+                        <value><![CDATA[125]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -628,6 +632,7 @@
                     <string minArraySize="0" maxArraySize="100">
                         <value><![CDATA[icon]]></value>
                         <value><![CDATA[name]]></value>
+                        <value><![CDATA[modified]]></value>
                     </string>
                 </key>
             </settings>

@@ -82,7 +82,7 @@ case $title in
         DESKTOP="${ws4}"
         ;;
     # Save prompts do not go to a new desktop
-    Save*)
+    Save*|Insert*|Confirm*)
         DESKTOP=""
         ;;
 esac
