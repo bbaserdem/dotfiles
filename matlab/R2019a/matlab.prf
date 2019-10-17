@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Tue Oct 15 12:44:57 EDT 2019
+#Tue Oct 15 19:06:10 EDT 2019
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -85,19 +85,19 @@ EditorMCodeFoldEnabledhelp-comments=Btrue
 EditorMCodeFoldCollapseFileOpenswitch=Bfalse
 LimitSearchToSelection=Bfalse
 RLWidthB2_WB_2014b_1_1=I130
-RLWidthB2_WB_2014b_1_0=I130
+RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/m11_feature.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/m01_reformat_data.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/random_uniform.m
 EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m09_sparsify.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/m10_align_dorsoventral.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m07_ffwsCluster.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/limexpn.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/random_uniform_s.m
+EditorMRU3=S/opt/tmw/matlab/toolbox/curvefit/curvefit/+curvefit/+attention/Warning.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/random_uniform_s.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m05_correlate.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/m06_hierCluster.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
