@@ -13,6 +13,6 @@ push @generated_exts, "synctex.gz";
 push @generated_exts, "run.xml";
 $pdf_mode = 1;
 $cleanup_mode = 2;
-$aux_dir = "auxillary";
+# $aux_dir = "auxillary";
 $pdf_previewer = "zathura";
-$pdflatex = 'lualatex %O -synctex=1 -interaction=nonstopmode %S';
+$pdflatex = "xelatex %O %S";

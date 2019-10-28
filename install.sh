@@ -102,9 +102,13 @@ local_update () {
             echo "// Ignore generic stuff"                  >> "${_fl}/.stignore"
             echo "#include Stignore/general"                >> "${_fl}/.stignore"
         fi
-        if [ -e "${_fl}/Stignore/$(hostname)" ] ; then
-            echo "// Block files according to $(hostname)"  >> "${_fl}/.stignore"
-            echo "#include Stignore/$(hostname)"            >> "${_fl}/.stignore"
+        # Strip hostname
+        _name="$(hostname | sed -n 's|sbp-\(.*\)|\1|p')"
+        if [ ! -z "${_name}" ]; then
+            if [ -e "${_fl}/Stignore/${_name}" ] ; then
+                echo "// Block files according to ${_name}" >> "${_fl}/.stignore"
+                echo "#include Stignore/${_name}"           >> "${_fl}/.stignore"
+            fi
         fi
     done
 

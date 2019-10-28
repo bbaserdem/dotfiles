@@ -46,6 +46,8 @@ get_text() {
 
     if echo $_sink | grep -q 'bluez' ; then
         _suf=" "
+    else
+        _suf=""
     fi
 
     [ $_ismt = 'yes' ] && _ismt='true' || _ismt='false'
