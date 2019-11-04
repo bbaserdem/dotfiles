@@ -2,6 +2,9 @@
 
 # This script refreshes backdrop of desktops
 _num="$(bspc query --monitors | wc --lines)"
+if [ -z "${AUTORANDR_CURRENT_PROFILE}" ] ; then
+    AUTORANDR_CURRENT_PROFILE="$(autorandr --current)"
+fi
 
 if [ "${_num}" = '2' ]; then
     # Check if a monitor is rotated
@@ -10,6 +13,7 @@ if [ "${_num}" = '2' ]; then
     else
         _dir="${HOME}/Pictures/Wallpapers/Dual_Horizontal/"
     fi
+    echo $_dir
     feh --no-fehbg --randomize --bg-scale --no-xinerama "${_dir}"
 elif [ "${_num}" != '0' ]; then
     _dir="${HOME}/Pictures/Wallpapers/"
