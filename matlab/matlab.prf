@@ -1,11 +1,11 @@
 #MATLAB Preferences
-#Tue Oct 15 19:06:10 EDT 2019
+#Thu Nov 07 17:39:52 EST 2019
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
 EditorMCodeFoldCollapseFileOpenwhile=Bfalse
-ReplaceSearchText=SDIM
 ColorsUseSystem=Bfalse
+ReplaceSearchText=SDIM
 DelimiterOptionsMoving=Btrue
 EditorMCodeFoldCollapseFileOpenfunction=Bfalse
 Colors_HTML_HTMLLinks=C-9452817
@@ -88,16 +88,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/m06_hierCluster.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/random_uniform.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/limexpn.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/random_uniform_s.m
-EditorMRU3=S/opt/tmw/matlab/toolbox/curvefit/curvefit/+curvefit/+attention/Warning.m
+EditorMRU7=S/home/sbp/Downloads/Xiaoyin/SCRIPT_M1_PROBES.m
+EditorMRU6=S/home/sbp/Downloads/Xiaoyin/filteredvalidtargets.m
+EditorMRU5=S/home/sbp/Downloads/Xiaoyin/optimizeGII.m
+EditorMRU4=S/home/sbp/Downloads/Xiaoyin/samplescript.m
+EditorMRU3=S/home/sbp/Downloads/Xiaoyin/batchmakepadlocks.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m05_correlate.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/m06_hierCluster.m
+EditorMRU2=S/home/sbp/Downloads/Xiaoyin/designdnapadlocks2.m
+EditorMRU1=S/home/sbp/Downloads/Xiaoyin/reduceprobes.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
