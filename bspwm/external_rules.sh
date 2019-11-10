@@ -34,33 +34,33 @@ case $class in
     # Desktop 1: Internet
     Skype|Hamsket|qutebrowser|firefox)
         DESKTOP="${ws1}";;
-    # Desktop 2: Terminals
-    Alacritty|kitty)
+    # Desktop 2: Images and Static Media
+    Gimp*|inkscape|imv|Darktable)
         DESKTOP="${ws2}";;
-    # Desktop 3: Settings
-    Pavucontrol|Syncthing*|System*|Blueman*|Picard*)
+    # Desktop 3: Video, media
+    mpv|smplayer|vlc|cantata)
         DESKTOP="${ws3}";;
     # Desktop 4: Gaming
     Steam|Stepmania)
         DESKTOP="${ws4}";;
-    # Desktop 5: Text
-    Zathura|Evince|libreoffice*|Soffice)
-        DESKTOP="${ws5}";;
-    # Desktop 6: Science
-    MATLAB*|*Octave|Spyder*)
-        DESKTOP="${ws6}";;
-    # Desktop 7: Other desktops
+    # Desktop 5: Other desktops
     Qemu*|Virt-manager|*Remmina)
+        DESKTOP="${ws5}";;
+    # Desktop 6: Terminals
+    Alacritty|kitty)
+        DESKTOP="${ws6}";;
+    # Desktop 7: Computation
+    MATLAB*|*Octave|Spyder*)
         DESKTOP="${ws7}";;
-    # Desktop 8: Creative
-    pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
+    # Desktop 8: Writing
+    Zathura|Evince|libreoffice*|Soffice)
         DESKTOP="${ws8}";;
-    # Desktop 9: Images
-    Gimp*|inkscape|imv|Darktable)
+    # Desktop 9: Creative
+    pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
         DESKTOP="${ws9}";;
-    # Desktop 10: Video
-    mpv|smplayer|vlc)
-        DESKTOP="${ws0}";;
+    # Desktop 10: Settings
+    Pavucontrol|Syncthing*|System*|Blueman*|Picard*)
+        DESKTOP="${ws10}";;
 esac
 
 # Title overrides
@@ -73,8 +73,8 @@ case $title in
         ;;
     # Science figures go to image window
     Figures*)
-        if [ "${DESKTOP}" = "${ws6}" ]; then
-            DESKTOP="${ws4}"
+        if [ "${DESKTOP}" = "${ws7}" ]; then
+            DESKTOP="${ws2}"
         fi
         ;;
     # Steam prompts go to steam window
