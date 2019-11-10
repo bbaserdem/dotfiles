@@ -1,11 +1,13 @@
-output DisplayPort-0
-off
 output eDP-1
 mode 1920x1080
 pos 0x0
 primary
 rate 60.02
-output DisplayPort-1
+output DP-1
+off
+output HDMI-1
+off
+output HDMI-2
 mode 1920x1080
 pos 0x0
 rate 60.00
