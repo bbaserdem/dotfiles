@@ -9,18 +9,6 @@ class=$2
 instance=$3
 title="$(xwininfo -id $1 | awk 'NR==2' | sed 's|.*"\(.*\)"$|\1|')"
 
-get_dropdown_flags() {
-    drop_padding=120
-    drop_height=420
-    width="$(bspc wm --dump-state|jq -r '.monitors[].rectangle.width'|head -n1)"
-    height="$(bspc wm --dump-state|jq -r '.monitors[].rectangle.height'|head -n1)"
-    x_cor="$((drop_padding/2))"
-    y_cor="$((height-drop_height))"
-    drop_width="$((width-drop_padding))"
-    drop_geom="${drop_width}x${drop_height}+${x_cor}+${y_cor}"
-    echo "state=floating sticky=on hidden=on rectangle=${drop_geom}"
-}
-
 # Defaults
 STATE=""
 DESKTOP=""
@@ -59,17 +47,17 @@ case $class in
     pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
         DESKTOP="${ws9}";;
     # Desktop 10: Settings
-    Pavucontrol|Syncthing*|System*|Blueman*|Picard*)
-        DESKTOP="${ws10}";;
+    Pavucontrol|Syncthing*|System*|Blueman*|Picard*|Maestral*)
+        DESKTOP="${ws0}";;
 esac
 
 # Title overrides
 case $title in
-    # Override the dropdown terminal to it's specific thing
-    dropdown)
-        FLAGS="$(get_dropdown_flags)"
+    # Override the dropdown terminal to be floating and sticky
+    'Dropdown terminal')
+        FLAGS="hidden=on sticky=on"
         DESKTOP=''
-        STATE=''
+        STATE='floating'
         ;;
     # Science figures go to image window
     Figures*)

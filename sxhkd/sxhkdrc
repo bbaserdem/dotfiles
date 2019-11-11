@@ -14,9 +14,7 @@ super + Return
 
 # Dropdown terminal
 F12
-    [ -z "$(xdotool search --name '^dropdown$')" ] && alacritty --title 'dropdown'
-@F12
-    bspc node "$(xdotool search --name '^dropdown$')" --flag hidden --focus
+    $XDG_CONFIG_HOME/bspwm/dropdown.sh
 
 # Rofi
 super + space
