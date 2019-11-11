@@ -48,13 +48,15 @@ calculate_movement () {
 _WID="$(xdotool search --name "${_NAME}")"
 if [ -z "${_WID}" ] ; then
     spawn_terminal
-    sleep .1
+    sleep .2
     _WID="$(xdotool search --name "${_NAME}")"
 fi
 
 #   If the window is hidden
 #       - Reshape to the active monitor
 #       - Toggle hidden state and focus
+#   Else
+#       - Hide window
 if [ "$(bspc query --node "${_WID}" --tree | jq '.hidden')" = 'true' ] ; then
     # Get transformation
     _GEO="$(calculate_movement)"
@@ -66,7 +68,8 @@ if [ "$(bspc query --node "${_WID}" --tree | jq '.hidden')" = 'true' ] ; then
     # Move the origin
     bspc node "${_WID}" --move   "${_OR_X}" "${_OR_Y}"
     bspc node "${_WID}" --resize bottom_right "${_CO_X}" "${_CO_Y}"
+    # Toggle and focus
+    bspc node "${_WID}" --flag hidden=off --focus
+else
+    bspc node "${_WID}" --flag hidden=on
 fi
-
-# Toggle and focus
-bspc node "${_WID}" --flag hidden --focus

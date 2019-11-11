@@ -55,7 +55,7 @@ esac
 case $title in
     # Override the dropdown terminal to be floating and sticky
     'Dropdown terminal')
-        FLAGS="hidden=on sticky=on"
+        FLAGS="sticky=on hidden=on"
         DESKTOP=''
         STATE='floating'
         ;;
@@ -74,7 +74,7 @@ case $title in
         DESKTOP=""
         ;;
 esac
-        
+
 # Add desktop and state flags
 if [ ! -z "${DESKTOP}" ] ; then
     if [ -z "${FLAGS}" ] ; then
@@ -82,7 +82,17 @@ if [ ! -z "${DESKTOP}" ] ; then
     else
         FLAGS="${FLAGS} desktop=${DESKTOP}"
     fi
+    # If the monitor of the requested desktop has empty focused window,
+    #   switch to the newly populated desktop
+    MONITOR="$(bspc query --desktop "${DESKTOP}" --monitors)"
+    MONISEMPTY="$(bspc query --monitor "${MONITOR}" --tree |
+        jq --raw-output '.focusedDesktopId as $id |
+            .desktops[] | select(.id == $id) | .root == null')"
+    if [ "${MONISEMPTY}" = 'true' ] ; then
+        bspc desktop --focus "${DESKTOP}"
+    fi
 fi
+
 if [ ! -z "${STATE}" ] ; then
     if [ -z "${FLAGS}" ] ; then
         FLAGS="state=${STATE}"
@@ -90,6 +100,7 @@ if [ ! -z "${STATE}" ] ; then
         FLAGS="${FLAGS} state=${STATE}"
     fi
 fi
+
 
 # Payload
 echo "${FLAGS}"

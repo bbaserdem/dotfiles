@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Picom
+Comment=Standalone X compositor
+Exec=/usr/bin/compton -b
+Icon=compton
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false
+Hidden=false
+OnlyShowIn=bspwm;
