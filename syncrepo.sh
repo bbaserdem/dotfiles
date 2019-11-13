@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/dash
 
-_repo=${1:-$XDG_CONFIG_HOME}
+_repo="${HOME}/.config"
 
 # Sync the config repo
 /usr/bin/git -C "${_repo}" pull

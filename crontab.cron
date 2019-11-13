@@ -4,6 +4,6 @@
 */5     *       *       *       *       mbsync --config /home/sbp/.config/isync/config --all
 */5     *       *       *       *       vdirsyncer sync contacts
 */5     *       *       *       *       vdirsyncer sync calendar
-*/15    *       *       *       *       pass git pull >> /home/sbp/.cache/passgitpull.log 2>&1
-*/15    *       *       *       *       pass git push >> /home/sbp/.cache/passgitpush.log 2>&1
+0-59/15 *       *       *       *       git -C /home/sbp/.pass pull
+1-59/15 *       *       *       *       git -C /home/sbp/.pass push
 0       *       *       *       *       /home/sbp/.config/syncrepo.sh >> /home/sbp/.cache/syncrepo.log 2>&1
