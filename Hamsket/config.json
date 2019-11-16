@@ -19,10 +19,10 @@
 	"locale": "en",
 	"enable_hidpi_support": false,
 	"default_service": "hamsketTab",
-	"width": 1892,
+	"width": 900,
 	"height": 996,
 	"maximized": false,
-	"x": 14,
+	"x": 1006,
 	"y": 542,
 	"master_password1": "",
 	"master_password2": ""
