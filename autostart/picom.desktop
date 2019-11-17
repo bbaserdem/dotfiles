@@ -2,7 +2,7 @@
 Version=1.0
 Name=Picom
 Comment=Standalone X compositor
-Exec=/usr/bin/compton -b
+Exec=/usr/bin/picom -b
 Icon=compton
 Terminal=false
 Type=Application
