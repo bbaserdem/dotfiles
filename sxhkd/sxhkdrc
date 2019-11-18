@@ -78,34 +78,41 @@ super + {_,shift + }q
     bspc node --{close,kill}
 # Change and move focused node
 super + {_,shift + }{h,j,k,l}
-    bspc node -{f,s} {west,south,north,east}
+    bspc node --{focus,--swap} {west,south,north,east}
 super + {_,shift + }{Down,Up}
-    if [ "$(bspc query --desktop focused --nodes | wc -l)" -gt 1 ] ; then  bspc node -{f,s} {next,prev}.local ; fi
-# Change and move to desktop
-super + {_,shift + }{Left,Right}
-    bspc {desktop -f,node -d} {prev,next}
-super + {_,shift + }{button8,button9}
-    bspc {desktop -f,node -d} {prev,next}
-super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
+    if [ "$(bspc query --desktop focused --nodes | wc -l)" -gt 1 ] ; then  bspc node --{focus,swap} {next,prev}.local ; fi
+# Change to the next occupied or specified desktop
+super + {Left,Right}
+    bspc desktop {prev,next}.occupied --focus
+super + {button8,button9}
+    bspc desktop {prev,next}.occupied --focus
+super + {1-9,0}
+    bspc desktop --focus '^{1-9,10}'
+# Move focused node to the next or specified desktop
+super + shift + {Left,Right}
+    bspc node --to-desktop {prev,next}
+super + shift + {button8,button9}
+    bspc node --to-desktop {prev,next}
+super + shift + {1-9,0}
+    bspc node --to-desktop '^{1-9,10}'
 # Alternate between tiled and monocle (stacked) layout
 super + s
-    bspc desktop -l next
+    bspc desktop --layout next
 # Set window state (original, tiled-ish, float, maximize)
 super + {t,shift + t,f,m}
-    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+    bspc node --state {tiled,pseudo_tiled,floating,fullscreen}
 # Toggle split orientation
-super + o
-    bspc node -R 90
+super + {_,shift +} o
+    bspc node --rotate {90,270}
 # Rotate nodes
 super + {_,shift + }r
-    bspc node @/ -C {forward,backward}
+    bspc node --circulate {forward,backward}
 # Focus parent or child
 super + {a,b,comma,period}
-    bspc node -f @{parent,brother,first,second}
+    bspc node --focus @{parent,brother,first,second}
 # Node flags
 super + ctrl + {s,p}
-    bspc node -g {sticky,private}
+    bspc node --flag {sticky,private}
 # Make current node the biggest
 super + g
     bspc node --swap biggest.local
@@ -129,10 +136,7 @@ super + alt + shift + {h,j,k,l}
     bspc node --resize {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 # Move desktop to other monitor
 super + alt + {Left,Right}
-    desk=`bspc query -D -d focused`; \
-    bspc desktop -m {prev,next}; \
-    bspc monitor -f {prev,next}; \
-    bspc desktop -f $desk
+    bspc desktop --to-monitor {prev,next} --focus
 # move a floating window
 super + alt + shift + {Left,Down,Up,Right}
     bspc node --move {-20 0,0 20,0 -20,20 0}
