@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Wed Nov 20 09:26:21 EST 2019
+#Wed Nov 20 11:35:18 EST 2019
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -88,16 +88,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Downloads/Xiaoyin/validatepadlockdesigns.m
+EditorMRU8=S/home/sbp/Downloads/Xiaoyin/batchmakepadlocks.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Downloads/Xiaoyin/batchmakepadlocks.m
-EditorMRU6=S/home/sbp/Downloads/Xiaoyin/samplescript.m
-EditorMRU5=S/home/sbp/Downloads/Xiaoyin/batchmakepadlocksbyseq.m
-EditorMRU4=S/home/sbp/Downloads/Xiaoyin/filteredvalidtargets.m
-EditorMRU3=S/home/sbp/Downloads/Xiaoyin/batchmakeshortpadlocks.m
+EditorMRU7=S/home/sbp/Downloads/Xiaoyin/samplescript.m
+EditorMRU6=S/home/sbp/Downloads/Xiaoyin/batchmakepadlocksbyseq.m
+EditorMRU5=S/home/sbp/Downloads/Xiaoyin/filteredvalidtargets.m
+EditorMRU4=S/home/sbp/Downloads/Xiaoyin/batchmakeshortpadlocks.m
+EditorMRU3=S/home/sbp/Downloads/Xiaoyin/designshortpadlocks.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Downloads/Xiaoyin/designshortpadlocks.m
-EditorMRU1=S/home/sbp/Downloads/Xiaoyin/optimizeGII.m
+EditorMRU2=S/home/sbp/Downloads/Xiaoyin/optimizeGII.m
+EditorMRU1=S/home/sbp/Downloads/Xiaoyin/padlockcomplexity.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
