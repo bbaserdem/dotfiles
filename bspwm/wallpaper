@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ -z "${AUTORANDR_CURRENT_PROFILE}" ] ; then
+    AUTORANDR_CURRENT_PROFILE="$(autorandr --current)"
+fi
+
+case "${XDG_CURRENT_DESKTOP}" in
+    bspwm)
+        # This script refreshes backdrop of desktops
+        _num="$(bspc query --monitors | wc --lines)"
+        if [ "${_num}" = '2' ]; then
+            # Check if a monitor is rotated
+            if echo "${AUTORANDR_CURRENT_PROFILE}" | grep --quiet 'Work ' ; then
+                _dir="${HOME}/Pictures/Wallpapers/Dual_Mixed/"
+            else
+                _dir="${HOME}/Pictures/Wallpapers/Dual_Horizontal/"
+            fi
+            feh --no-fehbg --randomize --bg-scale --no-xinerama "${_dir}"
+        elif [ "${_num}" != '0' ]; then
+            _dir="${HOME}/Pictures/Wallpapers/"
+            feh --no-fehbg --randomize --bg-scale "${_dir}"
+        fi
+        ;;
+    *)
+        true
+        ;;
+esac
