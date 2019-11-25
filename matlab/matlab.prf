@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Mon Nov 25 08:15:55 EST 2019
+#Mon Nov 25 09:02:26 EST 2019
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -88,16 +88,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Downloads/Xiaoyin/filteredvalidtargets.m
+EditorMRU8=S/home/sbp/Downloads/Xiaoyin/batchmakeshortpadlocks.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Downloads/Xiaoyin/batchmakeshortpadlocks.m
-EditorMRU6=S/home/sbp/Downloads/Xiaoyin/designshortpadlocks.m
-EditorMRU5=S/home/sbp/Downloads/Xiaoyin/optimizeGII.m
-EditorMRU4=S/home/sbp/Downloads/Xiaoyin/padlockcomplexity.m
-EditorMRU3=S/home/sbp/Downloads/Xiaoyin/SCRIPT_M1_PROBES.m
+EditorMRU7=S/home/sbp/Downloads/Xiaoyin/designshortpadlocks.m
+EditorMRU6=S/home/sbp/Downloads/Xiaoyin/optimizeGII.m
+EditorMRU5=S/home/sbp/Downloads/Xiaoyin/SCRIPT_M1_PROBES.m
+EditorMRU4=S/home/sbp/Downloads/Xiaoyin/batchmakepadlocks2.m
+EditorMRU3=S/home/sbp/Downloads/Xiaoyin/designdnapadlocks2.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Downloads/Xiaoyin/batchmakepadlocks2.m
-EditorMRU1=S/home/sbp/Downloads/Xiaoyin/designdnapadlocks2.m
+EditorMRU2=S/home/sbp/Downloads/Xiaoyin/validatepadlockdesigns.m
+EditorMRU1=S/home/sbp/Downloads/Xiaoyin/padlockcomplexity.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
