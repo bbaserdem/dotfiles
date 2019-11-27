@@ -527,12 +527,12 @@
             </key>
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
+                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Downloads/Xiaoyin]]></value>
                     <value><![CDATA[/home/sbp/Downloads]]></value>
                     <value><![CDATA[/home/sbp]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp/Downloads/M1celltypes]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Downloads/B109&111ss]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/methods]]></value>
@@ -569,7 +569,7 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>75.83586626139818</value>
+                        <value>73.9344262295082</value>
                     </double>
                 </key>
                 <key name="Size">
@@ -598,10 +598,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[160]]></value>
+                        <value><![CDATA[158]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
-                        <value><![CDATA[126]]></value>
+                        <value><![CDATA[128]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -1549,7 +1549,7 @@
         </key>
         <key name="LastFolderPath">
             <string>
-                <value><![CDATA[/home/sbp/Downloads/Xiaoyin]]></value>
+                <value><![CDATA[/home/sbp/Documents/Research]]></value>
             </string>
         </key>
     </settings>
