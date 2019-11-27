@@ -1,24 +1,24 @@
 #!/bin/dash
 
 # This script refreshes backdrop of desktops
+
+# Get rectangle information of the screen
 _rect="$(xdpyinfo | awk '/dimensions/ {print $2;}')"
-_mnum="$(bspc query --monitors | wc --lines)"
+_x="$(echo "${_rect}" | sed 's|\([0-9]*\)x\([0-9]*\)|\1|')"
+_y="$(echo "${_rect}" | sed 's|\([0-9]*\)x\([0-9]*\)|\2|')"
 
 # Default directory
 _dir="${HOME}/Pictures/Wallpapers/"
 
-# Check if there are multiple monitors
-if [ "${_mnum}" = '2' ]; then
-    _rect="$(xdpyinfo | awk '/dimensions/ {print $2;}')"
-    # Check if it is a rotated monitor layout or not
-    if [ "${_rect}" = '3000x1920' ] ; then
-        _dir="${HOME}/Pictures/Wallpapers/Dual_Mixed/"
-    elif [ "${_rect}" = '2160x1920' ] ; then
-        _dir="${HOME}/Pictures/Wallpapers/Dual_Vertical/"
-    elif [ "${_rect}" = '1080x3840' ] ; then
-        _dir="${HOME}/Pictures/Wallpapers/Dual_Horizontal/"
-    fi
-fi
+# Set a theme (maybe to be modded later)
+_theme=''
+
+# Find a random wallpaper that is the current monitor size or above
+_img="$(find "${_dir}" \
+    -name "${_theme}*" \
+    -exec identify -format "%w %h ${_dir}%f\n" {} \; |
+    awk 'int($1) >= '"${_x}"' && int($2) >= '"${_y}"' {print $3}' |
+    shuf -n 1 -)"
 
 # Set without using Xinerama
-feh --no-fehbg --randomize --bg-scale --no-xinerama "${_dir}"
+feh --no-fehbg --bg-scale --no-xinerama "${_img}"
