@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Configure
 bspc config border_width                2
@@ -10,7 +10,7 @@ bspc config split_ratio                 0.52
 bspc config borderless_monocle          true
 bspc config gapless_monocle             true
 bspc config automatic_scheme            longest_side
-bspc config external_rules_command      $XDG_CONFIG_HOME/bspwm/external_rules.sh
+bspc config external_rules_command      "${XDG_CONFIG_HOME}/bspwm/external_rules.sh"
 
 # Set XDG_CURRENT_DESKTOP for mimetypes
 export XDG_CURRENT_DESKTOP="bspwm"
@@ -18,10 +18,10 @@ export XDG_CURRENT_DESKTOP="bspwm"
 # Fix Java apps
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# Set background placeholder
+if [ -e "${XDG_CACHE_HOME}/last_wallpaper" ] ; then
+    feh --no-fehbg --bg-scale --no-xinerama "${XDG_CACHE_HOME}/last_wallpaper"
+fi
+
 # Autostart programs
 dex --autostart --environment bspwm
-
-# Load autorandr scripts
-for _scr in $XDG_CONFIG_HOME/autorandr/postswitch.d/* ; do
-    $_scr 2>/dev/null
-done

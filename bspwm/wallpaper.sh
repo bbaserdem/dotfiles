@@ -20,5 +20,8 @@ _img="$(find "${_dir}" \
     awk 'int($1) >= '"${_x}"' && int($2) >= '"${_y}"' {print $3}' |
     shuf -n 1 -)"
 
+# Save the background location, for quick setting in the future
+ln -sf "${_img}" "${XDG_CACHE_HOME}/last_wallpaper"
+
 # Set without using Xinerama
 feh --no-fehbg --bg-scale --no-xinerama "${_img}"
