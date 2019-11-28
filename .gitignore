@@ -12,7 +12,6 @@
 # Files to track
 !/.gitignore
 !/abcde.conf
-!/compton.conf
 !/crontab.cron
 !/gpg-agent.conf
 !/install.sh
@@ -22,6 +21,7 @@
 !/mpdscribble-confgen.sh
 !/msmtprc
 !/piagen.sh
+!/picom.conf
 !/README.md
 !/s3cfg-gen.sh
 !/steamos-compositor-plus
