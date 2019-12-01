@@ -23,5 +23,7 @@ if [ -e "${XDG_CACHE_HOME}/last_wallpaper" ] ; then
     feh --no-fehbg --bg-scale --no-xinerama "${XDG_CACHE_HOME}/last_wallpaper"
 fi
 
+autorandr --change --force
+
 # Autostart programs
 dex --autostart --environment bspwm
