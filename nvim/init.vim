@@ -87,7 +87,7 @@ set shiftwidth=4            " Indentation amount for < and > commands.
 set nojoinspaces            " Prevents inserting two spaces after punctuation on a join (J)
 set ignorecase              " Make searching case insensitive
 set smartcase               " ... unless the query has capital letters.
-set spelllang=en_us                                 " Turn on spellcheck
+"set spelllang=en_us,tr_tr                           " Turn on spellcheck
 set colorcolumn=80                                  " Highlight 80th column
 set laststatus=2                                    " Always show status bar
 set updatetime=500                                  " Plugin update time >4s
