@@ -37,6 +37,7 @@ image/gif=imv.desktop
 image/png=imv.desktop
 text/html=firefox.desktop
 video/x-msvideo=smplayer.desktop;
+video/mp4=smplayer.desktop;
 application/msword=libreoffice-writer.desktop;
 inode/directory=vifm.desktop
 x-scheme-handler/default=org.qutebrowser.qutebrowser.desktop
