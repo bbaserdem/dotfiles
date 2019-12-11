@@ -32,7 +32,7 @@ case $class in
     Steam|Stepmania)
         DESKTOP="${ws4}";;
     # Desktop 5: Other desktops
-    Qemu*|Virt-manager|*Remmina)
+    Qemu*|Virt-manager|*Remmina|transmission*)
         DESKTOP="${ws5}";;
     # Desktop 6: Terminals
     Alacritty|kitty)
@@ -47,7 +47,7 @@ case $class in
     pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
         DESKTOP="${ws9}";;
     # Desktop 10: Settings
-    Pavucontrol|Syncthing*|System*|Blueman*|Picard*|Maestral*)
+    Pavucontrol|Syncthing*|System*|Blueman*|Picard*|Maestral*|Pamac*)
         DESKTOP="${ws0}";;
 esac
 
