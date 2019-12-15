@@ -43,7 +43,7 @@ Plug 'ervandew/SuperTab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 " Linting (code checking)
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 " Snippets (code snippet inserter)
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
