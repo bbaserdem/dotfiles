@@ -43,7 +43,7 @@ Plug 'ervandew/SuperTab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 " Linting (code checking)
-"Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 " Snippets (code snippet inserter)
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -209,12 +209,13 @@ let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 "------------"
 " Linter (syntax and warning checker) and fixing
 "   Use Ctrl + jk to move back/forth between errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:ale_sign_column_always=1
 let g:ale_sign_error=''
 let g:ale_sign_warning=''
-let g:ale_set_hightlights = 0
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_set_highlights = 0
+let g:ale_set_signs = 1
 
 "----------------------------------"
 "  __                              "
