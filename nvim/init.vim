@@ -38,8 +38,7 @@ Plug 'airblade/vim-gitgutter'
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Autocomplete for programming
-Plug 'ervandew/SuperTab'
+" Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 " Linting (code checking)
@@ -186,13 +185,16 @@ let g:airline#extensions#gutentags#enabled=1
 "   Press tab to open autocompletion menu, and tab to navigate.
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('auto_complete', v:false)
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"call deoplete#custom#source('ale', 'rank', 999)
-
-
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-let g:SuperTabClosePreviewOnPopupClose = 1
+call deoplete#custom#source('ale', 'rank', 999)
+" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 
 "------------------------------"
 "              __              "
