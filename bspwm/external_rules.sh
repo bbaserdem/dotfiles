@@ -22,8 +22,8 @@ case $class in
     # Desktop 1: Internet
     Skype|Hamsket|qutebrowser|firefox)
         DESKTOP="${ws1}";;
-    # Desktop 2: Images and Static Media
-    Gimp*|inkscape|imv|Darktable)
+    # Desktop 2: Computation
+    MATLAB*|*Octave|Spyder*)
         DESKTOP="${ws2}";;
     # Desktop 3: Video, media
     mpv|smplayer|vlc|cantata)
@@ -37,8 +37,8 @@ case $class in
     # Desktop 6: Terminals
     Alacritty|kitty)
         DESKTOP="${ws6}";;
-    # Desktop 7: Computation
-    MATLAB*|*Octave|Spyder*)
+    # Desktop 2: Images and Static Media
+    Gimp*|inkscape|imv|Darktable)
         DESKTOP="${ws7}";;
     # Desktop 8: Writing
     Zathura|Evince|libreoffice*|Soffice)
@@ -61,8 +61,8 @@ case $title in
         ;;
     # Science figures go to image window
     Figures*)
-        if [ "${DESKTOP}" = "${ws7}" ]; then
-            DESKTOP="${ws2}"
+        if [ "${DESKTOP}" = "${ws2}" ]; then
+            DESKTOP="${ws7}"
         fi
         ;;
     # Steam prompts go to steam window
