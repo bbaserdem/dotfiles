@@ -76,7 +76,9 @@ let base16colorspace=256
 colorscheme base16-onedark
 
 "-----Base stuff-----"
+set cmdheight=2             " Command bar height
 set number                  " Show line numbers
+set relativenumber          " Show line numbers
 set showmatch               " Show matching brackets
 set formatoptions+=o        " Continue comment marker in new lines.
 set autoindent              " Allow autoindent
@@ -87,7 +89,7 @@ set shiftwidth=4            " Indentation amount for < and > commands.
 set nojoinspaces            " Prevents inserting two spaces after punctuation on a join (J)
 set ignorecase              " Make searching case insensitive
 set smartcase               " ... unless the query has capital letters.
-"set spelllang=en_us,tr_tr                           " Turn on spellcheck
+set spelllang=en_us,tr_tr                           " Turn on spellcheck
 set colorcolumn=80                                  " Highlight 80th column
 set laststatus=2                                    " Always show status bar
 set updatetime=500                                  " Plugin update time >4s
@@ -95,9 +97,14 @@ set mouse=a                                         " Disable mouse click
 set splitbelow              " Horizontal splitsgo down
 set splitright              " Vertical splits go right
 set showtabline=2           " For airline on top
+set scrolloff=16            " Make it so there are always lines below my cursor
+set wildignore=*.o,*~,*.pyc " Ignore compiled files
 let g:grammarous#languagetool_cmd = 'languagetool'  " Grammar check
 let g:is_posix = 1
-
+" Make it so that long lines wrap smartly
+set breakindent
+let &showbreak=repeat(' ', 3)
+set linebreak
 
 " Tell Vim which characters to show for expanded TABs,
 if &listchars ==# 'eol:$'
@@ -180,7 +187,7 @@ let g:airline#extensions#gutentags#enabled=1
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('auto_complete', v:false)
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-call deoplete#custom#source('ale', 'rank', 1)
+"call deoplete#custom#source('ale', 'rank', 999)
 
 
 let g:SuperTabDefaultCompletionType = "context"
@@ -216,6 +223,7 @@ let g:ale_sign_error=''
 let g:ale_sign_warning=''
 let g:ale_set_highlights = 0
 let g:ale_set_signs = 1
+let g:ale_completion_enabled = 0
 
 "----------------------------------"
 "  __                              "
