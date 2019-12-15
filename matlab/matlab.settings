@@ -569,12 +569,12 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>73.9344262295082</value>
+                        <value>87.10462287104623</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
-                        <value>159</value>
+                        <value>53</value>
                     </int32>
                 </key>
             </settings>
@@ -598,10 +598,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[158]]></value>
+                        <value><![CDATA[144]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
-                        <value><![CDATA[128]]></value>
+                        <value><![CDATA[142]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
