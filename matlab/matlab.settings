@@ -569,7 +569,7 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>87.10462287104623</value>
+                        <value>93.44059405940595</value>
                     </double>
                 </key>
                 <key name="Size">
@@ -598,10 +598,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[144]]></value>
+                        <value><![CDATA[139]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
-                        <value><![CDATA[142]]></value>
+                        <value><![CDATA[139]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
