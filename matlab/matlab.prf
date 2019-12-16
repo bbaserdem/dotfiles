@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Sun Dec 15 18:16:05 EST 2019
+#Sun Dec 15 20:02:12 EST 2019
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -88,16 +88,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/Xiaoyin/validatepadlockdesigns.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/Xiaoyin/padlockcomplexity.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/Xiaoyin/padlockcomplexity.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/SCRIPT_M1_PROBES.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/batchmakepadlocks2.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/designdnapadlocks2.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/validatepadlockdesigns.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/SCRIPT_M1_PROBES.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/batchmakepadlocks2.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/designdnapadlocks2.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/validatepadlockdesigns.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/padlockcomplexity.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/padlockcomplexity.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/optimizeGII.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/optimizeGII.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/findPadlocks.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
