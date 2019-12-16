@@ -565,6 +565,7 @@
             <settings name="detailviewer">
                 <key name="Collapsed">
                     <bool>
+                        <value>1</value>
                     </bool>
                 </key>
                 <key name="Ratio">
@@ -598,10 +599,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[115]]></value>
+                        <value><![CDATA[185]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
-                        <value><![CDATA[144]]></value>
+                        <value><![CDATA[215]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -1167,6 +1168,18 @@
         </key>
         <settings name="machine_specific">
             <settings name="H1353287475353686713">
+                <key name="ever_crashed_in_graphics" anytype="true">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+                <key name="opengl_preference">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
+                </key>
+            </settings>
+            <settings name="H18033005340657519865">
                 <key name="ever_crashed_in_graphics" anytype="true">
                     <uint32>
                         <value>0</value>
