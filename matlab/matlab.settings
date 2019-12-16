@@ -599,10 +599,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[185]]></value>
+                        <value><![CDATA[103]]></value>
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[0]]></value>
-                        <value><![CDATA[215]]></value>
+                        <value><![CDATA[118]]></value>
+                        <value><![CDATA[140]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -635,6 +635,7 @@
                     <string minArraySize="0" maxArraySize="100">
                         <value><![CDATA[icon]]></value>
                         <value><![CDATA[name]]></value>
+                        <value><![CDATA[size]]></value>
                         <value><![CDATA[modified]]></value>
                     </string>
                 </key>
