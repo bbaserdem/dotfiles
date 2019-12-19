@@ -221,6 +221,10 @@
 !/systeminfo
 !/systeminfo/*
 
+# TMUXINATOR: Grab everything
+!/tmuxinator
+!/tmuxinator/**
+
 # TODOMAN: Grab everything
 !/todoman
 !/todoman/**

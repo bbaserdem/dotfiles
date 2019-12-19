@@ -47,7 +47,7 @@ case $class in
     pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
         DESKTOP="${ws9}";;
     # Desktop 10: Settings
-    Pavucontrol|Syncthing*|System*|Blueman*|Picard*|Maestral*|Pamac*)
+    Pavucontrol|Syncthing*|System*|Blueman*|Picard*|Maestral*|Pamac*|Ibus*)
         DESKTOP="${ws0}";;
 esac
 
