@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Mon Dec 23 07:52:05 EST 2019
+#Mon Dec 23 08:13:37 EST 2019
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -96,13 +96,13 @@ EditorMCodeFoldEnabledblockcomments=Btrue
 EditorMRU8=S/opt/tmw/matlab/toolbox/matlab/graphfun/@graph/graph.m
 ReplaceWordWrap=Btrue
 EditorMRU7=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/checkMatches.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/findPadlocks.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/findPadlocks2.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/batchmakepadlocks2.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/designdnapadlocks2.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/findPadlocks2.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/batchmakepadlocks2.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/padlocks_xiaoyin/designdnapadlocks2.m
+EditorMRU3=S/opt/tmw/matlab/toolbox/matlab/graphfun/@graph/subsasgn.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/opt/tmw/matlab/toolbox/matlab/graphfun/@graph/subsasgn.m
-EditorMRU1=S/opt/tmw/matlab/toolbox/matlab/graphfun/@graph/addedge.m
+EditorMRU2=S/opt/tmw/matlab/toolbox/matlab/graphfun/@graph/addedge.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/findPadlocks.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
