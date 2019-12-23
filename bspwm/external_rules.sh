@@ -17,7 +17,7 @@ FLAGS=""
 # Grab info
 case $class in
     # Force tiling
-    Soffice|libreoffice*|zathura|Zathura|Steam)
+    Soffice|libreoffice*|zathura|Zathura|Steam|dropbox)
         STATE="tiled";;&
     # Desktop 1: Internet
     Skype|Hamsket|qutebrowser|firefox)
@@ -47,7 +47,7 @@ case $class in
     pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
         DESKTOP="${ws9}";;
     # Desktop 10: Settings
-    Pavucontrol|Syncthing*|System*|Blueman*|Picard*|Maestral*|Pamac*|Ibus*)
+    Pavucontrol|Syncthing*|dropbox|System*|Blueman*|Picard*|Maestral*|Pamac*|Ibus*)
         DESKTOP="${ws0}";;
 esac
 
