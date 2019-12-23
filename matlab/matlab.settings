@@ -600,10 +600,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[83]]></value>
+                        <value><![CDATA[108]]></value>
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[86]]></value>
-                        <value><![CDATA[116]]></value>
+                        <value><![CDATA[112]]></value>
+                        <value><![CDATA[141]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -1564,7 +1564,7 @@
         </key>
         <key name="LastFolderPath">
             <string>
-                <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                <value><![CDATA[/home/sbp/Documents/Research]]></value>
             </string>
         </key>
     </settings>
