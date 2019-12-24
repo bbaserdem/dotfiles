@@ -4,7 +4,6 @@ set first-page-column 1:1
 set incremental-search false
 set statusbar-home-tilde true
 set scroll-page-aware "true"
-set smooth-scroll "true"
 set scroll-step 50
 
 map <C-i> recolor
