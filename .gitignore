@@ -5,6 +5,20 @@
 # Ignore all files
 *
 
+#------------------#
+#-----EXTERNAL-----#
+#------------------#
+
+# (Symbolic) Links to external folders
+
+# Oxygen Not Included
+!/unity3d
+!/unity3d/Klei
+!/unity3d/Klei/Oxygen Not Included
+
+# Stardew Valley
+!/StardewValley
+
 #-------------------#
 #-----WHITELIST-----#
 #-------------------#
@@ -232,11 +246,6 @@
 # UDISKIE: Grab config
 !/udiskie
 !/udiskie/config.json
-
-# UNITY: Retain save games that are configured
-!/unity3d
-!/unity3d/Klei
-!/unity3d/Klei/Oxygen Not Included
 
 # USAGE: It's documentation; grab all
 !/usage
