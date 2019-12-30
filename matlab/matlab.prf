@@ -1,11 +1,11 @@
 #MATLAB Preferences
-#Mon Dec 30 08:28:27 EST 2019
+#Mon Dec 30 09:25:32 EST 2019
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
 EditorMCodeFoldCollapseFileOpenwhile=Bfalse
+ReplaceSearchText=Sdva
 ColorsUseSystem=Bfalse
-ReplaceSearchText=SDIM
 DelimiterOptionsMoving=Btrue
 EditorMCodeFoldCollapseFileOpenfunction=Bfalse
 Colors_HTML_HTMLLinks=C-9452817
@@ -19,10 +19,10 @@ ReplaceSearchText5=S
 ReplaceText7=S
 ReplaceSearchText4=S
 ReplaceText6=S
-ReplaceSearchText3=S
+ReplaceSearchText3=SFI
 ReplaceText5=S
 EditorMCodeFoldCollapseFileOpenevents=Bfalse
-ReplaceSearchText2=SFI
+ReplaceSearchText2=SDIM
 ReplaceText4=S
 EditorMCodeFoldEnabledspmd=Btrue
 ReplaceText3=S
@@ -99,10 +99,10 @@ EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
 EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m10_align_dorsoventral.m
 EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m
 EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/m11_feature.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m11_align_dorsoventral.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m10_feature.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m10_feature.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/m12_analyse_dv.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m12_analyse_dv.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/m11_align_dorsoventral.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
@@ -118,5 +118,5 @@ EditorMCodeFoldCollapseFileOpentry=Bfalse
 EditorMCodeFoldCollapseFileOpenenumeration=Bfalse
 HasAppendedMlxToFileExtensionsKey=Btrue
 EditorMCodeFoldEnabledtry=Btrue
-ReplaceText=S
+ReplaceText=Sadv
 EditorMCodeFoldEnabledwhile=Btrue
