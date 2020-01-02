@@ -600,10 +600,17 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
+<<<<<<< HEAD
                         <value><![CDATA[94]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[94]]></value>
                         <value><![CDATA[97]]></value>
+=======
+                        <value><![CDATA[185]]></value>
+                        <value><![CDATA[40]]></value>
+                        <value><![CDATA[92]]></value>
+                        <value><![CDATA[91]]></value>
+>>>>>>> 6e33b3192e58049bb89ebdc3e9ee9d75403940a4
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -624,12 +631,12 @@
                 </key>
                 <key name="SortColumn">
                     <string>
-                        <value><![CDATA[modified]]></value>
+                        <value><![CDATA[name]]></value>
                     </string>
                 </key>
                 <key name="SortDescending">
                     <bool>
-                        <value>1</value>
+                        <value>0</value>
                     </bool>
                 </key>
                 <key name="VisibleColumns">
