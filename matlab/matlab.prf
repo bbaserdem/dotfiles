@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Mon Dec 30 09:25:32 EST 2019
+#Tue Jan 07 13:43:40 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -93,16 +93,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/findPadlocks.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m10_align_dorsoventral.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/m11_feature.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m10_feature.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/m10_align_dorsoventral.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m11_feature.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/m10_feature.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m12_analyse_dv.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m12_analyse_dv.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/m11_align_dorsoventral.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m11_align_dorsoventral.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/checkMatches2.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
