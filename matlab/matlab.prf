@@ -1,11 +1,11 @@
 #MATLAB Preferences
-#Mon Jan 13 09:37:52 EST 2020
+#Tue Jan 14 11:46:18 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
 EditorMCodeFoldCollapseFileOpenwhile=Bfalse
-ReplaceSearchText=Sdva
 ColorsUseSystem=Bfalse
+ReplaceSearchText=Sdva
 DelimiterOptionsMoving=Btrue
 EditorMCodeFoldCollapseFileOpenfunction=Bfalse
 Colors_HTML_HTMLLinks=C-9452817
@@ -73,8 +73,8 @@ EditorShowOpenAsLiveScriptBanner=Bfalse
 ReplaceText12=S
 EditorMCodeFoldEnabledclassdef=Btrue
 ReplaceText11=S
-RLWidthB2_VE_2014b_1_1=I130
 ReplaceText10=S
+RLWidthB2_VE_2014b_1_1=I130
 RLWidthB2_VE_2014b_1_0=I130
 ColorsBackground=C-15395563
 ColorsUseMLintAutoFixBackground=Btrue
