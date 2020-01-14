@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Tue Jan 14 11:46:18 EST 2020
+#Tue Jan 14 15:34:12 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -93,16 +93,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/m12_analyse_dv.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/partialStringMatch.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/m11_align_dorsoventral.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/checkMatches2.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/findPadlocks.m
-EditorMRU4=S/opt/tmw/matlab/toolbox/stats/stats/pdist.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/partialStringMatch.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/partialSeqMatch.m
+EditorMRU6=S/opt/tmw/matlab/toolbox/matlab/elmat/sub2ind.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m01_reformat_data.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/send/xioyin_jan_analysis.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/xiaoyin/xioyin_jan_analysis.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/partialSeqMatch.m
-EditorMRU1=S/opt/tmw/matlab/toolbox/matlab/elmat/sub2ind.m
+EditorMRU2=S/home/sbp/Documents/MATLAB/startup.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/partialSeqMatch2.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
