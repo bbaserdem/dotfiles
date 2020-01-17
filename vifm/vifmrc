@@ -6,6 +6,9 @@
 
 set vicmd=nvim
 
+" Set conventional trash dir
+set trashdir="~/.local/share/Trash"
+
 " Use intertal tools rather than cp
 set syscalls
 
