@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Tue Jan 21 21:30:54 EST 2020
+#Wed Jan 22 00:48:02 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -93,16 +93,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/SPH/matlab2/@SPH/doSimulationStep.m
+EditorMRU8=S/home/sbp/Documents/Research/SPH/matlab2/@SPH/showParticles.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/SPH/matlab2/@SPH/showParticles.m
-EditorMRU6=S/home/sbp/Documents/Research/SPH/matlab/functions/cell_contract.m
-EditorMRU5=S/home/sbp/Documents/Research/SPH/matlab/functions/get_avg.m
-EditorMRU4=S/home/sbp/Documents/Research/SPH/matlab/functions/get_avg_weight.m
-EditorMRU3=S/home/sbp/Documents/Research/SPH/matlab/functions/get_i_gt_j.m
+EditorMRU7=S/home/sbp/Documents/Research/SPH/matlab/functions/cell_contract.m
+EditorMRU6=S/home/sbp/Documents/Research/SPH/matlab/functions/get_avg.m
+EditorMRU5=S/home/sbp/Documents/Research/SPH/matlab/functions/get_avg_weight.m
+EditorMRU4=S/home/sbp/Documents/Research/SPH/matlab/functions/get_i_gt_j.m
+EditorMRU3=S/home/sbp/Documents/Research/ConnectomeCloning/functions/cc_flicker.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/ConnectomeCloning/functions/cc_flicker.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/partialSeqMatch2.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/partialSeqMatch2.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/overlap_padlocks/randsample_noreplace.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
