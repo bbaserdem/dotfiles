@@ -527,12 +527,12 @@
             </key>
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
+                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/ConnectomeCloning]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/SPH]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/SPH/matlab2]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/SPH/matlab]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/xiaoyin]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp]]></value>
@@ -1571,7 +1571,7 @@
         </key>
         <key name="LastFolderPath">
             <string>
-                <value><![CDATA[/home/sbp/Documents/Research]]></value>
+                <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
             </string>
         </key>
     </settings>
