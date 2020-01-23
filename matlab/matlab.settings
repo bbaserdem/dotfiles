@@ -527,6 +527,8 @@
             </key>
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
+                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
+                    <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/overlap_padlocks]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
@@ -535,11 +537,9 @@
                     <value><![CDATA[/home/sbp/Documents/Research/SPH/matlab2]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/SPH/matlab]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/xiaoyin]]></value>
-                    <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp]]></value>
                     <value><![CDATA[/home/sbp/Downloads/PiriformMAPseq]]></value>
                     <value><![CDATA[/home/sbp/Downloads]]></value>
-                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/OdorNavigation]]></value>
                     <value><![CDATA[/home/sbp/Downloads/Xiaoyin]]></value>
                     <value><![CDATA[/home/sbp/Downloads/M1celltypes]]></value>
@@ -1572,7 +1572,7 @@
         </key>
         <key name="LastFolderPath">
             <string>
-                <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
             </string>
         </key>
     </settings>
