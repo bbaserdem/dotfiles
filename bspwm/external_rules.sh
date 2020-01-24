@@ -58,21 +58,21 @@ case $title in
         FLAGS="sticky=on hidden=on"
         DESKTOP=''
         STATE='floating'
-        ;;
+        ;;&
     # Science figures go to image window
     Figures*)
         if [ "${DESKTOP}" = "${ws2}" ]; then
             DESKTOP="${ws7}"
         fi
-        ;;
+        ;;&
     # Steam prompts go to steam window
     Steam)
         DESKTOP="${ws4}"
-        ;;
+        ;;&
     # Save prompts do not go to a new desktop
-    Save*|Insert*|Confirm*|Playlist*)
+    Save*|Insert*|Confirm*|Playlist*|TabCompletionPopup)
         DESKTOP=""
-        ;;
+        ;;&
 esac
 
 # Add desktop and state flags

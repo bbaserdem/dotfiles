@@ -608,10 +608,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[94]]></value>
+                        <value><![CDATA[89]]></value>
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[55]]></value>
-                        <value><![CDATA[152]]></value>
+                        <value><![CDATA[60]]></value>
+                        <value><![CDATA[59]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
