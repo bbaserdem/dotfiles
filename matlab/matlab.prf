@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Fri Jan 24 12:02:58 EST 2020
+#Fri Jan 24 15:11:58 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -93,16 +93,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/m12_analyse_dv.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/m12_analyse_dv.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m14_newdata.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/xiaoyin/xioyin_jan_analysis.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/m14_intrapc.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m13_pc_proj.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/m14_newdata.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/xiaoyin/xioyin_jan_analysis.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m14_intrapc.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/m13_pc_proj.m
+EditorMRU3=S/opt/tmw/matlab/toolbox/stats/stats/corr.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/opt/tmw/matlab/toolbox/stats/stats/corr.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/format_newdata.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/format_newdata.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqAnalysis/mapseqData.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
