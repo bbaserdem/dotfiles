@@ -51,6 +51,14 @@ case $class in
         DESKTOP="${ws0}";;
 esac
 
+# Instance overrides
+case $instance in
+    # Override matlab dialogs
+    'sun-awt-X11-XDialogPeer')
+        DESKTOP=""
+        ;;&
+esac
+
 # Title overrides
 case $title in
     # Override the dropdown terminal to be floating and sticky
