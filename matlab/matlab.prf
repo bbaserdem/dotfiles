@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Wed Jan 22 00:48:02 EST 2020
+#Wed Jan 22 01:13:26 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -31,7 +31,7 @@ DelimiterOptionsMovingMisMatchType=I5
 EditorMCodeFoldCollapseFileOpenmethods=Bfalse
 EditorAutoSaveReplaceExtension=Btrue
 DelimiterOptionsTypingMatchType=I3
-EditorMCodeFoldEnabledif=Bfalse
+EditorMCodeFoldEnabledif=Btrue
 EditorMCodeFoldCollapseFileOpenif=Bfalse
 RLOrderB2_VE_2014b_1=S0:1:
 RLHiddenB2_VE_2014b_1=I8184
@@ -42,10 +42,10 @@ RLHiddenB2_WB_2014b_1=I16376
 GeneralTextUseSystemFont=Btrue
 DelimiterOptionsMovingMatchType=I1
 EditorMCodeFoldEnabledfor=Btrue
-EditorMCodeFoldEnabledcell=Bfalse
+EditorMCodeFoldEnabledcell=Btrue
 EditorOtherEditor=S
 Editor.NonlocalVariableHighlighting.TextColor=C-5455257
-EditorMCodeFoldEnabledswitch=Bfalse
+EditorMCodeFoldEnabledswitch=Btrue
 ReplaceSearchText20=S
 EditorMCodeFoldEnabledmethods=Btrue
 EditorMCodeFoldCollapseFileOpenhelp-comments=Bfalse
