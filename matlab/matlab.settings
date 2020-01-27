@@ -2,7 +2,6 @@
 <settings name="matlab" visible="true" xmlns="urn:mathworks.matlab.settings" xsi:schemaLocation="urn:mathworks.matlab.settings settings.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <key name="DeleteFilesPermanently">
         <bool>
-            <value>1</value>
         </bool>
     </key>
     <key name="G11nLanguagePref">
@@ -364,7 +363,7 @@
             </key>
             <key name="machineHash" visible="true">
                 <string>
-                    <value><![CDATA[8d62753ff2cff7f7f937fe7412d4b0ea]]></value>
+                    <value><![CDATA[a59a91a2ab11629ac2c73a6485fa1c1a]]></value>
                 </string>
             </key>
             <key name="shown">
@@ -529,22 +528,6 @@
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/ConnectomeCloning]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/SPH]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/SPH/matlab2]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/SPH/matlab]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/xiaoyin]]></value>
-                    <value><![CDATA[/home/sbp/Documents]]></value>
-                    <value><![CDATA[/home/sbp]]></value>
-                    <value><![CDATA[/home/sbp/Downloads/PiriformMAPseq]]></value>
-                    <value><![CDATA[/home/sbp/Downloads]]></value>
-                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/OdorNavigation]]></value>
-                    <value><![CDATA[/home/sbp/Downloads/Xiaoyin]]></value>
-                    <value><![CDATA[/home/sbp/Downloads/M1celltypes]]></value>
-                    <value><![CDATA[/home/sbp/Downloads/B109&111ss]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/methods]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/functions]]></value>
                     <value><![CDATA[/]]></value>
                 </string>
             </key>
@@ -573,17 +556,14 @@
             <settings name="detailviewer">
                 <key name="Collapsed">
                     <bool>
-                        <value>1</value>
                     </bool>
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>79.48717948717949</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
-                        <value>160</value>
                     </int32>
                 </key>
             </settings>
@@ -607,10 +587,10 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[90]]></value>
+                        <value><![CDATA[266]]></value>
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[87]]></value>
-                        <value><![CDATA[106]]></value>
+                        <value><![CDATA[0]]></value>
+                        <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                     </string>
@@ -643,8 +623,6 @@
                     <string minArraySize="0" maxArraySize="100">
                         <value><![CDATA[icon]]></value>
                         <value><![CDATA[name]]></value>
-                        <value><![CDATA[size]]></value>
-                        <value><![CDATA[modified]]></value>
                     </string>
                 </key>
             </settings>
@@ -967,7 +945,6 @@
             </key>
             <key name="FileExtensionToReplace" visible="true">
                 <string>
-                    <value><![CDATA[bkp.m]]></value>
                 </string>
             </key>
             <key name="Frequency" visible="true">
@@ -976,12 +953,10 @@
             </key>
             <key name="SaveIntoSourceFolder" visible="true">
                 <bool>
-                    <value>0</value>
                 </bool>
             </key>
             <key name="SaveToFolder" visible="true">
                 <string>
-                    <value><![CDATA[/home/sbp/.cache/matlab/]]></value>
                 </string>
             </key>
             <key name="SaveUntitled" visible="true">
@@ -1135,17 +1110,14 @@
         <settings name="codefont" visible="true">
             <key name="Name" visible="true">
                 <string>
-                    <value><![CDATA[Iosevka]]></value>
                 </string>
             </key>
             <key name="Size" visible="true">
                 <int32>
-                    <value>11</value>
                 </int32>
             </key>
             <key name="Style" visible="true">
                 <int32>
-                    <value>0</value>
                 </int32>
             </key>
         </settings>
@@ -1176,23 +1148,8 @@
             </string>
         </key>
         <settings name="machine_specific">
-            <settings name="H1353287475353686713">
-                <key name="ever_crashed_in_graphics" anytype="true">
-                    <uint32>
-                        <value>0</value>
-                    </uint32>
-                </key>
-                <key name="opengl_preference">
-                    <uint32>
-                        <value>0</value>
-                    </uint32>
-                </key>
-            </settings>
             <settings name="H18033005340657519865">
                 <key name="ever_crashed_in_graphics" anytype="true">
-                    <uint32>
-                        <value>0</value>
-                    </uint32>
                 </key>
                 <key name="opengl_preference">
                     <uint32>
@@ -1303,7 +1260,6 @@
     <settings name="importtool">
         <key name="ImportToolTextType">
             <string>
-                <value><![CDATA[string]]></value>
             </string>
         </key>
     </settings>
@@ -1561,7 +1517,6 @@
     <settings name="workingfolder">
         <key name="CustomFolderPath">
             <string>
-                <value><![CDATA[]]></value>
             </string>
         </key>
         <key name="InitialWorkingFolder">
