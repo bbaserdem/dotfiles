@@ -1,12 +1,10 @@
-
 [Desktop Entry]
-Version=0.4.3
 Type=Application
 Name=Maestral
 Icon=maestral
 GenericName=File Synchronizer
 Comment=Sync your files with Dropbox
-Exec=maestral gui --config-name='maestral'
+Exec=maestral gui
 Hidden=false
 Terminal=false
 Type=Application

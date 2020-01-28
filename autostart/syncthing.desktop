@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Syncthing
-Exec=/usr/bin/syncthing -no-browser
-Icon=emblem-syncthing
-Comment=File sharing accross computers
-X-GNOME-Autostart-enabled=true
-Hidden=false
-Type=Application
-StartupNotify=false
