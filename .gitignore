@@ -231,6 +231,10 @@
 !/syncthing-gtk
 !/syncthing-gtk/config.json
 
+# SYSTEMD: Grab everything, for systemd based systems
+!/systemd
+!/systemd/**
+
 # SYSTEMINFO: My python module, grab everything
 !/systeminfo
 !/systeminfo/*
