@@ -587,7 +587,7 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[266]]></value>
+                        <value><![CDATA[143]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
@@ -1110,14 +1110,17 @@
         <settings name="codefont" visible="true">
             <key name="Name" visible="true">
                 <string>
+                    <value><![CDATA[Iosevka Medium]]></value>
                 </string>
             </key>
             <key name="Size" visible="true">
                 <int32>
+                    <value>10</value>
                 </int32>
             </key>
             <key name="Style" visible="true">
                 <int32>
+                    <value>0</value>
                 </int32>
             </key>
         </settings>
