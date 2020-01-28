@@ -1110,7 +1110,7 @@
         <settings name="codefont" visible="true">
             <key name="Name" visible="true">
                 <string>
-                    <value><![CDATA[Iosevka Medium]]></value>
+                    <value><![CDATA[Iosevka Light]]></value>
                 </string>
             </key>
             <key name="Size" visible="true">
