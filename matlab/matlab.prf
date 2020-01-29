@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Tue Jan 28 21:27:01 EST 2020
+#Wed Jan 29 14:14:07 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -93,16 +93,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/@mapseqAnalysis/mapseqData.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/opt/tmw/matlab/toolbox/matlab/specgraph/imagesc.m
-EditorMRU6=S/opt/tmw/matlab/toolbox/matlab/datafun/fillmissing.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m13_pc_proj.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
-EditorMRU3=S/opt/tmw/matlab/toolbox/stats/stats/nnmf.m
+EditorMRU7=S/opt/tmw/matlab/toolbox/stats/stats/nnmf.m
+EditorMRU6=S/home/sbp/Documents/MATLAB/scatter3m.m
+EditorMRU5=S/home/sbp/Documents/MATLAB/scattermat.m
+EditorMRU4=S/home/sbp/Programming/Python/mealplan/test_script.m
+EditorMRU3=S/home/sbp/Programming/Python/mealplan/README.md
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/MATLAB/scatter3m.m
-EditorMRU1=S/home/sbp/Documents/MATLAB/scattermat.m
+EditorMRU2=S/home/sbp/Programming/Python/mealplan/matlab/test_script.m
+EditorMRU1=S/home/sbp/Programming/Python/mealplan/matlab/daily_plan.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
