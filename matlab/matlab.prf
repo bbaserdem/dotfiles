@@ -1,11 +1,11 @@
 #MATLAB Preferences
-#Wed Jan 29 14:14:07 EST 2020
+#Wed Jan 29 17:14:55 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
 EditorMCodeFoldCollapseFileOpenwhile=Bfalse
+ReplaceSearchText=S @(c, g) c;
 ColorsUseSystem=Bfalse
-ReplaceSearchText=Sfigure( 8
 DelimiterOptionsMoving=Btrue
 EditorMCodeFoldCollapseFileOpenfunction=Bfalse
 Colors_HTML_HTMLLinks=C-9452817
@@ -13,16 +13,16 @@ ReplaceSearchText9=S
 ReplaceSearchText8=S
 ReplaceSearchText7=S
 ReplaceText9=S
-ReplaceSearchText6=S
+ReplaceSearchText6=SFI
 ReplaceText8=S
-ReplaceSearchText5=SFI
+ReplaceSearchText5=SDIM
 ReplaceText7=S
-ReplaceSearchText4=SDIM
+ReplaceSearchText4=Sdva
 ReplaceText6=S
-ReplaceSearchText3=Sdva
+ReplaceSearchText3=Sfigure(8
 ReplaceText5=S
 EditorMCodeFoldCollapseFileOpenevents=Bfalse
-ReplaceSearchText2=Sfigure(8
+ReplaceSearchText2=Sfigure( 8
 ReplaceText4=S
 EditorMCodeFoldEnabledspmd=Btrue
 ReplaceText3=Sadv
