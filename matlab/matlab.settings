@@ -526,15 +526,15 @@
             </key>
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
-                    <value><![CDATA[/home/sbp/Programming/Python/mealplan/matlab]]></value>
-                    <value><![CDATA[/home/sbp/Programming/Python/mealplan]]></value>
-                    <value><![CDATA[/home/sbp/Programming/Python]]></value>
-                    <value><![CDATA[/home/sbp/Programming]]></value>
-                    <value><![CDATA[/home/sbp]]></value>
-                    <value><![CDATA[/home/sbp/Documents]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Programming]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
+                    <value><![CDATA[/home/sbp/Documents]]></value>
+                    <value><![CDATA[/home/sbp]]></value>
+                    <value><![CDATA[/home/sbp/Programming]]></value>
+                    <value><![CDATA[/home/sbp/Programming/Python]]></value>
+                    <value><![CDATA[/home/sbp/Programming/Python/mealplan]]></value>
+                    <value><![CDATA[/home/sbp/Programming/Python/mealplan/matlab]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Programming]]></value>
                     <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
                     <value><![CDATA[/]]></value>
                 </string>
@@ -595,7 +595,7 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[189]]></value>
+                        <value><![CDATA[283]]></value>
                         <value><![CDATA[94]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
@@ -631,7 +631,6 @@
                     <string minArraySize="0" maxArraySize="100">
                         <value><![CDATA[icon]]></value>
                         <value><![CDATA[name]]></value>
-                        <value><![CDATA[status]]></value>
                     </string>
                 </key>
             </settings>
@@ -1553,7 +1552,7 @@
         </key>
         <key name="LastFolderPath">
             <string>
-                <value><![CDATA[/home/sbp/Programming/Python/mealplan/matlab]]></value>
+                <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
             </string>
         </key>
     </settings>
