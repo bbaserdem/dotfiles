@@ -526,11 +526,11 @@
             </key>
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
+                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents/Sports]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
                     <value><![CDATA[/]]></value>
                 </string>
@@ -564,10 +564,12 @@
                 </key>
                 <key name="Ratio">
                     <double>
+                        <value>78.07692307692308</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
+                        <value>171</value>
                     </int32>
                 </key>
             </settings>
@@ -591,7 +593,7 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[143]]></value>
+                        <value><![CDATA[317]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
@@ -1545,7 +1547,7 @@
         </key>
         <key name="LastFolderPath">
             <string>
-                <value><![CDATA[/home/sbp/Documents/Research]]></value>
+                <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
             </string>
         </key>
     </settings>
