@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Mon Feb 03 14:11:39 EST 2020
+#Mon Feb 03 15:26:49 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -94,16 +94,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/mapseqData.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/+aux/random_uniform_s.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/+aux/limexp.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/+aux/limexpn.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/+aux/random_uniform_s.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/+aux/rand_ball.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/+aux/rand_sphere.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/+aux/rand_ball.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/+aux/rand_sphere.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcIpr.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/mapseqLoadData.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m01_reformat_data.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcIpr.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/mapseqLoadData.m
+EditorMRU2=S/tmp/matlab-test/myhandlearray.m
+EditorMRU1=S/tmp/matlab-test/myhandle.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
