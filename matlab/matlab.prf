@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Mon Feb 03 13:43:05 EST 2020
+#Mon Feb 03 14:11:39 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -62,6 +62,7 @@ ReplaceSearchText12=S
 ReplaceSearchText11=S
 ReplaceSearchText10=S
 CommandWindowClearConfirmation=Btrue
+ClosedToolTipPathAffordance=Bfalse
 ReplaceText19=S
 ReplaceText18=S
 ReplaceText17=S

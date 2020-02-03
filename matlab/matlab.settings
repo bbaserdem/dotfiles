@@ -541,6 +541,7 @@
             </key>
             <key name="HistorySize">
                 <int32>
+                    <value>20</value>
                 </int32>
             </key>
             <key name="IsJSCurrentFolderInstance">
@@ -549,15 +550,18 @@
             </key>
             <key name="ShowHiddenFiles">
                 <bool>
+                    <value>0</value>
                 </bool>
             </key>
             <settings name="autorefresh">
                 <key name="Enabled">
                     <bool>
+                        <value>1</value>
                     </bool>
                 </key>
                 <key name="Interval">
                     <int32>
+                        <value>3</value>
                     </int32>
                 </key>
             </settings>
@@ -597,7 +601,7 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[317]]></value>
+                        <value><![CDATA[126]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
@@ -702,10 +706,12 @@
             <settings name="pathaffordance">
                 <key name="Enabled">
                     <bool>
+                        <value>1</value>
                     </bool>
                 </key>
                 <key name="Transparency">
                     <int32>
+                        <value>40</value>
                     </int32>
                 </key>
             </settings>
@@ -963,10 +969,12 @@
             </key>
             <key name="SaveIntoSourceFolder" visible="true">
                 <bool>
+                    <value>0</value>
                 </bool>
             </key>
             <key name="SaveToFolder" visible="true">
                 <string>
+                    <value><![CDATA[/home/sbp/.cache/matlab/]]></value>
                 </string>
             </key>
             <key name="SaveUntitled" visible="true">
