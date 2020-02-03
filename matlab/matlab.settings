@@ -527,10 +527,14 @@
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp]]></value>
+                    <value><![CDATA[/home/sbp/Downloads]]></value>
+                    <value><![CDATA[/home/sbp/Downloads/PiriformMAPseq]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@mapseqData]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents/Sports]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
-                    <value><![CDATA[/home/sbp]]></value>
                     <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
                     <value><![CDATA[/]]></value>
                 </string>
