@@ -118,6 +118,10 @@
 !/isync/config
 !/isync/passgen.sh
 
+# JUPYTER: Get only the config file
+!/jupyter
+!/jupyter/jupyter_notebook_config.py
+
 # KHAL: Grab all calender files
 !/khal
 !/khal/**
