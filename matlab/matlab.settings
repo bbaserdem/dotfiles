@@ -527,6 +527,7 @@
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp]]></value>
