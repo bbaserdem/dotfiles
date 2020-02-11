@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Tue Feb 11 12:47:30 EST 2020
+#Tue Feb 11 14:32:24 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -94,16 +94,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/flattenRegions.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/getDataset.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/alignDataOBProj.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/analyseBayesian.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/mapseqData.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/getDataset.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/alignDataPCProj.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/alignDataPCProj.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/mapseqDataAligned.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimRegions.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/analyseSrcPrjBayesian.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
 EditorMCodeFoldEnabledproperties=Btrue
 EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/flattenRegions.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/mapseqDataAligned.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/getImgPrjReg.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
