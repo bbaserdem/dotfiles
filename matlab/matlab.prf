@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Tue Feb 11 14:32:24 EST 2020
+#Tue Feb 11 15:38:15 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -98,12 +98,12 @@ EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/getDatase
 ReplaceWordWrap=Btrue
 EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/alignDataPCProj.m
 EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/mapseqDataAligned.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimRegions.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/analyseSrcPrjBayesian.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/analyseSrcPrjBayesian.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/flattenRegions.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/flattenRegions.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/getImgPrjReg.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/getImgPrjReg.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimRegions.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
