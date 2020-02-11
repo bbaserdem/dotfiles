@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Mon Feb 10 10:54:29 EST 2020
+#Tue Feb 11 12:47:30 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -96,14 +96,14 @@ EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
 EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/flattenRegions.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/mapseqDataAligned.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m14_intrapc.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m13_pc_proj.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/normalizeBayesian.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/alignDataOBProj.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/analyseBayesian.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/mapseqData.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/getDataset.m
 EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/alignDataPCProj.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/alignDataOBProj.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/flattenRegions.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/mapseqDataAligned.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
