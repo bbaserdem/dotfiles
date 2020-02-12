@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Tue Feb 11 16:34:49 EST 2020
+#Wed Feb 12 07:57:26 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -97,13 +97,13 @@ EditorMCodeFoldEnabledblockcomments=Btrue
 EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/mapseqDataAligned.m
 ReplaceWordWrap=Btrue
 EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/analyseSrcPrjBayesian.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/flattenRegions.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/getImgPrjReg.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimRegions.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/flattenRegions.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/getImgPrjReg.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimRegions.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/methods/m13_pc_proj.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m13_pc_proj.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotSrcPrjProb.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotSrcPrjProb.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
