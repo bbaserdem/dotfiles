@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Wed Feb 12 08:36:32 EST 2020
+#Wed Feb 12 09:55:49 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -94,16 +94,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/SPH/matlab2/@SPH/showForces.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/SPH/matlab2/@SPH/getFocusedFig.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m13_pc_proj.sync-conflict-20200211-164332-CSUX4L4.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimRegions.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimPrjRegions.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimRegions.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/trimPrjRegions.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/methods/m14_intrapc.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/+aux/inferno.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/+aux/uniform_colormaps.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/methods/m14_intrapc.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/+aux/inferno.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/+aux/fitLineMultiN.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
