@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Wed Feb 12 13:46:57 EST 2020
+#Wed Feb 12 16:12:03 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -94,16 +94,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
+EditorMRU8=S/opt/tmw/matlab/toolbox/matlab/scribe/legend.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/opt/tmw/matlab/toolbox/matlab/scribe/legend.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/reformatData.m
-EditorMRU5=S/opt/tmw/matlab/toolbox/matlab/datafun/fillmissing.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/+aux/fitLineMultiN.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/+aux/scattermat.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/reformatData.m
+EditorMRU6=S/opt/tmw/matlab/toolbox/matlab/datafun/fillmissing.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/+aux/fitLineMultiN.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/+aux/scattermat.m
+EditorMRU3=S/opt/tmw/matlab/toolbox/matlab/specgraph/scatter3.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/opt/tmw/matlab/toolbox/matlab/specgraph/scatter3.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/Todo.md
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/Todo.md
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/runThis.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
