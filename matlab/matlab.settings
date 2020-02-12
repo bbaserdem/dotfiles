@@ -528,9 +528,9 @@
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@padlocks]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp]]></value>
                     <value><![CDATA[/home/sbp/Downloads]]></value>
@@ -578,7 +578,7 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>78.83663366336634</value>
+                        <value>78.07692307692308</value>
                     </double>
                 </key>
                 <key name="Size">
@@ -607,7 +607,7 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[287]]></value>
+                        <value><![CDATA[266]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
