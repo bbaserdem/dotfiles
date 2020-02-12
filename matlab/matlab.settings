@@ -528,9 +528,15 @@
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/SPH]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/OdorNavigation]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/TensorFlow-Handson]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/WindSimulation]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/WindSimulation2]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/WindSimulation2/+Net]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@padlocks]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp]]></value>
                     <value><![CDATA[/home/sbp/Downloads]]></value>
@@ -541,8 +547,6 @@
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@mapseqData]]></value>
                     <value><![CDATA[/home/sbp/Documents/Sports]]></value>
-                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
-                    <value><![CDATA[/]]></value>
                 </string>
             </key>
             <key name="HistorySize">
@@ -607,8 +611,8 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[316]]></value>
-                        <value><![CDATA[40]]></value>
+                        <value><![CDATA[299]]></value>
+                        <value><![CDATA[49]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
