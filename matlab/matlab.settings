@@ -607,8 +607,13 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
+<<<<<<< HEAD
                         <value><![CDATA[266]]></value>
                         <value><![CDATA[40]]></value>
+=======
+                        <value><![CDATA[317]]></value>
+                        <value><![CDATA[49]]></value>
+>>>>>>> 12458039541988469cd9715824c09554b1e27c14
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
