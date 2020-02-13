@@ -10,3 +10,4 @@ Categories=Utility;
 StartupNotify=false
 Hidden=false
 NotShowIn=sway;
+OnlyShowIn=bspwm;

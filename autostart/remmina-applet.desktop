@@ -6,4 +6,4 @@ Icon=org.remmina.Remmina
 Exec=remmina -i
 Terminal=false
 Type=Application
-Hidden=true
+Hidden=false

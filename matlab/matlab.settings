@@ -2,7 +2,6 @@
 <settings name="matlab" visible="true" xmlns="urn:mathworks.matlab.settings" xsi:schemaLocation="urn:mathworks.matlab.settings settings.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <key name="DeleteFilesPermanently">
         <bool>
-            <value>1</value>
         </bool>
     </key>
     <key name="G11nLanguagePref">
@@ -364,7 +363,7 @@
             </key>
             <key name="machineHash" visible="true">
                 <string>
-                    <value><![CDATA[a59a91a2ab11629ac2c73a6485fa1c1a]]></value>
+                    <value><![CDATA[c130659fa207d7d85e03b4e7c6924376]]></value>
                 </string>
             </key>
             <key name="shown">
@@ -527,27 +526,12 @@
             </key>
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@padlocks]]></value>
-                    <value><![CDATA[/home/sbp/Documents]]></value>
-                    <value><![CDATA[/home/sbp]]></value>
-                    <value><![CDATA[/home/sbp/Downloads]]></value>
-                    <value><![CDATA[/home/sbp/Downloads/PiriformMAPseq]]></value>
-                    <value><![CDATA[/home/sbp/Downloads/New Years 2019]]></value>
-                    <value><![CDATA[/tmp]]></value>
-                    <value><![CDATA[/tmp/matlab-test]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/src/@mapseqData]]></value>
-                    <value><![CDATA[/home/sbp/Documents/Sports]]></value>
-                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
                     <value><![CDATA[/]]></value>
                 </string>
             </key>
             <key name="HistorySize">
                 <int32>
-                    <value>20</value>
                 </int32>
             </key>
             <key name="IsJSCurrentFolderInstance">
@@ -556,18 +540,15 @@
             </key>
             <key name="ShowHiddenFiles">
                 <bool>
-                    <value>0</value>
                 </bool>
             </key>
             <settings name="autorefresh">
                 <key name="Enabled">
                     <bool>
-                        <value>1</value>
                     </bool>
                 </key>
                 <key name="Interval">
                     <int32>
-                        <value>3</value>
                     </int32>
                 </key>
             </settings>
@@ -578,12 +559,10 @@
                 </key>
                 <key name="Ratio">
                     <double>
-                        <value>78.07692307692308</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
-                        <value>171</value>
                     </int32>
                 </key>
             </settings>
@@ -607,13 +586,8 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-<<<<<<< HEAD
-                        <value><![CDATA[266]]></value>
+                        <value><![CDATA[130]]></value>
                         <value><![CDATA[40]]></value>
-=======
-                        <value><![CDATA[317]]></value>
-                        <value><![CDATA[49]]></value>
->>>>>>> 12458039541988469cd9715824c09554b1e27c14
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
@@ -717,12 +691,10 @@
             <settings name="pathaffordance">
                 <key name="Enabled">
                     <bool>
-                        <value>1</value>
                     </bool>
                 </key>
                 <key name="Transparency">
                     <int32>
-                        <value>40</value>
                     </int32>
                 </key>
             </settings>
@@ -980,12 +952,10 @@
             </key>
             <key name="SaveIntoSourceFolder" visible="true">
                 <bool>
-                    <value>0</value>
                 </bool>
             </key>
             <key name="SaveToFolder" visible="true">
                 <string>
-                    <value><![CDATA[/home/sbp/.cache/matlab/]]></value>
                 </string>
             </key>
             <key name="SaveUntitled" visible="true">
@@ -1139,17 +1109,14 @@
         <settings name="codefont" visible="true">
             <key name="Name" visible="true">
                 <string>
-                    <value><![CDATA[Iosevka Light]]></value>
                 </string>
             </key>
             <key name="Size" visible="true">
                 <int32>
-                    <value>10</value>
                 </int32>
             </key>
             <key name="Style" visible="true">
                 <int32>
-                    <value>0</value>
                 </int32>
             </key>
         </settings>
@@ -1180,23 +1147,8 @@
             </string>
         </key>
         <settings name="machine_specific">
-            <settings name="H1353287475353686713">
-                <key name="ever_crashed_in_graphics" anytype="true">
-                    <uint32>
-                        <value>0</value>
-                    </uint32>
-                </key>
-                <key name="opengl_preference">
-                    <uint32>
-                        <value>0</value>
-                    </uint32>
-                </key>
-            </settings>
             <settings name="H18033005340657519865">
                 <key name="ever_crashed_in_graphics" anytype="true">
-                    <uint32>
-                        <value>0</value>
-                    </uint32>
                 </key>
                 <key name="opengl_preference">
                     <uint32>
@@ -1573,7 +1525,7 @@
         </key>
         <key name="LastFolderPath">
             <string>
-                <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                <value><![CDATA[/home/sbp/Documents/Research]]></value>
             </string>
         </key>
     </settings>
