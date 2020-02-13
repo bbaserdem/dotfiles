@@ -27,6 +27,10 @@ super + p
 # Music controls for mpd
 XF86Audio{Play,Stop,Next,Prev}
     /usr/bin/mpc{ toggle, stop, next,-prev}
+super + plus
+    /usr/bin/mpc sendmessage ratings like
+super + minus
+    /usr/bin/mpc sendmessage ratings dislike
 
 # Volume controls
 XF86Audio{Raise,Lower}Volume
