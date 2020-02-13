@@ -18,3 +18,4 @@ PantheonTerminalPantheonTerminalWindow.background {
 .panel.maximized {
     background-color: #000;
 }
+@import 'colors.css';
