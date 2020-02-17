@@ -1161,6 +1161,9 @@
             </settings>
             <settings name="H18033005340657519865">
                 <key name="ever_crashed_in_graphics" anytype="true">
+                    <uint32>
+                        <value>0</value>
+                    </uint32>
                 </key>
                 <key name="opengl_preference">
                     <uint32>
