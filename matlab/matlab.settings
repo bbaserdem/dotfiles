@@ -527,6 +527,7 @@
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq/xiaoyin]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/]]></value>
                 </string>
@@ -560,10 +561,12 @@
                 </key>
                 <key name="Ratio">
                     <double>
+                        <value>73.46153846153847</value>
                     </double>
                 </key>
                 <key name="Size">
                     <int32>
+                        <value>207</value>
                     </int32>
                 </key>
             </settings>
@@ -587,7 +590,7 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[130]]></value>
+                        <value><![CDATA[220]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
@@ -1110,14 +1113,17 @@
         <settings name="codefont" visible="true">
             <key name="Name" visible="true">
                 <string>
+                    <value><![CDATA[Iosevka]]></value>
                 </string>
             </key>
             <key name="Size" visible="true">
                 <int32>
+                    <value>10</value>
                 </int32>
             </key>
             <key name="Style" visible="true">
                 <int32>
+                    <value>0</value>
                 </int32>
             </key>
         </settings>
@@ -1532,6 +1538,7 @@
     <settings name="workingfolder">
         <key name="CustomFolderPath">
             <string>
+                <value><![CDATA[]]></value>
             </string>
         </key>
         <key name="InitialWorkingFolder">
