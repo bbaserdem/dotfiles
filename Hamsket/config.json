@@ -21,7 +21,7 @@
 	"default_service": "hamsketTab",
 	"width": 900,
 	"height": 996,
-	"maximized": true,
+	"maximized": false,
 	"x": 882,
 	"y": 62,
 	"master_password1": "",
