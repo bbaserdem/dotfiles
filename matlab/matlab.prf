@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Thu Feb 20 09:38:11 EST 2020
+#Thu Feb 20 10:26:07 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -49,6 +49,7 @@ EditorMCodeFoldEnabledswitch=Btrue
 ReplaceSearchText20=S
 EditorMCodeFoldEnabledmethods=Btrue
 EditorMCodeFoldCollapseFileOpenhelp-comments=Bfalse
+GeneralEightyColumns=Bfalse
 ReplaceText20=S
 ReplaceSearchText19=S
 ReplaceSearchText18=S
@@ -84,6 +85,7 @@ ReplaceWholeWord=Btrue
 GeneralAntialiasDesktopFonts=Btrue
 EditorMCodeFoldCollapseFileOpenblockcomments=Bfalse
 Color_CmdWinErrors=C-286799
+GeneralNumDisplay=Scompact
 ReplaceMatchCase=Bfalse
 RLPrevInitB2_VE_2014b_1=Btrue
 EditorMCodeFoldCollapseFileOpenspmd=Bfalse
@@ -119,5 +121,6 @@ EditorMCodeFoldCollapseFileOpentry=Bfalse
 EditorMCodeFoldCollapseFileOpenenumeration=Bfalse
 HasAppendedMlxToFileExtensionsKey=Btrue
 EditorMCodeFoldEnabledtry=Btrue
+GeneralNumFormat2=Sshort
 ReplaceText=Sfigure( 13
 EditorMCodeFoldEnabledwhile=Btrue
