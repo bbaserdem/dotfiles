@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Tue Feb 18 08:30:00 EST 2020
+#Thu Feb 20 09:38:11 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -94,16 +94,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/runThis.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/Todo.md
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/Todo.md
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/reformatData.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/analyseBayesian.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotSrcPrjProb.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/+aux/fitLineMultiN.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/analyseBayesian.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotSrcPrjProb.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/+aux/fitLineMultiN.m
+EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/generatePatchFigure.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/xiaoyin/untitled.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/xiaoyin/untitled.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/reformatData.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
