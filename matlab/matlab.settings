@@ -2,6 +2,7 @@
 <settings name="matlab" visible="true" xmlns="urn:mathworks.matlab.settings" xsi:schemaLocation="urn:mathworks.matlab.settings settings.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <key name="DeleteFilesPermanently">
         <bool>
+            <value>1</value>
         </bool>
     </key>
     <key name="G11nLanguagePref">
