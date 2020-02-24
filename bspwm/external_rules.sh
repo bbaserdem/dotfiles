@@ -78,7 +78,7 @@ case $title in
         DESKTOP="${ws4}"
         ;;&
     # Save prompts do not go to a new desktop
-    Save*|File*|Insert*|Confirm*|Playlist*|TabCompletionPopup)
+    Save*|Open*|File*|Insert*|Confirm*|Playlist*|TabCompletionPopup)
         DESKTOP=""
         ;;&
 esac
