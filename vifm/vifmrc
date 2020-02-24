@@ -196,7 +196,7 @@ fileviewer *.[1-8] man ./%c | col -b
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in imv}
-        \ imv %d -n %f & disown,
+        \ imv %d -n %f >/dev/null 2>&1 & disown,
         \ {View in sxiv}
         \ sxiv %f,
         \ {View in gpicview}
