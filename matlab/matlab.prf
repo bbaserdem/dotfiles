@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Wed Feb 26 16:59:30 EST 2020
+#Wed Feb 26 17:00:24 EST 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -96,16 +96,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/xiaoyin/untitled.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/reformatData.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/reformatData.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/analyseBayesian.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotSrcPrjProb.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
-EditorMRU3=S/opt/tmw/matlab/toolbox/stats/stats/nnmf.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/analyseBayesian.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotSrcPrjProb.m
+EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/calcSrcPrjProb.m
+EditorMRU4=S/opt/tmw/matlab/toolbox/stats/stats/nnmf.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/analyseDorsoVentral.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/analyseDorsoVentral.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/alignDataOBProj.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/alignDataOBProj.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/getDataset.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
