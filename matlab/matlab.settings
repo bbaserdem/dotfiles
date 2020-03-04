@@ -528,6 +528,10 @@
             <key name="History">
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp]]></value>
+                    <value><![CDATA[/home/sbp/.cache/matlab]]></value>
+                    <value><![CDATA[/home/sbp/.cache]]></value>
+                    <value><![CDATA[/home/sbp/.cache/matlab-backup]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research]]></value>
                     <value><![CDATA[/home/sbp/Documents/Research/MapSeq/xiaoyin]]></value>
                     <value><![CDATA[/]]></value>
@@ -591,7 +595,7 @@
                 <key name="ColumnSizes">
                     <string minArraySize="0" maxArraySize="100000">
                         <value><![CDATA[40]]></value>
-                        <value><![CDATA[90]]></value>
+                        <value><![CDATA[215]]></value>
                         <value><![CDATA[40]]></value>
                         <value><![CDATA[0]]></value>
                         <value><![CDATA[0]]></value>
