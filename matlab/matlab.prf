@@ -1,11 +1,11 @@
 #MATLAB Preferences
-#Sun Mar 15 14:10:26 EDT 2020
+#Mon Mar 16 12:33:29 EDT 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
 EditorMCodeFoldCollapseFileOpenwhile=Bfalse
-ReplaceSearchText=S.data
 ColorsUseSystem=Bfalse
+ReplaceSearchText=S.data
 DelimiterOptionsMoving=Btrue
 EditorMCodeFoldCollapseFileOpenfunction=Bfalse
 Colors_HTML_HTMLLinks=C-9452817
@@ -24,8 +24,8 @@ ReplaceText5=Sadv
 EditorMCodeFoldCollapseFileOpenevents=Bfalse
 ReplaceSearchText2=Sdata
 ReplaceText4=Sfigure(13
-ReplaceText3=Sfigure( 13
 EditorMCodeFoldEnabledspmd=Btrue
+ReplaceText3=Sfigure( 13
 ReplaceText2=Soarr(i).
 DelimiterOptionsMovingMisMatchType=I5
 EditorMCodeFoldCollapseFileOpenmethods=Bfalse
@@ -57,8 +57,8 @@ ReplaceSearchText17=S
 ReplaceSearchText16=S
 ReplaceSearchText15=S
 ReplaceSearchText14=SFI
-ReplaceSearchText13=SDIM
 ColorsText=C-3092272
+ReplaceSearchText13=SDIM
 ReplaceSearchText12=Sdva
 ReplaceSearchText11=Sfigure(8
 ReplaceSearchText10=Sfigure( 8
@@ -102,10 +102,10 @@ EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/reorderBarcodes.
 EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/+aux/ipr.m
 EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqDataAligned/getDataset.m
 EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/reformatData.m
-EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/alignDataOBProj.m
+EditorMRU3=S/home/sbp/Documents/Research/MapSeq/src/alignDataPCProj.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/alignDataPCProj.m
-EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/analyseBayesian.m
+EditorMRU2=S/home/sbp/Documents/Research/MapSeq/src/analyseBayesian.m
+EditorMRU1=S/home/sbp/Documents/Research/MapSeq/src/alignDataOBProj.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
