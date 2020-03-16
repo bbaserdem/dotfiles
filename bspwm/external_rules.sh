@@ -20,7 +20,7 @@ case $class in
     Soffice|libreoffice*|zathura|Zathura|Steam|dropbox)
         STATE="tiled";;&
     # Desktop 1: Internet
-    Skype|Hamsket|qutebrowser|firefox)
+    Hamsket|qutebrowser|firefox)
         DESKTOP="${ws1}";;
     # Desktop 2: Computation
     MATLAB*|*Octave|Spyder*)
@@ -32,7 +32,7 @@ case $class in
     Steam|Stepmania)
         DESKTOP="${ws4}";;
     # Desktop 5: Other desktops
-    Qemu*|Virt-manager|*Remmina|transmission*)
+    Qemu*|Virt-manager|*Remmina|transmission*|zoom|Skype)
         DESKTOP="${ws5}";;
     # Desktop 6: Terminals
     Alacritty|kitty)
