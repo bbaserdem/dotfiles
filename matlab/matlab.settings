@@ -1157,10 +1157,12 @@
     <settings name="graphics">
         <key name="showinteractioninfobar">
             <bool>
+                <value>0</value>
             </bool>
         </key>
         <key name="showinteractioninfobarreleaseset">
             <string>
+                <value><![CDATA[R2019a]]></value>
             </string>
         </key>
         <settings name="machine_specific">
