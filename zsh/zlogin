@@ -3,3 +3,6 @@
 # Typically used to autostart command line utilities.
 # Should not be used to autostart graphical sessions,
 # as at this point the session might contain configuration meant only for an interactive shell.
+
+# Initialize Zim
+source ${ZIM_HOME}/login_init.zsh -q &!

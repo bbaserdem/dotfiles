@@ -293,4 +293,6 @@
 !/zsh/.zshrc
 !/zsh/zshrc
 !/zsh/.zshenv
+!/zsh/zimrc
+!/zsh/.zimrc
 !/zsh/p10k*.zsh
