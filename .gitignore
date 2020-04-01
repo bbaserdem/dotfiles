@@ -284,9 +284,13 @@
 
 # ZSH: Ignore all but few files certain files
 !/zsh
+!/zsh/zlogin
 !/zsh/.zlogin
+!/zsh/zlogout
 !/zsh/.zlogout
 !/zsh/.zprofile
+!/zsh/zprofile
 !/zsh/.zshrc
+!/zsh/zshrc
 !/zsh/.zshenv
-!/zsh/.p10k*.zsh
+!/zsh/p10k*.zsh
