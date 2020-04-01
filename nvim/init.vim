@@ -32,36 +32,35 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " Colorscheme
 Plug 'chriskempson/base16-vim'
 " Fuzzy file finder
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
 " Git status
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 " Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 " Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'deoplete-plugins/deoplete-jedi'
 " Linting (code checking)
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 " Snippets (code snippet inserter)
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 " Ctags manager
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 " Matlab editor
-Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
-Plug 'vim-scripts/MatlabFilesEdition'
+"Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
+"Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
-Plug 'lervag/vimtex'
-Plug 'mhinz/neovim-remote'
+"Plug 'lervag/vimtex'
+"Plug 'mhinz/neovim-remote'
 " Grammar checker
-Plug 'rhysd/vim-grammarous'
+"Plug 'rhysd/vim-grammarous'
 " Config file types
-Plug 'mboughaba/i3config.vim'
-Plug 'aouelete/sway-vim-syntax'
-Plug 'baskerville/vim-sxhkdrc'
-"" Gentoo syntax
-Plug 'gentoo/gentoo-syntax'
+"Plug 'mboughaba/i3config.vim'
+"Plug 'aouelete/sway-vim-syntax'
+"Plug 'baskerville/vim-sxhkdrc'
+"Plug 'gentoo/gentoo-syntax'
 " After all plugins...
 call plug#end()
 
@@ -75,7 +74,7 @@ let base16colorspace=256
 colorscheme base16-onedark
 
 "-----Base stuff-----"
-set cmdheight=2             " Command bar height
+set cmdheight=1             " Command bar height
 set number                  " Show line numbers
 set relativenumber          " Show line numbers
 set showmatch               " Show matching brackets
@@ -120,174 +119,3 @@ function! NumberToggle()
     set rnu
   endif
 endfunc
-
-"-----Keymapping-----"
-let mapleader="\<Space>"
-" map leader+s to search and replace
-nmap <leader>s :%s//g<Left><Left>
-" Clear search higlights with Ctrl Q
-nnoremap <silent> <C-Q> :nohlsearch<CR>
-" Toggle line numbering mode
-nnoremap <leader>n :call NumberToggle()<cr>
-" Remap accidental ; presses to :
-nnoremap ; :
-" Navigate splits easier
-nnoremap <leader>j <C-w><C-j>
-nnoremap <leader>k <C-w><C-k>
-nnoremap <leader>l <C-w><C-l>
-nnoremap <leader>h <C-w><C-h>
-" make command
-nnoremap <F5> :make<CR>
-" Regular cut-copy-paste
-vnoremap <C-x> "+x
-vnoremap <C-c> "+y
-noremap <C-v> "+p
-
-"---------------------------------"
-"  __                             "
-" /__ o _|_  _     _|_ _|_  _  ._ "
-" \_| |  |_ (_| |_| |_  |_ (/_ |  "
-"            _|                   "
-"---------------------------------"
-" Hunks are  blocks of change in code.
-" Move between git hunks using [c and ]c
-"   <leader>hp : Preview change
-"   <leader>hs : Stage (commit) change
-"   <leader>hu : Undo (commit) change
-let g:gitgutter_max_signs=1000      " Don't show if too many changes
-let g:gitgutter_sign_added = ''
-let g:gitgutter_sign_modified = ''
-let g:gitgutter_sign_removed = ''
-let g:gitgutter_sign_removed_first_line = ''
-let g:gitgutter_sign_modified_removed = ''
-
-"-----------------------"
-"                       "
-"  /\  o ._ | o ._   _  "
-" /--\ | |  | | | | (/_ "
-"                       "
-"-----------------------"
-
-"-----Colorscheme------"
-let g:airline_theme='base16'        " Airline theme
-let g:airline_powerline_fonts=1     " Force powerline fonts
-let g:airline_statusline_ontop=1    " Put airline on top
-let g:airline#extensions#ale#enabled=1
-let g:airline#extensions#gutentags#enabled=1
-
-"------------------------------"
-"  _                           "
-" | \  _   _  ._  |  _ _|_  _  "
-" |_/ (/_ (_) |_) | (/_ |_ (/_ "
-"             |                "
-"------------------------------"
-" Deoplete is autocompletion engine
-"   Press tab to open autocompletion menu, and tab to navigate.
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('auto_complete', v:false)
-call deoplete#custom#source('ale', 'rank', 999)
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent><expr> <TAB>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ deoplete#manual_complete()
-function! s:check_back_space() abort "{{{
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-"------------------------------"
-"              __              "
-" | | | _|_ o (_  ._  o ._   _ "
-" |_| |  |_ | __) | | | |_) _> "
-"                       |      "
-"------------------------------"
-" Macro parser
-let g:UltiSnipsExpandTrigger="<C-j>"
-"   Use Ctrl + hl to move through units
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsJumpForwardTrigger="<C-l>"
-let g:UltiSnipsJumpBackwardTrigger="<C-h>"
-
-"------------"
-"            "
-"  /\  |  _  "
-" /--\ | (/_ "
-"            "
-"------------"
-" Linter (syntax and warning checker) and fixing
-"   Use Ctrl + jk to move back/forth between errors
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-let g:ale_sign_column_always=1
-let g:ale_sign_error=''
-let g:ale_sign_warning=''
-let g:ale_set_highlights = 0
-let g:ale_set_signs = 1
-let g:ale_completion_enabled = 0
-
-"----------------------------------"
-"  __                              "
-" /__    _|_  _  ._ _|_  _.  _   _ "
-" \_| |_| |_ (/_ | | |_ (_| (_| _> "
-"                            _|    "
-"----------------------------------"
-" Tag file generator (index of objects of interest)
-let g:gutentags_enabled=1
-let g:gutentags_generate_on_missing=1
-
-"----------"
-"  _     _ "
-" |_ _ _|_ "
-" |  /_ |  "
-"          "
-"----------"
-" Fuzzy file finder
-
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-let g:fzf_layout = { 'down': '~20%' }
-let g:fzf_history_dir = '~/.cache/fzf-history'
-
-" Open files in vertical horizontal split
-nnoremap <silent> <Leader>f :call fzf#run({
-\   'right': winwidth('.') / 2,
-\   'sink':  'vertical botright split' })<CR>
-
-"---------------------------------------"
-"                                       "
-" \  / o ._ _ __ |\/|  _. _|_ |  _. |_  "
-"  \/  | | | |   |  | (_|  |_ | (_| |_) "
-"                                       "
-"---------------------------------------"
-" (Mostly) Syntax highlighting for matlab
-let g:matlab_auto_mappings = 0          "automatic mappings disabled
-let g:matlab_server_split = 'vertical'  "launch the server in a vertical split
-let g:matlab_server_launcher = 'tmux'   "launch the server in a tmux split
-
-"-----------------"
-"       ___       "
-" |   _. |  _  \/ "
-" |_ (_| | (/_ /\ "
-"                 "
-"-----------------"
-" Compiling LaTeX
-"   On Zathura, Ctrl click will go to selected line in nvim
-let g:vimtex_compiler_progname = 'nvr'
-let g:vimtex_compiler_method = 'latexmk'
-let g:tex_flavor = 'latex'
-
-"----------------------------------------"
-"  __                                    "
-" /__ ._ _. ._ _  ._ _   _. ._ _       _ "
-" \_| | (_| | | | | | | (_| | (_) |_| _> "
-"                                        "
-"----------------------------------------"
-" Grammar check
-let g:grammarous#default_comments_only_filetypes = {
-            \ '*' : 1, 'help' : 0, 'markdown' : 0,
-            \ }
