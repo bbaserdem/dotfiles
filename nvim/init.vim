@@ -10,11 +10,11 @@ syntax on
 set encoding=utf-8
 
 "---External config options---"
-source plugins.vim
-source theme.vim
-source keybinds.vim
-source glyph.vim
-source noglyph.vim
+source $XDG_CONFIG_HOME/nvim/plugins.vim
+source $XDG_CONFIG_HOME/nvim/theme.vim
+source $XDG_CONFIG_HOME/nvim/keybinds.vim
+source $XDG_CONFIG_HOME/nvim/glyph.vim
+"source noglyph.vim
 
 "---Base settings---"
 set cmdheight=1             " Command bar height
