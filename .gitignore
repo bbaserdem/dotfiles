@@ -192,6 +192,10 @@
 !/polybar
 !/polybar/config
 
+# POWERLINE: Grab all
+!/powerline
+!/powerline/**
+
 # PROFILE.D: Grab all configuration
 !/profile
 !/profile.d
