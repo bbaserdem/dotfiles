@@ -59,10 +59,13 @@ call plug#end()
 let base16colorspace=256
 
 "---NERDTree---"
-" For automatically launching nerdtree at startup
+" For automatically launching nerdtree at startup; enable this line
 "autocmd vimenter * NERDTree
 " Close nvim if nerdtree is the last window
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "---Gitgutter---"
-
+" Maximum amount to show
+let g:gitgutter_max_signs = 1000
+" Show changes in folded lines
+set foldtext=gitgutter#fold#foldtext()
