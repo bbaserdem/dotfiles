@@ -138,7 +138,10 @@ noremap <C-v> "+p
 nnoremap <silent> <Leader>f :call fzf#run({
 \   'right': winwidth('.') / 2,
 \   'sink':  'vertical botright split' })<CR>
-" Switch back and forth with nerdtree when pressing space+n
+" Switch back and forth with nerdtree when pressing space + ctrl-n
+map <Leader>n :NERDTreeFocus<CR>
+map <Leader><C-n> :NERDTreeToggle<CR>
+
 
 "----------------"
 "-----COLORS-----"
