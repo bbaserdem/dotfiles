@@ -36,7 +36,7 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 " Git status
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Status bar
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
@@ -157,3 +157,17 @@ let g:is_posix = 1
 "----------------------"
 "NerdTREE
 autocmd vimenter * NERDTree     " Automatically launch Nerdtree
+" Close nvim if nerdtree is the last window
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"--------------------"
+"-----STATUS BAR-----"
+"--------------------"
+" Airline
+let g:airline_theme='base16'
+let g:airline_powerline_fonts=1
+let g:airline_statusline_ontop=1
+"let g:airline#extensions#ale#enabled=1
+"let g:airline#extensions#gutentags#enabled=1
+
+
