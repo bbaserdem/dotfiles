@@ -6,8 +6,6 @@
 "                                                             /____/
 
 "---Required---"
-set nocompatible
-filetype off
 syntax on
 set encoding=utf-8
 
@@ -15,6 +13,8 @@ set encoding=utf-8
 source plugins.vim
 source theme.vim
 source keybinds.vim
+source glyph.vim
+source noglyph.vim
 
 "---Base settings---"
 set cmdheight=1             " Command bar height
@@ -63,35 +63,5 @@ if &listchars ==# 'eol:$'
 endif
 "set list                " Show problematic characters.
 
-
-
-
-"------------"
-"---COLORS---"
-"------------"
-let base16colorspace=256
-colorscheme base16-onedark
-
 let g:grammarous#languagetool_cmd = 'languagetool'  " Grammar check
 let g:is_posix = 1
-
-"------------------"
-"---FILE BROWSER---"
-"------------------"
-"NerdTREE
-" For automatically launching nerdtree at startup
-"autocmd vimenter * NERDTree
-" Close nvim if nerdtree is the last window
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-"----------------"
-"---STATUS BAR---"
-"----------------"
-" Airline
-let g:airline_theme='base16'
-let g:airline_powerline_fonts=1
-let g:airline_statusline_ontop=1
-"let g:airline#extensions#ale#enabled=1
-"let g:airline#extensions#gutentags#enabled=1
-
-

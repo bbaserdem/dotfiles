@@ -171,10 +171,11 @@
 !/newsboat/config
 !/newsboat/urls
 
-# NVIM: Grab the config and colors, not the plugins
+# NVIM: Grab config files
 !/nvim
-!/nvim/init.vim
-!/nvim/README.md
+!/nvim/*.vim
+!/nvim/ftplugin
+!/nvim/ftplugin/**
 !/nvim/ftdetect
 !/nvim/ftdetect/**
 !/nvim/before
