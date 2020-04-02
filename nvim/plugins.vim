@@ -69,3 +69,5 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:gitgutter_max_signs = 1000
 " Show changes in folded lines
 set foldtext=gitgutter#fold#foldtext()
+
+"---Powerline---"
