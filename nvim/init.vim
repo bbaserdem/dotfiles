@@ -11,10 +11,13 @@ set encoding=utf-8
 
 "---External config options---"
 source $XDG_CONFIG_HOME/nvim/plugins.vim
-source $XDG_CONFIG_HOME/nvim/theme.vim
 source $XDG_CONFIG_HOME/nvim/keybinds.vim
 source $XDG_CONFIG_HOME/nvim/glyph.vim
 "source noglyph.vim
+
+"---Color scheme---"
+colorscheme base16-onedark
+let g:airline_theme='base16'
 
 "---Base settings---"
 set cmdheight=1             " Command bar height

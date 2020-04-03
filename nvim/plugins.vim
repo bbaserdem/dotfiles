@@ -43,9 +43,8 @@ Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
 Plug 'lervag/vimtex'
-"Plug 'mhinz/neovim-remote'
 " Grammar checker
-"Plug 'rhysd/vim-grammarous'
+Plug 'rhysd/vim-grammarous'
 " Config file types
 Plug 'mboughaba/i3config.vim'
 Plug 'aouelete/sway-vim-syntax'
@@ -104,3 +103,11 @@ let g:matlab_server_launcher='tmux'
 let g:matlab_server_split='horizontal'
 " Linter location
 let g:ale_matlab_mlint_executable='/opt/tmw/matlab/bin/glnxa64/mlint'
+
+"---Vimtex---"
+" Compiler to use
+let g:vimtex_compiler_method='latexmk'
+" Use neovim-remote for callback functionality
+let g:vimtex_compiler_progname = 'nvr'
+" Make sure tex files are detected as latex, and not plaintex
+let g:tex_flavor='latex'
