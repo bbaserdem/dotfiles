@@ -37,21 +37,20 @@ Plug 'dense-analysis/ale'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Ctags manager
-"Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 " Matlab editor
-"Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
-"Plug 'vim-scripts/MatlabFilesEdition'
+Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
 "Plug 'lervag/vimtex'
 "Plug 'mhinz/neovim-remote'
 " Grammar checker
 "Plug 'rhysd/vim-grammarous'
 " Config file types
-"Plug 'mboughaba/i3config.vim'
-"Plug 'aouelete/sway-vim-syntax'
-"Plug 'baskerville/vim-sxhkdrc'
-"Plug 'gentoo/gentoo-syntax'
-" After all plugins...
+Plug 'mboughaba/i3config.vim'
+Plug 'aouelete/sway-vim-syntax'
+Plug 'baskerville/vim-sxhkdrc'
+Plug 'gentoo/gentoo-syntax'
 call plug#end()
 
 "------------"
@@ -97,6 +96,9 @@ let g:ale_sign_column_always=1
 " Add Ale autocompletion to deoplete
 call deoplete#custom#source('ale', 'rank', 999)
 
-"---Ultisnips---"
-" Change activation key of ultisnips
-let g:UltiSnipsExpandTrigger="<c-a>"
+"---Vim-Matlab---"
+" Disable auto mappings
+let g:matlab_auto_mappings=0
+" Split options
+let g:matlab_server_launcher='tmux'
+let g:matlab_server_split='horizontal'
