@@ -42,7 +42,6 @@ set softtabstop=4
 set shiftwidth=4            " Indentation amount for < and > commands.
 set nojoinspaces            " Prevents inserting two spaces after punctuation on a join (J)
 set spelllang=en,tr         " Turn on spellcheck
-set showtabline=2           " For airline on top
 set linebreak               " Break long lines at 
 set breakindent             " Wrapped lines will retain indentation
 let &showbreak='↪'          " Put character at the beginning of wrapped lines

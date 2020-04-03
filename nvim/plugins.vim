@@ -23,10 +23,14 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 " Status bar
-Plug 'powerline/powerline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Uniting tab completion
+Plug 'ervandew/supertab'
 " Completion
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-clang'
 " Linting (code checking)
 "Plug 'dense-analysis/ale'
 " Snippets (code snippet inserter)
@@ -70,4 +74,16 @@ let g:gitgutter_max_signs = 1000
 " Show changes in folded lines
 set foldtext=gitgutter#fold#foldtext()
 
-"---Powerline---"
+"---Airline---"
+" Force powerline fonts
+let g:airline_powerline_fonts=1
+" Have on top bar
+set showtabline=2
+let g:airline_statusline_ontop=1
+" Enable lint extension
+let g:airline#extensions#ale#enabled=1
+" Enable ctags extension
+let g:airline#extensions#gutentags#enabled=1
+
+"---Deoplete---"
+let g:deoplete#enable_at_startup = 1
