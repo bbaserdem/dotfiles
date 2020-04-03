@@ -42,7 +42,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
-"Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 "Plug 'mhinz/neovim-remote'
 " Grammar checker
 "Plug 'rhysd/vim-grammarous'
@@ -97,7 +97,7 @@ let g:ale_sign_column_always=1
 call deoplete#custom#source('ale', 'rank', 999)
 
 "---Vim-Matlab---"
-" Disable auto mappings
+" Disable auto mappings so that my mappings can work
 let g:matlab_auto_mappings=0
 " Split options
 let g:matlab_server_launcher='tmux'
