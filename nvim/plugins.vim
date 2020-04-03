@@ -102,3 +102,5 @@ let g:matlab_auto_mappings=0
 " Split options
 let g:matlab_server_launcher='tmux'
 let g:matlab_server_split='horizontal'
+" Linter location
+let g:ale_matlab_mlint_executable='/opt/tmw/matlab/bin/glnxa64/mlint'
