@@ -26,7 +26,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Uniting tab completion
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
@@ -34,8 +34,8 @@ Plug 'deoplete-plugins/deoplete-clang'
 " Linting (code checking)
 Plug 'dense-analysis/ale'
 " Snippets (code snippet inserter)
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Ctags manager
 "Plug 'ludovicchabant/vim-gutentags'
 " Matlab editor
@@ -83,8 +83,20 @@ let g:airline_statusline_ontop=1
 " Enable lint extension
 let g:airline#extensions#ale#enabled=1
 " Enable ctags extension
-let g:airline#extensions#gutentags#enabled=1
+"let g:airline#extensions#gutentags#enabled=1
 
 "---Deoplete---"
-" Don't use it as I'm typing
-let g:deoplete#enable_at_startup=0
+" Enable/disable it as I'm typing
+let g:deoplete#enable_at_startup=1
+" Limit matches
+call deoplete#custom#option('max_list', 100)
+
+"---Ale---"
+" Always keep the gutter line open
+let g:ale_sign_column_always=1
+" Add Ale autocompletion to deoplete
+call deoplete#custom#source('ale', 'rank', 999)
+
+"---Ultisnips---"
+" Change activation key of ultisnips
+let g:UltiSnipsExpandTrigger="<c-a>"

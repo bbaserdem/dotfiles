@@ -18,7 +18,6 @@ nnoremap <leader>l <C-w><C-l>
 nnoremap <leader>h <C-w><C-h>
 
 " Copy paste functionality with the clipboard
-noremap <C-x> "+x
 noremap <C-c> "+y
 noremap <C-v> "+p
 
