@@ -32,7 +32,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'deoplete-plugins/deoplete-clang'
 " Linting (code checking)
-"Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 " Snippets (code snippet inserter)
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
@@ -86,4 +86,5 @@ let g:airline#extensions#ale#enabled=1
 let g:airline#extensions#gutentags#enabled=1
 
 "---Deoplete---"
-let g:deoplete#enable_at_startup = 1
+" Don't use it as I'm typing
+let g:deoplete#enable_at_startup=0
