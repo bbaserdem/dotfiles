@@ -5,7 +5,7 @@ _NAME='Dropdown terminal'
 spawn_terminal () {
     (
         flock 200
-        /usr/bin/alacritty --title "${_NAME}" 2>&1 200>&- & disown
+        /usr/bin/kitty --title "${_NAME}" 2>&1 200>&- & disown
     ) 200>/var/tmp/dropdown-launch.lock
 }
 
