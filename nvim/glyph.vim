@@ -1,5 +1,9 @@
 " Settings for unique glyph setup
 
+" Airline;
+let g:airline_theme='base16'
+let g:airline_powerline_fonts=1
+
 " Gitgutter;
 let g:gitgutter_sign_added=''
 let g:gitgutter_sign_modified=''
