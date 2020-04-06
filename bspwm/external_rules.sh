@@ -82,8 +82,12 @@ case $title in
         DESKTOP=""
         ;;&
     # Zoom meeting go to remote
-    'Zoom Meeting ID'*|'zoom_linux_float_video_window')
+    'Zoom Meeting ID'*)
         DESKTOP="${ws5}"
+        ;;&
+    # Put presentation in media
+    'Presenting'*)
+        DESKTOP="${ws3}"
         ;;&
 esac
 
