@@ -1,3 +1,12 @@
+# Start configuration added by Zim install {{{
+#
+# User configuration sourced by login shells
+#
+
+# Initialize Zim
+source ${ZIM_HOME}/login_init.zsh -q &!
+# }}} End configuration added by Zim install
+
 # Used for executing user's commands at ending of initial progress,
 # will be read when starting as a login shell.
 # Typically used to autostart command line utilities.
