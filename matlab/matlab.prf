@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Mon Apr 06 15:22:50 EDT 2020
+#Mon Apr 06 20:28:55 EDT 2020
 EditorMCodeFoldEnabledfunction=Btrue
 DelimiterOptionsTypingMisMatchType=I5
 MatlabExitConfirm=Bfalse
@@ -96,16 +96,16 @@ RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I231
 EditorMCodeFoldCollapseFileOpenclassdef=Bfalse
 EditorMCodeFoldEnabledblockcomments=Btrue
-EditorMRU8=S/home/sbp/Documents/Research/MapSeq/src/analysePCinjBias.m
+EditorMRU8=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m
 ReplaceWordWrap=Btrue
-EditorMRU7=S/home/sbp/Documents/Research/MapSeq/methods/m07_ffwsCluster.m
-EditorMRU6=S/home/sbp/Documents/Research/MapSeq/methods/m08_tiling.m
-EditorMRU5=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotImg.m
-EditorMRU4=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotSrcPrjProb.m
-EditorMRU3=S/home/sbp/Work/MapSeq/src/analysePCinjBias2.m
+EditorMRU7=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotImg.m
+EditorMRU6=S/home/sbp/Documents/Research/MapSeq/src/@mapseqData/plotSrcPrjProb.m
+EditorMRU5=S/home/sbp/Work/MapSeq/src/analysePCinjBias2.m
+EditorMRU4=S/home/sbp/Work/MapSeq/src/alignDataPCProj.m
+EditorMRU3=S/home/sbp/Work/MapSeq/src/reformatData.m
 EditorMCodeFoldEnabledproperties=Btrue
-EditorMRU2=S/home/sbp/Work/MapSeq/src/alignDataPCProj.m
-EditorMRU1=S/home/sbp/Work/MapSeq/src/reformatData.m
+EditorMRU2=S/home/sbp/Work/MapSeq/src/analyseBayesianBarseq.m
+EditorMRU1=S/home/sbp/Work/MapSeq/src/@mapseqData/calcSrcPrjProb.m
 RLPrevInitB2_WB_2014b_1=Btrue
 DelimiterOptionsTyping=Btrue
 Colors_M_Warnings=C-1201785
