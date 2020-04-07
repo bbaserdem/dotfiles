@@ -32,7 +32,7 @@ case $class in
     Steam|Stepmania)
         DESKTOP="${ws4}";;
     # Desktop 5: Other desktops
-    Qemu*|Virt-manager|*Remmina|transmission*|zoom|Skype)
+    Qemu*|Virt-manager|*Remmina|transmission*|Skype)
         DESKTOP="${ws5}";;
     # Desktop 6: Terminals
     Alacritty|kitty)
@@ -47,7 +47,7 @@ case $class in
     pdfsam|Blender|openscad|Picard*|Audacity|TuxGuitar)
         DESKTOP="${ws9}";;
     # Desktop 10: Settings
-    Pavucontrol|Syncthing*|dropbox|System*|Blueman*|Picard*|Maestral*|Pamac*|Ibus*|Firewall*)
+    Pavucontrol|Syncthing*|dropbox|System*|Blueman*|Picard*|Maestral*|Pamac*|Ibus*|Firewall*|zoom)
         DESKTOP="${ws0}";;
 esac
 
@@ -78,8 +78,16 @@ case $title in
         DESKTOP="${ws4}"
         ;;&
     # Save prompts do not go to a new desktop
-    Export*|Save*|Open*|Quit*|File*|Insert*|Confirm*|Playlist*|TabCompletionPopup)
+    Export*|Save*|Open*|Quit*|File*|Insert*|Confirm*|Playlist*|TabCompletionPopup|Leave*)
         DESKTOP=""
+        ;;&
+    # Zoom meeting go to remote
+    'Zoom Meeting ID'*)
+        DESKTOP="${ws5}"
+        ;;&
+    # Put presentation in media
+    'Presenting'*)
+        DESKTOP="${ws3}"
         ;;&
 esac
 

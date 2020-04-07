@@ -529,6 +529,14 @@
                 <string minArraySize="0" maxArraySize="500">
                     <value><![CDATA[/home/sbp/Work/MapSeq]]></value>
                     <value><![CDATA[/home/sbp/Work]]></value>
+<<<<<<< HEAD
+=======
+                    <value><![CDATA[/home/sbp/Work/SPH]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research]]></value>
+                    <value><![CDATA[/home/sbp/Documents/Research/MapSeq]]></value>
+                    <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
+                    <value><![CDATA[/home/sbp/Documents]]></value>
+>>>>>>> 56415060220fc59290f9da893742a54ae0a2381b
                     <value><![CDATA[/home/sbp]]></value>
                     <value><![CDATA[/home/sbp/Documents]]></value>
                     <value><![CDATA[/home/sbp/Documents/MATLAB]]></value>
