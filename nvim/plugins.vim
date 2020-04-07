@@ -25,8 +25,6 @@ Plug 'tpope/vim-fugitive'
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Uniting tab completion
-"Plug 'ervandew/supertab'
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
@@ -37,7 +35,7 @@ Plug 'dense-analysis/ale'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Ctags manager
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 " Matlab editor
 Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/MatlabFilesEdition'
