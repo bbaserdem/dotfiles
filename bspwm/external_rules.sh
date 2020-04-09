@@ -92,7 +92,7 @@ case $title in
 esac
 
 # Add desktop and state flags
-if [ ! -z "${DESKTOP}" ] ; then
+if [ -n "${DESKTOP}" ] ; then
     if [ -z "${FLAGS}" ] ; then
         FLAGS="desktop=${DESKTOP}"
     else
@@ -109,7 +109,7 @@ if [ ! -z "${DESKTOP}" ] ; then
     fi
 fi
 
-if [ ! -z "${STATE}" ] ; then
+if [ -n "${STATE}" ] ; then
     if [ -z "${FLAGS}" ] ; then
         FLAGS="state=${STATE}"
     else
