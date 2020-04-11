@@ -10,11 +10,11 @@
 configuration {
     font:                   "sans-serif 12";
     show-icons:             true;
-    icon-theme:             "Papirus";
-    display-drun:           " ";
-    display-ssh:            " ";
-    display-window:         " ";
-    display-filebrowser:    " ";
+    icon-theme:             "Tela";
+    display-drun:           "  ";
+    display-ssh:            "  ";
+    display-window:         "  ";
+    display-filebrowser:    "  ";
     drun-display-format:    "{name}";
     threads:                0;
     scroll-method:          0;
@@ -26,7 +26,7 @@ configuration {
 
 * {
     background:             #00000000;
-    background-color:       #00000066;
+    background-color:       #000000CC;
     background-entry:       #00000033;
     background-alt:         #f2f2f215;
     foreground:             #f2f2f2EE;
@@ -50,7 +50,7 @@ window {
 
 prompt {
     enabled:            true;
-    padding:            0px 8px 0px 4px;
+    padding:            -4px 8px 0px 4px;
     background-color:   @background;
     text-color:         @foreground;
     font:               "monospace 16";
