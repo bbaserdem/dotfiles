@@ -19,7 +19,7 @@
 
 * {
   /* General */
-  text-font:                            "Iosevka 12";
+  text-font:                            "Iosevka 24";
   icon-font:                            "Symbols Nerd Font 48";
   
   option-6-listview-spacing:            6px;
