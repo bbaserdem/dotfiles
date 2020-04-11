@@ -1,4 +1,4 @@
-/*
+/* vim:ft=css
  *
  * Author : Aditya Shakya (adi1090x)
  * Mail : adi1090x@gmail.com
@@ -6,7 +6,8 @@
  * Reddit : @adi1090x
  *
  */
- 
+
+/* Orange accent */
 * {
   accent:           #ff5722;
   background:       #212121;
@@ -19,7 +20,7 @@
 * {
   /* General */
   text-font:                            "Iosevka 12";
-  icon-font:                            "Iosevka 18";
+  icon-font:                            "Symbols Nerd Font 48";
   
   option-6-listview-spacing:            6px;
   menu-window-padding:                  6px 6px;
