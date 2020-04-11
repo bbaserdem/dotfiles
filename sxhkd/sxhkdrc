@@ -20,10 +20,6 @@ F12
 super + space
     /usr/bin/rofi -show drun
 
-# Password-store
-super + p
-    rofi-pass
-
 # Music controls for mpd
 XF86Audio{Play,Stop,Next,Prev}
     /usr/bin/mpc{ toggle, stop, next,-prev}
@@ -47,7 +43,8 @@ XF86AudioMute
 #    light -{A,U}rs "sysfs/leds/asus::kbd_backlight" 1
 
 # Power button
-# XF86PowerOff
+XF86PowerOff
+    $XDG_CONFIG_HOME/sxhkd/powermenu
 
 # Change wallpapers
 super + c

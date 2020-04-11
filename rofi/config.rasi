@@ -2,7 +2,8 @@
 configuration {
 
     // Theme
-    theme: "Pop-Dark";
+    //theme: "Pop-Dark";
+    theme: "launcher.rasi";
 
     // Application Behavior
     //modi: "window,drun,files:~/.config/rofi/filebrowser,ssh";
