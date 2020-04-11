@@ -40,11 +40,11 @@ XF86AudioMute
     /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Brightness setting for laptop
-XF86MonBrightness{Up,Down}
-    light -{A,U} 5
+#XF86MonBrightness{Up,Down}
+#    light -{A,U} 5
 
-XF86KbdBrightness{Up,Down}
-    light -{A,U}rs "sysfs/leds/asus::kbd_backlight" 1
+#XF86KbdBrightness{Up,Down}
+#    light -{A,U}rs "sysfs/leds/asus::kbd_backlight" 1
 
 # Power button
 # XF86PowerOff

@@ -21,7 +21,7 @@ configuration {
     show-match: true;
 
     // View options
-    font: "Iosevka,FuraCode Nerd Font Mono 12";
+    font: "Iosevka 12";
     width: 50;
     lines: 16;
     show-icons: true;
