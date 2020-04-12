@@ -220,6 +220,10 @@
 !/rofi/**
 /rofi/__pycache__
 
+# SUPERVISORD: Grab config
+!/supervisor
+!/supervisor/**
+
 # SWAY: Grab all sway files
 !/sway
 !/sway/**
