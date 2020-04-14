@@ -14,7 +14,7 @@ configuration {
     display-drun:           "  : ";
     display-ssh:            "  : ";
     display-window:         "  : ";
-    display-file-browser:   "  : ";
+    display-file-browser:   "  : ";
     drun-display-format:    "{name}";
     threads:                0;
     scroll-method:          0;
