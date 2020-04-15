@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=winhlp32
-MimeType=application/winhlp;
-Exec=env WINEPREFIX="/opt/wine" /usr/bin/wine start /ProgIDOpen hlpfile %f
-NoDisplay=true
-StartupNotify=true
-Icon=4137_winhlp32.0

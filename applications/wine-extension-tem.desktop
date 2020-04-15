@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=XCC_~3L1
-MimeType=application/x-wine-extension-tem;
-Exec=env WINEPREFIX="/opt/wine" /usr/bin/wine start /ProgIDOpen XCCTMPEditor.Document %f
-NoDisplay=true
-StartupNotify=true
-Icon=1BE5_XCC_~3L1.0
