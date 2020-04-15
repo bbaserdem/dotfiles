@@ -24,12 +24,12 @@
   
   option-6-listview-spacing:            6px;
   menu-window-padding:                  6px 6px;
-  menu-element-padding:                 20px 0px 15px -10px;
+  menu-element-padding:                 20px 0px 15px 8px;
 }
 
 #window {
-  width: 72;
-  height: 428;
+  width: 96;
+  height: 500;
   anchor: east;
   location: east;
   x-offset: 0%;
