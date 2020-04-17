@@ -129,6 +129,8 @@ if __name__ == '__main__':
             print('{}')
             sys.stdout.flush()
             continue
+        # Escape ampersand in format
+        FORM['format'] = FORM['format'].replace('&', '&amp;')
         # Set mute css class, if takes precedent
         if FORM['mute']:
             OUT['class'] = 'mute'

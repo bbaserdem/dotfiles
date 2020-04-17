@@ -1,8 +1,7 @@
 # Sway config loader
-include example.sway
-#include keymap.sway
-#include color.sway
-#include input.sway
-#include main.sway
-#include waybar.sway
-#include windows.sway
+#include example.sway
+include keymap.sway
+include color.sway
+include input.sway
+include main.sway
+include windows.sway

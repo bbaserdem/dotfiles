@@ -14,17 +14,17 @@ set $Gaps_Out   ""
 #-------------------#
 
 # Terminal
-bindsym $Meta+Return            exec "/usr/bin/alacritty"
+bindsym $Meta+Return            exec "/usr/bin/kitty"
 
 # Toggle scratchpad, and move windows to and from scratchpad
 bindsym F12 scratchpad show
 bindsym Shift+F12 move scratchpad
 
 # Rofi (launcher)
-bindsym $Meta+space             exec "/usr/bin/rofi -show drun"
+bindsym $Meta+space             exec "/usr/bin/wofi --show drun"
 
 # Password
-bindsym $Meta+p                 exec "~/.config/rofi/rofi-pass"
+#bindsym $Meta+p                 exec "~/.config/rofi/rofi-pass"
 
 # Music controls
 bindsym XF86AudioPlay           exec "/usr/bin/mpc toggle"
@@ -44,27 +44,27 @@ bindsym XF86KbdBrightnessUp     exec "/usr/bin/light -Ars sysfs/leds/asus::kbd_b
 bindsym XF86KbdBrightnessDown   exec "/usr/bin/light -Urs sysfs/leds/asus::kbd_backlight 1"
 
 # Power Button
-bindsym XF86PowerOff            exec "~/.config/sway/power.sh"
+bindsym XF86PowerOff            exec "~/.config/sway/scripts/power.sh"
 
 # Wallpaper
-bindsym $Meta+c                 exec "~/.config/sway/wallpaper.sh"
+bindsym $Meta+c                 exec "~/.config/sway/scripts/wallpaper.sh"
 
 # Screen lock
-bindsym $Meta+Escape            exec "~/.config/sway/lock.sh"
+bindsym $Meta+Escape            exec "~/.config/sway/scripts/lock.sh"
 
 # Screenshot
-bindsym Print                   exec "~/.config/sway/screenshot.sh --full"
-bindsym Shift+Print             exec "~/.config/sway/screenshot.sh --window"
-bindsym $Alt+Print              exec "~/.config/sway/screenshot.sh --region"
-bindsym $Meta+Print             exec "~/.config/sway/screenshot.sh --full --clipboard"
-bindsym $Meta+Shift+Print       exec "~/.config/sway/screenshot.sh --window --clipboard"
-bindsym $Meta+$Alt+Print        exec "~/.config/sway/screenshot.sh --region --clipboard"
+bindsym Print                   exec "~/.config/sway/scripts/screenshot.sh --full"
+bindsym Shift+Print             exec "~/.config/sway/scripts/screenshot.sh --window"
+bindsym $Alt+Print              exec "~/.config/sway/scripts/screenshot.sh --region"
+bindsym $Meta+Print             exec "~/.config/sway/scripts/screenshot.sh --full --clipboard"
+bindsym $Meta+Shift+Print       exec "~/.config/sway/scripts/screenshot.sh --window --clipboard"
+bindsym $Meta+$Alt+Print        exec "~/.config/sway/scripts/screenshot.sh --region --clipboard"
 
 # reload the configuration file
 bindsym $Meta+Shift+Escape      exec "/usr/bin/swaymsg reload"
 
 # Exit sway
-bindsym $Meta+$Alt+Shift+Escape       exec "/usr/bin/swaymsg exit"
+bindsym $Meta+$Alt+Shift+Escape exec "/usr/bin/swaymsg exit"
 
 #-----------------#
 #-----CONTROL-----#
@@ -93,29 +93,29 @@ bindsym $Meta+Shift+f focus mode_toggle
 # Switch to workspace
 bindsym $Meta+Right workspace next
 bindsym $Meta+Left  workspace prev
-bindsym $Meta+1 workspace $ws1
-bindsym $Meta+2 workspace $ws2
-bindsym $Meta+3 workspace $ws3
-bindsym $Meta+4 workspace $ws4
-bindsym $Meta+5 workspace $ws5
-bindsym $Meta+6 workspace $ws6
-bindsym $Meta+7 workspace $ws7
-bindsym $Meta+8 workspace $ws8
-bindsym $Meta+9 workspace $ws9
-bindsym $Meta+0 workspace $ws0
+bindsym $Meta+1     workspace $ws1
+bindsym $Meta+2     workspace $ws2
+bindsym $Meta+3     workspace $ws3
+bindsym $Meta+4     workspace $ws4
+bindsym $Meta+5     workspace $ws5
+bindsym $Meta+6     workspace $ws6
+bindsym $Meta+7     workspace $ws7
+bindsym $Meta+8     workspace $ws8
+bindsym $Meta+9     workspace $ws9
+bindsym $Meta+0     workspace $ws0
 # Move focused to workspace
 bindsym $Meta+Shift+Right move container to workspace next
 bindsym $Meta+Shift+Left  move container to workspace prev
-bindsym $Meta+Shift+1 move container to workspace $ws1
-bindsym $Meta+Shift+2 move container to workspace $ws2
-bindsym $Meta+Shift+3 move container to workspace $ws3
-bindsym $Meta+Shift+4 move container to workspace $ws4
-bindsym $Meta+Shift+5 move container to workspace $ws5
-bindsym $Meta+Shift+6 move container to workspace $ws6
-bindsym $Meta+Shift+7 move container to workspace $ws7
-bindsym $Meta+Shift+8 move container to workspace $ws8
-bindsym $Meta+Shift+9 move container to workspace $ws9
-bindsym $Meta+Shift+0 move container to workspace $ws0
+bindsym $Meta+Shift+1     move container to workspace $ws1
+bindsym $Meta+Shift+2     move container to workspace $ws2
+bindsym $Meta+Shift+3     move container to workspace $ws3
+bindsym $Meta+Shift+4     move container to workspace $ws4
+bindsym $Meta+Shift+5     move container to workspace $ws5
+bindsym $Meta+Shift+6     move container to workspace $ws6
+bindsym $Meta+Shift+7     move container to workspace $ws7
+bindsym $Meta+Shift+8     move container to workspace $ws8
+bindsym $Meta+Shift+9     move container to workspace $ws9
+bindsym $Meta+Shift+0     move container to workspace $ws0
 # Move workspaces between monitors
 bindsym $Meta+$Alt+Right move workspace to output right
 bindsym $Meta+$Alt+Left  move workspace to output left

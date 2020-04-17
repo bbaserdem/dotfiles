@@ -40,7 +40,7 @@ set $tra #282828CC
 
 # Set fallback background color
 output * bg $bl0 solid_color
-exec --no-startup-id ~/.config/sway/wallpaper.sh
+exec --no-startup-id ~/.config/sway/scripts/wallpaper.sh
 
 # Property Name         Border  BG      Text    Ind.    Child Border
 client.focused          $wh0    $bl3    $cya    $bl1    $bl2

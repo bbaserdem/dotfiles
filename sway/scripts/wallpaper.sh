@@ -9,7 +9,7 @@ bk_set () {
         exit 1
     fi
 
-    if [ $(hostname) = 'sbpworkstation' ]; then
+    if [ $(hostname) = 'sbp-workstation' ]; then
         # Set default directory
         _dir="${HOME}/Pictures/Wallpapers/Dual/"
         # Get random image and divide it

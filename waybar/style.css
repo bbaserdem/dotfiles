@@ -3,7 +3,7 @@
 /* Generic bar properties */
 * {
 	border: none;
-	font-family: Iosevka;
+	font-family: statusbar;
 	font-size: 14px;
     transition: none;
 }
