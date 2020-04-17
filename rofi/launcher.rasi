@@ -8,10 +8,10 @@
  */
 
 configuration {
-    font:                   "sans-serif 12";
+    font:                   "sans 12";
     show-icons:             true;
     icon-theme:             "Tela";
-    display-drun:           "  : ";
+    display-drun:           "  : ";
     display-ssh:            "  : ";
     display-window:         "  : ";
     display-file-browser:   "  : ";
@@ -53,7 +53,7 @@ prompt {
     padding:            -4px 0px 0px 0px;
     background-color:   @background;
     text-color:         @foreground;
-    font:               "monospace 16";
+    font:               "sans 16";
 }
 
 inputbar {
