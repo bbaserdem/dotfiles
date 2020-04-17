@@ -10,7 +10,7 @@
 configuration {
     font:                   "sans 12";
     show-icons:             true;
-    icon-theme:             "Tela";
+    icon-theme:             "Papirus";
     display-drun:           "  : ";
     display-ssh:            "  : ";
     display-window:         "  : ";
