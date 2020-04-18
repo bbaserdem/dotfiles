@@ -29,8 +29,8 @@ base0D = ${env:base0D:#7cafc2}
 base0E = ${env:base0E:#ba8baf}
 base0F = ${env:base0F:#a16946}
 frg = ${self.base04}
-bkg = #D8282828
-hig = #D8383838
+bkg = #BB282828
+hig = #BB383838
 mut = ${self.base03}
 red = ${self.base08}
 ora = ${self.base09}
@@ -51,55 +51,47 @@ format-background = ${colors.bkg}
 pseudo-transparency = true
 
 [global/wm]
-margin-top = 0
-margin-bottom = 0
+margin-top = 12
+margin-bottom = 12
 
-[bar/main]
-monitor = ${env:POLYMON:eDP}
+[bar/generic]
 fixed-center = true
-width = 100%
-height = 28
-offset-x = 0
-offset-y = 0
+width = 100%:-24
+height = 24
+offset-x = 12
+offset-y = 12
 background = ${colors.bkg}
 foreground = ${colors.frg}
-radius = 0.0
-line-size = 3
+line-size = 2
 line-color = ${colors.frg}
-border-size = 0
-border-color = ${colors.frg}
+border-color = ${colors.base00}
+radius = 3.0
 module-margin = 1
-padding = 0
 font-0 = "statusbar:size=11:style=Condensed;1"
 font-1 = "statusbar:size=11:style=Condensed ExtraBold;2"
 font-2 = "Symbols Nerd Font:size=11;3"
-seperator = 
 dim-value = 1.0
-tray-background = ${colors.bkg}
 tray-detached = false
 tray-maxsize = 16
-tray-offset-x = 0
-tray-offset-y = 0
-tray-padding = 1
-tray-scale = 1.0
 enable-ipc = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 wm-restack = bspwm
 
 [bar/top]
-inherit = bar/main
+inherit = bar/generic
+monitor = ${env:POLYMON:eDP}
 bottom = false
-modules-left = bspwm-desktop bspwm-mode
-modules-center = time
+modules-left = bspwm-desktop title
+modules-center = time date
 modules-right =  mpd audio keyboard backlight battery
 
 [bar/bot]
-inherit = bar/main
+inherit = bar/generic
 bottom = true
 tray-position = right
 modules-left = calendar todo
-modules-center = title
+modules-center = 
 modules-right =  temperature cpu memory ethernet wifi openvpn openconnect
 
 ;=============;
@@ -269,23 +261,6 @@ format = <label-state>
 inherit = module/bspwm
 format = <label-mode>
 
-;====================;
-;   MODULES-CENTER   ;
-;====================;
-
-[module/time]
-type = internal/date
-interval = 1
-time = %H:%M
-time-alt = %H:%M:%S
-date = %a, %e %b %Y
-date-alt = %d/%m/%Y
-label = %time%   %date%
-label-font = 2
-format = <label>
-format-foreground = ${colors.frg}
-format-background = ${colors.bkg}
-
 [module/title]
 type = internal/xwindow
 label-empty = 恵
@@ -295,6 +270,38 @@ label-font = 2
 format = <label>
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
+
+;====================;
+;   MODULES-CENTER   ;
+;====================;
+; Daily stuff like time and weather
+
+[module/temporal]
+type                        = internal/date
+interval                    = 1
+time                        = %H:%M
+time-alt                    = %H:%M:%S
+date                        = %a, %e %b %Y
+date-alt                    = %d/%m/%Y
+label-font                  = 2
+format                      = <label>
+format-prefix-foreground    = ${colors.ind}
+format-foreground           = ${colors.frg}
+format-background           = ${colors.bkg}
+format-underline            = ${self.format-prefix-foreground}
+format-overline             = ${self.format-prefix-foreground}
+
+[module/time]
+inherit                     = module/temporal
+label                       = %time%
+format-prefix               = " "
+format-prefix-foreground    = ${colors.cya}
+
+[module/date]
+inherit                     = module/temporal
+label                       = %date%
+format-prefix               = " "
+format-prefix-foreground    = ${colors.ind}
 
 ;===================;
 ;   MODULES-RIGHT   ;
