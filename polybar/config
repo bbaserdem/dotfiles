@@ -56,16 +56,16 @@ margin-bottom = 1
 
 [bar/generic]
 fixed-center = true
-width = 100%:-24
+width = 100%
 height = 24
-offset-x = 12
-offset-y = 12
+offset-x = 0
+offset-y = -2
 background = ${colors.bkg}
 foreground = ${colors.frg}
 line-size = 2
 line-color = ${colors.base03}
 border-color = ${colors.base00}
-radius = 4.0
+radius = 0.0
 module-margin = 1
 font-0 = "statusbar:size=11:style=Condensed;1"
 font-1 = "statusbar:size=11:style=Condensed ExtraBold;2"
@@ -78,9 +78,24 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 wm-restack = bspwm
 
+[bar/generic-hi]
+inherit = bar/generic
+height = 48
+line-size = 4
+offset-y = -4
+font-0 = "statusbar:size=22:style=Condensed;1"
+font-1 = "statusbar:size=22:style=Condensed ExtraBold;2"
+font-2 = "Symbols Nerd Font:size=22;3"
+
 [bar/top]
 inherit = bar/generic
-monitor = ${env:POLYMON:eDP}
+bottom = false
+modules-left = bspwm-desktop title
+modules-center = time date
+modules-right =  mpd-self keyboard
+
+[bar/top-hi]
+inherit = bar/generic-hi
 bottom = false
 modules-left = bspwm-desktop title
 modules-center = time date
@@ -93,6 +108,28 @@ tray-position = right
 modules-left = battery audio backlight-self temperature cpu memory
 modules-center = calendar todo
 modules-right = ethernet wifi
+
+[bar/bot-hi]
+inherit = bar/generic-hi
+bottom = true
+tray-position = right
+modules-left = battery audio backlight-self temperature cpu memory
+modules-center = calendar todo
+modules-right = ethernet wifi
+
+[bar/aux]
+inherit = bar/top
+monitor = ${env:POLYMON:eDP}
+modules-left = bspwm-desktop
+modules-center =  title
+modules-right = time date
+
+[bar/aux-hi]
+inherit = bar/top-hi
+monitor = ${env:POLYMON:eDP}
+modules-left = bspwm-desktop
+modules-center =  title
+modules-right = time date
 
 ;=============;
 ;   SCRIPTS   ;
