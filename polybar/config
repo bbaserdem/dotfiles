@@ -51,8 +51,8 @@ format-background = ${colors.bkg}
 pseudo-transparency = true
 
 [global/wm]
-margin-top = 12
-margin-bottom = 12
+margin-top = 6
+margin-bottom = 1
 
 [bar/generic]
 fixed-center = true
@@ -63,9 +63,9 @@ offset-y = 12
 background = ${colors.bkg}
 foreground = ${colors.frg}
 line-size = 2
-line-color = ${colors.frg}
+line-color = ${colors.base03}
 border-color = ${colors.base00}
-radius = 3.0
+radius = 4.0
 module-margin = 1
 font-0 = "statusbar:size=11:style=Condensed;1"
 font-1 = "statusbar:size=11:style=Condensed ExtraBold;2"
