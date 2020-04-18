@@ -55,6 +55,7 @@ margin-top = 6
 margin-bottom = 1
 
 [bar/generic]
+monitor = ${env:POLYMON:eDP}
 fixed-center = true
 width = 100%
 height = 24
@@ -118,15 +119,15 @@ modules-center = calendar todo
 modules-right = ethernet wifi
 
 [bar/aux]
-inherit = bar/top
-monitor = ${env:POLYMON:eDP}
+inherit = bar/generic
+bottom = false
 modules-left = bspwm-desktop
 modules-center =  title
 modules-right = time date
 
 [bar/aux-hi]
-inherit = bar/top-hi
-monitor = ${env:POLYMON:eDP}
+inherit = bar/generic-hi
+bottom = false
 modules-left = bspwm-desktop
 modules-center =  title
 modules-right = time date

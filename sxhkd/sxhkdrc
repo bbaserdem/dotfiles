@@ -20,6 +20,10 @@ F12
 super + space
     /usr/bin/rofi -show drun
 
+# Password store
+super + p
+    /usr/bin/rofi-pass
+
 # Music controls for mpd
 XF86Audio{Play,Stop,Next,Prev}
     /usr/bin/mpc{ toggle, stop, next,-prev}
