@@ -14,14 +14,11 @@ _dir="${HOME}/Pictures/Wallpapers/"
 _theme=''
 
 # Find a random wallpaper that is the current monitor size or above
-_img="$(find "${_dir}" \
-    -name "${_theme}*" \
-    -exec identify -format "%w %h ${_dir}%f\n" {} \; |
-    awk 'int($1) >= '"${_x}"' && int($2) >= '"${_y}"' {print $3}' |
-    shuf -n 1 -)"
+_img="$(find "${_dir}/${_x}x${_y}" -type f -name "${_theme}*" | shuf -n 1 -)"
 
 # Save the background location, for quick setting in the future
-ln -sf "${_img}" "${XDG_CACHE_HOME}/last_wallpaper"
+mkdir -p "${XDG_CACHE_HOME}/bspwm"
+ln -sf "${_img}" "${XDG_CACHE_HOME}/bspwm/last_wallpaper"
 
 # Set without using Xinerama
 feh --no-fehbg --bg-scale --no-xinerama "${_img}"
