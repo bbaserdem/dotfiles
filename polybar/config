@@ -84,15 +84,15 @@ monitor = ${env:POLYMON:eDP}
 bottom = false
 modules-left = bspwm-desktop title
 modules-center = time date
-modules-right =  mpd audio keyboard backlight battery
+modules-right =  mpd-self keyboard
 
 [bar/bot]
 inherit = bar/generic
 bottom = true
 tray-position = right
-modules-left = calendar todo
-modules-center = 
-modules-right =  temperature cpu memory ethernet wifi openvpn openconnect
+modules-left = battery audio backlight-self temperature cpu memory
+modules-center = calendar todo
+modules-right = ethernet wifi
 
 ;=============;
 ;   SCRIPTS   ;
@@ -153,26 +153,31 @@ label-mode-padding = 2
 label-mode-background = ${colors.bkg}
 label-mode-foreground = ${colors.ora}
 label-mode-underline  = ${colors.ora}
+label-mode-overline  = ${colors.ora}
 label-focused = %index%
 label-focused-padding = ${self.label-mode-padding}
 label-focused-background = ${colors.hig}
 label-focused-foreground = ${colors.frg}
 label-focused-underline =  ${colors.ora}
+label-focused-overline =  ${colors.ora}
 label-visible = %index%
 label-visible-padding = ${self.label-mode-padding}
 label-visible-background = ${colors.bkg}
 label-visible-foreground = ${colors.frg}
 label-visible-underline =  ${colors.ora}
+label-visible-overline =  ${colors.ora}
 label-unfocused = %index%
 label-unfocused-padding = ${self.label-mode-padding}
 label-unfocused-background = ${colors.bkg}
 label-unfocused-foreground = ${colors.frg}
 label-unfocused-underline =  ${colors.frg}
+label-unfocused-overline =  ${colors.frg}
 label-urgent = %index%
 label-urgent-padding = ${self.label-mode-padding}
 label-urgent-background = ${colors.bkg}
 label-urgent-foreground = ${colors.red}
 label-urgent-underline =  ${colors.red}
+label-urgent-overline =  ${colors.red}
 
 [module/bspwm]
 type = internal/bspwm
@@ -206,6 +211,14 @@ label-private-underline =      ${self.label-floating-foreground}
 label-pseudotiled-underline =  ${self.label-floating-foreground}
 label-sticky-underline =       ${self.label-floating-foreground}
 label-tiled-underline =        ${self.label-floating-foreground}
+label-floating-overline =      ${self.label-floating-foreground}
+label-fullscreen-overline =    ${self.label-floating-foreground}
+label-locked-overline =        ${self.label-floating-foreground}
+label-monocle-overline =       ${self.label-floating-foreground}
+label-private-overline =       ${self.label-floating-foreground}
+label-pseudotiled-overline =   ${self.label-floating-foreground}
+label-sticky-overline =        ${self.label-floating-foreground}
+label-tiled-overline =         ${self.label-floating-foreground}
 label-floating-padding =       1
 label-fullscreen-padding =     ${self.label-floating-padding}
 label-locked-padding =         ${self.label-floating-padding}
@@ -219,41 +232,49 @@ label-focused-padding = 2
 label-focused-background = ${colors.hig}
 label-focused-foreground = ${colors.frg}
 label-focused-underline =  ${colors.yel}
+label-focused-overline =  ${colors.yel}
 label-occupied = ${self.label-focused}
 label-occupied-padding = ${self.label-focused-padding}
 label-occupied-background = ${colors.bkg}
 label-occupied-foreground = ${colors.frg}
 label-occupied-underline =  ${colors.frg}
+label-occupied-overline =  ${colors.frg}
 label-empty = ${self.label-focused}
 label-empty-padding = ${self.label-focused-padding}
 label-empty-background = ${colors.bkg}
 label-empty-foreground = ${colors.frg}
 label-empty-underline =  ${colors.mut}
+label-empty-overline =  ${colors.mut}
 label-urgent = ${self.label-focused}
 label-urgent-padding = ${self.label-focused-padding}
 label-urgent-background = ${colors.bkg}
 label-urgent-foreground = ${colors.red}
 label-urgent-underline =  ${colors.red}
+label-urgent-overline =  ${colors.red}
 label-dimmed-focused = ${self.label-focused}
 label-dimmed-focused-padding = ${self.label-focused-padding}
 label-dimmed-focused-background = ${colors.hig}
 label-dimmed-focused-foreground = ${colors.mut}
-label-dimmed-focused-underline =  ${colors.ora}
+label-dimmed-focused-underline = ${colors.ora}
+label-dimmed-focused-overline =  ${colors.ora}
 label-dimmed-occupied = ${self.label-focused}
 label-dimmed-occupied-padding = ${self.label-focused-padding}
 label-dimmed-occupied-background = ${colors.bkg}
 label-dimmed-occupied-foreground = ${colors.mut}
 label-dimmed-occupied-underline =  ${colors.frg}
+label-dimmed-occupied-overline =  ${colors.frg}
 label-dimmed-empty = ${self.label-focused}
 label-dimmed-empty-padding = ${self.label-focused-padding}
 label-dimmed-empty-background = ${colors.bkg}
 label-dimmed-empty-foreground = ${colors.mut}
 label-dimmed-empty-underline =  ${colors.mut}
+label-dimmed-empty-overline =  ${colors.mut}
 label-dimmed-urgent = ${self.label-focused}
 label-dimmed-urgent-padding = ${self.label-focused-padding}
 label-dimmed-urgent-background = ${colors.bkg}
 label-dimmed-urgent-foreground = ${colors.red}
 label-dimmed-urgent-underline =  ${colors.red}
+label-dimmed-urgent-overline =  ${colors.red}
 [module/bspwm-desktop]
 inherit = module/bspwm
 format = <label-state>
@@ -266,10 +287,13 @@ type = internal/xwindow
 label-empty = 恵
 label-empty-foreground = ${colors.mut}
 label = %title%
-label-font = 2
+label-font = 1
+label-maxlen = 50
 format = <label>
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
+format-underline = ${colors.cya}
+format-overline = ${colors.cya}
 
 ;====================;
 ;   MODULES-CENTER   ;
@@ -295,7 +319,7 @@ format-overline             = ${self.format-prefix-foreground}
 inherit                     = module/temporal
 label                       = %time%
 format-prefix               = " "
-format-prefix-foreground    = ${colors.cya}
+format-prefix-foreground    = ${colors.ind}
 
 [module/date]
 inherit                     = module/temporal
@@ -324,10 +348,12 @@ ramp-4 = 
 ramp-foreground = ${colors.red}
 format = <ramp> <label>
 format-underline = ${self.ramp-foreground}
+format-overline = ${self.ramp-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.ramp-foreground}
+format-warn-overline = ${self.ramp-foreground}
 format-warn-foreground = ${self.ramp-foreground}
 
 [module/cpu]
@@ -338,6 +364,7 @@ format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.ora}
 format-underline = ${self.format-prefix-foreground}
+format-overline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 
@@ -349,6 +376,7 @@ format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.yel}
 format-underline = ${self.format-prefix-foreground}
+format-overline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 
@@ -362,12 +390,14 @@ format-connected = <label-connected>
 format-connected-prefix = "爵 "
 format-connected-prefix-foreground = ${colors.gre}
 format-connected-underline = ${self.format-connected-prefix-foreground}
+format-connected-overline = ${self.format-connected-prefix-foreground}
 format-connected-foreground = ${colors.frg}
 format-connected-background = ${colors.bkg}
 format-disconnected = <label-disconnected>
 format-disconnected-prefix =
 format-disconnected-prefix-foreground = ${self.format-connected-prefix-foreground}
 format-disconnected-underline = ${self.format-disconnected-prefix-foreground}
+format-disconnected-overline = ${self.format-disconnected-prefix-foreground}
 format-disconnected-foreground = ${self.format-disconnected-underline}
 format-disconnected-background = ${self.format-connected-background}
 
@@ -398,30 +428,6 @@ label-connected-foreground = ${colors.frg}
 label-disconnected =
 label-disconnected-foreground = ${colors.mut}
 
-[module/openvpn]
-type = custom/script
-exec = echo ""
-exec-if = pgrep -x openvpn
-interval = 5
-format = <label>
-format-underline = ${colors.gre}
-format-foreground = ${self.format-underline}
-format-background = ${colors.bkg}
-format-prefix =
-format-prefix-foreground = ${self.format-underline}
-
-[module/openconnect]
-type = custom/script
-exec = echo ""
-exec-if = pgrep -x openconnect
-interval = 5
-format = <label>
-format-underline = ${colors.gre}
-format-foreground = ${self.format-underline}
-format-background = ${colors.bkg}
-format-prefix = 
-format-prefix-foreground = ${self.format-underline}
-
 [module/mpd-self]
 type = internal/mpd
 host = 127.0.0.1
@@ -448,29 +454,33 @@ toggle-off-foreground = ${colors.mut}
 format-playing = %{A1:mpc toggle: A4:mpc prev: A5:mpc next:}<label-song>%{A A A}
 format-playing-foreground = ${colors.frg}
 format-playing-background = ${colors.bkg}
-format-playing-underline = ${colors.cya}
+format-playing-underline = ${colors.yel}
+format-playing-overline = ${self.format-playing-underline}
 format-playing-prefix = " "
 format-playing-prefix-foreground = ${self.format-playing-underline}
 format-paused = ${self.format-playing}
 format-paused-foreground = ${colors.mut}
 format-paused-background = ${self.format-playing-background}
 format-paused-underline = ${self.format-playing-underline}
+format-paused-overline = ${self.format-playing-underline}
 format-paused-prefix = ${self.format-playing-prefix}
 format-paused-prefix-foreground = ${self.format-paused-underline}
 format-stopped = %{A1:/usr/bin/mpc play:}<toggle>%{A}
 format-stopped-foreground = ${colors.mut}
 format-stopped-background = ${self.format-playing-background}
 format-stopped-underline = ${self.format-playing-underline}
+format-stopped-overline = ${self.format-playing-underline}
 format-stopped-prefix = ${self.format-playing-prefix}
 format-stopped-prefix-foreground = ${self.format-stopped-underline}
 format-offline = <label-offline>
 format-offline-foreground = ${colors.mut}
 format-offline-background = ${self.format-playing-background}
 format-offline-underline = ${colors.mut}
+format-offline-overline = ${colors.mut}
 format-offline-prefix = "ﱙ "
 format-offline-prefix-foreground = ${self.format-offline-underline}
 
-[module/pulsenotworking]
+[module/pulse]
 type = internal/pulseaudio
 use-ui-max = true
 interval = 5
@@ -497,19 +507,21 @@ label-layout = %name%
 label-indicator = %name%
 format = <label-layout>
 format-prefix = " "
-format-prefix-foreground = ${colors.ind}
+format-prefix-foreground = ${colors.ora}
 format-underline = ${self.format-prefix-foreground}
+format-overline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 
 [module/backlight-self]
 type = internal/backlight
-card = ${env:BRI_SCR}
+;card = ${env:BRI_SCR}
 format = %{A4:light -A 5: A5:light -U 5:}<label>%{A A}
 label = %percentage%
 format-prefix = " "
 format-prefix-foreground = ${colors.vio}
 format-underline = ${self.format-prefix-foreground}
+format-overline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 scroll-up = /usr/bin/

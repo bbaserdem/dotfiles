@@ -97,10 +97,10 @@ if __name__ == '__main__':
 
     # Create formatting string
     TEXT = '%{{A1:{on-click}: A2:{on-click-middle}: A3:{on-click-right}: '
-    TEXT += 'A4:{on-scroll-up}: A5:{on-scroll-down}:}}%{{u#{accent} +u}}'
+    TEXT += 'A4:{on-scroll-up}: A5:{on-scroll-down}:}}%{{u#{accent} +u o#{accent} +o}}'
     TEXT += '%{{F#{accent}}}{prefix}%{{F-}}'
     TEXT += '%{{F#{color}}}{format}%{{F-}}'
-    TEXT += '%{{F#{accent}}}{suffix}%{{F-}}%{{-u u-}}%{{A A A A A}}'
+    TEXT += '%{{F#{accent}}}{suffix}%{{F-}}%{{-u u- -o o-}}%{{A A A A A}}'
 
     # Create formatting dict
     FORM = {'format': '',
