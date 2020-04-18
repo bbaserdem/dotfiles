@@ -1,13 +1,30 @@
 #!/bin/bash
+# This script reloads all polybar instances.
+#(!)Only the instances on this desktop are loaded.
+# Polybar should have the following bar layouts;
+# * top * top-hidpi
+# * bot * bot-hidpi
+# * aux * aux-hidpi
 
-# This script reloads all polybar instances
-(
-    flock 200
-    # Get PID of all processes that we want
+# Create directories for locks to avoid race conditions
+locn="${XDG_CACHE_HOME}/bspwm/"
+lock="bars.at.${DISPLAY}.lock"
+if [ ! -d "${locn}" ] ; then
+    mkdir -p "${locn}"
+fi
+
+get_display_var () {
+    # Get the DISPLAY variable from given PID
+    ( tr '\0' '\n' | awk -F '=' '/DISPLAY/ {print $2}' ) < "/proc/$1/environ"
+}
+
+# Run this code block
+( flock 200
+    # Iterate over all running polybar instances
     pgrep 'polybar' | while IFS= read -r _pid ; do
-        # Check environment variables
-        _disp="$(cat "/proc/${_pid}/environ" | tr '\0' '\n' | sed -n 's|DISPLAY=\(.*\)|\1|p')"
-        if [ "${_disp}" = "$DISPLAY" ]; then
+        # Check the DISPLAY variable of this instance is the same with this one
+        #   and terminate that bar if it is
+        if [ "$(get_display_var "${_pid}")" = "${DISPLAY}" ]; then
             kill "${_pid}"
         fi
         # Wait until graceful exit
@@ -21,4 +38,4 @@
         POLYMON=$m polybar --reload top </dev/null >/var/tmp/polybar-$m.log 2>&1 200>&- & disown
         POLYMON=$m polybar --reload bot </dev/null >/var/tmp/polybar-$m.log 2>&1 200>&- & disown
     done
-) 200>/var/tmp/polybar-"${DISPLAY}"-launch.lock
+) 200>"${locn}/${lock}"
