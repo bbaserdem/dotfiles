@@ -106,17 +106,17 @@ modules-right =  mpd keyboard
 inherit = bar/generic
 bottom = true
 tray-position = right
-modules-left = battery audio backlight temperature cpu memory
+modules-left = battery audio backlight temperature fan-script cpu memory kernel-script
 modules-center = calendar todo
-modules-right = updates-script kernel-script ethernet wifi
+modules-right = ethernet wifi updates-script
 
 [bar/bot-hi]
 inherit = bar/generic-hi
 bottom = true
 tray-position = right
-modules-left = battery audio backlight temperature cpu memory
+modules-left = battery audio backlight temperature fan-script cpu memory kernel-script
 modules-center = calendar todo
-modules-right = updates-script kernel-script ethernet wifi
+modules-right = ethernet wifi updates-script
 
 [bar/aux]
 inherit = bar/generic
@@ -176,7 +176,11 @@ exec = ~/.config/systeminfo/sysinfo-polybar -c violet kernel
 
 [module/updates-script]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c green kernel
+exec = ~/.config/systeminfo/sysinfo-polybar -c indigo updates
+
+[module/fan-script]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c orange fan
 
 ;==================;
 ;   MODULES-LEFT   ;
@@ -452,7 +456,7 @@ format-disconnected-background = ${self.format-connected-background}
 inherit = module/network
 interface = ethernet
 format-connected-prefix = " "
-label-connected = "%local_ip%"
+label-connected = "%local_ip%  %upspeed%  %downspeed%"
 label-connected-foreground = ${colors.frg}
 label-disconnected =
 label-disconnected-foreground = ${colors.mut}
@@ -461,7 +465,7 @@ label-disconnected-foreground = ${colors.mut}
 inherit = module/network
 interface = wifi
 format-connected-prefix = " "
-label-connected = "%essid%"
+label-connected = "%essid%  %upspeed%  %downspeed%"
 label-connected-foreground = ${colors.frg}
 label-disconnected =
 label-disconnected-foreground = ${colors.mut}

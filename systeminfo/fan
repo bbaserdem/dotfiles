@@ -16,21 +16,26 @@ list_children ()
     echo "$children"
 }
 
-get_text () {
-    if [ $(hostname) = 'sbplaptop' ] ; then
-        # Can't read this
-        exit
-    elif [ $(hostname) = 'sbpnotebook' ] ; then
-        _spe="$(sensors | grep -i 'fan' | awk '{print $2}' | tr '\n' ',')"
-        _spe="${_spe::-1}"
-    else
-        _spe="$(sensors | grep -i 'fan' | awk '{print $3}' | tr '\n' ',')"
-        _spe="${_spe::-1}"
-    fi
-
-    echo "{ \"format\":\"${_spe}\", \"prefix\":\" \" }"
-
-}
+case "$(hostname)" in
+    sbp-homestation)
+        get_text () {
+            exit
+        } ;;
+    sbp-workstation)
+        get_text () {
+            _spe="$(sensors | grep -i 'fan' | awk '{print $2}' | tr '\n' ',' |
+              sed 's|.$||')"
+            echo "{ \"format\":\"${_spe}\", \"prefix\":\" \" }"
+        } ;;
+    sbp-laptop)
+        get_text () {
+            exit
+        } ;;
+    sbp-server)
+        get_text () {
+            exit
+        } ;;
+esac
 
 while : ; do
     get_text
