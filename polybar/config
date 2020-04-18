@@ -29,8 +29,8 @@ base0D = ${env:base0D:#7cafc2}
 base0E = ${env:base0E:#ba8baf}
 base0F = ${env:base0F:#a16946}
 frg = ${self.base04}
-bkg = #BB282828
-hig = #BB383838
+bkg = #CC282828
+hig = #CC383838
 mut = ${self.base03}
 red = ${self.base08}
 ora = ${self.base09}
@@ -91,44 +91,44 @@ font-2 = "Symbols Nerd Font:size=22;3"
 [bar/top]
 inherit = bar/generic
 bottom = false
-modules-left = bspwm-desktop title
+modules-left = bspwm title
 modules-center = time date
-modules-right =  mpd-self keyboard
+modules-right =  mpd keyboard
 
 [bar/top-hi]
 inherit = bar/generic-hi
 bottom = false
-modules-left = bspwm-desktop title
+modules-left = bspwm title
 modules-center = time date
-modules-right =  mpd-self keyboard
+modules-right =  mpd keyboard
 
 [bar/bot]
 inherit = bar/generic
 bottom = true
 tray-position = right
-modules-left = battery audio backlight-self temperature cpu memory
+modules-left = battery audio backlight temperature cpu memory
 modules-center = calendar todo
-modules-right = ethernet wifi
+modules-right = updates-script kernel-script ethernet wifi
 
 [bar/bot-hi]
 inherit = bar/generic-hi
 bottom = true
 tray-position = right
-modules-left = battery audio backlight-self temperature cpu memory
+modules-left = battery audio backlight temperature cpu memory
 modules-center = calendar todo
-modules-right = ethernet wifi
+modules-right = updates-script kernel-script ethernet wifi
 
 [bar/aux]
 inherit = bar/generic
 bottom = false
-modules-left = bspwm-desktop
+modules-left = bspwm
 modules-center =  title
 modules-right = time date
 
 [bar/aux-hi]
 inherit = bar/generic-hi
 bottom = false
-modules-left = bspwm-desktop
+modules-left = bspwm
 modules-center =  title
 modules-right = time date
 
@@ -158,18 +158,25 @@ exec = ~/.config/systeminfo/sysinfo-polybar -c red temperature
 inherit = module/skeleton
 exec = ~/.config/systeminfo/sysinfo-polybar -c cyan audio
 
-[module/mpd]
+[module/mpd-script]
 inherit = module/skeleton
 exec = ~/.config/systeminfo/sysinfo-polybar -c cyan music
 
-[module/keyboard]
+[module/keyboard-script]
 inherit = module/skeleton
 exec = ~/.config/systeminfo/sysinfo-polybar -c indigo keyboard
 
-[module/backlight]
+[module/backlight-script]
 inherit = module/skeleton
 exec = ~/.config/systeminfo/sysinfo-polybar -c violet brightness
 
+[module/kernel-script]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c violet kernel
+
+[module/updates-script]
+inherit = module/skeleton
+exec = ~/.config/systeminfo/sysinfo-polybar -c green kernel
 
 ;==================;
 ;   MODULES-LEFT   ;
@@ -217,7 +224,7 @@ label-urgent-foreground = ${colors.red}
 label-urgent-underline =  ${colors.red}
 label-urgent-overline =  ${colors.red}
 
-[module/bspwm]
+[module/bspwm-template]
 type = internal/bspwm
 pin-workspaces = true
 inline-mode = false
@@ -313,11 +320,11 @@ label-dimmed-urgent-background = ${colors.bkg}
 label-dimmed-urgent-foreground = ${colors.red}
 label-dimmed-urgent-underline =  ${colors.red}
 label-dimmed-urgent-overline =  ${colors.red}
-[module/bspwm-desktop]
-inherit = module/bspwm
+[module/bspwm]
+inherit = module/bspwm-template
 format = <label-state>
 [module/bspwm-mode]
-inherit = module/bspwm
+inherit = module/bspwm-template
 format = <label-mode>
 
 [module/title]
@@ -332,6 +339,8 @@ format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 format-underline = ${colors.cya}
 format-overline = ${colors.cya}
+format-prefix-foreground = ${colors.cya}
+format-prefix = " "
 
 ;====================;
 ;   MODULES-CENTER   ;
@@ -466,12 +475,13 @@ label-connected-foreground = ${colors.frg}
 label-disconnected =
 label-disconnected-foreground = ${colors.mut}
 
-[module/mpd-self]
+[module/mpd]
 type = internal/mpd
-host = 127.0.0.1
-port = 6600
+host = ${env:POLYMPDHOST:127.0.0.1}
+port = ${env:POLYMPDPORT:6600}
+password = ${env:POLYMPDPASS:}
 label-song = %title% - %album-artist%
-label-song-maxlen = 25
+label-song-maxlen = 40
 label-song-ellipsis = true
 label-time = %elapsed% / %total%
 label-offline = 
@@ -487,30 +497,30 @@ icon-repeat = 凌
 icon-repeatone = 綾
 icon-single = 駱
 icon-consume = 裸
-toggle-on-foreground = ${colors.frg}
+toggle-on-foreground = ${colors.yel}
 toggle-off-foreground = ${colors.mut}
-format-playing = %{A1:mpc toggle: A4:mpc prev: A5:mpc next:}<label-song>%{A A A}
+format-playing = <toggle> <label-song> <icon-prev> <icon-seekb> <label-time> <icon-seekf> <icon-next> <icon-random> <icon-repeat>
+format-paused = ${self.format-playing}
+format-stopped = %{A1:/usr/bin/mpc play:}<toggle>%{A}
+format-offline = <label-offline>
 format-playing-foreground = ${colors.frg}
 format-playing-background = ${colors.bkg}
 format-playing-underline = ${colors.yel}
 format-playing-overline = ${self.format-playing-underline}
 format-playing-prefix = " "
 format-playing-prefix-foreground = ${self.format-playing-underline}
-format-paused = ${self.format-playing}
 format-paused-foreground = ${colors.mut}
 format-paused-background = ${self.format-playing-background}
 format-paused-underline = ${self.format-playing-underline}
 format-paused-overline = ${self.format-playing-underline}
 format-paused-prefix = ${self.format-playing-prefix}
 format-paused-prefix-foreground = ${self.format-paused-underline}
-format-stopped = %{A1:/usr/bin/mpc play:}<toggle>%{A}
 format-stopped-foreground = ${colors.mut}
 format-stopped-background = ${self.format-playing-background}
 format-stopped-underline = ${self.format-playing-underline}
 format-stopped-overline = ${self.format-playing-underline}
 format-stopped-prefix = ${self.format-playing-prefix}
 format-stopped-prefix-foreground = ${self.format-stopped-underline}
-format-offline = <label-offline>
 format-offline-foreground = ${colors.mut}
 format-offline-background = ${self.format-playing-background}
 format-offline-underline = ${colors.mut}
@@ -537,7 +547,7 @@ format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 label-muted-foreground = ${colors.mut}
 
-[module/keyboard-self]
+[module/keyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 blacklist-1 = scroll lock
@@ -551,7 +561,7 @@ format-overline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
 
-[module/backlight-self]
+[module/backlight]
 type = internal/backlight
 ;card = ${env:BRI_SCR}
 format = %{A4:light -A 5: A5:light -U 5:}<label>%{A A}
