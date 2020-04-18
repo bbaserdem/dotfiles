@@ -2,10 +2,10 @@
 
 /* Generic bar properties */
 * {
-	border: none;
-	font-family: statusbar;
-	font-size: 14px;
-    transition: none;
+    border:         none;
+    font-family:    "statusbar:style=Extra Condensed";
+    font-size:      14px;
+    transition:     none;
 }
 
 window#waybar {
