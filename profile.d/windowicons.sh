@@ -1,0 +1,11 @@
+# BSPWM layout
+export ws1=""
+export ws2="ﮂ"
+export ws3="ﳜ"
+export ws4=""
+export ws5=""
+export ws6=""
+export ws7=""
+export ws8=""
+export ws9=""
+export ws0="漣"

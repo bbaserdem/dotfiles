@@ -1,6 +1,5 @@
 #!/bin/dash
-
-# This script refreshes backdrop of desktops
+# This script refreshes backdrop of desktops when called
 
 # Get rectangle information of the screen
 _rect="$(xdpyinfo | awk '/dimensions/ {print $2;}')"
@@ -17,8 +16,8 @@ _theme=''
 _img="$(find "${_dir}/${_x}x${_y}" -type f -name "${_theme}*" | shuf -n 1 -)"
 
 # Save the background location, for quick setting in the future
-mkdir -p "${XDG_CACHE_HOME}/bspwm"
-ln -sf "${_img}" "${XDG_CACHE_HOME}/bspwm/last_wallpaper"
+mkdir -p "${XDG_CACHE_HOME}/xpaper"
+ln -sf "${_img}" "${XDG_CACHE_HOME}/xpaper/last_wallpaper"
 
 # Set without using Xinerama
 feh --no-fehbg --bg-scale --no-xinerama "${_img}"
