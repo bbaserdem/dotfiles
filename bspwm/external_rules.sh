@@ -1,13 +1,10 @@
-#!/bin/sh
-
-# Load workspace names
-. $XDG_CONFIG_HOME/bspwm/window_id.sh
+#!/bin/bash
 
 # Rename variables for easy access
 wid=$1
 class=$2
 instance=$3
-title="$(xwininfo -id $1 | awk 'NR==2' | sed 's|.*"\(.*\)"$|\1|')"
+title="$(xwininfo -id "${wid}" | awk 'NR==2' | sed 's|.*"\(.*\)"$|\1|')"
 
 # Defaults
 STATE=""
@@ -35,7 +32,7 @@ case $class in
     Qemu*|Virt-manager|*Remmina|transmission*|Skype|zoom)
         DESKTOP="${ws5}";;
     # Desktop 6: Terminals
-    Alacritty|kitty)
+    kitty)
         DESKTOP="${ws6}";;
     # Desktop 2: Images and Static Media
     Gimp*|inkscape|imv|Darktable)
@@ -62,33 +59,33 @@ esac
 # Title overrides
 case $title in
     # Override the dropdown terminal to be floating and sticky
-    'Dropdown terminal')
+    Dropdown*)
         FLAGS="sticky=on hidden=on"
         DESKTOP=''
         STATE='floating'
-        ;;&
+        ;;
     # Science figures go to image window
     Figures*)
         if [ "${DESKTOP}" = "${ws2}" ]; then
             DESKTOP="${ws7}"
         fi
-        ;;&
+        ;;
     # Steam prompts go to steam window
     Steam)
         DESKTOP="${ws4}"
-        ;;&
+        ;;
     # Save prompts do not go to a new desktop
     Export*|Save*|Open*|Quit*|File*|Insert*|Confirm*|Playlist*|TabCompletionPopup|Leave*)
         DESKTOP=""
-        ;;&
+        ;;
     # Zoom meeting go to remote
     'Zoom Meeting ID'*)
         DESKTOP="${ws5}"
-        ;;&
+        ;;
     # Put presentation in media
     'Presenting'*)
         DESKTOP="${ws3}"
-        ;;&
+        ;;
 esac
 
 # Add desktop and state flags
