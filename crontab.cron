@@ -1,9 +1,3 @@
 #Mins   Hours   Days    Months  Weekday Script    
-*/15    *       *       *       *       /home/sbp/.config/autorandr/postswitch.d/wallpaper
-*/15    *       *       *       *       /home/sbp/.config/sway/wallpaper.sh -a
-*/5     *       *       *       *       mbsync --config /home/sbp/.config/isync/config --all
 */5     *       *       *       *       vdirsyncer sync contacts
 */5     *       *       *       *       vdirsyncer sync calendar
-0-59/15 *       *       *       *       git -C /home/sbp/.pass pull >> /home/sbp/.cache/passpull.log 2>&1
-1-59/15 *       *       *       *       git -C /home/sbp/.pass push >> /home/sbp/.cache/passpush.log 2>&1
-0       *       *       *       *       /home/sbp/.config/syncrepo.sh >> /home/sbp/.cache/syncrepo.log 2>&1
