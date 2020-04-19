@@ -10,7 +10,7 @@ super + Return
 
 # Dropdown terminal
 F12
-    $XDG_CONFIG_HOME/bspwm/dropdown.sh
+    /usr/bin/sbp-bspwm-dropdown
 
 # Rofi
 super + space

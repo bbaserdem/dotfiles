@@ -37,7 +37,7 @@ fi
 spawn_terminal () {
     # Open the lock file; or exit with error
     ( flock -n 201 || exit 1
-    /usr/bin/kitty --title "${_NAME}" </dev/null >"${logf}" 2>&1 & disown
+    /usr/bin/kitty --class "${_NAME}" </dev/null >"${logf}" 2>&1 & disown
     # Output PID
     echo $!
     ) 201>"${lock}"
@@ -79,14 +79,14 @@ calculate_movement () {
 #   If the dropdown window does not exist;
 #       - Spawns a dropdown terminal
 #       - Get window ID of said terminal
-_WID="$(xdotool search --name "${_NAME}")"
+_WID="$(xdotool search --class "${_NAME}")"
 if [ -z "${_WID}" ] ; then
     _PID="$(spawn_terminal)"
     # If PID is empty; new terminal can't be launched.
     # It might have been launched very recently; in that case wait.
     if [ -z "${_PID}" ] ; then
         sleep 1
-        _WID="$(xdotool search --name "${_NAME}")"
+        _WID="$(xdotool search --class "${_NAME}")"
     else
         _WID="$(xdotool search --pid "${_PID}")"
     fi

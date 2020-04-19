@@ -13,6 +13,11 @@ FLAGS=""
 
 # Grab info
 case $class in
+    # Dropdown override
+    'Dropdown terminal')
+        FLAGS="sticky=on hidden=on"
+        STATE='floating'
+        ;;
     # Force tiling
     Soffice|libreoffice*|zathura|Zathura|Steam|dropbox)
         STATE="tiled";;&
