@@ -78,8 +78,8 @@ def get_color(inp):
         return colors[inp]
     if re.search(r'^#(?:[0-9a-fA-F]{3}){1,2}$', inp):
         return inp
-    print('Invalid color selection, defaulting to red')
-    return colors['red']
+    print('Invalid color selection, defaulting to foreground')
+    return colors['frg']
 
 if __name__ == '__main__':
     # Parse inputs

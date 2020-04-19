@@ -3,13 +3,16 @@
 /* Generic bar properties */
 * {
     border:         none;
+    border-radius:  2;
     font-family:    "statusbar:style=Extra Condensed";
     font-size:      14px;
     transition:     none;
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.75);
+    border-bottom: 2px solid @base01;
+    border-bottom: 2px solid @base01;
 }
 
 window#waybar.hidden {
@@ -61,14 +64,10 @@ window#waybar.hidden {
 #custom-brightness { border-bottom: 3px solid @base0C; }
 #brightness { border-bottom: 3px solid @base0C; }
 #custom-keyboard { border-bottom: 3px solid @base0D; }
-#custom-battery.critical { border-bottom: 3px solid @base08; }
-#custom-battery.low { border-bottom: 3px solid @base09; }
-#custom-battery { border-bottom: 3px solid @base0A; }
-#custom-battery.full { border-bottom: 3px solid @base0B; }
-#battery.critical { border-bottom: 3px solid @base08; }
-#battery.low { border-bottom: 3px solid @base09; }
-#battery { border-bottom: 3px solid @base0A; }
-#battery.full { border-bottom: 3px solid @base0B; }
+#battery.critical { border-bottom: 2px solid @base08; }
+#battery.low { border-bottom: 2px solid @base09; }
+#battery { border-bottom: 2px solid @base0A; }
+#battery.full { border-bottom: 2px solid @base0B; }
 
 #idle_inhibitor { border-top: 3px solid @base0F; }
 #mode { border-top: 3px solid @base04; }
