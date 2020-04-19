@@ -10,33 +10,49 @@
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0.75);
-    border-bottom: 2px solid @base01;
-    border-bottom: 2px solid @base01;
+    background: @base01;
+    opacity: 0.75;
+    border-bottom: 2px solid @base00;
+    border-bottom: 2px solid @base00;
 }
 
 window#waybar.hidden {
-	opacity: 0.2;
+	opacity: 0.25;
 }
 
 /* General formatting for modules*/
-#mode, #window, #custom-updates, #custom-kernel, #custom-calendar, #custom-todo, #custom-clock, #custom-day, #custom-audio, #custom-music, #custom-email, #custom-rss, #custom-brightness, #custom-keyboard, #custom-updates, #custom-battery, #mpd, #clock, #cpu, #memory, #pulseaudio, #idle_inhibitor, #tray, #custom-ethernet, #custom-wifi, #custom-tether, #custom-broadcast, #custom-temperature, #tray {
-    padding-top: 4px;
-    padding-bottom: 4px;
+#mode, \
+#window, \
+#custom-updates, \
+#custom-kernel, \
+#custom-calendar, \
+#custom-todo, \
+#custom-clock, \
+#custom-day, \
+#custom-audio, \
+#custom-music, \
+#custom-email, \
+#custom-rss, \
+#custom-brightness, \
+#custom-keyboard, \
+#custom-updates, \
+#custom-battery, #mpd, #clock, #cpu, #memory, #pulseaudio, #idle_inhibitor, #tray, #custom-ethernet, #custom-wifi, #custom-tether, #custom-broadcast, #custom-temperature, #tray {
+    padding-top: 0px;
+    padding-bottom: 0px;
     padding-left: 6px;
     padding-right: 6px;
     color: @base04;
     background: transparent;
-	border-radius: 0px;
-	margin-top: 4px;
-	margin-left: 4px;
-	margin-right: 4px;
-	margin-bottom: 4px;
+    border-radius: 0px;
+    margin-top: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 1px;
 }
 
 /* General formatting for quiet */
 #custom-updates.mute, #custom-calendar.mute, #custom-todo.mute, #custom-clock.mute, #custom-day.mute, #custom-audio.mute, #custom-music.mute, #mpd.paused, #mpd.stopped, #mpd.disconnected, #custom-email.mute, #custom-rss.mute, #custom-brightness.mute, #custom-keyboard.mute, #custom-updates.mute #idle_inhibitor.deactivated, #custom-broadcast.mute #pulseaudio.muted {
-	color: @base03;
+    color: @base03;
 }
 
 /* Borders */
