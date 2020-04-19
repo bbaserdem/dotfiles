@@ -1,6 +1,0 @@
-#!/bin/bash
-
-case "${XDG_CURRENT_DESKTOP}" in
-    bspwm) "${XDG_CONFIG_HOME}/bspwm/workspaces.sh";;
-    *) true ;;
-esac

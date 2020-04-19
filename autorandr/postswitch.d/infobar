@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# This script reloads all polybar instances
-case "${XDG_CURRENT_DESKTOP}" in
-    bspwm) "${XDG_CONFIG_HOME}/bspwm/polylaunch.sh" ;;
-    *) true ;;
-esac

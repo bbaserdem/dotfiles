@@ -1,6 +1,0 @@
-#!/bin/dash
-
-case "${XDG_CURRENT_DESKTOP}" in
-    bspwm) "${XDG_CONFIG_HOME}/bspwm/wallpaper.sh" & ;;
-    *) true ;;
-esac
