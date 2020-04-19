@@ -3,6 +3,6 @@ Type=Application
 Version=1.0
 Name=hamsket
 Comment=hamsketstartup script
-Exec=/usr/lib/hamsket/hamsket
+Exec=/usr/lib/hamsket/hamsket --hidden
 StartupNotify=false
 Terminal=false
