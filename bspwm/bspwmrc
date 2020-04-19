@@ -23,5 +23,12 @@ if [ -e "${XDG_CACHE_HOME}/xpaper/last_wallpaper" ] ; then
     feh --no-fehbg --bg-scale --no-xinerama "${XDG_CACHE_HOME}/xpaper/last_wallpaper"
 fi
 
+# Turn bell off
+xset b off
+# Set screen-saver to activate in 5 minutes
+xset s 300
+# Set dyms standby to 10 minutes; and suspend to 15
+xset dpms 600 900 3600
+
 # Autostart programs
 dex --autostart --environment bspwm
