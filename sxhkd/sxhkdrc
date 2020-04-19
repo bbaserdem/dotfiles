@@ -4,10 +4,6 @@
 #------------------------#
 # Need to escape curly brackets in quotes
 
-# Reload monitor
-super + F8
-    $XDG_CONFIG_HOME/bspwm/layout.sh --refresh
-
 # Terminal
 super + Return
     $TERMINAL
@@ -27,8 +23,10 @@ super + p
 # Music controls for mpd
 XF86Audio{Play,Stop,Next,Prev}
     /usr/bin/mpc{ toggle, stop, next,-prev}
+
 super + plus
     /usr/bin/mpc sendmessage ratings like
+
 super + minus
     /usr/bin/mpc sendmessage ratings dislike
 
@@ -36,15 +34,16 @@ super + minus
 XF86Audio{Raise,Lower}Volume
     /usr/bin/pamixer --{increase,decrease} 5
 #if [ "$(pactl list sinks | sed -n 's|^\sVolume: \(.*\)$|\1|p'"$(pactl list sinks short | grep -n "$(pactl info | sed -n 's|Default Sink: \(.*\)|\1|p')" | cut -d : -f 1)" | awk 'BEGIN\{ RS=" "; vol=0; n=0; \} /[0-9]+%$/ \{ n++; vol+=$1; \} END\{ if(n>0) \{ printf( "%.0f", vol/n ); \} \}' )" -ge 100 ] ; then /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ 100% ; else /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5% ; fi
+
 XF86AudioMute
     /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Brightness setting for laptop
-#XF86MonBrightness{Up,Down}
-#    light -{A,U} 5
+XF86MonBrightness{Up,Down}
+    light -{A,U} 5
 
-#XF86KbdBrightness{Up,Down}
-#    light -{A,U}rs "sysfs/leds/asus::kbd_backlight" 1
+XF86KbdBrightness{Up,Down}
+    light -{A,U}rs "sysfs/leds/asus::kbd_backlight" 1
 
 # Power button
 XF86PowerOff
@@ -52,7 +51,7 @@ XF86PowerOff
 
 # Change wallpapers
 super + c
-    $XDG_CONFIG_HOME/autorandr/postswitch.d/wallpaper
+    /usr/bin/sbp-xpaper
 
 # Lock screen
 super + Escape
@@ -62,9 +61,11 @@ super + Escape
 Print + {_,shift,alt}
     maim {_,-i $(xdotool getactivewindow),-s} $HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
 
-# make sxhkd reload its config files
+# Reload config files
 super + shift + Escape
     pkill -USR1 -x sxhkd;
+    /usr/bin/sbp-bspwm-bar;
+    /usr/bin/sbp-bspwm-layout;
 
 # Logout
 super + shift + alt + Escape

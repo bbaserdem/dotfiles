@@ -19,8 +19,8 @@ export XDG_CURRENT_DESKTOP="bspwm"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Set background placeholder
-if [ -e "${XDG_CACHE_HOME}/bspwm/last_wallpaper" ] ; then
-    feh --no-fehbg --bg-scale --no-xinerama "${XDG_CACHE_HOME}/bspwm/last_wallpaper"
+if [ -e "${XDG_CACHE_HOME}/xpaper/last_wallpaper" ] ; then
+    feh --no-fehbg --bg-scale --no-xinerama "${XDG_CACHE_HOME}/xpaper/last_wallpaper"
 fi
 
 # Autostart programs
