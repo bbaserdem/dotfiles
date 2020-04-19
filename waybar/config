@@ -1,105 +1,5 @@
 [
   {
-    "position": "bot",
-    "modules-left": [
-      "pulseaudio",
-      "battery",
-      "backlight",
-      "temperature",
-      "custom/fan",
-      "cpu",
-      "memory",
-      "custom/kernel"
-    ],
-    "modules-center": [
-      "custom/calendar",
-      "custom/todo",
-      "custom/email",
-      "custom/rss"
-    ],
-    "modules-right": [
-            "network#ethernet",
-            "network#wifi",
-            "network#tether",
-      "custom/updates",
-            "tray"
-    ],
-    "pulseaudio": {
-      "tooltip": false,
-      "scroll-step": 5,
-      "format": "{icon} {volume} {format_source}",
-      "format-bluetooth": " {icon} {volume} {format_source}",
-      "format-source": " {volume}",
-      "format-source-muted": " {volume}",
-      "format-icons": {
-        "headphones":   "",
-        "speaker":      "蓼",
-        "hdmi":         "﴿",
-        "headset":      "",
-        "portable":     "",
-        "phone":        "",
-        "car":          "",
-        "hifi":         "﫛",
-        "default":      ""
-      },
-      "on-click": "pamixer --toggle-mute",
-      "on-click-right": "pavucontrol & disown"
-    },
-    "battery": {
-      "interval": 15,
-
-    "custom/fan": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar fan",
-      "format": "{}",
-      "return-type": "json",
-      "tooltip": false
-    },
-    "cpu": {
-      "interval": 2,
-      "format": "﬙ {usage}"
-    },
-    "memory": {
-      "interval": 2,
-      "format": " {used}{avail} GB"
-    },
-    "custom/kernel": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar kernel",
-      "format": "{}",
-      "return-type": "json",
-      "tooltip": false,
-      "interval": "once"
-    },
-    "custom/email": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar email",
-      "format": "{}",
-      "return-type": "json",
-      "tooltip": false
-    },
-    "custom/rss": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar rss",
-      "format": "{}",
-      "return-type": "json",
-      "tooltip": false
-    },
-    "custom/calendar": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar calendar",
-      "format": "{}",
-      "return-type": "json",
-      "tooltip": false
-    },
-    "custom/todo": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar todo",
-      "format": "{}",
-      "return-type": "json",
-      "tooltip": false
-    },
-    "custom/updates": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar updates",
-      "format": "{}",
-      "return-type": "json",
-      "tooltip": false
-    }
-  },{
     "position": "top",
     "modules-left": [
       "sway/workspaces",
@@ -148,74 +48,193 @@
       "min-length": 3
     },
     "sway/window": {
-      "format": {},
+      "format": " {}",
       "max-length": 50
     },
     "idle_inhibitor": {
-      "format": "",
+      "format": "{icon}",
+      "tooltip": false,
+      "format-icons": {"activated": "", "deactivated": "" }
+    },
+    "clock": {
+      "interval": 1,
+      "format": " {:%H:%M:%S}"
+    },
+    "custom/day": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar day",
+      "format": "{}",
+      "return-type": "json",
       "tooltip": false
     },
     "mpd": {
-            "interval": 5,
-            "timeout": 30,
-            "unknown-tag": "",
-            "format": "<span color='#ab4642'></span> {artist} - {title}",
-            "format-stopped": "<span color='#ab4642'></span>",
-            "format-disconnected": "<span color='#ab4642'>ﱙ</span>",
-            "tooltip": true,
-            "tooltip-format": "<span color='#ab4642'></span> {artist} - {title} - {album}",
-            "max-length": 40,
-            "on-click": "mpc toggle",
-            "on-click-right": "mpc stop",
-            "on-scroll-up": "[ \"$(mpc status | awk '/^\\[/ { sub(/\\/.+/,\"\",$3); split($3,a,/:/); print a[1]*60+a[2] }')\" -ge '5' ] && mpc seek 0 || mpc prev"
-        },
-        "clock": {
-            "interval": 1,
-            "format": "<span color='#86c1b9'></span> {:%H:%M:%S}"
-        },
-        "custom/day": {
-            "exec": "~/.config/systeminfo/sysinfo-waybar -a indigo day",
-            "format": "{}",
-            "return-type": "json",
-		    "tooltip": false
-        },
-        "custom/audio": {
-            "exec": "~/.config/systeminfo/sysinfo-waybar -a red audio",
-            "format": "{}",
-            "return-type": "json",
-		    "tooltip": false,
-            "on-click": "pamixer --toggle",
-            "on-scroll-up": "pamixer --increase 5",
-            "on-scroll-down": "pamixer --decrease 5"
-        }
+      "interval": 5,
+      "timeout": 30,
+      "unknown-tag": "",
+      "format": " {state-icon} {randomIcon} {repeatIcon} {consumeIcon} {singleIcon} elapsedTime:%M:%S}/{totalTime:%M:%S} {artist} - {title}",
+      "format-disconnected": "ﱙ",
+      "tooltip": true,
+      "tooltip-format": "{album} by {albumArtist}\n{title} by {artist}\n{elapsedTime} / {totalTime}",
+      "max-length": 50,
+      "on-click": "mpc toggle",
+      "on-click-right": "mpc stop",
+      "on-scroll-up": "mpc-prev",
+      "on-scroll-down": "mpc next",
+      "consume-icons": {"on": ""},
+      "random-icons": {"off": "劣", "on": "列"},
+      "repeat-icons": {"on": "凌"},
+      "single-icons": {"on": "綾"},
+      "state-icons": {"paused": "", "playing": ""}
+    },
+    "custom/keyboard": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar keyboard",
+      "format": "{}",
+      "return-type": "json",
+      "tooltip": false
     }
-        "custom/ethernet": {
-            "exec": "~/.config/systeminfo/sysinfo-waybar -a green net-ethernet",
-            "format": "{}",
-            "return-type": "json",
-		    "tooltip": false
-        },
-        "custom/wifi": {
-            "exec": "~/.config/systeminfo/sysinfo-waybar -a green net-wireless",
-            "format": "{}",
-            "return-type": "json",
-		    "tooltip": false
-        },
-        "custom/tether": {
-            "exec": "~/.config/systeminfo/sysinfo-waybar -a green net-tether",
-            "format": "{}",
-            "return-type": "json",
-		    "tooltip": false
-        },
-        "custom/broadcast": {
-            "exec": "~/.config/systeminfo/sysinfo-waybar -a green net-broadcast",
-            "format": "{}",
-            "return-type": "json",
-		    "tooltip": false
-        },
-        "tray": {
-            "icon-size": 20,
-            "spacing": 7
-        }
+  }, {
+    "position": "bot",
+    "modules-left": [
+      "pulseaudio",
+      "battery",
+      "backlight",
+      "temperature",
+      "custom/fan",
+      "cpu",
+      "memory",
+      "custom/kernel"
+    ],
+    "modules-center": [
+      "custom/calendar",
+      "custom/todo",
+      "custom/email",
+      "custom/rss"
+    ],
+    "modules-right": [
+      "network#ethernet",
+      "network#wifi",
+      "custom/updates",
+      "tray"
+    ],
+    "pulseaudio": {
+      "tooltip": false,
+      "scroll-step": 5,
+      "format": "{icon} {volume} {format_source}",
+      "format-bluetooth": " {icon} {volume} {format_source}",
+      "format-source": " {volume}",
+      "format-source-muted": " {volume}",
+      "format-icons": {
+        "headphones":   "",
+        "speaker":      "蓼",
+        "hdmi":         "﴿",
+        "headset":      "",
+        "portable":     "",
+        "phone":        "",
+        "car":          "",
+        "hifi":         "﫛",
+        "default":      ""
+      },
+      "on-click": "pamixer --toggle-mute",
+      "on-click-right": "pavucontrol & disown"
+    },
+    "battery": {
+      "full-at": 95,
+      "interval": 15,
+      "states": {
+        "warning": 40,
+        "critical": 20
+      },
+      "format": "{icon} {capacity}%",
+      "format-icons": {
+        "discharging": ["", "", "", "", ""],
+        "charging": ["", "", "", "", "", ""],
+        "charged": "ﮣ"},
+      "tooltip": true,
+      "tooltip-format": "{time} left.",
+      "format-time": "{H}:{M}"
+    },
+    "backlight": {
+      "interval": 2,
+      "format": "{icon} {percent}",
+      "format-icons": ["", "", ""],
+      "on-scroll-up": "light -A",
+      "on-scroll-down": "light -U"
+    },
+    "temperature": {
+        "interval": 2,
+        "format": "{icon} {temperatureC}糖",
+        "format-icons": ["", "", "", "", ""],
+        "critical-threshold": 75
+    },
+    "custom/fan": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar fan",
+      "format": "{}",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "cpu": {
+      "interval": 5,
+      "format": " {usage}"
+    },
+    "memory": {
+      "interval": 5,
+      "format": " {used}{avail} GB"
+    },
+    "custom/kernel": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar kernel",
+      "format": "{}",
+      "return-type": "json",
+      "tooltip": false,
+      "interval": "once"
+    },
+    "custom/calendar": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar calendar",
+      "format": "{}",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "custom/todo": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar todo",
+      "format": "{}",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "custom/email": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar email",
+      "format": "{}",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "custom/rss": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar rss",
+      "format": "{}",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "network#ethernet": {
+      "interface": "ethernet",
+      "interval": 5,
+      "format-ethernet": " {ipaddr} {bandwidthUpBits} {bandwidthDownBits}",
+      "format-wifi":     " {essid} {bandwidthUpBits} {bandwidthDownBits}",
+      "format-disconnected": "",
+      "tooltip-format": false
+    },
+    "network#wifi": {
+      "interface": "wifi",
+      "interval": 5,
+      "format-ethernet": " {ipaddr} {bandwidthUpBits} {bandwidthDownBits}",
+      "format-wifi":     " {essid} {bandwidthUpBits} {bandwidthDownBits}",
+      "format-disconnected": "",
+      "tooltip-format": false
+    },
+    "custom/updates": {
+      "exec": "~/.config/systeminfo/sysinfo-waybar updates",
+      "format": "{}",
+      "return-type": "json",
+      "tooltip": false
+    },
+    "tray": {
+      "icon-size": 20,
+      "spacing": 7
     }
+  }
 ]
