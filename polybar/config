@@ -88,21 +88,24 @@ font-0 = "statusbar:size=22:style=Condensed;1"
 font-1 = "statusbar:size=22:style=Condensed ExtraBold;2"
 font-2 = "Symbols Nerd Font:size=22;3"
 
-[bar/top]
+;----------------;
+;---BSPWM Bars---;
+;----------------;
+[bar/btop]
 inherit = bar/generic
 bottom = false
 modules-left = bspwm title
 modules-center = time date
 modules-right =  mpd keyboard
 
-[bar/top-hi]
+[bar/btop-hi]
 inherit = bar/generic-hi
 bottom = false
 modules-left = bspwm title
 modules-center = time date
 modules-right =  mpd keyboard
 
-[bar/bot]
+[bar/bbot]
 inherit = bar/generic
 bottom = true
 tray-position = right
@@ -110,7 +113,7 @@ modules-left = battery audio backlight temperature fan-script cpu memory kernel-
 modules-center = calendar todo
 modules-right = ethernet wifi updates-script
 
-[bar/bot-hi]
+[bar/bbot-hi]
 inherit = bar/generic-hi
 bottom = true
 tray-position = right
@@ -118,14 +121,14 @@ modules-left = battery audio backlight temperature fan-script cpu memory kernel-
 modules-center = calendar todo
 modules-right = ethernet wifi updates-script
 
-[bar/aux]
+[bar/baux]
 inherit = bar/generic
 bottom = false
 modules-left = bspwm
 modules-center =  title
 modules-right = time date
 
-[bar/aux-hi]
+[bar/baux-hi]
 inherit = bar/generic-hi
 bottom = false
 modules-left = bspwm

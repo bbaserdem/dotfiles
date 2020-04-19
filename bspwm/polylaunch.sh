@@ -3,14 +3,41 @@
 # While it is used for bspwm; it is fully independent
 #(!)Only the instances on this desktop are loaded.
 # Polybar should have the following bar layouts;
-# * top * top-hi
-# * bot * bot-hi
-# * aux * aux-hi
+# * btop * btop-hi
+# * bbot * bbot-hi
+# * baux * baux-hi
+
+# Fail if DISPLAY is not set
+if [ -z "${DISPLAY}" ] ; then
+    echo "DISPLAY not set; must be run from X graphical session."
+    exit 1
+fi
 
 # Create directories for locks to avoid race conditions
-lock="${XDG_CACHE_HOME}/polybar/bars.at.${DISPLAY}.lock"
-if [ ! -d "$(dirname "${lock}")" ] ; then
-    mkdir -p "$(dirname "${lock}")"
+if [ -n "${XDG_CACHE_HOME}" ] ; then
+    lock="${XDG_CACHE_HOME}/polybar/bars.at.${DISPLAY}.lock"
+    # Create subdirectory for our lock file
+    if [ ! -e "$(dirname "${lock}")" ] ; then
+        mkdir -p "$(dirname "${lock}")"
+    elif [ ! -d "$(dirname "${lock}")" ] ; then
+        echo "Lock directory location is not a directory!"
+        exit 2
+    fi
+else
+    lock="/tmp/polybars.at.${DISPLAY}.lock"
+fi
+
+# Initialize log location
+if [ -n "${XDG_DATA_HOME}" ] ; then
+    logd="${XDG_DATA_HOME}/polybar"
+    if [ ! -e "${logd}" ] ; then
+        mkdir -p "${logd}"
+    elif [ ! -d "${logd}" ] ; then
+        echo "Log directory location is not a directory!"
+        exit 2
+    fi
+else
+    logd="/tmp"
 fi
 
 # Run this code block
@@ -33,12 +60,11 @@ fi
 
     #---Launch polybar on all monitors
     polybar --list-monitors | while IFS= read -r _pom ; do
-
         #--Format log location
-        _mon="$(awk --field-seperator='[ ,:]' '{print $1}' <<< "${_pom}")"
-        _log="${XDG_DATA_HOME}/polybar/log-${DISPLAY}-${_mon}"
-        if [ ! -d "$(dirname "${_log}")" ] ; then
-            mkdir -p "$(dirname "${_log}")"
+        _mon="$(awk -F '[ ,:]' '{print $1}' <<< "${_pom}")"
+        _log="${logd}/log-bspwm-${DISPLAY}-${_mon}"
+        if [ -e "${_log}" ] ; then
+            rm --recursive --force "${_log}"
         fi
         export POLYMON="${_mon}"
 
@@ -53,11 +79,11 @@ fi
         # Launch the bars
         if grep -q 'primary' <<< "${_pom}" ; then
             # Launch the main bars
-            polybar --reload "top${_suf}" </dev/null >"${_log}-t" 2>&1 & disown
-            polybar --reload "bot${_suf}" </dev/null >"${_log}-b" 2>&1 & disown
+            polybar --reload "btop${_suf}" </dev/null >"${_log}-t" 2>&1 & disown
+            polybar --reload "bbot${_suf}" </dev/null >"${_log}-b" 2>&1 & disown
         else
             # Launch an auxillary bar
-            polybar --reload "aux${_suf}" </dev/null >"${_log}-a" 2>&1 & disown
+            polybar --reload "baux${_suf}" </dev/null >"${_log}-a" 2>&1 & disown
         fi
     done
 
