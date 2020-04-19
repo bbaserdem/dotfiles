@@ -20,4 +20,4 @@ hide_edge_borders both
 default_border none
 
 # Status bar;
-#bar { swaybar_command waybar }
+bar { swaybar_command waybar }
