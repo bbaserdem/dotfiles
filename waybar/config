@@ -1,6 +1,7 @@
 [
   {
     "position": "top",
+    "height": 20,
     "modules-left": [
       "sway/workspaces",
       "sway/mode",
@@ -44,8 +45,7 @@
       }
     },
     "sway/mode": {
-      "format": "{}",
-      "min-length": 3
+      "format": "{}"
     },
     "sway/window": {
       "format": " {}",
@@ -70,7 +70,7 @@
       "interval": 5,
       "timeout": 30,
       "unknown-tag": "",
-      "format": " {state-icon} {randomIcon} {repeatIcon} {consumeIcon} {singleIcon} elapsedTime:%M:%S}/{totalTime:%M:%S} {artist} - {title}",
+      "format": " {stateIcon} {randomIcon} {repeatIcon} {consumeIcon} {singleIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {artist} - {title}",
       "format-disconnected": "ﱙ",
       "tooltip": true,
       "tooltip-format": "{album} by {albumArtist}\n{title} by {artist}\n{elapsedTime} / {totalTime}",
@@ -92,7 +92,8 @@
       "tooltip": false
     }
   }, {
-    "position": "bot",
+    "position": "bottom",
+    "height": 20,
     "modules-left": [
       "pulseaudio",
       "battery",

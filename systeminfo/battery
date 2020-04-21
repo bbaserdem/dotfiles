@@ -1,6 +1,6 @@
 #!/bin/dash
 
-# Depends on; acpid
+# Depends on: acpid, acpi
 
 # Kill all descendents on exit
 trap 'kill $(list_children $(cut -d " " -f4 < /proc/self/stat)) 2>/dev/null; exit' INT QUIT KILL TERM PIPE HUP
@@ -15,53 +15,183 @@ list_children ()
     echo "$children"
 }
 
-_cap="/sys/class/power_supply/BAT0/capacity"
-_stt="/sys/class/power_supply/BAT0/status"
-_onl="/sys/class/power_supply/AC0/online"
+# Default battery; if not defined
+if [ -z "${SBP_BATTERY_ID}" ] ; then
+    SBP_BATTERY_ID='0'
+fi
+
+# Click commands can be overriden through environment vars
+get_actions () {
+# Function to generate action list
+    # Left click
+  if [ -z "${SBP_BATTERY_LEFTCLICK}" ] ; then
+    _left="true"
+  else
+      _left="${SBP_BATTERY_LEFTCLICK}"
+  fi
+  # Right click
+  if [ -z "${SBP_BATTERY_RIGHTCLICK}" ] ; then
+    _right="true"
+  else
+    _right="${SBP_BATTERY_RIGHTCLICK}"
+  fi
+  # Middle click
+  if [ -z "${SBP_BATTERY_MIDDLECLICK}" ] ; then
+    _middle="true"
+  else
+    _middle="${SBP_BATTERY_MIDDLECLICK}"
+  fi
+  # Scroll up
+  if [ -z "${SBP_BATTERY_SCROLLUP}" ] ; then
+    _up="true"
+  else
+    _up="${SBP_BATTERY_SCROLLUP}"
+  fi
+  # Scroll down
+  if [ -z "${SBP_BATTERY_SCROLLDOWN}" ] ; then
+      _down="true"
+  else
+      _down="${SBP_BATTERY_SCROLLDOWN}"
+  fi
+  # Print json
+  _jsonact="{\"middle\":\"${_middle}\""
+  _jsonact="${_jsonact},\"left\":\"${_left}\",\"right\":\"${_right}\""
+  echo "${_jsonact},\"up\":\"${_up}\",\"down\":\"${_down}\"}"
+}
 
 get_text() {
-    if [ -e "${_cap}" ] ; then 
-        _num="$(cat ${_cap})"
-        _sta="$(cat ${_stt})"
-        _acp="$(cat ${_onl})"
-
-        if   [ "$_num" -ge 80 ] ; then
-            _col='green'
-            _sta='full'
-            _ico=""
-        elif [ "$_num" -ge 60 ] ; then
-            _col='yellow'
-            _sta=''
-            _ico=""
-        elif [ "$_num" -ge 40 ] ; then
-            _col='orange'
-            _sta='low'
-            _ico=""
-        elif [ "$_num" -ge 20 ] ; then
-            _col='red'
-            _sta='critical'
-            _ico=""
-        else
-            # White (03)
-            _ico=""
-        fi
-
-        if [ "$_sta" = "Charging" ] ; then
-            _ico="$(echo "${_ico}" | awk '{print substr($0,length,1)}')"
-        elif [ "$_acp" = "1" ] ; then
-            _ico=""
-        else
-            _ico="$(echo "${_ico}" | awk '{print substr($0,1,1)}')"
-        fi
-    
-        echo "{\"format\":\"${_num}\",\"prefix\":\"${_ico} \",\"accent\":\"${_col}\", \"class\":\"${_sta}\"}"
-
+# Parse json text that has the fields;
+# * accent: Accent color
+# * prompt: Text to display
+# * prefix: Icon to display at beginning
+# * suffix: Icon to display at end
+# * tooltip: Expanded tooltip; maybe for future
+  # Get info on battery state
+  _bat="$(acpi --battery    | grep "Battery ${SBP_BATTERY_ID}" | head -n 1)"
+  _ada="$(acpi --ac-adapter | grep "Adapter ${SBP_BATTERY_ID}" | head -n 1)"
+  # Return with error code early if there is no battery
+  if [ -z "${_bat}" ] ; then
+      exit 1
+  fi
+  # Write important info to variables
+  _stat="$(echo "${_bat}" | sed 's|Battery [0-9]: \([ ,A-Z,a-z]*\),.*|\1|')"
+  _perc="$(echo "${_bat}" | sed 's|.*, \([0-9]\+\)%.*|\1|')"
+  # Change the front icon to capacity; with sign if it's charging
+  if [ "${_stat}" = 'Charging' ] ; then
+    if   [ "${_perc}" -ge 100 ] ; then
+      _col='green'
+      _pre=""
+    elif [ "${_perc}" -ge 90 ] ; then
+      _col='green'
+      _pre=""
+    elif [ "${_perc}" -ge 80 ] ; then
+      _col='green'
+      _pre=""
+    elif [ "${_perc}" -ge 60 ] ; then
+      _col='yellow'
+      _pre=""
+    elif [ "${_perc}" -ge 40 ] ; then
+      _col='yellow'
+      _pre=""
+    elif [ "${_perc}" -ge 30 ] ; then
+      _col='orange'
+      _pre=""
+    elif [ "${_perc}" -ge 20 ] ; then
+      _col='red'
+      _pre=""
     else
-        echo "{}"
+      _col='red'
+      _pre=""
     fi
-    }
+  else
+    if   [ "${_perc}" -ge 95 ] ; then
+      _col='green'
+      _pre=""
+    elif [ "${_perc}" -ge 90 ] ; then
+      _col='green'
+      _pre=""
+    elif [ "${_perc}" -ge 80 ] ; then
+      _col='green'
+      _pre=""
+    elif [ "${_perc}" -ge 70 ] ; then
+      _col='yellow'
+      _pre=""
+    elif [ "${_perc}" -ge 60 ] ; then
+      _col='yellow'
+      _pre=""
+    elif [ "${_perc}" -ge 50 ] ; then
+      _col='orange'
+      _pre=""
+    elif [ "${_perc}" -ge 40 ] ; then
+      _col='orange'
+      _pre=""
+    elif [ "${_perc}" -ge 30 ] ; then
+      _col='red'
+      _pre=""
+    elif [ "${_perc}" -ge 20 ] ; then
+      _col='red'
+      _pre=""
+    else
+      _col='red'
+      _pre=""
+    fi
+  fi
+  _txt="${_perc}"
+  # Check if time info is available, and add it to text if it is
+  if echo "${_bat}" | grep -q -e 'until charged' -e 'remaining' ; then
+    _txt="${_perc}, $(echo "${_bat}" | awk '{print $5}' \
+      | sed 's|\([0-9]\+:[0-9]\+\):[0-9]\+|\1|')"
+  fi
+  # Tooltip is just the output of the commands
+  _tip="${_bat}"'\\n'"${_ada}"
+  # Make the suffix into connected/not connected icon
+  if [ "$(echo "${_ada}" | awk '{print $3}')" = 'on-line' ] ; then
+    _suf=""
+  else
+    _suf="ﮤ"
+  fi
+  # Print JSON string
+  _json="{\"prompt\":\"${_txt}\""
+  _json="${_json},\"prefix\":\"${_pre} \""
+  _json="${_json},\"suffix\":\" ${_suf}\""
+  _json="${_json},\"accent\":\"${_col}\""
+  echo "${_json},\"tooltip\":\"${_tip}\"}"
+}
 
-get_text
-/usr/bin/acpi_listen | while read -r line ; do
-    echo $line | grep -q -e 'battery' && get_text
-done
+# Two loops; one polling and one loop that listens to acpi
+polling_loop () {
+  if [ -z "${SBP_BATTERY_POLL}" ] ; then
+    # Default to poll length of 30 seconds
+    _poll=30
+  elif [ "${SBP_BATTERY_POLL}" -gt 0 ] ; then
+    _poll="${SBP_BATTERY_POLL}"
+  else
+    # If polling is set to 0 or less, exit gracefully
+    exit 0
+  fi
+  while : ; do
+    # Wait; then refresh the output every _poll seconds
+    sleep "${_poll}"
+    get_text
+  done
+}
+
+# Listener loop
+listener_loop () {
+  /usr/bin/acpi_listen | while read -r _line ; do
+    if echo "${_line}" | grep --quiet --ignore-case 'battery' ; then
+      get_text
+    fi
+  done
+}
+
+if [ "$1" = 'actions' ] ; then
+  # Just print a json list of actions
+  get_actions
+else
+  # Try to get_text once; if it fails just gracefully exit
+  get_text || exit 0
+  # If not, start the loops
+  polling_loop &
+  listener_loop
+fi

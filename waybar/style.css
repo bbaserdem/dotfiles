@@ -3,9 +3,9 @@
 /* Generic bar properties */
 * {
     border:         none;
-    border-radius:  2;
-    font-family:    "statusbar:style=Extra Condensed";
-    font-size:      14px;
+    border-radius:  0px;
+    font-family:    "Iosevka:style=Extra Condensed";
+    font-size:      12px;
     min-height:     0;
     transition:     none;
 }
@@ -75,13 +75,17 @@ window#waybar.hidden {
     padding-right: 6px;
     color: @base04;
     background: transparent;
-    border-top:    2px solid @base04;
-    border-bottom: 2px solid @base04;
     border-radius: 0px;
-    margin-top: 1px;
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-bottom: 1px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+#mode, #window, #idle-inhibitor, #clock, #custom-day, #mpd, #custom-keyboard {
+    border-bottom: 2px solid @base04;
+}
+#pulseaudio, #battery, #backlight, #temperature, #custom-fan, #cpu, #memory, #custom-kernel, #custom-calendar, #custom-todo, #custom-email, #custom-rss, #network.ethernet, #network.wifi, #custom-updates, #tray {
+    border-top: 2px solid @base04;
 }
 
 /* Custom colors */
