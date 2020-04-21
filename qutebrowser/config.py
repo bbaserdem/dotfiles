@@ -40,10 +40,21 @@ c.downloads.location.prompt = True
 
 config.bind('<Ctrl-b>', 'adblock-update')
 config.bind('m', 'spawn --detach mpv {url}')
+# MPV to watch streams
 config.bind( 'M', 'hint links spawn --detach mpv {hint-url}')
 config.bind(',p', 'spawn --userscript qute-pass --dmenu-invocation rofi')
 config.bind(',P', 'spawn --userscript qute-pass --dmenu-invocation rofi --password-only')
+# Add quickmark
 config.bind('gs', 'set-cmd-text --space :quickmark-add {url}')
+# Use uget
+config.bind('<Ctrl-m>',
+            "prompt-yank -s;;spawn uget-gtk --quiet --folder=Downloads " +
+            "'{primary}';;enter-mode normal",
+            mode='prompt')
+config.bind('<Ctrl-shift-m>',
+            "prompt-yank -s;;spawn uget-gtk '{primary}';;" +
+            "enter-mode normal",
+            mode='prompt')
 
 # Time based locking
 currentTime = datetime.datetime.now()
@@ -52,7 +63,7 @@ if (currentTime.hour>=7) & (currentTime.hour<20):
 else:
     c.content.host_blocking.enabled = False
 
-if ghn() == "sbpworkstation":
+if ghn() == "sbp-workstation":
     c.qt.force_software_rendering = 'chromium'
     c.url.default_page = "http://intranet.cshl.edu"
     c.url.start_pages = ["http://intranet.cshl.edu"]
@@ -79,6 +90,7 @@ base0C = "#8abeb7"
 base0D = "#81a2be"
 base0E = "#b294bb"
 base0F = "#a3685a"
+
 # set qutebrowser colors
 c.colors.completion.category.bg = base00
 c.colors.completion.category.border.bottom = base00
@@ -154,4 +166,4 @@ c.colors.tabs.selected.even.bg = base02
 c.colors.tabs.selected.odd.bg = base02
 c.colors.tabs.selected.even.fg = base05
 c.colors.tabs.selected.odd.fg = base05
-# c.colors.webpage.bg = base00
+c.colors.webpage.bg = base00

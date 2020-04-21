@@ -3,7 +3,6 @@
 --yes-playlist
 --output "${HOME}/Videos/Downloads/%(title)s-%(resolution)s.%(ext)s"
 --no-overwrites
---write-info-json
 --audio-format "flac"
 --audio-quality 0
 
