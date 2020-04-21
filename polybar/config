@@ -54,33 +54,38 @@ pseudo-transparency = true
 margin-top = 6
 margin-bottom = 1
 
-[bar/generic]
+[bar/alpha]
 monitor = ${env:POLYMON:eDP}
 fixed-center = true
 width = 100%
-height = 24
 offset-x = 0
-offset-y = -2
 background = ${colors.bkg}
 foreground = ${colors.frg}
-line-size = 2
 line-color = ${colors.base03}
 border-color = ${colors.base00}
 radius = 0.0
 module-margin = 1
-font-0 = "statusbar:size=11:style=Condensed;1"
-font-1 = "statusbar:size=11:style=Condensed ExtraBold;2"
-font-2 = "Symbols Nerd Font:size=11;3"
 dim-value = 1.0
 tray-detached = false
 tray-maxsize = 16
 enable-ipc = true
 cursor-click = pointer
 cursor-scroll = ns-resize
-wm-restack = bspwm
 
-[bar/generic-hi]
-inherit = bar/generic
+[bar/beta]
+inherit = bar/alpha
+tray-maxsize = 16
+height = 24
+offset-y = -2
+line-size = 2
+font-0 = "statusbar:size=11:style=Condensed;1"
+font-1 = "statusbar:size=11:style=Condensed ExtraBold;2"
+font-2 = "Symbols Nerd Font:size=11;3"
+; Shared stats here
+
+[bar/beta-hi]
+inherit = bar/alpha
+tray-maxsize = 32
 height = 48
 line-size = 4
 offset-y = -4
@@ -91,49 +96,55 @@ font-2 = "Symbols Nerd Font:size=22;3"
 ;----------------;
 ;---BSPWM Bars---;
 ;----------------;
-[bar/btop]
-inherit = bar/generic
+[bar/bspwm-top]
+inherit = bar/beta
 bottom = false
 modules-left = bspwm title
 modules-center = time date
 modules-right =  mpd keyboard
+wm-restack = bspwm
 
-[bar/btop-hi]
-inherit = bar/generic-hi
+[bar/bspwm-top-hi]
+inherit = bar/beta-hi
 bottom = false
 modules-left = bspwm title
 modules-center = time date
 modules-right =  mpd keyboard
+wm-restack = bspwm
 
-[bar/bbot]
-inherit = bar/generic
+[bar/bspwm-bot]
+inherit = bar/beta
 bottom = true
 tray-position = right
 modules-left = battery audio backlight temperature fan-script cpu memory kernel-script
 modules-center = calendar todo
 modules-right = ethernet wifi updates-script
+wm-restack = bspwm
 
-[bar/bbot-hi]
-inherit = bar/generic-hi
+[bar/bspwm-bot-hi]
+inherit = bar/beta-hi
 bottom = true
 tray-position = right
 modules-left = battery audio backlight temperature fan-script cpu memory kernel-script
 modules-center = calendar todo
 modules-right = ethernet wifi updates-script
+wm-restack = bspwm
 
-[bar/baux]
-inherit = bar/generic
+[bar/bspwm-aux]
+inherit = bar/beta
 bottom = false
 modules-left = bspwm
 modules-center =  title
 modules-right = time date
+wm-restack = bspwm
 
-[bar/baux-hi]
-inherit = bar/generic-hi
+[bar/bspwm-aux-hi]
+inherit = bar/beta-hi
 bottom = false
 modules-left = bspwm
 modules-center =  title
 modules-right = time date
+wm-restack = bspwm
 
 ;=============;
 ;   SCRIPTS   ;
