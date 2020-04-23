@@ -218,3 +218,8 @@ else
     # To customize prompt, run `p10k configure` or edit ~/.config/zsh/p10k.zsh
     [[ -f "${ZDOTDIR}/p10k.icon.zsh" ]] && source "${ZDOTDIR}/p10k.icon.zsh"
 fi
+
+# SYSTEMD FIX:
+_systemctl_unit_state() {
+  typeset -gA _sys_unit_state
+  _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') ) }
