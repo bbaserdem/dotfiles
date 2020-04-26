@@ -1,5 +1,5 @@
 #!/bin/dash
-
+# Print battery information
 # Depends on: acpid, acpi
 
 # Kill all descendents on exit
@@ -11,7 +11,7 @@ if [ -z "${SBP_BATTERY_ID}" ] ; then
     SBP_BATTERY_ID='0'
 fi
 
-# Click commands can be overriden through environment vars
+# Click commands that can be overriden through environment vars
 get_actions () {
 # Function to generate action list
     # Left click
@@ -170,7 +170,7 @@ polling_loop () {
 # Listener loop
 listener_loop () {
   /usr/bin/acpi_listen | while read -r _line ; do
-    if echo "${_line}" | grep --quiet --ignore-case 'battery' ; then
+    if echo "${_line}" | grep --quiet --ignore-case 'battery\ac_adapter' ; then
       get_text
     fi
   done
@@ -182,7 +182,11 @@ if [ "$1" = 'actions' ] ; then
 else
   # Try to get_text once; if it fails just gracefully exit
   get_text || exit 0
-  # If not, start the loops
-  polling_loop &
+  # Start the polling loop; if I know the system does not send discharge events
+  if [ "$(hostname)" = 'sbp-homestation' ] || [ "$(hostname)" = 'sbp-laptop' ]
+  then
+    polling_loop &
+  fi
+  # Start the listening loop.
   listener_loop
 fi
