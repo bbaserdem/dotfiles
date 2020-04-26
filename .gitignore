@@ -28,6 +28,7 @@
 !/abcde.conf
 !/crontab.cron
 !/gpg-agent.conf
+!/gpg.conf
 !/install.sh
 !/locale.conf
 !/matlabrc.m
