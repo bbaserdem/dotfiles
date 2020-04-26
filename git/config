@@ -1,3 +1,5 @@
 [user]
   email = baserdem.batuhan@gmail.com
   name = Batuhan Başerdem
+[core]
+	editor = nvim
