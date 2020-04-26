@@ -85,6 +85,10 @@
 !/fontconfig
 !/fontconfig/fonts.conf
 
+# GIT: Grab config file
+!/git
+!/git/config
+
 # GTK: Get settings
 !/gtk-1.0
 !/gtk-1.0/gtkrc
