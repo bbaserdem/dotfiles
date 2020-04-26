@@ -43,7 +43,7 @@ XF86MonBrightness{Up,Down}
     light -{A,U} 5
 
 XF86KbdBrightness{Up,Down}
-    light -{A,U}rs "sysfs/leds/asus::kbd_backlight" 1
+    light -{A,U}rs "sysfs/leds/${BRI_KBD}" 1
 
 # Power button
 XF86PowerOff
