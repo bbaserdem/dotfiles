@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Icon=musicbrainz
+Name=Music Player Daemon
+Comment=Music player daemon
+Exec=mpd
+StartupNotify=false
+Terminal=false
+Hidden=false

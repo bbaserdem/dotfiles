@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Mpdscribbler
+Icon=musicbrainz
+Comment=Scrobbler plugin for MPD
+Exec=sh -c 'mpdscribble --conf ~/.cache/mpdscribble/mpdscribble.conf'
+StartupNotify=false
+Terminal=false
+Hidden=false
