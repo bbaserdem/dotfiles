@@ -1,3 +1,4 @@
-#Mins   Hours   Days    Months  Weekday Script    
+#Mins   Hours   Days    Months  Weekday Script
+*/5     *       *       *       *       mbsync --config /home/sbp/.config/isync/config --all
 */5     *       *       *       *       vdirsyncer sync contacts
 */5     *       *       *       *       vdirsyncer sync calendar
