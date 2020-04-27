@@ -1,5 +1,5 @@
 [general]
-status_path = "~/.local/vdirsyncer/status/"
+status_path = "~/.local/share/vdirsyncer/status/"
 
 [pair contacts]
 a = "contacts_local"
@@ -26,12 +26,12 @@ fileext = ".ics"
 
 [storage contacts_server]
 type = "carddav"
-url.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CardDAV","url"]
-username.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CardDAV","uname"]
-password.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CardDAV","pass" ]
+url.fetch = ["command","~/.local/share/vdirsyncer/getPass.sh","CardDAV","url"]
+username.fetch = ["command","~/.local/share/vdirsyncer/getPass.sh","CardDAV","uname"]
+password.fetch = ["command","~/.local/share/vdirsyncer/getPass.sh","CardDAV","pass" ]
 
 [storage calendar_server]
 type = "caldav"
-url.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CalDAV","url"]
-username.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CalDAV","uname"]
-password.fetch = ["command","~/.cache/vdirsyncer/getPass.sh","CalDAV","pass" ]
+url.fetch = ["command","~/.local/share/vdirsyncer/getPass.sh","CalDAV","url"]
+username.fetch = ["command","~/.local/share/vdirsyncer/getPass.sh","CalDAV","uname"]
+password.fetch = ["command","~/.local/share/vdirsyncer/getPass.sh","CalDAV","pass" ]
