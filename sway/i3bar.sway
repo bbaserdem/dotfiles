@@ -4,19 +4,29 @@
 
 # Basic bar configuration using the Base16 variables.
 bar {
-    status_command "i3blocks -c ~/.config/i3blocks/top.config"
+    id top-bar
+    swaybar_command swaybar
+    binding_mode_indicator yes
+    font statusbar:size=11:style=Condensed
+    gaps all 0
+    height 0
+    hidden_state hide
+    mode dock
+    modifier Mod4
     pango_markup enabled
-    id bar-top
     position top
-    swaybar_command "swaybar"
-    font pango:Iosevka 14px
     separator_symbol 
+    status_command "i3blocks -c ~/.config/i3blocks/top.config"
+    status_padding 1
+    strip_workspace_name no
+    strip_workspace_numbers yes
     wrap_scroll yes
     workspace_buttons yes
-    strip_workspace_numbers yes
-    binding_mode_indicator yes
+    # Tray stuff
+    tray_padding 2
+    tray_output none
     icon_theme Papirus
-
+    # Colors
     colors {
         # State             Border  BG      Text
         background                  $tra
@@ -31,18 +41,29 @@ bar {
 }
 
 bar {
-    status_command "i3blocks -c ~/.config/i3blocks/bot.config"
+    id bottom-bar
+    swaybar_command swaybar
+    binding_mode_indicator yes
+    font statusbar:size=11:style=Condensed
+    gaps all 0
+    height 0
+    hidden_state hide
+    mode dock
+    modifier Mod4
     pango_markup enabled
-    id bar-bot
-    position bottom
-    swaybar_command "swaybar"
-    font pango:Iosevka 14px
+    position top
     separator_symbol 
+    status_command "i3blocks -c ~/.config/i3blocks/top.config"
+    status_padding 1
+    strip_workspace_name no
+    strip_workspace_numbers yes
     wrap_scroll yes
-    workspace_buttons no
-    binding_mode_indicator no
-    tray_output none
-
+    workspace_buttons yes
+    # Tray stuff
+    tray_padding 2
+    tray_output *
+    icon_theme Papirus
+    # Colors
     colors {
         # State             Border  BG      Text
         background                  $tra

@@ -44,7 +44,6 @@ Plug 'lervag/vimtex'
 " Grammar checker
 Plug 'rhysd/vim-grammarous'
 " Config file types
-Plug 'mboughaba/i3config.vim'
 Plug 'aouelete/sway-vim-syntax'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'gentoo/gentoo-syntax'
