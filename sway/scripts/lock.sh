@@ -1,6 +1,6 @@
 #!/bin/dash
 
-# Depends on  and swaylock
+# Depends on grim and swaylock
 
 # Exit if the screen is locked
 [ "$(pgrep -x swaylock | wc -l)" -gt 0 ] && exit

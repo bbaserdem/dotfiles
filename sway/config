@@ -1,7 +1,26 @@
-# Sway config loader
-#include example.sway
-include keymap.sway
-include color.sway
-include input.sway
-include main.sway
-include windows.sway
+# Sway config
+
+# Autostart programs
+exec --no-startup-id "dex --autostart --environment sway"
+
+# Fonts
+font pango:sans-serif 11px
+
+# Gaps
+gaps inner 16
+gaps outer 0
+
+# Use to drag floating with mod
+floating_modifier Mod4
+
+# Hide title bars
+hide_edge_borders both
+default_border none
+
+# Do modules
+#include ~/.config/sway/config.d/*
+include ~/.config/sway/config.d/color
+include ~/.config/sway/config.d/hardware
+include ~/.config/sway/config.d/keybinds
+include ~/.config/sway/config.d/workspaces
+include ~/.config/sway/config.d/bar

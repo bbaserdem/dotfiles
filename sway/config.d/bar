@@ -7,8 +7,7 @@ bar {
     id top-bar
     swaybar_command swaybar
     binding_mode_indicator yes
-    font statusbar:size=11:style=Condensed
-    gaps all 0
+    font statusbar:size=10:style=Condensed
     height 0
     hidden_state hide
     mode dock
@@ -44,21 +43,20 @@ bar {
     id bottom-bar
     swaybar_command swaybar
     binding_mode_indicator yes
-    font statusbar:size=11:style=Condensed
-    gaps all 0
+    font statusbar:size=10:style=Condensed
     height 0
     hidden_state hide
     mode dock
     modifier Mod4
     pango_markup enabled
-    position top
+    position bottom
     separator_symbol 
-    status_command "i3blocks -c ~/.config/i3blocks/top.config"
+    status_command "i3blocks -c ~/.config/i3blocks/bottom.config"
     status_padding 1
     strip_workspace_name no
     strip_workspace_numbers yes
     wrap_scroll yes
-    workspace_buttons yes
+    workspace_buttons no
     # Tray stuff
     tray_padding 2
     tray_output *
