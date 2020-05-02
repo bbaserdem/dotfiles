@@ -79,7 +79,6 @@ fi
 
     # Launch the bars
     if grep -q 'primary' <<< "${_pom}" ; then
-      echo "Trying with $POLYMON"
       # Launch the main bars
       polybar --reload "bspwm-top${_suf}" </dev/null >"${_log}-t" 2>&1 & disown
       polybar --reload "bspwm-bot${_suf}" </dev/null >"${_log}-b" 2>&1 & disown
