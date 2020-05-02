@@ -1,2 +1,0 @@
-#!/bin/dash
-echo "{ \"format\":\"$(/usr/bin/uname -r)\", \"prefix\":\" \" }"

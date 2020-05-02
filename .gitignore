@@ -248,6 +248,8 @@
 # SYSTEMINFO: My python module, grab everything
 !/systeminfo
 !/systeminfo/*
+!/sysinfo
+!/sysinfo/*
 
 # TMUXINATOR: Grab everything
 !/tmuxinator

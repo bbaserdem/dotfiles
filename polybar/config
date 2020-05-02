@@ -96,54 +96,69 @@ font-2 = "Symbols Nerd Font:size=22;3"
 ;----------------;
 ;---BSPWM Bars---;
 ;----------------;
-[bar/bspwm-top]
-inherit = bar/beta
-bottom = false
+[top]
 modules-left = bspwm title
 modules-center = time date
 modules-right =  mpd keyboard
+
+[bot]
+modules-left = battery audio microphone backlight coretemp gputemp fan-script cpu memory kernel-script
+modules-center = calendar todo
+modules-right = ethernet wifi update-script
+
+[aux]
+modules-left = bspwm
+modules-center =  title
+modules-right = time date
+
+[bar/bspwm-top]
+inherit = bar/beta
+bottom = false
+modules-left = ${top.modules-left}
+modules-center = ${top.modules-center}
+modules-right = ${top.modules-right}
 wm-restack = bspwm
 
 [bar/bspwm-top-hi]
 inherit = bar/beta-hi
 bottom = false
-modules-left = bspwm title
-modules-center = time date
-modules-right =  mpd keyboard
+modules-left = ${top.modules-left}
+modules-center = ${top.modules-center}
+modules-right = ${top.modules-right}
 wm-restack = bspwm
 
 [bar/bspwm-bot]
 inherit = bar/beta
 bottom = true
 tray-position = right
-modules-left = battery audio backlight temperature cpu memory kernel-script
-modules-center = calendar todo
-modules-right = ethernet wifi updates-script
+modules-left = ${bot.modules-left}
+modules-center = ${bot.modules-center}
+modules-right = ${bot.modules-right}
 wm-restack = bspwm
 
 [bar/bspwm-bot-hi]
 inherit = bar/beta-hi
 bottom = true
 tray-position = right
-modules-left = battery audio backlight temperature fan-script cpu memory kernel-script
-modules-center = calendar todo
-modules-right = ethernet wifi updates-script
+modules-left = ${bot.modules-left}
+modules-center = ${bot.modules-center}
+modules-right = ${bot.modules-right}
 wm-restack = bspwm
 
 [bar/bspwm-aux]
 inherit = bar/beta
 bottom = false
-modules-left = bspwm
-modules-center =  title
-modules-right = time date
+modules-left = ${aux.modules-left}
+modules-center = ${aux.modules-center}
+modules-right = ${aux.modules-right}
 wm-restack = bspwm
 
 [bar/bspwm-aux-hi]
 inherit = bar/beta-hi
 bottom = false
-modules-left = bspwm
-modules-center =  title
-modules-right = time date
+modules-left = ${aux.modules-left}
+modules-center = ${aux.modules-center}
+modules-right = ${aux.modules-right}
 wm-restack = bspwm
 
 ;=============;
@@ -158,43 +173,53 @@ format = <label>
 
 [module/todo]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c brown todo
+exec = ~/.config/sysinfo/sysinfo.sh -n todo -a brown
 
 [module/calendar]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c brown calendar
+exec = ~/.config/sysinfo/sysinfo.sh -n calendar -a brown
+click-right = ~/.config/sysinfo/sysinfo.sh -n calendar -b click_right
 
 [module/coretemp]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c red temperature
+exec = ~/.config/sysinfo/sysinfo.sh -n temperature -a red
+
+[module/gputemp]
+inherit = module/skeleton
+exec = ~/.config/sysinfo/sysinfo.sh -n temperature -i gpu -a red
 
 [module/audio]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c cyan audio
+exec = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -a cyan
+click-left = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -b click_left
+click-middle = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -b click_middle
+click-right = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -b click_right
+scroll-up = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -b scroll_up
+scroll-down = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -b scroll_down
 
-[module/mpd-script]
+[module/microphone]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c cyan music
-
-[module/keyboard-script]
-inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c indigo keyboard
-
-[module/backlight-script]
-inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c violet brightness
+exec = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -a cyan
+click-left = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b click_left
+click-middle = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b click_middle
+click-right = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b click_right
+scroll-up = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b scroll_up
+scroll-down = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b scroll_down
 
 [module/kernel-script]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c violet kernel
+exec = ~/.config/sysinfo/sysinfo.sh -n kernel -a violet -t
+tail = false
+interval = 0
 
-[module/updates-script]
+[module/update-script]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c indigo updates
+exec = ~/.config/sysinfo/sysinfo.sh -n update -a indigo
+click-right = ~/.config/sysinfo/sysinfo.sh -n update -b click_right
 
 [module/fan-script]
 inherit = module/skeleton
-exec = ~/.config/systeminfo/sysinfo-polybar -c orange fan
+exec = ~/.config/sysinfo/sysinfo.sh -n fan -a orange
 
 ;==================;
 ;   MODULES-LEFT   ;
