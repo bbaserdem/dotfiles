@@ -1,5 +1,5 @@
 function! DetectSway()
-  if expand('%:e')=='sway' || ((expand('%:p:h:t')=='sway')&&(expand('%:t'=='config')))
+  if expand('%:e')=='sway' || expand('%:p:h:h:t')=='sway' || ((expand('%:p:h:t')=='sway')&&(expand('%:t'=='config')))
     setfiletype sway
   endif
 endfunction

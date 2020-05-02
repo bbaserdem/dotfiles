@@ -333,7 +333,12 @@ filextype */
 
 " Displaying pictures in terminal
 "
-" fileviewer *.jpg,*.png shellpic %c
+
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+    \ kitty icat --transfer-mode=file --place=%pwx%ph@%pxx%py %c
+    \ %pc
+    \ kitty icat --transfer-mode=file --clear
+
 
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide

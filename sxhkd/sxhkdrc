@@ -69,7 +69,7 @@ super + shift + Escape
 
 # Logout
 super + shift + alt + Escape
-    $XDG_CONFIG_HOME/bspwm/exit.sh
+    $XDG_CONFIG_HOME/bspwm/scripts/exit.sh
 
 # Open python terminal
 XF86Calculator

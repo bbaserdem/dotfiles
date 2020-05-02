@@ -31,26 +31,15 @@
 !/gpg.conf
 !/install.sh
 !/locale.conf
-!/matlabrc.m
 !/*mimeapps.list
 !/mpdscribble-confgen.sh
 !/msmtprc
-!/piagen.sh
 !/picom.conf
 !/README.md
 !/s3cfg-gen.sh
 !/steamos-compositor-plus
-!/syncrepo.sh
 !/tmux.conf
 !/user-dirs.dirs
-
-# ANDROID: Accept all
-!/alacritty
-!/alacritty/**
-
-# ANDROID: Accept all
-!/android
-!/android/**
 
 # APPLICATIONS: Accept all except matlab override
 !/applications
@@ -260,10 +249,6 @@
 # UDISKIE: Grab config
 !/udiskie
 !/udiskie/config.json
-
-# USAGE: It's documentation; grab all
-!/usage
-!/usage/**
 
 # VDIRSYNCER: Grab only config and password generator
 !/vdirsyncer

@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/dash
 # Script to exit bspwm
 
 # Save light config
-/usr/bin/light -I
+light -I
 
 # Kill bspwm
 bspc quit
