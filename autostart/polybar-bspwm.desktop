@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Polybar
+Comment=Launch screen info bars
+Exec=~/.config/bspwm/scripts/polybars.sh
+Icon=polybar
+Terminal=false
+Type=Application
+StartupNotify=false
+OnlyShowIn=bspwm
