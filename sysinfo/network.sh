@@ -47,7 +47,7 @@ print_info () {
     txt='N/A'
   fi
   # Get SSID if also wireless
-  if [ "${txt}" = 'wifi' ] || echo "${txt}" | grep --quiet 'wl' ; then
+  if [ "${pre}" = ' ' ] ; then
     info="$(iwctl station "${intfc}" get-networks rssi-dbms \
       | sed 's/\x1B\[[0-9;]\+[A-Za-z]//g' | sed --quiet '/^\s*>/p')"
     ssid="$(echo "${info}" | awk '{print $2}')"
