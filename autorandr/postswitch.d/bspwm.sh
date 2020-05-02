@@ -8,7 +8,7 @@ if [ "${XDG_CURRENT_DESKTOP}" = 'bspwm' ] ; then
     fi
     # Launch polybar instances
     if [ -x "${XDG_CONFIG_HOME}/bspwm/scripts/polybars.sh" ] ; then
-        "${XDG_CONFIG_HOME}/bspwm/scripts/polybars.sh"
+        "${XDG_CONFIG_HOME}/bspwm/scripts/barlauncher.sh"
     fi
     # Change wallpaper instances
     if [ -x "${XDG_CONFIG_HOME}/bspwm/scripts/wallpaper.sh" ] ; then

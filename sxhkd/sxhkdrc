@@ -65,7 +65,7 @@ Print + {_,shift,alt}
 super + shift + Escape
     pkill -USR1 -x sxhkd;
     $XDG_CONFIG_HOME/bspwm/scripts/layout.sh
-    $XDG_CONFIG_HOME/bspwm/scripts/polybars.sh
+    $XDG_CONFIG_HOME/bspwm/scripts/barlauncher.sh
 
 # Logout
 super + shift + alt + Escape
