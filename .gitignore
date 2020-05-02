@@ -246,8 +246,6 @@
 !/systemd/**
 
 # SYSTEMINFO: My python module, grab everything
-!/systeminfo
-!/systeminfo/*
 !/sysinfo
 !/sysinfo/*
 

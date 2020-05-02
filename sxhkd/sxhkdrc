@@ -10,7 +10,7 @@ super + Return
 
 # Dropdown terminal
 F12
-    /usr/bin/sbp-bspwm-dropdown
+    $XDG_CONFIG_HOME/bspwm/scripts/dropdown.sh
 
 # Rofi
 super + space
@@ -51,7 +51,7 @@ XF86PowerOff
 
 # Change wallpapers
 super + c
-    /usr/bin/sbp-xpaper
+    $XDG_CONFIG_HOME/bspwm/scripts/wallpaper.sh
 
 # Lock screen
 super + Escape
@@ -64,8 +64,8 @@ Print + {_,shift,alt}
 # Reload config files
 super + shift + Escape
     pkill -USR1 -x sxhkd;
-    /usr/bin/sbp-bspwm-bar;
-    /usr/bin/sbp-bspwm-layout;
+    $XDG_CONFIG_HOME/bspwm/scripts/layout.sh
+    $XDG_CONFIG_HOME/bspwm/scripts/polybars.sh
 
 # Logout
 super + shift + alt + Escape
