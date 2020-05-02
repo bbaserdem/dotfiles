@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Polybar
 Comment=Launch screen info bars
-Exec=~/.config/bspwm/scripts/polybars.sh
+Exec=sh -c "${XDG_CONFIG_HOME}/bspwm/scripts/polybars.sh"
 Icon=polybar
 Terminal=false
 Type=Application
