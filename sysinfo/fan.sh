@@ -31,6 +31,10 @@ print_info () {
     exit 1
   fi
   txt="$(/usr/bin/sensors | awk "/${int}/ {print \$2}")"
+  if [ -z "${txt}" ] ; then
+    empty_output
+    exit 1
+  fi
   # Print string
   formatted_output
 }

@@ -131,7 +131,7 @@ empty_output () {
 }
 formatted_output () {
   # Print string
-  if [ -z "${txt}" ] ; then
+  if [ -z "${txt}" ] && [ -z "${pre}" ] && [ -z "${suf}" ] ; then
     empty_output
   elif [ "${markup}" = 'lemonbar' ] ; then
     # Format by lemonbar tags

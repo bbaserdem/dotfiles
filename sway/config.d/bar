@@ -51,7 +51,7 @@ bar {
     pango_markup enabled
     position bottom
     separator_symbol 
-    status_command "i3blocks -c ~/.config/i3blocks/bottom.config"
+    status_command "i3blocks -c ~/.config/i3blocks/bot.config"
     status_padding 1
     strip_workspace_name no
     strip_workspace_numbers yes

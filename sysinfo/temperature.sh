@@ -46,8 +46,8 @@ print_info () {
     exit 1
   fi
   # Try to get information on the chip
-  temp="$(/usr/bin/sensors "${chip}" 2>/dev/null)"
-  if echo "${temp}" | grep --quiet 'for more information' ; then
+  info="$(/usr/bin/sensors "${chip}" 2>/dev/null)"
+  if echo "${info}" | grep --quiet 'for more information' ; then
     empty_output
     exit 1
   fi
@@ -56,26 +56,26 @@ print_info () {
     coretemp*) # INTEL CPU
       suf=' ﬙'
       # If there is package id; get that entry
-      temp="$(echo "${temp}" | awk '/Package id 0:/
-        {print substr($4, 2, length($4)-3)}')"
+      temp="$(echo "${info}" | awk '/Package id 0:/ {
+        print substr($4, 2, length($4-3))}')"
       # If there was no package id; calculate core averages
       if [ -z "${temp}" ] ; then
-        temp="$(echo "${temp}" | awk '/Core/ {sum+=substr($3, 2, length($3)-3)}
+        temp="$(echo "${info}" | awk '/Core/ {sum+=substr($3, 2, length($3)-3)}
           END {if(NR>0) printf("%.1f",sum/NR)}')"
       fi
       ;;
     k10temp*) # AMD CPU
       suf=' ﬙'
       # Tctl apparently is the true temperature
-      temp="$(echo "${temp}" | awk '/Tctl/ {print substr($2, 2, length($2)-3)}')"
+      temp="$(echo "${info}" | awk '/Tctl/ {print substr($2, 2, length($2)-3)}')"
       ;;
     amdgpu*) # AMD GPU
       suf=' '
       # If there is junction temperature; get that
-      temp="$(echo "${temp}" | awk '/junction/ {print substr($2, 2, length($2)-3)}')"
+      temp="$(echo "${info}" | awk '/junction/ {print substr($2, 2, length($2)-3)}')"
       # Try the edge temperature, if you could not find it
       if [ -z "${temp}" ] ; then
-        temp="$(echo "${temp}" | awk '/edge/ {print substr($2, 2, length($2)-3)}')"
+        temp="$(echo "${info}" | awk '/edge/ {print substr($2, 2, length($2)-3)}')"
       fi
       ;;
   esac
