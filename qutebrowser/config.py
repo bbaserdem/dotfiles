@@ -58,10 +58,7 @@ config.bind('<Ctrl-shift-m>',
 
 # Time based locking
 currentTime = datetime.datetime.now()
-if (currentTime.hour>=7) & (currentTime.hour<20):
-    c.content.host_blocking.enabled = True
-else:
-    c.content.host_blocking.enabled = False
+c.content.host_blocking.enabled = True
 
 if ghn() == "sbp-workstation":
     c.qt.force_software_rendering = 'chromium'

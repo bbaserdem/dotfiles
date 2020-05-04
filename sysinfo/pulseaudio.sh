@@ -110,6 +110,8 @@ print_info () {
         if( substr($i, length($i), 1) == "%" ) {
           vol += substr($i, 1, length($i) - 1); n++; }
         } printf("%.0f\n", vol/n);}')"
+    sicon="$(echo "${sinks}" | awk -F ' = ' \
+      '/device.icon_name/ {print substr($2, 2, length($2) - 2)}')"
     # Get information about the default sink
     d_sink="$(echo "${pinfo}" | awk -F ': ' '/Default Sink/ {print $2}')"
     d_lnum="$(echo "${ssink}" | grep --line-number "${d_sink}" \
@@ -117,8 +119,9 @@ print_info () {
     d_port="$(echo "${ports}" | sed --quiet "${d_lnum}p")"
     d_mute="$(echo "${muted}" | sed --quiet "${d_lnum}p")"
     d_volm="$(echo "${volms}" | sed --quiet "${d_lnum}p")"
+    d_icon="$(echo "${sicon}" | sed --quiet "${d_lnum}p")"
     # Determine icon for the sink
-    case "${d_port}" in
+    case "${d_icon}" in
       *hdmi*)                                         pre="﴿ " ;;
       *headset*)            [ "${d_mute}" = 'no' ] && pre=" "  || pre=" "  ;;
       *a2dp*)               [ "${d_mute}" = 'no' ] && pre="﫽 " || pre="﫾 " ;;
