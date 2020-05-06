@@ -16,12 +16,12 @@ metadata = ["color"]
 
 [storage contacts_local]
 type = "filesystem"
-path = "~/Documents/Contacts"
+path = "~/Contacts"
 fileext = ".vcf"
 
 [storage calendar_local]
 type = "filesystem"
-path = "~/Documents/Calendar"
+path = "~/Calendar"
 fileext = ".ics"
 
 [storage contacts_server]

@@ -1,13 +1,14 @@
 #-----------------#
 #-----ACCOUNT-----#
 #-----------------#
+set ssl_force_tls = yes
 
 # Folder definitions
-set folder = ~/Documents/Mail/
+set folder = ~/Mail/
 set spoolfile = +Gmail/Inbox
 set postponed = +Gmail/Drafts
-set record = +Gmail/Sent\ Mail
-mailboxes +Gmail/Inbox +Gmail/Important +Gmail/Starred +Gmail/CSHL +Gmail/Stony +Gmail/Drafts +Gmail/Trash +Gmail/Sent\ Mail
+set record = +Gmail/Sent
+mailboxes +Gmail/Inbox +Gmail/Important +Gmail/Starred +Gmail/Drafts +Gmail/Trash +Gmail/Sent
 # Mailing definitions
 set from = "Batuhan Başerdem <baserdem.batuhan@gmail.com>"
 set sendmail = "/usr/bin/msmtp --file $XDG_CONFIG_HOME/msmtprc --account Gmail"

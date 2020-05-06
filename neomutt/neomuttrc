@@ -12,9 +12,10 @@ set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 #-----Status Bar-----#
 set status_chars  = " *%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
-mailboxes ~/Documents/Mail/Search
+#mailboxes ~/Documents/Mail/Search
 
 #-----Inbox-----#
+set mbox_type = Maildir
 set menu_scroll                             # Allow scrolling menu
 set narrow_tree = yes                       # Condense long threads
 set sort = threads                          # Sort messages in threads
@@ -33,7 +34,13 @@ unhdr_order *                           # some distros order things by default
 hdr_order from: to: cc: date: subject:  # and in this order
 set sendmail_wait = 0                   # Mail send delay
 unset record                            # A copy will be generated on mail server
-set signature = ~/Documents/Mail/Signature
+set signature = ~/Mail/Signature
+set forward_format = "Fwd: %s"
+set text_flowed
+unset mime_forward
+set query_command= "khard email --parsable '%s'"
+bind editor <Tab> complete-query
+bind editor ^T    complete
 
 #-----Pager (mail view)-----#
 set mailcap_path = $XDG_CONFIG_HOME/neomutt/mailcap
@@ -58,7 +65,7 @@ set mark_old = no                   # Do not mark unread mail as old
 set mail_check_stats = yes          # Get mail statistics (for sidebar)
 set mail_check_stats_interval = 30  # Mail stat checking interval
 set move = no                       # Dont move around read mails
-set quit = ask-yes                  # Ask before exit
+set quit                            # Don't ask before exit
 set tmpdir = ~/.cache/neomutt       # Where to store temp files
 set timeout = 5                     # Timeaut for user input
 set thorough_search = yes           # Decode messages before using search
@@ -68,6 +75,9 @@ set header_cache = ~/.cache/neomutt
 # set alias_file = ~/Documents/Mail/Alias
 set message_cachedir = ~/.cache/neomutt/messages
 set certificate_file = ~/.cache/neomutt/certificates
+set wait_key = no
+set beep_new
+unset confirmappend
 
 
 #-----Keybinds-----#
@@ -116,7 +126,9 @@ bind index p recall-message
 macro index,pager \Cb "<enter-command> unset pipe_decode<enter><pipe-message>extract_url<enter>" "get URLs"
 
 # Search function
-macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.config/neomutt/mutt-notmuch.py -G ~/Documents/Mail/Search<enter><change-folder-readonly>~/Documents/Mail/Search<enter>" "search mail (using notmuch)"
+set nm_default_url = "notmuch://$HOME/Mail"
+set nm_query_type = "threads"
+bind index \\ vfolder-from-query
 
 #------------------#
 #-----ACCOUNTS-----#

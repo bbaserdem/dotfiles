@@ -26,7 +26,7 @@
 #color = dark magenta
 
 [[google]]
-path = ~/Documents/Calendar/events
+path = ~/Calendar/events
 type = calendar
 color = dark magenta
 

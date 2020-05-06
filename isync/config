@@ -1,8 +1,13 @@
+##########################
+##### Config options #####
+##########################
 Create Both
 Expunge Both
 SyncState *
 
-# Gmail Account
+#################
+##### Gmail #####
+#################
 IMAPAccount Gmail
 Host imap.gmail.com
 User baserdem.batuhan@gmail.com
@@ -10,12 +15,15 @@ PassCmd "$HOME/.local/share/isync/password-Gmail.sh"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
+# Remote storage
 IMAPStore Gmail-remote
 Account Gmail
 
+# Local storage
 MaildirStore Gmail-local
-Path ~/Documents/Mail/Gmail/
-Inbox ~/Documents/Mail/Gmail/Inbox/
+Subfolders Verbatim
+Path ~/Mail/Gmail/
+Inbox ~/Mail/Gmail/Inbox/
 
 Channel Gmail-Inbox
 Master :Gmail-remote:
@@ -24,7 +32,7 @@ Patterns "INBOX"
 
 Channel Gmail-sent
 Master :Gmail-remote:"[Gmail]/Sent Mail"
-Slave :Gmail-local:"Sent Mail"
+Slave :Gmail-local:Sent
 
 Channel Gmail-trash
 Master :Gmail-remote:"[Gmail]/Trash"
@@ -42,14 +50,6 @@ Channel Gmail-starred
 Master :Gmail-remote:"[Gmail]/Starred"
 Slave :Gmail-local:Starred
 
-Channel Gmail-cshl
-Master :Gmail-remote:CSHL
-Slave :Gmail-local:CSHL
-
-Channel Gmail-stony
-Master :Gmail-remote:Stony
-Slave :Gmail-local:Stony
-
 Group Gmail
 Channel Gmail-inbox
 Channel Gmail-sent
@@ -57,5 +57,3 @@ Channel Gmail-trash
 Channel Gmail-drafts
 Channel Gmail-important
 Channel Gmail-starred
-Channel Gmail-cshl
-Channel Gmail-stony
