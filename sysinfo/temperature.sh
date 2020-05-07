@@ -89,11 +89,11 @@ print_info () {
   pre=' '
   feature=''
   temp_int="$(echo "${temp}" | awk '{printf("%d", $1)}')"
-  if   [ "${temp_int}" -lt 30 ] ; then pre=' '
-  elif [ "${temp_int}" -lt 40 ] ; then pre=' '
-  elif [ "${temp_int}" -lt 50 ] ; then pre=' '
-  elif [ "${temp_int}" -lt 60 ] ; then pre=' '
-  elif [ "${temp_int}" -lt 70 ] ; then pre=' '
+  if   [ "${temp_int}" -lt 35 ] ; then pre=' '
+  elif [ "${temp_int}" -lt 45 ] ; then pre=' '
+  elif [ "${temp_int}" -lt 55 ] ; then pre=' '
+  elif [ "${temp_int}" -lt 65 ] ; then pre=' '
+  elif [ "${temp_int}" -lt 75 ] ; then pre=' '
   else
       feature='urgent'
       txt="${txt}  "

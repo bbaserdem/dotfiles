@@ -8,6 +8,7 @@ set folder = ~/Mail/
 set spoolfile = +Gmail/Inbox
 set postponed = +Gmail/Drafts
 set record = +Gmail/Sent
+set trash = +Gmail/Trash
 mailboxes +Gmail/Inbox +Gmail/Important +Gmail/Starred +Gmail/Drafts +Gmail/Trash +Gmail/Sent
 # Mailing definitions
 set from = "Batuhan Başerdem <baserdem.batuhan@gmail.com>"

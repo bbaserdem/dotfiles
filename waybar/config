@@ -219,8 +219,7 @@
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
-      "tooltip": false,
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n cpu -b 3"
+      "tooltip": false
     },
     "custom/coretemp": {
       "exec": "~/.config/sysinfo/sysinfo.sh -n temperature -i cpu -a red",
@@ -267,7 +266,7 @@
       "tooltip": false,
       "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n rss -b 3"
     },
-    "custom/email": {
+    "custom/gmail": {
       "exec": "~/.config/sysinfo/sysinfo.sh -n email -i Gmail -a yellow",
       "return-type": "json",
       "restart-interval": 60,

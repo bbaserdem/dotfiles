@@ -58,11 +58,19 @@ print_info () {
   lang="$(echo "${state}"   | awk -F '[ ()]' '{print $1}')"
   layout="$(echo "${state}" | awk -F '[ ()]' '{print $2}')"
   # Start laying out text (with emoji if possible)
-  case "${lang}" in
-    us) txt='🇺🇸' ;;
-    tr) txt='🇹🇷' ;;
-    *)  txt="$(echo "${lang}" | awk '{print toupper($0)}')"
-  esac
+  if [ "${markup}" != 'lemonbar' ] ; then
+    case "${lang}" in
+      us) txt='🇺🇸' ;;
+      tr) txt='🇹🇷' ;;
+      *)  txt="$(echo "${lang}" | awk '{print toupper($0)}')"
+    esac
+  else
+    case "${lang}" in
+      us) txt='US' ;;
+      tr) txt='TR' ;;
+      *)  txt="$(echo "${lang}" | awk '{print toupper($0)}')"
+    esac
+  fi
   # Add the layout
   if [ -n "${layout}" ] ; then
     txt="${txt}(${layout})"

@@ -124,6 +124,7 @@ bind pager \Ch help
 bind compose p postpone-message
 bind index p recall-message
 macro index,pager \Cb "<enter-command> unset pipe_decode<enter><pipe-message>extract_url<enter>" "get URLs"
+macro index,pager R "!mbsync --config ~/.config/isync/config --all" "Update IMAP"
 
 # Search function
 set nm_default_url = "notmuch://$HOME/Mail"

@@ -31,24 +31,25 @@ print_info () {
     instance='Gmail'
   fi
   maildir_location="${SYSINFO_EMAIL_LOC}/${instance}"
+  mailbox_location="${maildir_location}/Inbox"
   # Set the prefix; depending on provider
   case "${instance}" in
     Gmail|gmail)  pre=' ' ;;
     *)            pre=' '
   esac
   # If there is no inbox; just exit
-  if [ ! -d "${maildir_location}/inbox/new" ] ; then
+  if [ ! -d "${mailbox_location}/new" ] ; then
     empty_output
     exit 1
   fi
   # Get number of new emails
-  txt="$(find "${maildir_location}/inbox/new" | wc -l)"
+  txt="$(find "${mailbox_location}/new" | wc -l)"
   # Set up suffix
   if [ "${txt}" -le 0 ] ; then
-    suf=" "
+    suf=" "
     feature='mute'
   else
-    suf=" "
+    suf=" "
   fi
   # Print string
   formatted_output
