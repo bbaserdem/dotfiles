@@ -127,6 +127,9 @@ empty_output () {
   elif [ "${markup}" = 'pango' ] ; then
     # Create pango formatted string
     echo "{\"full_text\":\"\"}"
+  elif [ "${markup}" = 'waybar' ] ; then
+    # Create pango formatted string
+    echo "{\"text\":\"\"}"
   fi
 }
 formatted_output () {
@@ -153,6 +156,16 @@ formatted_output () {
       echo "{\"full_text\":\"${out}\",\"color\":\"${dim}\"}"
     elif [ "${feature}" = 'urgent' ] ; then
       echo "{\"full_text\":\"${out}\",\"urgent\":true}"
+    fi
+  elif [ "${markup}" = 'waybar' ] ; then
+    out="$(echo "${txt}" | sed 's|&|&amp;|g ; s|<|&lt;|g')"
+    out="<span color='${col}'>${pre}</span>${out}<span color='${col}'>${suf}</span>"
+    if [ -z "${feature}" ] ; then
+      echo "{\"text\":\"${out}\"}"
+    elif [ "${feature}" = 'mute' ] ; then
+      echo "{\"text\":\"${out}\",\"class\":\"mute\"}"
+    elif [ "${feature}" = 'urgent' ] ; then
+      echo "{\"text\":\"${out}\",\"class\":\"urgent\"}"
     fi
   fi
 }

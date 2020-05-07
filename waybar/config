@@ -2,47 +2,25 @@
   {
     "position": "top",
     "height": 20,
-    "modules-left": [
-      "sway/workspaces",
-      "sway/mode",
-      "sway/window",
-      "idle_inhibitor"
-    ],
-    "modules-center": [
-      "clock",
-      "custom/day"
-    ],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window", "idle_inhibitor"],
+    "modules-center": ["custom/clock", "custom/day"],
     "modules-right": [
-      "mpd",
-      "custom/keyboard"
+      "custom/mpd-song",
+      "custom/mpd-prev", "custom/mpd-rewind", "custom/mpd-fastforward", "custom/mpd-next",
+      "custom/mpd-random", "custom/mpd-repeat", "custom/mpd-single", "custom/mpd-consume",
+      "custom/keyboard",
+      "custom/battery"
     ],
     "sway/workspaces": {
       "all-outputs": true,
       "format": "{icon}",
       "disable-scroll": false,
       "persistant_workspaces": {
-        "0: ": [],
-        "1: 爵": [],
-        "2: ": [],
-        "3: ": [],
-        "4: ": [],
-        "5: ": [],
-        "6: ": [],
-        "7: ": [],
-        "8: ": [],
-        "9: 漣": [] },
+        "0: ": [], "1: ": [], "2: ﳜ": [], "3: ": [], "4: ": [],
+        "5: ": [], "6: ": [], "7: ": [], "8: ": [], "9: 漣": [] },
       "format-icons": {
-        "0: ": "",
-        "1: 爵": "爵",
-        "2: ": "",
-        "3: ": "",
-        "4: ": "",
-        "5: ": "",
-        "6: ": "",
-        "7: ": "",
-        "8: ": "",
-        "9: 漣": "漣"
-      }
+        "0: ": "", "1: ": "", "2: ﳜ": "ﳜ", "3: ": "", "4: ": "",
+        "5: ": "", "6: ": "", "7: ": "", "8: ": "", "9: 漣": "漣" }
     },
     "sway/mode": {
       "format": "{}"
@@ -54,183 +32,269 @@
     "idle_inhibitor": {
       "format": "{icon}",
       "tooltip": false,
-      "format-icons": {"activated": "", "deactivated": "" }
+      "format-icons": {"activated": "", "deactivated": "﯈" }
     },
-    "clock": {
-      "interval": 1,
-      "format": " {:%H:%M:%S}"
-    },
-    "custom/day": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar day",
-      "format": "{}",
+    "custom/clock": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n clock -a indigo",
       "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
       "tooltip": false
     },
-    "mpd": {
-      "interval": 5,
-      "timeout": 30,
-      "unknown-tag": "",
-      "format": " {stateIcon} {randomIcon} {repeatIcon} {consumeIcon} {singleIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {artist} - {title}",
-      "format-disconnected": "ﱙ",
-      "tooltip": true,
-      "tooltip-format": "{album} by {albumArtist}\n{title} by {artist}\n{elapsedTime} / {totalTime}",
-      "max-length": 50,
-      "on-click": "mpc toggle",
-      "on-click-right": "mpc stop",
-      "on-scroll-up": "mpc-prev",
-      "on-scroll-down": "mpc next",
-      "consume-icons": {"on": ""},
-      "random-icons": {"off": "劣", "on": "列"},
-      "repeat-icons": {"on": "凌"},
-      "single-icons": {"on": "綾"},
-      "state-icons": {"paused": "", "playing": ""}
+    "custom/day": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n day -a indigo",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false
+    },
+    "custom/mpd-song": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i song -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click":        "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 1",
+      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 2",
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 3",
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 5"
+    },
+    "custom/mpd-prev": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i prev -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i prev -b 1"
+    },
+    "custom/mpd-rewind": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i rewind -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i rewind -b 1"
+    },
+    "custom/mpd-fastforward": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i fastforward -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i fastforward -b 1"
+    },
+    "custom/mpd-next": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i next -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i next -b 1"
+    },
+    "custom/mpd-random": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i random -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i random -b 1"
+    },
+    "custom/mpd-repeat": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i repeat -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i repeat -b 1"
+    },
+    "custom/mpd-consume": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i consume -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i consume -b 1"
+    },
+    "custom/mpd-single": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i single -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i single -b 1"
     },
     "custom/keyboard": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar keyboard",
-      "format": "{}",
+      "exec": "~/.config/sysinfo/sysinfo.sh -n keyboard -a cyan",
       "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click":        "~/.config/sysinfo/sysinfo.sh -n keyboard -b 1",
+      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -n keyboard -b 2",
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n keyboard -b 3",
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n keyboard -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n keyboard -b 5"
+    },
+    "custom/battery": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n battery",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
       "tooltip": false
     }
   }, {
     "position": "bottom",
     "height": 20,
     "modules-left": [
-      "pulseaudio",
-      "battery",
-      "backlight",
-      "temperature",
-      "custom/fan",
-      "cpu",
-      "memory",
+      "custom/pulseaudio-sink", "custom/pulseaudio-source",
+      "custom/backlight",
+      "custom/memory", "custom/cpu",
+      "custom/fan", "custom/coretemp", "custom/gputemp",
       "custom/kernel"
     ],
     "modules-center": [
       "custom/calendar",
       "custom/todo",
-      "custom/email",
+      "custom/gmail",
       "custom/rss"
     ],
     "modules-right": [
-      "network#ethernet",
-      "network#wifi",
-      "custom/updates",
+      "custom/update",
+      "custom/network",
+      "custom/bandwidth",
       "tray"
     ],
-    "pulseaudio": {
+    "custom/pulseaudio-sink": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -a violet",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
       "tooltip": false,
-      "scroll-step": 5,
-      "format": "{icon} {volume} {format_source}",
-      "format-bluetooth": " {icon} {volume} {format_source}",
-      "format-source": " {volume}",
-      "format-source-muted": " {volume}",
-      "format-icons": {
-        "headphones":   "",
-        "speaker":      "蓼",
-        "hdmi":         "﴿",
-        "headset":      "",
-        "portable":     "",
-        "phone":        "",
-        "car":          "",
-        "hifi":         "﫛",
-        "default":      ""
-      },
-      "on-click": "pamixer --toggle-mute",
-      "on-click-right": "pavucontrol & disown"
+      "on-click":        "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 1",
+      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 2",
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 3",
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 5"
     },
-    "battery": {
-      "full-at": 95,
-      "interval": 15,
-      "states": {
-        "warning": 40,
-        "critical": 20
-      },
-      "format": "{icon} {capacity}%",
-      "format-icons": {
-        "discharging": ["", "", "", "", ""],
-        "charging": ["", "", "", "", "", ""],
-        "charged": "ﮣ"},
-      "tooltip": true,
-      "tooltip-format": "{time} left.",
-      "format-time": "{H}:{M}"
+    "custom/pulseaudio-source": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -a indigo",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click":        "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 1",
+      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 2",
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 3",
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 5"
     },
-    "backlight": {
-      "interval": 2,
-      "format": "{icon} {percent}",
-      "format-icons": ["", "", ""],
-      "on-scroll-up": "light -A",
-      "on-scroll-down": "light -U"
+    "custom/backlight": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n backlight -a cyan",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n backlight -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n backlight -b 5"
     },
-    "temperature": {
-        "interval": 2,
-        "format": "{icon} {temperatureC}糖",
-        "format-icons": ["", "", "", "", ""],
-        "critical-threshold": 75
+    "custom/memory": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n memory -a green",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n memory -b 3"
+    },
+    "custom/cpu": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n cpu -a yellow",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n cpu -b 3"
     },
     "custom/fan": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar fan",
-      "format": "{}",
+      "exec": "~/.config/sysinfo/sysinfo.sh -n fan -a orange",
       "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n cpu -b 3"
+    },
+    "custom/coretemp": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n temperature -i cpu -a red",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
       "tooltip": false
     },
-    "cpu": {
-      "interval": 5,
-      "format": " {usage}"
-    },
-    "memory": {
-      "interval": 5,
-      "format": " {used}{avail} GB"
+    "custom/gputemp": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n temperature -i gpu -a red",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false
     },
     "custom/kernel": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar kernel",
-      "format": "{}",
+      "exec": "~/.config/sysinfo/sysinfo.sh -n kernel -a brown",
       "return-type": "json",
-      "tooltip": false,
-      "interval": "once"
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false
     },
     "custom/calendar": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar calendar",
-      "format": "{}",
+      "exec": "~/.config/sysinfo/sysinfo.sh -n calendar -a brown",
       "return-type": "json",
-      "tooltip": false
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n calendar -b 3"
     },
     "custom/todo": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar todo",
-      "format": "{}",
+      "exec": "~/.config/sysinfo/sysinfo.sh -n todo -a red",
       "return-type": "json",
-      "tooltip": false
-    },
-    "custom/email": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar email",
+      "restart-interval": 60,
       "format": "{}",
-      "return-type": "json",
-      "tooltip": false
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n todo -b 3"
     },
     "custom/rss": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar rss",
-      "format": "{}",
+      "exec": "~/.config/sysinfo/sysinfo.sh -n rss -a orange",
       "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n rss -b 3"
+    },
+    "custom/email": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n email -i Gmail -a yellow",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n email -b 3"
+    },
+    "custom/update": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n update -a cyan",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n update -b 3"
+    },
+    "custom/network": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n network -a green",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
       "tooltip": false
     },
-    "network#ethernet": {
-      "interface": "ethernet",
-      "interval": 5,
-      "format-ethernet": " {ipaddr} {bandwidthUpBits} {bandwidthDownBits}",
-      "format-wifi":     " {essid} {bandwidthUpBits} {bandwidthDownBits}",
-      "format-disconnected": "",
-      "tooltip-format": false
-    },
-    "network#wifi": {
-      "interface": "wifi",
-      "interval": 5,
-      "format-ethernet": " {ipaddr} {bandwidthUpBits} {bandwidthDownBits}",
-      "format-wifi":     " {essid} {bandwidthUpBits} {bandwidthDownBits}",
-      "format-disconnected": "",
-      "tooltip-format": false
-    },
-    "custom/updates": {
-      "exec": "~/.config/systeminfo/sysinfo-waybar updates",
-      "format": "{}",
+    "custom/bandwidth": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -n network -a green",
       "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
       "tooltip": false
     },
     "tray": {

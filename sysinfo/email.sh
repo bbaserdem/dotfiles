@@ -28,13 +28,13 @@ click_right  () {
 print_info () {
   # Get inbox location and prefix info
   if [ -z "${instance}" ] ; then
-    instance='gmail'
+    instance='Gmail'
   fi
   maildir_location="${SYSINFO_EMAIL_LOC}/${instance}"
   # Set the prefix; depending on provider
   case "${instance}" in
-    gmail) pre=' ' ;;
-    *)     pre=' '
+    Gmail|gmail)  pre=' ' ;;
+    *)            pre=' '
   esac
   # If there is no inbox; just exit
   if [ ! -d "${maildir_location}/inbox/new" ] ; then

@@ -1,74 +1,24 @@
 @import "color.css";
-
 /* Generic bar properties */
 * {
     border:         none;
     border-radius:  0px;
-    font-family:    "Iosevka:style=Extra Condensed";
+    font-family:    "statusbar:style=Extra Condensed";
     font-size:      12px;
     min-height:     0;
-    transition:     none;
 }
-
 window#waybar {
     background: @base01;
     opacity: 0.75;
     border-bottom: 2px solid @base00;
-    border-bottom: 2px solid @base00;
+    border-top: 2px solid @base00;
+    color: @base04;
 }
 window#waybar.hidden {
     opacity: 0.25;
 }
-
-
-/* Workspaces */
-#workspaces {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    color: @base04;
-    background: transparent;
-	border-radius: 0px;
-	margin-top: 4px;
-	margin-left: 4px;
-	margin-right: 4px;
-	margin-bottom: 4px;
-}
-#workspaces button {
-    background: transparent;
-    color: @base03;
-    border-top:    2px solid @base04;
-    border-bottom: 2px solid @base04;
-    font-weight: bold;
-    border-radius: 0px;
-    margin-top: 0px;
-    margin-top: 0px;
-    margin-left: 3px;
-    margin-bottom: 3px;
-}
-#workspaces button.persistant {
-    border-top: @base03;
-    border-bottom: @base03;
-}
-#workspaces button.visible {
-    color: @base04;
-}
-#workspaces button.focused {
-    color: @base04;
-    background: rgba(1, 1, 1, .1);
-}
-#workspaces button:hover {
-    color: @base0C;
-}
-#workspaces button.urgent {
-    color: @base09;
-    border-top: 2px solid @base08;
-    border-bottom: 2px solid @base08;
-}
-
 /* General formatting */
-#mode, #window, #idle-inhibitor, #clock, #custom-day, #mpd, #custom-keyboard, #pulseaudio, #battery, #backlight, #temperature, #custom-fan, #cpu, #memory, #custom-kernel, #custom-calendar, #custom-todo, #custom-email, #custom-rss, #network.ethernet, #network.wifi, #custom-updates, #tray {
+#workspaces, #mode, #window, #idle-inhibitor, #custom-clock, #custom-day, #custom-mpd-song, #custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single, #custom-mpd-consume, #custom-keyboard, #custom-battery, #custom-pulseaudio-sink, #custom-pulseaudio-source, #custom-backlight, #custom-memory, #custom-cpu, #custom-fan, #custom-coretemp, #custom-gputemp, #custom-kernel, #custom-calendar, #custom-todo, #custom-gmail, #custom-rss, #custom-update, #custom-network, #custom-bandwidth, #tray {
     padding-top: 0px;
     padding-bottom: 0px;
     padding-left: 6px;
@@ -81,46 +31,85 @@ window#waybar.hidden {
     margin-right: 0px;
     margin-bottom: 0px;
 }
-#mode, #window, #idle-inhibitor, #clock, #custom-day, #mpd, #custom-keyboard {
+/* Custom colors for attention */
+*.mute {color: @base03;}
+*.urgent {color: @base09;}
+#idle_inhibitor.activated {color: @base0C;}
+/* Workspaces */
+#workspaces {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+#workspaces button {
+    background: transparent;
+    font-weight: bold;
+    border-radius: 0px;
+    margin-top: 0px;
+    margin-top: 0px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+    color: @base04;
     border-bottom: 2px solid @base04;
 }
-#pulseaudio, #battery, #backlight, #temperature, #custom-fan, #cpu, #memory, #custom-kernel, #custom-calendar, #custom-todo, #custom-email, #custom-rss, #network.ethernet, #network.wifi, #custom-updates, #tray {
+#workspaces button.persistant {border-bottom: @base03; color: @base03;}
+#workspaces button.visible {background: rgba(1, 1, 1, .1);}
+#workspaces button.focused {border-bottom: 2px solid @base0C; color: @base0C;
+    background: rgba(1, 1, 1, .1);}
+#workspaces button.urgent {border-bottom: 2px solid @base09; color: @base09;}
+/* Border lines: FOREGROUND */
+#custom-battery {
+    border-bottom: 2px solid @base04;
+}
+#custom-tray {
     border-top: 2px solid @base04;
 }
-
-/* Custom colors */
-*.mute {
-    color: @base03;
-    border-top:    2px solid @base03;
-    border-bottom: 2px solid @base03;
+/* Border lines: RED */
+#custom-coretemp, #custom-gputemp, #custom-todo {
+    border-top: 2px solid @base08;
 }
-#idle_inhibitor.activated {
-    color: @base03;
-    border-top:    2px solid @base03;
-    border-bottom: 2px solid @base03;
+/* Border lines: ORANGE */
+#custom-fan, #custom-rss {
+    border-top: 2px solid @base09;
 }
-#mpd.disconnected, #mpd.stopped, #mpd.paused {
-    color: @base03;
-    border-top:    2px solid @base03;
-    border-bottom: 2px solid @base03;
+/* Border lines: YELLOW */
+#custom-cpu, #custom-email {
+    border-top: 2px solid @base0A;
 }
-#pulseaudio.muted {
-    color: @base03;
-    border-top:    2px solid @base03;
-    border-bottom: 2px solid @base03;
+/* Border lines: GREEN */
+#custom-network, #custom-bandwidth {
+    border-bottom: 2px solid @base0B;
 }
-#battery.warning {
-    color: @base09;
-    border-top:    2px solid @base09;
-    border-bottom: 2px solid @base09;
+#custom-memory {
+    border-top: 2px solid @base0B;
 }
-#battery.critical {
-    color: @base08;
-    border-top:    2px solid @base08;
-    border-bottom: 2px solid @base08;
+/* Border lines: CYAN */
+#mode, #window, #idle-inhibitor, #custom-keyboard, #custom-update {
+    border-bottom: 2px solid @base0C;
 }
-#temperature.critical {
-    color: @base08;
-    border-top:    2px solid @base08;
-    border-bottom: 2px solid @base08;
+#custom-backlight {
+    border-top: 2px solid @base0C;
+}
+/* Border lines: INDIGO */
+#custom-clock, #custom-day {
+    border-bottom: 2px solid @base0D;
+}
+#custom-pulseaudio-source {
+    border-top: 2px solid @base0D;
+}
+/* Border lines: VIOLET */
+#custom-mpd-song, #custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single, #custom-mpd-consume {
+    border-bottom: 2px solid @base0E;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#custom-pulseaudio-sink {
+    border-top: 2px solid @base0E;
+}
+/* Border lines: BROWN */
+#custom-kernel, #custom-calendar {
+    border-top: 2px solid @base0F;
 }
