@@ -143,7 +143,6 @@
 !/mpd
 !/mpd/mpd.conf
 
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/Steam/*/
 # MPV: Only grab config
 !/mpv
 !/mpv/mpv.conf

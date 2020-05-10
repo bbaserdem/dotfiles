@@ -47,6 +47,8 @@ Plug 'rhysd/vim-grammarous'
 Plug 'aouelete/sway-vim-syntax'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'gentoo/gentoo-syntax'
+Plug 'brgmnn/vim-syncthing'
+Plug 'gisphm/vim-gitignore'
 call plug#end()
 
 "------------"
