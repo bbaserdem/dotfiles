@@ -250,6 +250,10 @@
 !/udiskie
 !/udiskie/config.json
 
+# URLSCAN: Get config
+!/urlscan
+!/urlscan/**
+
 # VDIRSYNCER: Grab only config and password generator
 !/vdirsyncer
 !/vdirsyncer/config
