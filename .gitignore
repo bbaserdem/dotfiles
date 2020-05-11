@@ -107,6 +107,7 @@
 !/isync
 !/isync/config
 !/isync/passgen.sh
+!/isync/mailboxes-update.sh
 
 # JUPYTER: Get only the config file
 !/jupyter
