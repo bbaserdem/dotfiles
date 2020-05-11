@@ -2,6 +2,14 @@
 
 # Execute the following if the window manager is bspwm
 if [ "${XDG_CURRENT_DESKTOP}" = 'bspwm' ] ; then
+    # Select the xrdb file to read
+    case "${AUTORANDR_CURRENT_PROFILE}" in
+      Homestation-Home )
+        xrdb "${XDG_CONFIG_HOME}/X11/uhd.resources"
+        ;;
+      * )
+        xrdb "${XDG_CONFIG_HOME}/X11/resources"
+    esac
     # Refresh the window layout
     if [ -x "${XDG_CONFIG_HOME}/bspwm/scripts/layout.sh" ] ; then
         "${XDG_CONFIG_HOME}/bspwm/scripts/layout.sh"

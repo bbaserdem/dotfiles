@@ -70,7 +70,7 @@ print_info () {
       temp="$(echo "${info}" | awk '/Tctl/ {print substr($2, 2, length($2)-3)}')"
       ;;
     amdgpu*) # AMD GPU
-      suf=' '
+      suf=' ﳻ'
       # If there is junction temperature; get that
       temp="$(echo "${info}" | awk '/junction/ {print substr($2, 2, length($2)-3)}')"
       # Try the edge temperature, if you could not find it

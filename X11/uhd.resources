@@ -1,11 +1,10 @@
-! vim:fileencoding=utf-8:ft=xdefaults
 #include "themes/base16-eighties.Xresources"
 
 ! X11 stuff
 Xcursor.theme: Vimix-cursors
 
 ! Screen stuff
-!Xft.dpi: 96
+Xft.dpi: 192
 
 ! These might also be useful depending on your monitor and personal preference:
 Xft.autohint: 0

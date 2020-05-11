@@ -1,6 +1,6 @@
 #!/bin/sh
 # Define these to change behaviour of sysinfo scripts
-export SYSINFO_CAL_LOC="${HOME}/Documents/Calendar"
+export SYSINFO_CAL_LOC="${HOME}/Calendar"
 export SYSINFO_CAL_MAXLEN=15
 export SYSINFO_CPU_POLL=5
 export SYSINFO_DATE_STYLE='reg'
