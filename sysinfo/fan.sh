@@ -32,7 +32,9 @@ print_info () {
   fi
   txt="$(/usr/bin/sensors | awk "/${int}/ {print \$2}")"
   if [ -z "${txt}" ] ; then
-    empty_output
+    # If there is no fan output; still print a pretty text
+    txt=''
+    formatted_output
     exit 1
   fi
   # Print string
@@ -41,7 +43,7 @@ print_info () {
 
 print_loop () {
   while : ; do
-    print_info || exit
+    print_info || break
     sleep "${SYSINFO_FAN_POLL}"
   done
 }
