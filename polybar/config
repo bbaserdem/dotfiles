@@ -111,7 +111,7 @@ modules-right =  mpd keyboard-script battery-script
 [bot]
 modules-left = audio-script microphone-script backlight-script memory cpu fan-script coretemp-script gputemp-script rootfs-script homefs-script
 modules-center = calendar-script todo-script rss-script gmail-script
-modules-right = kernel-script uptime-script update-script network-script bandwidth-script
+modules-right = network-script bandwidth-script update-script uptime-script kernel-script
 
 [aux]
 modules-left = bspwm
@@ -479,24 +479,24 @@ click-right = ~/.config/sysinfo/sysinfo.sh -n email -b 3
 ;=======================;
 ;   MODULES-BOT-RIGHT   ;
 ;=======================;
-[module/kernel-script]
-inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n kernel -a violet -t
-tail = false
-interval = 0
-[module/uptime-script]
-inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n uptime -a indigo
-[module/update-script]
-inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n update -a cyan
-click-right = ~/.config/sysinfo/sysinfo.sh -n update -b 3
 [module/network-script]
 inherit = module/skeleton
 exec = ~/.config/sysinfo/sysinfo.sh -n network -a green
 [module/bandwidth-script]
 inherit = module/skeleton
 exec = ~/.config/sysinfo/sysinfo.sh -n bandwidth -a green
+[module/update-script]
+inherit = module/skeleton
+exec = ~/.config/sysinfo/sysinfo.sh -n update -a cyan
+click-right = ~/.config/sysinfo/sysinfo.sh -n update -b 3
+[module/uptime-script]
+inherit = module/skeleton
+exec = ~/.config/sysinfo/sysinfo.sh -n uptime -a indigo
+[module/kernel-script]
+inherit = module/skeleton
+exec = ~/.config/sysinfo/sysinfo.sh -n kernel -a violet -t
+tail = false
+interval = 0
 
 ;=============;
 ;   RETIRED   ;
