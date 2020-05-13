@@ -109,9 +109,9 @@ modules-center = clock-script date-script
 modules-right =  mpd keyboard-script battery-script
 
 [bot]
-modules-left = audio-script microphone-script backlight-script memory cpu fan-script coretemp-script gputemp-script kernel-script
+modules-left = audio-script microphone-script backlight-script memory cpu fan-script coretemp-script gputemp-script rootfs-script homefs-script
 modules-center = calendar-script todo-script rss-script gmail-script
-modules-right = update-script network-script bandwidth-script
+modules-right = kernel-script uptime-script update-script network-script bandwidth-script
 
 [aux]
 modules-left = bspwm
@@ -449,11 +449,12 @@ exec = ~/.config/sysinfo/sysinfo.sh -n temperature -i cpu -a red
 [module/gputemp-script]
 inherit = module/skeleton
 exec = ~/.config/sysinfo/sysinfo.sh -n temperature -i gpu -a red
-[module/kernel-script]
+[module/rootfs-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n kernel -a brown -t
-tail = false
-interval = 0
+exec = ~/.config/sysinfo/sysinfo.sh -n disk -i root -a brown
+[module/homefs-script]
+inherit = module/skeleton
+exec = ~/.config/sysinfo/sysinfo.sh -n disk -i home -a brown
 
 ;========================;
 ;   MODULES-BOT-MIDDLE   ;
@@ -478,6 +479,14 @@ click-right = ~/.config/sysinfo/sysinfo.sh -n email -b 3
 ;=======================;
 ;   MODULES-BOT-RIGHT   ;
 ;=======================;
+[module/kernel-script]
+inherit = module/skeleton
+exec = ~/.config/sysinfo/sysinfo.sh -n kernel -a violet -t
+tail = false
+interval = 0
+[module/uptime-script]
+inherit = module/skeleton
+exec = ~/.config/sysinfo/sysinfo.sh -n uptime -a indigo
 [module/update-script]
 inherit = module/skeleton
 exec = ~/.config/sysinfo/sysinfo.sh -n update -a cyan
