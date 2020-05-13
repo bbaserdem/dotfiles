@@ -21,10 +21,11 @@ print_info () {
   pre=' '
   time="$(uptime)"
   # Get the hours:minutes; which is <1 or 2 numbers>:<2 numbers>
+  min="$(echo "${time}" | sed -n 's|.*\([0-9\+ mins\?\).*|\1|p')"
   hrs="$(echo "${time}" | sed -n 's|.*\([0-9]\+:[0-9][0-9]\),.*|\1|p')"
   day="$(echo "${time}" | sed -n 's|.*\([0-9]\+ days\?\).*|\1, |p')"
   sol="$(echo "${time}" | sed -n 's|.*\([0-9]\+ years\?\).*|\1, |p')"
-  txt="${sol}${day}${hrs}"
+  txt="${sol}${day}${hrs}${min}"
   # Print string
   formatted_output
 }
