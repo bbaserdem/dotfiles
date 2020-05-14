@@ -160,7 +160,9 @@ formatted_output () {
   elif [ "${markup}" = 'waybar' ] ; then
     out="$(echo "${txt}" | sed 's|&|&amp;|g ; s|<|&lt;|g')"
     out="<span color='${col}'>${pre}</span>${out}<span color='${col}'>${suf}</span>"
-    if [ -z "${feature}" ] ; then
+    if [ -n "${class}" ] ; then
+      echo "{\"text\":\"${out}\",\"class\":\"${class}\"}"
+    elif [ -z "${feature}" ] ; then
       echo "{\"text\":\"${out}\"}"
     elif [ "${feature}" = 'mute' ] ; then
       echo "{\"text\":\"${out}\",\"class\":\"mute\"}"

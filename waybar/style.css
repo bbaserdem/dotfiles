@@ -61,25 +61,34 @@ window#waybar.hidden {
     background: rgba(1, 1, 1, .1);}
 #workspaces button.urgent {border-bottom: 2px solid @base09; color: @base09;}
 /* Border lines: FOREGROUND */
-#custom-battery {
-    border-bottom: 2px solid @base04;
-}
 #custom-tray {
     border-top: 2px solid @base04;
 }
 /* Border lines: RED */
+#custom-battery.low {
+    border-bottom: 2px solid @base08;
+}
 #custom-coretemp, #custom-gputemp, #custom-todo {
     border-top: 2px solid @base08;
 }
 /* Border lines: ORANGE */
+#custom-battery.warn {
+    border-bottom: 2px solid @base04;
+}
 #custom-fan, #custom-rss {
     border-top: 2px solid @base09;
 }
 /* Border lines: YELLOW */
+#custom-battery.ok {
+    border-bottom: 2px solid @base04;
+}
 #custom-cpu, #custom-email {
     border-top: 2px solid @base0A;
 }
 /* Border lines: GREEN */
+#custom-battery.good {
+    border-bottom: 2px solid @base04;
+}
 #custom-memory, #custom-network, #custom-bandwidth {
     border-top: 2px solid @base0B;
 }
