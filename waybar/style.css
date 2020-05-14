@@ -18,7 +18,7 @@ window#waybar.hidden {
     opacity: 0.25;
 }
 /* General formatting */
-#workspaces, #mode, #window, #idle-inhibitor, #custom-clock, #custom-day, #custom-mpd-song, #custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single, #custom-mpd-consume, #custom-keyboard, #custom-battery, #custom-pulseaudio-sink, #custom-pulseaudio-source, #custom-backlight, #custom-memory, #custom-cpu, #custom-fan, #custom-coretemp, #custom-gputemp, #custom-kernel, #custom-calendar, #custom-todo, #custom-gmail, #custom-rss, #custom-update, #custom-network, #custom-bandwidth, #tray {
+#workspaces, #mode, #window, #idle-inhibitor, #custom-clock, #custom-date, #custom-mpd-song, #custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single, #custom-mpd-consume, #custom-keyboard, #custom-battery, #custom-speaker, #custom-microphone, #custom-backlight, #custom-memory, #custom-cpu, #custom-fan, #custom-coretemp, #custom-gputemp, #custom-rootfs, #custom-homefs, #custom-calendar, #custom-todo, #custom-gmail, #custom-rss, #custom-network, #custom-bandwidth, #custom-update, #custom-uptime, #custom-kernel, #tray {
     padding-top: 0px;
     padding-bottom: 0px;
     padding-left: 6px;
@@ -80,24 +80,21 @@ window#waybar.hidden {
     border-top: 2px solid @base0A;
 }
 /* Border lines: GREEN */
-#custom-network, #custom-bandwidth {
-    border-bottom: 2px solid @base0B;
-}
-#custom-memory {
+#custom-memory, #custom-network, #custom-bandwidth {
     border-top: 2px solid @base0B;
 }
 /* Border lines: CYAN */
-#mode, #window, #idle-inhibitor, #custom-keyboard, #custom-update {
+#mode, #window, #idle-inhibitor, #custom-keyboard {
     border-bottom: 2px solid @base0C;
 }
-#custom-backlight {
+#custom-backlight, #custom-update {
     border-top: 2px solid @base0C;
 }
 /* Border lines: INDIGO */
-#custom-clock, #custom-day {
+#custom-clock, #custom-date {
     border-bottom: 2px solid @base0D;
 }
-#custom-pulseaudio-source {
+#custom-microphone, #custom-uptime {
     border-top: 2px solid @base0D;
 }
 /* Border lines: VIOLET */
@@ -106,10 +103,10 @@ window#waybar.hidden {
     padding-left: 0px;
     padding-right: 0px;
 }
-#custom-pulseaudio-sink {
+#custom-speaker, #custom-kernel {
     border-top: 2px solid @base0E;
 }
 /* Border lines: BROWN */
-#custom-kernel, #custom-calendar {
+#custom-rootfs, #custom-homefs, #custom-calendar {
     border-top: 2px solid @base0F;
 }

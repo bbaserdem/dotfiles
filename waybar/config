@@ -3,7 +3,7 @@
     "position": "top",
     "height": 20,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window", "idle_inhibitor"],
-    "modules-center": ["custom/clock", "custom/day"],
+    "modules-center": ["custom/clock", "custom/date"],
     "modules-right": [
       "custom/mpd-song",
       "custom/mpd-prev", "custom/mpd-rewind", "custom/mpd-fastforward", "custom/mpd-next",
@@ -35,109 +35,109 @@
       "format-icons": {"activated": "", "deactivated": "﯈" }
     },
     "custom/clock": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n clock -a indigo",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n clock -a indigo",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
-    "custom/day": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n day -a indigo",
+    "custom/date": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n date -a indigo",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/mpd-song": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i song -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click":        "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 1",
-      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 2",
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 3",
-      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 4",
-      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n mpd -i song -b 5"
+      "on-click":        "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 1",
+      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 2",
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 3",
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 5"
     },
     "custom/mpd-prev": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i prev -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i prev -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i prev -b 1"
+      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i prev -b 1"
     },
     "custom/mpd-rewind": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i rewind -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i rewind -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i rewind -b 1"
+      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i rewind -b 1"
     },
     "custom/mpd-fastforward": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i fastforward -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i fastforward -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i fastforward -b 1"
+      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i fastforward -b 1"
     },
     "custom/mpd-next": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i next -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i next -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i next -b 1"
+      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i next -b 1"
     },
     "custom/mpd-random": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i random -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i random -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i random -b 1"
+      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i random -b 1"
     },
     "custom/mpd-repeat": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i repeat -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i repeat -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i repeat -b 1"
+      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i repeat -b 1"
     },
     "custom/mpd-consume": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i consume -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i consume -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i consume -b 1"
+      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i consume -b 1"
     },
     "custom/mpd-single": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n mpd -i single -a violet",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i single -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -n mpd -i single -b 1"
+      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i single -b 1"
     },
     "custom/keyboard": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n keyboard -a cyan",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -a cyan",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click":        "~/.config/sysinfo/sysinfo.sh -n keyboard -b 1",
-      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -n keyboard -b 2",
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n keyboard -b 3",
-      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n keyboard -b 4",
-      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n keyboard -b 5"
+      "on-click":        "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -b 1",
+      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -b 2",
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -b 3",
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -b 5"
     },
     "custom/battery": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n battery",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n battery",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
@@ -147,11 +147,11 @@
     "position": "bottom",
     "height": 20,
     "modules-left": [
-      "custom/pulseaudio-sink", "custom/pulseaudio-source",
+      "custom/speaker", "custom/microphone",
       "custom/backlight",
       "custom/memory", "custom/cpu",
       "custom/fan", "custom/coretemp", "custom/gputemp",
-      "custom/kernel"
+      "custom/rootfs", "custom/homefs"
     ],
     "modules-center": [
       "custom/calendar",
@@ -160,139 +160,162 @@
       "custom/rss"
     ],
     "modules-right": [
-      "custom/update",
       "custom/network",
       "custom/bandwidth",
+      "custom/update",
+      "custom/uptime",
+      "custom/kernel",
       "tray"
     ],
-    "custom/pulseaudio-sink": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -a violet",
+    "custom/speaker": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i sink -a violet",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click":        "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 1",
-      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 2",
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 3",
-      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 4",
-      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b 5"
+      "on-click":        "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i sink -b 1",
+      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i sink -b 2",
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i sink -b 3",
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i sink -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i sink -b 5"
     },
-    "custom/pulseaudio-source": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -a indigo",
+    "custom/microphone": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i source -a indigo",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click":        "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 1",
-      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 2",
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 3",
-      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 4",
-      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b 5"
+      "on-click":        "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i source -b 1",
+      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i source -b 2",
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i source -b 3",
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i source -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -m waybar -n pulseaudio -i source -b 5"
     },
     "custom/backlight": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n backlight -a cyan",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n backlight -a cyan",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -n backlight -b 4",
-      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -n backlight -b 5"
+      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -m waybar -n backlight -b 4",
+      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -m waybar -n backlight -b 5"
     },
     "custom/memory": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n memory -a green",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n memory -a green",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n memory -b 3"
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n memory -b 3"
     },
     "custom/cpu": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n cpu -a yellow",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n cpu -a yellow",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n cpu -b 3"
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n cpu -b 3"
     },
     "custom/fan": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n fan -a orange",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n fan -a orange",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/coretemp": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n temperature -i cpu -a red",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n temperature -i cpu -a red",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/gputemp": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n temperature -i gpu -a red",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n temperature -i gpu -a red",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
-    "custom/kernel": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n kernel -a brown",
+    "custom/rootfs": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n disk -i root -a brown",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false
+    },
+    "custom/homefs": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n disk -i root -a brown",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/calendar": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n calendar -a brown",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n calendar -a brown",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n calendar -b 3"
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n calendar -b 3"
     },
     "custom/todo": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n todo -a red",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n todo -a red",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n todo -b 3"
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n todo -b 3"
     },
     "custom/rss": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n rss -a orange",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n rss -a orange",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n rss -b 3"
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n rss -b 3"
     },
     "custom/gmail": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n email -i Gmail -a yellow",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n email -i Gmail -a yellow",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n email -b 3"
-    },
-    "custom/update": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n update -a cyan",
-      "return-type": "json",
-      "restart-interval": 60,
-      "format": "{}",
-      "tooltip": false,
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -n update -b 3"
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n email -b 3"
     },
     "custom/network": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n network -a green",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n network -a green",
       "return-type": "json",
       "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/bandwidth": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -n network -a green",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n network -a green",
       "return-type": "json",
       "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false
+    },
+    "custom/update": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n update -a cyan",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false,
+      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n update -b 3"
+    },
+    "custom/uptime": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n uptime -a indigo",
+      "return-type": "json",
+      "restart-interval": 60,
+      "format": "{}",
+      "tooltip": false
+    },
+    "custom/kernel": {
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n kernel -a brown -t",
+      "return-type": "json",
+      "interval": "once",
       "format": "{}",
       "tooltip": false
     },

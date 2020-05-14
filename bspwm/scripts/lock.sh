@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/dash
 
 # Create directory if does not exist
 if [ -z "${XDG_CACHE_HOME}" ] ; then
@@ -15,21 +15,21 @@ fi
 _img="${_dir}/lockscreen.png"
 _lock="${_dir}/screenlock.at.${DISPLAY}"
 
-( flock 200
-    #---Get screenshot and pixellate
-    maim | convert - -scale 10% -scale 1000% "${_img}"
-    #---Compose an image on top
-    # convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
-    #---Lock the screen
-    i3lock --image="${_img}" \
-        --pointer=default \
-        --ignore-empty-password \
-        --show-failed-attempts \
-        --indicator \
-        --keylayout 0 \
-        --clock \
-        --pass-media-keys --pass-screen-keys \
-        --radius 180 \
-        --bar-indicator --bar-width=50
-
-) 200>"${_lock}"
+( 
+  flock --nonblock --exclusive 5 || exit 1
+  #---Get screenshot and pixellate
+  maim | convert - -scale 10% -scale 1000% "${_img}"
+  #---Compose an image on top
+  # convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
+  #---Lock the screen
+  i3lock --image="${_img}" \
+      --pointer=default \
+      --ignore-empty-password \
+      --show-failed-attempts \
+      --indicator \
+      --keylayout 0 \
+      --clock \
+      --pass-media-keys --pass-screen-keys \
+      --radius 180 \
+      --bar-indicator --bar-width=50
+) 5>"${_lock}"

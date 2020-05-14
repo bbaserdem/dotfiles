@@ -51,8 +51,8 @@ format-background = ${colors.bkg}
 pseudo-transparency = true
 
 [global/wm]
-margin-top = 6
-margin-bottom = 1
+margin-top = 0
+margin-bottom = 0
 
 [bar/alpha]
 monitor = ${env:POLYMON:eDP}
