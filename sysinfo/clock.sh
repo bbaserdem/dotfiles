@@ -39,12 +39,9 @@ print_info () {
   formatted_output
 }
 print_loop () {
-  # Poll the time every minute, starting from the start of every minute
-  print_info
-  # The first wait should be until the end of the current minute
-  sleep "$(( 1 + 60 - $(date '+%S') ))"
   while : ; do
     print_info
-    sleep 60
+    # Wait until one second in to the next minute
+    sleep "$(( 1 + 60 - $(date '+%S') ))"
   done
 }

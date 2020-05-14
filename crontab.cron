@@ -1,5 +1,4 @@
 #Mins   Hours   Days    Months  Weekday Script
-*/5     *       *       *       *       /home/sbp/.config/isync/mailboxes-update.sh 1>./.cache/fcron-mailbox-stdin 2>./.cache/fcron-mailbox-stderr
-
-*/5     *       *       *       *       vdirsyncer sync contacts 1>./.cache/fcron-cont-stdin 2>./.cache/fcron-cont-stderr
-*/5     *       *       *       *       vdirsyncer sync calendar 1>./.cache/fcron-cal-stdin 2>./.cache/fcron-cal-stderr
+*/5     *       *       *       *       /home/sbp/.config/isync/mailboxes-update.sh
+*/5     *       *       *       *       vdirsyncer sync contacts
+*/5     *       *       *       *       vdirsyncer sync calendar

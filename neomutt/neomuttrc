@@ -66,7 +66,7 @@ set mail_check_stats = yes          # Get mail statistics (for sidebar)
 set mail_check_stats_interval = 30  # Mail stat checking interval
 set move = no                       # Dont move around read mails
 set quit                            # Don't ask before exit
-set tmpdir = ~/.cache/neomutt       # Where to store temp files
+set tmpdir = ~/.cache/neomutt/temp  # Where to store temp files
 set timeout = 5                     # Timeaut for user input
 set thorough_search = yes           # Decode messages before using search
 set wrap = 0                        # Lines to wrap text

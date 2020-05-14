@@ -10,8 +10,8 @@ if [ -z "${XDG_DATA_HOME}" ] ; then
 else
   timestamp_file="${XDG_DATA_HOME}/isync/timestamp"
 fi
-if [ ! -x "$(dirname "${timestamp_file}")" ] ; then
-  mkdir -p "$(dirname "${timestamp_file}")"
+if [ ! -x "$(/bin/dirname "${timestamp_file}")" ] ; then
+  mkdir -p "$(/bin/dirname "${timestamp_file}")"
 fi
 
 # Get config location
@@ -21,10 +21,15 @@ else
   confloc="${XDG_CONFIG_HOME}/isync/config"
 fi
 
+# If dbus address is not established; figure it out
+if [ -z "${DBUS_SESSION_BUS_ADDRESS}" ] ; then
+  export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(/bin/id --user "${USER}")/bus"
+fi
+
 # Do this in a file lock so that multiple instances don't run together
-( flock --nonblock --exclusive 5 || exit 1
+( /bin/flock --nonblock --exclusive 5 || exit 1
   for account in "${mailbox_dir}"/* ; do
-    account_name="$(basename "${account}")"
+    account_name="$(/bin/basename "${account}")"
     if [ "${account_name}" = 'Search' ] ; then
       continue
     fi
@@ -33,7 +38,7 @@ fi
       || true
     # Get number of newly created mail
     if [ -d "${account}/Inbox/new" ] ; then
-      new_mail="$(find "${account}/Inbox/new/" \
+      new_mail="$(/bin/find "${account}/Inbox/new/" \
         -type f -newer "${timestamp_file}" 2>/dev/null | wc -l)"
       # Send notification
       if [ "${new_mail}" -gt 0 ] ; then
