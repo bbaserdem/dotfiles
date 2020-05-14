@@ -39,26 +39,26 @@ print_info () {
   perc="$(echo "${bat}" | sed 's|.*, \([0-9]\+\)%.*|\1|')"
   # Change the front icon to capacity; with sign if it's charging
   if [ "${stat}" = 'Charging' ] ; then
-    if   [ "${perc}" -gt 99 ] ; then col="${base0B}" ; pre=" "
-    elif [ "${perc}" -ge 90 ] ; then col="${base0B}" ; pre=" "
-    elif [ "${perc}" -ge 80 ] ; then col="${base0B}" ; pre=" "
-    elif [ "${perc}" -ge 60 ] ; then col="${base0A}" ; pre=" "
-    elif [ "${perc}" -ge 40 ] ; then col="${base0A}" ; pre=" "
-    elif [ "${perc}" -ge 30 ] ; then col="${base09}" ; pre=" "
-    elif [ "${perc}" -ge 20 ] ; then col="${base08}" ; pre=" "
-    else                             col="${base08}" ; pre=" "
+    if   [ "${perc}" -gt 99 ] ; then col="${base0B}" ; pre=" " ; class='good'
+    elif [ "${perc}" -ge 90 ] ; then col="${base0B}" ; pre=" " ; class='good'
+    elif [ "${perc}" -ge 80 ] ; then col="${base0B}" ; pre=" " ; class='good'
+    elif [ "${perc}" -ge 60 ] ; then col="${base0A}" ; pre=" " ; class='ok'
+    elif [ "${perc}" -ge 40 ] ; then col="${base0A}" ; pre=" " ; class='ok'
+    elif [ "${perc}" -ge 30 ] ; then col="${base09}" ; pre=" " ; class='warn'
+    elif [ "${perc}" -ge 20 ] ; then col="${base08}" ; pre=" " ; class='low'
+    else                             col="${base08}" ; pre=" " ; class='low'
     fi
   else
-    if   [ "${perc}" -ge 95 ] ; then col="${base0B}" ; pre=" "
-    elif [ "${perc}" -ge 90 ] ; then col="${base0B}" ; pre=" "
-    elif [ "${perc}" -ge 80 ] ; then col="${base0B}" ; pre=" "
-    elif [ "${perc}" -ge 70 ] ; then col="${base0A}" ; pre=" "
-    elif [ "${perc}" -ge 60 ] ; then col="${base0A}" ; pre=" "
-    elif [ "${perc}" -ge 50 ] ; then col="${base09}" ; pre=" "
-    elif [ "${perc}" -ge 40 ] ; then col="${base09}" ; pre=" "
-    elif [ "${perc}" -ge 30 ] ; then col="${base08}" ; pre=" "
-    elif [ "${perc}" -ge 20 ] ; then col="${base08}" ; pre=" "
-    else                             col="${base08}" ; pre=" "
+    if   [ "${perc}" -ge 95 ] ; then col="${base0B}" ; pre=" " ; class='good'
+    elif [ "${perc}" -ge 90 ] ; then col="${base0B}" ; pre=" " ; class='good'
+    elif [ "${perc}" -ge 80 ] ; then col="${base0B}" ; pre=" " ; class='good'
+    elif [ "${perc}" -ge 70 ] ; then col="${base0A}" ; pre=" " ; class='ok'
+    elif [ "${perc}" -ge 60 ] ; then col="${base0A}" ; pre=" " ; class='ok'
+    elif [ "${perc}" -ge 50 ] ; then col="${base09}" ; pre=" " ; class='warn'
+    elif [ "${perc}" -ge 40 ] ; then col="${base09}" ; pre=" " ; class='warn'
+    elif [ "${perc}" -ge 30 ] ; then col="${base08}" ; pre=" " ; class='low'
+    elif [ "${perc}" -ge 20 ] ; then col="${base08}" ; pre=" " ; class='low'
+    else                             col="${base08}" ; pre=" " ; class='low'
     fi
   fi
   txt="${perc}"
