@@ -45,35 +45,40 @@ print_info () {
   # Different protocols for different software
   if [ "${XDG_SESSION_TYPE}" = 'x11' ] ; then
     # Get keymap
-    state="$(xkb-switch --print)"
+    state="$(xkb-switch --print | sed 's|["()]| |g')"
   elif [ -n "${SWAYSOCK}" ] ; then
     state="$(/usr/bin/swaymsg --type get_inputs | jq '.[] | 
       select(.name | test(".*[K,k]eyboard.*")) | select(.type == "keyboard") |
-      .xkb_active_layout_name' | tail -n 1)"
+        .xkb_active_layout_name' | tail -n 1 | sed 's|["()]| |g')"
   else
     empty_output
     exit 1
   fi
   # Seperate language and layout
-  lang="$(echo "${state}"   | awk -F '[ ()]' '{print $1}')"
-  layout="$(echo "${state}" | awk -F '[ ()]' '{print $2}')"
+  lang="$(echo "${state}"   | awk '{print $1}')"
+  layout="$(echo "${state}" | awk '{print $2}')"
   # Start laying out text (with emoji if possible)
   if [ "${markup}" != 'lemonbar' ] ; then
     case "${lang}" in
-      us) txt='🇺🇸' ;;
-      tr) txt='🇹🇷' ;;
+      us|English) txt='🇺🇸' ;;
+      tr|Turkish) txt='🇹🇷' ;;
       *)  txt="$(echo "${lang}" | awk '{print toupper($0)}')"
     esac
   else
     case "${lang}" in
-      us) txt='US' ;;
-      tr) txt='TR' ;;
+      us|English) txt='US' ;;
+      tr|Turkish) txt='TR' ;;
       *)  txt="$(echo "${lang}" | awk '{print toupper($0)}')"
     esac
   fi
   # Add the layout
   if [ -n "${layout}" ] ; then
-    txt="${txt}(${layout})"
+    case "${layout}" in
+      US) txt="${txt}(qwe)";;
+      F)  txt="${txt}(f)" ;;
+      Dvorak)  txt="${txt}(dvo)" ;;
+      *) txt="${txt}(${layout})" ;;
+    esac
   else
     txt="${txt}(qwerty)"
   fi
@@ -108,23 +113,19 @@ print_loop () {
       fi
     fi
   }
-  # Check if kbd_backlight device exists to wait for it
-  keymap_wait() {
-    if [ "${XDG_SESSION_TYPE}" = 'x11' ] && [ -x '/usr/bin/xkb-switch' ] ; then
-      /usr/bin/xkb-switch -W | while read -r line ; do
-        print_info
-      done
-    elif [ -n "${SWAYSOCK}" ] ; then
-      /usr/bin/swaymsg --type subscribe '["input"]' --monitor | while read -r line ; do
-        if [ "$(echo "${line}" | jq '.change' --raw)" = 'xkb_layout' ] ; then
-          print_info
-        fi
-      done
-    else
-      exit
-    fi
-  }
   print_info
   kbdlight_wait &
-  keymap_wait
+  if [ "${XDG_SESSION_TYPE}" = 'x11' ] && [ -x '/usr/bin/xkb-switch' ] ; then
+    /usr/bin/xkb-switch -W | while read -r line ; do
+      print_info
+    done
+  elif [ -n "${SWAYSOCK}" ] ; then
+    /usr/bin/swaymsg --type subscribe '["input"]' --monitor | while read -r line ; do
+      if [ "$(echo "${line}" | jq '.change' --raw-output)" = 'xkb_layout' ] ; then
+        print_info
+      fi
+    done
+  else
+    exit
+  fi
 }

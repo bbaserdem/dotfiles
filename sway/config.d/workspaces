@@ -10,7 +10,7 @@ set $ws1 0: 
 assign [class="qutebrowser"]    $ws1
 assign [class="firefox"]        $ws1
 # Desktop 2 is for work
-set $ws2 1: ﮂ
+set $ws2 1: 
 assign [class="MATLAB*"]        $ws2
 assign [class=".*Octave"]       $ws2
 assign [class="Spyder.*"]       $ws2
@@ -39,15 +39,15 @@ for_window [class="Qemu.*"]     layout tabbed
 for_window [class=".*Remmina"]  layout tabbed
 for_window [class="Thunar"]     layout tabbed
 # Desktop 6 is for terminal
-set $ws6 5: 
+set $ws6 5: 
 assign [class="kitty"]          $ws6
 # Desktop 7 is for viewing/reading stuff
-set $ws7 6: 
+set $ws7 6: 
 assign [class="Zathura"]        $ws7
 assign [class="Evince"]         $ws7
 for_window [class="Zathura"]    $ws7
 # Desktop 6 is for writing
-set $ws6 5: 
+set $ws8 7: 
 assign [class="libreoffice.*"]  $ws6
 assign [class="Soffice"]        $ws6
 # Desktop 9 is for hobby stuff

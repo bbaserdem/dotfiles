@@ -1,0 +1,8 @@
+#--------------------#
+#-----STATUS BAR-----#
+#--------------------#
+
+# Basic bar configuration using the Base16 variables.
+bar {
+    swaybar_command waybar
+}

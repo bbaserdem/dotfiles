@@ -23,4 +23,4 @@ include ~/.config/sway/config.d/color
 include ~/.config/sway/config.d/hardware
 include ~/.config/sway/config.d/keybinds
 include ~/.config/sway/config.d/workspaces
-include ~/.config/sway/config.d/bar
+include ~/.config/sway/config.d/waybar

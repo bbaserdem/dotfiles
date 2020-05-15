@@ -37,21 +37,18 @@
     "custom/clock": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n clock -a indigo",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/date": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n date -a indigo",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/mpd-song": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click":        "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 1",
@@ -63,7 +60,6 @@
     "custom/mpd-prev": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i prev -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i prev -b 1"
@@ -71,7 +67,6 @@
     "custom/mpd-rewind": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i rewind -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i rewind -b 1"
@@ -79,7 +74,6 @@
     "custom/mpd-fastforward": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i fastforward -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i fastforward -b 1"
@@ -87,7 +81,6 @@
     "custom/mpd-next": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i next -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i next -b 1"
@@ -95,7 +88,6 @@
     "custom/mpd-random": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i random -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i random -b 1"
@@ -103,7 +95,6 @@
     "custom/mpd-repeat": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i repeat -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i repeat -b 1"
@@ -111,7 +102,6 @@
     "custom/mpd-consume": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i consume -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i consume -b 1"
@@ -119,7 +109,6 @@
     "custom/mpd-single": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i single -a violet",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i single -b 1"
@@ -127,7 +116,6 @@
     "custom/keyboard": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -a cyan",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false,
       "on-click":        "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -b 1",
@@ -219,21 +207,18 @@
     "custom/fan": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n fan -a orange",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/coretemp": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n temperature -i cpu -a red",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
     "custom/gputemp": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n temperature -i gpu -a red",
       "return-type": "json",
-      "restart-interval": 60,
       "format": "{}",
       "tooltip": false
     },
@@ -307,13 +292,13 @@
     },
     "custom/uptime": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n uptime -a indigo",
+      "format": "{}",
       "return-type": "json",
       "restart-interval": 60,
-      "format": "{}",
       "tooltip": false
     },
     "custom/kernel": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n kernel -a brown -t",
+      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n kernel -a violet -t",
       "return-type": "json",
       "interval": "once",
       "format": "{}",

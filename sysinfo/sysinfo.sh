@@ -189,34 +189,48 @@ else
 fi
 
 #---EMULATE CLICKS---#
+# Convert numbers to text
+case "${clicksim}" in
+  1) clicksim='click_left' ;;
+  2) clicksim='click_middle' ;;
+  3) clicksim='click_right' ;;
+  4) clicksim='scroll_up' ;;
+  5) clicksim='scroll_down' ;;
+esac
+# Simulate click
 if [ -n "${clicksim}" ] ; then
   "${clicksim}"
   exit
 fi
 
-#---OUTPUT---#
-# Run the waiter loops if the module exists
-if [ "${testing}" = 'no' ] ; then
-  if type "print_loop" 2>/dev/null | grep --quiet 'function' ; then
-    print_loop &
-  else
-    echo "print_loop for ${name} is not available!"
-    exit 1
-  fi
-elif [ "${testing}" = 'yes' ] ; then
+#---ONCE---#
+if [ "${testing}" = 'yes' ] ; then
   print_info
   exit
+fi 
+
+#---OUTPUT---#
+# Exit if function does not exist
+if type "print_loop" 2>/dev/null | grep --invert-match --quiet 'function' ; then
+  echo "print_loop for ${name} is not available!"
+  exit 1
 fi
 
-#---LISTENING---#
-# Responde to inputs
-while read -r input_button ; do
-  case "$(echo "${input_button}" | jq --raw-output '.button')" in
-    1) "click_left"   || continue ;;
-    2) "click_middle" || continue ;;
-    3) "click_right"  || continue ;;
-    4) "scroll_up"    || continue ;;
-    5) "scroll_down"  || continue ;;
-    *) true ;;
-  esac
-done
+# If we are pango (i3blocks) then also listen
+# If not; then just run the print loop
+if [ "${markup}" = 'pango' ] ; then
+  print_loop &
+  #---LISTENING---# ; Responde to inputs
+  while read -r input_button ; do
+    case "$(echo "${input_button}" | jq --raw-output '.button' 2>/dev/null)" in
+      1) "click_left"   || continue ;;
+      2) "click_middle" || continue ;;
+      3) "click_right"  || continue ;;
+      4) "scroll_up"    || continue ;;
+      5) "scroll_down"  || continue ;;
+      *) true ;;
+    esac
+  done
+else
+  print_loop
+fi
