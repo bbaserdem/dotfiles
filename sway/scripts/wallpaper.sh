@@ -1,47 +1,62 @@
 #!/bin/dash
 # Script to change wallpaper of all running sway instances
+info="$(swaymsg -t get_outputs --raw)"
 
-bk_set () {
-    if [ -e "$1" ] ; then
-        _socket=$1
-    else
-        echo 'Socket not found'
-        exit 1
-    fi
+# Get the rectangle sizes
+x_sta="$(echo "${info}" | jq '.[] | .rect | (.x)')"
+x_end="$(echo "${info}" | jq '.[] | .rect | (.x + .width)')"
+y_sta="$(echo "${info}" | jq '.[] | .rect | (.y)')"
+y_end="$(echo "${info}" | jq '.[] | .rect | (.y + .height)')"
 
-    if [ $(hostname) = 'sbp-workstation' ]; then
-        # Set default directory
-        _dir="${HOME}/Pictures/Wallpapers/Dual/"
-        # Get random image and divide it
-        _img="${_dir}$(ls "${_dir}" | sort -R | head -n 1)"
-        convert $_img -crop 50%x100% +repage /tmp/bg_%d.jpg
-        _img1='/tmp/bg_0.jpg'
-        _img2='/tmp/bg_1.jpg'
-        # Get monitors
-        _mon1=$(swaymsg -s $_socket -t get_outputs | jq '.[] | select(."rect"."x"==0) | ."name"' -r | head -n 1)
-        _mon2=$(swaymsg -s $_socket -t get_outputs | jq '.[] | select(."rect"."x"!=0) | ."name"' -r | head -n 1)
-        # Set background
-        swaymsg --socket $_socket "output ${_mon1} bg ${_img1} stretch"
-        swaymsg --socket $_socket "output ${_mon2} bg ${_img2} stretch"
+# Get the full size
+x_max="$(echo "${x_end}" | sort | tail -n 1)"
+y_max="$(echo "${y_end}" | sort | tail -n 1)"
+dimmax="${x_max}x${y_max}"
 
-    else
-        # Set default directory
-        _dir="${HOME}/Pictures/Wallpapers/"
-        # Operate on all monitors
-        swaymsg -s $_socket -t get_outputs -r | jq '.[]."name"' -r | while read -r _mon ; do
-            _img="${_dir}$(ls "${_dir}" | sort -R | head -n 1)"
-            swaymsg -s $_socket "output ${_mon} bg ${_img} stretch"
-        done
-    fi
+# Set a theme
+theme=''
+if [ -n "${1}" ] && [ ! -d "${1}" ] ; then
+    theme="${1}"
+elif [ -n "${2}" ] ; then
+    theme="${2}"
+fi
+
+imfind_dir () {
+    find "$1" -type f -a '(' \
+      -iname "${theme}*.jpg"  -o \
+      -iname "${theme}*.jpeg" -o \
+      -iname "${theme}*.png" ')' -print 2>/dev/null \
+      | shuf -n 1 -
 }
-
-while getopts ':a' _opt ; do
-    if [ "$_opt" = 'a' ] ; then
-        find /run/ -name 'sway-ipc*' 2>/dev/null | while read -r _soc ; do
-            bk_set $_soc
-        done
+# Try to find image; if a dir is specified
+if [ -n "${SBP_WPAPER_DIR}" ] && [ -d "${SBP_WPAPER_DIR}" ]; then
+    if [ -d "${SBP_WPAPER_DIR}/${dimmax}" ] ; then
+        wallp="$(imfind_dir "${SBP_WPAPER_DIR}/${dimmax}")"
+    else
+        wallp="$(imfind_dir "${SBP_WPAPER_DIR}")"
     fi
-    exit 0
-done
+# If the dir is not specified; try to find one in other locations
+else
+    # Check if a directory was given as a positional argument
+    if [ -n "${1}" ] && [ -d "${1}" ] ; then
+        wallp="$(imfind_dir "${1}")"
+    elif [ -d '/usr/share/backgrounds' ] ; then
+        wallp="$(imfind_dir '/usr/share/backgrounds')"
+    elif [ -d "${HOME}/Pictures/Wallpapers" ] ; then
+        wallp="$(imfind_dir "${HOME}/Pictures/Wallpapers")"
+    fi
+fi
 
-bk_set $SWAYSOCK
+if [ -z "${wallp}" ] ; then
+    echo "No image was found"
+    exit 3
+fi
+
+# Save the background location, for quick setting in the future
+if [ -n "${XDG_CACHE_HOME}" ] && [ -d "${XDG_CACHE_HOME}" ] ; then 
+    mkdir -p "${XDG_CACHE_HOME}/wpaper"
+fi
+ln -sf "${wallp}" "${XDG_CACHE_HOME}/wpaper/last_wallpaper"
+
+# Splice and set image as background
+
