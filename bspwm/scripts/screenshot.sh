@@ -13,6 +13,7 @@
 
 # Get the screenshots directory
 screendir="${HOME}/Pictures/Screenshots"
+if [ ! -e "${screendir}" ] ; then mkdir -p "${screendir}" ; fi
 timestamp="$(date +%Y-%m-%d_%H:%M:%S)"
 
 mode='screen'
@@ -76,9 +77,10 @@ case "${mode}" in
     fi
     ;;
   sample)
-    rgb="$(maim -st 0 | convert - -resize 1x1\! -format '%[pixel:p{0,0}]' info:-)"
-    echo "${rgb}" | xclip -selection clipboard -t image/png
-      notify-send --icon screengrab "Color sample" "${rgb}, copied to clipboard"
+    out="$(maim -st 0 | convert - -resize 1x1\! -format '%[pixel:p{0,0}]' txt:-)"
+    hex="$(echo "${_out}" | sed --silent 's|^.*\(#[a-f,A-F,0-9]\+\).*$|\1|p')"
+    echo "${hex}" | xclip -selection clipboard
+      notify-send --icon screengrab "Color sample" "${hex}, copied to clipboard"
     ;;
   *)
     echo "Not configured yet"

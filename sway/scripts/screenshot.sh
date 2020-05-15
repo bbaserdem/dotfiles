@@ -1,65 +1,87 @@
 #!/bin/dash
+# This script gets a screenshot; with a couple possible options
 
-# Create parent directory
-_loc=${HOME}/Pictures/Screenshots
-mkdir -p "${_loc}"
+# Allows the MODE flag which;
+# * Enables all screen capture (default)
+# * Enables current active window capture
+# * Enables a rectangular selection to be captured
+# * Enables to get the pixel color value underneath the cursor
+#   (only available with TARGET=clipboard)
+# Allows a CLIPBOARD flag which copies to clipboard
+#   (as opposed to saving the file in the screenshots directory)
 
-# Get lexicographical date
-_now="$(date +%Y-%m-%d_%H:%M:%S)"
 
-if [ -z "$1" ] || [ "$1" = "--full" ]; then
-    # Get a full screenshot
-    _file="${_now}.png"
-    # Clipboard copy
-    if [ "$2" = "--clipboard" ] ; then
-        grim - | wl-copy
-        notify-send "Screenshot" "Full screenshot, copied to clipboard" -t 5000
-    # Save to file
-    else
-        grim "${_loc}/${_file}"
-        echo "Screenshot Full screenshot, saved at:\n${_file}"
-        notify-send "Screenshot" "Full screenshot, saved at:\n${_file}" -t 5000 -i "${_loc}/${_file}"
+# Get the screenshots directory
+screendir="${HOME}/Pictures/Screenshots"
+timestamp="$(date +%Y-%m-%d_%H:%M:%S)"
+
+mode='screen'
+target='file'
+
+while getopts "m:c" option ; do
+  case "${option}" in
+    m)  if [ "${OPTARG}" = 'screen' ] ; then mode="${OPTARG}"
+      elif [ "${OPTARG}" = 'active' ] ; then mode="${OPTARG}"
+      elif [ "${OPTARG}" = 'select' ] ; then mode="${OPTARG}"
+      elif [ "${OPTARG}" = 'sample' ] ; then mode="${OPTARG}"
+      else echo "Invalid mode argument \"${OPTARG}\""
+      fi ;;
+    c) target='clipboard' ;;
+    *) echo "Invalid flag" ;;
+  esac
+done
+
+case "${mode}" in
+  screen)
+    output="${screendir}/${timestamp}-screenshot.png"
+    if [ "${target}" = 'file' ] ; then
+      grim "${output}"
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot" "Saved to $(basename "${output}")"
+    elif [ "${target}" = 'clipboard' ] ; then
+      grim - | wl-copy
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot" "Copied to clipboard."
     fi
-elif [ "$1" = "--window" ] ; then
-    # Get info of focused window
-    _window="$(swaymsg -t get_tree | jq '.. | (.nodes? // empty)[] | select(.focused and .pid)')"
-    # Get name, for saving
-    _name="$(echo "${_window}" | jq -r '.app_id')"
-    # Get window geometry
-    _geom="$(echo "${_window}" | jq -r '.rect | "\(.x),\(.y) \(.width)x\(.height)"')"
-
-    _file="${_now}-${_name}.png"
-    # Copy to clipboard
-    if [ "$2" = "--clipboard" ] ; then
-        grim -g "${_geom}" - | wl-copy
-        notify-send "Screenshot" "Active window screenshot,\ncopied to clipboard." -t 5000
-    # Or write to file
-    else
-        grim -g "${_geom}" "${_loc}/${_file}"
-        notify-send "Screenshot" "Active window screenshot, saved at\n${_file}" -t 5000 -i "${_loc}/${_file}"
+    ;;
+  active)
+    window="$(swaymsg -t get_tree | jq '.. | (.nodes? // empty)[] | select(.focused and .pid)')"
+    name="$(echo "${window}" | jq -r '.app_id')"
+    geom="$(echo "${window}" | jq -r '.rect | "\(.x),\(.y) \(.width)x\(.height)"')"
+    if [ "${name}" = '~' ] ; then name='TERM' ; fi
+    output="${screendir}/${timestamp}-${name}.png"
+    if [ "${target}" = 'file' ] ; then
+      grim -g "${geom}" "${output}"
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot (Window)" "Saved to $(basename "${output}")"
+    elif [ "${target}" = 'clipboard' ] ; then
+      grim -g "${geom}" - | wl-copy
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot (Window)" "Copied to clipboard"
     fi
-elif [ "$1" = "--region" ] ; then
-    # Get the box of desire
-    _geom="$(slurp)"
-    _file="${_now}-box.png"
-    # Copy to clipboard
-    if [ "$2" = "--clipboard" ] ; then
-        grim -g "${_loc}/${_geom}" - | wl-copy
-        notify-send "Screenshot" "Box ${_geom} screenshot,\ncopied to clipboard." -t 5000
-    # Save file
-    else
-        grim -g "${_geom}" "${_loc}/${_file}"
-        notify-send "Screenshot" "Box ${_geom} screenshot, saved at\n${_file}" -t 5000 -i "${_loc}/${_file}"
+    ;;
+  select)
+    geom="$(slurp)"
+    output="${screendir}/${timestamp}-loc:${geom}.png"
+    if [ "${target}" = 'file' ] ; then
+      grim -g "${geom}" "${output}"
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot (Selection)" "Saved to $(basename "${output}")"
+    elif [ "${target}" = 'clipboard' ] ; then
+      grim -g "${geom}" - | wl-copy
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot (Selection)" "Copied to clipboard"
     fi
-elif [ "$1" = "--colorpicker" ] ; then
-    # Get the pixel
-    _geom="$(slurp -p)"
-    # Use imagemagick to extract data to text
-    _out="$(grim -g "${_geom}" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:-)"
-    # Search text for hex strings
-    _hex="$(echo "${_out}" | sed --silent 's|^.*\(#[a-f,A-F,0-9][a-f,A-F,0-9]*\).*$|\1|p')"
-    # Copy to clipboard
-    echo"${_hex}" | wl-copy
-    # Pop notification
-    notify-send "Color: ${_hex}" "${_hex} copied to clipboard" -t 30000
-fi
+    ;;
+  sample)
+    geom="$(slurp)"
+    out="$(grim -g "${geom}" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:-)"
+    hex="$(echo "${out}" | sed --silent 's|^.*\(#[a-f,A-F,0-9]\+\).*$|\1|p')"
+    echo "${hex}" | wl-copy
+      notify-send --icon screengrab "Color sample" "${hex}, copied to clipboard"
+    ;;
+  *)
+    echo "Not configured yet"
+    exit 1
+    ;;
+esac
