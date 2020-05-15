@@ -58,8 +58,8 @@ super + Escape
     /usr/bin/xset s activate
 
 # Screenshot
-Print + {_,shift,alt}
-    maim {_,-i $(xdotool getactivewindow),-s} $HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png
+Print + {_,shift} + {_,ctrl,alt}
+    $XDG_CONFIG_HOME/bspwm/scripts/screenshot.sh { ,-c} {-m screen,-m select,-m active}
 
 # Reload config files
 super + shift + Escape

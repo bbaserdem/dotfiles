@@ -56,7 +56,7 @@
     # If >0, defines max icon size
     max_icon_size = 32
     # Paths where icons will be drawn from
-    icon_path = /usr/share/icons/Papirus/48x48/
+    icon_path = /usr/share/icons/Papirus-Dark/32x32/status:/usr/share/icons/Papirus-Dark/32x32/devices:/usr/share/icons/Papirus-Dark/32x32/apps
     # If true, rrecalled notifications will not time out
     sticky_history = yes
     # Max number of notification to be kept in history

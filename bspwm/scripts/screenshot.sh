@@ -1,0 +1,87 @@
+#!/bin/dash
+# This script gets a screenshot; with a couple possible options
+
+# Allows the MODE flag which;
+# * Enables all screen capture (default)
+# * Enables current active window capture
+# * Enables a rectangular selection to be captured
+# * Enables to get the pixel color value underneath the cursor
+#   (only available with TARGET=clipboard)
+# Allows a CLIPBOARD flag which copies to clipboard
+#   (as opposed to saving the file in the screenshots directory)
+
+
+# Get the screenshots directory
+screendir="${HOME}/Pictures/Screenshots"
+timestamp="$(date +%Y-%m-%d_%H:%M:%S)"
+
+mode='screen'
+target='file'
+
+while getopts "m:c" option ; do
+  case "${option}" in
+    m)  if [ "${OPTARG}" = 'screen' ] ; then mode="${OPTARG}"
+      elif [ "${OPTARG}" = 'active' ] ; then mode="${OPTARG}"
+      elif [ "${OPTARG}" = 'select' ] ; then mode="${OPTARG}"
+      elif [ "${OPTARG}" = 'sample' ] ; then mode="${OPTARG}"
+      else echo "Invalid mode argument \"${OPTARG}\""
+      fi ;;
+    c) target='clipboard' ;;
+    *) echo "Invalid flag" ;;
+  esac
+done
+
+case "${mode}" in
+  screen)
+    output="${screendir}/${timestamp}-screenshot.png"
+    if [ "${target}" = 'file' ] ; then
+      maim --quality 1 "${output}"
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot" "Saved to $(basename "${output}")"
+    elif [ "${target}" = 'clipboard' ] ; then
+      maim --quality 1 \
+        | xclip -selection clipboard -t image/png
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot" "Copied to clipboard."
+    fi
+    ;;
+  active)
+    wid="$(xdotool getactivewindow)"
+    name="$(xprop -id "${wid}" | awk '/WM_CLASS\(STRING\)/ {print $4}' | sed 's|"||g')"
+    if [ "${wname}" = '~' ] ; then wname='TERM' ; fi
+    output="${screendir}/${timestamp}-${name}.png"
+    if [ "${target}" = 'file' ] ; then
+      maim --quality 1 --window "${wid}" "${output}"
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot (Window)" "Saved to $(basename "${output}")"
+    elif [ "${target}" = 'clipboard' ] ; then
+      maim --quality 1 --window "${wid}" \
+        | xclip -selection clipboard -t image/png
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot (Window)" "Copied to clipboard"
+    fi
+    ;;
+  select)
+    geom="$(slop)"
+    output="${screendir}/${timestamp}-loc:${geom}.png"
+    if [ "${target}" = 'file' ] ; then
+      maim --quality 1 --geometry "${geom}" "${output}"
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot (Selection)" "Saved to $(basename "${output}")"
+    elif [ "${target}" = 'clipboard' ] ; then
+      maim --quality 1 --geometry "${geom}" \
+        | xclip -selection clipboard -t image/png
+      canberra-gtk-play -i screen-capture &
+      notify-send --icon screengrab "Screenshot (Selection)" "Copied to clipboard"
+    fi
+    ;;
+  sample)
+    rgb="$(maim -st 0 | convert - -resize 1x1\! -format '%[pixel:p{0,0}]' info:-)"
+    echo "${rgb}" | xclip -selection clipboard -t image/png
+      notify-send --icon screengrab "Color sample" "${rgb}, copied to clipboard"
+    ;;
+  *)
+    echo "Not configured yet"
+    exit 1
+    ;;
+esac

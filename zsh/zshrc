@@ -16,18 +16,11 @@ fi
 autoload bashcompinit
 bashcompinit -d "${XDG_CACHE_HOME}/zsh"
 
-gitsync () {
-    [ -z "${1}" ] && $1="$(pwd)"
-    git -C $1 pull
-    git -C $1 add -A
-    git -C $1 commit -m "Auto-sync: $(date +%Y-%m-%d_%H:%M:%S)"
-    git -C $1 push
-}
-
+# Aliases
 wttr_weather () {
     if [ -z "${1}" ]
     then
-        curl 'https://wttr.in/?w'
+        curl 'https://wttr.in/?m'
     else
         curl 'https://wttr.in/'"$(echo $1)"
     fi
@@ -35,7 +28,6 @@ wttr_weather () {
 
 # Aliases
 alias config='git -C $XDG_CONFIG_HOME'
-alias config-sync='gitsync $XDG_CONFIG_HOME'
 alias py='bpython'
 alias vim='nvim'
 alias mutt='neomutt'
