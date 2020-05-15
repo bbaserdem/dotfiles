@@ -60,6 +60,8 @@ super + Escape
 # Screenshot
 Print + {_,shift} + {_,ctrl,alt}
     $XDG_CONFIG_HOME/bspwm/scripts/screenshot.sh { ,-c} {-m screen,-m select,-m active}
+Print + super
+    $XDG_CONFIG_HOME/bspwm/scripts/screenshot.sh -m sample
 
 # Reload config files
 super + shift + Escape

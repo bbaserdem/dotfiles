@@ -52,13 +52,17 @@ bindsym $Meta+c                 exec "~/.config/sway/scripts/wallpaper.sh"
 # Screen lock
 bindsym $Meta+Escape            exec "~/.config/sway/scripts/lock.sh"
 
-# Screenshot
-bindsym Print                   exec "~/.config/sway/scripts/screenshot.sh --full"
-bindsym Shift+Print             exec "~/.config/sway/scripts/screenshot.sh --window"
-bindsym $Alt+Print              exec "~/.config/sway/scripts/screenshot.sh --region"
-bindsym $Meta+Print             exec "~/.config/sway/scripts/screenshot.sh --full --clipboard"
-bindsym $Meta+Shift+Print       exec "~/.config/sway/scripts/screenshot.sh --window --clipboard"
-bindsym $Meta+$Alt+Print        exec "~/.config/sway/scripts/screenshot.sh --region --clipboard"
+# Screenshot region
+bindsym Print                   exec "~/.config/sway/scripts/screenshot.sh -m screen"
+bindsym Shift+Print             exec "~/.config/sway/scripts/screenshot.sh -m screen -c"
+# Screenshot the active window
+bindsym $Alt+Print              exec "~/.config/sway/scripts/screenshot.sh -m active"
+bindsym Shift+$Alt+Print        exec "~/.config/sway/scripts/screenshot.sh -m active -c"
+# Screenshot the selection
+bindsym Control+Print           exec "~/.config/sway/scripts/screenshot.sh -m select"
+bindsym Shift+Control+Print     exec "~/.config/sway/scripts/screenshot.sh -m select -c"
+# Color sample
+bindsym $Meta+Print             exec "~/.config/sway/scripts/screenshot.sh -m sample"
 
 # reload the configuration file
 bindsym $Meta+Shift+Escape      exec "/usr/bin/swaymsg reload"
