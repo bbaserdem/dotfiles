@@ -1,0 +1,5 @@
+profile {
+    output "Ancor Communications Inc VS278 GCLMQS125858" mode 1920x1080 position 0,500
+    output "Ancor Communications Inc VS278 G4LMQS001714" mode 1920x1080 position 1920,0 transform 270
+    exec $XDG_CONFIG_HOME/sway/scripts/wallpaper.sh
+}
