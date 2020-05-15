@@ -1,11 +1,10 @@
 #!/bin/dash
 # Script to change wallpaper of all running sway instances
 info="$(swaymsg -t get_outputs --raw)"
+name="$(echo "${info}" | jq --raw-output '.[] | .name')"
 
-# Get the rectangle sizes
-x_sta="$(echo "${info}" | jq '.[] | .rect | (.x)')"
+# Get the rectangle edge info
 x_end="$(echo "${info}" | jq '.[] | .rect | (.x + .width)')"
-y_sta="$(echo "${info}" | jq '.[] | .rect | (.y)')"
 y_end="$(echo "${info}" | jq '.[] | .rect | (.y + .height)')"
 
 # Get the full size
@@ -53,10 +52,23 @@ if [ -z "${wallp}" ] ; then
 fi
 
 # Save the background location, for quick setting in the future
+cache_dir="${XDG_CACHE_HOME}/wpaper"
 if [ -n "${XDG_CACHE_HOME}" ] && [ -d "${XDG_CACHE_HOME}" ] ; then 
     mkdir -p "${XDG_CACHE_HOME}/wpaper"
 fi
-ln -sf "${wallp}" "${XDG_CACHE_HOME}/wpaper/last_wallpaper"
+ln -sf "${wallp}" "${cache_dir}/last_wallpaper"
 
-# Splice and set image as background
-
+# Operate on all the monitors
+for monitor in $name ; do
+  # Parse the proper WxH+x+y for this monitor
+  res="$(echo "${info}" | jq --raw-output \
+    '.[] | select(.name == "'"${monitor}"'") | .rect | (.width|tostring) + "x" + (.height|tostring) + "+" + (.x|tostring) + "+" + (.y|tostring)')"
+  # Create the temporary splice
+  thisfile="${cache_dir}/${monitor}.png"
+  if [ -e "${thisfile}" ] ; then
+    rm "${thisfile}"
+  fi
+  convert "${wallp}" -crop "${res}" +repage "${thisfile}"
+  # Apply this wallpaper
+  swaymsg output "${monitor}" bg "${thisfile}" fill
+done

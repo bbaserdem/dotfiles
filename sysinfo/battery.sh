@@ -15,6 +15,11 @@ trap 'kill 0' EXIT
 # Battery module;
 #  * Defaults to battery id 0
 #  * Does not have any functions
+
+# On the PC; default to pwrstat interface
+if [ "$(hostname)" = 'sbp-workstation' ] ; then
+  instance='cyberpower'
+fi
 if [ -z "${SYSINFO_BAT_POLL}" ] ; then
   SYSINFO_BAT_POLL=60
 fi
@@ -27,51 +32,68 @@ print_info () {
     bid="${instance}"
   fi
   # Get info on battery state
-  bat="$(acpi --battery    2>/dev/null | grep "Battery ${bid}" | head -n 1)"
-  ada="$(acpi --ac-adapter 2>/dev/null | grep "Adapter ${bid}" | head -n 1)"
-  # Return with error code early if there is no battery
-  if [ -z "${bat}" ] ; then
-    empty_output
-    exit 1
-  fi
-  # Write important info to variables
-  stat="$(echo "${bat}" | sed 's|Battery [0-9]: \([ ,A-Z,a-z]*\),.*|\1|')"
-  perc="$(echo "${bat}" | sed 's|.*, \([0-9]\+\)%.*|\1|')"
-  # Change the front icon to capacity; with sign if it's charging
-  if [ "${stat}" = 'Charging' ] ; then
-    if   [ "${perc}" -gt 99 ] ; then col="${base0B}" ; pre=" " ; class='good'
-    elif [ "${perc}" -ge 90 ] ; then col="${base0B}" ; pre=" " ; class='good'
-    elif [ "${perc}" -ge 80 ] ; then col="${base0B}" ; pre=" " ; class='good'
-    elif [ "${perc}" -ge 60 ] ; then col="${base0A}" ; pre=" " ; class='ok'
-    elif [ "${perc}" -ge 40 ] ; then col="${base0A}" ; pre=" " ; class='ok'
-    elif [ "${perc}" -ge 30 ] ; then col="${base09}" ; pre=" " ; class='warn'
-    elif [ "${perc}" -ge 20 ] ; then col="${base08}" ; pre=" " ; class='low'
-    else                             col="${base08}" ; pre=" " ; class='low'
+  if [ "${instance}" = 'cyberpower' ] ; then
+    info="$(sudo /usr/bin/pwrstat -status)"
+    perc="$(echo "${info}" | awk '/Battery Capacity/  {print $3}')"
+    time="$(echo "${info}" | awk '/Remaining Runtime/ {print $3}')"
+    from="$(echo "${info}" | awk '/Power Supply by/   {print $4,$5}')"
+    # Set the prefix to source
+    if [ "${from}" = 'Utility Power' ] ; then
+      pre='臘 '
+    else
+      pre=' '
     fi
+    # Clear suffix
+    suf=''
+    # Set the text
+    txt="${perc} (${time} m)"
   else
-    if   [ "${perc}" -ge 95 ] ; then col="${base0B}" ; pre=" " ; class='good'
-    elif [ "${perc}" -ge 90 ] ; then col="${base0B}" ; pre=" " ; class='good'
-    elif [ "${perc}" -ge 80 ] ; then col="${base0B}" ; pre=" " ; class='good'
-    elif [ "${perc}" -ge 70 ] ; then col="${base0A}" ; pre=" " ; class='ok'
-    elif [ "${perc}" -ge 60 ] ; then col="${base0A}" ; pre=" " ; class='ok'
-    elif [ "${perc}" -ge 50 ] ; then col="${base09}" ; pre=" " ; class='warn'
-    elif [ "${perc}" -ge 40 ] ; then col="${base09}" ; pre=" " ; class='warn'
-    elif [ "${perc}" -ge 30 ] ; then col="${base08}" ; pre=" " ; class='low'
-    elif [ "${perc}" -ge 20 ] ; then col="${base08}" ; pre=" " ; class='low'
-    else                             col="${base08}" ; pre=" " ; class='low'
+    bat="$(acpi --battery    2>/dev/null | grep "Battery ${bid}" | head -n 1)"
+    ada="$(acpi --ac-adapter 2>/dev/null | grep "Adapter ${bid}" | head -n 1)"
+    # Return with error code early if there is no battery
+    if [ -z "${bat}" ] ; then
+      empty_output
+      exit 1
     fi
-  fi
-  txt="${perc}"
-  # Check if time info is available, and add it to text if it is
-  if echo "${bat}" | grep -q -e 'until charged' -e 'remaining' ; then
-    txt="${perc}, $(echo "${bat}" | awk '{print $5}' \
-      | sed 's|\([0-9]\+:[0-9]\+\):[0-9]\+|\1|')"
-  fi
-  # Make the suffix into connected/not connected icon
-  if [ "$(echo "${ada}" | awk '{print $3}')" = 'on-line' ] ; then
-    suf=" ﮣ"
-  else
-    suf=" ﮤ"
+    # Write important info to variables
+    stat="$(echo "${bat}" | sed 's|Battery [0-9]: \([ ,A-Z,a-z]*\),.*|\1|')"
+    perc="$(echo "${bat}" | sed 's|.*, \([0-9]\+\)%.*|\1|')"
+    # Change the front icon to capacity; with sign if it's charging
+    if [ "${stat}" = 'Charging' ] ; then
+      if   [ "${perc}" -gt 99 ] ; then col="${base0B}" ; pre=" " ; class='good'
+      elif [ "${perc}" -ge 90 ] ; then col="${base0B}" ; pre=" " ; class='good'
+      elif [ "${perc}" -ge 80 ] ; then col="${base0B}" ; pre=" " ; class='good'
+      elif [ "${perc}" -ge 60 ] ; then col="${base0A}" ; pre=" " ; class='ok'
+      elif [ "${perc}" -ge 40 ] ; then col="${base0A}" ; pre=" " ; class='ok'
+      elif [ "${perc}" -ge 30 ] ; then col="${base09}" ; pre=" " ; class='warn'
+      elif [ "${perc}" -ge 20 ] ; then col="${base08}" ; pre=" " ; class='low'
+      else                             col="${base08}" ; pre=" " ; class='low'
+      fi
+    else
+      if   [ "${perc}" -ge 95 ] ; then col="${base0B}" ; pre=" " ; class='good'
+      elif [ "${perc}" -ge 90 ] ; then col="${base0B}" ; pre=" " ; class='good'
+      elif [ "${perc}" -ge 80 ] ; then col="${base0B}" ; pre=" " ; class='good'
+      elif [ "${perc}" -ge 70 ] ; then col="${base0A}" ; pre=" " ; class='ok'
+      elif [ "${perc}" -ge 60 ] ; then col="${base0A}" ; pre=" " ; class='ok'
+      elif [ "${perc}" -ge 50 ] ; then col="${base09}" ; pre=" " ; class='warn'
+      elif [ "${perc}" -ge 40 ] ; then col="${base09}" ; pre=" " ; class='warn'
+      elif [ "${perc}" -ge 30 ] ; then col="${base08}" ; pre=" " ; class='low'
+      elif [ "${perc}" -ge 20 ] ; then col="${base08}" ; pre=" " ; class='low'
+      else                             col="${base08}" ; pre=" " ; class='low'
+      fi
+    fi
+    txt="${perc}"
+    # Check if time info is available, and add it to text if it is
+    if echo "${bat}" | grep -q -e 'until charged' -e 'remaining' ; then
+      txt="${perc}, $(echo "${bat}" | awk '{print $5}' \
+        | sed 's|\([0-9]\+:[0-9]\+\):[0-9]\+|\1|')"
+    fi
+    # Make the suffix into connected/not connected icon
+    if [ "$(echo "${ada}" | awk '{print $3}')" = 'on-line' ] ; then
+      suf=" ﮣ"
+    else
+      suf=" ﮤ"
+    fi
   fi
   # Print string
   formatted_output

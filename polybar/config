@@ -387,7 +387,7 @@ scroll-up = ~/.config/sysinfo/sysinfo.sh -n keyboard -i scroll_up
 scroll-down = ~/.config/sysinfo/sysinfo.sh -n keyboard -i scroll_down
 [module/battery-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n battery
+exec = ~/.config/sysinfo/sysinfo.sh -n battery -a yellow
 
 ;======================;
 ;   MODULES-BOT-LEFT   ;
