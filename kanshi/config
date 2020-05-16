@@ -1,5 +1,38 @@
-profile {
+profile Workstation {
+    # Static workstation config
     output "Ancor Communications Inc VS278 GCLMQS125858" mode 1920x1080 position 0,500
     output "Ancor Communications Inc VS278 G4LMQS001714" mode 1920x1080 position 1920,0 transform 270
     exec $XDG_CONFIG_HOME/sway/scripts/wallpaper.sh
+}
+
+profile Laptop {
+    # Laptop config with no external monitors
+    output "Laptop screen name" enable
+    exec $XDG_CONFIG_HOME/sway/scripts/wallpaper.sh
+    exec swaymsg bindswitch lid:on output eDP-1 disable
+    exec swaymsg bindswitch lid:off output eDP-1 enable
+}
+
+profile Homestation {
+    # Homestation config with no external monitors
+    output "Homestation laptop name" enable
+    exec $XDG_CONFIG_HOME/sway/scripts/wallpaper.sh
+    exec swaymsg bindswitch --reload --locked lid:on exec eDP disable
+    exec swaymsg bindswitch --reload --locked lid:off exec eDP enable
+}
+
+profile Homestation-Docked {
+    # Homestation when lid is OFF with the UHD monitor
+    output "Samsung UHD" mode 3840x2160 scale 2
+    exec $XDG_CONFIG_HOME/sway/scripts/wallpaper.sh
+    exec swaymsg bindswitch lid:on exec eDP disable
+    exec swaymsg bindswitch lid:off exec eDP enable
+}
+profile Homestation-Docked-Dual {
+    # Homestation when lid is ON with the UHD monitor
+    output "My monitor here" mode 3840x2160 scale 2
+    output "UHD monitor here" mode 1920x1080 position 1920,0
+    exec $XDG_CONFIG_HOME/sway/scripts/wallpaper.sh
+    exec swaymsg bindswitch lid:on exec eDP disable
+    exec swaymsg bindswitch lid:off exec eDP enable
 }
