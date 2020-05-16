@@ -3,3 +3,8 @@ profile {
     output "Ancor Communications Inc VS278 G4LMQS001714" mode 1920x1080 position 1920,0 transform 270
     exec $XDG_CONFIG_HOME/sway/scripts/wallpaper.sh
 }
+
+profile {
+    output "Chimei Innolux Corporation 0x14D5 0x00000000" enable
+    exec $XDG_CONFIG_HOME/sway/scripts/wallpaper.sh
+}

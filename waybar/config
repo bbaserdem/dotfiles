@@ -2,12 +2,10 @@
   {
     "position": "top",
     "height": 20,
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/window", "idle_inhibitor"],
+    "modules-left": ["sway/workspaces", "idle_inhibitor", "sway/mode", "sway/window"],
     "modules-center": ["custom/clock", "custom/date"],
     "modules-right": [
-      "custom/mpd-song",
-      "custom/mpd-prev", "custom/mpd-rewind", "custom/mpd-fastforward", "custom/mpd-next",
-      "custom/mpd-random", "custom/mpd-repeat", "custom/mpd-single", "custom/mpd-consume",
+      "mpd",
       "custom/keyboard",
       "custom/battery"
     ],
@@ -15,24 +13,24 @@
       "all-outputs": true,
       "format": "{icon}",
       "disable-scroll": false,
-      "persistant_workspaces": {
+      "persistent_workspaces": {
         "0: ": [], "1: ": [], "2: ﳜ": [], "3: ": [], "4: ": [],
         "5: ": [], "6: ": [], "7: ": [], "8: ": [], "9: 漣": [] },
       "format-icons": {
         "0: ": "", "1: ": "", "2: ﳜ": "ﳜ", "3: ": "", "4: ": "",
         "5: ": "", "6: ": "", "7: ": "", "8: ": "", "9: 漣": "漣" }
     },
-    "sway/mode": {
-      "format": "{}"
-    },
-    "sway/window": {
-      "format": " {}",
-      "max-length": 50
-    },
     "idle_inhibitor": {
       "format": "{icon}",
       "tooltip": false,
       "format-icons": {"activated": "", "deactivated": "﯈" }
+    },
+    "sway/mode": {
+      "format": "{}"
+    },
+    "sway/window": {
+      "format": "  {}",
+      "max-length": 50
     },
     "custom/clock": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n clock -a indigo",
@@ -46,72 +44,18 @@
       "format": "{}",
       "tooltip": false
     },
-    "custom/mpd-song": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -a violet",
-      "return-type": "json",
-      "format": "{}",
+    "mpd": {
+      "interval": 5,
+      "unknown-tag": "",
+      "format": "<span color='#ba8baf'></span> {title}{artist} {stateIcon} {elapsedTime:%M:%S}/{totalTime:%M:%S} {repeatIcon} {randomIcon} {singleIcon} {consumeIcon}",
+      "format-stopped": "<span color='#ba8baf'></span> {stateIcon} {repeatIcon} {randomIcon} {singleIcon} {consumeIcon}",
+      "format-disconnected": "<span color='#ba8baf'>ﱙ</span>",
       "tooltip": false,
-      "on-click":        "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 1",
-      "on-click-middle": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 2",
-      "on-click-right":  "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 3",
-      "on-scroll-up":    "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 4",
-      "on-scroll-down":  "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i song -b 5"
-    },
-    "custom/mpd-prev": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i prev -a violet",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i prev -b 1"
-    },
-    "custom/mpd-rewind": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i rewind -a violet",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i rewind -b 1"
-    },
-    "custom/mpd-fastforward": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i fastforward -a violet",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i fastforward -b 1"
-    },
-    "custom/mpd-next": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i next -a violet",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i next -b 1"
-    },
-    "custom/mpd-random": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i random -a violet",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i random -b 1"
-    },
-    "custom/mpd-repeat": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i repeat -a violet",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i repeat -b 1"
-    },
-    "custom/mpd-consume": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i consume -a violet",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i consume -b 1"
-    },
-    "custom/mpd-single": {
-      "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i single -a violet",
-      "return-type": "json",
-      "format": "{}",
-      "tooltip": false,
-      "on-click": "~/.config/sysinfo/sysinfo.sh -m waybar -n mpd -i single -b 1"
+      "state-icons": {"playing": "", "paused":"契"},
+      "consume-icons": {"on": "<span color='#ba8baf'></span>", "off":""},
+      "random-icons": {"on": "<span color='#ba8baf'>列</span>", "off":"劣"},
+      "repeat-icons": {"on": "<span color='#ba8baf'>凌</span>", "off":"稜"},
+      "single-icons": {"on": "<span color='#ba8baf'>綾</span>", "off":"綾"}
     },
     "custom/keyboard": {
       "exec": "~/.config/sysinfo/sysinfo.sh -m waybar -n keyboard -a cyan",

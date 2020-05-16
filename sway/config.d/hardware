@@ -31,7 +31,5 @@ input type:keyboard {
 # However, enable lid events to turn off display and whatnot
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
-bindswitch --reload --locked lid:on output eDP disable
-bindswitch --reload --locked lid:off output eDP enable
 # Start and keep kanshi running
 exec_always pkill kanshi; exec kanshi
