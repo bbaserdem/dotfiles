@@ -152,6 +152,11 @@
 !/mpv
 !/mpv/mpv.conf
 
+# MULLVAD: Only grab the gui settings file
+!/Mullvad VPN
+!/Mullvad VPN/gui_settings.json
+/Mullvad VPN/**
+
 # NCMPCPP: Grab what I have created
 !/ncmpcpp
 !/ncmpcpp/config
