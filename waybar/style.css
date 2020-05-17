@@ -3,13 +3,13 @@
 * {
     border:         none;
     border-radius:  0px;
-    font-family:    "statusbar:style=Extra Condensed";
-    font-size:      12px;
+    font-family:    "Inconsolata:style=Extra Condensed";
+    font-size:      14px;
     min-height:     0;
 }
 window#waybar {
     background: @base01;
-    opacity: 0.75;
+    opacity: .75;
     border-bottom: 2px solid @base00;
     border-top: 2px solid @base00;
     color: @base04;
@@ -18,40 +18,48 @@ window#waybar.hidden {
     opacity: 0.25;
 }
 /* General formatting */
-#workspaces, #mode, #window, #idle-inhibitor, #custom-clock, #custom-date, #custom-mpd-song, #custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single, #custom-mpd-consume, #custom-keyboard, #custom-battery, #custom-speaker, #custom-microphone, #custom-backlight, #custom-memory, #custom-cpu, #custom-fan, #custom-coretemp, #custom-gputemp, #custom-rootfs, #custom-homefs, #custom-calendar, #custom-todo, #custom-gmail, #custom-rss, #custom-network, #custom-bandwidth, #custom-update, #custom-uptime, #custom-kernel, #tray {
+#workspaces, #mode, #window, #idle-inhibitor, #custom-clock, #custom-date, #mpd, #custom-keyboard, #custom-battery, #custom-speaker, #custom-microphone, #custom-backlight, #custom-memory, #custom-cpu, #custom-fan, #custom-coretemp, #custom-gputemp, #custom-rootfs, #custom-homefs, #custom-calendar, #custom-todo, #custom-gmail, #custom-rss, #custom-network, #custom-bandwidth, #custom-update, #custom-uptime, #custom-kernel, #tray {
     padding-top: 0px;
     padding-bottom: 0px;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-left: 2px;
+    padding-right: 2px;
     color: @base04;
     background: transparent;
     border-radius: 0px;
+    margin-top: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 0px;
+}
+/* MPD module spacing */
+#custom-mpd-song, #custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single {
+    margin-right: 0px;
+}
+#custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single, #custom-mpd-consume {
+    margin-left: 0px;
+}
+#custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single, #custom-mpd-consume {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+/* Custom colors for attention */
+*.mute {color: @base03;}
+*.paused {color: @base03;}
+*.urgent {color: @base09;}
+#idle_inhibitor.activated {color: @base0F;}
+/* Workspaces */
+#workspaces {
+    padding-left: 0px;
+    padding-right: 0px;
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
 }
-/* Custom colors for attention */
-*.mute {color: @base03;}
-*.urgent {color: @base09;}
-#idle_inhibitor.activated {color: @base0C;}
-/* Workspaces */
-#workspaces {
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-top: 4px;
-    margin-left: 4px;
-    margin-right: 4px;
-    margin-bottom: 4px;
-}
 #workspaces button {
     background: transparent;
     font-weight: bold;
-    border-radius: 0px;
-    margin-top: 0px;
-    margin-top: 0px;
-    margin-left: 3px;
-    margin-bottom: 3px;
     color: @base04;
     border-bottom: 2px solid @base04;
 }
@@ -82,7 +90,7 @@ window#waybar.hidden {
 #custom-battery.ok {
     border-bottom: 2px solid @base04;
 }
-#custom-cpu, #custom-email {
+#custom-cpu, #custom-gmail {
     border-top: 2px solid @base0A;
 }
 /* Border lines: GREEN */
@@ -107,7 +115,7 @@ window#waybar.hidden {
     border-top: 2px solid @base0D;
 }
 /* Border lines: VIOLET */
-#custom-mpd-song, #custom-mpd-prev, #custom-mpd-rewind, #custom-mpd-fastforward, #custom-mpd-next, #custom-mpd-random, #custom-mpd-repeat, #custom-mpd-single, #custom-mpd-consume {
+#mpd {
     border-bottom: 2px solid @base0E;
     padding-left: 0px;
     padding-right: 0px;
@@ -116,6 +124,9 @@ window#waybar.hidden {
     border-top: 2px solid @base0E;
 }
 /* Border lines: BROWN */
+#idle_inhibitor {
+    border-bottom: 2px solid @base0F;
+}
 #custom-rootfs, #custom-homefs, #custom-calendar {
     border-top: 2px solid @base0F;
 }

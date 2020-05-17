@@ -28,5 +28,4 @@ input type:keyboard {
 #---MONITORS---#
 #--------------#
 # Main monitor layout is to be done with kanshi
-# Restart kanshi; and keep kanshi running
 exec_always pkill kanshi; exec kanshi
