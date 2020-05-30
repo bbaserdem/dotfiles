@@ -33,20 +33,24 @@ print_info () {
   fi
   # Get info on battery state
   if [ "${instance}" = 'cyberpower' ] ; then
-    info="$(sudo /usr/bin/pwrstat -status)"
-    perc="$(echo "${info}" | awk '/Battery Capacity/  {print $3}')"
-    time="$(echo "${info}" | awk '/Remaining Runtime/ {print $3}')"
-    from="$(echo "${info}" | awk '/Power Supply by/   {print $4,$5}')"
-    # Set the prefix to source
-    if [ "${from}" = 'Utility Power' ] ; then
-      pre='臘 '
+    if [ ! -x '/usr/bin/upsc' ] ; then
+      pre='ﳧ '
+      txt=''
+      suf=''
     else
-      pre=' '
+      perc="$(/usr/bin/upsc cyberpower battery.charge)"
+      from="$(/usr/bin/upsc cyberpower ups.status)"
+      # Set the prefix to source
+      case "$(echo "${from}" | awk '{print $1}')" in
+        OL) pre='臘 ' ;;
+        OB) pre=' ' ;;
+        *) 
+      esac
+      # Clear suffix
+      suf=''
+      # Set the text
+      txt="${perc} "
     fi
-    # Clear suffix
-    suf=''
-    # Set the text
-    txt="${perc} (${time} m)"
   else
     bat="$(acpi --battery    2>/dev/null | grep "Battery ${bid}" | head -n 1)"
     ada="$(acpi --ac-adapter 2>/dev/null | grep "Adapter ${bid}" | head -n 1)"

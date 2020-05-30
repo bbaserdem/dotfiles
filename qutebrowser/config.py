@@ -38,10 +38,12 @@ c.content.geolocation = True
 c.downloads.location.prompt = True
 # c.content.cookies.store = False
 
+# Update adblock
 config.bind('<Ctrl-b>', 'adblock-update')
-config.bind('m', 'spawn --detach mpv {url}')
 # MPV to watch streams
+config.bind('m', 'spawn --detach mpv {url}')
 config.bind( 'M', 'hint links spawn --detach mpv {hint-url}')
+# Run rofi
 config.bind(',p', 'spawn --userscript qute-pass --dmenu-invocation rofi')
 config.bind(',P', 'spawn --userscript qute-pass --dmenu-invocation rofi --password-only')
 # Add quickmark

@@ -28,7 +28,7 @@ case $class in
     MATLAB*|*Octave|Spyder*)
         DESKTOP="${ws2}";;
     # Desktop 3: Video, media
-    mpv|smplayer|vlc|cantata)
+    mpv|smplayer|vlc|cantata|Kodi)
         DESKTOP="${ws3}";;
     # Desktop 4: Gaming
     Steam|Stepmania)

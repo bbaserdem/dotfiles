@@ -14,6 +14,8 @@ unlet autoload_plug_path
 call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 " Colorscheme
 Plug 'chriskempson/base16-vim'
+" Indentation tracker
+Plug 'Yggdroot/indentLine'
 " File browser(s)
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
@@ -58,6 +60,9 @@ call plug#end()
 " Fix for ANSI terminal colorscheme; should work with most terminals
 let base16colorspace=256
 
+"---indentLine---"
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 "---NERDTree---"
 " For automatically launching nerdtree at startup; enable this line
 "autocmd vimenter * NERDTree
@@ -98,7 +103,7 @@ call deoplete#custom#source('ale', 'rank', 999)
 let g:matlab_auto_mappings=0
 " Split options
 let g:matlab_server_launcher='tmux'
-let g:matlab_server_split='horizontal'
+let g:matlab_server_split='vertical'
 " Linter location
 let g:ale_matlab_mlint_executable='/opt/tmw/matlab/bin/glnxa64/mlint'
 

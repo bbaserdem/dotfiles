@@ -37,6 +37,9 @@ set ignorecase              " Make searching case insensitive
 set smartcase               " ... unless the query has capital letters.
 set scrolloff=5             " Make it so there are always lines below the cursor
 set wildignore=*.o,*~,*.pyc " Ignore these files in completion/search
+set cursorcolumn            " Highlight current column
+set cursorline              " Highlight current line
+set autoread                " Reload changed files
 
 "---Indentation---"
 " Double press of > and < will increase or decrease indentation
