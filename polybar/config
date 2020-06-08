@@ -109,7 +109,7 @@ modules-center = clock-script date-script
 modules-right =  mpd keyboard-script battery-script
 
 [bot]
-modules-left = audio-script microphone-script backlight-script memory cpu fan-script coretemp-script gputemp-script rootfs-script homefs-script
+modules-left = audio-script microphone-script backlight-script memory cpu fan-script coretemp-script gputemp-script rootfs-script homefs-script archive-script
 modules-center = calendar-script todo-script rss-script gmail-script
 modules-right = network-script bandwidth-script update-script uptime-script kernel-script
 
@@ -455,6 +455,9 @@ exec = ~/.config/sysinfo/sysinfo.sh -n disk -i root -a brown
 [module/homefs-script]
 inherit = module/skeleton
 exec = ~/.config/sysinfo/sysinfo.sh -n disk -i home -a brown
+[module/archive-script]
+inherit = module/skeleton
+exec = ~/.config/sysinfo/sysinfo.sh -n disk -i archive -a brown
 
 ;========================;
 ;   MODULES-BOT-MIDDLE   ;
