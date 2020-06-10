@@ -2,6 +2,6 @@
   email = baserdem.batuhan@gmail.com
   name = Batuhan Başerdem
 [core]
-	editor = nvim
+  editor = nvim
 [pull]
-	rebase = false
+  rebase = false

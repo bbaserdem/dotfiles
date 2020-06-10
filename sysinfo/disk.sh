@@ -37,6 +37,14 @@ print_info () {
     pre=' '
     dir="/home"
     txt="Home: "
+  elif [ "${instance}" = 'archive' ] ; then
+    pre=' '
+    dir="/media/archive"
+    txt="Archive: "
+    if [ ! -d "${dir}" ] ; then
+      print_empty
+      exit 1
+    fi
   else
     exit 1
   fi
