@@ -3,3 +3,5 @@
   name = Batuhan Başerdem
 [core]
 	editor = nvim
+[pull]
+	rebase = false
