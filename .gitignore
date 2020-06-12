@@ -70,6 +70,10 @@
 !/dunst
 !/dunst/dunstrc
 
+# FIREWALL: Get applet settings
+!/firewall
+!/firewall/**
+
 # FONTCONFIG: Accept the fontconfig file
 !/fontconfig
 !/fontconfig/fonts.conf
