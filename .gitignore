@@ -143,6 +143,7 @@
 
 # MATLAB: Only get config, and symlinks
 !/matlab
+# Grab all the symlinks so all the versions can shared together
 !/matlab/R2*
 !/matlab/matlab.prf
 !/matlab/matlab.settings

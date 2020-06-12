@@ -42,7 +42,7 @@ print_info () {
     dir="/home/archive"
     txt="Archive: "
     if [ ! -d "${dir}" ] ; then
-      print_empty
+      empty_output
       exit 1
     fi
   else
