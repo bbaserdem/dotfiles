@@ -1,10 +1,14 @@
 #!/bin/bash
 
 # Rename variables for easy access
+# This shows up as one of the subpropertios of WM_HINTS
 wid=$1
+# This is the SECOND string in WM_STRING
 class=$2
+# This is the FIRST string in WM_STRING
 instance=$3
-title="$(xwininfo -id "${wid}" | awk 'NR==2' | sed 's|.*"\(.*\)"$|\1|')"
+# This appears in WM_NAME
+name="$(xwininfo -id "${wid}" | awk 'NR==2' | sed 's|.*"\(.*\)"$|\1|')"
 
 # Defaults
 STATE=""
@@ -61,8 +65,8 @@ case $instance in
         ;;&
 esac
 
-# Title overrides
-case $title in
+# Window title overrides
+case "${name}" in
     # Override the dropdown terminal to be floating and sticky
     Dropdown*)
         FLAGS="sticky=on hidden=on"
@@ -80,7 +84,10 @@ case $title in
         DESKTOP="${ws4}"
         ;;
     # Save prompts do not go to a new desktop
-    Export*|Save*|Open*|Quit*|File*|Insert*|Confirm*|Playlist*|TabCompletionPopup|Leave*|*Overlay*)
+    Export*|Save*|Open*|Quit*|File*|Insert*|Confirm*|Playlist*)
+        DESKTOP=""
+        ;;
+    TabCompletionPopup|Leave*|*Overlay*|Select*|Import*)
         DESKTOP=""
         ;;
     # Zoom meeting go to remote
