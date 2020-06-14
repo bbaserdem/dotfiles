@@ -39,7 +39,7 @@ print_info () {
     txt="Home: "
   elif [ "${instance}" = 'archive' ] ; then
     pre=' '
-    dir="/media/archive"
+    dir="/home/archive"
     txt="Archive: "
     if [ ! -d "${dir}" ] ; then
       empty_output
