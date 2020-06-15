@@ -35,7 +35,7 @@ print_info () {
   # Get icon
   case "${intfc}" in
     eth*|en*) pre=' ' ;;
-    wifi|wl*) pre=' ' ;;
+    wifi*|wl*) pre=' ' ;;
     tether)   pre='禍 ' ;;
     blue*)    pre=' ' ;;
     lan*)     pre=' ' ;;
