@@ -41,13 +41,13 @@ print_info () {
     pre=' '
     dir="/home/archive"
     txt="Archive: "
-    if [ ! -d "${dir}" ] ; then
-      empty_output
-      exit 1
-    fi
-  else
+  fi
+  # Check if directory exists and is a mount point
+  if ! /bin/mountpoint --quiet "${dir}" ; then
+    empty_output
     exit 1
   fi
+  # Get filled percentage
   prc="$(df --human-readable --portability --local \
     | awk "{if(\$6 == \"${dir}\"){print substr(\$5, 1, length(\$5)-1)}}")"
   if [ "${prc}" -gt 90 ] ; then
