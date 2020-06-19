@@ -1,5 +1,5 @@
 #MATLAB Preferences
-#Mon Jun 15 10:04:13 EDT 2020
+#Thu Jun 18 10:06:46 EDT 2020
 ReplaceText=S
 RLHiddenB2_WB_2014b_1=I16376
 JavaMemHeapMax=I1024
@@ -57,14 +57,14 @@ EditorMCodeFoldCollapseFileOpencell=Bfalse
 DelimiterOptionsTypingMatchType=I3
 EditorAutoSaveReplaceExtension=Btrue
 EditorShowNewFilePrompt=Btrue
-EditorMRU8=S/home/sbp/Dropbox (Maestral)/lab_projects/bbaserde/MapSeq/src/+aux/pmkmp.m
-EditorMRU7=S/home/sbp/Dropbox (Maestral)/lab_projects/bbaserde/MapSeq/src/@mapseqData/getImgPrjReg.m
-EditorMRU6=S/home/sbp/Dropbox (Maestral)/lab_projects/bbaserde/MapSeq/src/+aux/red2cyan.m
-EditorMRU5=S/opt/tmw/MATLAB-2020a/toolbox/matlab/graph2d/title.m
-EditorMRU4=S/home/sbp/Dropbox (Maestral)/lab_projects/bbaserde/MapSeq/src/+aux/bezier.m
-EditorMRU3=S/home/sbp/Dropbox (Maestral)/lab_projects/bbaserde/MapSeq/src/megaScript_figure0.m
-EditorMRU2=S/home/sbp/Dropbox (Maestral)/lab_projects/bbaserde/MapSeq/src/megaScript_figure3.m
-EditorMRU1=S/home/sbp/Work/MapSeq/src/megaScript_figure3.m
+EditorMRU8=S/home/sbp/Dropbox (Maestral)/lab_projects/bbaserde/MapSeq/src/megaScript_figure3.m
+EditorMRU7=S/home/sbp/Work/MapSeq/src/megaScript_figure3.m
+EditorMRU6=S/home/sbp/Maestral/lab_projects/bbaserde/MapSeq/src/megaScript_figure3.m
+EditorMRU5=S/home/sbp/Maestral/lab_projects/bbaserde/MapSeq/src/megaScript_analysis.m
+EditorMRU4=S/home/sbp/Maestral/lab_projects/bbaserde/MapSeq/src/@mapseqData/getIpr.m
+EditorMRU3=S/home/sbp/Maestral/lab_projects/bbaserde/MapSeq/src/+aux/covEllipse.m
+EditorMRU2=S/home/sbp/Maestral/lab_projects/bbaserde/MapSeq/src/@mapseqData/mapseqData.m
+EditorMRU1=S/opt/tmw/MATLAB-2020a/toolbox/matlab/graphics/objectsystem/savefig.m
 EditorMCodeFoldCollapseFileOpenhelp-comments=Bfalse
 CommandWindowClearConfirmation=Btrue
 GeneralNumDisplay=Scompact
