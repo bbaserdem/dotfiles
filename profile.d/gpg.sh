@@ -8,4 +8,4 @@ if [ -n "${SSH_CONNECTION}" ] ;then
 fi
 
 # GPG config location
-export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+export GNUPGHOME="${HOME}/.local/gnupg"
