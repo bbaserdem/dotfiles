@@ -145,8 +145,6 @@
 !/matlab
 # Grab all the symlinks so all the versions can shared together
 !/matlab/R2*
-!/matlab/matlab.prf
-!/matlab/matlab.settings
 !/matlab/MLintDefaultSettings.txt
 
 # MPD: Only get config
