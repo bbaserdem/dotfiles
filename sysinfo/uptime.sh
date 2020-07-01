@@ -23,9 +23,9 @@ print_info () {
   # Get the hours:minutes; which is <1 or 2 numbers>:<2 numbers>
   min="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) minutes.*|\1|p')"
   hrs="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) hours.*|\1|p')"
-  day="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) days.*|\1, |p')"
-  sol="$(echo "${time}" | sed -n 's|.* \([0-9]\+\).*|\1, |p')"
-  txt="${sol}${day}${hrs}${min}"
+  day="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) days.*|\1 days, |p')"
+  sol="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) years.*|\1 years, |p')"
+  txt="${sol}${day}${hrs}:${min}"
   # Print string
   formatted_output
 }
