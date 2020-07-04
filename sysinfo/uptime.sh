@@ -25,7 +25,9 @@ print_info () {
   hrs="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) hours.*|\1|p')"
   day="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) days.*|\1 days, |p')"
   sol="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) years.*|\1 years, |p')"
+  if [ -z "${hrs}" ] ; then hrs='0'; fi
   txt="${sol}${day}${hrs}:${min}"
+  
   # Print string
   formatted_output
 }
