@@ -26,6 +26,8 @@ print_info () {
   day="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) days.*|\1 days, |p')"
   sol="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) years.*|\1 years, |p')"
   if [ -z "${hrs}" ] ; then hrs='0'; fi
+  if [ -z "${min}" ] ; then min='00'; fi
+  if echo ${min} | grep --quiet '^[0-9]$' ; then min="0${min}" ; fi
   txt="${sol}${day}${hrs}:${min}"
   
   # Print string
