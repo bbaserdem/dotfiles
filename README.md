@@ -1,47 +1,62 @@
+# LINUX CONFIG FILES
+
 This repo is my general unix configuration.
 This is my `.config` folder, but scripts regarding system setup are also kept here.
-I currently use Arch Linux, and Gentoo, and tried to make my config OS-Agnostic.
-I will try to expand to Linux Mint some time as well.
+I currently use Arch Linux, and Gentoo, and tried to make my config OS agnostic.
 
 # Issues
 
-This repository contains my UNIX user configuration.
+Current to-do items, with no order
 
-* Do hotplug monitor with udev for laptop
-* Do hibernation below 10% battery.
-* GPU temperatures using AMDGPU, its on the fancontrol page.
-* Make it so graphical prompts launch kitty instead of termite
+* Opening terminal switches desktop under all conditions. (???)
 * Build tmux alias with all my console programs
+* Fix DPMS cluster-fuck.
+* Zimfw theme change does not work well in framebuffer
+* Install & restore script needs to be bulletproof.
+* Keys, etc backup script
+
+# Restoration
+
+If restoring from a backup; run the `restore.sh`,
+either with the `~/$(hostname).tar.gz`,
+or by supplying the path to the argument.
+
+The following are restored;
+
+* GPG directory
+* Syncthing configuration
+* SSH keys
 
 # Installation
 
-To set up my personal system; do the following;\
+Couple stuff needs to be setup before the full config is working.
+These steps are followed in the [install script](/install.sh).
 
-* Set up git by `git config --global user.name "Batuhan Başerdem"` and
-`git config --global user.email "baserdem.batuhan@gmail.com"`
-* Retrieve my SSH keys.
-* Retrieve GPG keys.
-* Clone this repo to `~/.config`.
+* Repo should be cloned to `~/.config`.
+* Zimfw needs to be installed.
+* GPG keys needs to be imported.
+* SSH keys needs to be imported.
 * Clone the password repo to `~/.pass`.
-* (Optional) Restore Syncthing config folder.
+* Syncthing config should be generated.
 * Run `~/.config/install.sh`
 
 To update certain modules, run the installation script again.
 
-# Fonts
+## SSH
 
-Here is an index of fonts I like and use.
+This directory is defaulted to `~/.ssh` since it is expected there.
+Either copy the keys, or generate new keys.
 
-* **Termsyn** is a retro monospace font, for infobar. (AUR)
-* **Terminus** is a nice readable monospace font.
-* **Inconsolata** is a better rendering font then Terminus for otf.
-* **Iosevka** is a nice, slender font with ligatures. (Aur)
-* **Fira Code** is a neutral programming font with ligatures
-* **Source Code Pro** is the Adobe font for some application.
-* **Droid Sans** is a good font for applications.
-* **Roboto** for some applications. (Steam)
+## Zimfw
 
-I (will) also use the Nerd Fonts glyph only font, when they patch it.
+To install and activate zimfw;
+
+* Create .local/share/zim (or the `$ZIM_HOME` directory)
+* Get the `zimfw.zsh` there;
+`curl -fsSL https://raw.githubusercontent.com/zimfw/zimfw/master/zimfw.zsh -o ~/.local/share/zim/zimfw.zsh`
+* Run `zsh ~/.local/share/zim/zimfw.zsh install`
+
+## GPG
 
 # TMUX
 

@@ -6,8 +6,8 @@ IF=$'\t'
 fix_perm () {
     # Manage permission of home folder
     chmod 755 "${HOME}"
-    chmod -R u=rwX,g=,o= "${XDG_DATA_HOME}/ssh"
-    chmod -R u=rwX,g=,o= "${XDG_DATA_HOME}/gnupg"
+    chmod -R u=rwX,g=,o= "${HOME}/.ssh"
+    chmod -R u=rwX,g=,o= "${HOME}/.local/gnupg"
     chmod 600 "${XDG_CONFIG_HOME}/gpg-agent.conf"
     chmod 644 "${HOME}/.face"
     chmod 644 "${HOME}/.face.icon"
@@ -19,9 +19,6 @@ symlinks_and_directories () {
     mkdir -p "${HOME}/.local/"{share/fonts,wineprefixes,bin,newsboat,vdirsyncer,mpdscribble}
     mkdir -p "${HOME}/.cache/"{mpd,isync,mpdscribble,vdirsyncer,newsboat}
     mkdir -p "${HOME}/.icons/default"
-
-    # Remmina configs; to be shared from Documents
-    ln -sf "${HOME}/Documents/Remmina" "${HOME}/.local/share/remmina"
 
     # Fallback values for bash shell
     ln -sf "${HOME}/.config/bash/bashrc" "${HOME}/.bashrc"
