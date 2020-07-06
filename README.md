@@ -8,6 +8,7 @@ I currently use Arch Linux, and Gentoo, and tried to make my config OS agnostic.
 
 Current to-do items, with no order
 
+* Fix the multiple loadings of autorandr; and fix feh autoset files.
 * Opening terminal switches desktop under all conditions. (???)
 * Build tmux alias with all my console programs
 * Fix DPMS cluster-fuck.
