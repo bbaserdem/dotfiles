@@ -109,7 +109,7 @@ modules-center = clock-script date-script
 modules-right =  mpd keyboard-script battery-script
 
 [bot]
-modules-left = audio-script microphone-script backlight-script memory cpu fan-script coretemp-script gputemp-script rootfs-script homefs-script archive-script
+modules-left = audio-script microphone-script backlight-script memory swap cpu fan-script coretemp-script gputemp-script rootfs-script homefs-script archive-script
 modules-center = calendar-script todo-script rss-script gmail-script
 modules-right = network-script bandwidth-script update-script uptime-script kernel-script
 
@@ -422,6 +422,18 @@ interval = 2
 label = %percentage_used%
 format = <label>
 format-prefix = " "
+format-prefix-foreground = ${colors.gre}
+format-underline = ${self.format-prefix-foreground}
+format-overline = ${self.format-prefix-foreground}
+format-foreground = ${colors.frg}
+format-background = ${colors.bkg}
+click-left = ~/.config/sysinfo/sysinfo.sh -n memory -b 3
+[module/swap]
+type = internal/memory
+interval = 2
+label = %percentage_swap_used%
+format = <label>
+format-prefix = "李 "
 format-prefix-foreground = ${colors.gre}
 format-underline = ${self.format-prefix-foreground}
 format-overline = ${self.format-prefix-foreground}
