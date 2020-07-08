@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version = 1.0
+Type = Application
+Name = Maestral
+Exec = /usr/bin/maestral gui -c maestral
+TryExec = /usr/bin/maestral
+Icon = maestral
+Terminal = false
+Categories = Network;FileTransfer;
+GenericName = File Synchronizer
+Comment = Sync your files with Dropbox
