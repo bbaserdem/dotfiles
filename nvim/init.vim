@@ -40,6 +40,7 @@ set wildignore=*.o,*~,*.pyc " Ignore these files in completion/search
 set cursorcolumn            " Highlight current column
 set cursorline              " Highlight current line
 set autoread                " Reload changed files
+set conceallevel=0          " Don't conceal any characters
 
 "---Indentation---"
 " Double press of > and < will increase or decrease indentation
