@@ -95,6 +95,8 @@ call deoplete#custom#option('max_list', 100)
 "---Ale---"
 " Always keep the gutter line open
 let g:ale_sign_column_always=1
+" Disable highlights
+let g:ale_set_highlights = 0
 " Add Ale autocompletion to deoplete
 call deoplete#custom#source('ale', 'rank', 999)
 

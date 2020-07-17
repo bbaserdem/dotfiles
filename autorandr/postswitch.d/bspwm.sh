@@ -4,7 +4,7 @@
 if [ "${XDG_CURRENT_DESKTOP}" = 'bspwm' ] ; then
     # Select the xrdb file to read
     case "${AUTORANDR_CURRENT_PROFILE}" in
-      Homestation-Home )
+      Homestation-Home|Server)
         xrdb "${XDG_CONFIG_HOME}/X11/uhd.resources"
         ;;
       * )
