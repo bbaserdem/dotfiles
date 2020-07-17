@@ -19,6 +19,9 @@
 # Stardew Valley
 !/StardewValley
 
+# Fran Bow
+!/Fran_Bow
+
 #-------------------#
 #-----WHITELIST-----#
 #-------------------#
@@ -225,6 +228,10 @@
 !/rofi
 !/rofi/**
 /rofi/__pycache__
+
+# SCRIPTS: User management scripts
+!/scripts
+!/scripts/**
 
 # SUPERVISORD: Grab config
 !/supervisor

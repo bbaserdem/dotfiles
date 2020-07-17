@@ -62,6 +62,7 @@ let base16colorspace=256
 
 "---indentLine---"
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_conceallevel = 0
 
 "---NERDTree---"
 " For automatically launching nerdtree at startup; enable this line
