@@ -116,7 +116,7 @@ if [ "$(bspc query --node "${_WID}" --tree | jq '.hidden')" = 'true' ] ; then
     bspc node "${_WID}" --move   "${_OR_X}" "${_OR_Y}"
     bspc node "${_WID}" --resize bottom_right "${_CO_X}" "${_CO_Y}"
     # Toggle and focus
-    bspc node "${_WID}" --flag hidden=off --focus
+    bspc node "${_WID}" --flag hidden=off --flag sticky=on --focus
 else
     bspc node "${_WID}" --flag hidden=on
 fi
