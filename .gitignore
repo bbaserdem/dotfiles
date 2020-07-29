@@ -206,6 +206,10 @@
 !/profile.d
 !/profile.d/*.sh
 
+# QMK: Gather configuration
+!/qmk
+!/qmk/*
+
 # QUTEBROWSER: Grab my files
 !/qutebrowser
 !/qutebrowser/bookmarks

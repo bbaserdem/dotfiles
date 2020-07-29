@@ -165,4 +165,4 @@ c.colors.tabs.selected.even.bg = base02
 c.colors.tabs.selected.odd.bg = base02
 c.colors.tabs.selected.even.fg = base05
 c.colors.tabs.selected.odd.fg = base05
-c.colors.webpage.bg = base00
+#c.colors.webpage.bg = base00
