@@ -11,6 +11,9 @@ nmap <leader>s :%s///g<Left><Left><Left>
 " Clear search highlight
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 
+" Disable EX mode
+nnoremap Q <nop>
+
 " Navigate splits easier
 nnoremap <leader>j <C-w><C-j>
 nnoremap <leader>k <C-w><C-k>
