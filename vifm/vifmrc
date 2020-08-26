@@ -204,7 +204,9 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in shotwell}
         \ shotwell,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-         \ convert -identify %f -verbose /dev/null
+        \ kitty icat --silent --place=%pwx%ph@%pxx%py %c
+        \ %pc
+        \ kitty icat --silent --clear
 
 " OpenRaster
 filextype *.ora
