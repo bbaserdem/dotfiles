@@ -36,9 +36,9 @@ XF86Audio{Raise,Lower}Volume
 
 XF86AudioMute
     /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
-
+ 
 # Change audio sinks
-F13
+XF86Tools
     $XDG_CONFIG_HOME/sxhkd/pulsesink.sh
 
 # Brightness setting for laptop
