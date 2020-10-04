@@ -35,7 +35,6 @@
 !/install.sh
 !/locale.conf
 !/*mimeapps.list
-!/mpdscribble-confgen.sh
 !/msmtprc
 !/picom.conf
 !/README.md
@@ -295,6 +294,10 @@
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**
+
+# YAMS: Grab config file
+!/yams
+!/yams/yams.yml
 
 # YOUTUBE-DL: Grab config
 !/youtube-dl
