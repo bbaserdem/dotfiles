@@ -34,12 +34,12 @@ super + minus
 XF86Audio{Raise,Lower}Volume
     /usr/bin/pamixer --{increase,decrease} 5
 
-XF86AudioMute
-    /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioMute + {_,alt}
+    /usr/bin/pactl {set-sink-mute @DEFAULT_SINK@,set-source-mute @DEFAULT_SOURCE@} toggle
  
 # Change audio sinks
-XF86Tools
-    $XDG_CONFIG_HOME/sxhkd/pulsesink.sh
+XF86Tools + {_,shift} + {_,ctrl}
+    $XDG_CONFIG_HOME/sxhkd/pulsesink.sh { ,-r} { ,-s}
 
 # Brightness setting for laptop
 XF86MonBrightness{Up,Down}
