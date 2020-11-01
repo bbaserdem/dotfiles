@@ -59,6 +59,8 @@ fi
     fi
   done
 
+  #---Get name of primary monitor
+  _primon="$(bspc query --names --monitors --monitor primary)"
   #---Launch polybar on all monitors
   polybar --list-monitors | while IFS= read -r _pom ; do
     #--Format log location
@@ -78,7 +80,7 @@ fi
     fi
 
     # Launch the bars
-    if grep -q 'primary' <<< "${_pom}" ; then
+    if [ "${_mon}" = "${_primon}" ]; then
       # Launch the main bars
       polybar --reload "bspwm-top${_suf}" </dev/null >"${_log}-t" 2>&1 & disown
       polybar --reload "bspwm-bot${_suf}" </dev/null >"${_log}-b" 2>&1 & disown
