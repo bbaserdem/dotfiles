@@ -61,6 +61,10 @@ fi
 
   #---Get name of primary monitor
   _primon="$(bspc query --names --monitors --monitor primary)"
+  if [ -z "${_primon}" ] ; then
+    _primon="$(bspc query --names --monitors | head -n 1)"
+  fi
+
   #---Launch polybar on all monitors
   polybar --list-monitors | while IFS= read -r _pom ; do
     #--Format log location
