@@ -110,6 +110,8 @@ print_info () {
         if( substr($i, length($i), 1) == "%" ) {
           vol += substr($i, 1, length($i) - 1); n++; }
         } printf("%.0f\n", vol/n);}')"
+    sdesc="$(echo "${sinks}" | awk -F ' = ' \
+      '/device.description/ {print substr($2, 2, length($2) - 2)}')"
     sicon="$(echo "${sinks}" | awk -F ' = ' \
       '/device.icon_name/ {print substr($2, 2, length($2) - 2)}')"
     # Get information about the default sink
@@ -119,17 +121,25 @@ print_info () {
     d_port="$(echo "${ports}" | sed --quiet "${d_lnum}p")"
     d_mute="$(echo "${muted}" | sed --quiet "${d_lnum}p")"
     d_volm="$(echo "${volms}" | sed --quiet "${d_lnum}p")"
+    d_desc="$(echo "${sdesc}" | sed --quiet "${d_lnum}p")"
     d_icon="$(echo "${sicon}" | sed --quiet "${d_lnum}p")"
     # Determine icon for the sink
-    case "${d_icon}" in
-      *hdmi*)                                         pre="﴿ " ;;
-      *headset*)            [ "${d_mute}" = 'no' ] && pre=" "  || pre=" "  ;;
-      *a2dp*)               [ "${d_mute}" = 'no' ] && pre="﫽 " || pre="﫾 " ;;
-      *hifi*|*stereo*)                                pre="﫛 " ;;
-      *headphone*|*lineout*)[ "${d_mute}" = 'no' ] && pre=" "  || pre="ﳌ "  ;;
-      *speaker*)            [ "${d_mute}" = 'no' ] && pre="蓼 " || pre="遼 " ;;
-      *network*)                                      pre="爵 " ;;
-      *)                    [ "${d_mute}" = 'no' ] && pre="墳 " || pre="ﱝ "  ;;
+    case "${d_desc}" in
+      *"HDMI"*)                                           pre="﴿ " ;;
+      *"DualShock"*)                                      pre=" " ;;
+      *)
+        case "${d_icon}" in
+          *usb*)                                          pre="禍 " ;;
+          *hdmi*)                                         pre="﴿ " ;;
+          *headset*)            [ "${d_mute}" = 'no' ] && pre=" "  || pre=" "  ;;
+          *a2dp*)               [ "${d_mute}" = 'no' ] && pre="﫽 " || pre="﫾 " ;;
+          *hifi*|*stereo*)                                pre="﫛 " ;;
+          *headphone*|*lineout*)[ "${d_mute}" = 'no' ] && pre=" "  || pre="ﳌ "  ;;
+          *speaker*)            [ "${d_mute}" = 'no' ] && pre="蓼 " || pre="遼 " ;;
+          *network*)                                      pre="爵 " ;;
+          *)                    [ "${d_mute}" = 'no' ] && pre="墳 " || pre="ﱝ "  ;;
+        esac
+        ;;
     esac
     # Check if it's a bluetooth sink, adjust suffix
     if echo "${d_sink}" | grep -q 'bluez' ; then
