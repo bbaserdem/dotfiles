@@ -6,15 +6,16 @@ mpd_music_dir = /home/sbp/Music
 mpd_crossfade_time = 0
 
 # Visualizer
-visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_data_source = /tmp/mpd.fifo
 visualizer_output_name = "FIFO"
 visualizer_in_stereo = yes
-visualizer_sync_interval = 30
 visualizer_type = ellipse
 visualizer_look = "▊▊"
 visualizer_color = magenta, blue, cyan, green, yellow, red
 
 # Main user_interface
+startup_screen = playlist
+startup_slave_screen = visualizer
 song_window_title_format = NCMPCPP: ♪ {%A - }{%t}{ (%b)}|{%f}
 user_interface = alternative
 header_visibility = yes

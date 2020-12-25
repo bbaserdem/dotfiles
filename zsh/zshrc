@@ -32,7 +32,6 @@ alias py='bpython'
 alias vim='nvim'
 alias mutt='neomutt'
 alias ofoam="source ${FOAM_INST_DIR}/OpenFOAM-5.0/etc/bashrc"
-alias ncmpc='ncmpcpp --screen playlist --slave-screen visualizer'
 alias arch-killorphans='sudo pacman -Rns $(pacman -Qtdq)'
 alias gitdiff='git difftool --no-symlinks --dir-diff'
 
