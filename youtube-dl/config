@@ -5,4 +5,5 @@
 --no-overwrites
 --audio-format "flac"
 --audio-quality 0
-
+--write-sub
+--sub-lang "en,tr"

@@ -32,6 +32,7 @@ x-scheme-handler/vnc=org.remmina.Remmina.desktop;
 x-scheme-handler/remmina=org.remmina.Remmina.desktop;
 application/x-remmina=org.remmina.Remmina.desktop;
 image/png=ristretto.desktop;gimp.desktop;
+application/octet-stream=nvim.desktop;firefox.desktop;
 
 [Default Applications]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
