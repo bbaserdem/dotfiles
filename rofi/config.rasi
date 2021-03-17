@@ -7,7 +7,8 @@ configuration {
 
     // Application Behavior
     //modi: "window,drun,files:~/.config/rofi/filebrowser,ssh";
-    modi: "window,drun,file-browser,ssh";
+    // modi: "window,drun,file-browser,ssh";
+    modi: "window,drun,ssh";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;
