@@ -53,19 +53,18 @@ config.bind('gs', 'set-cmd-text --space :quickmark-add {url}')
 # Use uget
 config.bind('<Ctrl-m>',
             "prompt-yank -s;;spawn uget-gtk --quiet --folder=Downloads " +
-            "'{primary}';;enter-mode normal",
+            "'{primary}';;mode-enter normal",
             mode='prompt')
 config.bind('<Ctrl-shift-m>',
             "prompt-yank -s;;spawn uget-gtk '{primary}';;" +
-            "enter-mode normal",
+            "mode-enter normal",
             mode='prompt')
 
-# Time based locking
 currentTime = datetime.datetime.now()
 c.content.blocking.enabled = True
+c.content.blocking.method = "both"
 
 if ghn() == "sbp-workstation":
-    c.qt.force_software_rendering = 'chromium'
     c.url.default_page = "http://intranet.cshl.edu"
     c.url.start_pages = ["http://intranet.cshl.edu"]
 else:

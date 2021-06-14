@@ -23,7 +23,7 @@ case $class in
         STATE='floating'
         ;;
     # Force tiling
-    Soffice|libreoffice*|zathura|Zathura|Steam|dropbox)
+    libreoffice*|zathura|Zathura|Steam|dropbox)
         STATE="tiled";;&
     # Desktop 1: Internet
     Hamsket|qutebrowser|firefox)
@@ -38,7 +38,7 @@ case $class in
     Steam|Stepmania)
         DESKTOP="${ws4}";;
     # Desktop 5: Other desktops
-    Qemu*|Virt-manager|*Remmina|transmission*|Skype|zoom)
+    Soffice|Qemu*|Virt-manager|*Remmina|transmission*|Skype|zoom)
         DESKTOP="${ws5}";;
     # Desktop 6: Terminals
     kitty)

@@ -110,8 +110,8 @@ modules-right =  mpd keyboard-script battery-script
 
 [bot]
 modules-left = audio-script microphone-script backlight-script memory swap cpu fan-script coretemp-script gputemp-script rootfs-script homefs-script archive-script
-modules-center = calendar-script todo-script rss-script gmail-script
-modules-right = network-script bandwidth-script update-script uptime-script kernel-script
+modules-center = calendar-script rss-script gmail-script
+modules-right = bandwidth-script update-script uptime-script kernel-script
 
 [aux]
 modules-left = bspwm
