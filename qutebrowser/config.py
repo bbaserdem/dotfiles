@@ -1,6 +1,9 @@
 from socket import gethostname as ghn
 import datetime
 
+# Prevent GUI settings from overriding
+config.load_autoconfig(False)
+
 # Set things like c.tabs.position = "left"
 c.url.searchengines = {
         "DEFAULT"   : "https://duckduckgo.com/?q={}",
@@ -59,7 +62,7 @@ config.bind('<Ctrl-shift-m>',
 
 # Time based locking
 currentTime = datetime.datetime.now()
-c.content.host_blocking.enabled = True
+c.content.blocking.enabled = True
 
 if ghn() == "sbp-workstation":
     c.qt.force_software_rendering = 'chromium'
