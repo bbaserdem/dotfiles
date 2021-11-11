@@ -15,6 +15,12 @@ F12
 # Rofi
 super + space
     /usr/bin/rofi -show drun
+super + tab
+    /usr/bin/rofi -show window
+super + shift + tab
+    /usr/bin/rofi -show file-browser
+super + ctrl + tab
+    /usr/bin/rofi -show ssh
 
 # Password store
 super + p

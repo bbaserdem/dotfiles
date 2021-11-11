@@ -8,7 +8,7 @@ configuration {
     // Application Behavior
     //modi: "window,drun,files:~/.config/rofi/filebrowser,ssh";
     // modi: "window,drun,file-browser,ssh";
-    modi: "window,drun,ssh";
+    modi: "window,drun,ssh,file-browser";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;
@@ -33,7 +33,7 @@ configuration {
     eh: 1;
 
     // System Behavior
-    terminal: "alacritty";
+    terminal: "kitty";
     ssh-client: "ssh";
     ssh-command: "{terminal} -e {ssh-client} {host}";
     run-command: "{cmd}";
