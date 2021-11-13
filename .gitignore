@@ -72,6 +72,10 @@
 !/dunst
 !/dunst/dunstrc
 
+# FIREJAIL: Get custom firejail configs
+!/firejail
+!/firejail/**
+
 # FIREWALL: Get applet settings
 !/firewall
 !/firewall/**
@@ -299,9 +303,9 @@
 !/yams
 !/yams/yams.yml
 
-# YOUTUBE-DL: Grab config
-!/youtube-dl
-!/youtube-dl/**
+# YT-DLP: Grab config
+!/yt-dlp
+!/yt-dlp/**
 
 # ZATHURA: Grab config
 !/zathura

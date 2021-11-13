@@ -25,7 +25,7 @@ application/x-extension-shtml=firefox.desktop;
 application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
-image/jpeg=ristretto.desktop;gimp.desktop;
+image/jpeg=org.xfce.ristretto.desktop;ristretto.desktop;gimp.desktop;
 x-scheme-handler/rdp=org.remmina.Remmina.desktop;
 x-scheme-handler/spice=org.remmina.Remmina.desktop;
 x-scheme-handler/vnc=org.remmina.Remmina.desktop;
@@ -34,6 +34,8 @@ application/x-remmina=org.remmina.Remmina.desktop;
 image/png=ristretto.desktop;gimp.desktop;
 application/octet-stream=nvim.desktop;firefox.desktop;
 image/x-adobe-dng=ristretto.desktop;
+audio/mp4=smplayer.desktop;
+video/mp4=mpv.desktop;firefox.desktop;
 
 [Default Applications]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
