@@ -197,6 +197,8 @@ fileviewer *.[1-8] man ./%c | col -b
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in imv}
         \ imv %d -n %f >/dev/null 2>&1 & disown,
+        \ {View in ristretto}
+        \ ristretto %f >/dev/null 2>&1 & disown,
         \ {View in sxiv}
         \ sxiv %f,
         \ {View in gpicview}
@@ -204,9 +206,9 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in shotwell}
         \ shotwell,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ kitty icat --silent --place=%pwx%ph@%pxx%py %c
+        \ kitty +kitten icat --clear --transfer-mode=file --place=%pwx%ph@%pxx%py %c
         \ %pc
-        \ kitty icat --silent --clear
+        \ kitty +kitten icat --transfer-mode=file --place=%pwx%ph@%pxx%py --clear
 
 " OpenRaster
 filextype *.ora
