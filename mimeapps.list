@@ -35,17 +35,17 @@ image/png=ristretto.desktop;gimp.desktop;
 application/octet-stream=nvim.desktop;firefox.desktop;
 image/x-adobe-dng=ristretto.desktop;
 audio/mp4=smplayer.desktop;
-video/mp4=mpv.desktop;firefox.desktop;
+video/mp4=smplayer.desktop;
 
 [Default Applications]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
 image/vnd.djvu+multipage=zathura-djvu.desktop;
 text/plain=nvim.desktop
 text/x-tex=nvim.desktop;
-image/jpeg=imv.desktop
-image/jpg=imv.desktop
-image/gif=imv.desktop
-image/png=imv.desktop
+image/jpeg=ristretto.desktop
+image/jpg=ristretto.desktop
+image/gif=ristretto.desktop
+image/png=ristretto.desktop
 image/tiff=darktable.desktop
 text/html=firefox.desktop
 video/x-msvideo=smplayer.desktop;
