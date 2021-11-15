@@ -14,7 +14,7 @@ configuration {
     display-drun:           "  : ";
     display-ssh:            "  : ";
     display-window:         "  : ";
-    display-file-browser:   "  : ";
+    display-file-browser-extended:   "  : ";
     drun-display-format:    "{name}";
     threads:                0;
     scroll-method:          0;
@@ -86,6 +86,7 @@ case-indicator {
 
 listview {
     background-color:   @background;
+    text-color:         @foreground;
     columns:            5;
     spacing:            4px;
     cycle:              false;
@@ -95,6 +96,7 @@ listview {
 
 mainbox {
     background-color:   @background-color;
+    text-color:         @foreground;
     children:           [ inputbar, listview ];
     spacing:            15px;
     padding:            30px 25px 15px 25px;
@@ -109,11 +111,13 @@ element {
 }
 
 element-icon {
+    text-color:         @foreground;
     size:               65px;
     border:             0px;
 }
 
 element-text {
+    text-color:         @foreground;
     expand:             true;
     horizontal-align:   0.5;
     vertical-align:     0.5;

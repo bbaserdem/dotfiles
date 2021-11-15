@@ -6,9 +6,7 @@ configuration {
     theme: "launcher.rasi";
 
     // Application Behavior
-    //modi: "window,drun,files:~/.config/rofi/filebrowser,ssh";
-    // modi: "window,drun,file-browser,ssh";
-    modi: "window,drun,ssh,file-browser";
+    modi: "window,drun,file-browser-extended,ssh";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;
