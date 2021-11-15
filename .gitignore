@@ -15,12 +15,13 @@
 !/unity3d
 !/unity3d/Klei
 !/unity3d/Klei/Oxygen Not Included
-
 # Stardew Valley
 !/StardewValley
-
 # Fran Bow
 !/Fran_Bow
+# Loop Hero
+!/Loop_Hero
+
 
 #-------------------#
 #-----WHITELIST-----#
@@ -71,6 +72,10 @@
 # DUNST: Accept the rc
 !/dunst
 !/dunst/dunstrc
+
+# FIREJAIL: Get custom firejail configs
+!/firejail
+!/firejail/**
 
 # FIREWALL: Get applet settings
 !/firewall
@@ -299,9 +304,9 @@
 !/yams
 !/yams/yams.yml
 
-# YOUTUBE-DL: Grab config
-!/youtube-dl
-!/youtube-dl/**
+# YT-DLP: Grab config
+!/yt-dlp
+!/yt-dlp/**
 
 # ZATHURA: Grab config
 !/zathura

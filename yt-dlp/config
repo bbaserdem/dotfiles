@@ -1,9 +1,13 @@
 # Set default search option to youtube
 --default-search "youtube1:"
 --yes-playlist
---output "${HOME}/Downloads/%(title)s-%(resolution)s.%(ext)s"
+--paths "temp:/tmp"
+--paths "home:${HOME}/Downloads/"
+--output "%(title)s-%(resolution)s.%(ext)s"
+--restrict-filenames
 --no-overwrites
 --audio-format "flac"
 --audio-quality 0
---write-sub
+--write-subs
+--no-write-auto-subs
 --sub-lang "en,tr"
