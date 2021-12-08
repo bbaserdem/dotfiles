@@ -24,11 +24,12 @@ print_info () {
   min="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) minutes\?.*|\1|p')"
   hrs="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) hours\?.*|\1|p')"
   day="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) \(days\?\).*|\1 \2, |p')"
+  wks="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) \(weeks\?\).*|\1 \2, |p')"
   sol="$(echo "${time}" | sed -n 's|.* \([0-9]\+\) \(years\?\).*|\1 \2, |p')"
   if [ -z "${hrs}" ] ; then hrs='0'; fi
   if [ -z "${min}" ] ; then min='00'; fi
   if echo ${min} | grep --quiet '^[0-9]$' ; then min="0${min}" ; fi
-  txt="${sol}${day}${hrs}:${min}"
+  txt="${sol}${wks}${day}${hrs}:${min}"
   
   # Print string
   formatted_output
