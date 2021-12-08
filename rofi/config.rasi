@@ -4,8 +4,7 @@ configuration {
     // Theme
 
     // Application Behavior
-    // modi: "window,drun,file-browser,ssh";
-    modi: "window,drun,ssh,file-browser-extended";
+    modi: "window,drun,file-browser-extended,ssh";
     combi-modi: "drun,ssh,run";
     disable-history: false;
     cycle: false;
