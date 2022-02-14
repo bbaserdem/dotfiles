@@ -20,6 +20,7 @@ c.url.searchengines = {
 css_dark = str(config.configdir) + '/css/dark.css'
 css_lght = str(config.configdir) + '/css/light.css'
 config.bind('<Ctrl-d>', 'config-cycle --temp content.user_stylesheets {0} {1} "" ;; reload'.format(css_dark, css_lght))
+c.colors.webpage.preferred_color_scheme = 'dark'
 
 c.auto_save.session = True
 c.content.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"

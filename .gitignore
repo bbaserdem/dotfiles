@@ -85,6 +85,10 @@
 !/fontconfig
 !/fontconfig/fonts.conf
 
+# GAMMASTEP: Accept all files
+!/gammastep
+!/gammastep/*
+
 # GIT: Grab config file
 !/git
 !/git/config
