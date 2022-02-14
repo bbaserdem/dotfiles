@@ -331,3 +331,4 @@
 !/zsh/zimrc
 !/zsh/.zimrc
 !/zsh/p10k*.zsh
+!/zsh/zsh-notify.zsh
