@@ -117,3 +117,5 @@ let g:vimtex_compiler_method='latexmk'
 let g:vimtex_compiler_progname = 'nvr'
 " Make sure tex files are detected as latex, and not plaintex
 let g:tex_flavor='latex'
+" Use YaLafi to grammar check using languagetools
+let g:vimtex_grammar_vlty = {'lt_command': 'languagetool'}

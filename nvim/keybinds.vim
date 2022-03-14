@@ -65,3 +65,10 @@ nnoremap <buffer><silent> <leader>c :MatlabCliCancel<CR>
 nnoremap <buffer><silent> <C-l> :MatlabNormalModeCreateCell<CR>
 vnoremap <buffer><silent> <C-l> :<C-u>MatlabVisualModeCreateCell<CR>
 inoremap <buffer><silent> <C-l> <C-o>:MatlabInsertModeCreateCell<CR>
+
+" Vimtex
+nmap <Leader>vl <Plug>(vimtex-compile)
+nmap <Leader>ve <Plug>(vimtex-errors)
+nmap <Leader>vq <Plug>(vimtex-stop-all)
+nmap <Leader>vh <Plug>(vimtex-info)
+nmap <Leader>vH <Plug>(vimtex-info-full)
