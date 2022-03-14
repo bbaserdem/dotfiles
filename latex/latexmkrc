@@ -12,7 +12,6 @@ push @generated_exts, "nls";
 push @generated_exts, "synctex.gz";
 push @generated_exts, "run.xml";
 $cleanup_mode = 2;
-# $aux_dir = "auxillary";
 $pdf_previewer = "zathura";
 $pdflatex = "xelatex %O %S";
 $pdf_mode = 1;
