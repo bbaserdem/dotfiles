@@ -11,6 +11,7 @@
 #   (as opposed to saving the file in the screenshots directory)
 #   Use ∶ (UTF-8 glyph) instead of colon (:) because android can't use it
 #   Android reserved characters: |\\?*<\":>+[]/'
+#            String reservedChars = "?:\"*|/\\<>";
 
 
 # Get the screenshots directory
