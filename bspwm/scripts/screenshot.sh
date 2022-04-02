@@ -9,6 +9,8 @@
 #   (only available with TARGET=clipboard)
 # Allows a CLIPBOARD flag which copies to clipboard
 #   (as opposed to saving the file in the screenshots directory)
+#   Use ∶ (UTF-8 glyph) instead of colon (:) because android can't use it
+#   Android reserved characters: |\\?*<\":>+[]/'
 
 
 # Get the screenshots directory
@@ -64,7 +66,7 @@ case "${mode}" in
     ;;
   select)
     geom="$(slop)"
-    output="${screendir}/${timestamp}-loc:${geom}.png"
+    output="${screendir}/${timestamp}-loc∶${geom}.png"
     if [ "${target}" = 'file' ] ; then
       maim --quality 1 --geometry "${geom}" "${output}"
       canberra-gtk-play -i screen-capture &
