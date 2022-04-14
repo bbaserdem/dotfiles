@@ -4,6 +4,9 @@
 let g:airline_theme='term'
 let g:airline_powerline_fonts=0
 
+" Indentline
+let g:indentLine_char = '|'
+
 " GitGutter
 let g:gitgutter_sign_added = 'xx'
 let g:gitgutter_sign_modified = 'yy'

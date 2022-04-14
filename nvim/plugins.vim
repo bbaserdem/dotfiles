@@ -7,7 +7,13 @@ let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
 if !filereadable(autoload_plug_path)
   silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs 
       \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  augroup installVimPlug
+    " Make sure we run only once
+    if !exists('installVimPlug_loaded')
+      let installVimPlug_loaded = 1
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+  augroup END
 endif
 unlet autoload_plug_path
 
@@ -35,20 +41,19 @@ Plug 'deoplete-plugins/deoplete-clang'
 Plug 'dense-analysis/ale'
 Plug 'rhysd/vim-grammarous'
 " Snippets (code snippet inserter)
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 " Ctags manager
 "Plug 'ludovicchabant/vim-gutentags'
-" Matlab editor
-Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
-Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
 Plug 'lervag/vimtex'
 " Config file types
 Plug 'aouelete/sway-vim-syntax'
+Plug 'bbaserdem/musicbrainz-vim-syntax', { 'branch': 'main' }
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'gentoo/gentoo-syntax'
 Plug 'brgmnn/vim-syncthing'
+Plug 'vim-scripts/MatlabFilesEdition'
 call plug#end()
 
 "------------"
@@ -59,15 +64,30 @@ call plug#end()
 " Fix for ANSI terminal colorscheme; should work with most terminals
 let base16colorspace=256
 
+"---VimGrammarous---"
+" Check only comments; except these file types
+let g:grammarous#default_comments_only_filetypes = {
+        \ '*' : 1,
+        \ 'help' : 0,
+        \ 'markdown' : 0,
+        \ 'latex' : 0,
+        \ }
+" Use vim defaults
+let g:grammarous#use_vim_spelllang = 1
+" Use system languagetool
+let g:grammarous#languagetool_cmd = 'languagetool'
+" Show the first error while languagetool is working
+let g:grammarous#show_first_error = 1
+
 "---indentLine---"
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" Indentline breaks latex highlighting for some reason
 let g:indentLine_conceallevel = 0
 
 "---NERDTree---"
 " For automatically launching nerdtree at startup; enable this line
-"autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 " Close nvim if nerdtree is the last window
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "---Gitgutter---"
 " Maximum amount to show
@@ -95,19 +115,15 @@ call deoplete#custom#option('max_list', 100)
 "---Ale---"
 " Always keep the gutter line open
 let g:ale_sign_column_always=1
-" Disable highlights
-let g:ale_set_highlights = 0
+" No highlights
+"let g:ale_set_highlights = 0
 " Add Ale autocompletion to deoplete
 call deoplete#custom#source('ale', 'rank', 999)
-
-"---Vim-Matlab---"
-" Disable auto mappings so that my mappings can work
-let g:matlab_auto_mappings=0
-" Split options
-let g:matlab_server_launcher='tmux'
-let g:matlab_server_split='vertical'
-" Linter location
-let g:ale_matlab_mlint_executable='/opt/tmw/matlab/bin/glnxa64/mlint'
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+" Make sure we know who is complaining
+let g:ale_echo_msg_format = '%linter% says %s'
 
 "---Vimtex---"
 " Compiler to use

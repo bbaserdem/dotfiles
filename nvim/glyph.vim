@@ -1,8 +1,12 @@
 " Settings for unique glyph setup
+scriptencoding utf-8
 
 " Airline;
 let g:airline_theme='base16'
 let g:airline_powerline_fonts=1
+
+" Indentline;
+let g:indentLine_char_list = ['▏', '│', '¦', '┆', '┊']
 
 " Gitgutter;
 let g:gitgutter_sign_added=''

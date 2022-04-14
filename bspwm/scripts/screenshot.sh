@@ -9,10 +9,19 @@
 #   (only available with TARGET=clipboard)
 # Allows a CLIPBOARD flag which copies to clipboard
 #   (as opposed to saving the file in the screenshots directory)
+#   Use ∶ (UTF-8 glyph) instead of colon (:) because android can't use it
+#   Android string reservedChars = "?:\"*|/\\<>";
 
 
 # Get the screenshots directory
-screendir="${HOME}/Pictures/Screenshots"
+case "$(hostname)" in
+  sbp-laptop)       this_comp="/Laptop" ;
+  sbp-workstation)  this_comp="/Laptop" ;
+  sbp-homestation)  this_comp="/Homestation" ;
+  sbp-server)       this_comp="/Workstation" ;
+  *)                this_comp="/PC"     ;
+esac
+screendir="${HOME}/Pictures/Screenshots/${this_comp}"
 if [ ! -e "${screendir}" ] ; then mkdir -p "${screendir}" ; fi
 timestamp="$(date +%Y-%m-%d_%H:%M:%S)"
 
@@ -63,8 +72,11 @@ case "${mode}" in
     fi
     ;;
   select)
+    # Replace + with ✚, , x with ⨯
     geom="$(slop)"
-    output="${screendir}/${timestamp}-loc:${geom}.png"
+    geom_txt="loc∶$(echo ${geom} | sed 's|+|✚|g;s|x|⨯|g')"
+    # Use ∶, instead of :, for androd
+    output="${screendir}/${timestamp}-${geom_txt}.png"
     if [ "${target}" = 'file' ] ; then
       maim --quality 1 --geometry "${geom}" "${output}"
       canberra-gtk-play -i screen-capture &
