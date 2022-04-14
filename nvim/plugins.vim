@@ -133,14 +133,19 @@ let g:vimtex_compiler_progname = 'nvr'
 " Make sure tex files are detected as latex, and not plaintex
 let g:tex_flavor='latex'
 " YaLafi
-let g:vimtex_grammar_vlty = {}
-let g:vimtex_grammar_vlty.lt_command = 'languagetool'
-let g:vimtex_grammar_vlty.server = 'my'
-let g:vimtex_grammar_vlty.show_suggestions = 1
-let g:vimtex_grammar_vlty.shell_options =
-        \   ' --multi-language'
-        \ . ' --packages "*"'
-        \ . ' --define ~/.config/vlty/defs.tex'
-        \ . ' --replace ~/.config/vlty/repls.txt'
-        \ . ' --equation-punctuation display'
-        \ . ' --single-letters "i.\,A.\|z.\,B.\|\|"'
+"let g:vimtex_grammar_vlty = {}
+"let g:vimtex_grammar_vlty.lt_command = 'languagetool'
+"let g:vimtex_grammar_vlty.server = 'my'
+"let g:vimtex_grammar_vlty.show_suggestions = 1
+"let g:vimtex_grammar_vlty.shell_options =
+"        \   ' --multi-language'
+"        \ . ' --packages "*"'
+"        \ . ' --define ~/.config/vlty/defs.tex'
+"        \ . ' --replace ~/.config/vlty/repls.txt'
+"        \ . ' --equation-punctuation display'
+"        \ . ' --single-letters "i.\,A.\|z.\,B.\|\|"'
+" TeXtidote
+"let g:vimtex_grammar_textidote = {
+"    \ 'jar'     :   '/usr/share/java/texidote.jar',
+"    \ 'args'    :   '--output plain',
+"    \}
