@@ -50,7 +50,7 @@ set tabstop=8               " Render TABs using this many spaces.
 set softtabstop=4
 set shiftwidth=4            " Indentation amount for < and > commands.
 set nojoinspaces            " Prevents inserting two spaces after punctuation on a join (J)
-set spelllang=en_us,tr      " Turn on spellcheck
+set spelllang=en_us         " Turn on spellcheck
 set linebreak               " Break long lines at 
 set breakindent             " Wrapped lines will retain indentation
 let &showbreak='↪'          " Put character at the beginning of wrapped lines

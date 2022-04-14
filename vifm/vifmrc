@@ -61,7 +61,7 @@ if !has('win')
 endif
 
 " Set custom status line look
-set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+set statusline="  Hint: %z%= %A %10u:%-7g %15E %20d  "
 
 "------------------"
 "-----DEVICONS-----"
@@ -169,9 +169,9 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in ristretto}
         \ ristretto %f >/dev/null 2>&1 & disown,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ kitty +kitten icat --clear --transfer-mode=file --place=%pwx%ph@%pxx%py %c
+        \ kitty +icat --transfer-mode=stream --place=%pwx%ph@%pxx%py %c %N
         \ %pc
-        \ kitty +kitten icat --transfer-mode=file --place=%pwx%ph@%pxx%py --clear
+        \ kitty +kitten icat -clear --silent %N
 
 " MD5
 filetype *.md5

@@ -1,5 +1,5 @@
 function! DetectStignore()
-  if expand('%:p:h:t')=='Stignore'
+  if expand('%:p:h:t')==?'Stignore'
     setfiletype stignore
   endif
 endfunction

@@ -199,6 +199,8 @@
 !/nvim/before/**
 !/nvim/after
 !/nvim/after/**
+!/nvim/syntax
+!/nvim/syntax/**
 
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
