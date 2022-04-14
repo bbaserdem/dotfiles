@@ -33,6 +33,7 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'deoplete-plugins/deoplete-clang'
 " Linting (code checking)
 Plug 'dense-analysis/ale'
+Plug 'rhysd/vim-grammarous'
 " Snippets (code snippet inserter)
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -43,8 +44,6 @@ Plug 'daeyun/vim-matlab', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/MatlabFilesEdition'
 " LaTeX editing
 Plug 'lervag/vimtex'
-" Grammar checker
-Plug 'rhysd/vim-grammarous'
 " Config file types
 Plug 'aouelete/sway-vim-syntax'
 Plug 'baskerville/vim-sxhkdrc'
@@ -117,5 +116,15 @@ let g:vimtex_compiler_method='latexmk'
 let g:vimtex_compiler_progname = 'nvr'
 " Make sure tex files are detected as latex, and not plaintex
 let g:tex_flavor='latex'
-" Use YaLafi to grammar check using languagetools
-let g:vimtex_grammar_vlty = {'lt_command': 'languagetool'}
+" YaLafi
+let g:vimtex_grammar_vlty = {}
+let g:vimtex_grammar_vlty.lt_command = 'languagetool'
+let g:vimtex_grammar_vlty.server = 'my'
+let g:vimtex_grammar_vlty.show_suggestions = 1
+let g:vimtex_grammar_vlty.shell_options =
+        \   ' --multi-language'
+        \ . ' --packages "*"'
+        \ . ' --define ~/.config/vlty/defs.tex'
+        \ . ' --replace ~/.config/vlty/repls.txt'
+        \ . ' --equation-punctuation display'
+        \ . ' --single-letters "i.\,A.\|z.\,B.\|\|"'

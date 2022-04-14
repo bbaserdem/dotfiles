@@ -70,6 +70,3 @@ if &listchars ==# 'eol:$'
   set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:+
 endif
 "set list                " Show problematic characters.
-
-let g:grammarous#languagetool_cmd = 'languagetool'  " Grammar check
-let g:is_posix = 1
