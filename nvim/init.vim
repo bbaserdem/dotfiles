@@ -12,7 +12,7 @@ set encoding=utf-8
 "---External config options---"
 source $XDG_CONFIG_HOME/nvim/plugins.vim
 source $XDG_CONFIG_HOME/nvim/keybinds.vim
-if $TERM == 'linux'
+if $TERM ==? 'linux'
   source $XDG_CONFIG_HOME/nvim/noglyph.vim
 else
   source $XDG_CONFIG_HOME/nvim/glyph.vim
@@ -57,10 +57,10 @@ let &showbreak='↪'          " Put character at the beginning of wrapped lines
 " Function to toggle numbering
 function! NumberToggle()
   if(&relativenumber == 1)
-    set nornu
+    set norelativenumber
     set number
   else
-    set rnu
+    set relativenumber
   endif
 endfunc
 
@@ -70,6 +70,3 @@ if &listchars ==# 'eol:$'
   set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:+
 endif
 "set list                " Show problematic characters.
-
-let g:grammarous#languagetool_cmd = 'languagetool'  " Grammar check
-let g:is_posix = 1

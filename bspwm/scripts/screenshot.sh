@@ -15,11 +15,11 @@
 
 # Get the screenshots directory
 case "$(hostname)" in
-  sbp-laptop)       this_comp="/Laptop" ;
-  sbp-workstation)  this_comp="/Laptop" ;
-  sbp-homestation)  this_comp="/Homestation" ;
-  sbp-server)       this_comp="/Workstation" ;
-  *)                this_comp="/PC"     ;
+  sbp-laptop)       this_comp="/Laptop"       ;;
+  sbp-workstation)  this_comp="/Laptop"       ;;
+  sbp-homestation)  this_comp="/Homestation"  ;;
+  sbp-server)       this_comp="/Workstation"  ;;
+  *)                this_comp="/PC"           ;;
 esac
 screendir="${HOME}/Pictures/Screenshots/${this_comp}"
 if [ ! -e "${screendir}" ] ; then mkdir -p "${screendir}" ; fi
