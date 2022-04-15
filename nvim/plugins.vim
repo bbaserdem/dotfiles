@@ -5,7 +5,7 @@
 " Bootstrap Plug
 let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
 if !filereadable(autoload_plug_path)
-  silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs 
+  silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
       \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
   augroup installVimPlug
     " Make sure we run only once
@@ -84,6 +84,10 @@ let g:grammarous#show_first_error = 1
 " Indentline breaks latex highlighting for some reason
 let g:indentLine_conceallevel = 0
 
+"---FuzzyFinder---"
+" Prefix commands with Fzf
+let g:fzf_command_prefix = 'Fzf'
+
 "---NERDTree---"
 " For automatically launching nerdtree at startup; enable this line
 " autocmd vimenter * NERDTree
@@ -101,11 +105,24 @@ set foldtext=gitgutter#fold#foldtext()
 let g:airline_powerline_fonts=1
 " Have on top bar
 set showtabline=2
-let g:airline_statusline_ontop=1
+"let g:airline_statusline_ontop=1
 " Enable lint extension
 let g:airline#extensions#ale#enabled=1
+" Enable tabline for listing buffers
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
 " Enable ctags extension
 "let g:airline#extensions#gutentags#enabled=1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" Left sections
+"g:airline_section_a = ''
+"g:airline_section_b = ''
+" Midsection
+"g:airline_section_c = ''
+" Right section
+"g:airline_section_x = ''
+"g:airline_section_y = ''
+"g:airline_section_z = ''
 
 "---Deoplete---"
 " Enable/disable it as I'm typing
