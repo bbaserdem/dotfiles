@@ -22,7 +22,7 @@ endif
 colorscheme base16-onedark
 
 "---Base settings---"
-set cmdheight=1             " Command bar height
+set cmdheight=2             " Command bar height
 set number                  " Show line number on current line
 set relativenumber          " Show relative numbers on other lines
 set showmatch               " Show matching brackets
@@ -41,6 +41,9 @@ set cursorcolumn            " Highlight current column
 set cursorline              " Highlight current line
 set autoread                " Reload changed files
 set conceallevel=0          " Don't conceal any characters
+set timeoutlen=3000         " Make mapping sequences timeout in 3 secs instead
+set ttimeoutlen=100         " But don't extrapolate to keycodes
+set showtabline=2           " Always show tabs
 
 "---Indentation---"
 " Double press of > and < will increase or decrease indentation
@@ -51,7 +54,7 @@ set softtabstop=4
 set shiftwidth=4            " Indentation amount for < and > commands.
 set nojoinspaces            " Prevents inserting two spaces after punctuation on a join (J)
 set spelllang=en_us         " Turn on spellcheck
-set linebreak               " Break long lines at 
+set linebreak               " Break long lines at
 set breakindent             " Wrapped lines will retain indentation
 let &showbreak='↪'          " Put character at the beginning of wrapped lines
 " Function to toggle numbering

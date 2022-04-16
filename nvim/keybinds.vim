@@ -1,66 +1,71 @@
 "------------------"
 "-----Keybinds-----"
 "------------------"
+" Disable EX mode
+nnoremap Q <nop>
 
 "-----LEADER-----"
-" For plugins; a f g v t are taken
 " Leader key
 let mapleader="\<Space>"
 
+"---CONVENIENCE---"
 " Search and replace
-nmap <leader>s :%s///g<Left><Left><Left>
+nnoremap <leader>s :%s///g<Left><Left><Left>
 " Reload config
 nnoremap <leader>r :source $MYVIMRC<CR>
 " Clear search highlight
 nnoremap <silent> <leader>/ :nohlsearch<CR>
-" Disable EX mode
-nnoremap Q <nop>
 " Copy paste functionality with the clipboard
 vnoremap <C-c> "+y
 nnoremap <C-v> "+p
 
-"-----NAVIGATION-----"
-" Navigation uses fzf to a degree
-"===BUFFERS===(Ctrl)
-" Navigate buffers
-nnoremap <leader><C-j> :bnext<CR>
-nnoremap <leader><C-k> :bprev<CR>
-" List buffers
-nnoremap <Leader><C-l> :FzfBuffers<CR>
-" Use fuzzy finder to open new buffer
-nnoremap <Leader><C-o> :FzfFiles<CR>
-" Open new empty buffer
-nnoremap <Leader><C-n> :new<CR>
-" Close this buffer
-nnoremap <Leader><C-q> :bd<CR>
-"===WINDOWS===(-N/A-)
-" Navigate windows
+"===BUFFERS, WINDOWS & TABS==="
+"---Navigation---"
+" Windows
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>h :wincmd h<CR>
-" Open new split windows
-nnoremap <leader>n :split<CR>
-nnoremap <leader>N :vsplit<CR>
-" Search windows
-nnoremap <leader>o :FzfWindows<CR>
-" Close window
-nnoremap <leader>q :close<CR>
-"===TABS===(Shift)
-" Navigate tabs using leader and shifted up/down
+" Buffers
+nnoremap <leader>L :bnext<CR>
+nnoremap <leader>H :bprev<CR>
+" Tabs
 nnoremap <leader>J :tabnext<CR>
 nnoremap <leader>K :tabprev<CR>
-" Open/close new tabs
+"---Seeking---" (this mostly uses fzf to seek open files or windows)
+" List buffers to navigate current window to them
+nnoremap <Leader><Tab> :FzfBuffers<CR>
+" List windows to navigate to them
+nnoremap <leader><S-Tab> :FzfWindows<CR>
+"---Closing---"
+" Close this buffer
+nnoremap <Leader>q :bd<CR>
+" Close this window
+nnoremap <leader>d :close<CR>
+" Close this tab
+nnoremap <leader>D :tabclose<CR>
+"---Opening---"
+" Use fuzzy finder to open new buffer
+nnoremap <Leader>o :FzfFiles<CR>
+" Open new empty buffer
+nnoremap <Leader>n :new<CR>
+" Open new windows
+nnoremap <leader>- :split<CR>
+nnoremap <leader>_ :vsplit<CR>
+" Open new tab
 nnoremap <leader>O :tabnew<CR>
-nnoremap <leader>Q :tabclose<CR>
 
-"-----PLUGINS-----"
-" Most plugins are accessed through leader key and their first letter
-" Except autocomplete; these are built in for easier access
+"===PLUGINS==="
+" File-type specific ones are all mapped to function keys
 
-" Deoplete (FUNDAMENTAL)
-inoremap <expr><tab>   pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
+"---Tab completion---" ddc.vim
+" For insert mode, shift-tab moves through completion in the back order
+inoremap <silent><expr> <Tab> ddc#map#pum_visible() ?
+    \ '<C-n>' :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+        \ '<Tab>' :
+        \ ddc#map#manual_complete()
+inoremap <expr> <S-Tab> ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 " Ultisnips (FUNDAMENTAL)
 let g:UltiSnipsExpandTrigger = '<c-Space>'
@@ -68,38 +73,34 @@ let g:UltiSnipsJumpForwardTrigger = '<c-l>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-h>'
 nnoremap <C-j> :FzfSnippets<CR>
 
-" Ale; with leader-a
-nmap <silent> <Leader>aj <Plug>(ale_previous_wrap)
-nmap <silent> <Leader>ak <Plug>(ale_next_wrap)
+" NERDTree
+map <Leader>t :NERDTreeToggle<CR>
 
-" Fzf; with leader-f
-nnoremap <silent> <Leader>f/ :FzfBLines<CR>
-nnoremap <silent> <Leader>f\ :FzfLines<CR>
-nnoremap <silent> <Leader>fc :FzfAg<space>
-nnoremap <silent> <Leader>fw :FzfRg<space>
-nnoremap <silent> <Leader>fm :FzfMarks<CR>
-nnoremap <silent> <Leader>fg :FzfGfiles<CR>
-nnoremap <silent> <Leader>fG :FzfGfiles?<CR>
+" Ale
+nmap <silent> <Leader>[ <Plug>(ale_previous_wrap)
+nmap <silent> <Leader>] <Plug>(ale_next_wrap)
+
+" Fzf
+nnoremap <silent> <Leader>p :FzfBLines<CR>
+nnoremap <silent> <Leader>P :FzfLines<CR>
+nnoremap <silent> <Leader>c :FzfAg<space>
+nnoremap <silent> <Leader>g :FzfRg<space>
+nnoremap <silent> <Leader>m :FzfMarks<CR>
 
 " Gitgutter; with leader-g
-nmap <Leader>gq <Plug>(GitGutterBufferToggle)
+nnoremap <silent> <Leader>gl :FzfGfiles<CR>
+nnoremap <silent> <Leader>gL :FzfGfiles?<CR>
+nmap <Leader>gt <Plug>(GitGutterBufferToggle)
+nmap <Leader>Gt <Plug>(GitGutterToggle)
 nmap <Leader>g/ <Plug>(GitGutterLineNrHighlightsToggle)
+nmap <Leader>G/ <Plug>(GitGutterLineHighlightsToggle)
+nmap <Leader>gv <Plug>(GitGutterSignsToggle)
+nmap <Leader>gw <Plug>(GitGutterStageHunk)
+nmap <Leader>gW <Plug>(GitGutterPreviewHunk)
+nmap <Leader>gd <Plug>(GitGutterUndoHunk)
+nmap <Leader>g- <Plug>(GitGutterFold)
 nmap <Leader>gj <Plug>(GitGutterNextHunk)
 nmap <Leader>gk <Plug>(GitGutterPrevHunk)
-nmap <Leader>gd <Plug>(GitGutterFold)
-nmap <Leader>gs <Plug>(GitGutterStageHunk)
-nmap <Leader>gu <Plug>(GitGutterUndoHunk)
-nmap <Leader>gp <Plug>(GitGutterPreviewHunk)
-
-" NERDTree; with t
-map <Leader>tt :NERDTreeToggle<CR>
-
-" Vimtex; with leader v
-nmap <Leader>vl <Plug>(vimtex-compile)
-nmap <Leader>ve <Plug>(vimtex-errors)
-nmap <Leader>vq <Plug>(vimtex-stop-all)
-nmap <Leader>vh <Plug>(vimtex-info)
-nmap <Leader>vH <Plug>(vimtex-info-full)
 
 " Vimgrammarous
 let g:grammarous#hooks = {}

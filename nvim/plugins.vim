@@ -2,7 +2,7 @@
 "-----PLUGINS-----"
 "-----------------"
 
-" Bootstrap Plug
+" Bootstrap Vim-Plug
 let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
 if !filereadable(autoload_plug_path)
   silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
@@ -19,41 +19,58 @@ unlet autoload_plug_path
 
 call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 " Colorscheme
-Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'            , {'branch': 'master' }
 " Indentation tracker
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'                , {'branch': 'master' }
 " File browser(s)
-Plug 'junegunn/fzf.vim'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf.vim'                   , {'branch': 'master' }
+Plug 'preservim/nerdtree'                 , {'branch': 'master' }
+Plug 'Xuyuanp/nerdtree-git-plugin'        , {'branch': 'master' }
+Plug 'ryanoasis/vim-devicons'             , {'branch': 'master' }
 " Git management
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'             , {'branch': 'master' }
+Plug 'tpope/vim-fugitive'                 , {'branch': 'master' }
 " Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'deoplete-plugins/deoplete-clang'
+Plug 'vim-airline/vim-airline'            , {'branch': 'master' }
+Plug 'vim-airline/vim-airline-themes'     , {'branch': 'master' }
+" Completion collector; ddc and lsp
+Plug 'vim-denops/denops.vim'              , {'branch': 'main'   }
+Plug 'Shougo/ddc.vim'                     , {'branch': 'main'   }
+Plug 'Shougo/ddc-around'                  , {'branch': 'main'   }
+Plug 'Shougo/ddc-matcher_head'            , {'branch': 'main'   }
+Plug 'Shougo/ddc-sorter_rank'             , {'branch': 'main'   }
+Plug 'Shougo/ddc-omni'                    , {'branch': 'main'   }
+Plug 'Shougo/pum.vim'                     , {'branch': 'main'   }
+Plug 'prabirshrestha/vim-lsp'             , {'branch': 'master' }
+Plug 'mattn/vim-lsp-settings'             , {'branch': 'master' }
+Plug 'shun/ddc-vim-lsp'                   , {'branch': 'main'   }
+" Nvim versions don't play as good with ale
+"Plug 'Shougo/ddc-nvim-lsp'                , {'branch': 'main'   }
+"Plug 'neovim/nvim-lspconfig'              , {'branch': 'master' }
 " Linting (code checking)
-Plug 'dense-analysis/ale'
-Plug 'rhysd/vim-grammarous'
+Plug 'dense-analysis/ale'                 , {'branch': 'master' }
+Plug 'statiolake/ddc-ale'                 , {'branch': 'master' }
+Plug 'rhysd/vim-lsp-ale'                  , {'branch': 'master' }
 " Snippets (code snippet inserter)
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
-" Ctags manager
-"Plug 'ludovicchabant/vim-gutentags'
+Plug 'SirVer/ultisnips'                   , {'branch': 'master' }
+Plug 'honza/vim-snippets'                 , {'branch': 'master' }
+Plug 'thomasfaingnaert/vim-lsp-ultisnips' , {'branch': 'master' }
+Plug 'thomasfaingnaert/vim-lsp-snippets'  , {'branch': 'master' }
+" Function argument expander
+Plug 'Shougo/echodoc.vim'                 , {'branch': 'master' }
+" Grammar check
+Plug 'rhysd/vim-grammarous'               , {'branch': 'master' }
+" Ctags as in code tags
+Plug 'ludovicchabant/vim-gutentags'       , {'branch': 'master' }
 " LaTeX editing
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'                      , {'branch': 'master' }
 " Config file types
-Plug 'aouelete/sway-vim-syntax'
-Plug 'bbaserdem/musicbrainz-vim-syntax', { 'branch': 'main' }
-Plug 'baskerville/vim-sxhkdrc'
-Plug 'gentoo/gentoo-syntax'
-Plug 'brgmnn/vim-syncthing'
-Plug 'vim-scripts/MatlabFilesEdition'
+Plug 'aouelete/sway-vim-syntax'           , {'branch': 'master' }
+Plug 'bbaserdem/musicbrainz-vim-syntax'   , {'branch': 'main'   }
+Plug 'baskerville/vim-sxhkdrc'            , {'branch': 'master' }
+Plug 'gentoo/gentoo-syntax'               , {'branch': 'master' }
+Plug 'brgmnn/vim-syncthing'               , {'branch': 'master' }
+Plug 'vim-scripts/MatlabFilesEdition'     , {'branch': 'master' }
 call plug#end()
 
 "------------"
@@ -64,6 +81,28 @@ call plug#end()
 " Fix for ANSI terminal colorscheme; should work with most terminals
 let base16colorspace=256
 
+"---Nvim LSP---"
+"lua require('lspconfig').texlab.setup{}
+
+""---Ale---"
+let g:ale_sign_column_always = 1    " Always keep the gutter line open
+let g:ale_set_highlights = 1        " No highlights
+"===LINTING
+let g:ale_linters_explicit = 1      " Only run configured
+let g:ale_linters = {
+    \ 'python': ['flake8'],
+    \ 'tex': ['chktex'],
+\ }
+"===FIXING
+let g:ale_fix_on_save = 1           " Fix on save
+let g:ale_fixers = {
+    \ '*'       : ['remove_trailing_lines', 'trim_whitespace'],
+    \ 'python'  : ['autopep8'],
+    \ 'latex'   : ['latexindent'],
+\ }
+"===COMPLETION
+"let g:ale_completion_enabled = 0    " Link other plugins for autocompletion
+
 "---VimGrammarous---"
 " Check only comments; except these file types
 let g:grammarous#default_comments_only_filetypes = {
@@ -72,83 +111,50 @@ let g:grammarous#default_comments_only_filetypes = {
         \ 'markdown' : 0,
         \ 'latex' : 0,
         \ }
-" Use vim defaults
 let g:grammarous#use_vim_spelllang = 1
-" Use system languagetool
 let g:grammarous#languagetool_cmd = 'languagetool'
-" Show the first error while languagetool is working
 let g:grammarous#show_first_error = 1
 
+"---echodoc.vim---"
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+highlight link EchoDocFloat Identifier
+
 "---indentLine---"
-" Indentline breaks latex highlighting for some reason
-let g:indentLine_conceallevel = 0
+let g:indentLine_conceallevel = 0               " Disabled; breaks latex
 
 "---FuzzyFinder---"
-" Prefix commands with Fzf
-let g:fzf_command_prefix = 'Fzf'
+let g:fzf_command_prefix = 'Fzf'                " Prefix commands with Fzf
 
 "---NERDTree---"
-" For automatically launching nerdtree at startup; enable this line
-" autocmd vimenter * NERDTree
-" Close nvim if nerdtree is the last window
-" autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Automatically launch NERDTree on start
+"augroup nerdtreestart
+"    autocmd!
+"    autocmd vimenter * NERDTree | wincmd l
+"augroup END
+" Close if NERDTree is the last window
+augroup nerdtreequit
+    autocmd!
+    autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
 
 "---Gitgutter---"
-" Maximum amount to show
-let g:gitgutter_max_signs = 1000
-" Show changes in folded lines
-set foldtext=gitgutter#fold#foldtext()
+let g:gitgutter_max_signs = 1000                " Maximum amount to show
+set foldtext=gitgutter#fold#foldtext()          " Show changes in folded lines
 
 "---Airline---"
-" Force powerline fonts
-let g:airline_powerline_fonts=1
-" Have on top bar
-set showtabline=2
-"let g:airline_statusline_ontop=1
-" Enable lint extension
-let g:airline#extensions#ale#enabled=1
-" Enable tabline for listing buffers
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline_statusline_ontop = 1              " Put bar on top
+let g:airline#extensions#ale#enabled = 1        " Enable lint extension
+let g:airline#extensions#tabline#enabled = 1    " Enable tabline for buffers
 let g:airline#extensions#tabline#show_buffers = 1
-" Enable ctags extension
-"let g:airline#extensions#gutentags#enabled=1
+let g:airline#extensions#gutentags#enabled = 1  " Enable ctags extension
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" Left sections
-"g:airline_section_a = ''
-"g:airline_section_b = ''
-" Midsection
-"g:airline_section_c = ''
-" Right section
-"g:airline_section_x = ''
-"g:airline_section_y = ''
-"g:airline_section_z = ''
-
-"---Deoplete---"
-" Enable/disable it as I'm typing
-let g:deoplete#enable_at_startup=1
-" Limit matches
-call deoplete#custom#option('max_list', 100)
-
-"---Ale---"
-" Always keep the gutter line open
-let g:ale_sign_column_always=1
-" No highlights
-"let g:ale_set_highlights = 0
-" Add Ale autocompletion to deoplete
-call deoplete#custom#source('ale', 'rank', 999)
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
-" Make sure we know who is complaining
-let g:ale_echo_msg_format = '%linter% says %s'
 
 "---Vimtex---"
-" Compiler to use
-let g:vimtex_compiler_method='latexmk'
-" Use neovim-remote for callback functionality
-let g:vimtex_compiler_progname = 'nvr'
-" Make sure tex files are detected as latex, and not plaintex
-let g:tex_flavor='latex'
+let g:vimtex_compiler_method = 'latexmk'
+let g:vimtex_compiler_progname = 'nvr'          " For callback functionality
+let g:tex_flavor = 'latex'                      " No plaintex
+"let g:vimtex_complete_enabled = 1               " Enable omnifunc
 " YaLafi
 "let g:vimtex_grammar_vlty = {}
 "let g:vimtex_grammar_vlty.lt_command = 'languagetool'
@@ -166,3 +172,7 @@ let g:tex_flavor='latex'
 "    \ 'jar'     :   '/usr/share/java/texidote.jar',
 "    \ 'args'    :   '--output plain',
 "    \}
+
+"---ddc---"
+" Config is moved cause too much to abstract
+source $XDG_CONFIG_HOME/nvim/ddc-config.vim
