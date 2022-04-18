@@ -17,6 +17,7 @@ nnoremap <leader>r :source $MYVIMRC<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 " Copy paste functionality with the clipboard
 vnoremap <C-c> "+y
+vnoremap <C-v> "+p
 nnoremap <C-v> "+p
 
 "===BUFFERS, WINDOWS & TABS==="
@@ -58,15 +59,50 @@ nnoremap <leader>O :tabnew<CR>
 "===PLUGINS==="
 " File-type specific ones are all mapped to function keys
 
-"---Tab completion---" ddc.vim
-" For insert mode, shift-tab moves through completion in the back order
-inoremap <silent><expr> <Tab> ddc#map#pum_visible() ?
-    \ '<C-n>' :
-    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-        \ '<Tab>' :
-        \ ddc#map#manual_complete()
-inoremap <expr> <S-Tab> ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+"---Tab completion : INSERT---" ddc.vim and pum.vim
+inoremap <silent><expr> <Tab>       ddc#map#pum_visible()
+    \ ? pum#map#insert_relative(+1)
+    \ : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s')
+        \ ? '<Tab>'
+        \ : ddc#map#manual_complete()
+inoremap <silent><expr> <S-Tab>     ddc#map#pum_visible()
+    \ ? pum#map#insert_relative(-1)
+    \ : '<C-h>'
+inoremap <silent><expr> <C-n>       ddc#map#pum_visible()
+    \ ? pum#map#insert_relative(+1)
+    \ : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s')
+        \ ? '<C-n>'
+        \ : ddc#map#manual_complete()
+inoremap <silent><expr> <C-p>       ddc#map#pum_visible()
+    \ ? pum#map#insert_relative(-1)
+    \ : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s')
+        \ ? '<C-p>'
+        \ : ddc#map#manual_complete()
+inoremap <silent><expr> <C-y>       ddc#map#pum_visible()
+    \ ? pum#map#confirm()
+    \ : '<C-y>'
+inoremap <silent><expr> <C-e>       ddc#map#pum_visible()
+    \ ? pum#map#cancel()
+    \ : '<C-e>'
+inoremap <silent><expr> <PageDown>  ddc#map#pum_visible()
+    \ ? pum#map#insert_relative_page(+1)
+    \ : '<PageDown>'
+inoremap <silent><expr> <PageUp>    ddc#map#pum_visible()
+    \ ? pum#map#insert_relative_page(-1)
+    \ : '<PageUp>'
+"---Tab completion : COMMAND---" ddc.vim and pum.vim
+"cnoremap <Tab>      <Cmd>call pum#map#insert_relative(+1)<CR>
+"cnoremap <S-Tab>    <Cmd>call pum#map#insert_relative(-1)<CR>
+"cnoremap <C-n>      <Cmd>call pum#map#insert_relative(+1)<CR>
+"cnoremap <C-p>      <Cmd>call pum#map#insert_relative(+1)<CR>
+"cnoremap <C-y>      <Cmd>call pum#map#confirm()<CR>
+"cnoremap <C-e>      <Cmd>call pum#map#cancel()<CR>
+"nnoremap :          <Cmd>call CommandlinePre()<CR>:
+" Debugging; use this for non-pum commands
+"nnoremap ;; :
 
+"---Tab completion---" ddc.vim and pum.vim
+"
 " Ultisnips (FUNDAMENTAL)
 let g:UltiSnipsExpandTrigger = '<c-Space>'
 let g:UltiSnipsJumpForwardTrigger = '<c-l>'
@@ -74,11 +110,11 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-h>'
 nnoremap <C-j> :FzfSnippets<CR>
 
 " NERDTree
-map <Leader>t :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
 
 " Ale
-nmap <silent> <Leader>[ <Plug>(ale_previous_wrap)
-nmap <silent> <Leader>] <Plug>(ale_next_wrap)
+nnoremap <silent> <Leader>[ <Plug>(ale_previous_wrap)
+nnoremap <silent> <Leader>] <Plug>(ale_next_wrap)
 
 " Fzf
 nnoremap <silent> <Leader>p :FzfBLines<CR>
@@ -90,17 +126,17 @@ nnoremap <silent> <Leader>m :FzfMarks<CR>
 " Gitgutter; with leader-g
 nnoremap <silent> <Leader>gl :FzfGfiles<CR>
 nnoremap <silent> <Leader>gL :FzfGfiles?<CR>
-nmap <Leader>gt <Plug>(GitGutterBufferToggle)
-nmap <Leader>Gt <Plug>(GitGutterToggle)
-nmap <Leader>g/ <Plug>(GitGutterLineNrHighlightsToggle)
-nmap <Leader>G/ <Plug>(GitGutterLineHighlightsToggle)
-nmap <Leader>gv <Plug>(GitGutterSignsToggle)
-nmap <Leader>gw <Plug>(GitGutterStageHunk)
-nmap <Leader>gW <Plug>(GitGutterPreviewHunk)
-nmap <Leader>gd <Plug>(GitGutterUndoHunk)
-nmap <Leader>g- <Plug>(GitGutterFold)
-nmap <Leader>gj <Plug>(GitGutterNextHunk)
-nmap <Leader>gk <Plug>(GitGutterPrevHunk)
+nnoremap <Leader>gt :GitGutterBufferToggle<CR>
+nnoremap <Leader>Gt :GitGutterToggle<CR>
+nnoremap <Leader>g/ :GitGutterLineNrHighlightsToggle<CR>
+nnoremap <Leader>G/ :GitGutterLineHighlightsToggle<CR>
+nnoremap <Leader>gv :GitGutterSignsToggle<CR>
+nnoremap <Leader>gw :GitGutterStageHunk<CR>
+nnoremap <Leader>gW :GitGutterPreviewHunk<CR>
+nnoremap <Leader>gd :GitGutterUndoHunk<CR>
+nnoremap <Leader>g- :GitGutterFold<CR>
+nnoremap <Leader>gj :GitGutterNextHunk<CR>
+nnoremap <Leader>gk :GitGutterPrevHunk<CR>
 
 " Vimgrammarous
 let g:grammarous#hooks = {}

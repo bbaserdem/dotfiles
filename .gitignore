@@ -191,14 +191,16 @@
 # NVIM: Grab config files
 !/nvim
 !/nvim/*.vim
-!/nvim/ftplugin
-!/nvim/ftplugin/**
-!/nvim/ftdetect
-!/nvim/ftdetect/**
-!/nvim/before
-!/nvim/before/**
 !/nvim/after
 !/nvim/after/**
+!/nvim/before
+!/nvim/before/**
+!/nvim/ftdetect
+!/nvim/ftdetect/**
+!/nvim/ftpluginn
+!/nvim/ftplugin/**
+!/nvim/lua
+!/nvim/lua/**
 !/nvim/syntax
 !/nvim/syntax/**
 

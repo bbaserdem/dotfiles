@@ -8,11 +8,16 @@
 "---Required---"
 syntax on
 set encoding=utf-8
+if $TERM ==? 'linux'
+  let isConsole = 1
+else
+  let isConsole = 0
+endif
 
 "---External config options---"
 source $XDG_CONFIG_HOME/nvim/plugins.vim
 source $XDG_CONFIG_HOME/nvim/keybinds.vim
-if $TERM ==? 'linux'
+if isConsole
   source $XDG_CONFIG_HOME/nvim/noglyph.vim
 else
   source $XDG_CONFIG_HOME/nvim/glyph.vim
@@ -44,6 +49,7 @@ set conceallevel=0          " Don't conceal any characters
 set timeoutlen=3000         " Make mapping sequences timeout in 3 secs instead
 set ttimeoutlen=100         " But don't extrapolate to keycodes
 set showtabline=2           " Always show tabs
+"set complete=               " Disable built in autocomplete
 
 "---Indentation---"
 " Double press of > and < will increase or decrease indentation

@@ -19,58 +19,56 @@ unlet autoload_plug_path
 
 call plug#begin('$XDG_DATA_HOME/nvim/plugged')
 " Colorscheme
-Plug 'chriskempson/base16-vim'            , {'branch': 'master' }
+Plug 'chriskempson/base16-vim'              , {'branch': 'master' }
 " Indentation tracker
-Plug 'Yggdroot/indentLine'                , {'branch': 'master' }
+Plug 'Yggdroot/indentLine'                  , {'branch': 'master' }
 " File browser(s)
-Plug 'junegunn/fzf.vim'                   , {'branch': 'master' }
-Plug 'preservim/nerdtree'                 , {'branch': 'master' }
-Plug 'Xuyuanp/nerdtree-git-plugin'        , {'branch': 'master' }
-Plug 'ryanoasis/vim-devicons'             , {'branch': 'master' }
+Plug 'junegunn/fzf.vim'                     , {'branch': 'master' }
+Plug 'preservim/nerdtree'                   , {'branch': 'master' }
+Plug 'Xuyuanp/nerdtree-git-plugin'          , {'branch': 'master' }
+Plug 'ryanoasis/vim-devicons'               , {'branch': 'master' }
 " Git management
-Plug 'airblade/vim-gitgutter'             , {'branch': 'master' }
-Plug 'tpope/vim-fugitive'                 , {'branch': 'master' }
+Plug 'airblade/vim-gitgutter'               , {'branch': 'master' }
+Plug 'tpope/vim-fugitive'                   , {'branch': 'master' }
 " Status bar
-Plug 'vim-airline/vim-airline'            , {'branch': 'master' }
-Plug 'vim-airline/vim-airline-themes'     , {'branch': 'master' }
-" Completion collector; ddc and lsp
-Plug 'vim-denops/denops.vim'              , {'branch': 'main'   }
-Plug 'Shougo/ddc.vim'                     , {'branch': 'main'   }
-Plug 'Shougo/ddc-around'                  , {'branch': 'main'   }
-Plug 'Shougo/ddc-matcher_head'            , {'branch': 'main'   }
-Plug 'Shougo/ddc-sorter_rank'             , {'branch': 'main'   }
-Plug 'Shougo/ddc-omni'                    , {'branch': 'main'   }
-Plug 'Shougo/pum.vim'                     , {'branch': 'main'   }
-Plug 'prabirshrestha/vim-lsp'             , {'branch': 'master' }
-Plug 'mattn/vim-lsp-settings'             , {'branch': 'master' }
-Plug 'shun/ddc-vim-lsp'                   , {'branch': 'main'   }
-" Nvim versions don't play as good with ale
-"Plug 'Shougo/ddc-nvim-lsp'                , {'branch': 'main'   }
-"Plug 'neovim/nvim-lspconfig'              , {'branch': 'master' }
+Plug 'vim-airline/vim-airline'              , {'branch': 'master' }
+Plug 'vim-airline/vim-airline-themes'       , {'branch': 'master' }
+" Tab Ccompletion collector; ddc and lsp
+Plug 'vim-denops/denops.vim'                , {'branch': 'main'   }
+Plug 'Shougo/ddc.vim'                       , {'branch': 'main'   }
+Plug 'Shougo/ddc-around'                    , {'branch': 'main'   }
+Plug 'Shougo/ddc-matcher_head'              , {'branch': 'main'   }
+Plug 'Shougo/ddc-sorter_rank'               , {'branch': 'main'   }
+Plug 'Shougo/ddc-omni'                      , {'branch': 'main'   }
+Plug 'Shougo/pum.vim'                       , {'branch': 'main'   }
+Plug 'Shougo/ddc-nvim-lsp'                  , {'branch': 'main'   }
+" LSP setup
+Plug 'neovim/nvim-lspconfig'                , {'branch': 'master' }
 " Linting (code checking)
-Plug 'dense-analysis/ale'                 , {'branch': 'master' }
-Plug 'statiolake/ddc-ale'                 , {'branch': 'master' }
-Plug 'rhysd/vim-lsp-ale'                  , {'branch': 'master' }
+Plug 'nvim-lua/plenary.nvim'                , {'branch': 'master' }
+Plug 'jose-elias-alvarez/null-ls.nvim'      , {'branch': 'main'   }
+"Plug 'dense-analysis/ale'                 , {'branch': 'master' }
+"Plug 'statiolake/ddc-ale'                 , {'branch': 'master' }
 " Snippets (code snippet inserter)
-Plug 'SirVer/ultisnips'                   , {'branch': 'master' }
-Plug 'honza/vim-snippets'                 , {'branch': 'master' }
-Plug 'thomasfaingnaert/vim-lsp-ultisnips' , {'branch': 'master' }
-Plug 'thomasfaingnaert/vim-lsp-snippets'  , {'branch': 'master' }
+Plug 'SirVer/ultisnips'                     , {'branch': 'master' }
+Plug 'honza/vim-snippets'                   , {'branch': 'master' }
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'   , {'branch': 'master' }
+Plug 'thomasfaingnaert/vim-lsp-snippets'    , {'branch': 'master' }
 " Function argument expander
-Plug 'Shougo/echodoc.vim'                 , {'branch': 'master' }
+Plug 'Shougo/echodoc.vim'                   , {'branch': 'master' }
 " Grammar check
-Plug 'rhysd/vim-grammarous'               , {'branch': 'master' }
+Plug 'rhysd/vim-grammarous'                 , {'branch': 'master' }
 " Ctags as in code tags
-Plug 'ludovicchabant/vim-gutentags'       , {'branch': 'master' }
+Plug 'ludovicchabant/vim-gutentags'         , {'branch': 'master' }
 " LaTeX editing
-Plug 'lervag/vimtex'                      , {'branch': 'master' }
+Plug 'lervag/vimtex'                        , {'branch': 'master' }
 " Config file types
-Plug 'aouelete/sway-vim-syntax'           , {'branch': 'master' }
-Plug 'bbaserdem/musicbrainz-vim-syntax'   , {'branch': 'main'   }
-Plug 'baskerville/vim-sxhkdrc'            , {'branch': 'master' }
-Plug 'gentoo/gentoo-syntax'               , {'branch': 'master' }
-Plug 'brgmnn/vim-syncthing'               , {'branch': 'master' }
-Plug 'vim-scripts/MatlabFilesEdition'     , {'branch': 'master' }
+Plug 'aouelete/sway-vim-syntax'             , {'branch': 'master' }
+Plug 'bbaserdem/musicbrainz-vim-syntax'     , {'branch': 'main'   }
+Plug 'baskerville/vim-sxhkdrc'              , {'branch': 'master' }
+Plug 'gentoo/gentoo-syntax'                 , {'branch': 'master' }
+Plug 'brgmnn/vim-syncthing'                 , {'branch': 'master' }
+Plug 'vim-scripts/MatlabFilesEdition'       , {'branch': 'master' }
 call plug#end()
 
 "------------"
@@ -82,26 +80,10 @@ call plug#end()
 let base16colorspace=256
 
 "---Nvim LSP---"
-"lua require('lspconfig').texlab.setup{}
+lua require('lspconfig').texlab.setup{}
 
-""---Ale---"
-let g:ale_sign_column_always = 1    " Always keep the gutter line open
-let g:ale_set_highlights = 1        " No highlights
-"===LINTING
-let g:ale_linters_explicit = 1      " Only run configured
-let g:ale_linters = {
-    \ 'python': ['flake8'],
-    \ 'tex': ['chktex'],
-\ }
-"===FIXING
-let g:ale_fix_on_save = 1           " Fix on save
-let g:ale_fixers = {
-    \ '*'       : ['remove_trailing_lines', 'trim_whitespace'],
-    \ 'python'  : ['autopep8'],
-    \ 'latex'   : ['latexindent'],
-\ }
-"===COMPLETION
-"let g:ale_completion_enabled = 0    " Link other plugins for autocompletion
+"---Null-Ls---"
+lua require('null-ls-config')
 
 "---VimGrammarous---"
 " Check only comments; except these file types
@@ -147,7 +129,7 @@ set foldtext=gitgutter#fold#foldtext()          " Show changes in folded lines
 let g:airline#extensions#ale#enabled = 1        " Enable lint extension
 let g:airline#extensions#tabline#enabled = 1    " Enable tabline for buffers
 let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#gutentags#enabled = 1  " Enable ctags extension
+"let g:airline#extensions#gutentags#enabled = 1  " Enable ctags extension
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 "---Vimtex---"

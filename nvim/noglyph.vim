@@ -14,6 +14,13 @@ let g:gitgutter_sign_removed = 'zz'
 let g:gitgutter_sign_removed_first_line = '^^'
 let g:gitgutter_sign_modified_removed = 'ww'
 
+" ddc.vim
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'around'      : {'mark' : 'Arn'},
+    \ 'nvim-lsp'    : {'mark' : 'LSP'},
+    \ 'omni'        : {'mark' : 'Omn'},
+\ })
+
 " Ale
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
