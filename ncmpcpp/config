@@ -61,7 +61,7 @@ browser_display_mode = "columns"
 search_engine_display_mode = "columns"
 playlist_editor_display_mode = "columns"
 media_library_primary_tag = album_artist
-media_library_albums_split_by_date = no
+media_library_albums_split_by_date = yes
 
 autocenter_mode = yes
 centered_cursor = yes

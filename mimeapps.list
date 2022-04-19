@@ -32,13 +32,14 @@ x-scheme-handler/vnc=org.remmina.Remmina.desktop;
 x-scheme-handler/remmina=org.remmina.Remmina.desktop;
 application/x-remmina=org.remmina.Remmina.desktop;
 image/png=org.xfce.ristretto.desktop;ristretto.desktop;gimp.desktop;
-application/octet-stream=nvim.desktop;firefox.desktop;
+application/octet-stream=firefox.desktop;nvim.desktop;
 image/x-adobe-dng=ristretto.desktop;
 audio/mp4=smplayer.desktop;
 video/mp4=smplayer.desktop;
 video/webm=smplayer.desktop;
 video/mkv=smplayer.desktop;
 x-scheme-handler/mailto=xfce4-mail-reader.desktop;
+audio/mpeg=smplayer.desktop;
 
 [Default Applications]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
@@ -77,4 +78,3 @@ x-scheme-handler/mailto=xfce4-mail-reader.desktop
 [Removed Associations]
 application/pdf=libreoffice-writer.desktop;wine-extension-pdf.desktop;gimp.desktop;
 application/xml=org.qutebrowser.qutebrowser.desktop;
-

@@ -18,10 +18,12 @@ endif
 unlet autoload_plug_path
 
 call plug#begin('$XDG_DATA_HOME/nvim/plugged')
+" Lua stuff
+Plug 'nvim-lua/plenary.nvim'                , {'branch': 'master' }
 " Colorscheme
 Plug 'chriskempson/base16-vim'              , {'branch': 'master' }
 " Indentation tracker
-Plug 'Yggdroot/indentLine'                  , {'branch': 'master' }
+Plug 'lukas-reineke/indent-blankline.nvim'  , {'branch': 'master' }
 " File browser(s)
 Plug 'junegunn/fzf.vim'                     , {'branch': 'master' }
 Plug 'preservim/nerdtree'                   , {'branch': 'master' }
@@ -41,11 +43,10 @@ Plug 'Shougo/ddc-matcher_head'              , {'branch': 'main'   }
 Plug 'Shougo/ddc-sorter_rank'               , {'branch': 'main'   }
 Plug 'Shougo/ddc-omni'                      , {'branch': 'main'   }
 Plug 'Shougo/pum.vim'                       , {'branch': 'main'   }
-Plug 'Shougo/ddc-nvim-lsp'                  , {'branch': 'main'   }
 " LSP setup
 Plug 'neovim/nvim-lspconfig'                , {'branch': 'master' }
+Plug 'Shougo/ddc-nvim-lsp'                  , {'branch': 'main'   }
 " Linting (code checking)
-Plug 'nvim-lua/plenary.nvim'                , {'branch': 'master' }
 Plug 'jose-elias-alvarez/null-ls.nvim'      , {'branch': 'main'   }
 "Plug 'dense-analysis/ale'                 , {'branch': 'master' }
 "Plug 'statiolake/ddc-ale'                 , {'branch': 'master' }
@@ -88,11 +89,11 @@ lua require('null-ls-config')
 "---VimGrammarous---"
 " Check only comments; except these file types
 let g:grammarous#default_comments_only_filetypes = {
-        \ '*' : 1,
-        \ 'help' : 0,
-        \ 'markdown' : 0,
-        \ 'latex' : 0,
-        \ }
+    \ '*' : 1,
+    \ 'help' : 0,
+    \ 'markdown' : 0,
+    \ 'latex' : 0,
+\ }
 let g:grammarous#use_vim_spelllang = 1
 let g:grammarous#languagetool_cmd = 'languagetool'
 let g:grammarous#show_first_error = 1
@@ -102,8 +103,15 @@ let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'floating'
 highlight link EchoDocFloat Identifier
 
-"---indentLine---"
-let g:indentLine_conceallevel = 0               " Disabled; breaks latex
+"---indent_blankline---"
+lua << EOF
+    vim.opt.list = true
+    vim.opt.listchars:append("eol:↴")
+
+    require("indent_blankline").setup {
+        show_end_of_line = true,
+    }
+EOF
 
 "---FuzzyFinder---"
 let g:fzf_command_prefix = 'Fzf'                " Prefix commands with Fzf

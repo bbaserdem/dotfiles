@@ -42,7 +42,7 @@ XF86Audio{Raise,Lower}Volume
 
 XF86AudioMute + {_,alt}
     /usr/bin/pactl {set-sink-mute @DEFAULT_SINK@,set-source-mute @DEFAULT_SOURCE@} toggle
- 
+
 # Change audio sinks
 XF86Tools + {_,shift} + {_,ctrl}
     $XDG_CONFIG_HOME/sxhkd/pulsesink.sh { ,-r} { ,-s}
