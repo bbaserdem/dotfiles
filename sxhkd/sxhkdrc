@@ -9,7 +9,7 @@ super + Return
     $TERMINAL
 
 # Dropdown terminal
-super + F12
+F12
     $XDG_CONFIG_HOME/bspwm/scripts/dropdown.sh
 
 # Rofi
