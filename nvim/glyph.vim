@@ -1,6 +1,9 @@
 " Settings for unique glyph setup
 scriptencoding utf-8
 
+" Line wraps
+let &showbreak='↪'
+
 " Airline;
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16'
@@ -20,6 +23,8 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'around'      : {'mark' : ''},
     \ 'nvim-lsp'    : {'mark' : ''},
     \ 'omni'        : {'mark' : ''},
+    \ 'treesitter'  : {'mark' : 'פּ'},
+    \ 'ultisnips'   : {'mark' : ''},
 \ })
 
 " Null-ls

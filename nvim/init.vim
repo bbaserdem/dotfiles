@@ -24,7 +24,8 @@ else
 endif
 
 "---Color scheme---"
-colorscheme base16-onedark
+set termguicolors
+colorscheme vscode
 
 "---Base settings---"
 set cmdheight=2             " Command bar height
@@ -62,7 +63,7 @@ set nojoinspaces            " Prevents inserting two spaces after punctuation on
 set spelllang=en_us         " Turn on spellcheck
 set linebreak               " Break long lines at
 set breakindent             " Wrapped lines will retain indentation
-let &showbreak='↪'          " Put character at the beginning of wrapped lines
+
 " Function to toggle numbering
 function! NumberToggle()
   if(&relativenumber == 1)

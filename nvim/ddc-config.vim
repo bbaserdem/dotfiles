@@ -7,6 +7,8 @@ call ddc#custom#patch_global({
         \ 'around',
         \ 'nvim-lsp',
         \ 'omni',
+        \ 'treesitter',
+        \ 'ultisnips',
     \ ],
     \ 'sourceOptions' : {
         \ '_' : {
@@ -16,8 +18,8 @@ call ddc#custom#patch_global({
         \ 'nvim-lsp' : {'forceCompletionPattern': '\.\w*|:\w*|->\w*'},
     \ },
     \ 'sourceParams' : {
-        \ 'around': {'maxSize': 500},
-        \ 'nvim-lsp': {'kindLabels': {'Class': 'c'}},
+        \ 'around'      :   {'maxSize': 500},
+        \ 'nvim-lsp'    :   {'kindLabels': {'Class': 'c'}},
     \ },
     \ 'completionMenu' : 'pum.vim',
     \ 'completionMode' : 'popupmenu',

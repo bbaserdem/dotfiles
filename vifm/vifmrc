@@ -169,9 +169,9 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in ristretto}
         \ ristretto %f >/dev/null 2>&1 & disown,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ kitty +icat --transfer-mode=stream --place=%pwx%ph@%pxx%py %c %N
+        \ kitty +icat --silent --transfer-mode=stream --place=%pwx%ph@%pxx%py %c %N
         \ %pc
-        \ kitty +kitten icat -clear --silent %N
+        \ kitty icat --clear --silent %pd
 
 " MD5
 filetype *.md5

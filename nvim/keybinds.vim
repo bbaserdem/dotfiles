@@ -22,7 +22,7 @@ nnoremap <C-v> "+p
 
 "===BUFFERS, WINDOWS & TABS==="
 "---Navigation---"
-" Windows
+" Window navigation
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
@@ -35,19 +35,17 @@ nnoremap <leader>J :tabnext<CR>
 nnoremap <leader>K :tabprev<CR>
 "---Seeking---" (this mostly uses fzf to seek open files or windows)
 " List buffers to navigate current window to them
-nnoremap <Leader><Tab> :FzfBuffers<CR>
-" List windows to navigate to them
-nnoremap <leader><S-Tab> :FzfWindows<CR>
+nnoremap <Leader><Tab> :Telescope buffers<CR>
 "---Closing---"
 " Close this buffer
-nnoremap <Leader>q :bd<CR>
+nnoremap <Leader>q :Bdelete<CR>
 " Close this window
 nnoremap <leader>d :close<CR>
 " Close this tab
 nnoremap <leader>D :tabclose<CR>
 "---Opening---"
 " Use fuzzy finder to open new buffer
-nnoremap <Leader>o :FzfFiles<CR>
+nnoremap <Leader>o :Telescope find_files<CR>
 " Open new empty buffer
 nnoremap <Leader>n :new<CR>
 " Open new windows
@@ -110,7 +108,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-h>'
 nnoremap <C-j> :FzfSnippets<CR>
 
 " NERDTree
-nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F3> :NvimTreeToggle<CR>
 
 " Ale
 nnoremap <silent> <Leader>[ <Plug>(ale_previous_wrap)

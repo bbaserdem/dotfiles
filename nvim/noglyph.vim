@@ -16,9 +16,11 @@ let g:gitgutter_sign_modified_removed = 'ww'
 
 " ddc.vim
 call ddc#custom#patch_global('sourceOptions', {
-    \ 'around'      : {'mark' : 'Arn'},
+    \ 'around'      : {'mark' : 'Around'},
     \ 'nvim-lsp'    : {'mark' : 'LSP'},
-    \ 'omni'        : {'mark' : 'Omn'},
+    \ 'omni'        : {'mark' : 'Omni'},
+    \ 'treesitter'  : {'mark' : 'Treesitter'},
+    \ 'ultisnips'   : {'mark' : 'Snippet'},
 \ })
 
 " Ale
