@@ -1,3 +1,4 @@
+# Generic settings
 set window-icon /usr/share/icons/Papirus-Dark/16x16/mimetypes/application-pdf.svg
 set selection-clipboard clipboard
 set first-page-column 1:1
@@ -6,7 +7,10 @@ set statusbar-home-tilde true
 set scroll-page-aware "true"
 set scroll-step 50
 
+# Reverse coloring, and invert only effects brightness, not hue
 map <C-i> recolor
+set recolor                     "true"
+set recolor-keephue             "true"
 
 # Base16 Spacemacs
 # Author: Nasser Alshammari (https://github.com/nashamri/spacemacs-theme)
@@ -41,5 +45,3 @@ set completion-highlight-bg     "#4f97d7"
 set recolor-lightcolor          "#1f2022"
 set recolor-darkcolor           "#e8e8e8"
 
-set recolor                     "true"
-set recolor-keephue             "true"

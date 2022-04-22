@@ -143,6 +143,8 @@
 # KITTY: Grab the conf files
 !/kitty
 !/kitty/*.conf
+!/kitty/themes
+!/kitty/themes/*
 
 # KVANTUM: Grab the config file
 !/Kvantum
@@ -191,13 +193,15 @@
 # NVIM: Grab config files
 !/nvim
 !/nvim/*.vim
+!/nvim/*.lua
+!/nvim/**.md
 !/nvim/after
 !/nvim/after/**
 !/nvim/before
 !/nvim/before/**
 !/nvim/ftdetect
 !/nvim/ftdetect/**
-!/nvim/ftpluginn
+!/nvim/ftplugin
 !/nvim/ftplugin/**
 !/nvim/lua
 !/nvim/lua/**
@@ -217,6 +221,10 @@
 !/profile
 !/profile.d
 !/profile.d/*.sh
+
+# PROFILE SYNC DAEMON: Grab all
+!/psd
+!/psd/*
 
 # QMK: Gather configuration
 !/qmk

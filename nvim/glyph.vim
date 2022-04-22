@@ -19,13 +19,13 @@ let g:gitgutter_sign_removed_first_line = ''
 let g:gitgutter_sign_modified_removed = ''
 
 " ddc.vim
-call ddc#custom#patch_global('sourceOptions', {
-    \ 'around'      : {'mark' : ''},
-    \ 'nvim-lsp'    : {'mark' : ''},
-    \ 'omni'        : {'mark' : ''},
-    \ 'treesitter'  : {'mark' : 'פּ'},
-    \ 'ultisnips'   : {'mark' : ''},
-\ })
+"call ddc#custom#patch_global('sourceOptions', {
+"    \ 'around'      : {'mark' : ''},
+"    \ 'nvim-lsp'    : {'mark' : ''},
+"    \ 'omni'        : {'mark' : ''},
+"    \ 'treesitter'  : {'mark' : 'פּ'},
+"    \ 'ultisnips'   : {'mark' : ''},
+"\ })
 
 " Null-ls
 "lua defaults["diagnostics_format"] = "[#{c}] #{m} (#{s})"

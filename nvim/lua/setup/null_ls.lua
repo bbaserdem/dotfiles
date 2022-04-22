@@ -1,7 +1,21 @@
--- Null-ls config
 local null_ls = require("null-ls")
--- Sources
-local sources = {
+return null_ls.setup({
+  cmd = { "nvim" },
+  debounce = 250,
+  debug = false,
+  default_timeout = 5000,
+  diagnostics_format = "[#{c}] #{m} (#{s})",
+  fallback_severity = vim.diagnostic.severity.ERROR,
+  log = {
+    enable = true,
+    level = "warn",
+    use_console = "async",
+  },
+  on_attach = nil,
+  on_init = nil,
+  on_exit = nil,
+  --root_dir = u.root_pattern(".null-ls-root", "Makefile", ".git"),
+  sources = {
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.code_actions.proselint,
     null_ls.builtins.code_actions.refactoring,
@@ -15,7 +29,7 @@ local sources = {
     null_ls.builtins.diagnostics.gitlint,
     null_ls.builtins.diagnostics.hadolint,
     null_ls.builtins.diagnostics.jsonlint,
-    null_ls.builtins.diagnostics.luacheck,
+--    null_ls.builtins.diagnostics.luacheck,
     null_ls.builtins.diagnostics.markdownlint,
     null_ls.builtins.diagnostics.mdl,
     null_ls.builtins.diagnostics.mlint,
@@ -45,24 +59,6 @@ local sources = {
     null_ls.builtins.formatting.trim_whitespace,
     null_ls.builtins.formatting.xmllint,
     null_ls.builtins.hover.dictionary,
-}
--- Options for the linter
-null_ls.setup({
-    cmd = { "nvim" },
-    debounce = 250,
-    debug = false,
-    default_timeout = 5000,
-    diagnostics_format = "[#{c}] #{m} (#{s})",
-    fallback_severity = vim.diagnostic.severity.ERROR,
-    log = {
-        enable = true,
-        level = "warn",
-        use_console = "async",
     },
-    on_attach = nil,
-    on_init = nil,
-    on_exit = nil,
-    --root_dir = u.root_pattern(".null-ls-root", "Makefile", ".git"),
-    sources = sources,
-    update_in_insert = false,
+  update_in_insert = false,
 })
