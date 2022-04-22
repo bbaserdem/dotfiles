@@ -205,22 +205,16 @@ return require('packer').startup(
   --[[--------------------------Color Schemes------------------------------]]--
   --[[---------------------------------------------------------------------]]--
   --use { 'adisen99/apprentice.nvim', { requires = 'rktjmp/lush.nvim' } }
-  use 'sainnhe/edge'
-  use 'Everblush/everblush.vim'
-  use 'sainnhe/gruvbox-material'
-  use 'marko-cerovac/material.nvim'
-  use 'savq/melange'
-  use 'rafamadriz/neon'
-  use 'mhartington/oceanic-next'
-  use 'navarasu/onedark.nvim'
-  use 'kvrohit/rasmus.nvim'
-  use 'sainnhe/sonokai'
-  use 'Th3Whit3Wolf/space-nvim'
-  use 'tomasiser/vim-code-dark'
+  use 'tjdevries/colorbuddy.nvim'
+  -- High contrast
   use 'bluz71/vim-moonfly-colors'
-  use 'Mofiqul/vscode.nvim'
-  use 'glepnir/zephyr-nvim'
+  -- Nice themes
   use 'ChristianChiarulli/nvcode-color-schemes.vim'
+  -- Faded themes
+  use 'sainnhe/gruvbox-material'
+  use 'savq/melange'
+  use 'sainnhe/sonokai'
+  use 'tomasiser/vim-code-dark'
 
   --[[---------------------------------------------------------------------]]--
   --[[--Automatically set up your configuration after cloning packer.nvim--]]--

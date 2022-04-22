@@ -27,7 +27,7 @@ lua require('servers')
 
 "---Color scheme---"
 set termguicolors
-colorscheme vscode
+colorscheme gruvbox-material
 
 "---Base settings---"
 set cmdheight=2             " Command bar height
