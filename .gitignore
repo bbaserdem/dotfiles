@@ -190,7 +190,7 @@
 !/newsboat/config
 !/newsboat/urls
 
-# NVIM: Grab config files
+# NVIM: Grab config files; and files that will have general configurations
 !/nvim
 !/nvim/*.vim
 !/nvim/*.lua
@@ -205,8 +205,10 @@
 !/nvim/ftplugin/**
 !/nvim/lua
 !/nvim/lua/**
-!/nvim/syntax
-!/nvim/syntax/**
+# Plugins folder is where compiled packer lives
+/nvim/plugin/packer_compiled.lua
+# I will also develop my own plugins here, and sytax files
+# but they will be published on their own
 
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave

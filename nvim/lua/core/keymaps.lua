@@ -78,13 +78,16 @@ keymap('n', '<Leader><CR>', vim.lsp.buf.rename,           term_opts)
 keymap('n', '<F2>',   ':TroubleToggle lsp_definitions<CR>',       term_opts)
 keymap('n', '<S-F2>', ':TroubleToggle lsp_references<CR>',        term_opts)
 keymap('n', '<C-F2>', ':TroubleToggle lsp_type_definitions<CR>',  term_opts)
--- 03: File browser
-keymap('n', '<F3>',   ':NvimTreeToggle<CR>',                      term_opts)
--- 04: ???
+-- 03: Keybinds
+keymap('n', '<F3>',   ':Glow $XDG_CONFIG_HOME/nvim/Keymap.md<CR>',term_opts)
+-- 04: File browser
+keymap('n', '<F4>',   ':NvimTreeToggle<CR>',                      term_opts)
 -- 05: Build (this is individual to file-type)
 -- 06: Preview (this is individual to file-type)
 -- 07: Server log (this can be overwritten)
 keymap('n', '<F7>',   ':LspInfo<CR>',                             term_opts)
+keymap('n', '<F19>',  ':LspInstallInfo<CR>',                      term_opts)
+keymap('n', '<F21>',  ':LspStop<CR>',                             term_opts)
 -- 08: Errors
 keymap('n', '<F2>',   ':TroubleToggle document_diagnostics<CR>',  term_opts)
 keymap('n', '<S-F2>', ':TroubleToggle workspace_diagnostics<CR>', term_opts)

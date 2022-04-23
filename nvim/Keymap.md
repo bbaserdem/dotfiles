@@ -67,11 +67,11 @@ This is a list of what function keys I use for vim.
 |:-------:|:----------------------------------- |:-------------------------:|
 |   F01   | Help screen (built-in)              | Built-in                  |
 |   F02   | Query current item (Shift for tupe) | Trouble                   |
-|   F03   | File browser                        | Nvim-Tree                 |
-|   F04   | *Unclaimed*                         | *Unused*                  |
+|   F03   | Keymap help                         | Glow (-> which-key.nvim)  |
+|   F04   | File browser                        | Nvim-Tree                 |
 | **F05** | Build (Ctrl for clean)              | Filetype related          |
 | **F06** | Preview                             | Filetype related          |
-|   F07   | Log screen                          | Lspconfig                 |
+|   F07   | Log screen (Shift for install)      | Lspconfig, lsp-install    |
 |   F08   | Errors and warnings (Shift for all) | Trouble                   |
 |   F09   | Snippets                            | UltiSnips                 |
 |   F10   | *Unclaimed*                         | *Unused*                  |

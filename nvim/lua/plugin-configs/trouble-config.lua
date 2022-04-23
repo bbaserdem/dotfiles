@@ -1,4 +1,8 @@
-return require("trouble").setup({
+---------------
+--- Trouble ---
+---------------
+plug = require('trouble')
+return plug.setup({
   position = "top",
   height = 10,
   width = 50,

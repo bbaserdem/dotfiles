@@ -26,24 +26,28 @@ vim.cmd([[
 ]])
 
 -- Installed plugins
-return require('packer').startup(function(use)
+local packer_end = require('packer').startup(function(use)
    --[[---------------------------------------------------------------------]]--
    --[[----------------------Packer can manage itself-----------------------]]--
    --[[---------------------------------------------------------------------]]--
-  use 'wbthomason/packer.nvim'
+  use { 'wbthomason/packer.nvim',
+  }
 
    --[[---------------------------------------------------------------------]]--
    --[[------------------------Plugins for utilities------------------------]]--
    --[[---------------------------------------------------------------------]]--
 
    -- Don't close windows if deleting a buffer
-  use 'famiu/bufdelete.nvim'
+  use { 'famiu/bufdelete.nvim',
+  }
 
    -- Make directories while saving if they don't exist
-  use 'jghauser/mkdir.nvim'
+  use { 'jghauser/mkdir.nvim',
+  }
 
    -- Notifications on screen
-  use 'rcarriga/nvim-notify'
+  use { 'rcarriga/nvim-notify',
+  }
 
    -- URL exposer and handler
   use { 'axieax/urlview.nvim',
@@ -55,16 +59,21 @@ return require('packer').startup(function(use)
   }
 
    -- Session manager
-  use 'rmagatti/auto-session'
+  use { 'rmagatti/auto-session',
+  }
 
    -- Mouse gesture plugin
-  use 'notomo/gesture.nvim'
+  use { 'notomo/gesture.nvim',
+  }
 
    -- Interacting with Vim marks
-  use 'chentau/marks.nvim'
+  use { 'chentau/marks.nvim',
+  }
 
    -- Indent guiding lines
-  use 'lukas-reineke/indent-blankline.nvim'
+  use { 'lukas-reineke/indent-blankline.nvim',
+    disable = true,
+  }
 
    -- File explorer
   use { 'kyazdani42/nvim-tree.lua',
@@ -74,16 +83,20 @@ return require('packer').startup(function(use)
   }
 
    -- Improve default vim.ui interfaces
-  use 'stevearc/dressing.nvim'
+  use { 'stevearc/dressing.nvim',
+  }
 
    -- Scrollbar
-  use 'petertriho/nvim-scrollbar'
+  use { 'petertriho/nvim-scrollbar',
+  }
 
    -- Status bar
-  use 'feline-nvim/feline.nvim'
+  use { 'feline-nvim/feline.nvim',
+  }
 
    -- Git decorations and functions
-  use 'lewis6991/gitsigns.nvim'
+  use { 'lewis6991/gitsigns.nvim',
+  }
 
    -- Fuzzy search
   use { 'nvim-telescope/telescope.nvim',
@@ -97,23 +110,24 @@ return require('packer').startup(function(use)
   }
 
    -- Spellchecker
-  use 'lewis6991/spellsitter.nvim'
+  use { 'lewis6991/spellsitter.nvim', }
 
    -- UI component Library
-  use 'Muniftanjim/nui.nvim'
+  use { 'Muniftanjim/nui.nvim',
+  }
 
    --[[---------------------------------------------------------------------]]--
    --[[--Plugins for language server protocol (LSP), parsing and diagnostics]]--
    --[[---------------------------------------------------------------------]]--
 
    -- Collection of common configs
-  use 'neovim/nvim-lspconfig'
+  use { 'neovim/nvim-lspconfig', }
 
    -- Install missing servers
-  use 'williamboman/nvim-lsp-installer'
+  use { 'williamboman/nvim-lsp-installer', }
 
    -- Adapt color schemes without LSP compatibility built in
-  use 'folke/lsp-colors.nvim'
+  use { 'folke/lsp-colors.nvim', }
 
    -- Display menu for diagnostic messages
   use { 'folke/trouble.nvim',
@@ -134,9 +148,6 @@ return require('packer').startup(function(use)
   use { 'folke/twilight.nvim',
     requires = 'nvim-treesitter/nvim-treesitter'
   }
-
-   -- Function signatures from completions
-  use 'Shougo/echodoc.vim'
 
    --[[---------------------------------------------------------------------]]--
    --[[-----------------------Tab completion and Snippets-------------------]]--
@@ -186,46 +197,61 @@ return require('packer').startup(function(use)
 
    -- LaTeX
    -- Specific TeXlab config for LSP to enable backsearch
-  use 'f3fora/nvim-texlabconfig'
+  use { 'f3fora/nvim-texlabconfig',
+  }
    -- Integration (only helps clean directory for now)
-  use 'lervag/vimtex'
+  use { 'lervag/vimtex',
+  }
 
    -- Markdown
    -- Render MD file in buffer
-  use 'ellisonleao/glow.nvim'
+  use { 'ellisonleao/glow.nvim',
+  }
    -- Render MD file to html
   use { 'davidgranstrom/nvim-markdown-preview',
     cmd = { 'MarkdownPreview' },
   }
    -- Export documentation to vimdoc
-  use 'kdheepak/panvimdoc'
+  use { 'kdheepak/panvimdoc',
+  }
    -- Follow MD links
   use { 'jakewvincent/mkdnflow.nvim',
-    disable = true,
   }
 
    -- Config file type highlighting
-  use 'aouelete/sway-vim-syntax'
-  use 'bbaserdem/musicbrainz-vim-syntax'
-  use 'baskerville/vim-sxhkdrc'
-  use 'gentoo/gentoo-syntax'
-  use 'brgmnn/vim-syncthing'
-  use 'vim-scripts/MatlabFilesEdition'
+  use { 'aouelete/sway-vim-syntax',
+  }
+  use { 'bbaserdem/musicbrainz-vim-syntax',
+  }
+  use { 'baskerville/vim-sxhkdrc',
+  }
+  use { 'gentoo/gentoo-syntax',
+  }
+  use { 'brgmnn/vim-syncthing',
+  }
+  use { 'vim-scripts/MatlabFilesEdition',
+  }
 
    --[[---------------------------------------------------------------------]]--
    --[[----------------------------Color Schemes----------------------------]]--
    --[[---------------------------------------------------------------------]]--
    --use { 'adisen99/apprentice.nvim', { requires = 'rktjmp/lush.nvim' } }
-  use 'tjdevries/colorbuddy.nvim'
+  use { 'tjdevries/colorbuddy.nvim',
+  }
    -- High contrast
-  use 'bluz71/vim-moonfly-colors'
+  use { 'bluz71/vim-moonfly-colors',
+  }
    -- Nice themes
-  use 'ChristianChiarulli/nvcode-color-schemes.vim'
+  use { 'ChristianChiarulli/nvcode-color-schemes.vim', }
    -- Faded themes
-  use 'sainnhe/gruvbox-material'
-  use 'savq/melange'
-  use 'sainnhe/sonokai'
-  use 'tomasiser/vim-code-dark'
+  use { 'sainnhe/gruvbox-material',
+  }
+  use { 'savq/melange',
+  }
+  use { 'sainnhe/sonokai',
+  }
+  use { 'tomasiser/vim-code-dark',
+  }
 
    --[[---------------------------------------------------------------------]]--
    --[[---Automatically set up your configuration after cloning packer.nvim-]]--
@@ -235,3 +261,37 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
+--[[------------------]]--
+--[[------CONFIGS-----]]--
+--[[------------------]]--
+
+-- Autoload function
+local load_config_function = function(name)
+	local plug_ok, plug = pcall(require, 'plugin-configs/' .. name .. '-config')
+	if not plug_ok then
+		error('Could not load ' .. name .. '" \n' .. plug .. '\n')
+	end
+end
+
+-- Loadable config files
+config_modules = {
+	'cmp_nvim_ultisnips',
+	'lspkind',
+	'cmp',
+	'null-ls',
+	'nvim-markdown-preview',
+	'nvim-tree',
+	'scrollbar',
+	'trouble',
+	'vimtex',
+	--'mkdnflow'
+	--'which-key',
+	--'indent_blankline',
+}
+
+for _, module in ipairs(config_modules) do
+	load_config_function(module)
+end
+
+return packer_end

@@ -1,4 +1,5 @@
-return require("which-key").setup({
+plug = require('which-key')
+plug.setup({
   plugins = {
     marks = false,
     registers = true,

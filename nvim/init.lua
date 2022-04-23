@@ -1,38 +1,16 @@
---[[------------------------------------------------------------------------]]--
+--[[--------------------------------------------------------------------]]--
 --[[--------------------------INIT - init file--------------------------]]--
---[[------------------------------------------------------------------------]]--
+--[[--------------------------------------------------------------------]]--
 
 vim.api.nvim_command('source $XDG_CONFIG_HOME/nvim/oldinit.vim')
 
 local core_modules = {
   -- Main settings
-  'core/options',
-  'core/plugins',
-  'core/uiprefs',
-  'core/fndefns',
-  'core/servers',
-  'core/keymaps',
-
-  -- Plugin configurations
-  'configs/cmpnvim',
-  'configs/echodoc',
-  'configs/indentblankline',
-  'configs/lspkind',
-  'configs/marks',
-  --'configs/mkdnflow',
-  'configs/null_ls',
-  'configs/nvim_markdown',
-  'configs/nvimtree',
-  'configs/scrollbar',
-  'configs/texlabconfig',
-  'configs/trouble',
-  'configs/vimtex',
-  'configs/vscode',
-
-  -- LSP configurations
-  'servers/sumneko_lua',
-  'servers/texlab',
-  'servers/ltex',
+  'core',
+  -- Plugin configs
+  'plugin-configs',
+  -- Server configs
+  'server-configs',
 }
 
 -- Using pcall we can handle better any loading issues

@@ -2,21 +2,9 @@
 --- Autocompletion ---
 ----------------------
 --Preload
-local cmp_status_ok, cmp = pcall(require, 'cmp')
-if not cmp_status_ok then
-  return
-end
-local ultisnips_status_ok, ultisnips = pcall(require, 'cmp_nvim_ultisnips')
-local lspkind_status_ok, lspkind = pcall(require, 'lspkind')
-
--- Ultisnips config
-if ultisnips_status_ok then
-  vim.g.UltiSnipsExpandTrigger            = '<Plug>(ultisnips_expand)'
-  vim.g.UltiSnipsJumpForwardTrigger       = '<Plug>(ultisnips_jump_forward)'
-  vim.g.UltiSnipsJumpBackwardTrigger      = '<Plug>(ultisnips_jump_backward)'
-  vim.g.UltiSnipsListSnippets             = '<c-x><c-s>'
-  vim.g.UltiSnipsRemoveSelectModeMappings = 0
-end
+local plug = require('cmp')
+local plug_ulti_ok, plug_ulti = pcall(require, 'cmp_nvim_ultisnips')
+local plug_lspk_ok, plug_lspk = pcall(require, 'lspkind')
 
 -- Check for backspace
 local check_backspace = function()
@@ -37,7 +25,7 @@ end
 
 -- Check for comment block while not in command mode
 local check_comment = function()
-  local context = require 'cmp.config.context'
+  local context = require('cmp.config.context')
   if vim.api.nvim_get_mode().mode == 'c' then
     return true
   else
@@ -46,7 +34,7 @@ local check_comment = function()
   end
 end
 
--- ???
+-- I don't know but gathered this around
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
@@ -54,7 +42,7 @@ local tc = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-return cmp.setup {
+return plug.setup({
   -- Enable when not in comment block
   enabled = check_comment(),
   -- Sources for completion
@@ -74,7 +62,7 @@ return cmp.setup {
   },
   -- Display
   formatting = {
-    format = lspkind.cmp_format {
+    format = plug_lspk.cmp_format {
       mode = "symbol_text",
       menu = {
         buffer = "[buffer]",
@@ -87,7 +75,7 @@ return cmp.setup {
   },
   -- Window
   window = {
-    documentation = cmp.config.window.bordered(),
+    documentation = plug.config.window.bordered(),
   },
   -- Experiment
   experimental = {
@@ -121,21 +109,21 @@ return cmp.setup {
     -- Enter
     -- Insert mode:
     --    Confirm
-    ["<Tab>"] = cmp.mapping({
+    ["<Tab>"] = plug.mapping({
       i = function(fallback)
-        if cmp.visible() then           -- If menu is open, navigate next
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        if plug.visible() then           -- If menu is open, navigate next
+          plug.select_next_item({ behavior = plug.SelectBehavior.Insert })
         elseif has_words_before() then
-          cmp.complete()
+          plug.complete()
         else                            -- Do whatever
           fallback()
         end
       end,
       c = function()
-        if cmp.visible() then           -- If menu is open, navigate next
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        if plug.visible() then           -- If menu is open, navigate next
+          plug.select_next_item({ behavior = plug.SelectBehavior.Insert })
         else                            -- Open completion
-          cmp.complete()
+          plug.complete()
         end
       end,
       s = function(fallback)
@@ -146,19 +134,19 @@ return cmp.setup {
         end
       end
     }),
-    ["<S-Tab>"] = cmp.mapping({
+    ["<S-Tab>"] = plug.mapping({
       i = function(fallback)
-        if cmp.visible() then           -- If menu is open, navigate next
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        if plug.visible() then           -- If menu is open, navigate next
+          plug.select_prev_item({ behavior = plug.SelectBehavior.Insert })
         else                            -- Do whatever
           fallback()
         end
       end,
       c = function()
-        if cmp.visible() then           -- If menu is open, navigate next
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        if plug.visible() then           -- If menu is open, navigate next
+          plug.select_prev_item({ behavior = plug.SelectBehavior.Insert })
         else                            -- Open completion
-          cmp.complete()
+          plug.complete()
         end
       end,
       s = function(fallback)
@@ -169,49 +157,49 @@ return cmp.setup {
         end
       end
     }),
-    ['<CR>'] = cmp.mapping({
+    ['<CR>'] = plug.mapping({
       i = function(fallback)
-        if cmp.visible() then
-          cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
+        if plug.visible() then
+          plug.confirm({behavior = plug.ConfirmBehavior.Replace, select = false})
         else
           fallback()
         end
       end,
       c = function(fallback)
-        if cmp.visible() then
-          cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
+        if plug.visible() then
+          plug.confirm({behavior = plug.ConfirmBehavior.Replace, select = false})
         else
           fallback()
         end
       end,
     }),
-    ['<Down>'] = cmp.mapping({
+    ['<Down>'] = plug.mapping({
       i = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        if plug.visible() then
+          plug.select_next_item({ behavior = plug.SelectBehavior.Select })
         else
           fallback()
         end
       end,
       c = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        if plug.visible() then
+          plug.select_next_item({ behavior = plug.SelectBehavior.Select })
         else
           fallback()
         end
       end,
     }),
-    ['<Up>'] = cmp.mapping({
+    ['<Up>'] = plug.mapping({
       i = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+        if plug.visible() then
+          plug.select_prev_item({ behavior = plug.SelectBehavior.Select })
         else
           fallback()
         end
       end,
       c = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+        if plug.visible() then
+          plug.select_prev_item({ behavior = plug.SelectBehavior.Select })
         else
           fallback()
         end
@@ -221,9 +209,9 @@ return cmp.setup {
 
   sorting = {
     comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
+      plug.config.compare.offset,
+      plug.config.compare.exact,
+      plug.config.compare.score,
 
       function(entry1, entry2)
         local _, entry1_under = entry1.completion_item.label:find "^_+"
@@ -237,12 +225,10 @@ return cmp.setup {
         end
       end,
 
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
+      plug.config.compare.kind,
+      plug.config.compare.sort_text,
+      plug.config.compare.length,
+      plug.config.compare.order,
     },
   },
-
-
-}
+})

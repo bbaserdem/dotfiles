@@ -11,12 +11,13 @@ local set = vim.opt
 --[[------------------------------------------------------------------------]]--
 set.encoding = 'utf-8'      -- Show files in UTF8
 set.fileencoding = 'utf-8'  -- Write files in UTF8
-set.updatetime = 5000       -- Swap file after this many milliseconds
+set.updatetime = 250        -- Swap file after this many milliseconds
 set.timeoutlen = 3000       -- Make chords timeout in 3 secs instead
 set.ttimeoutlen = 100       -- But not keycodes
 set.mouse = 'a'             -- Enable mouse
 set.autoread = true         -- Reload changed files
 set.hidden = true           -- Keep buffers open in background
+set.undofile = true         -- Keep history of edits
 
 --[[------------------------------------------------------------------------]]--
 --[[--------------------------------- Typing -------------------------------]]--
