@@ -29,5 +29,5 @@ return function(opts)
   opts.settings.Lua.workspace.checkThirdParty = false
   opts.settings.Lua.telemetry.enable = false
   -- Disable this plugin
-  opts.filetypes = {}
+  opts.settings.autostart = false
 end

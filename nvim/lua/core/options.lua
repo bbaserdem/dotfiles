@@ -22,7 +22,7 @@ set.undofile = true         -- Keep history of edits
 --[[------------------------------------------------------------------------]]--
 --[[--------------------------------- Typing -------------------------------]]--
 --[[------------------------------------------------------------------------]]--
-set.spelllang = 'en_US'     -- Default to english
+set.spelllang = 'en_us'     -- Default to english
 set.ignorecase = true       -- Search case insensitive
 set.smartcase = true        -- ... unless the query has capital letters
 set.autoindent = true       -- Allow autoindent

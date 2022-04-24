@@ -6,14 +6,11 @@
 -- |______|_____/|_|      |_____/ \___|_|    \_/ \___|_|  |___/
 --
 -- This file contains links to my LSP server config
-local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
-if not lspconfig_ok then
-  return
-end
 
--- LSP server installer
+-- LSP server installer, that also sets the servers up
 local installer_ok, installer = pcall(require, 'nvim-lsp-installer')
 if not installer_ok then
+  error('Nvim-lsp-installer could not run\n' .. installer .. '\n')
   return
 end
 
@@ -75,11 +72,9 @@ installer.settings({
 --[[------------------------------------------------------------------------]]--
 --[[----------------------- COMMON CONFIGURATION ---------------------------]]--
 --[[------------------------------------------------------------------------]]--
-local common_opts = {}
 
 --[[.....Buffer-local options to apply on attach............................]]--
-function common_opts.on_attach(client, bufnr)
-  -- Popup, should work, but not working
+function common_on_attach(client, bufnr)
   vim.api.nvim_create_autocmd( 'CursorHold', {
     group = vim.api.nvim_create_augroup('LspHoverOnCursor', { clear = true, }),
     buffer = bufnr,
@@ -99,20 +94,28 @@ function common_opts.on_attach(client, bufnr)
   })
 end
 
+-- Get capabilities
+local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+if cmp_lsp_ok then
+  local common_capabilities = cmp_lsp.update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  )
+end
+
 --[[------------------------------------------------------------------------]]--
 --[[------------------------ SERVER APPLICATION ----------------------------]]--
 --[[------------------------------------------------------------------------]]--
-
 installer.on_server_ready(function(server)
-  local opts = {}
-
-  -- Default options for all servers, copy this over
-  for key, val in pairs(common_opts) do
-    opts[key] = val
-  end
+  -- Default options for all servers
+  local opts = {
+    on_attach = common_on_attach,
+    capabilities = common_capabilities,
+  }
 
   -- Try to load relevant server config
-  local this_opts_ok, this_opts = pcall(require, server.name .. '-config')
+  local this_opts_ok, this_opts = pcall(require,
+    'server-configs/' .. server.name .. '-config'
+  )
   if this_opts_ok then
     this_opts(opts)
   end
@@ -120,3 +123,4 @@ installer.on_server_ready(function(server)
   -- Set this server up
   server:setup(opts)
 end)
+

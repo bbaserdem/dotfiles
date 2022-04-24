@@ -2,22 +2,13 @@
 --[[------------------------- TeXlab  Setup --------------------------------]]--
 --[[.For LaTeX, use texlab for code helping and compiling...................]]--
 --[[------------------------------------------------------------------------]]--
-
--- Use this plugin to enable backsearch along with forward search
-local texlab_conf_ok, texlab_conf = pcall(require, 'texlabconfig')
-if texlab_conf_ok then
-  texlab_conf.setup()
-end
-local forward_search_settings = {
-  executable = 'zathura',
-  args = {
-    '--synctex-editor-command',
-    [[nvim --headless -c "TexlabInverseSearch '%{input}' %{line}"]],
-    '--synctex-forward',
-    '%l:1:%f',
-    '%p',
-  },
+local file_types = {
+  'tex',
+  'bib',
+  'plaintex',
+  'latex',
 }
+
 
 return function(opts)
   -- Create scaffold
@@ -31,14 +22,32 @@ return function(opts)
     opts.settings.texlab.build = {}
   end
   -- Overwrite options
-  opts.filetypes = { 'tex', 'bib', 'plaintex', 'latex' }
+  opts.filetypes = file_types
   opts.settings.texlab.build.forwardSearchAfter = true
   opts.settings.texlab.onSave = true
   opts.settings.texlab.chktex = {
     onEdit = true,
     onOpenAndSave = true,
   }
-  opts.settings.texlab.forwardSearch = forward_search_settings
+  -- Use this plugin to enable backsearch along with forward search
+  require('texlabconfig').setup({
+    cache_activate = true,
+    cache_filetypes = file_types,
+    cache_root = vim.fn.stdpath('cache'),
+    reverse_search_edit_cmd = 'tabedit',
+    file_permission_mode = 438,
+  })
+  -- Set forward search
+  opts.settings.texlab.forwardSearch = {
+    executable = 'zathura',
+    args = {
+      '--synctex-editor-command',
+      [[nvim --headless -c "TexlabInverseSearch '%{input}' %{line}"]],
+      '--synctex-forward',
+      '%l:1:%f',
+      '%p',
+    },
+  }
   opts.settings.texlab.latexindent = {
     modifyLineBreaks = true,
   }

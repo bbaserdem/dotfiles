@@ -18,12 +18,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Reload packer each time this file is modified
-vim.cmd([[
-  augroup packerUserConfigReload
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+vim.api.nvim_create_autocmd( 'BufWritePost', {
+  pattern = '*plugin-configs/init.lua',
+  group = vim.api.nvim_create_augroup(
+    'packerUserConfigReload',
+    { clear = true }
+  ),
+  command = 'source $MYVIMRC | PackerCompile',
+})
 
 -- Installed plugins
 local packer_end = require('packer').startup(function(use)
@@ -161,13 +163,13 @@ local packer_end = require('packer').startup(function(use)
    -- Nvim-cmp
   use { 'hrsh7th/nvim-cmp',
     requires = {
-      'neovim/nvim-lspconfig',
+      'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-omni',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      'hrsh7th/cmp-omni',
       'SirVer/ultisnips',
       'quangnguyen30192/cmp-nvim-ultisnips',
       'andersevenrud/cmp-tmux',
@@ -201,6 +203,7 @@ local packer_end = require('packer').startup(function(use)
   }
    -- Integration (only helps clean directory for now)
   use { 'lervag/vimtex',
+    disable = true,
   }
 
    -- Markdown
@@ -284,10 +287,10 @@ config_modules = {
 	'nvim-tree',
 	'scrollbar',
 	'trouble',
-	'vimtex',
+	--'vimtex',
 	--'mkdnflow'
 	--'which-key',
-	--'indent_blankline',
+	'indent_blankline',
 }
 
 for _, module in ipairs(config_modules) do

@@ -3,6 +3,7 @@
 ----------------------
 local set = vim.opt
 local win = vim.wo
+local com = vim.cmd
 
 -- Theme settings
 --[[------------------------------------------------------------------------]]--
@@ -10,8 +11,8 @@ local win = vim.wo
 --[[------------------------------------------------------------------------]]--
 set.termguicolors = true              -- For most themes
 set.background = 'dark'               -- Default to dark themes
-vim.cmd "let g:gruvbox_material_background = 'soft'"
-vim.cmd 'colorscheme gruvbox-material'  -- Default theme
+com "let g:gruvbox_material_background = 'soft'"
+com 'colorscheme gruvbox-material'  -- Default theme
 
 --[[------------------------------------------------------------------------]]--
 --[[------------------------------ Neovim UI -------------------------------]]--

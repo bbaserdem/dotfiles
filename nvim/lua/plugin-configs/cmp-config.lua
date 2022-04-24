@@ -3,8 +3,9 @@
 ----------------------
 --Preload
 local plug = require('cmp')
-local plug_ulti_ok, plug_ulti = pcall(require, 'cmp_nvim_ultisnips')
-local plug_lspk_ok, plug_lspk = pcall(require, 'lspkind')
+local plug_lsp = require('cmp_nvim_lsp')
+local plug_ulti = require('cmp_nvim_ultisnips')
+local plug_lspk = require('lspkind')
 
 -- Check for backspace
 local check_backspace = function()
@@ -34,6 +35,7 @@ local check_comment = function()
   end
 end
 
+
 -- I don't know but gathered this around
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
@@ -42,17 +44,58 @@ local tc = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-return plug.setup({
+-- Sources array here so that it is collected{
+local completion_sources = {
+  { name = "buffer",
+    option = {
+      label = '[buffer]',
+      keyword_length = 2,
+      get_bufnrs = function() return vim.api.nvim_list_bufs() end,
+    },
+  },
+  { name = "nvim_lua",
+    option = {
+      label = '[Lua]',
+    },
+  },
+  { name = "nvim_lsp",
+    option = {
+      label = "[LSP]",
+    },
+  },
+  { name = "nvim_lsp_signature_help",
+    option = {
+      label = "[Sign.]",
+    },
+  },
+  { name = "path",
+    option = {
+      label = '[path]',
+      trailing_slash = true,
+    },
+  },
+  { name = "tmux",
+    option = {
+      label = '[tmux]',
+    },
+  },
+  { name = "omni",
+    option = {
+      label = '[omni]',
+    },
+  },
+  { name = "ultisnips",
+    option = {
+      label = '[snips]',
+    },
+  },
+}
+
+plug.setup({
   -- Enable when not in comment block
   enabled = check_comment(),
   -- Sources for completion
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "nvim_lua" },
-    { name = "path" },
-    { name = "ultisnips" },
-    { name = "buffer" },
-  },
+  sources = completion_sources,
   -- Menu type
   view = {
     entries = {
@@ -64,13 +107,6 @@ return plug.setup({
   formatting = {
     format = plug_lspk.cmp_format {
       mode = "symbol_text",
-      menu = {
-        buffer = "[buffer]",
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[Lua]",
-        path = "[path]",
-        ultisnips = "[UltiSnips]",
-      },
     },
   },
   -- Window
@@ -112,7 +148,7 @@ return plug.setup({
     ["<Tab>"] = plug.mapping({
       i = function(fallback)
         if plug.visible() then           -- If menu is open, navigate next
-          plug.select_next_item({ behavior = plug.SelectBehavior.Insert })
+          plug.select_next_item({ behavior = plug.SelectBehavior.Select })
         elseif has_words_before() then
           plug.complete()
         else                            -- Do whatever
@@ -121,7 +157,7 @@ return plug.setup({
       end,
       c = function()
         if plug.visible() then           -- If menu is open, navigate next
-          plug.select_next_item({ behavior = plug.SelectBehavior.Insert })
+          plug.select_next_item({ behavior = plug.SelectBehavior.Select })
         else                            -- Open completion
           plug.complete()
         end
@@ -137,14 +173,14 @@ return plug.setup({
     ["<S-Tab>"] = plug.mapping({
       i = function(fallback)
         if plug.visible() then           -- If menu is open, navigate next
-          plug.select_prev_item({ behavior = plug.SelectBehavior.Insert })
+          plug.select_prev_item({ behavior = plug.SelectBehavior.Select })
         else                            -- Do whatever
           fallback()
         end
       end,
       c = function()
         if plug.visible() then           -- If menu is open, navigate next
-          plug.select_prev_item({ behavior = plug.SelectBehavior.Insert })
+          plug.select_prev_item({ behavior = plug.SelectBehavior.Select })
         else                            -- Open completion
           plug.complete()
         end
@@ -166,7 +202,7 @@ return plug.setup({
         end
       end,
       c = function(fallback)
-        if plug.visible() then
+        if (plug.visible() and plug.get_active_entry()) then
           plug.confirm({behavior = plug.ConfirmBehavior.Replace, select = false})
         else
           fallback()
@@ -176,14 +212,7 @@ return plug.setup({
     ['<Down>'] = plug.mapping({
       i = function(fallback)
         if plug.visible() then
-          plug.select_next_item({ behavior = plug.SelectBehavior.Select })
-        else
-          fallback()
-        end
-      end,
-      c = function(fallback)
-        if plug.visible() then
-          plug.select_next_item({ behavior = plug.SelectBehavior.Select })
+          plug.select_next_item({ behavior = plug.SelectBehavior.Insert })
         else
           fallback()
         end
@@ -192,14 +221,23 @@ return plug.setup({
     ['<Up>'] = plug.mapping({
       i = function(fallback)
         if plug.visible() then
-          plug.select_prev_item({ behavior = plug.SelectBehavior.Select })
+          plug.select_prev_item({ behavior = plug.SelectBehavior.Insert })
+        else
+          fallback()
+        end
+      end,
+    }),
+    ['<Esc>'] = plug.mapping({
+      i = function(fallback)
+        if plug.visible() then
+          plug.close()
         else
           fallback()
         end
       end,
       c = function(fallback)
         if plug.visible() then
-          plug.select_prev_item({ behavior = plug.SelectBehavior.Select })
+          plug.abort()
         else
           fallback()
         end
@@ -231,4 +269,22 @@ return plug.setup({
       plug.config.compare.order,
     },
   },
+})
+
+-- Command line completion
+plug.setup.cmdline(':', {
+  mapping = plug.mapping.preset.cmdline(),
+  sources = plug.config.sources({
+    {name = 'cmdline'}
+  }, {
+    {name = 'path'}
+  })
+})
+plug.setup.cmdline('/', {
+  mapping = plug.mapping.preset.cmdline(),
+  sources = plug.config.sources({
+    { name = 'nvim_lsp_document_symbol' }
+  }, {
+    { name = 'buffer' }
+  })
 })

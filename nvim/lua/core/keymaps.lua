@@ -89,7 +89,7 @@ keymap('n', '<F7>',   ':LspInfo<CR>',                             term_opts)
 keymap('n', '<F19>',  ':LspInstallInfo<CR>',                      term_opts)
 keymap('n', '<F21>',  ':LspStop<CR>',                             term_opts)
 -- 08: Errors
-keymap('n', '<F2>',   ':TroubleToggle document_diagnostics<CR>',  term_opts)
+keymap('n', '<F8>',   ':TroubleToggle document_diagnostics<CR>',  term_opts)
 keymap('n', '<S-F2>', ':TroubleToggle workspace_diagnostics<CR>', term_opts)
 keymap('n', '<C-F2>', ':TroubleToggle quickfix<CR>',              term_opts)
 -- 09: Snippets
