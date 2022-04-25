@@ -209,6 +209,7 @@ plug.setup({
         end
       end,
     }),
+    -- If arrow keys are invoked; do change the text
     ['<Down>'] = plug.mapping({
       i = function(fallback)
         if plug.visible() then
@@ -227,17 +228,28 @@ plug.setup({
         end
       end,
     }),
+    -- With escape; pass through if nothing has been selected yet
     ['<Esc>'] = plug.mapping({
       i = function(fallback)
         if plug.visible() then
-          plug.close()
+          if plug.get_active_entry() then
+            plug.close()
+            fallback()
+          else
+            plug.close()
+          end
         else
           fallback()
         end
       end,
       c = function(fallback)
         if plug.visible() then
-          plug.abort()
+          if plug.get_active_entry() then
+            plug.abort()
+            fallback()
+          else
+            plug.abort()
+          end
         else
           fallback()
         end

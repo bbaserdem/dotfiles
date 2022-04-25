@@ -2,9 +2,8 @@
 --[[---------------------------LTeX  Setup----------------------------------]]--
 --[[.For LaTeX and markdown, use LTeX for grammar checking..................]]--
 --[[------------------------------------------------------------------------]]--
-
-return function(opts)
-  opts.filetypes = {
+opts = {
+  filetypes = {
     'tex',
     'bib',
     'plaintex',
@@ -15,4 +14,5 @@ return function(opts)
     'rst',
     'rnoweb',
   }
-end
+}
+return opts

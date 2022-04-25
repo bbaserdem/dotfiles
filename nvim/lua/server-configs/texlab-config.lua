@@ -2,53 +2,59 @@
 --[[------------------------- TeXlab  Setup --------------------------------]]--
 --[[.For LaTeX, use texlab for code helping and compiling...................]]--
 --[[------------------------------------------------------------------------]]--
+
+-- File types to use this server with
 local file_types = {
   'tex',
   'bib',
   'plaintex',
   'latex',
 }
+-- Configuration for pdf viewers for texlabconfig
+local zathura_conf = {
+  executable = 'zathura',
+  args = {
+    '--synctex-editor-command',
+    'nvim --headless -c "TexlabInverseSearch \'%{input}\' %{line}"',
+    '--synctex-forward',
+    '%l:1:%f',
+    '%p',
+  },
+}
+-- Set inverse search
+local texlabconfig = require('texlabconfig')
+texlabconfig.setup({
+  cache_activate = true,
+  cache_filetypes = file_types,
+  cache_root = vim.fn.stdpath('cache'),
+  reverse_search_edit_cmd = 'edit',
+  file_permission_mode = 438,
+})
 
-
-return function(opts)
-  -- Create scaffold
-  if not opts.settings then
-    opts.settings = {}
-  end
-  if not opts.settings.texlab then
-    opts.settings.texlab = {}
-  end
-  if not opts.settings.texlab.build then
-    opts.settings.texlab.build = {}
-  end
-  -- Overwrite options
-  opts.filetypes = file_types
-  opts.settings.texlab.build.forwardSearchAfter = true
-  opts.settings.texlab.onSave = true
-  opts.settings.texlab.chktex = {
-    onEdit = true,
-    onOpenAndSave = true,
-  }
-  -- Use this plugin to enable backsearch along with forward search
-  require('texlabconfig').setup({
-    cache_activate = true,
-    cache_filetypes = file_types,
-    cache_root = vim.fn.stdpath('cache'),
-    reverse_search_edit_cmd = 'tabedit',
-    file_permission_mode = 438,
-  })
-  -- Set forward search
-  opts.settings.texlab.forwardSearch = {
-    executable = 'zathura',
-    args = {
-      '--synctex-editor-command',
-      [[nvim --headless -c "TexlabInverseSearch '%{input}' %{line}"]],
-      '--synctex-forward',
-      '%l:1:%f',
-      '%p',
+-- Send these options
+Opts = {
+  cmd = { 'texlab' },
+  filetypes = file_types,
+  settings = {
+    texlab = {
+      auxDirectory = '.',
+      bibtexFormatter = 'texlab',
+      build = {
+        args = {'-pdf', '-interaction=nonstopmode', '-synctex=1', '%f', },
+        executable = 'latexmk',
+        forwardSearchAfter = true,
+        onSave = false,
+      },
+      chktex = {
+        onEdit = false,
+        onOpenAndSave = false,
+      },
+      diagnosticsDelay = 300,
+      formatterLineLength = 80,
+      forwardSearch = zathura_conf,
+      latexFormatter = "latexindent",
+      latexindent = {modifyLineBreaks =  true, },
     },
-  }
-  opts.settings.texlab.latexindent = {
-    modifyLineBreaks = true,
-  }
-end
+  },
+}
+return Opts

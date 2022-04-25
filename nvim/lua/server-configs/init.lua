@@ -11,14 +11,38 @@
 local installer_ok, installer = pcall(require, 'nvim-lsp-installer')
 if not installer_ok then
   error('Nvim-lsp-installer could not run\n' .. installer .. '\n')
-  return
+end
+local loader_ok, loader = pcall(require, 'lspconfig')
+if not loader_ok then
+  error('Nvim-lspconfig could not run\n' .. loader .. '\n')
 end
 
--- Separate configs are files that should return functions that;
---  Get a dictionary as an argument
---  Modify that dictionary with overrides
---  Resulting dictionary should be able to be sent as the argument to setup
---    function as lspconfig requires
+local local_servers = {
+  -- Awk
+  'awk_ls',
+  -- Bash
+  'bashls',
+  -- C, C++
+  'clangd',
+  -- Cmake
+  'cmake',
+  -- JSON
+  'jsonls',
+  -- Lua
+  'sumneko_lua',
+  -- Markdown
+  'prosemd_lsp',
+  -- Python
+  'pylsp',
+  'sourcery',
+  -- Spellcheck
+  'ltex',
+}
+
+local system_servers = {
+  -- Latex
+  'texlab',
+}
 
 --[[------------------------------------------------------------------------]]--
 --[[------------------------- VIM TYPE CONFIGS -----------------------------]]--
@@ -97,30 +121,62 @@ end
 -- Get capabilities
 local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 if cmp_lsp_ok then
-  local common_capabilities = cmp_lsp.update_capabilities(
+  common_capabilities = cmp_lsp.update_capabilities(
     vim.lsp.protocol.make_client_capabilities()
   )
+else
+  common_capabilities = {}
 end
 
 --[[------------------------------------------------------------------------]]--
---[[------------------------ SERVER APPLICATION ----------------------------]]--
+--[[-------------------- GLOBAL SERVER APPLICATION -------------------------]]--
 --[[------------------------------------------------------------------------]]--
-installer.on_server_ready(function(server)
-  -- Default options for all servers
-  local opts = {
-    on_attach = common_on_attach,
-    capabilities = common_capabilities,
-  }
+-- Setup these servers using their config files
+for _, name in pairs(system_servers) do
+  local sys_opts_ok, sys_opts = pcall(require,
+    'server-configs/' .. name .. '-config'
+  )
+  if not sys_opts_ok then
+    -- Set this server up
+    loader[name].setup({
+      on_attach = common_on_attach,
+      capabilities = common_capabilities,
+    })
+  else
+    -- Default options for all servers
+    sys_opts.on_attach = common_on_attach
+    sys_opts.capabilities = common_capabilities
+    loader[name].setup(sys_opts)
+  end
+end
 
-  -- Try to load relevant server config
+--[[------------------------------------------------------------------------]]--
+--[[--------------------- LOCAL SERVER APPLICATION -------------------------]]--
+--[[------------------------------------------------------------------------]]--
+-- Auto install these servers using lsp_installer
+for _, name in pairs(local_servers) do
+  local server_is_found, server = installer.get_server(name)
+  if server_is_found and not server:is_installed() then
+    print("Installing " .. name)
+    server:install()
+  end
+end
+-- Configure these servers
+installer.on_server_ready(function(server)
+  -- Load server opts if we can
   local this_opts_ok, this_opts = pcall(require,
     'server-configs/' .. server.name .. '-config'
   )
   if this_opts_ok then
-    this_opts(opts)
+    this_opts.on_attach = common_on_attach
+    this_opts.capabilities = common_capabilities
+  else
+    this_opts = {
+      on_attach = common_on_attach,
+      capabilities = common_capabilities,
+    }
   end
 
   -- Set this server up
-  server:setup(opts)
+  server:setup(this_opts)
 end)
-
