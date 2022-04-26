@@ -73,14 +73,24 @@ keymap('n', '<Leader><CR>', vim.lsp.buf.rename,           term_opts)
 ---------------------
 --- Function Keys ---
 ---------------------
--- 01: Help (Built-in)
--- 02: Documentation
-keymap('n', '<F2>',   ':TroubleToggle lsp_definitions<CR>',       term_opts)
-keymap('n', '<S-F2>', ':TroubleToggle lsp_references<CR>',        term_opts)
-keymap('n', '<C-F2>', ':TroubleToggle lsp_type_definitions<CR>',  term_opts)
--- 03: Keybinds
+-- Each keybind respectively is clear, shift, ctrl and shift-ctrl.
+-- Modifiers add to function keys, multiplying them
+---- Shift is +12
+---- Ctrl  is +24
+---- Alt   is +48 (Don't use alt in keybinds in general)
+-- Meta is not sent through, and ctrl alt fN are OS shortcuts for consoles
+-- 01: Help
+keymap('n', '<F13>', ':TroubleToggle lsp_definitions<CR>',       term_opts)
+keymap('n', '<F25>', ':TroubleToggle lsp_references<CR>',        term_opts)
+keymap('n', '<F37>', ':TroubleToggle lsp_type_definitions<CR>',  term_opts)
+-- 02: Graphical options
+keymap('n',  '<F2>', ':Twilight<CR>',                            term_opts)
+keymap('n', '<F14>', ':Telescope colorschemes<CR>',              term_opts)
+--keymap('n', '<F26>', ':<CR>',  term_opts)
+--keymap('n', '<F38>', ':<CR>',  term_opts)
+-- 03: Hint menus
 keymap('n', '<F3>',   ':Glow $XDG_CONFIG_HOME/nvim/Keymap.md<CR>',term_opts)
--- 04: File browser
+-- 04: Browsing
 keymap('n', '<F4>',   ':NvimTreeToggle<CR>',                      term_opts)
 -- 05: Build (this is individual to file-type)
 -- 06: Preview (this is individual to file-type)

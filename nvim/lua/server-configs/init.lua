@@ -32,7 +32,7 @@ local local_servers = {
   -- Lua
   --'sumneko_lua',
   -- Latex
-  --'texlab',
+  'texlab',
   -- Markdown
   'prosemd_lsp',
   -- Python
@@ -132,30 +132,6 @@ end
 if spinner_ok then
   spinner.init_capabilities(common_capabilities)
 end
-
---[[------------------------------------------------------------------------]]--
---[[-------------------- GLOBAL SERVER APPLICATION -------------------------]]--
---[[------------------------------------------------------------------------]]--
--- Setup these servers using their config files
---[[
-for _, name in pairs(system_servers) do
-  local sys_opts_ok, sys_opts = pcall(require,
-    'server-configs/' .. name .. '-config'
-  )
-  if not sys_opts_ok then
-    -- Set this server up
-    loader[name].setup({
-      on_attach = common_on_attach,
-      capabilities = common_capabilities,
-    })
-  else
-    -- Default options for all servers
-    sys_opts.on_attach = common_on_attach
-    sys_opts.capabilities = common_capabilities
-    loader[name].setup(sys_opts)
-  end
-end
---]]
 
 --[[------------------------------------------------------------------------]]--
 --[[--------------------- LOCAL SERVER APPLICATION -------------------------]]--

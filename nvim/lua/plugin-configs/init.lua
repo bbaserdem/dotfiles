@@ -285,14 +285,8 @@ local packer_end = require('packer').startup(function(use)
    --[[----------------------------Color Schemes----------------------------]]--
    --[[---------------------------------------------------------------------]]--
    --use { 'adisen99/apprentice.nvim', { requires = 'rktjmp/lush.nvim' } }
-  use { 'tjdevries/colorbuddy.nvim',
-    disable = false,
-  }
    -- High contrast
   use { 'bluz71/vim-moonfly-colors',
-    disable = false,
-  }
-  use { 'tanvirtin/monokai.nvim',
     disable = false,
   }
    -- Nice themes
@@ -308,9 +302,6 @@ local packer_end = require('packer').startup(function(use)
     disable = false,
   }
   use { 'savq/melange',
-    disable = false,
-  }
-  use { 'sainnhe/sonokai',
     disable = false,
   }
   use { 'tomasiser/vim-code-dark',
