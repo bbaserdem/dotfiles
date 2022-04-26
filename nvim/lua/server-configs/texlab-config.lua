@@ -21,16 +21,6 @@ local zathura_conf = {
     '%p',
   },
 }
--- Set inverse search
-local texlabconfig = require('texlabconfig')
-texlabconfig.setup({
-  cache_activate = true,
-  cache_filetypes = file_types,
-  cache_root = vim.fn.stdpath('cache'),
-  reverse_search_edit_cmd = 'edit',
-  file_permission_mode = 438,
-})
-
 -- Send these options
 Opts = {
   cmd = { 'texlab' },

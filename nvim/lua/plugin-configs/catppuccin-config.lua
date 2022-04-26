@@ -52,7 +52,6 @@ local config = {
     dashboard = true,
     barbar = true,
     markdown = true,
-    lightspeed = true,
     ts_rainbow = true,
     notify = true,
     symbols_outline = true,

@@ -196,7 +196,7 @@ plug.setup({
     ['<CR>'] = plug.mapping({
       i = function(fallback)
         if plug.visible() then
-          if plug.get_active_entry() then
+          if plug.get_selected_entry() then
             plug.confirm({behavior = plug.ConfirmBehavior.Replace, select = false})
           else
             plug.close()
@@ -207,7 +207,7 @@ plug.setup({
         end
       end,
       c = function(fallback)
-        if (plug.visible() and plug.get_active_entry()) then
+        if (plug.visible() and plug.get_selected_entry()) then
           plug.confirm({behavior = plug.ConfirmBehavior.Replace, select = false})
         else
           fallback()

@@ -346,9 +346,11 @@ config_modules = {
 	'cmp',
 	'null-ls',
 	'nvim-markdown-preview',
+	'nvim-treesitter',
 	'nvim-tree',
 	'scrollbar',
 	'trouble',
+	'texlabconfig',
 	--'mkdnflow'
 	--'which-key',
 	--'indent_blankline',

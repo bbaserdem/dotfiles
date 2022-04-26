@@ -31,6 +31,8 @@ local local_servers = {
   'jsonls',
   -- Lua
   --'sumneko_lua',
+  -- Latex
+  --'texlab',
   -- Markdown
   'prosemd_lsp',
   -- Python
@@ -38,11 +40,6 @@ local local_servers = {
   'sourcery',
   -- Spellcheck
   'ltex',
-}
-
-local system_servers = {
-  -- Latex
-  'texlab',
 }
 
 --[[------------------------------------------------------------------------]]--
@@ -140,6 +137,7 @@ end
 --[[-------------------- GLOBAL SERVER APPLICATION -------------------------]]--
 --[[------------------------------------------------------------------------]]--
 -- Setup these servers using their config files
+--[[
 for _, name in pairs(system_servers) do
   local sys_opts_ok, sys_opts = pcall(require,
     'server-configs/' .. name .. '-config'
@@ -157,6 +155,7 @@ for _, name in pairs(system_servers) do
     loader[name].setup(sys_opts)
   end
 end
+--]]
 
 --[[------------------------------------------------------------------------]]--
 --[[--------------------- LOCAL SERVER APPLICATION -------------------------]]--
