@@ -1,0 +1,12 @@
+version: "2.1"
+services:
+  podgrab:
+    image: akhilrex/podgrab
+    container_name: podgrab
+    environment:
+      - CHECK_FREQUENCY=240
+    volumes:
+      - /home/sbp/Music/Podcasts:/assets
+    ports:
+      - 8384:8080
+    restart: unless-stopped

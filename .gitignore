@@ -69,6 +69,10 @@
 !/cursor
 !/cursor/**
 
+# DOCKER
+!/docker
+!/docker/**
+
 # DUNST: Accept the rc
 !/dunst
 !/dunst/dunstrc
