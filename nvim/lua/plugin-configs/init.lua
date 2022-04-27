@@ -151,6 +151,10 @@ local packer_end = require('packer').startup(function(use)
     requires = 'nvim-treesitter/nvim-treesitter'
   }
 
+  -- LSP Status for debugging and following lua server
+  use { 'j-hui/fidget.nvim',
+  }
+
    --[[---------------------------------------------------------------------]]--
    --[[-----------------------Tab completion and Snippets-------------------]]--
    --[[---------------------------------------------------------------------]]--
