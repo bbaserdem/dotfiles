@@ -11,8 +11,8 @@ local com = vim.cmd
 --[[------------------------------------------------------------------------]]--
 set.termguicolors = true              -- For most themes
 set.background = 'dark'               -- Default to dark themes
-com "let g:gruvbox_material_background = 'soft'"
-com 'colorscheme gruvbox-material'  -- Default theme
+com("let g:gruvbox_material_background = 'soft'")
+com('colorscheme nvcode')  -- Default theme
 
 --[[------------------------------------------------------------------------]]--
 --[[------------------------------ Neovim UI -------------------------------]]--

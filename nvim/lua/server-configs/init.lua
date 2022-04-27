@@ -6,6 +6,7 @@
 -- |______|_____/|_|      |_____/ \___|_|    \_/ \___|_|  |___/
 --
 -- This file contains links to my LSP server config
+vim.lsp.set_log_level("debug")
 
 -- LSP server installer, that also sets the servers up
 local installer_ok, installer = pcall(require, 'nvim-lsp-installer')
@@ -29,7 +30,9 @@ local local_servers = {
   -- JSON
   'jsonls',
   -- Lua
-  'sumneko_lua',
+  --'sumneko_lua',
+  -- Latex
+  'texlab',
   -- Markdown
   'prosemd_lsp',
   -- Python
@@ -37,11 +40,6 @@ local local_servers = {
   'sourcery',
   -- Spellcheck
   'ltex',
-}
-
-local system_servers = {
-  -- Latex
-  'texlab',
 }
 
 --[[------------------------------------------------------------------------]]--
@@ -96,6 +94,7 @@ installer.settings({
 --[[------------------------------------------------------------------------]]--
 --[[----------------------- COMMON CONFIGURATION ---------------------------]]--
 --[[------------------------------------------------------------------------]]--
+local spinner_ok, spinner = pcall(require, 'lsp_spinner')
 
 --[[.....Buffer-local options to apply on attach............................]]--
 function common_on_attach(client, bufnr)
@@ -116,6 +115,9 @@ function common_on_attach(client, bufnr)
       vim.diagnostic.open_float(opts)
     end
   })
+  if spinner_ok then
+    spinner.on_attach(client, buffer)
+  end
 end
 
 -- Get capabilities
@@ -127,27 +129,8 @@ if cmp_lsp_ok then
 else
   common_capabilities = {}
 end
-
---[[------------------------------------------------------------------------]]--
---[[-------------------- GLOBAL SERVER APPLICATION -------------------------]]--
---[[------------------------------------------------------------------------]]--
--- Setup these servers using their config files
-for _, name in pairs(system_servers) do
-  local sys_opts_ok, sys_opts = pcall(require,
-    'server-configs/' .. name .. '-config'
-  )
-  if not sys_opts_ok then
-    -- Set this server up
-    loader[name].setup({
-      on_attach = common_on_attach,
-      capabilities = common_capabilities,
-    })
-  else
-    -- Default options for all servers
-    sys_opts.on_attach = common_on_attach
-    sys_opts.capabilities = common_capabilities
-    loader[name].setup(sys_opts)
-  end
+if spinner_ok then
+  spinner.init_capabilities(common_capabilities)
 end
 
 --[[------------------------------------------------------------------------]]--
