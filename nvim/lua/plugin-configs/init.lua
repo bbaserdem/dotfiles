@@ -346,6 +346,7 @@ config_modules = {
 	'scrollbar',
 	'trouble',
 	'texlabconfig',
+  'fidget',
 	--'mkdnflow'
 	--'which-key',
 	--'indent_blankline',
