@@ -19,14 +19,11 @@ local rainbow_highlights = {
 }
 
 -- The colors are set in core settings, but put guards here
-local plug_ok, plug = pcall(require, 'indent_blankline')
-if plug_ok then
-return plug.setup({
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
-    show_end_of_line = false,
-  })
-else
-  return {}
-end
+local indent = require('indent_blankline')
+return indent.setup({
+  space_char_blankline = " ",
+  colored_indent_levels = true,
+  show_current_context = true,
+  show_current_context_start = true,
+  show_end_of_line = false,
+})

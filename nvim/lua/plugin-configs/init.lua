@@ -349,7 +349,7 @@ config_modules = {
   'fidget',
 	--'mkdnflow'
 	--'which-key',
-	--'indent_blankline',
+	'indent_blankline',
 	'lualine',
   'barbar',
 }
