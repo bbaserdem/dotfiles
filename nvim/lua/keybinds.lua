@@ -77,32 +77,29 @@ keymap('n', '<Leader><CR>', vim.lsp.buf.rename,           term_opts)
 -- Modifiers add to function keys, multiplying them
 ---- Shift is +12
 ---- Ctrl  is +24
+---- Both  is +36
 ---- Alt   is +48 (Don't use alt in keybinds in general)
 -- Meta is not sent through, and ctrl alt fN are OS shortcuts for consoles
--- 01: Help
-keymap('n', '<F13>', ':TroubleToggle lsp_definitions<CR>',       term_opts)
-keymap('n', '<F25>', ':TroubleToggle lsp_references<CR>',        term_opts)
-keymap('n', '<F37>', ':TroubleToggle lsp_type_definitions<CR>',  term_opts)
--- 02: Graphical options
-keymap('n',  '<F2>', ':Twilight<CR>',                            term_opts)
-keymap('n', '<F14>', ':Telescope colorschemes<CR>',              term_opts)
---keymap('n', '<F26>', ':<CR>',  term_opts)
---keymap('n', '<F38>', ':<CR>',  term_opts)
--- 03: Hint menus
-keymap('n', '<F3>',   ':Glow $XDG_CONFIG_HOME/nvim/Keymap.md<CR>',term_opts)
--- 04: Browsing
-keymap('n', '<F4>',   ':NvimTreeToggle<CR>',                      term_opts)
--- 05: Build (this is individual to file-type)
--- 06: Preview (this is individual to file-type)
--- 07: Server log (this can be overwritten)
-keymap('n', '<F7>',   ':LspInfo<CR>',                             term_opts)
-keymap('n', '<F19>',  ':LspInstallInfo<CR>',                      term_opts)
-keymap('n', '<F21>',  ':LspStop<CR>',                             term_opts)
--- 08: Errors
-keymap('n', '<F8>',   ':TroubleToggle document_diagnostics<CR>',  term_opts)
-keymap('n', '<S-F2>', ':TroubleToggle workspace_diagnostics<CR>', term_opts)
-keymap('n', '<C-F2>', ':TroubleToggle quickfix<CR>',              term_opts)
--- 09: Snippets
--- 10: Git actions
--- 11: ???
--- 12: SYSTEM (Dropbown console)
+
+-- 01: Help, as in documentation and whatnot.
+keymap('n', '<F13>',  ':TroubleToggle lsp_definitions<CR>',           term_opts)
+keymap('n', '<F25>',  ':TroubleToggle lsp_references<CR>',            term_opts)
+keymap('n', '<F37>',  ':TroubleToggle lsp_type_definitions<CR>',      term_opts)
+-- 02: Hint, as in provide info about functionality
+keymap('n', '<F2>' ,  ':Glow $XDG_CONFIG_HOME/nvim/Keymap.md<CR>',    term_opts)
+keymap('n', '<F26>',  ':LspInfo<CR>',                                 term_opts)
+keymap('n', '<F38>',  ':LspInstallInfo<CR>',                          term_opts)
+-- 03: Graphical options
+keymap('n', '<F3>' ,  ':Twilight<CR>',                                term_opts)
+keymap('n', '<F15>',  ':TZAtaraxis<CR>',                              term_opts)
+--keymap('n', '<F27>', ':<CR>',  term_opts)
+keymap('n', '<F39>',  ':Telescope colorschemes<CR>',                  term_opts)
+-- 04: Context menus
+keymap('n', '<F4>',   ':NvimTreeToggle<CR>',                          term_opts)
+keymap('n', '<F16>',  ':TroubleToggle workspace_diagnostics<CR>',     term_opts)
+keymap('n', '<F28>',  ':SymbolsOutline<CR>',                          term_opts)
+
+-- 05: Build (this is usually individual to file-type)
+-- 06: Comments
+-- 07: Git actionshttps://patorjk.com/software/taag/#p=display&h=3&f=Slant
+-- 08: Snippets

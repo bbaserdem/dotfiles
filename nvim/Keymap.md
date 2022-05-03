@@ -63,17 +63,46 @@ These mappings invoke LSP functions.
 This is a list of what function keys I use for vim.
 (where bold indicates type-specific function)
 
-|    Key  | Function                            | Source                    |
-|:-------:|:----------------------------------- |:-------------------------:|
-|   F01   | Help screen (built-in)              | Built-in                  |
-|   F02   | Query current item (Shift for tupe) | Trouble                   |
-|   F03   | Keymap help                         | Glow (-> which-key.nvim)  |
-|   F04   | File browser                        | Nvim-Tree                 |
-| **F05** | Build (Ctrl for clean)              | Filetype related          |
-| **F06** | Preview                             | Filetype related          |
-|   F07   | Log screen (Shift for install)      | Lspconfig, lsp-install    |
-|   F08   | Errors and warnings (Shift for all) | Trouble                   |
-|   F09   | Snippets                            | UltiSnips                 |
-|   F10   | *Unclaimed*                         | *Unused*                  |
-|   F11   | *Unclaimed*                         | *Unused*                  |
-|***F12***| This is reserved for dropdown term  | ***OS***                  |
+* First four function keys are dedicated to visual and layout.
+
+|   Key   | Mod | Function                      | Source                    |
+|:-------:|:---:|:----------------------------- |:-------------------------:|
+|   F01   |     | **Help**: Main documentation  | Built-in                  |
+|   F01   | וּ   | LSP: Definition               | `Trouble`                 |
+|   F01   |   ﴱ | LSP: References               | `Trouble`                 |
+|   F01   | וּ ﴱ | LSP: Type help                | `Trouble`                 |
+|   F02   |     | **Hints** keymap cheetsheet.  | `which-key.nvim`          |
+|   F02   | וּ   | ***UNCLAIMED***               | ` `                       |
+|   F02   |   ﴱ | LSP status                    | `lspconfig`               |
+|   F02   | וּ ﴱ | LSP Install status            | `lsp-installer`           |
+|   F03   |     | **Graphical** Dim inactive    | `Twilight` + `TreeSitter` |
+|   F03   | וּ   | Ataraxis mode                 | `TrueZen`                 |
+|   F03   |   ﴱ | ***UNCLAIMED***               | ` `                       |
+|   F03   | וּ ﴱ | Browse colorschemes           | `Telescope`               |
+|   F04   |     | **Menus**: File browser       | `Nvim-Tree`               |
+|   F04   | וּ   | Errors (All buffers)          | `Trouble`                 |
+|   F04   |   ﴱ | Symbols outline               | `symbols-outline.nvim`    |
+|   F04   | וּ ﴱ | ***UNCLAIMED***               | ` `                       |
+
+* The next four function keys are functionality.
+
+|   Key   | Mod | Function                      | Source                    |
+|:-------:|:---:|:----------------------------- |:-------------------------:|
+|   F05   |     | **Build**: Run code of doc.   | Filetype specific         |
+|   F05   | וּ   | Preview code                  | Filetype specific         |
+|   F05   |   ﴱ | Run code subsection           | Filetype specific         |
+|   F05   | וּ ﴱ | Clean the build               | Filetype specific         |
+|   F06   |     | **Comments**: Comment out     | Filetype specific         |
+|   F06   | וּ   | Uncomment this block          | ` `                       |
+|   F06   |   ﴱ | Auto-indent                   | ` `                       |
+|   F06   | וּ ﴱ | ***UNCLAIMED***               | ` `                       |
+|   F07   |     | **Git**: ***UNCLAIMED***      | ` `                       |
+|   F07   | וּ   | ***UNCLAIMED***               | ` `                       |
+|   F07   |   ﴱ | ***UNCLAIMED***               | ` `                       |
+|   F07   | וּ ﴱ | ***UNCLAIMED***               | ` `                       |
+|   F08   |     | **Autocomplete**: Quickfix    | LSP Specific              |
+|   F08   | וּ   | Snippets                      | `UltiSnips`               |
+|   F08   |   ﴱ | Toggle autocomplete           | `nvim-cmp`                |
+|   F08   | וּ ﴱ | ***UNCLAIMED***               | ` `                       |
+
+Rest of the function keys are reserved for OS use.

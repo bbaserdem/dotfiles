@@ -1,22 +1,20 @@
---  _       _____ _____     _____
--- | |     / ____|  __ \   / ____|
 -- | |    | (___ | |__) | | (___   ___ _ ____   _____ _ __ ___
 -- | |     \___ \|  ___/   \___ \ / _ \ '__\ \ / / _ \ '__/ __|
 -- | |____ ____) | |       ____) |  __/ |   \ V /  __/ |  \__ \
 -- |______|_____/|_|      |_____/ \___|_|    \_/ \___|_|  |___/
 --
--- This file contains links to my LSP server config
-vim.lsp.set_log_level("debug")
 
 -- LSP server installer, that also sets the servers up
 local installer_ok, installer = pcall(require, 'nvim-lsp-installer')
 if not installer_ok then
-  error('Nvim-lsp-installer could not run\n' .. installer .. '\n')
+  print('Nvim-lsp-installer could not run\n' .. installer .. '\n')
 end
 local loader_ok, loader = pcall(require, 'lspconfig')
 if not loader_ok then
   error('Nvim-lspconfig could not run\n' .. loader .. '\n')
 end
+
+M = {}
 
 local local_servers = {
   -- Awk
@@ -41,9 +39,10 @@ local local_servers = {
   -- Spellcheck
   'ltex',
 }
+M.default_servers = local_servers
 
 --[[------------------------------------------------------------------------]]--
---[[------------------------- VIM TYPE CONFIGS -----------------------------]]--
+--[[-------------------------- DIAGNOSTYC CONFIGS --------------------------]]--
 --[[------------------------------------------------------------------------]]--
 
 --[[.....Gutter signs for diagnostic prompts................................]]--
@@ -81,7 +80,10 @@ vim.diagnostic.config({
 })
 
 --[[.....LSP Installer settings.............................................]]--
-installer.settings({
+installer.setup({
+  automatic_installation = true,
+  ensure_installed = local_servers,
+  max_concurrent_installers = 2,
   ui = {
     icons = {
       server_installed = "✓",
@@ -94,10 +96,8 @@ installer.settings({
 --[[------------------------------------------------------------------------]]--
 --[[----------------------- COMMON CONFIGURATION ---------------------------]]--
 --[[------------------------------------------------------------------------]]--
-local spinner_ok, spinner = pcall(require, 'lsp_spinner')
-
 --[[.....Buffer-local options to apply on attach............................]]--
-function common_on_attach(client, bufnr)
+M.common_on_attach = function (client, bufnr)
   vim.api.nvim_create_autocmd( 'CursorHold', {
     group = vim.api.nvim_create_augroup('LspHoverOnCursor', { clear = true, }),
     buffer = bufnr,
@@ -115,51 +115,106 @@ function common_on_attach(client, bufnr)
       vim.diagnostic.open_float(opts)
     end
   })
-  if spinner_ok then
-    spinner.on_attach(client, buffer)
-  end
 end
 
 -- Get capabilities
 local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 if cmp_lsp_ok then
-  common_capabilities = cmp_lsp.update_capabilities(
+  M.common_capabilities = cmp_lsp.update_capabilities(
     vim.lsp.protocol.make_client_capabilities()
   )
 else
-  common_capabilities = {}
-end
-if spinner_ok then
-  spinner.init_capabilities(common_capabilities)
+  M.common_capabilities = {}
 end
 
 --[[------------------------------------------------------------------------]]--
 --[[--------------------- LOCAL SERVER APPLICATION -------------------------]]--
 --[[------------------------------------------------------------------------]]--
--- Auto install these servers using lsp_installer
-for _, name in pairs(local_servers) do
-  local server_is_found, server = installer.get_server(name)
-  if server_is_found and not server:is_installed() then
-    print("Installing " .. name)
-    server:install()
-  end
-end
--- Configure these servers
-installer.on_server_ready(function(server)
-  -- Load server opts if we can
-  local this_opts_ok, this_opts = pcall(require,
-    'server-configs/' .. server.name .. '-config'
-  )
-  if this_opts_ok then
-    this_opts.on_attach = common_on_attach
-    this_opts.capabilities = common_capabilities
-  else
-    this_opts = {
-      on_attach = common_on_attach,
-      capabilities = common_capabilities,
-    }
-  end
+-- LTeX; spellchecker
+loader.ltex.setup({
+  on_attach = M.common_on_attach,
+  capabilities = M.capabilities,
+  filetypes = {
+    'tex',
+    'bib',
+    'plaintex',
+    'latex',
+    'gitcommit',
+    'markdown',
+    'org',
+    'rst',
+    'rnoweb',
+  },
+})
+-- TexLab; latex LSP
+loader.texlab.setup({
+  on_attach = M.common_on_attach,
+  capabilities = M.capabilities,
+  filetypes = {
+    'tex',
+    'bib',
+    'plaintex',
+    'latex',
+  },
+  settings = {
+    texlab = {
+      auxDirectory = '.',
+      bibtexFormatter = 'texlab',
+      build = {
+        args = {'-pdf', '-interaction=nonstopmode', '-synctex=1', '%f', },
+        executable = 'latexmk',
+        forwardSearchAfter = true,
+        onSave = false,
+      },
+      chktex = {
+        onEdit = false,
+        onOpenAndSave = false,
+      },
+      diagnosticsDelay = 300,
+      formatterLineLength = 80,
+      forwardSearch = {
+        executable = 'zathura',
+        args = {
+          '--synctex-editor-command',
+          'nvim --headless -c "TexlabInverseSearch \'%{input}\' %{line}"',
+          '--synctex-forward',
+          '%l:1:%f',
+          '%p',
+        },
+      },
+      latexFormatter = 'latexindent',
+      latexindent = {
+        modifyLineBreaks =  true,
+      },
+    },
+  },
+})
+-- Lua
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+loader.sumneko_lua.setup {
+  on_attach = M.common_on_attach,
+  capabilities = M.capabilities,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = runtime_path,
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+    autostart = true,
+  },
+}
 
-  -- Set this server up
-  server:setup(this_opts)
-end)
+return M

@@ -1,13 +1,11 @@
 ---------------------------
---- Feline : Status bar ---
+--- LuaLine: Status bar ---
 ---------------------------
 local gps = require("nvim-gps")
 local lualine = require('lualine')
--- Position
-gps.setup()
 
 -- LSP clients
-function lsp_client_names()
+local function lsp_client_names()
     local clients = {}
     for _, client in pairs(vim.lsp.buf_get_clients(0)) do
         clients[#clients + 1] = client.name
@@ -15,7 +13,7 @@ function lsp_client_names()
     return table.concat(clients, ' '), ' '
 end
 
-require('lualine').setup {
+lualine.setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
