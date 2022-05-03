@@ -42,8 +42,7 @@ com('set formatoptions+=o') -- Continue comments with comment prefix
 --[[------------------------------------------------------------------------]]--
 set.termguicolors = true              -- For most themes
 set.background = 'dark'               -- Default to dark themes
-g.gruvbox_material_background = 'soft'
-com('colorscheme nvcode')  -- Default theme
+com('colorscheme gruvbox')  -- Default theme
 
 --[[------------------------------------------------------------------------]]--
 --[[------------------------------ Neovim UI -------------------------------]]--

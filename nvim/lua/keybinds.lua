@@ -101,5 +101,8 @@ keymap('n', '<F28>',  ':SymbolsOutline<CR>',                          term_opts)
 
 -- 05: Build (this is usually individual to file-type)
 -- 06: Comments
+keymap('n', '<F6>',   ':<Plug>(comment_toggle_current_linewise)<CR>', term_opts)
+keymap('x', '<F6>',   ':<Plug>(comment_toggle_current_blockwise)<CR>',term_opts)
+
 -- 07: Git actionshttps://patorjk.com/software/taag/#p=display&h=3&f=Slant
 -- 08: Snippets

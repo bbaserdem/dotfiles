@@ -51,8 +51,7 @@ M.this_setup = require('packer').startup(function(use)
         default_mappings = true,
       })
     end,
-  }
-   -- Indent guiding lines
+  }-- Indent guiding lines
   use { 'lukas-reineke/indent-blankline.nvim', disable = false,
     config = function()
       require('indent_blankline').setup({
@@ -77,8 +76,7 @@ M.this_setup = require('packer').startup(function(use)
         show = true,
       })
     end,
-  }
-   -- Status bar
+  }-- Status bar
   use { 'nvim-lualine/lualine.nvim', disable = false,
     requires = {
       { 'kyazdani42/nvim-web-devicons', opt = true, },
@@ -97,33 +95,46 @@ M.this_setup = require('packer').startup(function(use)
     },
   }-- File search
   use { 'nvim-telescope/telescope-fzf-native.nvim', disable = false,
-  after = 'telescope.nvim',
-  run = 'make',
-}-- Spellchecker
-use { 'lewis6991/spellsitter.nvim', disable = false, }
--- Better tab window
-use { 'romgrk/barbar.nvim', disable = false,
-requires = {
-  'kyazdani42/nvim-web-devicons',
-},
+    after = 'telescope.nvim',
+    run = 'make',
+  }-- Spellchecker
+  use { 'lewis6991/spellsitter.nvim', disable = false, }
+  -- Better tab window
+  use { 'romgrk/barbar.nvim', disable = false,
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
   }-- Minimalism inducer
   use { 'Pocco81/TrueZen.nvim', disable = false, }
   -- Tmux integration
   use { 'aserowy/tmux.nvim', disable = false, }
   -- Navigate between neovim split and tmux panes
   use { 'numToStr/Navigator.nvim', disable = false, }
+  -- Code commentor
+  use { 'numToStr/Comment.nvim', disable = false,
+    config = function()
+      require('Comment').setup({
+        padding = true,
+        mappings = {
+          basic = false,
+          extra = false,
+          extended = false,
+        },
+      })
+    end,
+  }
 
   --[[--------------------------------------------------------------------]]--
   --[[-Plugins for language server protocol-LSP, parsing and diagnostics--]]--
   --[[--------------------------------------------------------------------]]--
   -- Collection of common configs
   use { 'neovim/nvim-lspconfig', disable = false,
-  requires ={
-    'folke/lsp-colors.nvim',  -- Adapt color schemes without LSP
-    'kosayoda/nvim-lightbulb',-- Show available code actions
-  }
-}-- Install missing servers
-use { 'williamboman/nvim-lsp-installer', disable = false,
+    requires ={
+      'folke/lsp-colors.nvim',  -- Adapt color schemes without LSP
+      'kosayoda/nvim-lightbulb',-- Show available code actions
+    }
+  }-- Install missing servers
+  use { 'williamboman/nvim-lsp-installer', disable = false,
   }-- Display menu for diagnostic messages
   use { 'folke/trouble.nvim', disable = false,
     requires = 'kyazdani42/nvim-web-devicons',
@@ -242,7 +253,7 @@ use { 'williamboman/nvim-lsp-installer', disable = false,
   use { 'catppuccin/nvim', disable = false,
     as = 'catppuccin',
   }-- Faded themes
-  use { 'sainnhe/gruvbox-material', disable = false, }
+  use { 'ellisonleao/gruvbox.nvim', disable = false, }
   use { 'savq/melange', disable = false, }
   use { 'tomasiser/vim-code-dark', disable = false, }
    --[[---------------------------------------------------------------------]]--
