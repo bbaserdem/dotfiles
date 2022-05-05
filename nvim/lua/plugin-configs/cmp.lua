@@ -2,10 +2,9 @@
 --- Autocompletion ---
 ----------------------
 --Preload
-local plug = require('cmp')
-local plug_lsp = require('cmp_nvim_lsp')
-local plug_ulti = require('cmp_nvim_ultisnips')
-local plug_lspk = require('lspkind')
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+local lspkind = require('lspkind')
 
 -- Check for backspace
 local check_backspace = function()
@@ -21,7 +20,7 @@ local has_words_before = function()
     line - 1,
     line,
     true
-  )[1]:sub(col, col):match("%s") == nil
+  )[1]:sub(col, col):match('%s') == nil
 end
 
 -- Check for comment block while not in command mode
@@ -30,8 +29,8 @@ local check_comment = function()
   if vim.api.nvim_get_mode().mode == 'c' then
     return true
   else
-    return not context.in_treesitter_capture("comment")
-      and not context.in_syntax_group("Comment")
+    return not context.in_treesitter_capture('comment')
+      and not context.in_syntax_group('Comment')
   end
 end
 
@@ -46,52 +45,52 @@ end
 
 -- Sources array here so that it is collected{
 local completion_sources = {
-  { name = "buffer",
+  { name = 'buffer',
     option = {
       label = '[buffer]',
       keyword_length = 2,
       get_bufnrs = function() return vim.api.nvim_list_bufs() end,
     },
   },
-  { name = "nvim_lua",
+  { name = 'nvim_lua',
     option = {
-      label = '[Lua]',
+      label = '[nvim]',
     },
   },
-  { name = "nvim_lsp",
+  { name = 'nvim_lsp',
     option = {
-      label = "[LSP]",
+      label = '[lsp ]',
     },
   },
-  { name = "nvim_lsp_signature_help",
+  { name = 'nvim_lsp_signature_help',
     option = {
-      label = "[Sign.]",
+      label = '[sign]',
     },
   },
-  { name = "path",
+  { name = 'path',
     option = {
       label = '[path]',
       trailing_slash = true,
     },
   },
-  { name = "tmux",
+  { name = 'tmux',
     option = {
       label = '[tmux]',
     },
   },
-  { name = "omni",
+  { name = 'omni',
     option = {
       label = '[omni]',
     },
   },
-  { name = "ultisnips",
+  { name = 'luasnip',
     option = {
-      label = '[snips]',
+      label = '[snip]',
     },
   },
 }
 
-plug.setup({
+cmp.setup({
   -- Enable when not in comment block
   enabled = check_comment(),
   -- Sources for completion
@@ -105,101 +104,90 @@ plug.setup({
   },
   -- Display
   formatting = {
-    format = plug_lspk.cmp_format {
+    format = lspkind.cmp_format {
       mode = "symbol_text",
     },
   },
   -- Window
   window = {
-    documentation = plug.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   -- Experiment
   experimental = {
     ghost_text = false,
   },
+  -- Snippets
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
   mapping = {
-    -- Tab
-    -- Insert mode:
-    --    Navigate menu (if open)
-    --    Open menu (if not open)
-    --    Insert white space
-    -- Command mode:
-    --    Navigate menu (if open)
-    --    Open menu (if not open)
-    -- Select mode (UltiSnips)
-    --    If in a snippet; move to next item
-    -- Shift-Tab
-    -- Insert mode:
-    --    Navigate menu (if open)
-    --    Backspace
-    -- Command mode:
-    --    Navigate menu (if open)
-    --    Backspace
-    -- Select mode (UltiSnips)
-    --    If in a snippet; move to prev item
-    -- Vertical Arrows
-    -- Insert mode:
-    --    Navigate menu (if open)
-    -- Command mode:
-    --    Navigate menu (if open)
-    -- Enter
-    -- Insert mode:
-    --    Confirm
-    ["<Tab>"] = plug.mapping({
+    ["<Tab>"] = cmp.mapping({
       i = function(fallback)
-        if plug.visible() then           -- If menu is open, navigate next
-          plug.select_next_item({ behavior = plug.SelectBehavior.Select })
+        if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        elseif luasnip.expand_or_locally_jumpable() then
+          luasnip.expand_or_jump()
         elseif has_words_before() then
-          plug.complete()
+          cmp.complete()
+        else
+          fallback()
+        end
+      end,
+      s = function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        elseif luasnip.expand_or_locally_jumpable() then
+          luasnip.expand_or_jump()
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end,
+      c = function()
+        if cmp.visible() then           -- If menu is open, navigate next
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        else                            -- Open completion
+          cmp.complete()
+        end
+      end,
+    }),
+    ["<S-Tab>"] = cmp.mapping({
+      i = function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else                            -- Do whatever
+          fallback()
+        end
+      end,
+      s = function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
         else                            -- Do whatever
           fallback()
         end
       end,
       c = function()
-        if plug.visible() then           -- If menu is open, navigate next
-          plug.select_next_item({ behavior = plug.SelectBehavior.Select })
+        if cmp.visible() then           -- If menu is open, navigate next
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
         else                            -- Open completion
-          plug.complete()
+          cmp.complete()
         end
       end,
-      s = function(fallback)
-        if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-          vim.api.nvim_feedkeys(tc("<Plug>(ultisnips_jump_forward)"), 'm', true)
-        else
-          fallback()
-        end
-      end
     }),
-    ["<S-Tab>"] = plug.mapping({
+    ['<CR>'] = cmp.mapping({
       i = function(fallback)
-        if plug.visible() then           -- If menu is open, navigate next
-          plug.select_prev_item({ behavior = plug.SelectBehavior.Select })
-        else                            -- Do whatever
-          fallback()
-        end
-      end,
-      c = function()
-        if plug.visible() then           -- If menu is open, navigate next
-          plug.select_prev_item({ behavior = plug.SelectBehavior.Select })
-        else                            -- Open completion
-          plug.complete()
-        end
-      end,
-      s = function(fallback)
-        if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-          vim.api.nvim_feedkeys(tc("<Plug>(ultisnips_jump_backward)"), 'm', true)
-        else
-          fallback()
-        end
-      end
-    }),
-    ['<CR>'] = plug.mapping({
-      i = function(fallback)
-        if plug.visible() then
-          if plug.get_selected_entry() then
-            plug.confirm({behavior = plug.ConfirmBehavior.Replace, select = false})
+        if cmp.visible() then
+          if cmp.get_selected_entry() then
+            cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
           else
-            plug.close()
+            cmp.close()
             fallback()
           end
         else
@@ -207,40 +195,40 @@ plug.setup({
         end
       end,
       c = function(fallback)
-        if (plug.visible() and plug.get_selected_entry()) then
-          plug.confirm({behavior = plug.ConfirmBehavior.Replace, select = false})
+        if (cmp.visible() and cmp.get_selected_entry()) then
+          cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
         else
           fallback()
         end
       end,
     }),
     -- If arrow keys are invoked; do change the text
-    ['<Down>'] = plug.mapping({
+    ['<Down>'] = cmp.mapping({
       i = function(fallback)
-        if plug.visible() then
-          plug.select_next_item({ behavior = plug.SelectBehavior.Insert })
+        if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
         else
           fallback()
         end
       end,
     }),
-    ['<Up>'] = plug.mapping({
+    ['<Up>'] = cmp.mapping({
       i = function(fallback)
-        if plug.visible() then
-          plug.select_prev_item({ behavior = plug.SelectBehavior.Insert })
+        if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
         else
           fallback()
         end
       end,
     }),
     -- With escape; pass through if nothing has been selected yet
-    ['<Esc>'] = plug.mapping({
+    ['<Esc>'] = cmp.mapping({
       i = function(fallback)
-        if plug.visible() then
-          if plug.get_active_entry() then
-            plug.close()
+        if cmp.visible() then
+          if cmp.get_active_entry() then
+            cmp.close()
           else
-            plug.close()
+            cmp.close()
             fallback()
           end
         else
@@ -248,12 +236,12 @@ plug.setup({
         end
       end,
       c = function(fallback)
-        if plug.visible() then
-          if plug.get_active_entry() then
-            plug.abort()
+        if cmp.visible() then
+          if cmp.get_active_entry() then
+            cmp.abort()
             fallback()
           else
-            plug.abort()
+            cmp.abort()
           end
         else
           fallback()
@@ -264,9 +252,9 @@ plug.setup({
 
   sorting = {
     comparators = {
-      plug.config.compare.offset,
-      plug.config.compare.exact,
-      plug.config.compare.score,
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
 
       function(entry1, entry2)
         local _, entry1_under = entry1.completion_item.label:find "^_+"
@@ -280,26 +268,26 @@ plug.setup({
         end
       end,
 
-      plug.config.compare.kind,
-      plug.config.compare.sort_text,
-      plug.config.compare.length,
-      plug.config.compare.order,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
     },
   },
 })
 
 -- Command line completion
-plug.setup.cmdline(':', {
-  mapping = plug.mapping.preset.cmdline(),
-  sources = plug.config.sources({
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
     {name = 'cmdline'}
   }, {
     {name = 'path'}
   })
 })
-plug.setup.cmdline('/', {
-  mapping = plug.mapping.preset.cmdline(),
-  sources = plug.config.sources({
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
     { name = 'nvim_lsp_document_symbol' }
   }, {
     { name = 'buffer' }

@@ -1,14 +1,22 @@
 -------------------------------
 --- MARKDOWN filetype stuff ---
 -------------------------------
-local keymap = vim.keymap.set
+-- Custom keybinds
+local wk = require('which-key')
+wk.register({
+  [ '<F5>'] = { ':MarkdownPreview<CR>', 'Generate html file'  },
+  ['<F17>'] = { ':Glow<CR>',            'Preview in window.'  },
+})
 -- Navigating away from buffers save them
-vim.cmd('autocmd FileType markdown set autowriteall')
-vim.api.nvim_create_autocmd( 'BufWritePost', {
-  group = vim.api.nvim_create_augroup( 'MarkdownSaveOnLeftBuffer', { clear = true, }),
-  pattern = {'*.md', '*.MD'},
+vim.api.nvim_create_autocmd( 'FileType', {
+  group = vim.api.nvim_create_augroup( 'MarkdownAutoSave', { clear = true, }),
+  pattern = {'markdown'},
   command = 'set autowriteall',
 })
--- Function keys to be used with markdow files
-keymap('n', '<F5>',   ':MarkdownPreview<CR>', { silent = true, })
-keymap('n', '<F17>',  ':Glow<CR>',            { silent = true, })
+-- Do syntax highlighting for infinite distance
+vim.api.nvim_create_autocmd( 'FileType', {
+  group = vim.api.nvim_create_augroup( 'MarkdownHighlight', { clear = true, }),
+  pattern = {'markdown'},
+  command = 'syntax sync fromstart',
+})
+

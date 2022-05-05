@@ -16,5 +16,10 @@ vim.filetype.add({
   pattern = {
     ['.*/Stignore/.*'] = 'stignore',
     ['.*sway/config.d/.*'] = 'sway',
+    -- ['.*'] = function(path, bufnr)
+    --     if vim.fn.getline(bufnr, -1):match('#!.*dash') then
+    --         return 'dash'
+    --     end
+    -- end,
   },
 })

@@ -15,7 +15,7 @@ local win = vim.wo
 set.encoding = 'utf-8'      -- Show files in UTF8
 set.fileencoding = 'utf-8'  -- Write files in UTF8
 set.updatetime = 250        -- Swap file after this many milliseconds
-set.timeoutlen = 3000       -- Make chords timeout in 3 secs instead
+set.timeoutlen = 500        -- Which key hijacks this in half a second
 set.ttimeoutlen = 100       -- But not keycodes
 set.mouse = 'a'             -- Enable mouse
 set.autoread = true         -- Reload changed files
@@ -42,7 +42,28 @@ com('set formatoptions+=o') -- Continue comments with comment prefix
 --[[------------------------------------------------------------------------]]--
 set.termguicolors = true              -- For most themes
 set.background = 'dark'               -- Default to dark themes
-com('colorscheme gruvbox')  -- Default theme
+require('onedark').setup({
+    style = 'warmer',
+    transparent = true,
+    term_colors = true,
+    ending_tildes = true,
+    cmp_itemkind_reverse = false,
+    toggle_style_key = nil,
+    toggle_style_list = {'darker', 'cool', 'warmer', 'light', },
+    code_style = {
+        comments = 'italic',
+        keywords = 'bold',
+        functions = 'none',
+        strings = 'none',
+        variables = 'none',
+    },
+    diagnostics = {
+        darker = true,
+        undercurl = true,
+        background = true,
+    },
+})
+require('onedark').load()
 
 --[[------------------------------------------------------------------------]]--
 --[[------------------------------ Neovim UI -------------------------------]]--
@@ -64,6 +85,11 @@ set.breakindent = true              -- Wrapped lines should keep indents
 set.list = false                    -- Show line characters
 set.listchars:append("eol:↴")       -- Put EoL character at end of line
 set.listchars:append("space:⋅")     -- Put dots in mid-line spaces
+set.listchars:append("tab:>-")
+set.listchars:append("trail:-")
+set.listchars:append("extends:>")
+set.listchars:append("precedes:<")
+set.listchars:append("nbsp:+")
 
 --[[------------------------------------------------------------------------]]--
 --[[--------------------------- Window Options -----------------------------]]--

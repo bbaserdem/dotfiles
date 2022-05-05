@@ -1,17 +1,9 @@
 ---------------------------
 --- LuaLine: Status bar ---
 ---------------------------
-local gps = require("nvim-gps")
+local gps = require('nvim-gps')
+local spinner = require('lsp_spinner')
 local lualine = require('lualine')
-
--- LSP clients
-local function lsp_client_names()
-    local clients = {}
-    for _, client in pairs(vim.lsp.buf_get_clients(0)) do
-        clients[#clients + 1] = client.name
-    end
-    return table.concat(clients, ' '), ' '
-end
 
 lualine.setup {
   options = {
@@ -24,20 +16,20 @@ lualine.setup {
     globalstatus = false,
   },
   sections = {
-    lualine_a = {'hostname', 'mode'},
-    lualine_b = {gps.get_location},
-    lualine_c = {lsp_client_names},
-    lualine_x = {'branch', 'diff'},
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff'},
+    lualine_c = {gps.get_location},
+    lualine_x = {spinner.status},
     lualine_y = {'fileformat', 'filetype'},
     lualine_z = {'filesize', 'progress'},
   },
   inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
+    lualine_a = {'hostname'},
+    lualine_b = {'branch', 'diff'},
+    lualine_c = {'location'},
+    lualine_x = {},
+    lualine_y = {'fileformat', 'filetype'},
+    lualine_z = {'filesize', 'progress'}
   },
   tabline = {},
   extensions = {}

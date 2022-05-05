@@ -8,8 +8,6 @@
 from https://patorjk.com/software/taag/#p=display&h=3&f=Slant
 --]]
 
-vim.api.nvim_command('source $XDG_CONFIG_HOME/nvim/oldinit.vim')
-
 local core_modules = {
   -- Main settings
   'plugins',

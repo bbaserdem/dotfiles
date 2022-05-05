@@ -1,0 +1,2 @@
+--- Some functions ---
+return {}
