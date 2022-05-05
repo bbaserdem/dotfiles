@@ -93,7 +93,7 @@ keymap('n', '<F38>',  ':LspInstallInfo<CR>',                          term_opts)
 keymap('n', '<F3>' ,  ':Twilight<CR>',                                term_opts)
 keymap('n', '<F15>',  ':TZAtaraxis<CR>',                              term_opts)
 --keymap('n', '<F27>', ':<CR>',  term_opts)
-keymap('n', '<F39>',  ':Telescope colorschemes<CR>',                  term_opts)
+keymap('n', '<F39>',  ':Telescope colorscheme<CR>',                   term_opts)
 -- 04: Context menus
 keymap('n', '<F4>',   ':NvimTreeToggle<CR>',                          term_opts)
 keymap('n', '<F16>',  ':TroubleToggle workspace_diagnostics<CR>',     term_opts)

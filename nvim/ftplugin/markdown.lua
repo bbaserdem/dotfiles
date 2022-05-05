@@ -4,8 +4,8 @@
 local keymap = vim.keymap.set
 -- Navigating away from buffers save them
 vim.cmd('autocmd FileType markdown set autowriteall')
-vim.api.nvim_create_autocmd( 'MarkdownSaveOnLeftBuffer', {
-  group = vim.api.nvim_create_augroup( 'MarkdownSave', { clear = true, }),
+vim.api.nvim_create_autocmd( 'BufWritePost', {
+  group = vim.api.nvim_create_augroup( 'MarkdownSaveOnLeftBuffer', { clear = true, }),
   pattern = {'*.md', '*.MD'},
   command = 'set autowriteall',
 })
