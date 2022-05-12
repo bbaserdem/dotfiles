@@ -38,34 +38,6 @@ set.joinspaces = false      -- Don't insert 2 spaces on (J)oin
 com('set formatoptions+=o') -- Continue comments with comment prefix
 
 --[[------------------------------------------------------------------------]]--
---[[----------------------------- Colorscheme ------------------------------]]--
---[[------------------------------------------------------------------------]]--
-set.termguicolors = true              -- For most themes
-set.background = 'dark'               -- Default to dark themes
-require('onedark').setup({
-    style = 'warmer',
-    transparent = true,
-    term_colors = true,
-    ending_tildes = true,
-    cmp_itemkind_reverse = false,
-    toggle_style_key = nil,
-    toggle_style_list = {'darker', 'cool', 'warmer', 'light', },
-    code_style = {
-        comments = 'italic',
-        keywords = 'bold',
-        functions = 'none',
-        strings = 'none',
-        variables = 'none',
-    },
-    diagnostics = {
-        darker = true,
-        undercurl = true,
-        background = true,
-    },
-})
-require('onedark').load()
-
---[[------------------------------------------------------------------------]]--
 --[[------------------------------ Neovim UI -------------------------------]]--
 --[[------------------------------------------------------------------------]]--
 set.cmdheight = 2                   -- Command bar height

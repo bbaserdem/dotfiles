@@ -14,7 +14,15 @@ local core_modules = {
   'servers',
   'keybinds',
   'options',
+  'colors',
 }
+
+-- Do framebuffer detection
+if vim.env.TERM == 'linux' then
+    vim.g.isFramebuffer = true
+else
+    vim.g.isFramebuffer = false
+end
 
 -- Using pcall we can handle loading issues
 for _, module in ipairs(core_modules) do

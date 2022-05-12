@@ -19,9 +19,9 @@ input type:touchpad {
 
 input type:keyboard {
     # Keyboard
-	xkb_layout          "us,tr,us"
-	xkb_variant         "dvorak,f,"
-	xkb_options         "grp:caps_toggle"
+    xkb_layout          "us,tr,us"
+    xkb_variant         "dvorak,f,"
+    xkb_options         "grp:caps_toggle"
 }
 
 #--------------#

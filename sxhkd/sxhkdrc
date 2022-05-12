@@ -12,6 +12,12 @@ super + Return
 F12
     $XDG_CONFIG_HOME/bspwm/scripts/dropdown.sh
 
+# Keyboard layout changes
+Hyper_R + F12
+    xkb-switch -n
+Hyper_L + F12
+    xkb-switch -s 'us(dvorak)'
+
 # Rofi
 super + space
     /usr/bin/rofi -show drun

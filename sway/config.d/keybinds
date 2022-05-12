@@ -1,7 +1,7 @@
 #--------------#
 #-----KEYS-----#
 #--------------#
-
+# Shortcuts
 set $Alt        Mod1
 set $Meta       Mod4
 set $Resize     ""

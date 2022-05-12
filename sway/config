@@ -4,11 +4,11 @@
 exec --no-startup-id "dex --autostart --environment sway"
 
 # Fonts
-font pango:sans-serif 11px
+font pango:sans-serif 12px
 
 # Gaps
-gaps inner 16
-gaps outer 0
+gaps inner 10
+gaps outer 8
 
 # Use to drag floating with mod
 floating_modifier Mod4
