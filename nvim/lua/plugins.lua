@@ -255,7 +255,6 @@ M.this_setup = require('packer').startup(function(use)
      -- LaTeX
      -- Specific TeXlab config for LSP to enable backsearch
     use { 'f3fora/nvim-texlabconfig', disable = false,
-        ft = {'tex', 'latex', 'plaintex', 'bib'},
         config = function()
              require('texlabconfig').setup({
 	        cache_activate = true,
@@ -265,6 +264,8 @@ M.this_setup = require('packer').startup(function(use)
 	        file_permission_mode = 438,
             })
         end,
+        ft = {'tex', 'latex', 'plaintex', 'bib'},
+        cmd = { 'TexlabInverseSearch', },
     } -- Render equations to preview in ASCII
     use { 'jbyuki/nabla.nvim', disable = false,
         ft = {'tex', 'latex', 'plaintex', 'markdown'},

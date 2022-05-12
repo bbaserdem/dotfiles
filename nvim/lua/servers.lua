@@ -165,12 +165,12 @@ loader.texlab.setup({
             build = {
                 args = {'-pdf', '-interaction=nonstopmode', '-synctex=1', '%f', },
                 executable = 'latexmk',
-                forwardSearchAfter = true,
-                onSave = false,
+                forwardSearchAfter = false,
+                onSave = true,
             },
             chktex = {
-                onEdit = false,
-                onOpenAndSave = false,
+                onEdit = true,
+                onOpenAndSave = true,
             },
             diagnosticsDelay = 300,
             formatterLineLength = 80,
@@ -178,7 +178,7 @@ loader.texlab.setup({
                 executable = 'zathura',
                 args = {
                     '--synctex-editor-command',
-                    'nvim --headless -c "TexlabInverseSearch \'%{input}\' %{line}"',
+                    [[nvim --headless -c "TexlabInverseSearch '%{input}' %{line}"]],
                     '--synctex-forward',
                     '%l:1:%f',
                     '%p',

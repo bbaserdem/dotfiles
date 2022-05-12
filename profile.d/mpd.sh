@@ -1,2 +1,2 @@
 # MPD stuff
-export MPD_HOST='localhost'
+export MPD_HOST=localhost
