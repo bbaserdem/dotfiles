@@ -95,46 +95,47 @@ installer.setup({
 --[[----------------------- COMMON CONFIGURATION ---------------------------]]--
 --[[------------------------------------------------------------------------]]--
 --[[.....Buffer-local options to apply on attach............................]]--
-local lsp_spinner = require('lsp_spinner')
-M.common_on_attach = function (client, bufnr)
-    vim.api.nvim_create_autocmd( { 'CursorHold', 'CursorHoldI', }, {
+local common_on_attach = function (client, bufnr)
+    vim.api.nvim_create_autocmd( 'CursorHold', {
         group = vim.api.nvim_create_augroup('LspHoverOnCursor', { clear = true, }),
         buffer = bufnr,
         callback = function()
-            vim.diagnostic.open_float({
+            local opts = {
                 focusable = false,
                 close_events = {
-                    'BufLeave',
+                    --'BufLeave',
                     'CursorMoved',
-                    'InsertEnter',
-                    'FocusLost',
+                    --'InsertEnter',
+                    --'FocusLost',
                 },
                 border = 'rounded',
-            })
+                source = 'always',
+                prefix = ' ',
+                scope = 'cursor',
+            }
+            vim.diagnostic.open_float(opts)
         end
     })
-    lsp_spinner.on_attach(client, bufnr)
 end
+M.on_attach = common_on_attach
 
 -- Get capabilities
-M.common_capabilities = vim.lsp.protocol.make_client_capabilities()
+local common_capabilities = vim.lsp.protocol.make_client_capabilities()
 -- Add nvim-cmp
 local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 if cmp_lsp_ok then
-    M.common_capabilities = cmp_lsp.update_capabilities(
-        M.common_capabilities
-    )
+    common_capabilities = cmp_lsp.update_capabilities(common_capabilities)
 end
--- Add spinner
-lsp_spinner.init_capabilities(M.common_capabilities)
+
+M.capabilities = common_capabilities
 
 --[[------------------------------------------------------------------------]]--
 --[[--------------------- LOCAL SERVER APPLICATION -------------------------]]--
 --[[------------------------------------------------------------------------]]--
 -- LTeX; spellchecker
 loader.ltex.setup({
-    on_attach = M.common_on_attach,
-    capabilities = M.common_capabilities,
+    on_attach = common_on_attach,
+    capabilities = common_capabilities,
     filetypes = {
         'tex',
         'bib',
@@ -149,8 +150,8 @@ loader.ltex.setup({
 })
 -- TexLab; latex LSP
 loader.texlab.setup({
-    on_attach = M.common_on_attach,
-    capabilities = M.common_capabilities,
+    on_attach = common_on_attach,
+    capabilities = common_capabilities,
     filetypes = {
         'tex',
         'bib',
@@ -195,8 +196,8 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 loader.sumneko_lua.setup {
-    on_attach = M.common_on_attach,
-    capabilities = M.common_capabilities,
+    on_attach = common_on_attach,
+    capabilities = common_capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -218,4 +219,4 @@ loader.sumneko_lua.setup {
     },
 }
 
-return M
+--return M

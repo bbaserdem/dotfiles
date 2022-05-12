@@ -87,8 +87,8 @@ wk.register({
   },
   e = {
     name = 'Editing',
-    r = { ':%s///g<Left><Left><Left>',  'Search and replace'          },
-    p = { '"+p',                        '(Paste) Put from clipboard'  },
+    r = { ':%s///g<Left><Left><Left>',  'Search and replace', silent = false},
+    p = { '"+p',                        '(Paste) Put from clipboard'        },
     c = {
       '<CMD>lua require("Comment.api").call("toggle_current_linewise_op")<CR>g@$',
       'Comment this line'
