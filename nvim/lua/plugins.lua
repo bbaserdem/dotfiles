@@ -30,19 +30,19 @@ M.this_setup = require('packer').startup(function(use)
      --[[------------------------Plugins for utilities-----------------------]]--
      --[[--------------------------------------------------------------------]]--
      -- Don't close windows if deleting a buffer
-    use { 'famiu/bufdelete.nvim', disable = false, }
-     -- Make directories while saving if they don't exist
-    use { 'jghauser/mkdir.nvim', disable = false, }
-     -- Notifications on screen
-    use { 'rcarriga/nvim-notify', disable = false, }
-     -- URL exposer and handler
+    use { 'famiu/bufdelete.nvim', disable = false,
+    }-- Make directories while saving if they don't exist
+    use { 'jghauser/mkdir.nvim', disable = false,
+    }-- Notifications on screen
+    use { 'rcarriga/nvim-notify', disable = false,
+    }-- URL exposer and handler
     use { 'axieax/urlview.nvim', disable = false,
         requires = {
             'nvim-telescope/telescope.nvim',
             'stevearc/dressing.nvim',
         }
     }-- Session manager
-    use { 'rmagatti/auto-session', disable = false, 
+    use { 'rmagatti/auto-session', disable = false,
         requires = {
             'nvim-telescope/telescope.nvim',
             'rmagatti/session-lens',
@@ -85,7 +85,7 @@ M.this_setup = require('packer').startup(function(use)
     } -- Improve default vim.ui interfaces
     use { 'stevearc/dressing.nvim', disable = false, }
      -- Scrollbar
-    use { 'petertriho/nvim-scrollbar', disable = false, 
+    use { 'petertriho/nvim-scrollbar', disable = false,
         config = function()
             require('scrollbar').setup({
                 show = true,
@@ -116,19 +116,19 @@ M.this_setup = require('packer').startup(function(use)
         after = 'telescope.nvim',
         run = 'make',
     }-- Spellchecker
-    use { 'lewis6991/spellsitter.nvim', disable = false, }
-    -- Better tab window
+    use { 'lewis6991/spellsitter.nvim', disable = false,
+    }-- Better tab window
     use { 'romgrk/barbar.nvim', disable = false,
         requires = {
             'kyazdani42/nvim-web-devicons',
         },
     }-- Minimalism inducer
-    use { 'Pocco81/TrueZen.nvim', disable = false, }
-     -- Tmux integration
-    use { 'aserowy/tmux.nvim', disable = false, }
-     -- Navigate between neovim split and tmux panes
-    use { 'numToStr/Navigator.nvim', disable = false, }
-     -- Code commentor
+    use { 'Pocco81/TrueZen.nvim', disable = false,
+    }-- Tmux integration
+    use { 'aserowy/tmux.nvim', disable = false,
+    }-- Navigate between neovim split and tmux panes
+    use { 'numToStr/Navigator.nvim', disable = false,
+    }-- Code commentor
     use { 'numToStr/Comment.nvim', disable = false,
         config = function()
             require('Comment').setup({
@@ -171,6 +171,14 @@ M.this_setup = require('packer').startup(function(use)
                 theme = 'dashboard',
             })
         end,
+    }-- Todo stuff
+    use { 'nvim-neorg/neorg', disable = false,
+    -- tag = "latest",
+        ft = "norg",
+        after = "nvim-treesitter", -- You may want to specify Telescope here as well
+        config = function()
+            require('neorg').setup({})
+        end,
     }
     --[[--------------------------------------------------------------------]]--
     --[[-Plugins for language server protocol-LSP, parsing and diagnostics--]]--
@@ -198,17 +206,7 @@ M.this_setup = require('packer').startup(function(use)
         run = ':TSUpdate',
     }
      -- Symbol menu for the current language
-    use { 'simrat39/symbols-outline.nvim', disable = false, }
-     -- Show lsp status bar
-    use { 'doums/lsp_spinner.nvim', disable = false,
-        config = function()
-            require('lsp_spinner').setup({
-                spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏', },
-                placeholder = 'h',
-                interval = 100,
-                redraw_rate = 150,
-            })
-        end,
+    use { 'simrat39/symbols-outline.nvim', disable = false,
     }
 
      --[[---------------------------------------------------------------------]]--
@@ -258,20 +256,15 @@ M.this_setup = require('packer').startup(function(use)
      -- Specific TeXlab config for LSP to enable backsearch
     use { 'f3fora/nvim-texlabconfig', disable = false,
         ft = {'tex', 'latex', 'plaintex', 'bib'},
-		config = function()
-			require('texlabconfig').setup({
-				cache_activate = true,
-				cache_filetypes = {
-					'tex',
-					'bib',
-					'plaintex',
-					'latex',
-				},
-				cache_root = vim.fn.stdpath('cache'),
-				reverse_search_edit_cmd = 'edit',
-				file_permission_mode = 438,
-			})
-		end
+        config = function()
+             require('texlabconfig').setup({
+	        cache_activate = true,
+	        cache_filetypes = { 'tex', 'bib', 'plaintex', 'latex', },
+	        cache_root = vim.fn.stdpath('cache'),
+	        reverse_search_edit_cmd = 'edit',
+	        file_permission_mode = 438,
+            })
+        end,
     } -- Render equations to preview in ASCII
     use { 'jbyuki/nabla.nvim', disable = false,
         ft = {'tex', 'latex', 'plaintex', 'markdown'},
@@ -314,12 +307,17 @@ M.this_setup = require('packer').startup(function(use)
      --[[----------------------------Color Schemes----------------------------]]--
      --[[---------------------------------------------------------------------]]--
      -- High contrast
-    use { 'bluz71/vim-moonfly-colors', disable = false, }
-     -- Faded themes
-    use { 'navarasu/onedark.nvim', disable = false, }
-    use { 'savq/melange', disable = false, }
-     -- Light themes
-    use { 'folke/tokyonight.nvim', disable = false }
+    use { 'bluz71/vim-moonfly-colors', disable = false,
+    }-- Nice themes
+    use { 'catppuccin/nvim', disable = false,
+        as = 'catppuccin',
+    }-- One dark
+    use { 'navarasu/onedark.nvim', disable = false,
+    }-- Melange; browner black
+    use { 'savq/melange', disable = false,
+    }-- Vim code dark; true black background
+    use { 'tomasiser/vim-code-dark', disable = false,
+    }
      --[[---------------------------------------------------------------------]]--
      --[[---Automatically set up your configuration after cloning packer.nvim-]]--
      --[[-- Put this at the end after all plugins                                                         ]]--
@@ -440,6 +438,7 @@ plugLoader('nvim-treesitter.configs', {
         'todotxt',
         'vim',
         'yaml',
+        'norg',
     },
     sync_install = false,         -- Install parsers synchronously
     ignore_install = {                -- List of parsers to ignore installing (for "all")

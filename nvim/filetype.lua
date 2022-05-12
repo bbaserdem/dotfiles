@@ -8,18 +8,22 @@
 --]]
 -- Filetype detection
 vim.filetype.add({
-  filename = {
-    ['sway/config'] = 'sway',
-    ['waybar/config'] = 'json',
-    ['waybar/style.css'] = 'css',
-  },
-  pattern = {
-    ['.*/Stignore/.*'] = 'stignore',
-    ['.*sway/config.d/.*'] = 'sway',
-    -- ['.*'] = function(path, bufnr)
-    --     if vim.fn.getline(bufnr, -1):match('#!.*dash') then
-    --         return 'dash'
-    --     end
-    -- end,
-  },
+    extension = {
+        sty = 'latex',
+        cls = 'latex',
+    },
+    filename = {
+        ['sway/config'] = 'sway',
+        ['waybar/config'] = 'json',
+        ['waybar/style.css'] = 'css',
+    },
+    pattern = {
+        ['.*/Stignore/.*'] = 'stignore',
+        ['.*sway/config.d/.*'] = 'sway',
+        -- ['.*'] = function(path, bufnr)
+        --     if vim.fn.getline(bufnr, -1):match('#!.*dash') then
+        --         return 'dash'
+        --     end
+        -- end,
+    },
 })
