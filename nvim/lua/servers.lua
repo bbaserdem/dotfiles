@@ -97,7 +97,10 @@ installer.setup({
 --[[.....Buffer-local options to apply on attach............................]]--
 local common_on_attach = function (client, bufnr)
     vim.api.nvim_create_autocmd( 'CursorHold', {
-        group = vim.api.nvim_create_augroup('LspHoverOnCursor', { clear = true, }),
+        group = vim.api.nvim_create_augroup(
+            'LspDiagnosticsOnHover',
+            { clear = true, }
+        ),
         buffer = bufnr,
         callback = function()
             local opts = {
