@@ -166,14 +166,19 @@ loader.texlab.setup({
             auxDirectory = '.',
             bibtexFormatter = 'texlab',
             build = {
-                args = {'-pdf', '-interaction=nonstopmode', '-synctex=1', '%f', },
+                args = {
+                    '-pdf',
+                    '-interaction=nonstopmode',
+                    '-synctex=1',
+                    '%f',
+                },
                 executable = 'latexmk',
-                forwardSearchAfter = false,
+                forwardSearchAfter = true,
                 onSave = true,
             },
             chktex = {
                 onEdit = true,
-                onOpenAndSave = true,
+                onOpenAndSave = false,
             },
             diagnosticsDelay = 300,
             formatterLineLength = 80,
@@ -189,7 +194,7 @@ loader.texlab.setup({
             },
             latexFormatter = 'latexindent',
             latexindent = {
-                modifyLineBreaks =    true,
+                modifyLineBreaks = true,
             },
         },
     },

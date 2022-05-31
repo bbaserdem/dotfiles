@@ -52,7 +52,9 @@ set.cursorline = true               -- Highlight current row
 set.showtabline = 2                 -- Always show tabs
 set.signcolumn = 'yes'              -- Always show tabs
 set.conceallevel = 0                -- Don't conceal any characters
-set.linebreak = true                -- Auto break long lines
+set.linebreak = false               -- Auto break long lines
+set.wrap = true                     -- Auto break long lines
+set.textwidth = 0                   -- Limit text width to 80
 set.breakindent = true              -- Wrapped lines should keep indents
 set.list = false                    -- Show line characters
 set.listchars:append("eol:↴")       -- Put EoL character at end of line

@@ -60,7 +60,7 @@ M.this_setup = require('packer').startup(function(use)
         end,
     }
      -- Interacting with Vim marks
-    use { 'chentau/marks.nvim', disable = false,
+    use { 'chentoast/marks.nvim', disable = false,
         config = function()
             require('marks').setup({
                 default_mappings = true,
