@@ -1,1 +1,1 @@
--model pc105 -layout us,us,tr -variant ,dvorak,f -option grp:alt_caps_toggle	
+-model pc105 -layout us,tr,us -variant dvorak-alt-intl,f,altgr-intl -option grp:alt_caps_toggle

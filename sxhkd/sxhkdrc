@@ -3,6 +3,32 @@
 #-wm independent hotkeys-#
 #------------------------#
 # Need to escape curly brackets in quotes
+# Modifiers and explanations;
+# xmodmap offers the following modifiers
+#   shift   0x1     Shift_L (0x32),  Shift_R (0x3e)     
+#   lock    0x2     Caps_Lock (0x42)
+#   control 0x4     Control_L (0x25),  Control_R (0x69)
+#   mod1    0x8     Alt_L (0x40),  Alt_R (0x6c),  Meta_L (0xcd)
+#   mod2   ?0x10?   Num_Lock (0x4d)
+#   mod3   ?0x20?   Undefined
+#   mod4    0x40    Super_L (0x85),  Super_R (0x86),  Super_L (0xce),  Hyper_L (0xcf)
+#   mod5   ?0x80?   ISO_Level3_Shift (0x5c),  Mode_switch (0xcb)
+# SXHKD says it has these modifiers;
+#       XCB modifiers
+#   shift       - What XKB thinks is shift
+#   lock        - Corresponds to caps lock key
+#   control|ctrl- XCB Ctrl key
+#   mod1        - Corresponds to the xmodmap modifier
+#   mod2        - Corresponds to the xmodmap modifier
+#   mod3        - Corresponds to the xmodmap modifier
+#   mod4        - Corresponds to the xmodmap modifier
+#   mod5        - Corresponds to the xmodmap modifier
+#       Hard coded modifiers
+#   alt         - Hard-coded; left or right Alt   (0x40, 0x6c) The alt keys
+#   super       - Hard-coded; left or right Super (0x85, 0x86) The OS keys
+#   hyper       - Hard-coded; left or right Hyper (0xcf, ????) Does not really exist
+#   meta        - Hard-coded; left or right Meta  (0xcd, ????) It's shifted alt keys
+#   mode_switch - Hard-coded; mode switch key     (0xcb)
 
 # Terminal
 super + Return
