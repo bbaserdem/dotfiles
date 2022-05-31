@@ -408,6 +408,24 @@ plugLoader('nvim-tree', {
         cmd = "trash",
         require_confirm = true,
     },
+    filters = {
+        dotfiles = false,
+        custom = { -- Ignore aux latex files
+            [[\.aux$]],
+            [[\.bbl$]],
+            [[\.bcf$]],
+            [[\.blg$]],
+            [[\.fdb_latexmk$]],
+            [[\.fls$]],
+            [[\.lof$]],
+            [[\.log$]],
+            [[\.out$]],
+            [[\.run\.xml$]],
+            [[\.synctex\.gz$]],
+            [[\.toc$]],
+            },
+        exclude = {},
+    },
 })
 
 -- TreeSitter
