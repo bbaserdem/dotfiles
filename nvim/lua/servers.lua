@@ -153,43 +153,6 @@ loader.ltex.setup({
 loader.texlab.setup({
     on_attach = common_on_attach,
     capabilities = common_capabilities,
-    cmd = {
-        'texlab',
-        '--log-file',
-        '/home/sbp/.cache/nvim/texlab-log',
-        '-vvvv',
-    },
-    root_dir = function ()
-        return '/home/sbp/Work/Dissertation/'
-    end,
-    settings = {
-        texlab = {
-            build = {
-                executable = 'latexmk',
-                args = {
-                    '-pdf',
-                    '-interaction=nonstopmode',
-                    '-synctex=1',
-                    '-f',
-                    '%f',
-                    '>',
-                    'non-working-output-log',
-                },
-                forwardSearchAfter = true,
-                onSave = true,
-            },
-            forwardSearch = {
-                executable = 'zathura',
-                args = {
-                    '--synctex-editor-command',
-                    [[nvim --headless -c "TexlabInverseSearch '%{input}' %{line}"]],
-                    '--synctex-forward',
-                    '%l:1:%f',
-                    '%p',
-                },
-            },
-        },
-    },
 })
 -- Lua
 local runtime_path = vim.split(package.path, ';')
