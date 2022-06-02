@@ -142,8 +142,6 @@ loader.ltex.setup({
     filetypes = {
         'tex',
         'bib',
-        'plaintex',
-        'latex',
         'gitcommit',
         'markdown',
         'org',
@@ -155,33 +153,31 @@ loader.ltex.setup({
 loader.texlab.setup({
     on_attach = common_on_attach,
     capabilities = common_capabilities,
-    filetypes = {
-        'tex',
-        'bib',
-        'plaintex',
-        'latex',
+    cmd = {
+        'texlab',
+        '--log-file',
+        '/home/sbp/.cache/nvim/texlab-log',
+        '-vvvv',
     },
+    root_dir = function ()
+        return '/home/sbp/Work/Dissertation/'
+    end,
     settings = {
         texlab = {
-            auxDirectory = '.',
-            bibtexFormatter = 'texlab',
             build = {
+                executable = 'latexmk',
                 args = {
                     '-pdf',
                     '-interaction=nonstopmode',
                     '-synctex=1',
+                    '-f',
                     '%f',
+                    '>',
+                    'non-working-output-log',
                 },
-                executable = 'latexmk',
                 forwardSearchAfter = true,
                 onSave = true,
             },
-            chktex = {
-                onEdit = true,
-                onOpenAndSave = false,
-            },
-            diagnosticsDelay = 300,
-            formatterLineLength = 80,
             forwardSearch = {
                 executable = 'zathura',
                 args = {
@@ -191,10 +187,6 @@ loader.texlab.setup({
                     '%l:1:%f',
                     '%p',
                 },
-            },
-            latexFormatter = 'latexindent',
-            latexindent = {
-                modifyLineBreaks = true,
             },
         },
     },

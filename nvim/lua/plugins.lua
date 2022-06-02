@@ -264,11 +264,11 @@ M.this_setup = require('packer').startup(function(use)
 	        file_permission_mode = 438,
             })
         end,
-        ft = {'tex', 'latex', 'plaintex', 'bib'},
+        ft = {'tex', 'bib'},
         cmd = { 'TexlabInverseSearch', },
     } -- Render equations to preview in ASCII
     use { 'jbyuki/nabla.nvim', disable = false,
-        ft = {'tex', 'latex', 'plaintex', 'markdown'},
+        ft = {'tex', 'markdown'},
     }
      -- Markdown
      -- Render MD file in buffer
