@@ -7,6 +7,10 @@ set statusbar-home-tilde true
 set scroll-page-aware "true"
 set scroll-step 50
 
+# Inverse search with latex
+set synctex true
+set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %l '%f'\""
+
 # Reverse coloring, and invert only effects brightness, not hue
 map <C-i> recolor
 set recolor                     "true"

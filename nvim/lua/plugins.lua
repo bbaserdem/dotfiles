@@ -2,7 +2,10 @@
 --[[-------------------------------PLUGIN CONFIG----------------------------]]--
 --[[------------------------------------------------------------------------]]--
 local fn = vim.fn
+local g = vim.g
+-- Export things here
 M = {}
+
 -- Bootstrapping Packer
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -253,19 +256,10 @@ M.this_setup = require('packer').startup(function(use)
      --[[---------------------------------------------------------------------]]--
 
      -- LaTeX
-     -- Specific TeXlab config for LSP to enable backsearch
-    use { 'f3fora/nvim-texlabconfig', disable = false,
-        config = function()
-             require('texlabconfig').setup({
-	        cache_activate = true,
-	        cache_filetypes = { 'tex', 'bib', 'plaintex', 'latex', },
-	        cache_root = vim.fn.stdpath('cache'),
-	        reverse_search_edit_cmd = 'edit',
-	        file_permission_mode = 438,
-            })
-        end,
+     -- Build using vimtex
+    use { 'lervag/vimtex', disable = false,
         ft = {'tex', 'bib'},
-        cmd = { 'TexlabInverseSearch', },
+        cmd = { 'VimtexInverseSearch' },
     } -- Render equations to preview in ASCII
     use { 'jbyuki/nabla.nvim', disable = false,
         ft = {'tex', 'markdown'},
@@ -447,8 +441,8 @@ plugLoader('nvim-treesitter.configs', {
         'java',
         'javascript',
         'json',
-        'latex',
         'lua',
+        'latex',
         --'markdown',
         'python',
         'r',
@@ -459,14 +453,15 @@ plugLoader('nvim-treesitter.configs', {
         'yaml',
         'norg',
     },
-    sync_install = false,         -- Install parsers synchronously
-    ignore_install = {                -- List of parsers to ignore installing (for "all")
-        'javascript'
+    sync_install = false,       -- Install parsers synchronously
+    ignore_install = {          -- List of parsers to ignore installing (for "all")
+        'javascript',
     },
-    highlight = {                         -- `false` will disable the whole extension
+    highlight = {               -- `false` will disable the whole extension
         enable = true,
         disable = {
             'rust',
+            'latex',
         },
         additional_vim_regex_highlighting = false,
     },
@@ -538,6 +533,21 @@ plugLoader('trouble', {
     auto_jump = {"lsp_definitions"},
     use_diagnostic_signs = true,
 })
+
+-- Vimtex
+g.vimtex_mappings_enabled = 0
+g.vimtex_compiler_method = 'latexmk'
+--[[
+g.vimtex_compiler_tectonic = {
+    options = {
+        '--synctex',
+    },
+}
+--]]
+g.vimtex_view_method = 'zathura'
+g.vimtex_compiler_progname = 'nvr'
+--g.vimtex_view_zathura_options = 
+
 
 --[[-----------------------------------------------------------------------]]--
 --[[--------------------------- EXTERNAL FILES ----------------------------]]--
