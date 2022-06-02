@@ -1,0 +1,24 @@
+# This is the configuration file for listenbrainz-mpd.
+# Your ListenBrainz user token. Obtain it from https://listenbrainz.org/profile/ and put it between the quotes.
+listenbrainz_token = "9c17838c-18da-4faf-bd8b-4d0aa027b197"
+# This section configures how the application connects to your MPD server.
+#
+# If left empty or omitted entirely, the default will be connecting via TCP to localhost on port
+# 6600 with no password.
+[mpd]
+# Specify the address at which the MPD server can be reached. This may be an IP address or a
+# hostname that will be resolved. If no port is specified, port 6600 is assumed.
+# If this value starts with a slash ("/"), it specifies the path to a Unix socket instead.
+address = "localhost:6600"
+# If your MPD server is password protected, set this field:
+# password = "foo"
+# This section configures how the application will submit your listens to ListenBrainz.
+#
+# If left empty or omitted entirely, the defaults below will be used.
+[submission]
+# Submit genre tags on the played songs as folksonomy tags.
+genres_as_folksonomy = true
+# Split genres at the given separator character (and remove whitespace). This can be used if your
+# genre tags are not multiple values, but separated with something like semicolons or slashes.
+# Defaults to no splitting.
+# genre_separator = ";"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Icon=musicbrainz
+Name=Listenbrainz-MPD
+Comment=Scrobble mpd tracks to listenbrainz 
+Exec=listenbrainz-mpd
+StartupNotify=false
+Terminal=false
+Hidden=false

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Yet Another MPD Scrobbler
-Icon=musicbrainz
-Comment=LastFM and MPD play linkey
-Exec=yams
-StartupNotify=false
-Terminal=false
-Hidden=false

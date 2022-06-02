@@ -25,6 +25,8 @@
 !/ModTheSpire
 # Creeper World 3
 !/creeperworld3
+# Race for the Galaxy
+!/rftg
 
 #-------------------#
 #-----WHITELIST-----#
@@ -160,6 +162,10 @@
 # LATEX: Grab all
 !/latex
 !/latex/**
+
+# LISTENBRAINZ: Grab config
+!/listenbrainz-mpd
+!/listenbrainz-mpd/config.toml
 
 # MATLAB: Only get config, and symlinks
 !/matlab
@@ -324,10 +330,6 @@
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**
-
-# YAMS: Grab config file
-!/yams
-!/yams/yams.yml
 
 # YT-DLP: Grab config
 !/yt-dlp
