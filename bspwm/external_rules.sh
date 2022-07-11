@@ -58,11 +58,11 @@ case $class in
 esac
 
 # Instance overrides
-case $instance in
+case "${instance}" in
     # Override matlab dialogs
     'sun-awt-X11-XDialogPeer')
         DESKTOP=""
-        ;;&
+        ;;
 esac
 
 # Window title overrides
@@ -87,7 +87,7 @@ case "${name}" in
     Export*|Save*|Open*|Quit*|File*|Insert*|Confirm*|Playlist*)
         DESKTOP=""
         ;;
-    TabCompletionPopup|Leave*|*Overlay*|Select*|Import*)
+    TabCompletionPopup|Leave*|*Overlay*|Select*|Import*|Rename*)
         DESKTOP=""
         ;;
     # Zoom meeting go to remote
