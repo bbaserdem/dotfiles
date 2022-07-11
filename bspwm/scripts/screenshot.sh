@@ -12,7 +12,6 @@
 #   Use ∶ (UTF-8 glyph) instead of colon (:) because android can't use it
 #   Android string reservedChars = "?:\"*|/\\<>";
 
-
 # Get the screenshots directory
 case "$(hostname)" in
   sbp-laptop)       this_comp="/Laptop"       ;;
@@ -23,7 +22,7 @@ case "$(hostname)" in
 esac
 screendir="${HOME}/Pictures/Screenshots/${this_comp}"
 if [ ! -e "${screendir}" ] ; then mkdir -p "${screendir}" ; fi
-timestamp="$(date +%Y-%m-%d_%H:%M:%S)"
+timestamp="$(date '+%Y-%m-%d_%Hh%Mm%Ss')"
 
 mode='screen'
 target='file'
@@ -74,7 +73,7 @@ case "${mode}" in
   select)
     # Replace + with ✚, , x with ⨯
     geom="$(slop)"
-    geom_txt="loc∶$(echo ${geom} | sed 's|+|✚|g;s|x|⨯|g')"
+    geom_txt="loc∶$(echo "${geom}" | sed 's|+|✚|g;s|x|⨯|g')"
     # Use ∶, instead of :, for androd
     output="${screendir}/${timestamp}-${geom_txt}.png"
     if [ "${target}" = 'file' ] ; then
@@ -90,7 +89,7 @@ case "${mode}" in
     ;;
   sample)
     out="$(maim -st 0 | convert - -resize 1x1\! -format '%[pixel:p{0,0}]' txt:-)"
-    hex="$(echo "${_out}" | sed --silent 's|^.*\(#[a-f,A-F,0-9]\+\).*$|\1|p')"
+    hex="$(echo "${out}" | sed --silent 's|^.*\(#[a-f,A-F,0-9]\+\).*$|\1|p')"
     echo "${hex}" | xclip -selection clipboard
       notify-send --icon screengrab "Color sample" "${hex}, copied to clipboard"
     ;;
