@@ -2,7 +2,7 @@
 mpd_host = "localhost"
 mpd_port = "6600"
 mpd_connection_timeout = 10
-mpd_music_dir = /home/sbp/Music
+mpd_music_dir = /home/sbp/Music/Library
 mpd_crossfade_time = 0
 
 # Lyrics
