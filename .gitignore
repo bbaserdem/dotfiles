@@ -158,6 +158,8 @@
 # KVANTUM: Grab the config file
 !/Kvantum
 !/Kvantum/kvantum.kvconfig
+!/Kvantum/ArcDark#
+!/Kvantum/ArcDark#/ArcDark#.kvconfig
 
 # LATEX: Grab all
 !/latex

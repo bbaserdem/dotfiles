@@ -6,8 +6,9 @@
 --output "%(title)s-%(resolution)s.%(ext)s"
 --restrict-filenames
 --no-overwrites
---audio-format "flac"
+--audio-format 'best'
 --audio-quality 0
 --write-subs
 --no-write-auto-subs
 --sub-lang "en,tr"
+--alias get-audio,-X '--extract-audio --prefer-free-formats --format-sort abr,aext --audio-quality 0 --merge-output-format ogg'
