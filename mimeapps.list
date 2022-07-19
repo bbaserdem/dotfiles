@@ -42,6 +42,8 @@ x-scheme-handler/mailto=xfce4-mail-reader.desktop;
 audio/mpeg=smplayer.desktop;
 audio/x-opus+ogg=smplayer.desktop;
 audio/flac=smplayer.desktop;
+video/x-theora+ogg=smplayer.desktop;
+audio/x-vorbis+ogg=smplayer.desktop;
 
 [Default Applications]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
