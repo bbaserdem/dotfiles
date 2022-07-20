@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Dropdown terminal
 Comment=Launch a dropdown terminal, ready to go
-Exec=sh -c "${XDG_CONFIG_HOME}/bspwm/scripts/dropdown.sh"
+Exec=bspwm-dropdown.sh
 Icon=terminal
 Terminal=false
 Type=Application

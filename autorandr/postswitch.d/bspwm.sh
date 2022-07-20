@@ -11,16 +11,16 @@ if [ "${XDG_CURRENT_DESKTOP}" = 'bspwm' ] ; then
         xrdb "${XDG_CONFIG_HOME}/X11/resources"
     esac
     # Refresh the window layout
-    if [ -x "${XDG_CONFIG_HOME}/bspwm/scripts/layout.sh" ] ; then
-        "${XDG_CONFIG_HOME}/bspwm/scripts/layout.sh"
+    if [ -x "${HOME}/.local/bin/bspwm-layout.sh" ] ; then
+        bspwm-layout.sh
     fi
     # Launch polybar instances
-    if [ -x "${XDG_CONFIG_HOME}/bspwm/scripts/polybars.sh" ] ; then
-        "${XDG_CONFIG_HOME}/bspwm/scripts/barlauncher.sh"
+    if [ -x "${HOME}/.local/bin/bspwm-barlauncher.sh" ] ; then
+        bspwm-barlauncher.sh
     fi
     # Change wallpaper instances
-    if [ -x "${XDG_CONFIG_HOME}/bspwm/scripts/wallpaper.sh" ] ; then
-        "${XDG_CONFIG_HOME}/bspwm/scripts/wallpaper.sh"
+    if [ -x "${HOME}/.local/bin/bspwm-wallpaper.sh" ] ; then
+        bspwm-wallpaper.sh reload
     fi
     # Send notification
     notify-send \

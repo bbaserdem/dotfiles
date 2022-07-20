@@ -1,4 +1,5 @@
 #Mins   Hours   Days    Months  Weekday Script
-*/5     *       *       *       *       /home/sbp/.config/isync/mailboxes-update.sh
+*/5     *       *       *       *       isync-mailboxes-update.sh
 */5     *       *       *       *       vdirsyncer sync contacts
 */5     *       *       *       *       vdirsyncer sync calendar
+0       *       *       *       *       bspwm-wallpaper

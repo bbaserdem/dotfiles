@@ -294,10 +294,10 @@ format-prefix = " "
 ; Daily stuff like time and weather
 [module/clock-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -m lemonbar -n clock -a indigo
+exec = sbp-sysinfo.sh -m lemonbar -n clock -a indigo
 [module/date-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -m lemonbar -n date -a indigo
+exec = sbp-sysinfo.sh -m lemonbar -n date -a indigo
 [module/temporal]
 type                        = internal/date
 interval                    = 1
@@ -379,43 +379,43 @@ format-offline-prefix = "ﱙ "
 format-offline-prefix-foreground = ${self.format-offline-underline}
 [module/keyboard-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n keyboard -a cyan
-click-left = ~/.config/sysinfo/sysinfo.sh -n keyboard -b click_left
-click-middle = ~/.config/sysinfo/sysinfo.sh -n keyboard -b click_middle
-click-right = ~/.config/sysinfo/sysinfo.sh -n keyboard -b click_right
-scroll-up = ~/.config/sysinfo/sysinfo.sh -n keyboard -i scroll_up
-scroll-down = ~/.config/sysinfo/sysinfo.sh -n keyboard -i scroll_down
+exec = sbp-sysinfo.sh -n keyboard -a cyan
+click-left = sbp-sysinfo.sh -n keyboard -b click_left
+click-middle = sbp-sysinfo.sh -n keyboard -b click_middle
+click-right = sbp-sysinfo.sh -n keyboard -b click_right
+scroll-up = sbp-sysinfo.sh -n keyboard -i scroll_up
+scroll-down = sbp-sysinfo.sh -n keyboard -i scroll_down
 [module/battery-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n battery -a yellow
+exec = sbp-sysinfo.sh -n battery -a yellow
 
 ;======================;
 ;   MODULES-BOT-LEFT   ;
 ;======================;
 [module/audio-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -a violet
-click-left = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b click_left
-click-middle = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b click_middle
-click-right = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b click_right
-scroll-up = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b scroll_up
-scroll-down = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i sink -b scroll_down
+exec = sbp-sysinfo.sh -n pulseaudio -i sink -a violet
+click-left = sbp-sysinfo.sh -n pulseaudio -i sink -b click_left
+click-middle = sbp-sysinfo.sh -n pulseaudio -i sink -b click_middle
+click-right = sbp-sysinfo.sh -n pulseaudio -i sink -b click_right
+scroll-up = sbp-sysinfo.sh -n pulseaudio -i sink -b scroll_up
+scroll-down = sbp-sysinfo.sh -n pulseaudio -i sink -b scroll_down
 [module/microphone-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -a indigo
-click-left = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b click_left
-click-middle = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b click_middle
-click-right = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b click_right
-scroll-up = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b scroll_up
-scroll-down = ~/.config/sysinfo/sysinfo.sh -n pulseaudio -i source -b scroll_down
+exec = sbp-sysinfo.sh -n pulseaudio -i source -a indigo
+click-left = sbp-sysinfo.sh -n pulseaudio -i source -b click_left
+click-middle = sbp-sysinfo.sh -n pulseaudio -i source -b click_middle
+click-right = sbp-sysinfo.sh -n pulseaudio -i source -b click_right
+scroll-up = sbp-sysinfo.sh -n pulseaudio -i source -b scroll_up
+scroll-down = sbp-sysinfo.sh -n pulseaudio -i source -b scroll_down
 [module/backlight-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n backlight -a cyan
-click-left = ~/.config/sysinfo/sysinfo.sh -n backlight -b click_left
-click-middle = ~/.config/sysinfo/sysinfo.sh -n backlight -b click_middle
-click-right = ~/.config/sysinfo/sysinfo.sh -n backlight -b click_right
-scroll-up = ~/.config/sysinfo/sysinfo.sh -n backlight -b scroll_up
-scroll-down = ~/.config/sysinfo/sysinfo.sh -n backlight -b scroll_down
+exec = sbp-sysinfo.sh -n backlight -a cyan
+click-left = sbp-sysinfo.sh -n backlight -b click_left
+click-middle = sbp-sysinfo.sh -n backlight -b click_middle
+click-right = sbp-sysinfo.sh -n backlight -b click_right
+scroll-up = sbp-sysinfo.sh -n backlight -b scroll_up
+scroll-down = sbp-sysinfo.sh -n backlight -b scroll_down
 [module/memory]
 type = internal/memory
 interval = 2
@@ -427,7 +427,7 @@ format-underline = ${self.format-prefix-foreground}
 format-overline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
-click-left = ~/.config/sysinfo/sysinfo.sh -n memory -b 3
+click-left = sbp-sysinfo.sh -n memory -b 3
 [module/swap]
 type = internal/memory
 interval = 2
@@ -439,7 +439,7 @@ format-underline = ${self.format-prefix-foreground}
 format-overline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
-click-left = ~/.config/sysinfo/sysinfo.sh -n memory -b 3
+click-left = sbp-sysinfo.sh -n memory -b 3
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -451,65 +451,65 @@ format-underline = ${self.format-prefix-foreground}
 format-overline = ${self.format-prefix-foreground}
 format-foreground = ${colors.frg}
 format-background = ${colors.bkg}
-click-left = ~/.config/sysinfo/sysinfo.sh -n cpu -b 3
+click-left = sbp-sysinfo.sh -n cpu -b 3
 [module/fan-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n fan -a orange
+exec = sbp-sysinfo.sh -n fan -a orange
 [module/coretemp-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n temperature -i cpu -a red
+exec = sbp-sysinfo.sh -n temperature -i cpu -a red
 [module/gputemp-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n temperature -i gpu -a red
+exec = sbp-sysinfo.sh -n temperature -i gpu -a red
 [module/rootfs-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n disk -i root -a brown
+exec = sbp-sysinfo.sh -n disk -i root -a brown
 [module/homefs-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n disk -i home -a brown
+exec = sbp-sysinfo.sh -n disk -i home -a brown
 [module/archive-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n disk -i archive -a brown
+exec = sbp-sysinfo.sh -n disk -i archive -a brown
 
 ;========================;
 ;   MODULES-BOT-MIDDLE   ;
 ;========================;
 [module/calendar-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n calendar -a brown
-click-right = ~/.config/sysinfo/sysinfo.sh -n calendar -b 3
+exec = sbp-sysinfo.sh -n calendar -a brown
+click-right = sbp-sysinfo.sh -n calendar -b 3
 [module/todo-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n todo -a red
-click-right = ~/.config/sysinfo/sysinfo.sh -n todo -b 3
+exec = sbp-sysinfo.sh -n todo -a red
+click-right = sbp-sysinfo.sh -n todo -b 3
 [module/rss-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n rss -a orange
-click-right = ~/.config/sysinfo/sysinfo.sh -n rss -b 3
+exec = sbp-sysinfo.sh -n rss -a orange
+click-right = sbp-sysinfo.sh -n rss -b 3
 [module/gmail-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n email -i Gmail -a yellow
-click-right = ~/.config/sysinfo/sysinfo.sh -n email -b 3
+exec = sbp-sysinfo.sh -n email -i Gmail -a yellow
+click-right = sbp-sysinfo.sh -n email -b 3
 
 ;=======================;
 ;   MODULES-BOT-RIGHT   ;
 ;=======================;
 [module/network-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n network -a green
+exec = sbp-sysinfo.sh -n network -a green
 [module/bandwidth-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n bandwidth -a green
+exec = sbp-sysinfo.sh -n bandwidth -a green
 [module/update-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n update -a cyan
-click-right = ~/.config/sysinfo/sysinfo.sh -n update -b 3
+exec = sbp-sysinfo.sh -n update -a cyan
+click-right = sbp-sysinfo.sh -n update -b 3
 [module/uptime-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n uptime -a indigo
+exec = sbp-sysinfo.sh -n uptime -a indigo
 [module/kernel-script]
 inherit = module/skeleton
-exec = ~/.config/sysinfo/sysinfo.sh -n kernel -a violet -t
+exec = sbp-sysinfo.sh -n kernel -a violet -t
 tail = false
 interval = 0
 

@@ -6,7 +6,7 @@ mpd_music_dir = /home/sbp/Music/Library
 mpd_crossfade_time = 0
 
 # Lyrics
-lyrics_directory = "~/.local/share/mpd/lyrics"
+lyrics_directory = "~/.local/share/ncmpcpp/lyrics"
 lyrics_fetchers = "genius, metrolyrics"
 store_lyrics_in_song_dir = yes
 fetch_lyrics_for_current_song_in_background = yes

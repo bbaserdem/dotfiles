@@ -11,10 +11,8 @@
 
 # (Symbolic) Links to external folders
 
-# Oxygen Not Included
+# Unity based games
 !/unity3d
-!/unity3d/Klei
-!/unity3d/Klei/Oxygen Not Included
 # Stardew Valley
 !/StardewValley
 # Fran Bow
@@ -34,25 +32,33 @@
 
 # Files to track
 !/.gitignore
+!/Readme.md
 !/abcde.conf
 !/crontab.cron
 !/gpg-agent.conf
 !/gpg.conf
-!/install.sh
 !/locale.conf
 !/*mimeapps.list
 !/msmtprc
 !/picom.conf
-!/README.md
-!/s3cfg-gen.sh
 !/steamos-compositor-plus
 !/tmux.conf
 !/user-dirs.dirs
 
-# APPLICATIONS: Accept all except matlab override
-!/applications
-!/applications/*.desktop
-/applications/wine**
+# KVANTUM: Grab the config file
+!/Kvantum
+!/Kvantum/kvantum.kvconfig
+!/Kvantum/ArcDark#
+!/Kvantum/ArcDark#/ArcDark#.kvconfig
+
+# MULLVAD: Only grab the gui settings file
+!/Mullvad\ VPN/
+/Mullvad\ VPN/**
+!/Mullvad\ VPN/gui_settings.json
+
+# X11: Grab everything here since I wrote them
+!/X11
+!/X11/**
 
 # AUTORANDR: Grab all info
 !/autorandr
@@ -98,6 +104,10 @@
 !/gammastep
 !/gammastep/*
 
+# GNUPG: Get the needed files
+!/gnupg
+!/gnupg/*
+
 # GIT: Grab config file
 !/git
 !/git/config
@@ -114,24 +124,13 @@
 !/gtk-4.0/
 !/gtk-4.0/settings.ini
 
-# HTOP: Get the rc file
-!/htop
-!/htop/htoprc
-
-# I3BLOCKS: Grab all things i3
-!/i3blocks
-!/i3blocks/**
-
 # IMV: Get all
 !/imv
 !/imv/**
-!/unity3d/Klei/Oxygen\ Not\ Included/mods/settings
 
-# ISYNC: Get only the config and password generator
+# ISYNC: Get only the config
 !/isync
 !/isync/config
-!/isync/passgen.sh
-!/isync/mailboxes-update.sh
 
 # JUPYTER: Get only the config file
 !/jupyter
@@ -152,14 +151,6 @@
 # KITTY: Grab the conf files
 !/kitty
 !/kitty/*.conf
-!/kitty/themes
-!/kitty/themes/*
-
-# KVANTUM: Grab the config file
-!/Kvantum
-!/Kvantum/kvantum.kvconfig
-!/Kvantum/ArcDark#
-!/Kvantum/ArcDark#/ArcDark#.kvconfig
 
 # LATEX: Grab all
 !/latex
@@ -171,7 +162,6 @@
 
 # MATLAB: Only get config, and symlinks
 !/matlab
-# Grab all the symlinks so all the versions can shared together
 !/matlab/R2*
 !/matlab/MLintDefaultSettings.txt
 
@@ -182,11 +172,6 @@
 # MPV: Only grab config
 !/mpv
 !/mpv/mpv.conf
-
-# MULLVAD: Only grab the gui settings file
-!/Mullvad\ VPN/
-/Mullvad\ VPN/**
-!/Mullvad\ VPN/gui_settings.json
 
 # NCMPCPP: Grab what I have created
 !/ncmpcpp
@@ -222,8 +207,6 @@
 !/nvim/lua/**
 # Plugins folder is where compiled packer lives
 /nvim/plugin/packer_compiled.lua
-# I will also develop my own plugins here, and sytax files
-# but they will be published on their own
 
 # OCTAVE: Grab example qt for colors, and the rc file
 !/octave
@@ -261,18 +244,10 @@
 !/pacman
 !/pacman/**
 
-# REDSHIFT: Grab config
-!/redshift
-!/redshift/redshift.conf
-
 # ROFI: Grab user made files and scripts
 !/rofi
 !/rofi/**
 /rofi/__pycache__
-
-# SCRIPTS: User management scripts
-!/scripts
-!/scripts/**
 
 # SUPERVISORD: Grab config
 !/supervisor
@@ -294,10 +269,6 @@
 !/systemd
 !/systemd/**
 
-# SYSTEMINFO: My python module, grab everything
-!/sysinfo
-!/sysinfo/*
-
 # TMUXINATOR: Grab everything
 !/tmuxinator
 !/tmuxinator/**
@@ -314,24 +285,19 @@
 !/urlscan
 !/urlscan/**
 
-# VDIRSYNCER: Grab only config and password generator
+# VDIRSYNCER: Grab only config
 !/vdirsyncer
 !/vdirsyncer/config
-!/vdirsyncer/passgen.sh
 
 # VIFM: Grab config files
 !/vifm
 !/vifm/vifmrc
 !/vifm/colors
-!/vifm/colors/**
+!/vifm/colors/*.vifm
 
 # WAYBAR: Grab all
 !/waybar
 !/waybar/**
-
-# X11: Grab everything here since I wrote them
-!/X11
-!/X11/**
 
 # YT-DLP: Grab config
 !/yt-dlp
@@ -356,4 +322,3 @@
 !/zsh/zimrc
 !/zsh/.zimrc
 !/zsh/p10k*.zsh
-!/zsh/zsh-notify.zsh

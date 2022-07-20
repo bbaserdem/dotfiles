@@ -1,7 +1,7 @@
 # Newsboat stuff
 notify-always yes
 notify-format "%f unread feeds ($n unread in total)"
-notify-program "~/.config/newsboat/notify-rss.sh"
+notify-program "newsboat-notify.sh"
 notify-beep no
 confirm-exit no
 auto-reload yes
@@ -11,6 +11,6 @@ urls-source "local"
 datetime-format "%d/%m/%y"
 # Podboat stuff
 delete-played-files no
-download-path "~/Music/Sort/Podcast %n %h"
+download-path "~/Downloads/Podcast %n %h"
 max-downloads 3
 player "mpd"

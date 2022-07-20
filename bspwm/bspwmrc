@@ -20,10 +20,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Set background placeholder
 if [ -e "${XDG_CACHE_HOME}/xpaper/last_wallpaper" ] ; then
-    feh --no-fehbg --bg-scale --no-xinerama "${XDG_CACHE_HOME}/xpaper/last_wallpaper"
+    bspwm-wallpaper.sh reload
 fi
+
 # Refresh layouts
-"${XDG_CONFIG_HOME}/bspwm/scripts/layout.sh"
+bspwm-layout.sh
 
 # Turn bell off
 xset b off

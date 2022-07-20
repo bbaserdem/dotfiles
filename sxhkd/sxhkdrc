@@ -36,7 +36,7 @@ super + Return
 
 # Dropdown terminal
 F12
-    $XDG_CONFIG_HOME/bspwm/scripts/dropdown.sh
+    bspwm-dropdown.sh
 
 # Keyboard layout changes
 Hyper_R + F12
@@ -77,7 +77,7 @@ XF86AudioMute + {_,alt}
 
 # Change audio sinks
 XF86Tools + {_,shift} + {_,ctrl}
-    $XDG_CONFIG_HOME/sxhkd/pulsesink.sh { ,-r} { ,-s}
+    pulseaudio-sink.sh { ,-r} { ,-s}
 
 # Brightness setting for laptop
 XF86MonBrightness{Up,Down}
@@ -88,11 +88,11 @@ XF86KbdBrightness{Up,Down}
 
 # Power button
 XF86PowerOff
-    $XDG_CONFIG_HOME/sxhkd/powermenu
+    rofi-powermenu.sh
 
 # Change wallpapers
 super + c
-    $XDG_CONFIG_HOME/bspwm/scripts/wallpaper.sh
+    bspwm-wallpaper.sh
 
 # Lock screen
 super + Escape
@@ -100,19 +100,19 @@ super + Escape
 
 # Screenshot
 Print + {_,shift} + {_,ctrl,alt}
-    $XDG_CONFIG_HOME/bspwm/scripts/screenshot.sh { ,-c} {-m screen,-m select,-m active}
+    bspwm-screenshot.sh { ,-c} {-m screen,-m select,-m active}
 Print + super
-    $XDG_CONFIG_HOME/bspwm/scripts/screenshot.sh -m sample
+    bspwm-screenshot.sh -m sample
 
 # Reload config files
 super + shift + Escape
     pkill -USR1 -x sxhkd ; \
-    $XDG_CONFIG_HOME/bspwm/scripts/layout.sh ; \
-    $XDG_CONFIG_HOME/bspwm/scripts/barlauncher.sh
+    bspwm-layout.sh ; \
+    bspwm-barlauncher.sh
 
 # Logout
 super + shift + alt + Escape
-    $XDG_CONFIG_HOME/bspwm/scripts/exit.sh
+    bspwm-exit.sh
 
 # Open python terminal
 XF86Calculator
