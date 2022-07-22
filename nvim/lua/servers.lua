@@ -16,25 +16,12 @@ end
 M = {}
 
 local local_servers = {
-    -- Awk
-    'awk_ls',
-    -- Bash
-    'bashls',
-    -- C, C++
-    'clangd',
     -- Cmake
     'cmake',
     -- JSON
     'jsonls',
-    -- Lua
-    --'sumneko_lua',
-    -- Latex
-    'texlab',
     -- Markdown
     'prosemd_lsp',
-    -- Python
-    'pylsp',
-    'sourcery',
     -- Spellcheck
     'ltex',
 }

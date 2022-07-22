@@ -1,0 +1,11 @@
+[Unit]
+Description=Jupyter Notebook
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/jupyter-notebook --config=%h/.config/jupyter/jupyter_notebook_config.py
+Restart=on-success
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

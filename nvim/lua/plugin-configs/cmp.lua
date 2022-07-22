@@ -151,9 +151,11 @@ cmp.setup({
                 end
             end,
             c = function()
-                if cmp.visible() then                     -- If menu is open, navigate next
+                if cmp.visible() then
+                    -- If menu is open, navigate next
                     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                else                                                        -- Open completion
+                else
+                    -- Open completion
                     cmp.complete()
                 end
             end,
@@ -199,8 +201,13 @@ cmp.setup({
                 end
             end,
             c = function(fallback)
-                if (cmp.visible() and cmp.get_selected_entry()) then
-                    cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
+                if cmp.visible() then
+                    if cmp.get_selected_entry() then
+                        cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
+                    else
+                        cmp.close()
+                        fallback()
+                    end
                 else
                     fallback()
                 end
@@ -243,9 +250,8 @@ cmp.setup({
                 if cmp.visible() then
                     if cmp.get_active_entry() then
                         cmp.abort()
-                        fallback()
                     else
-                        cmp.abort()
+                        cmp.close()
                     end
                 else
                     fallback()
