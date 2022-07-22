@@ -215,7 +215,7 @@
 
 # POLYBAR: Grab all
 !/polybar
-!/polybar/config
+!/polybar/config.ini
 
 # PROFILE.D: Grab all configuration
 !/profile
