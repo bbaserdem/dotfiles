@@ -65,7 +65,7 @@ currentTime = datetime.datetime.now()
 c.content.blocking.enabled = True
 c.content.blocking.method = "both"
 
-if ghn() == "sbp-workstation":
+if ghn() == "sbp-arch-workstation":
     c.url.default_page = "http://intranet.cshl.edu"
     c.url.start_pages = ["http://intranet.cshl.edu"]
 else:

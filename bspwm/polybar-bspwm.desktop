@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Polybar
-Comment=Launch screen info bars
-Exec=bspwm-barlauncher.sh
-Icon=polybar
-Terminal=false
-Type=Application
-StartupNotify=false
-OnlyShowIn=bspwm
