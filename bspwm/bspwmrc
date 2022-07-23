@@ -18,13 +18,14 @@ export XDG_CURRENT_DESKTOP="bspwm"
 # Fix Java apps
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-# Set background placeholder
-if [ -e "${XDG_CACHE_HOME}/xpaper/last_wallpaper" ] ; then
-    bspwm-wallpaper.sh reload
-fi
+# Reload background
+bspwm-wallpaper.sh reload
 
 # Refresh layouts
 bspwm-layout.sh
+
+# Tell autorandr to chill
+touch "${XDG_CACHE_HOME}/autorandr_chill"
 
 # Turn bell off
 xset b off
