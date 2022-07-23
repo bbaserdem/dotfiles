@@ -77,7 +77,7 @@ XF86AudioMute + {_,alt}
 
 # Change audio sinks
 XF86Tools + {_,shift} + {_,ctrl}
-    pulseaudio-sink.sh { ,-r} { ,-s}
+    pipewire-pulse-sink.sh { ,-r} { ,-s}
 
 # Brightness setting for laptop
 XF86MonBrightness{Up,Down}

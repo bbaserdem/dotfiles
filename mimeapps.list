@@ -1,43 +1,56 @@
 [Added Associations]
+
+# Office suite
 application/msword=libreoffice-writer.desktop;
-application/pdf=firefox.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
-application/rss+xml=org.qutebrowser.qutebrowser.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
-image/gif+jpg+jpeg+png+svg+xml+webm=imv.desktop;
-image/raw+dng=darktable.desktop;
-image/vnd.djvu+multipage=zathura-djvu.desktop;
-inode/directory=vifm.desktop;
-text/css=nvim.desktop;
-text/html=org.qutebrowser.qutebrowser.desktop;firefox.desktop;
-text/plain+css=nvim.desktop;
-video/mp4+quicktime+webm+x-msvideo+x-matroska=smplayer.desktop;vlc.desktop;
-x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;firefox.desktop;
-x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;firefox.desktop;
 application/vnd.oasis.opendocument.presentation=libreoffice-impress.desktop;org.pwmt.zathura-cb.desktop;
 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop;
 application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop;
-image/x-xfig=userapp-"octave"-9C5FWZ.desktop;
-x-scheme-handler/ftp=firefox.desktop;
-x-scheme-handler/chrome=firefox.desktop;
-application/x-extension-htm=firefox.desktop;
-application/x-extension-html=firefox.desktop;
-application/x-extension-shtml=firefox.desktop;
-application/xhtml+xml=firefox.desktop;
-application/x-extension-xhtml=firefox.desktop;
-application/x-extension-xht=firefox.desktop;
-image/jpeg=org.xfce.ristretto.desktop;gimp.desktop;ristretto.desktop;
-x-scheme-handler/rdp=org.remmina.Remmina.desktop;
-x-scheme-handler/spice=org.remmina.Remmina.desktop;
-x-scheme-handler/vnc=org.remmina.Remmina.desktop;
-x-scheme-handler/remmina=org.remmina.Remmina.desktop;
-application/x-remmina=org.remmina.Remmina.desktop;
-image/png=org.xfce.ristretto.desktop;ristretto.desktop;gimp.desktop;
-application/octet-stream=firefox.desktop;nvim.desktop;
+
+# Image files
+image/png=org.xfce.ristretto.desktop;ristretto.desktop;
+image/jpeg=org.xfce.ristretto.desktop;ristretto.desktop;
+image/gif+jpg+jpeg+png+svg+xml+webm+raw+dng=imv.desktop;
+image/raw+dng=darktable.desktop;
 image/x-adobe-dng=ristretto.desktop;
+
+# Videos
+video/mp4+quicktime+webm+x-msvideo+x-matroska=smplayer.desktop;
 audio/mp4=smplayer.desktop;
 video/mp4=smplayer.desktop;
 video/webm=smplayer.desktop;
 video/mkv=smplayer.desktop;
+
+# Documents
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+image/vnd.djvu+multipage=zathura-djvu.desktop;
+
+# Text files
+application/rss+xml=firefox.desktop;
+text/plain+css=nvim.desktop;
+
+# Folders
+inode/directory=vifm.desktop;
+
+# Remotes
+application/x-remmina=org.remmina.Remmina.desktop;
+x-scheme-handler/rdp=org.remmina.Remmina.desktop;
+x-scheme-handler/spice=org.remmina.Remmina.desktop;
+x-scheme-handler/vnc=org.remmina.Remmina.desktop;
+x-scheme-handler/remmina=org.remmina.Remmina.desktop;
+
+# Links/streams
+application/octet-stream=firefox.desktop;nvim.desktop;
+text/html=org.qutebrowser.qutebrowser.desktop;firefox.desktop;
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;firefox.desktop;
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;firefox.desktop;
+
 x-scheme-handler/mailto=xfce4-mail-reader.desktop;
 audio/mpeg=smplayer.desktop;
 audio/x-opus+ogg=smplayer.desktop;
