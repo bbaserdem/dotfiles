@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Policykit Authenticator
+Type=Application
+Exec=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+Icon=sepolicy
+Comment=Authentication agent
+X-GNOME-Autostart-enabled=true
+Hidden=false
+StartupNotify=false
+OnlyShowIn=bspwm;

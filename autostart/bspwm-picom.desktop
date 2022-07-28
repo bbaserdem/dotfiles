@@ -1,11 +1,11 @@
 [Desktop Entry]
-Version=1.0
 Name=Picom
+Type=Application
+Exec=picom --daemon --experimental-backends
+Version=1.0
 Comment=Standalone X compositor
-Exec=/usr/bin/picom -b --experimental-backends
 Icon=compton
 Terminal=false
-Type=Application
 Categories=Utility;
 StartupNotify=false
 Hidden=false

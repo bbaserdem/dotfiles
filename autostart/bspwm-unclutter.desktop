@@ -1,13 +1,12 @@
 [Desktop Entry]
-Version=1.0
 Name=Unclutter
-Comment=Hide inactive mouse
+Type=Application
 Exec=unclutter
+Version=1.0
+Comment=Hide inactive mouse
 Icon=mouse
 Terminal=false
-Type=Application
 Categories=Utility;
 StartupNotify=false
 Hidden=false
-NotShowIn=sway;
 OnlyShowIn=bspwm;

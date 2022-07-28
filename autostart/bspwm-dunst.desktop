@@ -7,4 +7,3 @@ Terminal=false
 Type=Application
 StartupNotify=false
 OnlyShowIn=bspwm;
-NotShowIn=GNOME;KDE;Unity;MATE;sway;

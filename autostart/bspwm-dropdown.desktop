@@ -6,4 +6,4 @@ Icon=terminal
 Terminal=false
 Type=Application
 StartupNotify=false
-OnlyShowIn=bspwm
+OnlyShowIn=bspwm;

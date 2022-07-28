@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Gammastep Indicator
+Name[tr]=Gammastep Göstergesi
+Keywords=display;color;soft;hue;temperature;eyes;strain;
+Exec=gammastep-indicator -m randr
+Icon=gammastep
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
+Hidden=true
+X-GNOME-Autostart-enabled=false
+OnlyShowIn=bspwm

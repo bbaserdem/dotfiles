@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=XSS-Lock for BSPWM
+Type=Application
+Exec=xss-lock --transfer-sleep-lock -- bspwm-lock.sh
+Comment=Locking screen on power events in BSPWM
+Terminal=false
+StartupNotify=false
+OnlyShowIn=bspwm;
