@@ -124,7 +124,7 @@ filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus
        \ ffplay -nodisp -autoexit %c,
        \ {Play using MPlayer}
        \ mplayer %f,
-fileviewer *.mp3 mp3info
+fileviewer *.mp3 soxi
 fileviewer *.flac soxi
 fileviewer *.ogg,*.opus,*.m4a ffprobe -pretty %c 2>&1
 
