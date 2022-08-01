@@ -33,7 +33,6 @@
 # Files to track
 !/.gitignore
 !/Readme.md
-!/abcde.conf
 !/crontab.cron
 !/gpg-agent.conf
 !/gpg.conf
