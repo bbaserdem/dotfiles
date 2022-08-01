@@ -29,7 +29,7 @@ wttr_weather () {
 # Aliases
 alias py='bpython'
 alias mutt='neomutt'
-alias arch-killorphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias arch-killorphans='sudo pacman -Rns $(pacman -Qttdq)'
 alias gitdiff='git difftool --no-symlinks --dir-diff'
 
 # ZIM settings
