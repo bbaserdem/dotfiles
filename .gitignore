@@ -55,6 +55,10 @@
 /Mullvad\ VPN/**
 !/Mullvad\ VPN/gui_settings.json
 
+# MUSICBRAINZ: Only grab the ini file
+!/MusicBrainz
+!/MusicBrainz/Picard.ini
+
 # X11: Grab everything here since I wrote them
 !/X11
 !/X11/**
