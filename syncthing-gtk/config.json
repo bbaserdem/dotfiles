@@ -19,6 +19,6 @@
     "st_autoupdate": false,
     "syncthing_arguments": "",
     "syncthing_binary": "/usr/bin/syncthing",
-    "use_old_header": false,
+    "use_old_header": true,
     "window_position": null
 }
