@@ -87,6 +87,10 @@
 !/dunst
 !/dunst/dunstrc
 
+# EWW: Grab all info
+!/eww
+!/eww/**
+
 # FIREJAIL: Get custom firejail configs
 !/firejail
 !/firejail/**

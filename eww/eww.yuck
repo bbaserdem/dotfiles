@@ -1,0 +1,64 @@
+(defwidget greeter [?text name]
+  (box  :orientation "horizontal"
+        :halign "center"
+    text
+    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet"
+    )
+  )
+)
+
+(defvar thisname "Lol")
+
+(defwidget top []
+  (box
+      :orientation "v"
+      :space-evenly "false"
+      :valign "start"
+    "Here"
+    "There"
+    (greeter
+        :text thisname
+        :name "Sbp"
+    )
+  )
+)
+(defwidget bottom []
+  (box
+      :orientation "v"
+      :space-evenly "false"
+      :valign "start"
+    "But"
+    "We"
+    "Here"
+  )
+)
+(defwidget bar []
+  (box
+      :class "eww_bar"
+      :orientation "v"
+      :vexpand "false"
+      :hexpand "false"
+    (top)
+    (bottom)
+  )
+)
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry
+        :x "0"
+        :y "0"
+        :width "47px"
+        :height "100%"
+        :anchor "left center"
+    )
+    :stacking "fg"
+    :reserve (struts
+        :distance "40px"
+        :side "left"
+    )
+    :windowtype "dock"
+    :wm-ignore false
+  (bar)
+)

@@ -295,6 +295,7 @@ M.this_setup = require('packer').startup(function(use)
     use { 'gentoo/gentoo-syntax', disable = false, }
     use { 'brgmnn/vim-syncthing', disable = false, }
     use { 'vim-scripts/MatlabFilesEdition', disable = false, }
+    use { 'elkowar/yuck.vim', disable = false, }
 
      --[[---------------------------------------------------------------------]]--
      --[[----------------------------Color Schemes----------------------------]]--

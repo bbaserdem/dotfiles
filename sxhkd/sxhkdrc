@@ -69,15 +69,15 @@ super + minus
     /usr/bin/mpc sendmessage ratings dislike
 
 # Volume controls
-XF86Audio{Raise,Lower}Volume
-    /usr/bin/pamixer --{increase,decrease} 5
+XF86Audio{Raise,Lower}Volume + {_,alt}
+    pulse-change_volume.sh -p { ,-r} { ,-s} 5 
 
 XF86AudioMute + {_,alt}
     /usr/bin/pactl {set-sink-mute @DEFAULT_SINK@,set-source-mute @DEFAULT_SOURCE@} toggle
 
 # Change audio sinks
 XF86Tools + {_,shift} + {_,ctrl}
-    pipewire-pulse-sink.sh { ,-r} { ,-s}
+    pulse-change_default.sh { ,-r} { ,-s}
 
 # Brightness setting for laptop
 XF86MonBrightness{Up,Down}
