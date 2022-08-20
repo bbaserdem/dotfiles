@@ -154,6 +154,10 @@
 # KITTY: Grab the conf files
 !/kitty
 !/kitty/*.conf
+!/kitty/colors
+!/kitty/colors/*.conf
+!/kitty/fonts
+!/kitty/fonts/*.conf
 
 # LATEX: Grab all
 !/latex

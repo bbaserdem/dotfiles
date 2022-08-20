@@ -201,11 +201,11 @@ filetype *.asc
 
 " Archive files
 filetype *.tar,*.tgz,*.tar.gz,*.tar.bz,*.tbz,*.bz,*tar.bz2,*.tbz2,*.bz2,*.tar.Z,*.tZ,*.Z,*.tar.lzo,*.tzo,*.lzo,*.tar.lz,*.tlz,*.lz,*.tar.xz,*.txz,*.xz,*.tar.7z,*.t7z,*.7z,*.zip,*.jar,*.war,*.rar,*.lha,*.lzh,*.alz,*.ace,*.a,*.arj,*.arc,*.rpm,*.deb,*.cab,*.gz,*.bz,*.lzma,*.rz,*.lrz,*.cpio
-       \ {Unpack using atool}
+       \ {Unpack using patool}
        \ patool extract %d/%c:t:r %c
-fileviewer *.tar,*.tgz,*.tar.gz,*.tar.bz,*.tbz,*.bz,*tar.bz2,*.tbz2,*.bz2,*.tar.Z,*.tZ,*.Z,*.tar.lzo,*.tzo,*.lzo,*.tar.lz,*.tlz,*.lz,*.tar.xz,*.txz,*.xz,*.tar.7z,*.t7z,*.7z,*.zip,*.jar,*.war,*.rar,*.lha,*.lzh,*.alz,*.ace,*.a,*.arj,*.arc,*.rpm,*.deb,*.cab,*.gz,*.bz,*.lzma,*.rz,*.lrz,*.cpio
-       \ {List using atool}
-        \ patool list %c
+fileviewer *.tgz,*.tar,*.tar.gz,*.tar.bz,*.tbz,*.bz,*tar.bz2,*.tbz2,*.bz2,*.tar.Z,*.tZ,*.Z,*.tar.lzo,*.tzo,*.lzo,*.tar.lz,*.tlz,*.lz,*.tar.xz,*.txz,*.xz,*.tar.7z,*.t7z,*.7z,*.zip,*.jar,*.war,*.rar,*.lha,*.lzh,*.alz,*.ace,*.a,*.arj,*.arc,*.rpm,*.deb,*.cab,*.gz,*.bz,*.lzma,*.rz,*.lrz,*.cpio
+       \ {List using patool}
+       \ patool list %c
 
 " IsoMount
 filetype *.iso

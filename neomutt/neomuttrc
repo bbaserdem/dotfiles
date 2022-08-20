@@ -128,7 +128,7 @@ macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract 
 macro index,pager R "!mbsync --config ~/.config/isync/config --all" "Update IMAP"
 
 # Search function
-set nm_default_url = "notmuch://$HOME/Mail"
+set nm_default_url = "notmuch://$HOME/Data/Mail"
 set nm_query_type = "threads"
 bind index \\ vfolder-from-query
 

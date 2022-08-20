@@ -45,4 +45,4 @@ configuration {
     dpi: -1;
     threads: 0;
 }
-@theme "Pop-Dark"
+@theme "Arc-Dark"

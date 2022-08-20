@@ -4,7 +4,7 @@
 set ssl_force_tls = yes
 
 # Folder definitions
-set folder = ~/Mail/
+set folder = ~/Data/Mail/
 set spoolfile = +Gmail/Inbox
 set postponed = +Gmail/Drafts
 set record = +Gmail/Sent
